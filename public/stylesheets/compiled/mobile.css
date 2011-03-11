@@ -1,0 +1,65 @@
+body {
+  margin: 0;
+  padding: 0; }
+
+#mobile-container {
+  width: 320px;
+  background: #e2e2e2;
+  overflow: hidden; }
+
+#canvas {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 640px; }
+  #canvas .page {
+    float: left;
+    width: 320px;
+    background: #9a9a9a; }
+    #canvas .page .content {
+      padding: 0 4px; }
+
+.top-bar {
+  width: 304px;
+  height: 48px;
+  padding: 8px;
+  background: #3b5998;
+  color: white; }
+
+#company-info .logo {
+  float: left;
+  width: 48px;
+  height: 48px;
+  background: no-repeat; }
+#company-info .name {
+  float: left;
+  font-size: 24px;
+  padding: 8px 0 0 12px; }
+
+#home .home-icon {
+  float: left;
+  width: 64px;
+  height: 100px;
+  margin: 15px 0 0 11px; }
+  #home .home-icon .icon {
+    width: 64px;
+    height: 64px;
+    background: no-repeat; }
+    #home .home-icon .icon:hover {
+      cursor: pointer; }
+  #home .home-icon .title {
+    width: 64px;
+    text-align: center;
+    font-size: 14px; }
+
+.back-btn {
+  width: 50px;
+  height: 30px;
+  margin-top: 8px;
+  background: url(/img/back-btn.png) no-repeat; }
+
+#templates {
+  display: none; }
+
+.clearfix {
+  clear: both; }

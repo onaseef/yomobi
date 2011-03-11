@@ -1,0 +1,24 @@
+#builder-container {
+  background: #d0d0e8;
+  padding: 0 10px; }
+
+#builder .widget-editor {
+  float: left;
+  width: 390px;
+  padding: 10px; }
+  #builder .widget-editor .icon {
+    float: left;
+    width: 64px;
+    height: 64px;
+    background: no-repeat; }
+  #builder .widget-editor .name {
+    float: left; }
+  #builder .widget-editor .help-text {
+    clear: both; }
+  #builder .widget-editor .accept-btn {
+    float: right; }
+  #builder .widget-editor .remove-link {
+    float: right;
+    margin: 16px 6px 0 0; }
+  #builder .widget-editor .cancel-btn {
+    float: left; }

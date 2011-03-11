@@ -1,0 +1,36 @@
+#templates
+
+  script.home-icon(type="text/template")
+    .icon{ style="background-image: url(/img/widgets/{{ name }}.png)" }
+    .title {{ prettyName }}
+  
+  script.mapp-header(type="text/template")
+    .logo{ style="background-image: url(/sample-data/{{ name }}/logo.png)" }
+    .name {{ prettyName }}
+    .clearfix
+
+  script.custom_page-page(type="text/template")
+    .content
+      | {{ content }}
+  
+  script.edit-widget(type="text/template")
+    .icon{ style="background-image: url(/img/widgets/{{ name }}.png)" }
+    .name {{ name }}
+    p.help-text {{ helpText }}
+    .edit-area {{ editAreaContent }}
+
+    .accept-btn.main-btn
+      .content Save Changes
+    a.remove-link(href="#") Remove Widget
+    
+    .cancel-btn.alt-btn
+      .content Discard Changes
+
+  script.full-website-edit-area(type="text/template")
+    label Enter your website address [e.g. www.mysite.com]
+    input(type="text" value="{{ url }}")
+  
+  script.about-us-edit-area(type="text/template")
+    label Enter your website address [e.g. www.mysite.com]
+    textarea(cols="50" rows="8")
+      | {{ content }}

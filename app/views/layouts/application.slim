@@ -1,0 +1,35 @@
+! doctype 5
+html
+  head
+    title YoMobi
+    = stylesheet_link_tag 'compiled/builder-app'
+  body
+    #global-container
+      #page-container
+        #header
+          #logo Yomobi
+          #nav
+        #sidebar
+          = yield :sidebar
+        #content
+          = yield
+    
+    = render 'shared/templates'
+    
+    = javascript_include_tag 'http://code.jquery.com/jquery-1.5.1.js'
+    = javascript_include_tag 'jquery.animate-enhanced.min'
+    = javascript_include_tag 'support/underscore'
+    = javascript_include_tag 'support/backbone'
+    = javascript_include_tag 'util'
+    = javascript_include_tag 'data-loader'
+    
+    
+    = javascript_include_tag 'widgets/mobile/base'
+    = javascript_include_tag 'widgets/builder/base'
+    
+    = javascript_include_tag 'widgets/mobile/link'
+    = javascript_include_tag 'widgets/mobile/custom_page'
+    = javascript_include_tag 'widgets/builder/link'
+
+    = javascript_include_tag 'mobile-app'
+    = javascript_include_tag 'builder-app'
