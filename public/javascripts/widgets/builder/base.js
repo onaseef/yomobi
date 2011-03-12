@@ -2,8 +2,12 @@
   
   window.Widget = Backbone.Model.extend({
     
-    // TODO: url: '/widgets/update',
-    // TODO: sync: Backbone.sync,
+    url: function () {
+      var base = '/widgets';
+      if (this.isNew()) return base;
+      return base + (base.charAt(base.length - 1) == '/' ? '' : '/') + this.id;
+    },
+    sync: Backbone.sync,
     
     pageContent: function () {
       this._template = this._template ||
@@ -24,10 +28,13 @@
       return !!bapp.homeViewWidgetClick(this);
     },
     
-    // backbone related
-    isNew: function () {
-      util.log('isnew',this.toJSON());
-      return !this.get('_id');
+    set: function(attributes, options) {
+      if(attributes._id) {
+        attributes.id = attributes._id;
+        delete attributes._id;
+      }
+      Backbone.Model.prototype.set.call(this, attributes, options);
+      return true;
     }
   });
   

@@ -6,6 +6,8 @@
   float: left;
   width: 390px;
   padding: 10px; }
+  #builder .widget-editor .action-bar {
+    padding-top: 12px; }
   #builder .widget-editor .icon {
     float: left;
     width: 64px;
@@ -18,7 +20,15 @@
   #builder .widget-editor .accept-btn {
     float: right; }
   #builder .widget-editor .remove-link {
-    float: right;
-    margin: 16px 6px 0 0; }
+    float: left;
+    margin: 4px 0 0 6px; }
   #builder .widget-editor .cancel-btn {
     float: left; }
+  #builder .widget-editor .loader {
+    display: none;
+    float: right;
+    margin: 5px 6px 0 0; }
+  #builder .widget-editor .checkmark {
+    display: none;
+    float: right;
+    margin: 4px 6px 0 0; }

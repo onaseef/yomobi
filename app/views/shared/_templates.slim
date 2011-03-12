@@ -1,7 +1,7 @@
 #templates
 
   script.home-icon(type="text/template")
-    .icon{ style="background-image: url(/img/widgets/{{ name }}.png)" }
+    .icon{ style="background-image: url(/images/widgets/{{ name }}.png)" }
     .title {{ prettyName }}
   
   script.mapp-header(type="text/template")
@@ -14,23 +14,25 @@
       | {{ content }}
   
   script.edit-widget(type="text/template")
-    .icon{ style="background-image: url(/img/widgets/{{ name }}.png)" }
+    .icon{ style="background-image: url(/images/widgets/{{ name }}.png)" }
     .name {{ name }}
     p.help-text {{ helpText }}
     .edit-area {{ editAreaContent }}
 
-    .accept-btn.main-btn
-      .content Save Changes
-    a.remove-link(href="#") Remove Widget
-    
-    .cancel-btn.alt-btn
-      .content Discard Changes
+    .action-bar
+      .accept-btn.main-btn
+        .content Save Changes
+      .checkmark
+      .loader
+      .cancel-btn.alt-btn
+        .content Discard Changes
+      a.remove-link(href="#") Remove Widget
 
   script.full-website-edit-area(type="text/template")
     label Enter your website address [e.g. www.mysite.com]
-    input(type="text" value="{{ url }}")
+    input(name="url" type="text" value="{{ url }}")
   
   script.about-us-edit-area(type="text/template")
     label Enter your website address [e.g. www.mysite.com]
-    textarea(cols="50" rows="8")
+    textarea(name="content" cols="50" rows="8")
       | {{ content }}

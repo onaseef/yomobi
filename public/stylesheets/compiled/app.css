@@ -33,7 +33,6 @@ body {
   height: 320px; }
 
 .main-btn {
-  margin-top: 12px;
   background: #5b74a8;
   border: 1px solid;
   border-color: #29447e #29447e #1a356e; }
@@ -50,7 +49,6 @@ body {
     border-color: #4f6aa3; }
 
 .alt-btn {
-  margin-top: 12px;
   background: #eeeeee;
   border: 1px solid;
   border-color: #999999;
@@ -63,3 +61,13 @@ body {
     font-weight: bold; }
   .alt-btn .content:active {
     background: #dddddd; }
+
+.loader {
+  width: 16px;
+  height: 11px;
+  background: url(/images/ajax-loader.gif); }
+
+.checkmark {
+  width: 16px;
+  height: 16px;
+  background: url(/images/checkmark.png); }

@@ -47,6 +47,16 @@ var util = {
     return _.template($('#templates .'+name).html());
   },
   
+  showLoading: function (element) {
+    element.find('.checkmark').hide();
+    element.find('.loader').show();
+  },
+  
+  showSuccess: function (element) {
+    element.find('.loader').hide();
+    element.find('.checkmark').show();
+  },
+  
   log: function () {
     if(!this.debug) return;
     if(!window.console || !window.console.log) return;

@@ -27,6 +27,25 @@
     
     accept: function () {
       util.log('accept');
+      util.showLoading(this.el.find('.action-bar'));
+      
+      // grab values from edit area
+      var vals = {};
+      this.el.find('.edit-area input').each(function (idx,elem) {
+        vals[$(elem).attr('name')] = $(elem).val();
+      });
+      
+      var self = this;
+      this.editingWidget.save(vals, {
+        error: function (model,res) {
+          util.log('error saving',model,res);
+          // TODO: notify user
+        },
+        success: function (model,res) {
+          util.log('Saved widget',model,res);
+          util.showSuccess(self.el.find('.action-bar'));
+        }
+      });
     },
     
     remove: function () {
