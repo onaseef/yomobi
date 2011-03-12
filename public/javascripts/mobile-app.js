@@ -41,7 +41,6 @@
     
     onClick: function () {
       if(this.model.onHomeViewClick()) {
-        mapp.getNextWidgetPage().content.html(this.model.pageContent());
         mapp.goToPage(this.model.get('name'));
       }
     }
@@ -76,7 +75,12 @@
   
     viewWidget: function (name) {
       util.log('viewing',name);
-      // TODO: show view for this widget
+      util.log(mapp.widgets);
+      var widget = mapp.widgets.select(function (w) {
+        return w.get('name') == name;
+      })[0];
+      mapp.getNextWidgetPage().content.html(widget.pageContent());
+      mapp.transition('forward');
     }
   
   });
@@ -142,7 +146,6 @@
     
     goToPage: function (widgetName) {
       window.location.href = "#page/"+widgetName;
-      mapp.transition('forward');
     },
     
     goHome: function () {

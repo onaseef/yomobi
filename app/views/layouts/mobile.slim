@@ -24,6 +24,8 @@ html
     javascript:
       $(function () {
         window.mapp = new MobileAppView();
+        // TODO: make widget page links actually work
+        window.location.href = '#';
         new MobileAppController();
         Backbone.history.start();
       });
