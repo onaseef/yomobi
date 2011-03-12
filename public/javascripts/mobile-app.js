@@ -75,7 +75,7 @@
     },
   
     viewWidget: function (name) {
-      console.log('viewing',name);
+      util.log('viewing',name);
       // TODO: show view for this widget
     }
   
