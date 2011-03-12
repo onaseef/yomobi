@@ -3,12 +3,12 @@ html
   head
     title YoMobi
     = render 'shared/iphone-meta.html'
-    = stylesheets
+    = stylesheet_link_tag 'compiled/mobile'
   body
     #mobile-container
       = yield
     
-    = partial 'templates'
+    = render 'shared/templates'
     
     = javascript_include_tag 'http://code.jquery.com/jquery-1.5.1.js'
     = javascript_include_tag 'jquery.animate-enhanced.min'
@@ -21,7 +21,7 @@ html
     = javascript_include_tag 'widgets/mobile/link'
     = javascript_include_tag 'widgets/mobile/custom_page'
     = javascript_include_tag 'mobile-app'
-    :javascript
+    javascript:
       $(function () {
         window.mapp = new MobileAppView();
         new MobileAppController();

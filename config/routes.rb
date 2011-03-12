@@ -3,6 +3,8 @@ Yomobi::Application.routes.draw do
   # first created -> highest priority.
 
   put 'widgets/:id' => 'builder#update_widget'
+  
+  get 'mobile' => 'mobile#index'
 
   root :to => 'builder#index'
 
