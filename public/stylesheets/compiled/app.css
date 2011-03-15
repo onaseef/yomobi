@@ -71,3 +71,23 @@ body {
   width: 16px;
   height: 16px;
   background: url(/images/checkmark.png); }
+
+.home-icon, .home-icon-placeholder {
+  float: left;
+  width: 64px;
+  height: 100px;
+  padding: 7.5px 5.5px 7.5px 5.5px; }
+  .home-icon .icon, .home-icon-placeholder .icon {
+    width: 64px;
+    height: 64px;
+    background: no-repeat; }
+    .home-icon .icon:hover, .home-icon-placeholder .icon:hover {
+      cursor: pointer; }
+  .home-icon .title, .home-icon-placeholder .title {
+    width: 64px;
+    text-align: center;
+    font-size: 14px; }
+
+.home-icon-placeholder {
+  padding: 10px 8px;
+  border: 1px dashed black; }

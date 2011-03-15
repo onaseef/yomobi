@@ -43,8 +43,26 @@ var util = {
     return this.capitalize(word);
   },
   
+  prettifyName: function (name) {
+    var prettyName = _(name.split('-')).chain()
+        .map(function (word) { return util.prettify(word); })
+        .value()
+        .join(' ')
+    ;
+    return prettyName;
+  },
+  
   getTemplate: function (name) {
     return _.template($('#templates .'+name).html());
+  },
+  
+  getInputElements: function (elem,selector) {
+    selector = selector || '';
+    return elem.find(selector + ' input,textarea');
+  },
+  
+  newWidget: function (wtype,data) {
+    return new window.widgetClasses[wtype](data);
   },
   
   showLoading: function (element) {

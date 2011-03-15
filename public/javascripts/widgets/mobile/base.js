@@ -16,11 +16,7 @@
     },
     
     initialize: function () {
-      var prettyName = _(this.get('name').split('-')).chain()
-          .map(function (word) { return util.prettify(word); })
-          .value()
-          .join(' ')
-      ;
+      var prettyName = util.prettifyName(this.get('name'));
       this.set({ prettyName:prettyName });
     },
     

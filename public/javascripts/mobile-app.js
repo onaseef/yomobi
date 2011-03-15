@@ -51,13 +51,21 @@
     el: $('#home'),
     
     initialize: function (widgets) {
+      _.bindAll(this,'render');
+
       this.widgets = widgets;
-      
+      this.widgets.bind('refresh',this.render);
+      this.render();
+    },
+    
+    render: function () {
+      this.el.find('.content').empty();
       self = this;
       this.widgets.each(function (w) {
         var view = new WidgetHomeView({ model:w });
-        $(self.el).find('.content').append(view.render().el);
+        self.el.find('.content').append(view.render().el);
       });
+      self.el.find('.content').append('<div class="clearfix">');
     }
   });
   
@@ -100,17 +108,24 @@
     pageLevel: 0,
     
     widgets: new Widgets(),
+    widgetsInUse: new Widgets(),
+    widgetsAvailable: new Widgets(),
     
     initialize: function (options) {
+      var self = this;
       _.bindAll(this, 'render');
       
-      // TODO: grab widget data from server
-      this.homeView = new HomeView(this.widgets);
+      this.homeView = new HomeView(this.widgetsInUse);
       
       this.widgets.bind('refresh', this.render);
       this.widgets.fetch({
         success: function (widgets,res) {
-          this.homeView = new HomeView(widgets);
+          // partition widgets
+          var isAvailable = function (w) { return w.get('available_') === true; };
+          self.widgetsAvailable.refresh(widgets.select(isAvailable));
+          self.widgetsInUse.refresh(widgets.reject(isAvailable));
+          
+          util.log('fetch',widgets,self.widgetsAvailable,self.widgetsInUse);
         }
       });
     },

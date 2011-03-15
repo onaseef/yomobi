@@ -1,5 +1,6 @@
 - content_for :sidebar do
-  p sidebar!
+  = render :partial => 'shared/sidebar', :locals => {:active => 'builder'}
+  .widgets
 
 h1 Chipotle
 #builder-container

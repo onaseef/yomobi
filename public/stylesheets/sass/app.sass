@@ -73,3 +73,24 @@ body
   width: 16px
   height: 16px
   background: url(/images/checkmark.png)
+
+.home-icon
+  float: left
+  width: 64px
+  height: 100px
+  padding: 7.5px 5.5px 7.5px 5.5px
+  .icon
+    width: 64px
+    height: 64px
+    background: no-repeat
+    &:hover
+      cursor: pointer
+  .title
+    width: 64px
+    text-align: center
+    font-size: 14px
+
+.home-icon-placeholder
+  @extend .home-icon
+  padding: 10px 8px
+  border: 1px dashed #000

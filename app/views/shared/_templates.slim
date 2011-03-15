@@ -30,9 +30,14 @@
 
   script.full-website-edit-area(type="text/template")
     label Enter your website address [e.g. www.mysite.com]
-    input(name="url" type="text" value="{{ url }}")
+    input(name="url" type="text" value="{{ _maybe.url }}")
   
   script.about-us-edit-area(type="text/template")
     label Enter your website address [e.g. www.mysite.com]
     textarea(name="content" cols="50" rows="8")
-      | {{ content }}
+      | {{ _maybe.content }}
+  
+  script.sidebar-widget(type="text/template")
+    .sidebar.home-icon data-name="{{ name }}" data-wtype="{{ wtype }}"
+      .icon{ style="background-image: url(/images/widgets/{{ name }}.png)" }
+      .title {{ prettyName }}
