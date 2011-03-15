@@ -9,12 +9,33 @@
     url: 'http://yomobi.couchone.com/' + g.appData.company +
          '/_design/widgets/_view/by_name?include_docs=true',
 
+    initialize: function () {
+      _.bindAll(this,'addOrder');
+      this.bind('add',this.addOrder);
+    },
+
     parse: function (res) {
       util.log('widget res',res);
       return _.map(res.rows, function (row) {
         var w = row.doc;
         return new window.widgetClasses[w.wtype](w);
       });
+    },
+    
+    addOrder: function (widget) {
+      widget.set({ order:this.models.length-1 });
+    },
+    
+    updateOrder: function (widgetName,order) {
+      var widget = this.find(function (w) {
+        return w.get('name') == widgetName;
+      });
+      widget.set({ order:order });
+      widget.save();
+    },
+    
+    comparator: function (widget) {
+      return widget.get('order') || 0;
     }
   });
   

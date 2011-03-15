@@ -43,6 +43,14 @@ var util = {
     return this.capitalize(word);
   },
   
+  uglify: function (word) {
+    switch (word) {
+      case '&':       word = 'and'; break;
+      default: break;
+    }
+    return word.toLowerCase();
+  },
+  
   prettifyName: function (name) {
     var prettyName = _(name.split('-')).chain()
         .map(function (word) { return util.prettify(word); })
@@ -50,6 +58,15 @@ var util = {
         .join(' ')
     ;
     return prettyName;
+  },
+  
+  uglifyName: function (name) {
+    var uglyName = _(name.split(' ')).chain()
+        .map(function (word) { return util.uglify(word); })
+        .value()
+        .join('-')
+    ;
+    return uglyName;
   },
   
   getTemplate: function (name) {

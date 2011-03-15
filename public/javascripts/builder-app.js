@@ -67,7 +67,14 @@
     tolerance: 'pointer',
     items: '.home-icon',
     placeholder: 'home-icon-placeholder',
-    forcePlaceholderSize: true
+    forcePlaceholderSize: true,
+    update: function (event,ui) {
+      $('#home.page .content .home-icon .title').each(function (idx,elem) {
+        var codeName = util.uglifyName($(elem).text());
+        util.log('sorting',codeName,idx);
+        mapp.widgetsInUse.updateOrder(codeName,idx);
+      });
+    }
   });
   $('#emulator').droppable({
     drop: function (e,ui) {
