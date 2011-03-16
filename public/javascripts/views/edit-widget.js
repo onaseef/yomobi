@@ -68,7 +68,6 @@
     getEditAreaData: function (widget) {
       // TODO: grab edit area data from the server
       var data = bdata[widget.get('name')];
-      util.log('editarea',widget.get('name'),data,bdata);
       data.editAreaContent = data.editAreaTemplate(widget.toJSON());
       return data;
     }

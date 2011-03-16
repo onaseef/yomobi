@@ -6,6 +6,7 @@
     model: Widget,
 
     sync: util.couchSync,
+    // TODO: only query in-use widgets and move all-query to builder-app.js
     url: 'http://yomobi.couchone.com/' + g.appData.company +
          '/_design/widgets/_view/by_name?include_docs=true',
 
@@ -42,7 +43,7 @@
   // ==================================
   WidgetHomeView = Backbone.View.extend({
     tagName: 'div',
-    className: 'home-icon',
+    className: 'home-icon dbx-box',
     
     template: util.getTemplate('home-icon'),
     
@@ -137,18 +138,8 @@
       _.bindAll(this, 'render');
       
       this.homeView = new HomeView(this.widgetsInUse);
-      
+
       this.widgets.bind('refresh', this.render);
-      this.widgets.fetch({
-        success: function (widgets,res) {
-          // partition widgets
-          var isAvailable = function (w) { return w.get('available_') === true; };
-          self.widgetsAvailable.refresh(widgets.select(isAvailable));
-          self.widgetsInUse.refresh(widgets.reject(isAvailable));
-          
-          util.log('fetch',widgets,self.widgetsAvailable,self.widgetsInUse);
-        }
-      });
     },
     
     render: function () {

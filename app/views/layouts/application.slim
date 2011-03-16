@@ -5,10 +5,12 @@ html
     = stylesheet_link_tag 'compiled/builder-app'
   body
     #global-container
-      #page-container
-        #header
-          #logo Yomobi
+      #header
+        .content
+          #logo YoMobi
           #nav
+          .clearfix
+      #page-container
         #sidebar
           = yield :sidebar
         #content
@@ -19,6 +21,7 @@ html
     = javascript_include_tag 'http://code.jquery.com/jquery-1.5.1.js'
     = javascript_include_tag 'support/jquery.animate-enhanced.min'
     = javascript_include_tag 'support/jquery-ui.dragdrop.min'
+    = javascript_include_tag 'support/dbx'
     = javascript_include_tag 'support/underscore'
     = javascript_include_tag 'support/backbone'
     = javascript_include_tag 'util'

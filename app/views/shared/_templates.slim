@@ -1,8 +1,9 @@
 #templates
 
   script.home-icon(type="text/template")
-    .icon{ style="background-image: url(/images/widgets/{{ name }}.png)" }
-    .title {{ prettyName }}
+    .inner
+      .icon.dbx-handle{ style="background-image: url(/images/widgets/{{ name }}.png)" }
+      .title {{ prettyName }}
   
   script.mapp-header(type="text/template")
     .logo{ style="background-image: url(/sample-data/{{ name }}/logo.png)" }

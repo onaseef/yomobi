@@ -1,4 +1,5 @@
 @import 'constants'
+@import dbx.css
 
 body
   font-family: 'lucida grande', tahoma, verdana, arial, sans-serif
@@ -9,9 +10,25 @@ body
   margin: 0 auto
 
 #header
-  padding: 5px
+  padding-top: 10px
   background: $main-color
   color: $header-font-color
+  height: 31px
+  .content
+    width: $page-width
+    margin: 0 auto
+  #logo
+    float: left
+    width: $sidebar-width - 12px
+    padding-left: 12px
+    font-size: 2em
+  #nav
+    float: left
+    width: $content-width - 2
+    height: 30px
+    border: 1px solid #0000ff
+    border-bottom: none
+    background: #dcdcff
 
 #sidebar
   float: left
@@ -76,9 +93,10 @@ body
 
 .home-icon
   float: left
-  width: 64px
-  height: 100px
-  padding: 7.5px 5.5px 7.5px 5.5px
+  width: 75px
+  height: 115px
+  .inner
+    padding: 7.5px 5.5px 7.5px 5.5px
   .icon
     width: 64px
     height: 64px

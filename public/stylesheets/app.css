@@ -1,3 +1,4 @@
+@import url(dbx.css);
 body {
   font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
   font-size: 11px; }
@@ -7,9 +8,25 @@ body {
   margin: 0 auto; }
 
 #header {
-  padding: 5px;
+  padding-top: 10px;
   background: #3b5998;
-  color: white; }
+  color: white;
+  height: 31px; }
+  #header .content {
+    width: 960px;
+    margin: 0 auto; }
+  #header #logo {
+    float: left;
+    width: 188px;
+    padding-left: 12px;
+    font-size: 2em; }
+  #header #nav {
+    float: left;
+    width: 758px;
+    height: 30px;
+    border: 1px solid blue;
+    border-bottom: none;
+    background: #dcdcff; }
 
 #sidebar {
   float: left;
@@ -74,9 +91,10 @@ body {
 
 .home-icon, .home-icon-placeholder {
   float: left;
-  width: 64px;
-  height: 100px;
-  padding: 7.5px 5.5px 7.5px 5.5px; }
+  width: 75px;
+  height: 115px; }
+  .home-icon .inner, .home-icon-placeholder .inner {
+    padding: 7.5px 5.5px 7.5px 5.5px; }
   .home-icon .icon, .home-icon-placeholder .icon {
     width: 64px;
     height: 64px;
