@@ -76,7 +76,7 @@
   });
 
   // make stuff (dragg|dropp)able
-  var manager = new dbxManager(
+  var rearrangeManager = new dbxManager(
     'main',        // session ID [/-_a-zA-Z0-9/]
     'yes',             // enable box-ID based dynamic groups ['yes'|'no']
     'yes',             // hide source box while dragging ['yes'|'no']
@@ -121,5 +121,11 @@
   }).disableSelection();
   
   window.bapp = new BuilderAppView();
+  rearrangeManager.onstatechange = function () {
+    $('#home-widgets .home-icon').each(function (idx,elem) {
+      var codeName = util.uglifyName($(elem).find('.title').text());
+      mapp.widgetsInUse.setOrderByName(codeName,idx);
+    });
+  };
   
 })(jQuery);

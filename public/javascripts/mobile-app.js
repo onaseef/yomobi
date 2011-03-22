@@ -11,7 +11,7 @@
          '/_design/widgets/_view/by_name?include_docs=true',
 
     initialize: function () {
-      _.bindAll(this,'addOrder');
+      _.bindAll(this,'addOrder','setOrderByName');
       this.bind('add',this.addOrder);
     },
 
@@ -27,12 +27,18 @@
       widget.set({ order:this.models.length-1 });
     },
     
-    updateOrder: function (widgetName,order) {
+    setOrder: function (widget,order) {
+      widget.set({ order:order });
+      widget.save();
+      util.log('Saved',widget.get('name'),'order',widget.get('order'));
+    },
+    
+    setOrderByName: function (widgetName,order) {
       var widget = this.find(function (w) {
         return w.get('name') == widgetName;
       });
-      widget.set({ order:order });
-      widget.save();
+      if(widget) this.setOrder(widget,order);
+      else util.log('bad widget name:',widgetName);
     },
     
     comparator: function (widget) {
