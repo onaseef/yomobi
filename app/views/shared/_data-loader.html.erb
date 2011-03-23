@@ -41,14 +41,24 @@ bdata = {
     name: "full-website",
     wtype: 'link',
     helpText: "Add a link from your YoMobi mobile website to your full website.",
-    editAreaTemplate: util.getTemplate('full-website-edit-area')
+    editAreaTemplate: util.getTemplate('full-website-edit-area'),
+    order: 0
   },
   
   "about-us": {
     name: "about-us",
     wtype: 'custom_page',
     helpText: "A page describing what your business is about.",
-    editAreaTemplate: util.getTemplate('about-us-edit-area')
+    editAreaTemplate: util.getTemplate('about-us-edit-area'),
+    order: 0
+  },
+  
+  "call-us": {
+    name: "call-us",
+    wtype: 'phone',
+    helpText: "Add a number for one-click calling:",
+    editAreaTemplate: util.getTemplate('call-us-edit-area'),
+    order: 0
   }
 }
 </script>

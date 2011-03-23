@@ -12,10 +12,10 @@ html
           .clearfix
       #page-container
         #sidebar
-          ul
-            = yield :sidebar
+          = yield :sidebar
         #content
           = yield
+        .clearfix
     
     = render 'shared/templates'
     
@@ -32,9 +32,11 @@ html
     = javascript_include_tag 'widgets/mobile/base'
     = javascript_include_tag 'widgets/builder/base'
     
-    = javascript_include_tag 'widgets/mobile/link'
-    = javascript_include_tag 'widgets/mobile/custom_page'
-    = javascript_include_tag 'widgets/builder/link'
+    - %w(link custom_page phone).each do |widget|
+      = javascript_include_tag "widgets/mobile/#{widget}"
+
+    - %w(link).each do |widget|
+      = javascript_include_tag "widgets/builder/#{widget}"
 
     = javascript_include_tag 'views/edit-widget'
     = javascript_include_tag 'views/sidebar'

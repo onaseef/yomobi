@@ -1,5 +1,46 @@
 (function ($) {
   
+  // ----------------------------
+  window.BuilderWidgets = Widgets.extend({
+    
+    initialize: function () {
+      _.bindAll(this,'addOrder','setOrderByName','updateOverallOrder');
+      this.bind('add',this.addOrder);
+      this.bind('remove',this.updateOverallOrder);
+    },
+    
+    addOrder: function (widget) {
+      widget.set({ order:-1 }, { silent:true });
+      this.updateOverallOrder();
+    },
+    
+    setWidgetOrder: function (widget,order) {
+      util.pushUIBlock(widget.get('name'));
+      
+      if(widget && widget.get('order') != order) {
+        widget.set({ order:order });
+        return true;
+      }
+      else {
+        util.clearUIBlock(widget.get('name'));
+        return false;
+      }
+    },
+    
+    getWidgetByName: function (widgetName) {
+      return this.find(function (w) { return w.get('name') == widgetName; });
+    },
+    
+    updateOverallOrder: function () {
+      var i = 0;
+      this.each(function (widget) {
+        util.log('updating overall order',widget.get('name'),'from',widget.get('order'),'to',i);
+        widget.set({ order:i }); i += 1;
+      });
+    }
+    
+  });
+  
   // -----------------------------------------------
   window.MobileAppView = window.MobileAppView.extend({
 
@@ -19,16 +60,21 @@
     mode: 'edit',
     
     initialize: function () {
-      this.editor = new EditWidgetView();
-      window.mapp = new MobileAppView();
+      _.bindAll(this,'rebindSortables','checkWidgetOrder');
       
-      _.bindAll(window.mapp.homeView,'render');
+      this.editor = new EditWidgetView();
+      window.mapp = new MobileAppView({
+        widgetsInUse: new BuilderWidgets()
+      });
+      
       mapp.widgetsInUse.bind('add',mapp.homeView.render);
       mapp.widgetsInUse.bind('remove',mapp.homeView.render);
+
+      mapp.homeView.bind('render',this.rebindSortables);
+      mapp.homeView.bind('render',function () {
+        util.log('RENDER RENDER RENDER');
+      });
       
-      mapp.widgetsInUse.bind('add',g.homeDbx.initBoxes);
-      mapp.widgetsInUse.bind('remove',g.homeDbx.initBoxes);
-      mapp.widgetsInUse.bind('refresh',g.homeDbx.initBoxes);
       mapp.widgets.fetch({
         success: function (widgets,res) {
           // partition widgets
@@ -36,10 +82,21 @@
           mapp.widgetsAvailable.refresh(widgets.select(isAvailable));
           mapp.widgetsInUse.refresh(widgets.reject(isAvailable));
           
+          // TODO: grab data from server (bdata)
+          _.each(bdata, function (data,name) {
+            var exists = widgets.find(function (w) {
+              return w.get('name') == name;
+            });
+            
+            if (exists === undefined)
+              mapp.widgetsAvailable.add(util.newWidget(data));
+          });
+          
+          $('#emulator .loader-overlay').hide();
           util.log('fetch',widgets,mapp.widgetsAvailable,mapp.widgetsInUse);
         }
       });
-      // TODO: grab data from server (bdata)
+
       this.sidebar = new SidebarView(mapp.widgetsAvailable);
     },
     
@@ -52,19 +109,14 @@
     },
     
     addNewWidget: function (name,wtype) {
+      util.log('adding new widget',name,wtype);
+      if (!util.reserveUI()) return;
+      
       var newWidget = this.sidebar.markWidgetAsInUse(name);
       
       if (newWidget) {
-        newWidget.save(null, {
-          error: function (model,res) {
-            util.log('error saving',model,res);
-            // TODO: notify user
-          },
-          success: function (model,res) {
-            util.log('success',model,res);
-            mapp.widgetsInUse.add(model);
-          }
-        });
+        util.pushUIBlock(newWidget.get('name'));
+        mapp.widgetsInUse.add(newWidget);
       }
     },
     
@@ -76,17 +128,48 @@
         error: function (model,res) {
           util.log('error saving',model,res);
           // TODO: notify user
+          util.releaseUI();
+          util.releaseWidget(model);
         },
         success: function (model,res) {
           util.log('Saved widget',model,res);
+          util.releaseUI();
+          util.releaseWidget(model);
         }
       });
+    },
+    
+    checkWidgetOrder: function () {
+      var isClone = function () { return $(this).hasClass('dbx-clone'); };
+      var changed = false;
+      $('#home-widgets .home-icon').not(isClone).each(function (idx,elem) {
+        var codeName = util.uglifyName($(elem).find('.title').text())
+          , widget = mapp.widgetsInUse.getWidgetByName(codeName)
+        ;
+        changed = changed || idx !== widget.get('order');
+      });
+      
+      if (changed === true && util.reserveUI()) {
+        $('#home-widgets .home-icon').not(isClone).each(function (idx,elem) {
+          var codeName = util.uglifyName($(elem).find('.title').text())
+            , widget = mapp.widgetsInUse.getWidgetByName(codeName)
+          ;
+          mapp.widgetsInUse.setWidgetOrder(widget,idx);
+          util.log(idx,codeName,$(elem).attr('class'));
+        });
+      }
+    },
+    
+    rebindSortables: function () {
+      // this.homeView.render();
+      g.homeDbx.initBoxes();
+      this.checkWidgetOrder();
     }
     
   });
 
   // make stuff (dragg|dropp)able
-  var rearrangeManager = new dbxManager(
+  g.rearrangeManager = new dbxManager(
     'main',        // session ID [/-_a-zA-Z0-9/]
     'yes',             // enable box-ID based dynamic groups ['yes'|'no']
     'yes',             // hide source box while dragging ['yes'|'no']
@@ -131,11 +214,16 @@
   }).disableSelection();
   
   window.bapp = new BuilderAppView();
-  rearrangeManager.onstatechange = function () {
-    $('#home-widgets .home-icon').each(function (idx,elem) {
-      var codeName = util.uglifyName($(elem).find('.title').text());
-      mapp.widgetsInUse.setOrderByName(codeName,idx);
-    });
+
+  // more drag & drop logic
+  g.rearrangeManager.onbeforestatechange = function () {
+    return util.isUIFree();
+  };
+  
+  g.rearrangeManager.onstatechange = bapp.checkWidgetOrder;
+  
+  g.rearrangeManager.onboxdrag = function () {
+    return util.isUIFree();
   };
   
 })(jQuery);

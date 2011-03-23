@@ -5,8 +5,15 @@
 h1 Chipotle
 #builder-container
   #builder
+    / #emulator-wrapper
     #emulator.portrait
       #mobile-container
         = render 'shared/mobile-render'
+        .loader-overlay
+          .loader
     .widget-editor
+      h1 Click a widget icon in the Emulator to begin editing
+      h2 OR
+      h1 Drag an icon from the Sidebar to the Emulator
     .clearfix
+    / .clearfix

@@ -47,7 +47,7 @@
       // when available_ === true will prevent the widget
       // from auto updating
       widget.set({ available_:true });
-      widget.set({ order:-1 });
+      widget.set({ order:0 });
       this.widgets.add(widget);
     }
     

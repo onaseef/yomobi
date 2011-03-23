@@ -14,6 +14,7 @@
     
     accept: function () {
       util.log('accept');
+      if (!util.reserveWidget(this.editingWidget)) return;
       util.showLoading(this.el.find('.action-bar'));
       
       // grab values from edit area
@@ -27,17 +28,20 @@
         error: function (model,res) {
           util.log('error saving',model,res);
           // TODO: notify user
+          util.releaseWidget(model);
         },
         success: function (model,res) {
           util.log('Saved widget',model,res);
           util.showSuccess(self.el.find('.action-bar'));
+          util.releaseWidget(model);
         }
       });
     },
     
     remove: function () {
       util.log('remove',this.editingWidget);
-      if(!this.editingWidget) return;
+      if (!this.editingWidget) return;
+      if (!util.reserveWidget(this.editingWidget)) return;
 
       var yes = confirm('Are you sure you want to delete this widget?\n'+
                         '(all data will be lost)');
@@ -45,12 +49,20 @@
       if (yes) {
         bapp.removeWidget(this.editingWidget);
         delete this.editingWidget;
+        this.stopEditing();
+      }
+      else {
+        util.releaseWidget(this.editingWidget);
       }
     },
     
     cancel: function () {
       util.log('discard');
+      if (!util.reserveWidget(this.editingWidget)) return;
+
       this.startEditing(this.editingWidget);
+
+      util.releaseWidget(this.editingWidget);
     },
     
     startEditing: function (widget) {
@@ -70,6 +82,10 @@
       var data = bdata[widget.get('name')];
       data.editAreaContent = data.editAreaTemplate(widget.toJSON());
       return data;
+    },
+    
+    stopEditing: function () {
+      this.el.empty();
     }
     
   });

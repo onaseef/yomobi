@@ -10,36 +10,11 @@
     url: 'http://yomobi.couchone.com/' + g.appData.company +
          '/_design/widgets/_view/by_name?include_docs=true',
 
-    initialize: function () {
-      _.bindAll(this,'addOrder','setOrderByName','updateOverallOrder');
-      this.bind('add',this.addOrder);
-      this.bind('remove',this.updateOverallOrder);
-    },
-
     parse: function (res) {
       util.log('widget res',res);
       return _.map(res.rows, function (row) {
         var w = row.doc;
         return new window.widgetClasses[w.wtype](w);
-      });
-    },
-    
-    addOrder: function (widget) {
-      widget.set({ order:this.models.length-1 });
-    },
-    
-    setOrderByName: function (widgetName,order) {
-      var widget = this.find(function (w) {
-        return w.get('name') == widgetName;
-      });
-      if(widget) widget.set({ order:order });
-      else util.log('bad widget name:',widgetName);
-    },
-    
-    updateOverallOrder: function () {
-      var i = 0;
-      this.each(function (widget) {
-        widget.set({ order:i }); i += 1;
       });
     },
     
@@ -76,8 +51,8 @@
     }
   });
   
-  // ============================
-  HomeView = Backbone.View.extend({
+  // ===================================
+  window.HomeView = Backbone.View.extend({
     el: $('#home'),
     
     initialize: function (widgets) {
@@ -85,22 +60,23 @@
 
       this.widgets = widgets;
       this.widgets.bind('refresh',this.render);
-      this.render();
     },
     
     render: function () {
-      this.el.find('.content').empty();
-      self = this;
+      var content = this.el.find('.content').empty();
 
       this.widgets.each(function (w) {
         var view = new WidgetHomeView({ model:w });
-        self.el.find('.content').append(view.render().el);
+        content.append(view.render().el);
       });
-      self.el.find('.content').append('<div class="clearfix">');
+      
+      content.append('<div class="clearfix">');
+      this.trigger('render');
+      util.log('rendered',this.widgets.length,'widgets');
     }
   });
   
-  // =======================================
+  // =============================================
   MobileAppController = Backbone.Controller.extend({
 
     routes: {
@@ -145,10 +121,11 @@
     initialize: function (options) {
       var self = this;
       _.bindAll(this, 'render');
+      this.widgets.bind('refresh', this.render);
+
+      this.widgetsInUse = options.widgetsInUse || this.widgetsInUse;
       
       this.homeView = new HomeView(this.widgetsInUse);
-
-      this.widgets.bind('refresh', this.render);
     },
     
     render: function () {

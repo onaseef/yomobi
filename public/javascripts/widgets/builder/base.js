@@ -37,8 +37,17 @@
     
     updateOrder: function () {
       // if available in sidebar, order doesn't matter
-      if (this.isAvailable()) return;
-      this.save();
+      if (this.isAvailable()) {
+        util.clearUIBlock(widgetName);
+        return;
+      }
+      
+      var widgetName = this.get('name');
+      this.save(null, {
+        success: function () {
+          util.clearUIBlock(widgetName);
+        }
+      });
     },
     
     set: function(attributes, options) {
@@ -46,8 +55,7 @@
         attributes.id = attributes._id;
         delete attributes._id;
       }
-      Backbone.Model.prototype.set.call(this, attributes, options);
-      return true;
+      return Backbone.Model.prototype.set.call(this, attributes, options);
     }
   });
   

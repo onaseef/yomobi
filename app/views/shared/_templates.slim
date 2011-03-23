@@ -9,10 +9,11 @@
     .logo{ style="background-image: url(/sample-data/{{ name }}/logo.png)" }
     .name {{ prettyName }}
     .clearfix
-
-  script.custom_page-page(type="text/template")
-    .content
-      | {{ content }}
+  
+  script.edit-widget-idle(type="text/template")
+    h1 Click an icon in the Emulator to begin editing
+    h2 OR
+    h1 Drag an icon from the Sidebar to the Emulator
   
   script.edit-widget(type="text/template")
     .header
@@ -31,6 +32,25 @@
         .content Discard Changes
       a.remove-link(href="#") Remove Widget
 
+  script.sidebar-widget(type="text/template")
+    .sidebar.home-icon data-name="{{ name }}" data-wtype="{{ wtype }}"
+      .icon{ style="background-image: url(/images/widgets/{{ name }}.png)" }
+      .title {{ prettyName }}
+
+  / =====================
+  / = Widget Show Pages =
+  / =====================
+  script.custom_page-page(type="text/template")
+    .content
+      | {{ content }}
+  
+  script.phone-page(type="text/template")
+    p Call us at:
+    h1 {{ content }}
+
+  / =====================
+  / = Widget Edit Pages =
+  / =====================
   script.full-website-edit-area(type="text/template")
     label Your website's address [e.g. www.mysite.com]:
     input(name="url" type="text" value="{{ _maybe.url }}")
@@ -39,8 +59,7 @@
     label Write a short description of your website:
     textarea(name="content" rows="8")
       | {{ _maybe.content }}
-  
-  script.sidebar-widget(type="text/template")
-    .sidebar.home-icon data-name="{{ name }}" data-wtype="{{ wtype }}"
-      .icon{ style="background-image: url(/images/widgets/{{ name }}.png)" }
-      .title {{ prettyName }}
+
+  script.call-us-edit-area(type="text/template")
+    label Your company's phone number:
+    input(name="phone" type="text" value="{{ _maybe.phone }}")

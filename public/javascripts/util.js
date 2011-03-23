@@ -4,6 +4,8 @@ var util = {
   
   // UI event blocking statuses
   busy: {},
+  // Concurrent UI event blocking groups
+  groups: {},
 
   /**
    *  reserve
@@ -17,9 +19,11 @@ var util = {
         // do important submitting stuff
       }
    */
-  reserve: function (key) {
+  reserve: function (key,takeReservation) {
+    if (takeReservation === undefined) takeReservation = true;
+    
     if(this.busy[key] === undefined || this.busy[key] === false) {
-      this.busy[key] = true;
+      if (takeReservation) this.busy[key] = true;
       return true;
     }
     else if(this.busy[key] === true) {
@@ -29,6 +33,83 @@ var util = {
 
   release: function (key) {
     this.busy[key] = false;
+  },
+  
+  /**
+   *  pushBlock
+
+   *    -> "block" as in "an obstacle to progress", not "a set of things"
+
+   *    This function is for handling concurrent events that all relate
+   *  to one class of ui blocking. Once all blocks are cleared, 300ms
+   *  is waited before releasing the group key.
+   *    During these 300ms, if another block is pushed using the same
+   *  group key, the 300ms timer is stopped, and begins again only once
+   *  all blocks under that group key are cleared.
+   */
+  pushBlock: function (group_key,block_key) {
+    var group = this.groups[group_key] = this.groups[group_key] || {}
+      , timer_key  = group_key + '::timer'
+      , timeoutRef = this.groups[timer_key]
+    ;
+    group[block_key] = true;
+    clearTimeout(timeoutRef);
+    this.log('pushing into group',group_key,block_key);
+  },
+  
+  clearBlock: function (group_key,block_key,releaseDelay) {
+    var self = this
+      , group = this.groups[group_key]
+      , timer_key = group_key + '::timer'
+      , releaseDelay = releaseDelay || 300
+    ;
+    if (!group || group[block_key] === undefined) return;
+    delete group[block_key];
+
+    var blocks = _.map(group, function (val) { return val; });
+    if (!_.any(blocks)) {
+      this.groups[timer_key] = setTimeout(function () {
+        self.release(group_key);
+        $('#emulator .loader-overlay').hide();
+      }, releaseDelay);
+    }
+  },
+  
+  reserveWidget: function (widget) {
+    $('#emulator .loader-overlay').show();
+    // TODO: use a combination of id and name once starting
+    // to implement multiple copies of the same widget
+    return !this.busy['ui'] && this.reserve('widget:' + widget.get('name'));
+  },
+  
+  releaseWidget: function (widget) {
+    this.release('widget:' + widget.get('name'));
+    $('#emulator .loader-overlay').hide();
+  },
+  
+  reserveUI: function () {
+    $('#emulator .loader-overlay').show();
+    var reservations = _.map(this.busy, function (isReserved) { return isReserved; });
+    return !_.any(reservations) && this.reserve('ui');
+  },
+  
+  isUIFree: function () {
+    var reservations = _.map(this.busy, function (isReserved) { return isReserved; });
+    util.log('ui free?',!_.any(reservations) && this.reserve('ui',false));
+    return !_.any(reservations) && this.reserve('ui',false);
+  },
+  
+  pushUIBlock: function (block_key) {
+    this.pushBlock('ui',block_key);
+  },
+  
+  clearUIBlock: function (block_key) {
+    this.clearBlock('ui',block_key);
+  },
+  
+  releaseUI: function () {
+    $('#emulator .loader-overlay').hide();
+    this.release('ui');
   },
   
   capitalize: function (string) {
@@ -78,8 +159,8 @@ var util = {
     return elem.find(selector + ' input,textarea');
   },
   
-  newWidget: function (wtype,data) {
-    return new window.widgetClasses[wtype](data);
+  newWidget: function (data) {
+    return new window.widgetClasses[data.wtype](data);
   },
   
   showLoading: function (element) {

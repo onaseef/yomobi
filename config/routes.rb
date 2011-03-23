@@ -2,7 +2,8 @@ Yomobi::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
-  put 'widgets/:id' => 'builder#update_widget'
+  put  'widgets/:id' => 'builder#update_widget'
+  post 'widgets'     => 'builder#new_widget'
   
   get 'mobile' => 'mobile#index'
 
