@@ -15,9 +15,11 @@
       | {{ content }}
   
   script.edit-widget(type="text/template")
-    .icon{ style="background-image: url(/images/widgets/{{ name }}.png)" }
-    .name {{ name }}
-    p.help-text {{ helpText }}
+    .header
+      .icon{ style="background-image: url(/images/widgets/{{ name }}.png)" }
+      .widget-name {{ prettyName }}
+      p.help-text
+        em {{ helpText }}
     .edit-area {{ editAreaContent }}
 
     .action-bar
@@ -30,12 +32,12 @@
       a.remove-link(href="#") Remove Widget
 
   script.full-website-edit-area(type="text/template")
-    label Enter your website address [e.g. www.mysite.com]
+    label Your website's address [e.g. www.mysite.com]:
     input(name="url" type="text" value="{{ _maybe.url }}")
   
   script.about-us-edit-area(type="text/template")
-    label Enter your website address [e.g. www.mysite.com]
-    textarea(name="content" cols="50" rows="8")
+    label Write a short description of your website:
+    textarea(name="content" rows="8")
       | {{ _maybe.content }}
   
   script.sidebar-widget(type="text/template")

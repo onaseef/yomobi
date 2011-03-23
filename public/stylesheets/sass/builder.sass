@@ -1,24 +1,35 @@
 @import 'constants'
 
 #builder-container
-  background: #d0d0e8
-  padding: 0 10px
+  background: $light-bg-color
+  border-top: 1px solid #B3B3B3
+  padding: 20px 10px
 
 #builder .widget-editor
   float: left
   width: $widget-editor-width - 20px - 20px
   padding: 10px
+  .header
+    height: 72px
+    .icon
+      float: left
+      width: 64px
+      height: 64px
+      background: no-repeat
+    .help-text
+      padding: 0 20px 0 72px
+      margin-top: 5px
+  .edit-area
+    padding: 20px 20px
+    textarea, input[type=text]
+      width: 98%
+      font-size: 1.5em
+    textarea
+      padding: 8px
+    input[type=text]
+      padding: 0px 4px 8px 5px
   .action-bar
-    padding-top: 12px
-  .icon
-    float: left
-    width: 64px
-    height: 64px
-    background: no-repeat
-  .name
-    float: left
-  .help-text
-    clear: both
+    padding: 12px 20px 0
   .accept-btn
     float: right
   .remove-link
@@ -34,3 +45,7 @@
     display: none
     float: right
     margin: 4px 6px 0 0
+  .widget-name
+    padding: 0 0 0 72px
+    font-size: 2.5em
+

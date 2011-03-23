@@ -4,7 +4,6 @@ body {
 
 #mobile-container {
   width: 320px;
-  background: #e2e2e2;
   overflow: hidden; }
 
 #canvas {
@@ -14,8 +13,7 @@ body {
   width: 640px; }
   #canvas .page {
     float: left;
-    width: 320px;
-    background: #9a9a9a; }
+    width: 320px; }
     #canvas .page .content {
       padding: 0 4px; }
 

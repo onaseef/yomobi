@@ -1,6 +1,6 @@
 module BuilderHelper
 
-  def status(name,var)
-    name if var == name
+  def active?(name,var)
+    'active' if var == name
   end
 end

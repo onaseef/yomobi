@@ -24,22 +24,51 @@ body {
     float: left;
     width: 758px;
     height: 30px;
-    border: 1px solid blue;
+    border: 1px solid #1d4088;
     border-bottom: none;
-    background: #dcdcff; }
+    background: #627aad; }
 
 #sidebar {
   float: left;
   width: 200px; }
+  #sidebar ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 54px; }
+  #sidebar .option {
+    height: 16px;
+    padding: 3px 0 2px 4px;
+    clear: left; }
+    #sidebar .option .icon {
+      float: left;
+      width: 16px;
+      height: 16px;
+      margin-right: 4px;
+      background: url(/images/test-icons.png); }
+    #sidebar .option:hover {
+      background-color: #d8dfea;
+      cursor: pointer; }
+  #sidebar .option.basic .icon {
+    background-position: 0 0; }
+  #sidebar .option.config .icon {
+    background-position: 0 -16px; }
+  #sidebar .option.builder .icon {
+    background-position: 0 -32px; }
+  #sidebar .option.active {
+    background-color: #d8dfea; }
 
 #content {
   float: left;
-  border: 1px solid #c8c8c8;
+  border: 1px solid #b3b3b3;
+  border-top: none;
   width: 758px; }
+  #content h1 {
+    padding-left: 10px; }
 
 #emulator {
   float: left;
-  border: 4px solid black; }
+  border: 4px solid #1d4088;
+  background: #edeff4; }
 
 #emulator.portrait {
   width: 320px;

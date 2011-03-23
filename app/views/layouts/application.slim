@@ -12,7 +12,8 @@ html
           .clearfix
       #page-container
         #sidebar
-          = yield :sidebar
+          ul
+            = yield :sidebar
         #content
           = yield
     
