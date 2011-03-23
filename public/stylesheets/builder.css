@@ -52,8 +52,28 @@
   width: 320px;
   height: 480px;
   background: url(/images/ui/overlay.png); }
-  #emulator .loader-overlay .loader {
+  #emulator .loader-overlay .icon {
     width: 64px;
     height: 64px;
     margin: 210px auto;
     background: url(/images/ui/ajax-loader-large.gif); }
+
+#emulator .drophover-overlay {
+  display: none;
+  position: absolute;
+  width: 320px;
+  height: 480px;
+  background: url(/images/ui/overlay.png); }
+  #emulator .drophover-overlay .icon {
+    width: 128px;
+    height: 128px;
+    margin: 170px auto 0;
+    background: url(/images/ui/drophover.png); }
+  #emulator .drophover-overlay .text {
+    margin: 8px 0;
+    color: white;
+    text-align: center;
+    font-size: 2em; }
+
+#emulator.drophover .drophover-overlay {
+  display: block; }

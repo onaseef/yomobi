@@ -201,6 +201,7 @@
   _.bindAll(g.homeDbx,'initBoxes');
   
   $('#emulator').droppable({
+    hoverClass: 'drophover',
     drop: function (e,ui) {
       var elem = $(ui.draggable)
         , name = elem.attr('data-name')
