@@ -11,8 +11,9 @@
          '/_design/widgets/_view/by_name?include_docs=true',
 
     initialize: function () {
-      _.bindAll(this,'addOrder','setOrderByName');
+      _.bindAll(this,'addOrder','setOrderByName','updateOverallOrder');
       this.bind('add',this.addOrder);
+      this.bind('remove',this.updateOverallOrder);
     },
 
     parse: function (res) {
@@ -27,18 +28,19 @@
       widget.set({ order:this.models.length-1 });
     },
     
-    setOrder: function (widget,order) {
-      widget.set({ order:order });
-      widget.save();
-      util.log('Saved',widget.get('name'),'order',widget.get('order'));
-    },
-    
     setOrderByName: function (widgetName,order) {
       var widget = this.find(function (w) {
         return w.get('name') == widgetName;
       });
-      if(widget) this.setOrder(widget,order);
+      if(widget) widget.set({ order:order });
       else util.log('bad widget name:',widgetName);
+    },
+    
+    updateOverallOrder: function () {
+      var i = 0;
+      this.each(function (widget) {
+        widget.set({ order:i }); i += 1;
+      });
     },
     
     comparator: function (widget) {
@@ -89,6 +91,7 @@
     render: function () {
       this.el.find('.content').empty();
       self = this;
+
       this.widgets.each(function (w) {
         var view = new WidgetHomeView({ model:w });
         self.el.find('.content').append(view.render().el);
@@ -195,7 +198,6 @@
         , delta = (direction == 'forward') ? 1 : -1
         , deltaStr = (direction == 'forward') ? '-=' : '+='
       ;
-      util.log('lol');
       
       this.el.find('#canvas').animate({
         left: deltaStr + g.width

@@ -16,6 +16,9 @@
     },
     
     initialize: function () {
+      _.bindAll(this,'updateOrder');
+      this.bind('change:order',this.updateOrder);
+      
       var prettyName = _(this.get('name').split('-')).chain()
           .map(function (word) { return util.prettify(word); })
           .value()
@@ -23,9 +26,19 @@
       ;
       this.set({ prettyName:prettyName });
     },
+
+    isAvailable: function () {
+      return this.get('available_') === true;
+    },
     
     onHomeViewClick: function () {
       return !!bapp.homeViewWidgetClick(this);
+    },
+    
+    updateOrder: function () {
+      // if available in sidebar, order doesn't matter
+      if (this.isAvailable()) return;
+      this.save();
     },
     
     set: function(attributes, options) {

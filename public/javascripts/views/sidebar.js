@@ -36,12 +36,18 @@
       });
       this.widgets.remove(found);
       util.log('markAsInUse',widgetName,found,this.widgets);
-      found.unset('available_').save();
+      found.unset('available_');
       return found;
     },
     
     markWidgetAsAvailable: function (widget) {
       // TODO: use server data instead (represented by bdata)
+      
+      // It's important to set available_ first, because setting order
+      // when available_ === true will prevent the widget
+      // from auto updating
+      widget.set({ available_:true });
+      widget.set({ order:-1 });
       this.widgets.add(widget);
     }
     

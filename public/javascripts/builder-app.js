@@ -32,7 +32,7 @@
       mapp.widgets.fetch({
         success: function (widgets,res) {
           // partition widgets
-          var isAvailable = function (w) { return w.get('available_') === true; };
+          var isAvailable = function (w) { return w.isAvailable(); };
           mapp.widgetsAvailable.refresh(widgets.select(isAvailable));
           mapp.widgetsInUse.refresh(widgets.reject(isAvailable));
           
@@ -53,8 +53,18 @@
     
     addNewWidget: function (name,wtype) {
       var newWidget = this.sidebar.markWidgetAsInUse(name);
-      if(newWidget) {
-        mapp.widgetsInUse.add(newWidget);
+      
+      if (newWidget) {
+        newWidget.save(null, {
+          error: function (model,res) {
+            util.log('error saving',model,res);
+            // TODO: notify user
+          },
+          success: function (model,res) {
+            util.log('success',model,res);
+            mapp.widgetsInUse.add(model);
+          }
+        });
       }
     },
     
@@ -62,7 +72,7 @@
       mapp.widgetsInUse.remove(widget);
       this.sidebar.markWidgetAsAvailable(widget);
 
-      widget.save({ available_:true }, {
+      widget.save(null, {
         error: function (model,res) {
           util.log('error saving',model,res);
           // TODO: notify user
