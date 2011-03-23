@@ -11,15 +11,17 @@ html
     = render 'shared/templates'
     
     = javascript_include_tag 'http://code.jquery.com/jquery-1.5.1.js'
-    = javascript_include_tag 'jquery.animate-enhanced.min'
+    = javascript_include_tag 'support/jquery.animate-enhanced.min'
     = javascript_include_tag 'support/underscore'
     = javascript_include_tag 'support/backbone'
     = javascript_include_tag 'util'
-    = javascript_include_tag 'data-loader'
+    = render :partial => 'shared/data-loader'
     
     = javascript_include_tag 'widgets/mobile/base'
-    = javascript_include_tag 'widgets/mobile/link'
-    = javascript_include_tag 'widgets/mobile/custom_page'
+    
+    - %w(link custom_page phone).each do |widget|
+      = javascript_include_tag "widgets/mobile/#{widget}"
+    
     = javascript_include_tag 'mobile-app'
     javascript:
       $(function () {
@@ -28,4 +30,6 @@ html
         window.location.href = '#';
         new MobileAppController();
         Backbone.history.start();
+        
+        mapp.widgets.fetch();
       });

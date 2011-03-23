@@ -40,6 +40,23 @@ body {
   margin-top: 8px;
   background: url(/images/back-btn.png) no-repeat; }
 
+.home-icon {
+  float: left;
+  width: 75px;
+  height: 115px; }
+  .home-icon .inner {
+    padding: 7.5px 5.5px 7.5px 5.5px; }
+  .home-icon .icon {
+    width: 64px;
+    height: 64px;
+    background: no-repeat; }
+    .home-icon .icon:hover {
+      cursor: pointer; }
+  .home-icon .title {
+    width: 64px;
+    text-align: center;
+    font-size: 14px; }
+
 #templates {
   display: none; }
 

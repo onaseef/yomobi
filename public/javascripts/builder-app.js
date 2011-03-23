@@ -64,7 +64,8 @@
       
       this.editor = new EditWidgetView();
       window.mapp = new MobileAppView({
-        widgetsInUse: new BuilderWidgets()
+        widgetsInUse: new BuilderWidgets(),
+        homeViewWidgets: 'widgetsInUse'
       });
       
       mapp.widgetsInUse.bind('add',mapp.homeView.render);

@@ -114,18 +114,19 @@
     // n == 0 is home, n > 0 is widget page level depth
     pageLevel: 0,
     
-    widgets: new Widgets(),
-    widgetsInUse: new Widgets(),
-    widgetsAvailable: new Widgets(),
-    
     initialize: function (options) {
+      options = options || {};
       var self = this;
+
+      this.widgets = options.widgets || new Widgets();
+      this.widgetsInUse = options.widgetsInUse || new Widgets();
+      this.widgetsAvailable = options.widgetsAvailable || new Widgets();
+      
+      var widgetsToUse = options.homeViewWidgets || 'widgets';
+      this.homeView = new HomeView(this[widgetsToUse]);
+      
       _.bindAll(this, 'render');
       this.widgets.bind('refresh', this.render);
-
-      this.widgetsInUse = options.widgetsInUse || this.widgetsInUse;
-      
-      this.homeView = new HomeView(this.widgetsInUse);
     },
     
     render: function () {
