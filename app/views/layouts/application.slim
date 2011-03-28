@@ -31,12 +31,14 @@ html
     
     = javascript_include_tag 'widgets/mobile/base'
     = javascript_include_tag 'widgets/builder/base'
-    
-    - %w(link custom_page phone).each do |widget|
-      = javascript_include_tag "widgets/mobile/#{widget}"
 
-    - %w(link).each do |widget|
-      = javascript_include_tag "widgets/builder/#{widget}"
+    - Dir[widgets_dir('mobile/*.js')].each do |widget|
+      - next if File.basename(widget) == 'base.js'
+      = javascript_include_tag "widgets/mobile/#{File.basename widget}"
+
+    - Dir[widgets_dir('builder/*.js')].each do |widget|
+      - next if File.basename(widget) == 'base.js'
+      = javascript_include_tag "widgets/builder/#{File.basename widget}"
 
     = javascript_include_tag 'views/edit-widget'
     = javascript_include_tag 'views/sidebar'

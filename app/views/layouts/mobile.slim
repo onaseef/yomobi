@@ -19,8 +19,9 @@ html
     
     = javascript_include_tag 'widgets/mobile/base'
     
-    - %w(link custom_page phone).each do |widget|
-      = javascript_include_tag "widgets/mobile/#{widget}"
+    - Dir[widgets_dir('mobile/*.js')].each do |widget|
+      - next if File.basename(widget) == 'base.js'
+      = javascript_include_tag "widgets/mobile/#{File.basename widget}"
     
     = javascript_include_tag 'mobile-app'
     javascript:
