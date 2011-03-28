@@ -62,3 +62,6 @@ body {
 
 .clearfix {
   clear: both; }
+
+#widget .content {
+  background: #880000; }
