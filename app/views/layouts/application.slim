@@ -3,6 +3,7 @@ html
   head
     title YoMobi
     = stylesheet_link_tag 'builder-app'
+    = stylesheet_link_tag 'flick/jquery-ui-1.8.11.custom'
   body
     #global-container
       #header
@@ -20,8 +21,9 @@ html
     = render 'shared/templates'
     
     = javascript_include_tag 'http://code.jquery.com/jquery-1.5.1.js'
-    = javascript_include_tag 'support/jquery.animate-enhanced.min'
-    = javascript_include_tag 'support/jquery-ui.dragdrop.min'
+    / = javascript_include_tag 'support/jquery.animate-enhanced.min'
+    = javascript_include_tag 'support/jquery-ui-1.8.11.custom.min'
+    = javascript_include_tag 'support/jquery-ui.timepicker'
     = javascript_include_tag 'support/dbx'
     = javascript_include_tag 'support/underscore'
     = javascript_include_tag 'support/backbone'
@@ -36,11 +38,14 @@ html
       - next if File.basename(widget) == 'base.js'
       = javascript_include_tag "widgets/mobile/#{File.basename widget}"
 
+
+
+    = javascript_include_tag 'views/edit-widget'
+
     - Dir[widgets_dir('builder/*.js')].each do |widget|
       - next if File.basename(widget) == 'base.js'
       = javascript_include_tag "widgets/builder/#{File.basename widget}"
 
-    = javascript_include_tag 'views/edit-widget'
     = javascript_include_tag 'views/sidebar'
     = javascript_include_tag 'mobile-app'
     = javascript_include_tag 'builder-app'

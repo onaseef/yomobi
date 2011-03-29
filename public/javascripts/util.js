@@ -150,6 +150,68 @@ var util = {
     return uglyName;
   },
   
+  // Example inputs/outputs:
+  // "08:00" -> "08:00am"
+  // "16:00" -> "04:00pm"
+  // "12:00" -> "12:00pm"
+  // "00:01" -> "12:01am"
+  // "01:00" -> "01:00am"
+  from24to12: function (timeStr) {
+    var hour   = parseInt(timeStr.split(':')[0],10)
+      , minute = parseInt(timeStr.split(':')[1],10)
+      , convertedHour = hour % 12
+      , convertedHour = (convertedHour == 0) ? 12 : convertedHour
+      , period = (hour < 12) ? 'am' : 'pm'
+      , minuteStr = (minute < 10 ? '0' : '') + minute
+      , hourStr   = (convertedHour < 10 ? '0' : '') + convertedHour
+    ;
+    return hourStr + ':' + minuteStr + period;
+  },
+  
+  // Example inputs/outputs:
+  // "08:00am" -> "08:00"
+  // "04:00pm" -> "16:00"
+  // "12:00pm" -> "12:00"
+  // "12:01am" -> "00:01"
+  // "01:00am" -> "01:00"
+  from12to24: function (timeStr) {
+    var split = timeStr.split(':')
+      , hour   = parseInt(split[0],10)
+      , minute = parseInt(split[1].substring(0,2),10)
+      , period =          split[1].substring(2)
+      , hour = (period == 'pm' && hour != 12) ? hour+12 : hour
+      , hour = (period == 'am' && hour == 12) ? hour-12 : hour
+      , minuteStr = (minute < 10 ? '0' : '') + minute
+      , hourStr   = (hour < 10 ? '0' : '') + hour
+    ;
+    return hourStr + ':' + minuteStr;
+  },
+  
+  parseTimeTo24: function (timeStr) {
+    var split = timeStr.split(':');
+
+    if (split[1].substring(2) != '') {
+      timeStr = this.from12to24(timeStr);
+      split = timeStr.split(':');
+    }
+    return {
+      hour: parseInt(split[0],10),
+      minute: parseInt(split[1].substring(0,2),10),
+      toMinutes: function () {
+        return this.hour * 60 + this.minute;
+      },
+      toString: function () {
+        var hourStr = (this.hour < 10) ? '0'+this.hour : ''+this.hour
+          , minStr  = (this.minute < 10) ? '0'+this.minute : ''+this.minute
+        ;
+        return hourStr + ':' + minStr;
+      },
+      toString12: function () {
+        return util.from24to12(this.toString());
+      }
+    };
+  },
+  
   getTemplate: function (name) {
     return _.template($('#templates .'+name).html());
   },
@@ -161,6 +223,10 @@ var util = {
   
   newWidget: function (data) {
     return new window.widgetClasses[data.wtype](data);
+  },
+  
+  newEditor: function (widget) {
+    return new (window.widgetEditors[widget.get('wtype')] || window.EditWidgetView)(widget);
   },
   
   showLoading: function (element) {

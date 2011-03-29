@@ -77,3 +77,88 @@
 
 #emulator.drophover .drophover-overlay {
   display: block; }
+
+#builder .edit-area.hours .day-checkbox {
+  float: left;
+  width: 32px;
+  margin-right: 10px;
+  text-align: center; }
+  #builder .edit-area.hours .day-checkbox .checkbox {
+    height: 32px;
+    width: 32px;
+    background: url(/images/ui/checkbox-empty.png);
+    cursor: pointer; }
+  #builder .edit-area.hours .day-checkbox .checkbox.checked {
+    background: url(/images/ui/checkbox-full.png); }
+#builder .edit-area.hours .day-hours {
+  display: none;
+  padding: 8px 0;
+  clear: left; }
+  #builder .edit-area.hours .day-hours .day-name {
+    float: left;
+    width: 95px;
+    font-size: 1.5em;
+    margin-top: 4px;
+    padding: 4px 0 8px; }
+  #builder .edit-area.hours .day-hours .all-day-wrap {
+    float: left;
+    padding: 10px 0 0 12px;
+    text-align: center;
+    color: #7e7e7e; }
+  #builder .edit-area.hours .day-hours .row {
+    clear: left; }
+  #builder .edit-area.hours .day-hours .add-time {
+    float: right;
+    clear: left;
+    margin-top: 2px;
+    cursor: pointer; }
+    #builder .edit-area.hours .day-hours .add-time .plus-icon {
+      float: left;
+      width: 16px;
+      height: 16px;
+      margin-top: -1px;
+      background: url(/images/ui/plus.png); }
+  #builder .edit-area.hours .day-hours .hour-wrap.all-day-checked {
+    display: none; }
+  #builder .edit-area.hours .day-hours .all-day-label {
+    display: none;
+    float: left;
+    height: 26px;
+    width: 262px;
+    padding: 10px 0 0 4px;
+    color: #005500;
+    font-size: 1.2em;
+    font-weight: bold; }
+  #builder .edit-area.hours .day-hours .all-day-label.all-day-checked {
+    display: block; }
+  #builder .edit-area.hours .day-hours label {
+    float: left;
+    width: 36px;
+    padding-right: 4px;
+    margin-top: 11px;
+    color: #7e7e7e;
+    text-align: right; }
+  #builder .edit-area.hours .day-hours input[type=text] {
+    float: left;
+    width: 80px; }
+#builder .edit-area.hours .day-hours.checked {
+  display: block; }
+
+/* css for timepicker */
+#ui-datepicker-div {
+  border: 3px solid black; }
+
+.ui-timepicker-div .ui-widget-header {
+  margin-bottom: 8px; }
+
+.ui-timepicker-div dl {
+  text-align: left; }
+
+.ui-timepicker-div dl dt {
+  height: 25px; }
+
+.ui-timepicker-div dl dd {
+  margin: -25px 0 10px 65px; }
+
+.ui-timepicker-div td {
+  font-size: 90%; }

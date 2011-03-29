@@ -1,6 +1,6 @@
 (function ($) {
   
-  EditWidgetView = Backbone.View.extend({
+  window.EditWidgetView = Backbone.View.extend({
     
     el: $('#builder .widget-editor'),
 
@@ -12,19 +12,23 @@
       'click .cancel-btn':          'cancel'
     },
     
+    initialize: function (widget) {
+      this.widget = widget;
+      var events = _.extend({},this.defaultEvents,this.events);
+      this.delegateEvents(events);
+      
+      if (this.init) this.init();
+    },
+    
     accept: function () {
       util.log('accept');
-      if (!util.reserveWidget(this.editingWidget)) return;
+      if (!util.reserveWidget(this.widget)) return;
       util.showLoading(this.el.find('.action-bar'));
       
-      // grab values from edit area
-      var vals = {};
-      util.getInputElements(this.el,'.edit-area').each(function (idx,elem) {
-        vals[$(elem).attr('name')] = $(elem).val();
-      });
+      var values = this.grabWidgetValues();
       
       var self = this;
-      this.editingWidget.save(vals, {
+      this.widget.save(values, {
         error: function (model,res) {
           util.log('error saving',model,res);
           // TODO: notify user
@@ -39,53 +43,60 @@
     },
     
     remove: function () {
-      util.log('remove',this.editingWidget);
-      if (!this.editingWidget) return;
-      if (!util.reserveWidget(this.editingWidget)) return;
+      util.log('remove',this.widget);
+      if (!this.widget) return;
+      if (!util.reserveWidget(this.widget)) return;
 
       var yes = confirm('Are you sure you want to delete this widget?\n'+
                         '(all data will be lost)');
 
       if (yes) {
-        bapp.removeWidget(this.editingWidget);
-        delete this.editingWidget;
+        bapp.removeWidget(this.widget);
+        delete this.widget;
         this.stopEditing();
       }
       else {
-        util.releaseWidget(this.editingWidget);
+        util.releaseWidget(this.widget);
       }
     },
     
     cancel: function () {
       util.log('discard');
-      if (!util.reserveWidget(this.editingWidget)) return;
+      if (!util.reserveWidget(this.widget)) return;
 
-      this.startEditing(this.editingWidget);
+      this.startEditing(this.widget);
 
-      util.releaseWidget(this.editingWidget);
+      util.releaseWidget(this.widget);
     },
     
-    startEditing: function (widget) {
-      this.editingWidget = widget;
-      util.log('Editing widget:', widget.get('name'),widget.isNew());
-      var editAreaData = this.getEditAreaData(widget)
+    startEditing: function () {
+      util.log('Editing widget:',this.widget.get('name'),this.widget.isNew());
+      var widget = this.widget
+        , editAreaData = this.getEditAreaData(widget)
         , templateData = _.extend(widget.toJSON(), editAreaData)
-        // TODO: , events = _.extend({},this.defaultEvents,templateData.events)
-        , events = _.extend({},this.defaultEvents)
       ;
-      this.delegateEvents(events);
       this.el.html(this.template(templateData));
+
+      if (this.onEditStart) this.onEditStart();
     },
     
     getEditAreaData: function (widget) {
       // TODO: grab edit area data from the server
       var data = bdata[widget.get('name')];
-      data.editAreaContent = data.editAreaTemplate(widget.toJSON());
+      data.editAreaContent = data.editAreaTemplate(widget.getEditData());
       return data;
     },
     
     stopEditing: function () {
       this.el.empty();
+    },
+    
+    grabWidgetValues: function () {
+      var vals = {};
+      util.getInputElements(this.el,'.edit-area').each(function (idx,elem) {
+        vals[$(elem).attr('name')] = $(elem).val();
+      });
+      return vals;
     }
     
   });

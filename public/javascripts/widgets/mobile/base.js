@@ -21,6 +21,8 @@
       });
       var prettyName = util.prettifyName(this.get('name'));
       this.set({ prettyName:prettyName });
+
+      this.init && this.init();
     },
     
     onHomeViewClick: function () {
@@ -33,7 +35,9 @@
   window.WidgetPageView = Backbone.View.extend({
     
     initialize: function (options) {
-      this.widget = options.widget
+      this.widget = options.widget;
+
+      if (this.init) this.init();
     },
     
     setContentElem: function (elem) {

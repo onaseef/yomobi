@@ -25,6 +25,8 @@
           .join(' ')
       ;
       this.set({ prettyName:prettyName });
+      
+      this.init && this.init();
     },
 
     isAvailable: function () {
@@ -48,6 +50,15 @@
           util.clearUIBlock(widgetName);
         }
       });
+    },
+    
+    getEditor: function () {
+      this.editor = this.editor || util.newEditor(this);
+      return this.editor;
+    },
+    
+    getEditData: function () {
+      return {};
     },
     
     set: function(attributes, options) {

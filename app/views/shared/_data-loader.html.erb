@@ -14,6 +14,7 @@ window.g = {
 };
 window.widgetClasses = {};
 window.widgetPages = {};
+window.widgetEditors = {};
 
 _.templateSettings = {
   interpolate: /\{\{([^\{].*?)\}\}/g,
@@ -41,33 +42,37 @@ bdata = {
   "full-website": {
     name: "full-website",
     wtype: 'link',
-    helpText: "Add a link from your YoMobi mobile website to your full website.",
-    editAreaTemplate: util.getTemplate('full-website-edit-area'),
-    order: 0
+    helpText: "Add a link from your YoMobi mobile website to your full website."
   },
   
   "about-us": {
     name: "about-us",
     wtype: 'custom_page',
-    helpText: "A page describing what your business is about.",
-    editAreaTemplate: util.getTemplate('about-us-edit-area'),
-    order: 0
+    helpText: "A page describing what your business is about."
   },
   
   "call-us": {
     name: "call-us",
     wtype: 'phone',
-    helpText: "Add a number for one-click calling:",
-    editAreaTemplate: util.getTemplate('call-us-edit-area'),
-    order: 0
+    helpText: "Add a number for one-click calling."
   },
   
   "leave-a-message": {
     name: "leave-a-message",
     wtype: 'leave_msg',
-    helpText: "Allow your customers to leave you an email message:",
-    editAreaTemplate: util.getTemplate('leave-a-message-edit-area'),
-    order: 0
+    helpText: "Allow your customers to leave you an email message."
+  },
+  
+  "hours-of-operation": {
+    name: "hours-of-operation",
+    wtype: 'hours',
+    helpText: "Let your customers know when you're open for business."
   }
 }
+
+for (var wname in bdata) {
+  bdata[wname].order = 0;
+  bdata[wname].editAreaTemplate = util.getTemplate(wname + '-edit-area');
+}
+
 </script>

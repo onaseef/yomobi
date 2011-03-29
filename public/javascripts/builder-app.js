@@ -62,7 +62,6 @@
     initialize: function () {
       _.bindAll(this,'rebindSortables','checkWidgetOrder');
       
-      this.editor = new EditWidgetView();
       window.mapp = new MobileAppView({
         widgetsInUse: new BuilderWidgets(),
         homeViewWidgets: 'widgetsInUse'
@@ -107,7 +106,7 @@
     homeViewWidgetClick: function (widget) {
       if(this.mode == 'emulate') return true;
 
-      this.editor.startEditing(widget);
+      widget.getEditor().startEditing();
       // returning false will cause the mobile emulator to ignore the click
       return false;
     },

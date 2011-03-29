@@ -21,7 +21,7 @@
       .widget-name {{ prettyName }}
       p.help-text
         em {{ helpText }}
-    .edit-area {{ editAreaContent }}
+    div class="edit-area {{ wtype }}" {{ editAreaContent }}
 
     .action-bar
       .accept-btn.main-btn
@@ -56,6 +56,9 @@
         input(type="submit" value="Send")
     .thanks-wrap style="display:none"
       h1 Thanks for your input!
+  
+  script.hours-page(type="text/template")
+    hi
 
   / =====================
   / = Widget Edit Pages =
@@ -76,3 +79,31 @@
   script.leave-a-message-edit-area(type="text/template")
     label Enter the email you would like to receive your customer's messages on:
     input(name="email" type="text" value="{{ _maybe.email }}")
+  
+  script.hours-of-operation-edit-area(type="text/template")
+    p Click to checkmark the days you are open:
+    - %w(sun mon tue wed thu fri sat).each do |day|
+      .day-checkbox day=day
+        span = day.upcase
+        .checkbox day=day class="{{ _maybe.#{day}Status }}"
+    .clearfix
+    
+    - %w(sun mon tue wed thu fri sat).each do |day|
+      .day-hours day=day class="{{ _maybe.#{day}Status }}"
+        .day-name
+          = long_day_name(day)
+        .all-day-wrap
+          | All Day
+          input type="checkbox" name="#{day}_allday"
+        .row
+          .hour-wrap class=".all-day-{{ _maybe.#{day}AllDay }}"
+            label From:
+            input.hour.from type="text" name="#{day}_from" value="{{ #{day}FromHour }}"
+            label To:
+            input.hour.to type="text" name="#{day}_to" value="{{ #{day}ToHour }}"
+        .all-day-label class=".all-day-{{ _maybe.#{day}AllDay }}"
+          span Open All Day
+        .add-time
+          | Add another time
+          .plus-icon
+    .clearfix

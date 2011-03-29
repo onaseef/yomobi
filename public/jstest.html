@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+                    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <link rel="stylesheet" href="http://code.jquery.com/qunit/git/qunit.css" type="text/css" media="screen" />
+<script type="text/javascript" src="http://code.jquery.com/qunit/git/qunit.js"></script>
+<script type="text/javascript" src="/javascripts/util.js"></script>
+
+<script>
+$(document).ready(function(){
+   
+  module("util");
+
+  test("Converting 24 hour to 12 hour", function() {
+    var io = {
+      "08:00": "08:00am",
+      "16:20": "04:20pm",
+      "12:00": "12:00pm",
+      "00:01": "12:01am",
+      "01:00": "01:00am",
+      "23:59": "11:59pm"
+    };
+    for (var input in io) {
+      var output = util.from24to12(input)
+        , expected = io[input]
+      ;
+      equals(output,expected,input + ' to ' + expected);
+    }
+  });
+  
+  test("Converting 12 hour to 24 hour", function() {
+    var io = {
+      "08:00am": "08:00",
+      "04:00pm": "16:00",
+      "12:00pm": "12:00",
+      "12:01am": "00:01",
+      "01:00am": "01:00"
+    };
+    for (var input in io) {
+      var output = util.from12to24(input)
+        , expected = io[input]
+      ;
+      equals(output,expected,input + ' to ' + expected);
+    }
+  });
+  
+  test("Custom time object", function() {
+    var io = {
+      "08:00am": "08:00",
+      "04:00pm": "16:00",
+      "12:00pm": "12:00",
+      "12:01am": "00:01",
+      "01:00am": "01:00"
+    };
+    for (var input in io) {
+      var time = util.parseTimeTo24(input)
+        , toStringExpected   = io[input]
+        , toString12Expected = input
+      ;
+      equals(time.toString(),toStringExpected,input + ' toString() ' + toStringExpected);
+      equals(time.toString12(),toString12Expected,input + ' toString12() ' + toString12Expected);
+    }
+    
+    var time = util.parseTimeTo24("13:01");
+    equals(time.hour,13);
+    equals(time.minute,1);
+    equals(time.toMinutes(),781);
+    equals(time.toString(),"13:01");
+    equals(time.toString12(),"01:01pm");
+  });
+
+});
+</script>
+  
+</head>
+<body>
+  <h1 id="qunit-header">QUnit example</h1>
+ <h2 id="qunit-banner"></h2>
+ <div id="qunit-testrunner-toolbar"></div>
+ <h2 id="qunit-userAgent"></h2>
+ <ol id="qunit-tests"></ol>
+ <div id="qunit-fixture">test markup, will be hidden</div>
+</body>
+</html>
