@@ -63,6 +63,7 @@
     },
     
     render: function () {
+      util.log('homeview render');
       var content = this.el.find('.content').empty();
 
       this.widgets.each(function (w) {
@@ -91,10 +92,12 @@
     viewWidget: function (name) {
       util.log('viewing',name);
       util.log(mapp.widgets);
-      var widget = mapp.widgets.select(function (w) {
+      var widget = mapp.widgets.find(function (w) {
         return w.get('name') == name;
-      })[0];
-      mapp.getNextWidgetPage().content.html(widget.pageContent());
+      });
+      
+      var wpage = mapp.getNextWidgetPage().content.html(widget.getPageContent());
+      widget.pageView.setContentElem(wpage);
       mapp.transition('forward');
     }
   
@@ -130,6 +133,7 @@
     },
     
     render: function () {
+      util.log('app render');
       $('#company-info').html(this.headerTemplate({
         name: g.appData.company,
         prettyName: util.prettify(g.appData.company)

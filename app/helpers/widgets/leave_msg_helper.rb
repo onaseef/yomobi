@@ -1,0 +1,2 @@
+module Widgets::LeaveMsgHelper
+end

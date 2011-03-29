@@ -63,5 +63,5 @@ body {
 .clearfix {
   clear: both; }
 
-#widget .content {
-  background: #880000; }
+#widget .content textarea[name="msg_content"] {
+  width: 95%; }

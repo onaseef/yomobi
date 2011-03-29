@@ -47,6 +47,15 @@
   script.phone-page(type="text/template")
     p Call us at:
     h1 {{ phone }}
+  
+  script.leave_msg-page(type="text/template")
+    .input-wrap
+      p Leave us a message:
+      = form_tag '/leave_msg/submit', :method => 'post' do
+        textarea name="msg_content" rows=5
+        input(type="submit" value="Send")
+    .thanks-wrap style="display:none"
+      h1 Thanks for your input!
 
   / =====================
   / = Widget Edit Pages =
@@ -63,3 +72,7 @@
   script.call-us-edit-area(type="text/template")
     label Your company's phone number:
     input(name="phone" type="text" value="{{ _maybe.phone }}")
+  
+  script.leave-a-message-edit-area(type="text/template")
+    label Enter the email you would like to receive your customer's messages on:
+    input(name="email" type="text" value="{{ _maybe.email }}")

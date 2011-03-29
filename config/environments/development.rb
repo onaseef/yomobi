@@ -22,5 +22,16 @@ Yomobi::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+  
+  ActionMailer::Base.smtp_settings = {
+    :host => "localhost"
+    # :address              => "smtp.gmail.com",
+    # :port                 => 587,
+    # :domain               => "yomobi.com",
+    # :user_name            => "asciicasts",
+    # :password             => "secret",
+    # :authentication       => "plain", 
+    # :enable_starttls_auto => true
+  }
 end
 

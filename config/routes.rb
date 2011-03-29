@@ -8,6 +8,14 @@ Yomobi::Application.routes.draw do
   get 'mobile' => 'mobile#index'
 
   root :to => 'builder#index'
+  
+  ##########################
+  # Widget-specific routes #
+  ##########################
+
+  post 'leave_msg/submit' => 'widgets/leave_msg#submit'
+
+
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

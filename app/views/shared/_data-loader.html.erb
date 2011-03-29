@@ -13,6 +13,7 @@ window.g = {
   }
 };
 window.widgetClasses = {};
+window.widgetPages = {};
 
 _.templateSettings = {
   interpolate: /\{\{([^\{].*?)\}\}/g,
@@ -58,6 +59,14 @@ bdata = {
     wtype: 'phone',
     helpText: "Add a number for one-click calling:",
     editAreaTemplate: util.getTemplate('call-us-edit-area'),
+    order: 0
+  },
+  
+  "leave-a-message": {
+    name: "leave-a-message",
+    wtype: 'leave_msg',
+    helpText: "Allow your customers to leave you an email message:",
+    editAreaTemplate: util.getTemplate('leave-a-message-edit-area'),
     order: 0
   }
 }

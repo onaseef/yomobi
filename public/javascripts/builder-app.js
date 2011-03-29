@@ -89,8 +89,11 @@
               return w.get('name') == name;
             });
             
-            if (exists === undefined)
+            if (exists === undefined) {
+              var wdata = _.extend({},data);
+              delete wdata.editAreaTemplate;
               mapp.widgetsAvailable.add(util.newWidget(data));
+            }
           });
           
           $('#emulator .loader-overlay').hide();
