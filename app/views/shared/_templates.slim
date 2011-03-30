@@ -58,7 +58,9 @@
       h1 Thanks for your input!
   
   script.hours-page(type="text/template")
-    hi
+    - %w(sun mon tue wed thu fri sat).each do |day|
+      h3 = long_day_name(day)
+      p {{ #{day}Hours }}
 
   / =====================
   / = Widget Edit Pages =

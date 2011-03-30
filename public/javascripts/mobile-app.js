@@ -1,14 +1,14 @@
 (function ($) {
 
   // =================================
-  Widgets = Backbone.Collection.extend({
+  window.Widgets = Backbone.Collection.extend({
 
     model: Widget,
 
     sync: util.couchSync,
     // TODO: only query in-use widgets and move all-query to builder-app.js
     url: 'http://yomobi.couchone.com/' + g.appData.company +
-         '/_design/widgets/_view/by_name?include_docs=true',
+         '/_design/widgets/_view/inuse_by_name?include_docs=true',
 
     parse: function (res) {
       util.log('widget res',res);

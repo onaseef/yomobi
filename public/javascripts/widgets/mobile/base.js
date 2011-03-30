@@ -1,3 +1,6 @@
+//
+// MOBILE
+//
 (function ($) {
   
   window.Widget = Backbone.Model.extend({
@@ -12,7 +15,11 @@
     getPageContent: function () {
       this._template = this._template ||
                        util.getTemplate(this.get('wtype') + '-page');
-      return this._template(this.toJSON());
+      return this._template(this.getShowData());
+    },
+    
+    getShowData: function () {
+      return this.toJSON();
     },
     
     initialize: function () {

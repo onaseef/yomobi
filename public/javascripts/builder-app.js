@@ -62,6 +62,9 @@
     initialize: function () {
       _.bindAll(this,'rebindSortables','checkWidgetOrder');
       
+      window.Widgets.prototype.url = 'http://yomobi.couchone.com/' + g.appData.company +
+         '/_design/widgets/_view/by_name?include_docs=true',
+      
       window.mapp = new MobileAppView({
         widgetsInUse: new BuilderWidgets(),
         homeViewWidgets: 'widgetsInUse'

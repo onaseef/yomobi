@@ -1,3 +1,6 @@
+// 
+// BUILDER
+// 
 (function ($) {
   
   window.Widget = Backbone.Model.extend({
@@ -58,7 +61,7 @@
     },
     
     getEditData: function () {
-      return {};
+      return this.toJSON();
     },
     
     set: function(attributes, options) {

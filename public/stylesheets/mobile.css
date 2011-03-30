@@ -63,5 +63,12 @@ body {
 .clearfix {
   clear: both; }
 
-#widget .content textarea[name="msg_content"] {
+#widget .content.leave_msg textarea[name="msg_content"] {
   width: 95%; }
+
+#widget .content.hours .closed {
+  color: #aa0000; }
+#widget .content.hours .open {
+  color: #007700; }
+#widget .content.hours .all-day {
+  color: #000099; }
