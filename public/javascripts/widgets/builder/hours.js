@@ -121,8 +121,8 @@
         ;
         if ( !dayCheckbox.hasClass('checked') ) return;
         
-        var from = util.from12to24( $this.find('.hour.from').val() )
-          , to   = util.from12to24( $this.find('.hour.to').val()   )
+        var from = util.from12to24( $this.find('.hour.from').val() || '00:00am' )
+          , to   = util.from12to24( $this.find('.hour.to').val()   || '23:59pm' )
           , allDay = $this.find('input[type=checkbox]').is(':checked')
         ;
         hours[day] = allDay ? '00:00-23:59' : from + '-' + to;
