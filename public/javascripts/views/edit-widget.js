@@ -15,7 +15,6 @@
     initialize: function (widget) {
       this.widget = widget;
       var events = _.extend({},this.defaultEvents,this.events);
-      this.delegateEvents(events);
       
       if (this.init) this.init();
     },
@@ -76,6 +75,7 @@
         , templateData = _.extend(widget.toJSON(), editAreaData)
       ;
       this.el.html(this.template(templateData));
+      this.delegateEvents(events);
 
       if (this.onEditStart) this.onEditStart();
     },
