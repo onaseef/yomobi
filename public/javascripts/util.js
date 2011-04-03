@@ -264,6 +264,26 @@ var util = {
     else {
       alert(method+' method not implemented.');
     }
+  },
+  
+  deleteSync: function (method,model,success,error) {
+    if(method == 'delete') {
+      $.ajax({
+        url: model.url() + '/' + model.get('_rev'),
+        type: 'delete',
+        success: function(data) {
+          util.log('deleteSync success!',data);
+          success(data);
+        },
+        error: function(jqXHR,textStatus,errorThrown) {
+          util.log('deleteSync error');
+          error(jqXHR,textStatus,errorThrown);
+        }
+      });
+    }
+    else {
+      Backbone.sync(method,model,success,error);
+    }
   }
 }
 

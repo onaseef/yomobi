@@ -11,8 +11,8 @@
       _.bindAll(this,'render');
 
       this.widgets = widgets;
-      this.widgets.bind('add',this.render);
-      this.widgets.bind('remove',this.render);
+      // this.widgets.bind('add',this.render);
+      // this.widgets.bind('remove',this.render);
       this.widgets.bind('refresh',this.render);
       
       this.el.find('.widgets .home-icon').live('mouseover',makeDraggable);
@@ -30,25 +30,17 @@
       });
     },
     
-    markWidgetAsInUse: function (widgetName) {
+    cloneWidgetByName: function (widgetName) {
       var found = this.widgets.find(function (w) {
         return w.get('name') == widgetName;
       });
-      this.widgets.remove(found);
-      util.log('markAsInUse',widgetName,found,this.widgets);
-      found.unset('available_');
+      // this.widgets.remove(found);
+      util.log('cloneWidgetByName',widgetName,found,this.widgets);
+      if (found) {
+        found = new Widget(found.attributes);
+        found.set({ order:0 },{ silent:true });
+      }
       return found;
-    },
-    
-    markWidgetAsAvailable: function (widget) {
-      // TODO: use server data instead (represented by bdata)
-      
-      // It's important to set available_ first, because setting order
-      // when available_ === true will prevent the widget
-      // from auto updating
-      widget.set({ available_:true });
-      widget.set({ order:0 });
-      this.widgets.add(widget);
     }
     
   });
@@ -58,7 +50,7 @@
 function makeDraggable () {
   if ($(this).data("init")) return;
   $(this).data("init", true)
-         .draggable({ revert:'invalid', zIndex:99 })
+         .draggable({ revert:true, zIndex:99 })
          .disableSelection()
   ;
 }

@@ -28,4 +28,14 @@ class BuilderController < ApplicationController
     puts "Response: #{res.inspect}"
     success params
   end
+  
+  def delete_widget
+    return error 'Invalid id'  if params[:_id].nil?
+    return error 'Invalid rev' if params[:_rev].nil?
+    db = CouchRest.database("http://admin_chipotle:123123@yomobi.couchone.com/chipotle")
+    puts "Params: #{params.inspect}"
+    res = db.delete_doc(params)
+    puts "Response: #{res.inspect}"
+    success params
+  end
 end

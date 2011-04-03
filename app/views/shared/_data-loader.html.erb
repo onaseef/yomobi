@@ -70,9 +70,11 @@ bdata = {
   }
 }
 
+var i = 0;
 for (var wname in bdata) {
-  bdata[wname].order = 0;
+  bdata[wname].order = i;
   bdata[wname].editAreaTemplate = util.getTemplate(wname + '-edit-area');
+  i += 1;
 }
 
 </script>

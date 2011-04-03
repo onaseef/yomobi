@@ -10,7 +10,7 @@
       if (this.isNew()) return base;
       return base + (base.charAt(base.length - 1) == '/' ? '' : '/') + this.id;
     },
-    sync: Backbone.sync,
+    sync: util.deleteSync,
     
     pageContent: function () {
       this._template = this._template ||

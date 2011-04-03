@@ -81,22 +81,15 @@
       mapp.widgets.fetch({
         success: function (widgets,res) {
           // partition widgets
-          var isAvailable = function (w) { return w.isAvailable(); };
-          mapp.widgetsAvailable.refresh(widgets.select(isAvailable));
-          mapp.widgetsInUse.refresh(widgets.reject(isAvailable));
-          
+          mapp.widgetsInUse.refresh(widgets.models);
+
           // TODO: grab data from server (bdata)
-          _.each(bdata, function (data,name) {
-            var exists = widgets.find(function (w) {
-              return w.get('name') == name;
-            });
-            
-            if (exists === undefined) {
-              var wdata = _.extend({},data);
-              delete wdata.editAreaTemplate;
-              mapp.widgetsAvailable.add(util.newWidget(data));
-            }
+          var widgetsAvailable =  _.map(bdata, function (data,name) {
+            var wdata = _.extend({},data);
+            delete wdata.editAreaTemplate;
+            return wdata;
           });
+          mapp.widgetsAvailable.refresh(widgetsAvailable);
           
           $('#emulator .loader-overlay').hide();
           util.log('fetch',widgets,mapp.widgetsAvailable,mapp.widgetsInUse);
@@ -118,9 +111,10 @@
       util.log('adding new widget',name,wtype);
       if (!util.reserveUI()) return;
       
-      var newWidget = this.sidebar.markWidgetAsInUse(name);
+      var newWidget = this.sidebar.cloneWidgetByName(name);
       
       if (newWidget) {
+        util.log('new');
         util.pushUIBlock(newWidget.get('name'));
         mapp.widgetsInUse.add(newWidget);
       }
@@ -128,9 +122,8 @@
     
     removeWidget: function (widget) {
       mapp.widgetsInUse.remove(widget);
-      this.sidebar.markWidgetAsAvailable(widget);
 
-      widget.save(null, {
+      widget.destroy({
         error: function (model,res) {
           util.log('error saving',model,res);
           // TODO: notify user
