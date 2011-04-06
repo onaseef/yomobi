@@ -21,15 +21,15 @@
     initialize: function () {
       _.bindAll(this,'updateOrder');
       this.bind('change:order',this.updateOrder);
+      this.bind('change:name',this.updatePrettyName);
       
-      var prettyName = _(this.get('name').split('-')).chain()
-          .map(function (word) { return util.prettify(word); })
-          .value()
-          .join(' ')
-      ;
-      this.set({ prettyName:prettyName });
+      this.updatePrettyName(this,this.get('name'));
       
       this.init && this.init();
+    },
+    
+    updatePrettyName: function (model,newName) {
+      model.set({ prettyName:util.prettifyName(newName) });
     },
 
     isAvailable: function () {

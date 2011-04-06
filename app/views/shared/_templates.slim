@@ -2,7 +2,7 @@
 
   script.home-icon(type="text/template")
     .inner
-      .icon.dbx-handle{ style="background-image: url(/images/widgets/{{ name }}.png)" }
+      .icon.dbx-handle{ style="background-image: url(/images/widgets/{{ wtype }}.png)" }
       .title {{ prettyName }}
   
   script.mapp-header(type="text/template")
@@ -17,7 +17,7 @@
   
   script.edit-widget(type="text/template")
     .header
-      .icon{ style="background-image: url(/images/widgets/{{ name }}.png)" }
+      .icon{ style="background-image: url(/images/widgets/{{ wtype }}.png)" }
       .widget-name {{ prettyName }}
       p.help-text
         em {{ helpText }}
@@ -34,8 +34,21 @@
 
   script.sidebar-widget(type="text/template")
     .sidebar.home-icon data-name="{{ name }}" data-wtype="{{ wtype }}"
-      .icon{ style="background-image: url(/images/widgets/{{ name }}.png)" }
+      .icon{ style="background-image: url(/images/widgets/{{ wtype }}.png)" }
       .title {{ prettyName }}
+  
+  script.add-widget-dialog(type="text/template")
+    #dialog-confirm title="Please Name your New Widget"
+  	  p
+  	    span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"
+  	    | Please name your new <b>{{ wtype }}</b> widget:
+  	    input type="text" value="{{ defaultName }}" name="wname"
+  	    .other-names
+    	    b Other names in use by this widget type:
+    	    ul
+      	    | <% for(var i=0; i < names.length; i++) { %>
+      	        <li> {{ names[i] }} </li>
+      	      <% } %>
 
   / =====================
   / = Widget Show Pages =
@@ -102,7 +115,7 @@
             label From:
             input.hour.from type="text" name="#{day}_from" value="{{ _maybe.#{day}FromHour }}"
             label To:
-            input.hour.to type="text" name="#{day}_to" value="{{ _.mabye.#{day}ToHour }}"
+            input.hour.to type="text" name="#{day}_to" value="{{ _maybe.#{day}ToHour }}"
         .all-day-label class=".all-day-{{ _maybe.#{day}AllDay }}"
           span Open All Day
         .add-time

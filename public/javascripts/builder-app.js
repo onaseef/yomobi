@@ -110,14 +110,66 @@
     addNewWidget: function (name,wtype) {
       util.log('adding new widget',name,wtype);
       if (!util.reserveUI()) return;
+      if (this.validateWidgetName(name,wtype) === false) return;
       
-      var newWidget = this.sidebar.cloneWidgetByName(name);
+      var newWidget = this.sidebar.cloneWidgetByType(wtype);
       
       if (newWidget) {
         util.log('new');
+        newWidget.set({ name:name });
         util.pushUIBlock(newWidget.get('name'));
         mapp.widgetsInUse.add(newWidget);
       }
+    },
+
+    // validateWidget
+    //  If widget name is not valid, returns false and opens a dialog box
+    //  else returns true
+    // 
+    validateWidgetName: function (name,wtype) {
+      var self = this
+        , nameExists = function (w) { return w.get('name') == name; }
+        , conflictingWidget = mapp.widgetsInUse.find(nameExists)
+      ;
+      
+      if (!conflictingWidget) return true;
+      
+      // find ALL widgets of this wtype
+      var isCurrentWtype = function (w) { return w.get('wtype') == wtype }
+        , pluckPrettyName = function (w) { return util.prettifyName(w.get('name')) }
+        , existingNames = mapp.widgetsInUse.select(nameExists).map(pluckPrettyName)
+      ;
+      var dialogHtml = util.getTemplate('add-widget-dialog')({
+        wtype: wtype.toUpperCase(),
+        defaultName: util.prettifyName(name),
+        names: existingNames
+      });
+      
+      $(dialogHtml).dialog({
+        resizable: false,
+        modal: true,
+        draggable: false,
+        close: function () { util.releaseUI(); },
+        buttons: {
+        	"Add New Widget": function() {
+            var newName = $(this).find('input[name=wname]').val()
+              , newName = $.trim(newName)
+            ;
+            if (!newName.match(/^[a-zA-Z][a-zA-Z0-9& ]*$/)) {
+              // TODO: notify user of errors
+              return;
+            }
+        		$(this).dialog("close");
+
+            self.addNewWidget(util.uglifyName(newName),wtype);
+        	},
+        	Cancel: function() {
+        		$(this).dialog("close");
+        	}
+      	}
+    	});
+    	
+    	return false;
     },
     
     removeWidget: function (widget) {

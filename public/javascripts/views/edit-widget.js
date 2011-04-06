@@ -82,7 +82,7 @@
     
     getEditAreaData: function (widget) {
       // TODO: grab edit area data from the server
-      var data = bdata[widget.get('name')];
+      var data = bdata[widget.get('wtype')];
       data.editAreaContent = data.editAreaTemplate(widget.getEditData());
       return data;
     },

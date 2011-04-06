@@ -16,10 +16,7 @@ window.widgetClasses = {};
 window.widgetPages = {};
 window.widgetEditors = {};
 
-_.templateSettings = {
-  interpolate: /\{\{([^\{].*?)\}\}/g,
-  evaluate: /\{\{\{(.+?)\}\}\}/g
-};
+_.templateSettings.interpolate = /\{\{([^\{].*?)\}\}/g;
 
 // wdata = [
 //   {
@@ -39,31 +36,31 @@ _.templateSettings = {
 // ];
 
 bdata = {
-  "full-website": {
+  "link": {
     name: "full-website",
     wtype: 'link',
     helpText: "Add a link from your YoMobi mobile website to your full website."
   },
   
-  "about-us": {
+  "custom_page": {
     name: "about-us",
     wtype: 'custom_page',
     helpText: "A page describing what your business is about."
   },
   
-  "call-us": {
+  "phone": {
     name: "call-us",
     wtype: 'phone',
     helpText: "Add a number for one-click calling."
   },
   
-  "leave-a-message": {
+  "leave_msg": {
     name: "leave-a-message",
     wtype: 'leave_msg',
     helpText: "Allow your customers to leave you an email message."
   },
   
-  "hours-of-operation": {
+  "hours": {
     name: "hours-of-operation",
     wtype: 'hours',
     helpText: "Let your customers know when you're open for business."
@@ -71,9 +68,9 @@ bdata = {
 }
 
 var i = 0;
-for (var wname in bdata) {
-  bdata[wname].order = i;
-  bdata[wname].editAreaTemplate = util.getTemplate(wname + '-edit-area');
+for (var wtype in bdata) {
+  bdata[wtype].order = i;
+  bdata[wtype].editAreaTemplate = util.getTemplate(bdata[wtype].name + '-edit-area');
   i += 1;
 }
 

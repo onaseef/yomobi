@@ -30,14 +30,14 @@
       });
     },
     
-    cloneWidgetByName: function (widgetName) {
+    cloneWidgetByType: function (widgetType) {
       var found = this.widgets.find(function (w) {
-        return w.get('name') == widgetName;
+        return w.get('wtype') == widgetType;
       });
       // this.widgets.remove(found);
-      util.log('cloneWidgetByName',widgetName,found,this.widgets);
+      util.log('cloneWidgetByType',widgetType,found,this.widgets);
       if (found) {
-        found = new Widget(found.attributes);
+        found = util.newWidget(found.attributes);
         found.set({ order:0 },{ silent:true });
       }
       return found;
