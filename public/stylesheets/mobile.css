@@ -73,3 +73,10 @@ body {
   color: #007700; }
 #widget .content.hours .all-day {
   color: #000099; }
+
+#widget .content.gmap h1, #widget .content.gmap p {
+  padding-left: 4px; }
+#widget .content.gmap .maps {
+  text-align: center; }
+  #widget .content.gmap .maps .map-link {
+    margin: 10px 0; }

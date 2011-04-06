@@ -81,6 +81,18 @@
       h3 = long_day_name(day)
       p {{ #{day}Hours }}
 
+  script.gmap-page(type="text/template")
+    h1 Find Us:
+    p (tap to view in Google Maps)
+    .maps
+      a.map-link href="http://maps.google.com/maps?q={{ fullAddress }}"
+        img src="{{ mapUrl }}"
+    h3 A closer look:
+    .maps
+      a.map-link href="http://maps.google.com/maps?q={{ fullAddress }}"
+        img src="{{ mapUrl2 }}"
+    
+
   / =====================
   / = Widget Edit Pages =
   / =====================
@@ -128,3 +140,15 @@
           | Add another time
           .plus-icon
     .clearfix
+
+  script.gmap-edit-area(type="text/template")
+    label Address 1:
+    input(name="addr1" type="text" value="{{ _maybe.addr1 }}")
+    label Address 2:
+    input(name="addr2" type="text" value="{{ _maybe.addr2 }}")
+    label City:
+    input(name="city" type="text" value="{{ _maybe.city }}")
+    label State:
+    input(name="state" type="text" value="{{ _maybe.state }}")
+    label Zip / Postal Code:
+    input(name="zip" type="text" value="{{ _maybe.zip }}")
