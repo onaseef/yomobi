@@ -70,7 +70,7 @@ bdata = {
 var i = 0;
 for (var wtype in bdata) {
   bdata[wtype].order = i;
-  bdata[wtype].editAreaTemplate = util.getTemplate(bdata[wtype].name + '-edit-area');
+  bdata[wtype].editAreaTemplate = util.getTemplate(wtype + '-edit-area');
   i += 1;
 }
 

@@ -84,24 +84,24 @@
   / =====================
   / = Widget Edit Pages =
   / =====================
-  script.full-website-edit-area(type="text/template")
+  script.link-edit-area(type="text/template")
     label Your website's address [e.g. www.mysite.com]:
     input(name="url" type="text" value="{{ _maybe.url }}")
   
-  script.about-us-edit-area(type="text/template")
+  script.custom_page-edit-area(type="text/template")
     label Write a short description of your website:
     textarea(name="content" rows="8")
       | {{ _maybe.content }}
 
-  script.call-us-edit-area(type="text/template")
+  script.phone-edit-area(type="text/template")
     label Your company's phone number:
     input(name="phone" type="text" value="{{ _maybe.phone }}")
   
-  script.leave-a-message-edit-area(type="text/template")
+  script.leave_msg-edit-area(type="text/template")
     label Enter the email you would like to receive your customer's messages on:
     input(name="email" type="text" value="{{ _maybe.email }}")
   
-  script.hours-of-operation-edit-area(type="text/template")
+  script.hours-edit-area(type="text/template")
     p Click to checkmark the days you are open:
     - %w(sun mon tue wed thu fri sat).each do |day|
       .day-checkbox day=day
