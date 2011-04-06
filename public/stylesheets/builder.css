@@ -46,6 +46,20 @@
   #builder .widget-editor .widget-name {
     padding: 0 0 0 72px;
     font-size: 2.5em; }
+    #builder .widget-editor .widget-name .change-label {
+      display: none;
+      padding-left: 8px;
+      color: #ff530d;
+      font-size: 0.4em; }
+    #builder .widget-editor .widget-name:hover {
+      background: #d8dfea;
+      cursor: pointer; }
+      #builder .widget-editor .widget-name:hover .change-label {
+        display: inline; }
+  #builder .widget-editor .widget-name-edit {
+    display: none; }
+    #builder .widget-editor .widget-name-edit input[type=text] {
+      font-size: 2.5em; }
 
 #emulator .loader-overlay {
   position: absolute;

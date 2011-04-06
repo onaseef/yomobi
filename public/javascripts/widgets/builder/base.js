@@ -30,6 +30,7 @@
     
     updatePrettyName: function (model,newName) {
       model.set({ prettyName:util.prettifyName(newName) });
+      if (this.homeView) this.homeView.render();
     },
 
     isAvailable: function () {

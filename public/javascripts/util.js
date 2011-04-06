@@ -142,12 +142,33 @@ var util = {
   },
   
   uglifyName: function (name) {
+    util.log('uglify',name);
     var uglyName = _(name.split(' ')).chain()
-        .map(function (word) { return util.uglify(word); })
+        .map(util.uglify)
         .value()
         .join('-')
     ;
+    util.log('    >>',uglyName);
     return uglyName;
+  },
+  
+  scrubUglyName: function (name) {
+    var scrubbed = _(name.split('-')).chain()
+        .map(util.scrubWord)
+        .compact()
+        .value()
+        .join('-')
+    ;
+    return scrubbed;
+  },
+  
+  scrubWord: function (word) {
+    return _(word).chain().map(util.scrubChar).value().join('');
+  },
+  
+  scrubChar: function (c) {
+    if (c.match(/[a-z0-9]/)) return c;
+    return null;
   },
   
   // Example inputs/outputs:

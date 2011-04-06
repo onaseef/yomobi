@@ -9,10 +9,12 @@
     defaultEvents: {
       'click .accept-btn':          'accept',
       'click .remove-link':         'remove',
-      'click .cancel-btn':          'cancel'
+      'click .cancel-btn':          'cancel',
+      'click .widget-name':         'editName'
     },
     
     initialize: function (widget) {
+      _.bindAll(this,'changeName');
       this.widget = widget;
       this.extendedEvents = _.extend({},this.defaultEvents,this.events);
       
@@ -66,6 +68,56 @@
       this.startEditing(this.widget);
 
       util.releaseWidget(this.widget);
+    },
+    
+    editName: function (e) {
+      util.log('editName',e);
+      var self = this;
+      this.el
+        .find('.widget-name').hide().end()
+        .find('.widget-name-edit')
+          .show()
+          .find('input[type=text]')
+            .focus()
+            .blur(this.changeName)
+            .keydown(function (e) { if (e.which == 13) self.changeName(e); })
+          .end()
+        .end()
+      ;
+    },
+    
+    changeName: function (e) {
+      if (!util.reserveUI()) {
+        $(e.target).focus();
+        return;
+      }
+      var self = this
+        , prettyName = $(e.target).unbind('blur').unbind('keydown').val()
+        , newName = util.scrubUglyName( util.uglifyName(prettyName) )
+        , oldName = this.widget.get('name')
+      ;
+      if (newName === oldName) {
+        util.releaseUI();
+        self.startEditing();
+        return;
+      }
+      
+      bapp.validateWidgetName(newName,this.widget.get('wtype'), {
+        exception: oldName,
+        
+        onValid: function (validName) {
+          util.pushUIBlock(validName);
+          self.widget.save({ name:validName }, {
+            success: function () { util.clearUIBlock(validName); }
+          });
+          self.startEditing();
+        },
+        onCancel: function () {
+          util.releaseUI();
+          self.startEditing();
+        }
+      });
+      util.log('changeName',newName);
     },
     
     startEditing: function () {

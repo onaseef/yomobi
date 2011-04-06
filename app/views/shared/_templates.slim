@@ -11,14 +11,20 @@
     .clearfix
   
   script.edit-widget-idle(type="text/template")
-    h1 Click an icon in the Emulator to begin editing
-    h2 OR
-    h1 Drag an icon from the Sidebar to the Emulator
+    h1 Click an icon
+    h2 in the Emulator to begin editing
+    h3 OR
+    h1 Drag an icon
+    h2 from the Sidebar to the Emulator
   
   script.edit-widget(type="text/template")
     .header
       .icon{ style="background-image: url(/images/widgets/{{ wtype }}.png)" }
-      .widget-name {{ prettyName }}
+      .widget-name-edit
+        input type="text" name="wname" value="{{ prettyName }}"
+      .widget-name
+        | {{ prettyName }}
+        span.change-label  Click&nbsp;to&nbsp;Change&nbsp;Name
       p.help-text
         em {{ helpText }}
     div class="edit-area {{ wtype }}" {{ editAreaContent }}

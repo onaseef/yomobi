@@ -110,34 +110,46 @@
     addNewWidget: function (name,wtype) {
       util.log('adding new widget',name,wtype);
       if (!util.reserveUI()) return;
-      if (this.validateWidgetName(name,wtype) === false) return;
+      var self = this;
       
-      var newWidget = this.sidebar.cloneWidgetByType(wtype);
+      this.validateWidgetName(name,wtype, {
+        onValid: function (validName) {
+          var newWidget = self.sidebar.cloneWidgetByType(wtype);
       
-      if (newWidget) {
-        util.log('new');
-        newWidget.set({ name:name });
-        util.pushUIBlock(newWidget.get('name'));
-        mapp.widgetsInUse.add(newWidget);
-      }
+          if (newWidget) {
+            util.log('new');
+            newWidget.set({ name:validName });
+            util.pushUIBlock(validName);
+            mapp.widgetsInUse.add(newWidget);
+          }
+        },
+        onCancel: function () {
+          util.releaseUI();
+        }
+      });
     },
 
     // validateWidget
     //  If widget name is not valid, returns false and opens a dialog box
     //  else returns true
     // 
-    validateWidgetName: function (name,wtype) {
+    validateWidgetName: function (name,wtype,options) {
       var self = this
-        , nameExists = function (w) { return w.get('name') == name; }
-        , conflictingWidget = mapp.widgetsInUse.find(nameExists)
+        , options = options || {}
+        , name = util.uglifyName($.trim(name))
+        , isValid = !!name.match(/^[a-z][a-z0-9\-]*$/)
+
+        , exception = options.exception || '_'
+        , isSameName = function (w) { var n=w.get('name'); return n == name && n != exception; }
+        , isValid = isValid && !mapp.widgetsInUse.find(isSameName)
       ;
       
-      if (!conflictingWidget) return true;
+      if (isValid) return options.onValid(name);
       
       // find ALL widgets of this wtype
-      var isCurrentWtype = function (w) { return w.get('wtype') == wtype }
+      var isSameWtype = function (w) { return w.get('wtype') == wtype }
         , pluckPrettyName = function (w) { return util.prettifyName(w.get('name')) }
-        , existingNames = mapp.widgetsInUse.select(nameExists).map(pluckPrettyName)
+        , existingNames = mapp.widgetsInUse.select(isSameWtype).map(pluckPrettyName)
       ;
       var dialogHtml = util.getTemplate('add-widget-dialog')({
         wtype: wtype.toUpperCase(),
@@ -149,22 +161,21 @@
         resizable: false,
         modal: true,
         draggable: false,
-        close: function () { util.releaseUI(); },
+        close: function () { options.onCancel && options.onCancel(); },
         buttons: {
         	"Add New Widget": function() {
             var newName = $(this).find('input[name=wname]').val()
               , newName = $.trim(newName)
+              , newName = util.uglifyName(newName)
+                newName = util.scrubUglyName(newName)
             ;
-            if (!newName.match(/^[a-zA-Z][a-zA-Z0-9& ]*$/)) {
-              // TODO: notify user of errors
-              return;
-            }
         		$(this).dialog("close");
 
-            self.addNewWidget(util.uglifyName(newName),wtype);
+            self.validateWidgetName(newName,wtype,options);
         	},
         	Cancel: function() {
         		$(this).dialog("close");
+        		options.onCancel && options.onCancel();
         	}
       	}
     	});
