@@ -61,11 +61,11 @@
   / =====================
   script.custom_page-page(type="text/template")
     .content
-      | {{ content }}
+      | {{ _maybe.content }}
   
   script.phone-page(type="text/template")
     p Call us at:
-    h1 {{ phone }}
+    h1 {{ _maybe.phone }}
   
   script.leave_msg-page(type="text/template")
     .input-wrap
