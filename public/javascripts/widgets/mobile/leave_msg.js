@@ -10,11 +10,8 @@
       'submit': 'submit'
     },
     
-    initialize: function (widget) {
+    init: function (widget) {
       _.bindAll(this,'submit');
-
-      // call super
-      WidgetPageView.prototype.initialize.call(this,widget);
     },
     
     submit: function () {
