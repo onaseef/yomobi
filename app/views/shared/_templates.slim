@@ -91,6 +91,13 @@
     .maps
       a.map-link href="http://maps.google.com/maps?q={{ fullAddress }}"
         img src="{{ mapUrl2 }}"
+  
+  script.coupon-page(type="text/template")
+    h1 Coupon Offer
+    p {{ _maybe.description }}
+    | <% if (_maybe.expire) { %>
+    p Expires: {{ _maybe.expire }}
+    | <% } %>
     
 
   / =====================
@@ -152,3 +159,9 @@
     input(name="state" type="text" value="{{ _maybe.state }}")
     label Zip / Postal Code:
     input(name="zip" type="text" value="{{ _maybe.zip }}")
+  
+  script.coupon-edit-area(type="text/template")
+    label Description:
+    textarea(name="description" type="text") {{ _maybe.description }}
+    label Expiration Date:
+    input(name="expire" type="text" value="{{ _maybe.expire }}")
