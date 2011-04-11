@@ -158,6 +158,11 @@
 #builder .edit-area.hours .day-hours.checked {
   display: block; }
 
+#builder .edit-area.calendar .url {
+  padding: 5px 0 20px;
+  font-size: 1.5em;
+  word-wrap: break-word; }
+
 /* css for timepicker */
 #ui-datepicker-div {
   border: 3px solid black; }

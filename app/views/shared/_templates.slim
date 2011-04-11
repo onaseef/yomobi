@@ -98,7 +98,6 @@
     | <% if (_maybe.expire) { %>
     p Expires: {{ _maybe.expire }}
     | <% } %>
-    
 
   / =====================
   / = Widget Edit Pages =
@@ -165,3 +164,12 @@
     textarea(name="description" type="text") {{ _maybe.description }}
     label Expiration Date:
     input(name="expire" type="text" value="{{ _maybe.expire }}")
+  
+  script.calendar-edit-area(type="text/template")
+    label Current calendar link:
+    .url
+      a href="{{ showUrl }}" target="_blank" {{ showUrl }}
+    input(type="hidden" name="url" value="{{ _maybe.url }}")
+    
+    label Paste your "Embed this Calendar" link here:
+    textarea(name="paste" type="text") {{ _maybe.description }}

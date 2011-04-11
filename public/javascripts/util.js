@@ -260,6 +260,19 @@ var util = {
     element.find('.checkmark').show();
   },
   
+  getUrlParams: function (url) {
+    var result = {}
+      , e
+      , a = /\+/g  // Regex for replacing addition symbol with a space
+      , r = /([^&=]+)=?([^&]*)/g
+      , d = function (s) { return decodeURIComponent(s.replace(a, " ")); }
+      , q = url.substring(url.indexOf('?'))
+
+    while (e = r.exec(q))
+       result[d(e[1])] = d(e[2]);
+    return result;
+  },
+  
   log: function () {
     if(!this.debug) return;
     if(!window.console || !window.console.log) return;
