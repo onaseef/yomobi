@@ -34,8 +34,18 @@ class BuilderController < ApplicationController
     return error 'Invalid rev' if params[:_rev].nil?
     db = CouchRest.database("http://admin_chipotle:123123@yomobi.couchone.com/chipotle")
     puts "Params: #{params.inspect}"
+    # TODO: scrub off rails related data
     res = db.delete_doc(params)
     puts "Response: #{res.inspect}"
+    success params
+  end
+  
+  def update_order
+    return error 'Invalid id'  if params[:_id].nil?
+    return error 'Invalid rev' if params[:_rev].nil?
+    db = CouchRest.database("http://admin_chipotle:123123@yomobi.couchone.com/chipotle")
+    # TODO: scrub off rails related data
+    db.save_doc(params)
     success params
   end
 end

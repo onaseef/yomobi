@@ -75,11 +75,11 @@ var util = {
     }
   },
   
-  reserveWidget: function (widget) {
+  reserveWidget: function (widget,force) {
     $('#emulator .loader-overlay').show();
     // TODO: use a combination of id and name once starting
     // to implement multiple copies of the same widget
-    return !this.busy['ui'] && this.reserve('widget:' + widget.get('name'));
+    return (!this.busy['ui'] || force) && this.reserve('widget:' + widget.get('name'));
   },
   
   releaseWidget: function (widget) {
@@ -142,13 +142,11 @@ var util = {
   },
   
   uglifyName: function (name) {
-    util.log('uglify',name);
     var uglyName = _(name.split(' ')).chain()
         .map(util.uglify)
         .value()
         .join('-')
     ;
-    util.log('    >>',uglyName);
     return uglyName;
   },
   

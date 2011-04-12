@@ -6,6 +6,8 @@ Yomobi::Application.routes.draw do
   post   'widgets'     => 'builder#new_widget'
   delete 'widgets/:_id/:_rev' => 'builder#delete_widget'
   
+  post 'order' => 'builder#update_order'
+  
   get 'mobile' => 'mobile#index'
 
   root :to => 'builder#index'

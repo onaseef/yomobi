@@ -4,39 +4,42 @@
   window.BuilderWidgets = Widgets.extend({
     
     initialize: function () {
-      _.bindAll(this,'addOrder','setOrderByName','updateOverallOrder');
+      _.bindAll(this,'addOrder','updateOverallOrder');
       this.bind('add',this.addOrder);
-      this.bind('remove',this.updateOverallOrder);
+      this.bind('remove',_.bind(this.updateOverallOrder,{},true));
     },
     
     addOrder: function (widget) {
-      widget.set({ order:-1 }, { silent:true });
+      widget.order = -1;
       this.updateOverallOrder();
-    },
-    
-    setWidgetOrder: function (widget,order) {
-      util.pushUIBlock(widget.get('name'));
-      
-      if(widget && widget.get('order') != order) {
-        widget.set({ order:order });
-        return true;
-      }
-      else {
-        util.clearUIBlock(widget.get('name'));
-        return false;
-      }
+
+      util.reserveWidget(widget,true);
+      widget.save(null,{
+        success: function () {
+          util.releaseWidget(widget);
+        }
+      });
     },
     
     getWidgetByName: function (widgetName) {
       return this.find(function (w) { return w.get('name') == widgetName; });
     },
     
-    updateOverallOrder: function () {
-      var i = 0;
+    updateOverallOrder: function (noSync) {
+      var i = 0, worder = {};
       this.each(function (widget) {
-        util.log('updating overall order',widget.get('name'),'from',widget.get('order'),'to',i);
-        widget.set({ order:i }); i += 1;
+        widget.order = i; i += 1;
+        worder[widget.get('name')] = widget.order;
       });
+      util.log( 'NEW ORDER', worder );
+      if (!noSync) {
+        // tell server to update order
+        bapp.worderDoc.worder = worder;
+        $.post('/order',bapp.worderDoc,function (newWorderDoc) {
+          bapp.worderDoc = newWorderDoc;
+          util.releaseUI();
+        });
+      }
     }
     
   });
@@ -78,24 +81,34 @@
         util.log('RENDER RENDER RENDER');
       });
       
-      mapp.widgets.fetch({
-        success: function (widgets,res) {
-          // partition widgets
-          mapp.widgetsInUse.refresh(widgets.models);
+      // first fetch overall widget order
+      var self = this;
+      mapp.fetchWorder(function (worderDoc) {
 
-          // TODO: grab data from server (bdata)
-          var widgetsAvailable =  _.map(bdata, function (data,name) {
-            var wdata = _.extend({},data);
-            delete wdata.editAreaTemplate;
-            return wdata;
-          });
-          mapp.widgetsAvailable.refresh(widgetsAvailable);
+        self.worderDoc = worderDoc;
+        mapp.worder = worderDoc.worder;
+        
+        // now fetch the widgets themselves
+        mapp.widgets.fetch({
+          success: function (widgets,res) {
+            
+            mapp.widgetsInUse.refresh(widgets.models);
+            mapp.widgetsInUse.updateOverallOrder(true);
+
+            // TODO: grab data from server (bdata)
+            var widgetsAvailable =  _.map(bdata, function (data,name) {
+              var wdata = _.extend({},data);
+              delete wdata.editAreaTemplate;
+              return wdata;
+            });
+            mapp.widgetsAvailable.refresh(widgetsAvailable);
           
-          $('#emulator .loader-overlay').hide();
-          util.log('fetch',widgets,mapp.widgetsAvailable,mapp.widgetsInUse);
-        }
+            $('#emulator .loader-overlay').hide();
+            util.log('fetch',widgets,mapp.widgetsAvailable,mapp.widgetsInUse);
+          }
+        });
       });
-
+      
       this.sidebar = new SidebarView(mapp.widgetsAvailable);
     },
     
@@ -208,7 +221,7 @@
         var codeName = util.uglifyName($(elem).find('.title').text())
           , widget = mapp.widgetsInUse.getWidgetByName(codeName)
         ;
-        changed = changed || idx !== widget.get('order');
+        changed = changed || idx !== widget.order;
       });
       
       if (changed === true && util.reserveUI()) {
@@ -216,9 +229,10 @@
           var codeName = util.uglifyName($(elem).find('.title').text())
             , widget = mapp.widgetsInUse.getWidgetByName(codeName)
           ;
-          mapp.widgetsInUse.setWidgetOrder(widget,idx);
-          util.log(idx,codeName,$(elem).attr('class'));
+          widget.order = idx;
         });
+        
+        mapp.widgetsInUse.updateOverallOrder();
       }
     },
     
@@ -226,7 +240,7 @@
       // this.homeView.render();
       g.homeDbx.initBoxes();
       this.checkWidgetOrder();
-    }
+    },
     
   });
 

@@ -19,8 +19,6 @@
     },
     
     initialize: function () {
-      _.bindAll(this,'updateOrder');
-      this.bind('change:order',this.updateOrder);
       this.bind('change:name',this.updatePrettyName);
       
       this.updatePrettyName(this,this.get('name'));
@@ -39,21 +37,6 @@
     
     onHomeViewClick: function () {
       return !!bapp.homeViewWidgetClick(this);
-    },
-    
-    updateOrder: function () {
-      // if available in sidebar, order doesn't matter
-      if (this.isAvailable()) {
-        util.clearUIBlock(widgetName);
-        return;
-      }
-      
-      var widgetName = this.get('name');
-      this.save(null, {
-        success: function () {
-          util.clearUIBlock(widgetName);
-        }
-      });
     },
     
     getEditor: function () {

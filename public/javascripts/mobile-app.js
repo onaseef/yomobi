@@ -13,13 +13,16 @@
     parse: function (res) {
       util.log('widget res',res);
       return _.map(res.rows, function (row) {
-        var w = row.doc;
-        return new window.widgetClasses[w.wtype](w);
+        var wdata = row.doc
+          , widget = new window.widgetClasses[wdata.wtype](wdata)
+        ;
+        widget.order = parseInt(mapp.worder[widget.get('name')]);
+        return widget;
       });
     },
     
     comparator: function (widget) {
-      return widget.get('order') || 0;
+      return widget.order || 0;
     }
   });
   
@@ -103,7 +106,7 @@
   
   });
   
-  // ===========================
+  // ========================================
   window.MobileAppView = Backbone.View.extend({
 
     el: $('#mobile-container'),
@@ -186,6 +189,22 @@
       }, 350, function () {
         mapp.pageLevel += delta;
         util.release('pageTransition');
+      });
+    },
+    
+    fetchWorder: function (callback) {
+      $.ajax({
+        url: 'http://yomobi.couchone.com/' + g.db_name + '/worder',
+        type: 'get',
+        dataType: 'jsonp',
+        success: function(data) {
+          if(!data) statusbar.append('not defined data '+JSON.stringify(data));
+          util.log('Got worder!',data);
+          callback(data);
+        },
+        error: function(jqXHR,textStatus,errorThrown) {
+          util.log(jqXHR,textStatus,errorThrown);
+        }
       });
     }
   });

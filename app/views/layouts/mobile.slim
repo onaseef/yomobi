@@ -32,5 +32,8 @@ html
         new MobileAppController();
         Backbone.history.start();
         
-        mapp.widgets.fetch();
+        mapp.fetchWorder(function (worderDoc) {
+          mapp.worder = worderDoc.worder;
+          mapp.widgets.fetch();
+        });
       });
