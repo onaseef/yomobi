@@ -35,7 +35,6 @@
         items: level._items || [],
         cats: _(level).chain().keys().reject(util.eq('_items')).value() || []
       };
-      util.log('XTRA DATA',extraData);
       return _.extend({},this.toJSON(),extraData);
     },
     

@@ -189,4 +189,25 @@
     textarea(name="paste" type="text") {{ _maybe.description }}
   
   script.category-edit-area(type="text/template")
-    input(type="button" name="add_cat" value="Add Category")
+    label Current Sub-Categories:
+    br
+    select multiple="multiple"
+      | <% for (var i=0; i<cats.length;i++) { %>
+      option {{ cats[i] }}
+      | <% } %>
+    br
+    input(type="button" name="add_cat" value="Add Sub-Category")
+    input(type="button" name="del_cat" value="Delete Sub-Category")
+
+    br
+    br
+    
+    label Items for this Category ({{ currentCat }})
+    br
+    select multiple="multiple"
+      | <% for (var i=0;i<items.length;i++) { %>
+      option {{ items[i] }}
+      | <% } %>
+    br
+    input(type="button" name="add_item" value="Add Item")
+    input(type="button" name="del_item" value="Delete Item")
