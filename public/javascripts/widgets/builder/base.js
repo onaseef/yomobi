@@ -3,7 +3,7 @@
 // 
 (function ($) {
   
-  window.Widget = Backbone.Model.extend({
+  window.Widget = window.Widget.extend({
     
     url: function () {
       var base = '/widgets';
@@ -12,13 +12,11 @@
     },
     sync: util.deleteSync,
     
-    pageContent: function () {
-      this._template = this._template ||
-                       util.getTemplate(this.get('wtype') + '-page');
-      return this._template(this.toJSON());
-    },
-    
     initialize: function () {
+      this.pageView = new (widgetPages[this.get('wtype')] || WidgetPageView)({
+        widget: this
+      });
+      util.log('pageView',this.pageView);
       this.bind('change:name',this.updatePrettyName);
       
       this.updatePrettyName(this,this.get('name'));

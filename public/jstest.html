@@ -6,13 +6,14 @@
   <link rel="stylesheet" href="http://code.jquery.com/qunit/git/qunit.css" type="text/css" media="screen" />
 <script type="text/javascript" src="http://code.jquery.com/qunit/git/qunit.js"></script>
 <script type="text/javascript" src="/javascripts/util.js"></script>
+<script type="text/javascript" src="/javascripts/support/underscore.js"></script>
 
 <script>
 $(document).ready(function(){
    
   module("util");
 
-  test("Converting 24 hour to 12 hour", function() {
+  test("Converting 24 hour to 12 hour", function () {
     var io = {
       "08:00": "08:00am",
       "16:20": "04:20pm",
@@ -45,7 +46,7 @@ $(document).ready(function(){
     }
   });
   
-  test("Custom time object", function() {
+  test("Custom time object", function () {
     var io = {
       "08:00am": "08:00",
       "04:00pm": "16:00",
@@ -68,6 +69,22 @@ $(document).ready(function(){
     equals(time.toMinutes(),781);
     equals(time.toString(),"13:01");
     equals(time.toString12(),"01:01pm");
+  });
+  
+  test("Calculate Object Level Depth", function () {
+    var io = [
+      { input:{}, output:1 },
+      { input:{a:1,b:[3,4]}, output:1 },
+      { input:{a:{},b:2}, output:2 },
+      { input:{a:{aa:1},b:2}, output:2 },
+      { input:{a:{aa:{}},b:2}, output:3 },
+      { input:{a:{aa:{aaa:1}},b:2}, output:3 },
+      { input:{a:{aa:{aaa:1,aab:[3,4]}},b:2}, output:3 }
+    ];
+    _.each(io, function (kase) {
+      equals(util.calcLevelDepth(kase.input),kase.output,
+             JSON.stringify(kase.input)+' should have level depth of '+kase.output);
+    });
   });
 
 });

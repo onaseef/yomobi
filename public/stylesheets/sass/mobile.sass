@@ -1,3 +1,4 @@
+@import 'constants'
 $dynamic-width: 320px
 $color-topbar: #3B5998
 
@@ -72,11 +73,11 @@ body
 // Widget Specific Styling //
 /////////////////////////////
 
-#widget .content.leave_msg
+.page .content.leave_msg
   textarea[name="msg_content"]
     width: 95%
 
-#widget .content.hours
+.page .content.hours
   .closed
     color: #aa0000
   .open
@@ -84,10 +85,22 @@ body
   .all-day
     color: #000099
 
-#widget .content.gmap
+.page .content.gmap
   h1, p
     padding-left: 4px
   .maps
     text-align: center
     .map-link
       margin: 10px 0
+
+.page .content.category
+  padding: 0
+  .item
+    padding: 8px 0 8px 12px
+    font-size: 18px
+  .item.category
+    cursor: pointer
+  .c0
+    background: #fff
+  .c1
+    background: $highlight-color

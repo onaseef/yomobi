@@ -56,6 +56,12 @@
       	        <li> {{ names[i] }} </li>
       	      <% } %>
 
+  script.widget-page(type="text/template")
+    .page
+      .top-bar
+        .back-btn
+      .content
+
   / =====================
   / = Widget Show Pages =
   / =====================
@@ -97,6 +103,14 @@
     p {{ _maybe.description }}
     | <% if (_maybe.expire) { %>
     p Expires: {{ _maybe.expire }}
+    | <% } %>
+  
+  script.category-page(type="text/template")
+    | <% for (var i=0; i<cats.length;i++) { %>
+    .category.item class="<% print(util.cycle('c0','c1')); %>" data-cat="{{ cats[i] }}"
+      | Category: {{ cats[i] }}
+    | <% } for (var i=0;i<items.length;i++) { %>
+    .item class="<% print(util.cycle('c0','c1')); %>" Item: {{ items[i] }}
     | <% } %>
 
   / =====================
@@ -173,3 +187,6 @@
     
     label Paste your "Embed this Calendar" link here:
     textarea(name="paste" type="text") {{ _maybe.description }}
+  
+  script.category-edit-area(type="text/template")
+    input(type="button" name="add_cat" value="Add Category")

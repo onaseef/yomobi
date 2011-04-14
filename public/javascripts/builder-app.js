@@ -48,6 +48,10 @@
   window.MobileAppView = window.MobileAppView.extend({
 
     goBack: function () {
+      // a widget is guarenteed to be being edited,
+      // since back buttons only live in widget pages.
+      if (bapp.currentEditor.widget.pageView.onBackBtnClick)
+        return bapp.currentEditor.widget.pageView.onBackBtnClick();
       this.transition('back');
     },
     
@@ -115,7 +119,8 @@
     homeViewWidgetClick: function (widget) {
       if(this.mode == 'emulate') return true;
 
-      widget.getEditor().startEditing();
+      this.currentEditor = widget.getEditor();
+      this.currentEditor.startEditing();
       // returning false will cause the mobile emulator to ignore the click
       return false;
     },

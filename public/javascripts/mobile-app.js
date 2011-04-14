@@ -84,26 +84,25 @@
   MobileAppController = Backbone.Controller.extend({
 
     routes: {
-      '':               'home',
-      'page/:widget':   'viewWidget'
+      '':                       'home',
+      'page/:widget':           'viewWidgetByName',
+      'page/:widget/*subpage':  'viewWidgetByName'
     },
   
     home: function () {
       mapp.goHome();
     },
-  
-    viewWidget: function (name) {
+    
+    viewWidgetByName: function (name,subpage) {
       util.log('viewing',name);
       util.log(mapp.widgets);
       var widget = mapp.widgets.find(function (w) {
         return w.get('name') == name;
       });
       
-      var wpage = mapp.getNextWidgetPage().content.html(widget.getPageContent());
-      widget.pageView.setContentElem(wpage);
-      mapp.transition('forward');
-    }
-  
+      mapp.viewWidget(widget,subpage);
+    },
+    
   });
   
   // ========================================
@@ -116,6 +115,7 @@
     },
     
     headerTemplate: util.getTemplate('mapp-header'),
+    pageTemplate: util.getTemplate('widget-page'),
     
     // n == 0 is home, n > 0 is widget page level depth
     pageLevel: 0,
@@ -147,26 +147,45 @@
       history.go(-1);
     },
     
+    requirePageCount: function (numOfPages) {
+      var originalCount = this.el.find('.page').length;
+      if (originalCount >= numOfPages) return;
+      
+      while (this.el.find('.page').length - 1 < numOfPages) {
+        $(this.pageTemplate()).appendTo('#canvas');
+      }
+      var newCount = this.el.find('.page').length
+        , canvasWidth = $('#canvas').width()
+        , newWidth = canvasWidth * (newCount / originalCount)
+      ;
+      $('#canvas').css('width',newWidth);
+    },
+    
+    viewWidget: function (widget,subpage) {
+      var direction = widget.pageView.onPageView(subpage);
+      var wpage = this.getNextWidgetPage(direction).content.html(widget.getPageContent());
+      widget.pageView.setContentElem(wpage);
+      mapp.transition(direction);
+    },
+    
     getActiveWidgetPage: function () {
       if(this.pageLevel == 0) return null;
       return this.el.find('.page:eq(1)');
     },
     
-    getNextWidgetPage: function () {
-      var page = this.el.find('.page:eq(' + (this.pageLevel+1) + ')');
+    getNextWidgetPage: function (direction) {
+      direction = direction || 'forward';
+      var mod = (direction === 'forward') ? 1 : -1;
+      var page = this.el.find('.page:eq(' + (this.pageLevel+mod) + ')');
       return {
         topBar:  page.find('.top-bar'),
         content: page.find('.content')
       }
     },
     
-    getPreviousWidgetPage: function () {
-      if (this.pageLevel <= 1) return null;
-      return this.el.find('.page:eq(' + (this.pageLevel-1) + ')');
-    },
-    
-    goToPage: function (widgetName) {
-      window.location.href = "#page/"+widgetName;
+    goToPage: function (widgetName,subpage) {
+      subpage = subpage ? '/' + subpage : '';
+      window.location.href = "#page/"+widgetName + subpage;
     },
     
     goHome: function () {

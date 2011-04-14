@@ -5,13 +5,21 @@
 
   var days = ['sun','mon','tue','wed','thu','fri','sat'];
 
-  window.widgetClasses.calendar = window.widgetClasses.hours.extend({
+  window.widgetClasses.calendar = window.widgetClasses.calendar.extend({
     
     getEditData: function () {
       var extraData = {
         showUrl: this.get('url') || 'None'
       };
       return _.extend({},this.toJSON(),extraData);
+    },
+    
+    onHomeViewClick: function () {
+      if (bapp.homeViewWidgetClick(this)) {
+        if (confirm('Visit '+this.get('url')+'?'))
+          window.location = this.get('url');
+      }
+      return false;
     }
     
   });

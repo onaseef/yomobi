@@ -1,6 +1,7 @@
 var util = {
   
   debug: true,
+  cycleIdx: 0,
   
   // UI event blocking statuses
   busy: {},
@@ -269,6 +270,33 @@ var util = {
     while (e = r.exec(q))
        result[d(e[1])] = d(e[2]);
     return result;
+  },
+  
+  eq: function (value) {
+    return function (x) { return x === value; };
+  },
+  
+  resetCycle: function () {
+    util.cycleIdx = 0;
+  },
+  
+  cycle: function () {
+    return arguments[(util.cycleIdx++) % arguments.length];
+  },
+  
+  // Only works with plain objects, and
+  // only error checks for Arrays
+  calcLevelDepth: function (obj) {
+    if (typeof obj !== "object") return 0;
+    
+    var depths = [1];
+    for (var k in obj) {
+      var child = obj[k];
+      if (child instanceof Array) continue;
+      if (typeof child === "object")
+        depths.push(1 + this.calcLevelDepth(child));
+    }
+    return _.max(depths);
   },
   
   log: function () {

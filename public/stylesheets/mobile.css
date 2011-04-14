@@ -64,19 +64,31 @@ body {
 .clearfix {
   clear: both; }
 
-#widget .content.leave_msg textarea[name="msg_content"] {
+.page .content.leave_msg textarea[name="msg_content"] {
   width: 95%; }
 
-#widget .content.hours .closed {
+.page .content.hours .closed {
   color: #aa0000; }
-#widget .content.hours .open {
+.page .content.hours .open {
   color: #007700; }
-#widget .content.hours .all-day {
+.page .content.hours .all-day {
   color: #000099; }
 
-#widget .content.gmap h1, #widget .content.gmap p {
+.page .content.gmap h1, .page .content.gmap p {
   padding-left: 4px; }
-#widget .content.gmap .maps {
+.page .content.gmap .maps {
   text-align: center; }
-  #widget .content.gmap .maps .map-link {
+  .page .content.gmap .maps .map-link {
     margin: 10px 0; }
+
+.page .content.category {
+  padding: 0; }
+  .page .content.category .item {
+    padding: 8px 0 8px 12px;
+    font-size: 18px; }
+  .page .content.category .item.category {
+    cursor: pointer; }
+  .page .content.category .c0 {
+    background: white; }
+  .page .content.category .c1 {
+    background: #d8dfea; }
