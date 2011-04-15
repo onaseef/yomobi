@@ -11,11 +11,12 @@
       
       if (!this.get('struct')) {
         var struct = {
+          _items:[],
           "Food": {
             _items: ['Dish 1','Dish 2']
           },
           "Drinks": {
-            _items: ['Apple Juice','Orange Juice','Water'],
+            _items: ['Apple Juice','Orange Juice','Tapwater','Bottled Water','Sewer Water','Filtered Sewer Water'],
             "Beer": {
               _items: ['Drink 1','Drink 2']
             },
@@ -29,13 +30,19 @@
     },
     
     getShowData: function () {
-      var level = this.get('struct');
-      _.each(this.catStack, function (cat) { level = level[cat]; });
+      var level = this.getCurrentLevel();
+      
       var extraData = {
         items: level._items || [],
         cats: _(level).chain().keys().reject(util.eq('_items')).value() || []
       };
       return _.extend({},this.toJSON(),extraData);
+    },
+    
+    getCurrentLevel: function () {
+      var level = this.get('struct');
+      _.each(this.catStack, function (cat) { level = level[cat]; });
+      return level;
     },
     
     getLevelDepth: function () {

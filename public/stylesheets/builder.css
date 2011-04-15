@@ -163,6 +163,9 @@
   font-size: 1.5em;
   word-wrap: break-word; }
 
+#builder .edit-area.category select {
+  width: 97%; }
+
 /* css for timepicker */
 #ui-datepicker-div {
   border: 3px solid black; }

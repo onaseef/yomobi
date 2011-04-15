@@ -55,6 +55,36 @@
       	    | <% for(var i=0; i < names.length; i++) { %>
       	        <li> {{ names[i] }} </li>
       	      <% } %>
+  
+  script.add-subcat-dialog(type="text/template")
+    #dialog-confirm title="Name your Sub-Category"
+      p
+        | Please name your Sub-Category:
+        input type="text" value="{{ _maybe.cat }}" name="cat"
+        | <% if(_maybe.error) { %>
+        p.error Error: {{ _maybe.error }}
+        | <% } %>
+        .other-names
+    	    b Other Sub-Category names being used in this category:
+    	    ul
+      	    | <% for(var i=0; i < cats.length; i++) { %>
+      	        <li> {{ cats[i] }} </li>
+      	      <% } %>
+  
+  script.add-item-dialog(type="text/template")
+    #dialog-confirm title="Name your Item"
+      p
+        | Please name your Item:
+        input type="text" value="{{ _maybe.item }}" name="item"
+        | <% if(_maybe.error) { %>
+        p.error Error: {{ _maybe.error }}
+        | <% } %>
+        .other-names
+    	    b Other Item names being used in this category:
+    	    ul
+      	    | <% for(var i=0; i < _items.length; i++) { %>
+      	        <li> {{ _items[i] }} </li>
+      	      <% } %>
 
   script.widget-page(type="text/template")
     .page
@@ -189,25 +219,26 @@
     textarea(name="paste" type="text") {{ _maybe.description }}
   
   script.category-edit-area(type="text/template")
-    label Current Sub-Categories:
+    h2 Category: {{ currentCat }}
+    label Sub-Categories:
     br
-    select multiple="multiple"
+    select name="cats" multiple="multiple"
       | <% for (var i=0; i<cats.length;i++) { %>
       option {{ cats[i] }}
       | <% } %>
     br
-    input(type="button" name="add_cat" value="Add Sub-Category")
-    input(type="button" name="del_cat" value="Delete Sub-Category")
+    input type="button" name="add_cat" value="Add Sub-Category"
+    input type="button" name="rem_cat" value="Remove Sub-Category"
 
     br
     br
     
-    label Items for this Category ({{ currentCat }})
+    label Items
     br
-    select multiple="multiple"
+    select name="items" multiple="multiple"
       | <% for (var i=0;i<items.length;i++) { %>
       option {{ items[i] }}
       | <% } %>
     br
-    input(type="button" name="add_item" value="Add Item")
-    input(type="button" name="del_item" value="Delete Item")
+    input type="button" name="add_item" value="Add Item"
+    input type="button" name="rem_item" value="Remove Item"

@@ -170,7 +170,11 @@
     
     getActiveWidgetPage: function () {
       if(this.pageLevel == 0) return null;
-      return this.el.find('.page:eq(1)');
+      var page = this.el.find('.page:eq('+this.pageLevel+')');
+      return {
+        topBar:  page.find('.top-bar'),
+        content: page.find('.content')
+      }
     },
     
     getNextWidgetPage: function (direction) {

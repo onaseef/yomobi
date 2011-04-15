@@ -299,6 +299,15 @@ var util = {
     return _.max(depths);
   },
   
+  dialog: function (html,buttons) {
+    $(html).dialog({
+      resizable: false,
+      modal: true,
+      draggable: false,
+      buttons: buttons
+    });
+  },
+  
   log: function () {
     if(!this.debug) return;
     if(!window.console || !window.console.log) return;
