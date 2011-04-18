@@ -48,31 +48,12 @@
     },
     
     addCat: function (e,error) {
-      var level = this.widget.getCurrentLevel(), self = this;
-      
-      var dialogHtml = util.getTemplate('add-subcat-dialog')({
-        error: error,
-        cats: _.without(_.keys(level),'_items')
+      var self = this;
+      var dialog =  new AddCatDialog({
+        model:this.widget,
+        onClose: function () { self.refreshViews(); }
       });
-      util.dialog(dialogHtml, {
-      	"Add New Sub-Category": function() {
-          var name = $(this).find('input[name=cat]').val();
-      		$(this).dialog("close");
-
-          name = $.trim(name);
-      		if (_.isEmpty(name))
-      		  self.addCat(e,'Name cannot be empty');
-          else if (level[name] !== undefined)
-            self.addCat(e,'Name is already in use');
-          else {
-            level[name] = {_items:[]};
-            self.refreshViews();
-          }
-      	},
-      	Cancel: function() {
-      		$(this).dialog("close");
-      	}
-    	});
+      dialog.prompt();
     },
     
     remCat: function (e) {
@@ -159,6 +140,68 @@
       var wpage = mapp.getActiveWidgetPage().content.html(this.widget.getPageContent());
       this.widget.pageView.setContentElem(wpage);
     }
+    
+  });
+  
+  
+  // private helper class
+  var addCatTemplate = util.getTemplate('add-subcat-dialog');
+  AddCatDialog = Backbone.View.extend({
+
+    events: {
+      'keydown input[name="cat"]':      'onKeyDown'
+    },
+    
+    onKeyDown: function (e) {
+      util.log('Keydown',e);
+      var code = e.keyCode || e.which;
+      if (code == 13) this.validateCategory();
+    },
+    
+    render: function (error,level) {
+      var dialogHtml = addCatTemplate({
+        error: error,
+        cats: _.without(_.keys(level),'_items')
+      });
+      $(this.el).html(dialogHtml);
+      return this;
+    },
+    
+    prompt: function (error) {
+      var self = this
+        , level = this.model.getCurrentLevel()
+        , dialogContent = this.render(error,level).el
+      ;
+      // cache for later use
+      this.level = level;
+      
+      util.dialog(dialogContent, {
+        "I'm Done Adding Categories": function () {
+          $(this).dialog("close");
+          self.options.onClose && self.options.onClose();
+        },
+      	"Close": function () {
+          $(this).dialog("close");
+          self.options.onClose && self.options.onClose();
+      	}
+    	});
+    },
+    
+    validateCategory: function () {
+      var name = $(this.el).find('input[name=cat]').val();
+  		$(this.el).dialog("close");
+
+      name = $.trim(name);
+  		if (_.isEmpty(name))
+  		  this.prompt('Name cannot be empty');
+      else if (this.level[name] !== undefined)
+        this.prompt('Name is already in use');
+      else {
+        this.level[name] = {_items:[]};
+        this.prompt();
+      }
+    },
+    
     
   });
 
