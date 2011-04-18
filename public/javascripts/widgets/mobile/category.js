@@ -13,16 +13,14 @@
         var struct = {
           _items:[],
           "Food": {
-            _items: ['Dish 1','Dish 2']
+            _items: [{name:'Burger',price:'$9.99',desc:'A tasty treat.'}],
+            "Dessert": {
+              _items: [{name:'Ice Cream',price:'$49.99',desc:'A tastier treat'}]
+            }
           },
           "Drinks": {
-            _items: ['Apple Juice','Orange Juice','Tapwater','Bottled Water','Sewer Water','Filtered Sewer Water'],
-            "Beer": {
-              _items: ['Drink 1','Drink 2']
-            },
-            "Wine": {
-              _items: ['Drink 3']
-            }
+            _items: [{name:'Apple Juice',price:'$0.10',desc:'Not actually apple juice'}
+                    ,{name:'Orange Juice',price:'$0.15',desc:'Not actually orange juice'}],
           }
         };
         this.set({ struct:struct });
@@ -31,10 +29,12 @@
     
     getShowData: function () {
       var level = this.getCurrentLevel();
+      if (!this._itemTemplate) this._itemTemplate = util.getTemplate(this.get('name')+'-item');
       
       var extraData = {
         items: level._items || [],
-        cats: _(level).chain().keys().reject(util.eq('_items')).value() || []
+        cats: _(level).chain().keys().reject(util.eq('_items')).value() || [],
+        itemTemplate: this._itemTemplate
       };
       return _.extend({},this.toJSON(),extraData);
     },

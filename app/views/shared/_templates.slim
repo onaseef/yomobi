@@ -53,8 +53,8 @@
     	    b Other names in use by this widget type:
     	    ul
       	    | <% for(var i=0; i < names.length; i++) { %>
-      	        <li> {{ names[i] }} </li>
-      	      <% } %>
+      	    |    <li> {{ names[i] }} </li>
+      	    |  <% } %>
   
   script.add-subcat-dialog(type="text/template")
     #dialog-confirm title="Name your Sub-Category"
@@ -69,8 +69,8 @@
     	    b Other Sub-Category names being used in this category:
     	    ul
       	    | <% for(var i=0; i < cats.length; i++) { %>
-      	        <li> {{ cats[i] }} </li>
-      	      <% } %>
+      	    |    <li> {{ cats[i] }} </li>
+      	    |  <% } %>
   
   script.add-item-dialog(type="text/template")
     #dialog-confirm title="Name your Item"
@@ -84,14 +84,38 @@
     	    b Other Item names being used in this category:
     	    ul
       	    | <% for(var i=0; i < _items.length; i++) { %>
-      	        <li> {{ _items[i] }} </li>
-      	      <% } %>
+      	    |    <li> {{ _items[i] }} </li>
+      	    |  <% } %>
 
   script.widget-page(type="text/template")
     .page
       .top-bar
         .back-btn
       .content
+
+  / =============================
+  / = Category Add-Item Dialogs =
+  / =============================
+  
+  script.restaurant-menu-item-dialog(type="text/template")
+    #dialog-confirm title="Name your Item"
+      p
+        | Please enter your Menu Item:
+        label Name
+        input type="text" value="{{ _maybe.name }}" name="name"
+        label Price
+        input type="text" value="{{ _maybe.price }}" name="price"
+        label Short Description
+        input type="text" value="{{ _maybe.desc }}" name="desc"
+        | <% if(_maybe.error) { %>
+        p.error Error: {{ _maybe.error }}
+        | <% } %>
+        .other-names
+    	    b Other Menu Item names being used in this category:
+    	    ul
+      	    | <% for(var i=0; i < _items.length; i++) { %>
+      	    |    <li> {{ _items[i].name }} </li>
+      	    |  <% } %>
 
   / =====================
   / = Widget Show Pages =
@@ -140,9 +164,19 @@
     | <% for (var i=0; i<cats.length;i++) { %>
     .category.item class="<% print(util.cycle('c0','c1')); %>" data-cat="{{ cats[i] }}"
       | Category: {{ cats[i] }}
-    | <% } for (var i=0;i<items.length;i++) { %>
-    .item class="<% print(util.cycle('c0','c1')); %>" Item: {{ items[i] }}
-    | <% } %>
+    | <% } for (var i=0;i<items.length;i++) {
+    |         print( itemTemplate({ item:items[i], cycle:util.cycle('c0','c1') }) );
+    | } %>
+
+  / ===========================
+  / = Specific Category Items =
+  / ===========================
+
+  script.restaurant-menu-item
+    .item class="{{ cycle }}"
+      div Name: {{ item.name }}
+      div Price: {{ item.price }}
+      div Description: {{ item.desc }}
 
   / =====================
   / = Widget Edit Pages =
@@ -238,7 +272,7 @@
     br
     select name="items" multiple="multiple"
       | <% for (var i=0;i<items.length;i++) { %>
-      option {{ items[i] }}
+      option {{ items[i].name }}
       | <% } %>
     br
     input type="button" name="add_item" value="Add Item"

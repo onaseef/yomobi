@@ -97,8 +97,8 @@
     remItem: function (e) {
       var level = this.widget.getCurrentLevel();
       this.el.find('select[name=items] option:selected').map(function (idx,elem) {
-        var item = elem.innerHTML
-          , itemIdx = _.indexOf(level._items,item);
+        var itemName = elem.innerHTML
+          , itemIdx = _.indexOf(_.pluck(level._items,'name'),itemName);
         if (itemIdx != -1)
           level._items.splice(itemIdx,1);
       });
