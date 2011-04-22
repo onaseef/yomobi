@@ -299,6 +299,28 @@ var util = {
     return _.max(depths);
   },
   
+  catOrder: function (cat) {
+    return parseInt( cat.substring(cat.lastIndexOf('|')+1) );
+  },
+  
+  catName: function (cat) {
+    return cat.substring(0,cat.lastIndexOf('|'));
+  },
+  
+  catNamesFromLevel: function (level) {
+    return _(level).chain().keys().reject(util.eq('_items'))
+      .sortBy(function (c) { return util.catOrder(c); })
+      .map(function (c) { return util.catName(c); }).value();
+  },
+  
+  fullCatFromName: function (level,catName) {
+    var cats = _.without(_.keys(level),'_items')
+      , escapedName = util.regexEscape(catName)
+      , detectRegex = new RegExp('^' + escapedName + '\\|[0-9]+$')
+    ;
+    return _.detect(cats,function (c) { return !!c.match(detectRegex) });
+  },
+  
   dialog: function (html,buttons) {
     $(html).dialog({
       resizable: false,
@@ -306,6 +328,10 @@ var util = {
       draggable: false,
       buttons: buttons
     });
+  },
+  
+  regexEscape: function (str) {
+    return str.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
   },
   
   log: function () {

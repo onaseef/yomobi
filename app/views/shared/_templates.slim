@@ -60,7 +60,7 @@
     #dialog-confirm title="Name your Sub-Category"
       p
         | Please name your Sub-Category:
-        input type="text" value="{{ _maybe.cat }}" name="cat"
+        input type="text" value="{{ _maybe.name }}" name="cat"
         | <% if(_maybe.error) { %>
         p.error Error: {{ _maybe.error }}
         | <% } %>
@@ -173,7 +173,7 @@
   
   script.category-page(type="text/template")
     | <% for (var i=0; i<cats.length;i++) { %>
-    .category.item class="<% print(util.cycle('c0','c1')); %>" data-cat="{{ cats[i] }}"
+    .category.item class="<% print(util.cycle('c0','c1')); %>" data-cat="{{ cats[i] }}|{{ i }}"
       | Category: {{ cats[i] }}
     | <% } for (var i=0;i<items.length;i++) {
     |         print( itemTemplate({ item:items[i], cycle:util.cycle('c0','c1') }) );
@@ -274,6 +274,7 @@
       | <% } %>
     br
     input type="button" name="add_cat" value="Add Sub-Category"
+    input type="button" name="edit_cat" value="Edit"
     input type="button" name="rem_cat" value="Remove Sub-Category"
 
     br
@@ -287,4 +288,5 @@
       | <% } %>
     br
     input type="button" name="add_item" value="Add Item"
+    input type="button" name="edit_item" value="Edit Item"
     input type="button" name="rem_item" value="Remove Item"

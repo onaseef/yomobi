@@ -30,9 +30,11 @@
 
     events: {
       'click input[name=add_cat]':          'addCat',
+      'click input[name=edit_cat]':         'editCat',
       'click input[name=rem_cat]':          'remCat',
       'click input[name=add_item]':         'addItem',
-      'click input[name=rem_item]':         'remItem'
+      'click input[name=rem_item]':         'remItem',
+      'click input[name=edit_item]':        'editItem',
     },
     
     init: function (widget) {
@@ -47,13 +49,27 @@
       return {};
     },
     
-    addCat: function (e,error) {
+    addCat: function (e) {
       var self = this;
       var dialog =  new AddCatDialog({
-        model:this.widget,
+        model: this.widget,
         onClose: function () { self.refreshViews(); }
       });
-      dialog.prompt();
+      dialog.enterMode('add').prompt();
+    },
+    
+    editCat: function (e) {
+      var self = this
+        , level = this.widget.getCurrentLevel()
+        , name = $(this.el).find('select[name=cats] option:selected:first').html()
+      ;
+      if (_.isEmpty(name)) return;
+      
+      var dialog =  new AddCatDialog({
+        model: this.widget,
+        onClose: function () { self.refreshViews(); }
+      });
+      dialog.enterMode('edit').prompt(null,name);
     },
     
     remCat: function (e) {
@@ -65,13 +81,28 @@
       this.refreshViews();
     },
     
-    addItem: function (e,error) {
+    addItem: function (e) {
       var self = this;
       var dialog =  new AddItemDialog({
         model: this.widget,
         onClose: function () { self.refreshViews(); }
       });
-      dialog.prompt();
+      dialog.enterMode('add').prompt();
+    },
+    
+    editItem: function (e) {
+      var self = this
+        , level = this.widget.getCurrentLevel()
+        , name = $(this.el).find('select[name=items] option:selected:first').html()
+        , item = _.detect(level._items,function (i) { return i.name == name })
+      ;
+      if (_.isEmpty(item)) return;
+      
+      var dialog =  new AddItemDialog({
+        model: this.widget,
+        onClose: function () { self.refreshViews(); }
+      });
+      dialog.enterMode('edit').prompt(null,item);
     },
     
     remItem: function (e) {
@@ -127,74 +158,102 @@
   // private helper classes //
   ////////////////////////////
   var addCatTemplate = util.getTemplate('add-subcat-dialog');
-  AddCatDialog = Backbone.View.extend({
+  var AddCatDialog = Backbone.View.extend({
 
     events: {
       'keydown input[name="cat"]':      'onKeyDown'
     },
     
     onKeyDown: function (e) {
-      util.log('Keydown',e);
       var code = e.keyCode || e.which;
       if (code == 13) this.validateCategory();
     },
     
-    render: function (error,level) {
+    notEnterMode: function () {
+      util.log('wtf');
+    },
+    
+    enterMode: function (mode) {
+      this.mode = mode;
+      return this;
+    },
+    
+    render: function (error,level,name) {
       var dialogHtml = addCatTemplate({
         error: error,
-        cats: _.without(_.keys(level),'_items')
+        cats: util.catNamesFromLevel(level),
+        name: name
       });
       $(this.el).html(dialogHtml);
       return this;
     },
     
-    prompt: function (error) {
+    prompt: function (error,origName) {
       var self = this
         , level = this.model.getCurrentLevel()
-        , dialogContent = this.render(error,level).el
+        , dialogContent = this.render(error,level,origName).el
+        , buttons = {}
+        , closeSelf = close(this)
       ;
       // cache for later use
       this.level = level;
+      this.origName = origName;
       
-      util.dialog(dialogContent, {
-        "I'm Done Adding Categories": function () {
-          $(this).dialog("close");
-          self.options.onClose && self.options.onClose();
-        },
-      	"Close": function () {
-          $(this).dialog("close");
-          self.options.onClose && self.options.onClose();
-      	}
-    	});
+      if (this.mode == 'add') buttons["I'm Done Adding Categories"] = closeSelf;
+      buttons["Close"] = closeSelf;
+      
+      util.dialog(dialogContent,buttons);
     },
     
     validateCategory: function () {
-      var name = $(this.el).find('input[name=cat]').val();
   		$(this.el).dialog("close");
 
-      name = $.trim(name);
+      var name = $(this.el).find('input[name=cat]').val()
+        , name = $.trim(name)
+      ;
   		if (_.isEmpty(name))
   		  this.prompt('Name cannot be empty');
-      else if (this.level[name] !== undefined)
+      else if (this.mode == 'add' && this.level[name] !== undefined)
         this.prompt('Name is already in use');
-      else {
-        this.level[name] = {_items:[]};
+      else if (this.mode == 'add') {
+        var keyCount = _.keys(this.level).length;
+        this.level[name+'|'+(keyCount-1)] = {_items:[]};
         this.prompt();
+      }
+      else if (this.mode == 'edit' && name !== this.origName) {
+        var origCat = util.fullCatFromName(this.level,this.origName)
+          , order = util.catOrder(origCat)
+        ;
+        this.level[name+'|'+order] = this.level[origCat];
+        delete this.level[origCat];
+        this.options.onClose && this.options.onClose();
       }
     }
   });
   
+  var close = function (dialogView) {
+    return function () {
+      $(this).dialog("close");
+      dialogView.options.onClose && dialogView.options.onClose();
+    };
+	}
   
-  AddItemDialog = Backbone.View.extend({
+  // =================================
+  var AddItemDialog = Backbone.View.extend({
     
     initialize: function () {
       this.template = util.getTemplate(this.model.get('name')+'-item-dialog');
     },
     
+    enterMode: function (mode) {
+      this.mode = mode;
+      return this;
+    },
+    
     render: function (flash,level,item) {
       flash || (flash = {});
       item || (item = {});
-      var dialogHtml = this.template(_.extend(item, {
+      var dialogHtml = this.template(_.extend({},item, {
         flash: flash,
         _items: level._items
       }));
@@ -213,15 +272,21 @@
       util.dialog(dialogContent, {
         "Save Item": function () {
           $(this).dialog("close");
-          var item = {};
+          var activeItemData = {};
           $(self.el).find('.item-input').each(function (idx,elem) {
-            item[$(elem).attr('name')] = $(elem).val();
+            activeItemData[$(elem).attr('name')] = $(elem).val();
           });
           
-          if (!self.validateName(item.name)) return;
+          if (!self.validateItem(activeItemData)) return;
           
-          level._items.push(item);
-          self.prompt({ success:'Item added successfully' });
+          if (self.mode == 'add')
+            level._items.push(activeItemData);
+          else if (self.mode == 'edit') {
+            var oldItem = _.detect(level._items,function (i) { return i.name == item.name });
+            util.log('EDIT',oldItem,activeItemData,level._items);
+            _.extend(oldItem,activeItemData);
+          }
+          self.prompt({ success:'Item '+self.mode+'ed successfully' });
         },
       	"I'm Done": function () {
           $(this).dialog("close");
@@ -230,16 +295,16 @@
     	});
     },
     
-    validateName: function (name) {
+    validateItem: function (item) {
   		$(this.el).dialog("close");
 
-      name = $.trim(name);
+      var name = $.trim(item.name);
   		if (_.isEmpty(name)) {
-  		  this.prompt({ error:'Name cannot be empty' });
+  		  this.prompt({ error:'Name cannot be empty' },item);
   		  return false;
   		}
-      else if (_.include(this.level._items,name)) {
-        this.prompt({ error:'Name is already in use' });
+      else if (this.mode == 'add' && _.include(this.level._items,name)) {
+        this.prompt({ error:'Name is already in use' },item);
         return false;
       }
       return true;

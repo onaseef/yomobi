@@ -86,6 +86,19 @@ $(document).ready(function(){
              JSON.stringify(kase.input)+' should have level depth of '+kase.output);
     });
   });
+  
+  test("Full cat from name", function () {
+    var io = [
+      { level:{"One|0":0,"Two|1":0,_items:0}, catName:'Two', output:'Two|1' },
+      { level:{"One|0":0,"Slightly Complex|1":0}, catName:'Slightly Complex', output:'Slightly Complex|1' },
+      { level:{"One|0":0,"Odd-Char|1":0,_items:0}, catName:'Odd-Char', output:'Odd-Char|1' },
+      { level:{"m3-$$d[]^UP!|0":0,"Two|1":0,_items:0}, catName:'m3-$$d[]^UP!', output:'m3-$$d[]^UP!|0' }
+    ];
+    _.each(io, function (kase) {
+      equals(util.fullCatFromName(kase.level,kase.catName),kase.output,
+             JSON.stringify(kase.catName)+' not correctly found in '+JSON.stringify(kase.level));
+    });
+  });
 
 });
 </script>

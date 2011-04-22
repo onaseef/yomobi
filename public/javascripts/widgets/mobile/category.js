@@ -12,13 +12,13 @@
       if (!this.get('struct')) {
         var struct = {
           _items:[],
-          "Food": {
+          "Food|0": {
             _items: [{name:'Burger',price:'$9.99',desc:'A tasty treat.'}],
-            "Dessert": {
+            "Dessert|0": {
               _items: [{name:'Ice Cream',price:'$49.99',desc:'A tastier treat'}]
             }
           },
-          "Drinks": {
+          "Drinks|1": {
             _items: [{name:'Apple Juice',price:'$0.10',desc:'Not actually apple juice'}
                     ,{name:'Orange Juice',price:'$0.15',desc:'Not actually orange juice'}],
           }
@@ -33,7 +33,7 @@
       
       var extraData = {
         items: level._items || [],
-        cats: _(level).chain().keys().reject(util.eq('_items')).value() || [],
+        cats: util.catNamesFromLevel(level) || [],
         itemTemplate: this._itemTemplate
       };
       return _.extend({},this.toJSON(),extraData);
