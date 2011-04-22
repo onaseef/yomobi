@@ -16,7 +16,6 @@
       this.pageView = new (widgetPages[this.get('wtype')] || WidgetPageView)({
         widget: this
       });
-      util.log('pageView',this.pageView);
       this.bind('change:name',this.updatePrettyName);
       
       this.updatePrettyName(this,this.get('name'));

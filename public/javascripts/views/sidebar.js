@@ -25,7 +25,6 @@
       ;
       util.log(this.widgets);
       this.widgets.each(function (widget) {
-        util.log('sidebar render',widget);
         w_area.append( self.widgetTemplate(widget.toJSON()) );
       });
     },
