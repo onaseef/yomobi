@@ -39,6 +39,7 @@
           util.log('Saved widget',model,res);
           util.showSuccess(self.el.find('.action-bar'));
           util.releaseWidget(model);
+          model.onSave && model.onSave();
         }
       });
     },

@@ -22,8 +22,12 @@
       
       bapp.homeViewWidgetClick(this);
       return false;
-    }
+    },
     
+    onSave: function () {
+      util.log('SAVED');
+      this.origStruct = util.clone(this.get('struct'));
+    }
   });
 
   window.widgetEditors.category = window.EditWidgetView.extend({
@@ -51,7 +55,13 @@
     },
     
     grabWidgetValues: function () {
-      return {};
+      return { struct:this.widget.get('struct') };
+    },
+    
+    cancel: function () {
+      this.widget.set({ struct:util.clone(this.widget.origStruct) });
+      EditWidgetView.prototype.cancel.call(this);
+      this.refreshViews();
     },
     
     addCat: function (e) {
@@ -224,10 +234,6 @@
     onKeyDown: function (e) {
       var code = e.keyCode || e.which;
       if (code == 13) this.validateCategory();
-    },
-    
-    notEnterMode: function () {
-      util.log('wtf');
     },
     
     enterMode: function (mode) {
