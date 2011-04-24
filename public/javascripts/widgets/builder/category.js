@@ -342,14 +342,17 @@
           
           if (!self.validateItem(activeItemData)) return;
           
-          if (self.mode == 'add')
+          if (self.mode == 'add') {
             level._items.push(activeItemData);
+            self.prompt({ success:'Item '+self.mode+'ed successfully' });
+          }
           else if (self.mode == 'edit') {
             var oldItem = _.detect(level._items,function (i) { return i.name == item.name });
             util.log('EDIT',oldItem,activeItemData,level._items);
             _.extend(oldItem,activeItemData);
+
+            self.options.onClose && self.options.onClose();
           }
-          self.prompt({ success:'Item '+self.mode+'ed successfully' });
         },
       	"I'm Done": function () {
           $(this).dialog("close");
