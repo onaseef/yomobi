@@ -32,9 +32,12 @@
       'click input[name=add_cat]':          'addCat',
       'click input[name=edit_cat]':         'editCat',
       'click input[name=rem_cat]':          'remCat',
+      'click input[name=up_cat]':           'moveCat',
+      'click input[name=down_cat]':         'moveCat',
+
       'click input[name=add_item]':         'addItem',
       'click input[name=rem_item]':         'remItem',
-      'click input[name=edit_item]':        'editItem',
+      'click input[name=edit_item]':        'editItem'
     },
     
     init: function (widget) {
@@ -70,6 +73,39 @@
         onClose: function () { self.refreshViews(); }
       });
       dialog.enterMode('edit').prompt(null,name);
+    },
+    
+    moveCat: function (e) {
+      var mod = parseInt( $(e.target).attr('data-mod') )
+        , $select = $(this.el).find('select[name=cats]')
+        
+        , targetOption = $select.find('option:selected:first')
+        , targetIdx = targetOption.index()
+        , targetName = targetOption.html()
+        , targetCat = targetName + '|' + targetIdx
+      ;
+      util.log('MOVING',mod,targetName);
+      if (_.isEmpty(targetName)) return;
+      
+      var swapIdx = targetIdx + mod
+        , swapOption = $select.find('option:eq('+swapIdx+')')
+        , swapName = swapOption.html()
+        , swapCat = swapName + '|' + swapIdx
+        , level = this.widget.getCurrentLevel()
+      ;
+      util.log('>>',swapOption);
+      if (!swapName) return;
+      
+      // swap the categories internally
+      level[targetName + '|' + swapIdx] = level[swapCat];
+      level[swapName + '|' + targetIdx] = level[targetCat];
+      delete level[swapCat];
+      delete level[targetCat];
+      
+      // now swap in the editor
+      (mod==1) ? targetOption.before(swapOption) : targetOption.after(swapOption);
+      this.refreshViews();
+      $(this.el).find('select[name=cats] option').get(swapIdx).selected = 'selected'
     },
     
     remCat: function (e) {
