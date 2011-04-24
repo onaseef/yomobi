@@ -382,3 +382,10 @@ var util = {
   }
 }
 
+// useful extensions
+Array.prototype.swap = function (x,y) {
+  var temp = this[x];
+  this[x] = this[y];
+  this[y] = temp;
+  return this;
+};

@@ -37,7 +37,9 @@
 
       'click input[name=add_item]':         'addItem',
       'click input[name=rem_item]':         'remItem',
-      'click input[name=edit_item]':        'editItem'
+      'click input[name=edit_item]':        'editItem',
+      'click input[name=up_item]':          'moveItem',
+      'click input[name=down_item]':        'moveItem'
     },
     
     init: function (widget) {
@@ -84,7 +86,6 @@
         , targetName = targetOption.html()
         , targetCat = targetName + '|' + targetIdx
       ;
-      util.log('MOVING',mod,targetName);
       if (_.isEmpty(targetName)) return;
       
       var swapIdx = targetIdx + mod
@@ -93,7 +94,6 @@
         , swapCat = swapName + '|' + swapIdx
         , level = this.widget.getCurrentLevel()
       ;
-      util.log('>>',swapOption);
       if (!swapName) return;
       
       // swap the categories internally
@@ -105,7 +105,7 @@
       // now swap in the editor
       (mod==1) ? targetOption.before(swapOption) : targetOption.after(swapOption);
       this.refreshViews();
-      $(this.el).find('select[name=cats] option').get(swapIdx).selected = 'selected'
+      $(this.el).find('select[name=cats] option').get(swapIdx).selected = 'selected';
     },
     
     remCat: function (e) {
@@ -139,6 +139,27 @@
         onClose: function () { self.refreshViews(); }
       });
       dialog.enterMode('edit').prompt(null,item);
+    },
+    
+    moveItem: function (e) {
+      var mod = parseInt( $(e.target).attr('data-mod') )
+        , $select = $(this.el).find('select[name=items]')
+        , _items = this.widget.getCurrentLevel()._items
+        
+        , targetOption = $select.find('option:selected:first')
+        , targetIdx = targetOption.index()
+        , swapIdx = targetIdx + mod
+        , swapOption = $select.find('option:eq('+swapIdx+')')
+      ;
+      if (swapIdx < 0 || swapIdx >= _items.length) return;
+      
+      // first swap internally
+      _items.swap(targetIdx,swapIdx);
+      
+      // now swap in the editor
+      (mod==1) ? targetOption.before(swapOption) : targetOption.after(swapOption);
+      this.refreshViews();
+      $(this.el).find('select[name=items] option').get(swapIdx).selected = 'selected';
     },
     
     remItem: function (e) {
