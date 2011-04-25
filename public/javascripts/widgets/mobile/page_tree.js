@@ -29,10 +29,8 @@
     
     getShowData: function () {
       var level = this.getCurrentLevel();
-      util.log('SHOW DATA',level,this.catStack);
       
       if (this.hasLeafOnTop()) {
-        util.log('LEEEAAF');
         var leafName = _.last(this.catStack)
           , leaf = _.detect(level._items, function (i) { return i.name == leafName; })
           , extraData = {
@@ -74,14 +72,6 @@
       'click .item.leaf-name':      'onLeafNameClick'
     },
     
-    onCategoryClick: function (e) {
-      var cat = $(e.target).attr('data-cat');
-      var subpage = this.widget.catStack.join('/');
-      subpage && (subpage += '/');
-      
-      mapp.goToPage(this.widget.get('name'), subpage + cat);
-    },
-    
     onLeafNameClick: function (e) {
       var level = this.widget.getCurrentLevel()
         , itemIdx = $(e.target).index() - util.catNamesFromLevel(level).length
@@ -94,17 +84,8 @@
     },
     
     onPageView: function (subpage) {
-      util.log('subpage',subpage);
       mapp.requirePageCount(this.widget.getLevelDepth() + 1);
-      if (!subpage && this.widget.catStack.length === 0) return 'forward';
-      
-      var subpage = subpage || ''
-        , catStack = this.widget.catStack
-        , newStack = _.compact(subpage.split('/'))
-        , direction = newStack.length > catStack.length ? 'forward' : 'backward'
-      ;
-      this.widget.catStack = newStack;
-      return direction;
+      return widgetPages.category.prototype.onPageView.call(this,subpage);
     }
 
   });
