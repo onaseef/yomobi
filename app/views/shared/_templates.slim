@@ -76,7 +76,7 @@
     #dialog-confirm title="Name your Page"
       p
         | Please name your Page:
-        input.item-input type="text" value="{{ _maybe.item }}" name="name"
+        input.item-input type="text" value="{{ name }}" name="name"
         input.item-input type="hidden"
         | <% if(_maybe.error) { %>
         p.error Error: {{ _maybe.error }}

@@ -34,6 +34,8 @@
 
   window.widgetEditors.page_tree = window.widgetEditors.category.extend({
 
+    AddItemDialog: AddItemDialog,
+
     events: {
       'click input[name=add_cat]':          'addCat',
       'click input[name=edit_cat]':         'editCat',
@@ -50,9 +52,14 @@
       'keyup textarea':                     'queueActiveLeafUpdate'
     },
     
+    init: function (widget) {
+      // this is needed for proper inheritance due to closures
+      this.AddItemDialog = AddItemDialog;
+    },
+    
     addItem: function (e,error) {
       var self = this;
-      var dialog =  new AddItemDialog({
+      var dialog =  new this.AddItemDialog({
         model: this.widget,
         onClose: function () { self.refreshViews(); }
       });

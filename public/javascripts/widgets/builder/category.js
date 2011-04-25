@@ -46,7 +46,8 @@
     },
     
     init: function (widget) {
-      
+      // this is needed for proper inheritance due to closures
+      this.AddItemDialog = AddItemDialog;
     },
     
     onEditStart: function () {
@@ -135,7 +136,7 @@
     
     addItem: function (e) {
       var self = this;
-      var dialog =  new AddItemDialog({
+      var dialog =  new this.AddItemDialog({
         model: this.widget,
         onClose: function () { self.refreshViews(); }
       });
@@ -150,7 +151,7 @@
       ;
       if (_.isEmpty(item)) return;
       
-      var dialog =  new AddItemDialog({
+      var dialog =  new this.AddItemDialog({
         model: this.widget,
         onClose: function () { self.refreshViews(); }
       });
