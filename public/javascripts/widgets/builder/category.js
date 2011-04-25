@@ -58,6 +58,11 @@
       return { struct:this.widget.get('struct') };
     },
     
+    remove: function () {
+      if ( EditWidgetView.prototype.remove.call(this) )
+        mapp.goHome();
+    },
+    
     cancel: function () {
       this.widget.set({ struct:util.clone(this.widget.origStruct) });
       EditWidgetView.prototype.cancel.call(this);

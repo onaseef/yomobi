@@ -56,9 +56,11 @@
         bapp.removeWidget(this.widget);
         delete this.widget;
         this.stopEditing();
+        return true;
       }
       else {
         util.releaseWidget(this.widget);
+        return false;
       }
     },
     

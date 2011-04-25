@@ -195,7 +195,14 @@
     goHome: function () {
       // TODO: delete all pages between current
       // and home for a smoother transition
+      var canvas = this.el.find('#canvas');
+      
       if (this.pageLevel > 0){
+        for (var i = this.pageLevel; i > 1; i --) {
+          this.el.find('.page:eq(1)').remove();
+          canvas.css('left', parseInt(canvas.css('left')) + g.width);
+        }
+        this.pageLevel = 1;
         mapp.transition('back');
       }
     },
