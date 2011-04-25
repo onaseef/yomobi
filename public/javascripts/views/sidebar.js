@@ -6,16 +6,22 @@
     
     widgetTemplate: util.getTemplate('sidebar-widget'),
     
-    initialize: function (widgets) {
+    initialize: function (options) {
       var self = this;
       _.bindAll(this,'render');
 
-      this.widgets = widgets;
+      this.widgets = options.widgets;
       // this.widgets.bind('add',this.render);
       // this.widgets.bind('remove',this.render);
       this.widgets.bind('refresh',this.render);
       
       this.el.find('.widgets .home-icon').live('mouseover',makeDraggable);
+      this.render();
+    },
+    
+    setSingletonInUse: function (wname,inUse) {
+      var w = this.widgets.find(function (w) { return w.get('name') == wname; });
+      w.set({ singletonInUse:inUse });
       this.render();
     },
     
@@ -25,6 +31,7 @@
       ;
       util.log(this.widgets);
       this.widgets.each(function (widget) {
+        if (widget.get('singletonInUse')) return;
         w_area.append( self.widgetTemplate(widget.toJSON()) );
       });
     },

@@ -103,9 +103,11 @@
             var widgetsAvailable =  _.map(bdata, function (data,name) {
               var wdata = _.extend({},data);
               delete wdata.editAreaTemplate;
+              if (wdata.singleton)
+                wdata.singletonInUse = !!mapp.widgetsInUse.getWidgetByName(wdata.name);
               return wdata;
             });
-            mapp.widgetsAvailable.refresh(widgetsAvailable);
+            mapp.widgetsAvailable.refresh( _.compact(widgetsAvailable) );
           
             $('#emulator .loader-overlay').hide();
             util.log('fetch',widgets,mapp.widgetsAvailable,mapp.widgetsInUse);
@@ -113,7 +115,7 @@
         });
       });
       
-      this.sidebar = new SidebarView(mapp.widgetsAvailable);
+      this.sidebar = new SidebarView({ widgets:mapp.widgetsAvailable });
     },
     
     homeViewWidgetClick: function (widget) {
@@ -139,6 +141,10 @@
             newWidget.set({ name:validName });
             util.pushUIBlock(validName);
             mapp.widgetsInUse.add(newWidget);
+
+            // TODO: use data from server
+            if (bdata[newWidget.get('wtype')].singleton)
+              bapp.sidebar.setSingletonInUse(newWidget.get('name'),true);
           }
         },
         onCancel: function () {
@@ -215,6 +221,9 @@
           util.log('Saved widget',model,res);
           util.releaseUI();
           util.releaseWidget(model);
+          // TODO: use data from server
+          if (bdata[widget.get('wtype')].singleton)
+            bapp.sidebar.setSingletonInUse(widget.get('name'),false);
         }
       });
     },
