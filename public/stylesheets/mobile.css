@@ -81,14 +81,14 @@ body {
   .page .content.gmap .maps .map-link {
     margin: 10px 0; }
 
-.page .content.category {
+.page .content.category, .page .content.page_tree {
   padding: 0; }
-  .page .content.category .item {
+  .page .content.category .item, .page .content.page_tree .item {
     padding: 8px 0 8px 12px;
     font-size: 18px; }
-  .page .content.category .item.category {
+  .page .content.category .item.category, .page .content.category .item.leaf-name, .page .content.page_tree .item.category, .page .content.page_tree .item.leaf-name {
     cursor: pointer; }
-  .page .content.category .c0 {
+  .page .content.category .c0, .page .content.page_tree .c0 {
     background: white; }
-  .page .content.category .c1 {
+  .page .content.category .c1, .page .content.page_tree .c1 {
     background: #d8dfea; }

@@ -178,6 +178,18 @@
     | <% } for (var i=0;i<items.length;i++) {
     |         print( itemTemplate({ item:items[i], cycle:util.cycle('c0','c1') }) );
     | } %>
+  
+  script.page_tree-page(type="text/template")
+    | <% if (!_maybe.isLeaf) { for (var i=0; i<cats.length;i++) { %>
+    .category.item class="<% print(util.cycle('c0','c1')); %>" data-cat="{{ cats[i] }}|{{ i }}"
+      | Category: {{ cats[i] }}
+    | <% } for (var i=0;i<items.length;i++) { %>
+    .leaf-name.item class="<% print(util.cycle('c0','c1')); %>"
+      | {{ items[i].name }}
+    | <% } } else { %>
+    h2 {{ title }}
+    .leaf-content {{ content }}
+    | <% } %>
 
   / ===========================
   / = Specific Category Items =
@@ -265,6 +277,39 @@
     textarea(name="paste" type="text") {{ _maybe.description }}
   
   script.category-edit-area(type="text/template")
+    h2 Category: {{ currentCat }}
+    label Sub-Categories:
+    br
+    select name="cats" multiple="multiple"
+      | <% for (var i=0; i<cats.length;i++) { %>
+      option {{ cats[i] }}
+      | <% } %>
+    br
+    input type="button" name="add_cat" value="Add Sub-Category"
+    input type="button" name="edit_cat" value="Edit"
+    input type="button" name="rem_cat" value="Remove Sub-Category"
+    br
+    input type="button" name="up_cat" data-mod="-1" value="Move Up"
+    input type="button" name="down_cat" data-mod="1" value="Move Down"
+
+    br
+    br
+    
+    label Items
+    br
+    select name="items" multiple="multiple"
+      | <% for (var i=0;i<items.length;i++) { %>
+      option {{ items[i].name }}
+      | <% } %>
+    br
+    input type="button" name="add_item" value="Add Item"
+    input type="button" name="edit_item" value="Edit Item"
+    input type="button" name="rem_item" value="Remove Item"
+    br
+    input type="button" name="up_item" data-mod="-1" value="Move Up"
+    input type="button" name="down_item" data-mod="1" value="Move Down"
+  
+  script.page_tree-edit-area(type="text/template")
     h2 Category: {{ currentCat }}
     label Sub-Categories:
     br
