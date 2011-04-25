@@ -25,7 +25,6 @@
     },
     
     onSave: function () {
-      util.log('SAVED');
       this.origStruct = util.clone(this.get('struct'));
     }
   });
@@ -66,7 +65,9 @@
     cancel: function () {
       this.widget.set({ struct:util.clone(this.widget.origStruct) });
       EditWidgetView.prototype.cancel.call(this);
-      this.refreshViews();
+      this.widget.catStack = [];
+      mapp.goHome();
+      bapp.currentEditor.stopEditing();
     },
     
     addCat: function (e) {
@@ -229,8 +230,9 @@
   ////////////////////////////
   // private helper classes //
   ////////////////////////////
-  var addCatTemplate = util.getTemplate('add-subcat-dialog');
-  var AddCatDialog = Backbone.View.extend({
+  window.AddCatDialog = Backbone.View.extend({
+
+    addCatTemplate: util.getTemplate('add-subcat-dialog'),
 
     events: {
       'keydown input[name="cat"]':      'onKeyDown'
@@ -247,7 +249,7 @@
     },
     
     render: function (error,level,name) {
-      var dialogHtml = addCatTemplate({
+      var dialogHtml = this.addCatTemplate({
         error: error,
         cats: util.catNamesFromLevel(level),
         name: name

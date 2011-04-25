@@ -25,6 +25,8 @@
         };
         this.set({ struct:struct });
       }
+      // TODO: this should really be in builder's page_tree.js
+      this.origStruct = util.clone(this.get('struct'));
     },
     
     getShowData: function () {

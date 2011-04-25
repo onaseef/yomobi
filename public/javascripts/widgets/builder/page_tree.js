@@ -7,8 +7,11 @@
     
     getEditData: function () {
       var showData = this.getShowData();
-      if (showData.items.length === 0) showData.items = [{ name:'==None==' }];
-      if (showData.cats.length === 0) showData.cats = ['==None=='];
+
+      if (!showData.isLeaf) {
+        if (showData.items.length === 0) showData.items = [{ name:'==None==' }];
+        if (showData.cats.length === 0) showData.cats = ['==None=='];
+      }
       
       var extraData = {
         currentCat: _.last(this.catStack) || this.get('prettyName')
@@ -22,91 +25,56 @@
       
       bapp.homeViewWidgetClick(this);
       return false;
-    }
+    },
     
+    onSave: function () {
+      this.origStruct = util.clone(this.get('struct'));
+    }
   });
 
   window.widgetEditors.page_tree = window.widgetEditors.category.extend({
 
     events: {
       'click input[name=add_cat]':          'addCat',
+      'click input[name=edit_cat]':         'editCat',
       'click input[name=rem_cat]':          'remCat',
+      'click input[name=up_cat]':           'moveCat',
+      'click input[name=down_cat]':         'moveCat',
+
       'click input[name=add_item]':         'addItem',
-      'click input[name=rem_item]':         'remItem'
-    },
-    
-    init: function (widget) {
+      'click input[name=rem_item]':         'remItem',
+      'click input[name=edit_item]':        'editItem',
+      'click input[name=up_item]':          'moveItem',
+      'click input[name=down_item]':        'moveItem',
       
-    },
-    
-    onEditStart: function () {
-      var self = this;
-    },
-    
-    grabWidgetValues: function () {
-      return {};
-    },
-    
-    addCat: function (e,error) {
-      var self = this;
-      var dialog =  new AddCatDialog({
-        model:this.widget,
-        onClose: function () { self.refreshViews(); }
-      });
-      dialog.prompt();
-    },
-    
-    remCat: function (e) {
-      var level = this.widget.getCurrentLevel();
-      this.el.find('select[name=cats] option:selected').map(function (idx,elem) {
-        var cat = elem.innerHTML;
-        if (level[cat]) delete level[cat];
-      });
-      this.refreshViews();
+      'keyup textarea':                     'queueActiveLeafUpdate'
     },
     
     addItem: function (e,error) {
-      var level = this.widget.getCurrentLevel(), self = this;
-      
-      var dialogHtml = util.getTemplate('add-item-dialog')({
-        error: error,
-        _items: level._items
+      var self = this;
+      var dialog =  new AddItemDialog({
+        model: this.widget,
+        onClose: function () { self.refreshViews(); }
       });
-      
-      util.dialog(dialogHtml, {
-      	"Add New Item": function() {
-          var name = $(this).find('input[name=item]').val();
-      		$(this).dialog("close");
-      		
-      		name = $.trim(name);
-      		if (_.isEmpty(name))
-      		  self.addCat(e,'Name cannot be empty');
-          else if (_.contains(level._items,name))
-            self.addCat(e,'Name is already in use');
-          else {
-            level._items.push(name);
-            self.refreshViews();
-          }
-      	},
-      	Cancel: function() {
-      		$(this).dialog("close");
-      	}
-    	});
+      dialog.enterMode('add').prompt();
     },
     
-    remItem: function (e) {
-      var level = this.widget.getCurrentLevel();
-      this.el.find('select[name=items] option:selected').map(function (idx,elem) {
-        var itemName = elem.innerHTML
-          , itemIdx = _.indexOf(_.pluck(level._items,'name'),itemName);
-        if (itemIdx != -1)
-          level._items.splice(itemIdx,1);
-      });
-      this.refreshViews();
+    queueActiveLeafUpdate: function () {
+      if (!this.updateTimeoutId) {
+        var self = this;
+        this.updateTimeoutId = setTimeout(function () {
+          self.updateActiveLeaf();
+          delete self.updateTimeoutId;
+        },350);
+      }
     },
     
-    refreshViews: function () {
-      this.widget.editor.startEditing();
+    updateActiveLeaf: function () {
+      var level = this.widget.getCurrentLevel()
+        , leafName = _.last(this.widget.catStack)
+        , leaf = _.detect(level._items, function (i) { return i.name == leafName; })
+      ;
+      leaf.content = this.el.find('.leaf-content').val();
       this.widget.pageView.refresh();
     }
     
@@ -120,6 +88,18 @@
       subpage && (subpage += '/');
       
       mapp.viewWidget(this.widget, subpage + cat);
+      this.widget.getEditor().startEditing();
+    },
+    
+    onLeafNameClick: function (e) {
+      var level = this.widget.getCurrentLevel()
+        , itemIdx = $(e.target).index() - util.catNamesFromLevel(level).length
+        , item = level._items[itemIdx]
+        , subpage = this.widget.catStack.join('/')
+      ;
+      subpage && (subpage += '/');
+      
+      mapp.viewWidget(this.widget, subpage + item.name);
       this.widget.getEditor().startEditing();
     },
     
@@ -143,66 +123,78 @@
     
   });
   
-  
-  // private helper class
-  var addCatTemplate = util.getTemplate('add-subcat-dialog');
-  var AddCatDialog = Backbone.View.extend({
-
-    events: {
-      'keydown input[name="cat"]':      'onKeyDown'
+  // =================================
+  var AddItemDialog = Backbone.View.extend({
+    
+    template: util.getTemplate('add-item-dialog'),
+    
+    enterMode: function (mode) {
+      this.mode = mode;
+      return this;
     },
     
-    onKeyDown: function (e) {
-      util.log('Keydown',e);
-      var code = e.keyCode || e.which;
-      if (code == 13) this.validateCategory();
-    },
-    
-    render: function (error,level) {
-      var dialogHtml = addCatTemplate({
-        error: error,
-        cats: _.without(_.keys(level),'_items')
-      });
+    render: function (flash,level,item) {
+      flash || (flash = {});
+      item || (item = {});
+      var dialogHtml = this.template(_.extend({},item, {
+        flash: flash,
+        _items: level._items
+      }));
       $(this.el).html(dialogHtml);
       return this;
     },
     
-    prompt: function (error) {
+    prompt: function (flash,item) {
       var self = this
         , level = this.model.getCurrentLevel()
-        , dialogContent = this.render(error,level).el
+        , dialogContent = this.render(flash,level,item).el
       ;
       // cache for later use
       this.level = level;
       
       util.dialog(dialogContent, {
-        "I'm Done Adding Categories": function () {
+        "Save Item": function () {
           $(this).dialog("close");
-          self.options.onClose && self.options.onClose();
+          var activeItemData = {};
+          $(self.el).find('.item-input').each(function (idx,elem) {
+            activeItemData[$(elem).attr('name')] = $(elem).val();
+          });
+          
+          if (!self.validateItem(activeItemData)) return;
+          
+          if (self.mode == 'add') {
+            level._items.push(activeItemData);
+            self.prompt({ success:'Item '+self.mode+'ed successfully' });
+          }
+          else if (self.mode == 'edit') {
+            var oldItem = _.detect(level._items,function (i) { return i.name == item.name });
+            util.log('EDIT',oldItem,activeItemData,level._items);
+            _.extend(oldItem,activeItemData);
+
+            self.options.onClose && self.options.onClose();
+          }
         },
-      	"Close": function () {
+      	"I'm Done": function () {
           $(this).dialog("close");
           self.options.onClose && self.options.onClose();
       	}
     	});
     },
     
-    validateCategory: function () {
-      var name = $(this.el).find('input[name=cat]').val();
+    validateItem: function (item) {
   		$(this.el).dialog("close");
 
-      name = $.trim(name);
-  		if (_.isEmpty(name))
-  		  this.prompt('Name cannot be empty');
-      else if (this.level[name] !== undefined)
-        this.prompt('Name is already in use');
-      else {
-        this.level[name] = {_items:[]};
-        this.prompt();
+      var name = $.trim(item.name);
+  		if (_.isEmpty(name)) {
+  		  this.prompt({ error:'Name cannot be empty' },item);
+  		  return false;
+  		}
+      else if (this.mode == 'add' && _.include(this.level._items,name)) {
+        this.prompt({ error:'Name is already in use' },item);
+        return false;
       }
-    },
-    
-    
+      return true;
+    }
   });
 
 })(jQuery);

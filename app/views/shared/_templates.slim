@@ -73,18 +73,19 @@
       	    |  <% } %>
   
   script.add-item-dialog(type="text/template")
-    #dialog-confirm title="Name your Item"
+    #dialog-confirm title="Name your Page"
       p
-        | Please name your Item:
-        input type="text" value="{{ _maybe.item }}" name="item"
+        | Please name your Page:
+        input.item-input type="text" value="{{ _maybe.item }}" name="name"
+        input.item-input type="hidden"
         | <% if(_maybe.error) { %>
         p.error Error: {{ _maybe.error }}
         | <% } %>
         .other-names
-    	    b Other Item names being used in this category:
+    	    b Other Page names being used in this category:
     	    ul
       	    | <% for(var i=0; i < _items.length; i++) { %>
-      	    |    <li> {{ _items[i] }} </li>
+      	    |    <li> {{ _items[i].name }} </li>
       	    |  <% } %>
 
   script.widget-page(type="text/template")
@@ -310,6 +311,9 @@
     input type="button" name="down_item" data-mod="1" value="Move Down"
   
   script.page_tree-edit-area(type="text/template")
+    
+    | <% if (!_maybe.isLeaf) { %>
+    
     h2 Category: {{ currentCat }}
     label Sub-Categories:
     br
@@ -328,16 +332,21 @@
     br
     br
     
-    label Items
+    label Pages
     br
     select name="items" multiple="multiple"
       | <% for (var i=0;i<items.length;i++) { %>
       option {{ items[i].name }}
       | <% } %>
     br
-    input type="button" name="add_item" value="Add Item"
-    input type="button" name="edit_item" value="Edit Item"
-    input type="button" name="rem_item" value="Remove Item"
+    input type="button" name="add_item" value="Add Page"
+    input type="button" name="edit_item" value="Edit Page Name"
+    input type="button" name="rem_item" value="Remove Page"
     br
     input type="button" name="up_item" data-mod="-1" value="Move Up"
     input type="button" name="down_item" data-mod="1" value="Move Down"
+    
+    | <% } else { %>
+    h2 Editing Page: {{ currentCat }}
+    textarea.leaf-content {{ content }}
+    | <% } %>

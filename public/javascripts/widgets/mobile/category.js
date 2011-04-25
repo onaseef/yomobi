@@ -25,7 +25,7 @@
         };
         this.set({ struct:struct });
       }
-      // this should really be in builder's category.js. Meh.
+      // TODO: this should really be in builder's category.js
       this.origStruct = util.clone(this.get('struct'));
     },
     
