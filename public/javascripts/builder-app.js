@@ -293,6 +293,17 @@
   $('#emulator').droppable({
     hoverClass: 'drophover',
     drop: function (e,ui) {
+      
+      if (mapp.pageLevel != 0) {
+        $('#dialog-invalid-drag').dialog({
+          modal: true,
+          buttons: {
+            Ok: function () { $(this).dialog('close'); }
+          }
+        });
+        return;
+      }
+      
       var elem = $(ui.draggable)
         , name = elem.attr('data-name')
         , wtype = elem.attr('data-wtype')
