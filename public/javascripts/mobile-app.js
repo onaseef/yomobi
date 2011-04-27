@@ -149,7 +149,9 @@
     
     requirePageCount: function (numOfPages) {
       var originalCount = this.el.find('.page').length;
-      if (originalCount >= numOfPages) return;
+
+      // we need the +1 because the first page is the home page
+      if (originalCount >= numOfPages + 1) return;
       
       while (this.el.find('.page').length - 1 < numOfPages) {
         $(this.pageTemplate()).appendTo('#canvas');
