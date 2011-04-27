@@ -288,7 +288,8 @@
     textarea(name="paste" type="text") {{ _maybe.description }}
   
   script.category-edit-area(type="text/template")
-    h2 Category: {{ currentCat }}
+    p {{ catCrumbs }}
+    h2 {{ currentCat }}
     label Sub-Categories:
     br
     select name="cats" multiple="multiple"
@@ -324,6 +325,7 @@
     
     | <% if (!_maybe.isLeaf) { %>
     
+    p {{ catCrumbs }}
     h2 Category: {{ currentCat }}
     label Sub-Categories:
     br
@@ -357,6 +359,7 @@
     input type="button" name="down_item" data-mod="1" value="Move Down"
     
     | <% } else { %>
+    p {{ catCrumbs }}
     h2 Editing Page: {{ currentCat }}
     textarea.leaf-content {{ content }}
     | <% } %>

@@ -163,8 +163,10 @@
   font-size: 1.5em;
   word-wrap: break-word; }
 
-#builder .edit-area.category select, #builder .edit-area.page_tree select {
-  width: 97%; }
+#builder .edit-area.category, #builder .edit-area.page_tree {
+  padding-top: 0; }
+  #builder .edit-area.category select, #builder .edit-area.page_tree select {
+    width: 97%; }
 
 #dialog-confirm .error {
   color: #880000; }

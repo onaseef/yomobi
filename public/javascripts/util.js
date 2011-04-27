@@ -300,10 +300,12 @@ var util = {
   },
   
   catOrder: function (cat) {
+    cat || (cat = '');
     return parseInt( cat.substring(cat.lastIndexOf('|')+1) );
   },
   
   catName: function (cat) {
+    cat || (cat = '');
     return cat.substring(0,cat.lastIndexOf('|'));
   },
   
@@ -319,6 +321,14 @@ var util = {
       , detectRegex = new RegExp('^' + escapedName + '\\|[0-9]+$')
     ;
     return _.detect(cats,function (c) { return !!c.match(detectRegex) });
+  },
+  
+  catStackCrumbs: function (topName,catStack) {
+    var crumbStack = _.map(catStack,function (cat) {
+      return util.catName(cat) || cat;
+    });
+    crumbStack.unshift(topName);
+    return crumbStack.join(' > ');
   },
   
   dialog: function (html,buttons) {

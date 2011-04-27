@@ -14,7 +14,8 @@
       }
       
       var extraData = {
-        currentCat: _.last(this.catStack) || this.get('prettyName')
+        currentCat: util.catName(_.last(this.catStack)) || this.get('prettyName'),
+        catCrumbs: util.catStackCrumbs(this.get('prettyName'),this.catStack)
       };
       return _.extend({},showData,extraData);
     },
