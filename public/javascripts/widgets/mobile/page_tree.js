@@ -45,7 +45,8 @@
       else {
         var extraData = {
           items: level._items || [],
-          cats: util.catNamesFromLevel(level) || []
+          cats: util.catNamesFromLevel(level) || [],
+          catTemplate: this.catTemplate
         };
       }
       return _.extend({},this.toJSON(),extraData);

@@ -178,20 +178,24 @@
     p Expires: {{ _maybe.expire }}
     | <% } %>
   
+  script.category-cat(type="text/template")
+    .category.item class="{{ cycle }}" data-cat="{{ catName }}|{{ order }}"
+      .subcat-arrow
+      | {{ catName }}
+
   script.category-page(type="text/template")
-    | <% for (var i=0; i<cats.length;i++) { %>
-    .category.item class="<% print(util.cycle('c0','c1')); %>" data-cat="{{ cats[i] }}|{{ i }}"
-      | Category: {{ cats[i] }}
-    | <% } for (var i=0;i<items.length;i++) {
+    | <% for (var i=0; i<cats.length;i++) {
+              print( catTemplate({ catName:cats[i], cycle:util.cycle('c0','c1'), order:i }) );
+    | } for (var i=0;i<items.length;i++) {
     |         print( itemTemplate({ item:items[i], cycle:util.cycle('c0','c1') }) );
     | } %>
   
   script.page_tree-page(type="text/template")
-    | <% if (!_maybe.isLeaf) { for (var i=0; i<cats.length;i++) { %>
-    .category.item class="<% print(util.cycle('c0','c1')); %>" data-cat="{{ cats[i] }}|{{ i }}"
-      | Category: {{ cats[i] }}
-    | <% } for (var i=0;i<items.length;i++) { %>
+    | <% if (!_maybe.isLeaf) { for (var i=0; i<cats.length;i++) {
+    |         print( catTemplate({ catName:cats[i], cycle:util.cycle('c0','c1'), order:i }) );
+    | } for (var i=0;i<items.length;i++) { %>
     .leaf-name.item class="<% print(util.cycle('c0','c1')); %>"
+      .leaf-arrow
       | {{ items[i].name }}
     | <% } } else { %>
     h2 {{ title }}

@@ -5,6 +5,8 @@
   
   window.widgetClasses.category = Widget.extend({
     
+    catTemplate: util.getTemplate('category-cat'),
+    
     init: function () {
       _.bindAll(this,'onHomeViewClick');
       this.catStack = [];
@@ -31,12 +33,13 @@
     
     getShowData: function () {
       var level = this.getCurrentLevel();
-      if (!this._itemTemplate) this._itemTemplate = util.getTemplate(this.get('name')+'-item');
+      if (!this.itemTemplate) this.itemTemplate = util.getTemplate(this.get('name')+'-item');
       
       var extraData = {
         items: level._items || [],
         cats: util.catNamesFromLevel(level) || [],
-        itemTemplate: this._itemTemplate
+        itemTemplate: this.itemTemplate,
+        catTemplate: this.catTemplate
       };
       return _.extend({},this.toJSON(),extraData);
     },
