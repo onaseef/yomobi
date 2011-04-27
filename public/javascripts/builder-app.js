@@ -28,7 +28,7 @@
     updateOverallOrder: function (noSync) {
       var i = 0, worder = {};
       this.each(function (widget) {
-        widget.order = i; i += 1;
+        widget.order = $(widget.homeView.el).index();
         worder[widget.get('name')] = widget.order;
       });
       util.log( 'NEW ORDER', worder );
