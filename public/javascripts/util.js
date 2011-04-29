@@ -242,6 +242,11 @@ var util = {
     };
   },
   
+  markdownToHtml: function (md) {
+    this.showdown || (this.showdown = new Attacklab.showdown.converter());
+    return this.showdown.makeHtml(md);
+  },
+  
   getTemplate: function (name) {
     return _.template($('#templates .'+name).html());
   },

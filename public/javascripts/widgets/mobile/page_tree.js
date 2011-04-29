@@ -17,9 +17,9 @@
         var struct = {
           _items:[],
           "Cat One|0": {
-            _items: [{name:'Page 1',content:'Blah blah blah'}],
+            _items: [{name:'Page 1',markdown:'Blah blah blah'}],
             "Subcat A|0": {
-              _items: [{name:'Page 2',content:'yadda yadda yadda'}],
+              _items: [{name:'Page 2',markdown:'yadda yadda yadda'}],
             }
           }
         };
@@ -33,12 +33,11 @@
       var level = this.getCurrentLevel();
       
       if (this.hasLeafOnTop()) {
-        var leafName = _.last(this.catStack)
-          , leaf = _.detect(level._items, function (i) { return i.name == leafName; })
+        var leaf = this.getCurrentLeaf(level)
           , extraData = {
               isLeaf: true,
               title: leaf.name,
-              content: leaf.content
+              html: util.markdownToHtml(leaf.markdown)
             }
         ;
       }
@@ -64,7 +63,13 @@
     hasLeafOnTop: function () {
       var top = _.last(this.catStack);
       return top && isNaN( util.catOrder(top) );
-    }
+    },
+    
+    getCurrentLeaf: function (level) {
+      var level = level || this.getCurrentLevel()
+        , leafName = _.last(this.catStack);
+      return _.detect(level._items, function (i) { return i.name == leafName; });
+    },
     
   });
   

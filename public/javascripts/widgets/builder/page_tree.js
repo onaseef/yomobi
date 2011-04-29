@@ -12,10 +12,14 @@
         if (showData.items.length === 0) showData.items = [{ name:'==None==' }];
         if (showData.cats.length === 0) showData.cats = ['==None=='];
       }
+      else {
+        var leafName = _.last(this.catStack);
+      }
       
       var extraData = {
         currentCat: util.catName(_.last(this.catStack)) || this.get('prettyName'),
-        catCrumbs: util.catStackCrumbs(this.get('prettyName'),this.catStack)
+        catCrumbs: util.catStackCrumbs(this.get('prettyName'),this.catStack),
+        markdown: showData.isLeaf && this.getCurrentLeaf().markdown
       };
       return _.extend({},showData,extraData);
     },
@@ -82,7 +86,7 @@
         , leafName = _.last(this.widget.catStack)
         , leaf = _.detect(level._items, function (i) { return i.name == leafName; })
       ;
-      leaf.content = this.el.find('.leaf-content').val();
+      leaf.markdown = this.el.find('.leaf-markdown').val();
       this.widget.pageView.refresh();
     }
     

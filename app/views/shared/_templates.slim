@@ -199,7 +199,7 @@
       | {{ items[i].name }}
     | <% } } else { %>
     h2 {{ title }}
-    .leaf-content {{ content }}
+    .leaf-content {{ html }}
     | <% } %>
 
   / ===========================
@@ -361,5 +361,5 @@
     | <% } else { %>
     p {{ catCrumbs }}
     h2 Editing Page: {{ currentCat }}
-    textarea.leaf-content {{ content }}
+    textarea.leaf-markdown {{ markdown }}
     | <% } %>
