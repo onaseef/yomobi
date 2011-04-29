@@ -34,6 +34,7 @@
         if (widget.get('singletonInUse')) return;
         w_area.append( self.widgetTemplate(widget.toJSON()) );
       });
+      w_area.append('<div class="clearfix">');
     },
     
     cloneWidgetByType: function (widgetType) {
@@ -56,7 +57,7 @@
 function makeDraggable () {
   if ($(this).data("init")) return;
   $(this).data("init", true)
-         .draggable({ revert:true, zIndex:99 })
+         .draggable({ helper:'clone', revert:'invalid', zIndex:99 })
          .disableSelection()
   ;
 }

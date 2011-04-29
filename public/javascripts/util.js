@@ -77,7 +77,7 @@ var util = {
   },
   
   reserveWidget: function (widget,force) {
-    $('#emulator .loader-overlay').show();
+    util.showLoaderOverlay();
     // TODO: use a combination of id and name once starting
     // to implement multiple copies of the same widget
     return (!this.busy['ui'] || force) && this.reserve('widget:' + widget.get('name'));
@@ -89,7 +89,7 @@ var util = {
   },
   
   reserveUI: function () {
-    $('#emulator .loader-overlay').show();
+    util.showLoaderOverlay();
     var reservations = _.map(this.busy, function (isReserved) { return isReserved; });
     return !_.any(reservations) && this.reserve('ui');
   },
@@ -111,6 +111,16 @@ var util = {
   releaseUI: function () {
     $('#emulator .loader-overlay').hide();
     this.release('ui');
+  },
+  
+  resizeOverlays: function () {
+    var targetHeight = $('#emulator').height();
+    $('#emulator').find('.loader-overlay, .drophover-overlay').height(targetHeight);
+  },
+  
+  showLoaderOverlay: function () {
+    util.resizeOverlays();
+    $('#emulator .loader-overlay').show();
   },
   
   capitalize: function (string) {

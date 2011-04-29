@@ -77,6 +77,10 @@
       content.append('<div class="clearfix">');
       this.trigger('render');
       util.log('rendered',this.widgets.length,'widgets');
+
+      // this is needed so that the overlays
+      // don't look awkwardly short nor long
+      util.resizeOverlays();
     }
   });
   
@@ -239,6 +243,7 @@
         }
       });
     }
+    
   });
   
 })(jQuery);

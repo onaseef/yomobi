@@ -6,12 +6,14 @@
     initialize: function () {
       _.bindAll(this,'addOrder','updateOverallOrder');
       this.bind('add',this.addOrder);
-      this.bind('remove',_.bind(this.updateOverallOrder,{},true));
+      // mapp.homeView.bind('render',this.updateOverallOrder);
     },
     
     addOrder: function (widget) {
-      widget.order = -1;
-      this.updateOverallOrder();
+      // this is -1 because the widget is already added
+      widget.order = this.models.length - 1;
+      this.sort({ silent:true });
+      this.updateOverallOrder({ noUpdate:true });
 
       util.reserveWidget(widget,true);
       widget.save(null,{
@@ -25,14 +27,32 @@
       return this.find(function (w) { return w.get('name') == widgetName; });
     },
     
-    updateOverallOrder: function (noSync) {
-      var i = 0, worder = {};
+    updateOverallOrder: function (options) {
+      var i = 0, worder = {}, changed = false, options = options || {};
       this.each(function (widget) {
-        widget.order = $(widget.homeView.el).index();
+        if (!options.noUpdate) {
+          var iconIdx = $(widget.homeView.el).index();
+          changed = changed || widget.order != iconIdx;
+          widget.order = iconIdx;
+        }
         worder[widget.get('name')] = widget.order;
       });
-      util.log( 'NEW ORDER', worder );
-      if (!noSync) {
+
+      // check if new worder is different than current worder
+      var newNames = _.keys(worder)
+        , oldNames = _.keys(bapp.worderDoc.worder)
+        , changed  = changed
+                  || newNames.length != oldNames.length
+                  || newNames.length != _.intersect(newNames,oldNames).length
+      ;
+      util.log('NEW ORDER',worder,
+               'changed?',changed,
+               'sync?',!options.noSync,
+               'update?',!options.noUpdate,
+               'forceSync?',!!options.forceSync);
+
+      if (!options.noSync && changed && (util.reserveUI() || options.forceSync)) {
+        util.log('Syncing worder...');
         // tell server to update order
         bapp.worderDoc.worder = worder;
         $.post('/order',bapp.worderDoc,function (newWorderDoc) {
@@ -58,6 +78,20 @@
     goToPage: function (widgetName) {
       mapp.transition('forward');
     },
+    
+    scrollTo: function (position,elem) {
+      elem = elem || this.el;
+      var targetTop = $(elem).offset().top
+        , screenTop = this.el.parent().offset().top
+      ;
+      switch (position) {
+        case 'top':     var dest = targetTop - screenTop; break;
+        default:        var dest = p.top + $(elem).height();
+      }
+      util.log('Scrolling to elem',elem,'dest',dest,'scrollTop',this.el.parent().scrollTop());
+      
+      // this.el.parent().scrollTop(dest);
+    }
   });
   
   // ----------------------------------
@@ -67,7 +101,7 @@
     mode: 'edit',
     
     initialize: function () {
-      _.bindAll(this,'rebindSortables','checkWidgetOrder');
+      _.bindAll(this,'rebindSortables');
       
       window.Widgets.prototype.url = 'http://yomobi.couchone.com/' + g.appData.company +
          '/_design/widgets/_view/by_name?include_docs=true',
@@ -97,7 +131,7 @@
           success: function (widgets,res) {
             
             mapp.widgetsInUse.refresh(widgets.models);
-            mapp.widgetsInUse.updateOverallOrder(true);
+            mapp.widgetsInUse.updateOverallOrder({ noSync:true });
 
             // TODO: grab data from server (bdata)
             var widgetsAvailable =  _.map(bdata, function (data,name) {
@@ -228,32 +262,9 @@
       });
     },
     
-    checkWidgetOrder: function () {
-      var isClone = function () { return $(this).hasClass('dbx-clone'); };
-      var changed = false;
-      $('#home-widgets .home-icon').not(isClone).each(function (idx,elem) {
-        var codeName = util.uglifyName($(elem).find('.title').text())
-          , widget = mapp.widgetsInUse.getWidgetByName(codeName)
-        ;
-        changed = changed || idx !== widget.order;
-      });
-      
-      if (changed === true && util.reserveUI()) {
-        $('#home-widgets .home-icon').not(isClone).each(function (idx,elem) {
-          var codeName = util.uglifyName($(elem).find('.title').text())
-            , widget = mapp.widgetsInUse.getWidgetByName(codeName)
-          ;
-          widget.order = idx;
-        });
-        
-        mapp.widgetsInUse.updateOverallOrder();
-      }
-    },
-    
     rebindSortables: function () {
-      // this.homeView.render();
       g.homeDbx.initBoxes();
-      this.checkWidgetOrder();
+      mapp.widgetsInUse.updateOverallOrder({ forceSync:true });
     },
     
   });
@@ -292,6 +303,11 @@
   
   $('#emulator').droppable({
     hoverClass: 'drophover',
+
+    over: function () {
+      var targetHeight = $('#emulator').height();
+      $('#emulator .drophover-overlay').height(targetHeight);
+    },
     drop: function (e,ui) {
       
       if (mapp.pageLevel != 0) {
@@ -322,7 +338,7 @@
     return util.isUIFree();
   };
   
-  g.rearrangeManager.onstatechange = bapp.checkWidgetOrder;
+  g.rearrangeManager.onstatechange = mapp.widgetsInUse.updateOverallOrder;
   
   g.rearrangeManager.onboxdrag = function () {
     return util.isUIFree();
