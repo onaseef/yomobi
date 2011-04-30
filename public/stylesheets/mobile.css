@@ -88,6 +88,7 @@ body {
 .page .content.gmap h1, .page .content.gmap p {
   padding-left: 4px; }
 .page .content.gmap .maps {
+  height: 305px;
   text-align: center; }
   .page .content.gmap .maps .map-link {
     margin: 10px 0; }
