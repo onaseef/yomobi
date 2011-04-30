@@ -75,6 +75,8 @@
     
     editName: function (e) {
       util.log('editName',e);
+      if (this.widget.get('singleton')) return;
+      
       var self = this;
       this.el
         .find('.widget-name').hide().end()
@@ -131,6 +133,9 @@
       ;
       this.el.html(this.template(templateData));
       this.delegateEvents(this.extendedEvents);
+
+      if (this.widget.get('singleton'))
+        this.el.find('.change-label').remove();
 
       if (this.onEditStart) this.onEditStart();
     },
