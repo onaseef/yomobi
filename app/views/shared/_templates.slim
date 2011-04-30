@@ -162,15 +162,31 @@
       p {{ #{day}Hours }}
 
   script.gmap-page(type="text/template")
-    h1 Find Us:
-    p (tap to view in Google Maps)
+    h3 Address:
+    .addr-line {{ _maybe.addr1 }}
+    .addr-line {{ _maybe.addr2 }}
+    .addr-line {{ _maybe.city }}, {{ _maybe.state }} {{ _maybe.zip }}
+    .addr-line {{ _maybe.country }}
+    br
+    br
     .maps
       a.map-link href="http://maps.google.com/maps?q={{ fullAddress }}"
         img src="{{ mapUrl }}"
+    a.map-link href="http://maps.google.com/maps?q={{ fullAddress }}" View Google Map
+    
+    h3 Need Directions?
+    form action="http://maps.google.com/maps" method="get"
+      label Enter starting address:
+      br
+      input type="text" name="saddr"
+      input type="submit" value="submit"
+      input type="hidden" name="daddr" value="{{ fullAddress }}"
+    
     h3 A closer look:
     .maps
       a.map-link href="http://maps.google.com/maps?q={{ fullAddress }}"
         img src="{{ mapUrl2 }}"
+    a.map-link href="http://maps.google.com/maps?q={{ fullAddress }}" View Google Map
   
   script.coupon-page(type="text/template")
     h1 Coupon Offer
