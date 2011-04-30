@@ -134,7 +134,9 @@
       this.el.html(this.template(templateData));
       this.delegateEvents(this.extendedEvents);
 
-      if (this.widget.get('singleton'))
+      widget.homeView.highlight(true);
+
+      if (widget.get('singleton'))
         this.el.find('.change-label').remove();
 
       if (this.onEditStart) this.onEditStart();

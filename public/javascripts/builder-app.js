@@ -155,6 +155,7 @@
     homeViewWidgetClick: function (widget) {
       if(this.mode == 'emulate') return true;
 
+      if (this.currentEditor) this.currentEditor.widget.homeView.highlight(false);
       this.currentEditor = widget.getEditor();
       this.currentEditor.startEditing();
       // returning false will cause the mobile emulator to ignore the click

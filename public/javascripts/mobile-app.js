@@ -51,7 +51,12 @@
       if(this.model.onHomeViewClick()) {
         mapp.goToPage(this.model.get('name'));
       }
+    },
+    
+    highlight: function (toggle) {
+      $(this.el).toggleClass('editing',toggle);
     }
+    
   });
   
   // ===================================
