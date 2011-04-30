@@ -174,7 +174,7 @@
     
     viewWidget: function (widget,subpage) {
       var direction = widget.pageView.onPageView(subpage)
-        , wpage = this.getNextWidgetPage(direction)
+        , wpage = this.getNextPage(direction)
       ;
       wpage.content.html(widget.getPageContent());
       wpage.topBar.find('.title').html(widget.getTitleContent());
@@ -183,23 +183,23 @@
       mapp.transition(direction);
     },
     
-    getActiveWidgetPage: function () {
-      if(this.pageLevel == 0) return null;
+    getActivePage: function () {
       var page = this.el.find('.page:eq('+this.pageLevel+')');
-      return {
-        topBar:  page.find('.top-bar'),
-        content: page.find('.content')
-      }
+      page.topBar = page.find('.top-bar');
+      page.content = page.find('.content');
+
+      return page;
     },
     
-    getNextWidgetPage: function (direction) {
+    getNextPage: function (direction) {
       direction = direction || 'forward';
       var mod = (direction === 'forward') ? 1 : -1;
+
       var page = this.el.find('.page:eq(' + (this.pageLevel+mod) + ')');
-      return {
-        topBar:  page.find('.top-bar'),
-        content: page.find('.content')
-      }
+      page.topBar = page.find('.top-bar');
+      page.content = page.find('.content');
+      
+      return page;
     },
     
     goToPage: function (widgetName,subpage) {
@@ -227,14 +227,23 @@
       var self = this
         , delta = (direction == 'forward') ? 1 : -1
         , deltaStr = (direction == 'forward') ? '-=' : '+='
+        , currentHeight = this.getActivePage().height()
+        , nextHeight = this.getNextPage(direction).height()
       ;
+      mapp.resize( Math.max(currentHeight,nextHeight) );
       
       this.el.find('#canvas').animate({
         left: deltaStr + g.width
       }, 350, function () {
         mapp.pageLevel += delta;
+        mapp.resize(nextHeight);
         util.release('pageTransition');
       });
+    },
+    
+    resize: function (height) {
+      height = height || mapp.getActivePage().height();
+      $('#mobile-container').height(height);
     },
     
     fetchWorder: function (callback) {

@@ -132,7 +132,7 @@
     },
     
     refresh: function () {
-      var wpage = mapp.getActiveWidgetPage().content.html(this.widget.getPageContent());
+      var wpage = mapp.getActivePage().content.html(this.widget.getPageContent());
       this.widget.pageView.setContentElem(wpage);
     }
     
