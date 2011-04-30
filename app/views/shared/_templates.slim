@@ -189,7 +189,7 @@
     a.map-link href="http://maps.google.com/maps?q={{ fullAddress }}" View Google Map
   
   script.coupon-page(type="text/template")
-    h1 Coupon Offer
+    h2 {{ _maybe.couponName }}
     p {{ _maybe.description }}
     | <% if (_maybe.expire) { %>
     p Expires: {{ _maybe.expire }}
@@ -290,6 +290,8 @@
     input(name="zip" type="text" value="{{ _maybe.zip }}")
   
   script.coupon-edit-area(type="text/template")
+    label Name:
+    input(name="couponName" type="text" value="{{ _maybe.couponName }}")
     label Description:
     textarea(name="description" type="text") {{ _maybe.description }}
     label Expiration Date:
