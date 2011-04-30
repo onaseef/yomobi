@@ -1,11 +1,11 @@
 body {
-  font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
   margin: 0;
   padding: 0; }
 
 #mobile-container {
   width: 320px;
-  overflow: hidden; }
+  overflow: hidden;
+  font-family: "lucida grande", tahoma, verdana, arial, sans-serif; }
 
 #canvas {
   position: relative;
@@ -16,7 +16,8 @@ body {
     float: left;
     width: 320px; }
     #canvas .page .content {
-      padding: 0 4px; }
+      padding: 0 4px;
+      font-size: 16px; }
 
 .top-bar {
   width: 304px;
