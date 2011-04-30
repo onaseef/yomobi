@@ -35,7 +35,7 @@ html
     = javascript_include_tag 'widgets/mobile/base'
     = javascript_include_tag 'widgets/builder/base'
 
-    - Dir[widgets_dir('mobile/*.js')].each do |widget|
+    - Dir[widgets_dir('mobile/*.js')].sort.each do |widget|
       - next if File.basename(widget) == 'base.js'
       = javascript_include_tag "widgets/mobile/#{File.basename widget}"
 
@@ -43,7 +43,7 @@ html
 
     = javascript_include_tag 'views/edit-widget'
 
-    - Dir[widgets_dir('builder/*.js')].each do |widget|
+    - Dir[widgets_dir('builder/*.js')].sort.each do |widget|
       - next if File.basename(widget) == 'base.js'
       = javascript_include_tag "widgets/builder/#{File.basename widget}"
 
