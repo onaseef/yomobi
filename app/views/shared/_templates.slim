@@ -92,6 +92,7 @@
     .page
       .top-bar
         .back-btn
+        .title
       .content
   
   #dialog-invalid-drag title="Oops"
@@ -288,7 +289,6 @@
     textarea(name="paste" type="text") {{ _maybe.description }}
   
   script.category-edit-area(type="text/template")
-    p {{ catCrumbs }}
     h2 {{ currentCat }}
     label Sub-Categories:
     br

@@ -36,10 +36,20 @@ body {
   padding: 8px 0 0 12px; }
 
 .back-btn {
+  float: left;
   width: 50px;
   height: 30px;
-  margin-top: 8px;
+  margin: 8px 8px 0 0;
   background: url(/images/back-btn.png) no-repeat; }
+
+.title h2, .title h3 {
+  margin: 9px 0 0 15px;
+  font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+  font-weight: normal; }
+.title h2 {
+  font-size: 24px; }
+.title h3 {
+  font-size: 18px; }
 
 .home-icon {
   float: left;

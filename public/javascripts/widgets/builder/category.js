@@ -11,8 +11,7 @@
       if (showData.cats.length === 0) showData.cats = ['==None=='];
       
       var extraData = {
-        currentCat: util.catName(_.last(this.catStack)) || this.get('prettyName'),
-        catCrumbs: util.catStackCrumbs(this.get('prettyName'),this.catStack)
+        currentCat: util.catName(_.last(this.catStack)) || this.get('prettyName')
       };
       return _.extend({},showData,extraData);
     },
@@ -76,7 +75,10 @@
       var self = this;
       var dialog =  new AddCatDialog({
         model: this.widget,
-        onClose: function () { self.refreshViews(); }
+        onClose: function () {
+          self.refreshViews();
+          mapp.requirePageCount(self.widget.getLevelDepth(true));
+        }
       });
       dialog.enterMode('add').prompt();
     },

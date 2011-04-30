@@ -168,9 +168,13 @@
     },
     
     viewWidget: function (widget,subpage) {
-      var direction = widget.pageView.onPageView(subpage);
-      var wpage = this.getNextWidgetPage(direction).content.html(widget.getPageContent());
-      widget.pageView.setContentElem(wpage);
+      var direction = widget.pageView.onPageView(subpage)
+        , wpage = this.getNextWidgetPage(direction)
+      ;
+      wpage.content.html(widget.getPageContent());
+      wpage.topBar.find('.title').html(widget.getTitleContent());
+      
+      widget.pageView.setContentElem(wpage.content);
       mapp.transition(direction);
     },
     

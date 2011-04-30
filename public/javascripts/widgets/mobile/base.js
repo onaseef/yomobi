@@ -19,6 +19,10 @@
       return this._template(this.getShowData());
     },
     
+    getTitleContent: function () {
+      return '<h2>' + this.get('prettyName') + '</h2>';
+    },
+    
     getShowData: function () {
       return this.toJSON();
     },

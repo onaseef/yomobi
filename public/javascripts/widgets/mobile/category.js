@@ -44,14 +44,18 @@
       return _.extend({},this.toJSON(),extraData);
     },
     
+    getTitleContent: function () {
+      return '<h3>' + util.catStackCrumbs(this.get('prettyName'),this.catStack) + '</h3>';
+    },
+    
     getCurrentLevel: function () {
       var level = this.get('struct');
       _.each(this.catStack, function (cat) { level = level[cat]; });
       return level;
     },
     
-    getLevelDepth: function () {
-      if (this.levelDepth === undefined) {
+    getLevelDepth: function (clearCache) {
+      if (this.levelDepth === undefined || clearCache) {
         this.levelDepth = util.calcLevelDepth(this.get('struct'));
       }
       return this.levelDepth;
