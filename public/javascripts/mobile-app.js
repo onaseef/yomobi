@@ -109,7 +109,7 @@
         return w.get('name') == name;
       });
       
-      mapp.viewWidget(widget,subpage);
+      mapp.viewWidget(widget,subpage && unescape(subpage));
     },
     
   });
