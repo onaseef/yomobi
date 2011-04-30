@@ -54,7 +54,8 @@
       'click input[name=up_item]':          'moveItem',
       'click input[name=down_item]':        'moveItem',
       
-      'keyup textarea':                     'queueActiveLeafUpdate'
+      'keyup textarea':                     'queueActiveLeafUpdate',
+      'click #wmd-button-row':              'queueActiveLeafUpdate'
     },
     
     init: function (widget) {
@@ -113,6 +114,7 @@
       
       mapp.viewWidget(this.widget, subpage + item.name);
       this.widget.getEditor().startEditing();
+      bapp.wmd.start();
     },
     
     // this event is only triggered by bapp,
@@ -126,6 +128,7 @@
       
       if (!newSubpage) return mapp.transition('back');
       mapp.viewWidget(this.widget,newSubpage);
+      bapp.wmd.stop();
     },
     
     refresh: function () {

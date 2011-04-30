@@ -922,7 +922,6 @@ Attacklab.wmdBase = function(){
 			buttonRow.id = "wmd-button-row";
 			buttonRow = buttonBar.appendChild(buttonRow);
 
-			
 			var boldButton = document.createElement("li");
 			boldButton.className = "wmd-button";
 			boldButton.id = "wmd-bold-button";
@@ -949,7 +948,7 @@ Attacklab.wmdBase = function(){
 			var linkButton = document.createElement("li");
 			linkButton.className = "wmd-button";
 			linkButton.id = "wmd-link-button";
-			linkButton.title = "Hyperlink <a> Ctrl+L";
+			linkButton.title = "Hyperlink <a>";
 			linkButton.XShift = "-40px";
 			linkButton.textOp = function(chunk, postProcessing, useDefaultText){
 				return command.doLinkOrImage(chunk, postProcessing, false);
@@ -957,6 +956,7 @@ Attacklab.wmdBase = function(){
 			setupButton(linkButton, true);
 			buttonRow.appendChild(linkButton);
 
+      /*/
 			var quoteButton = document.createElement("li");
 			quoteButton.className = "wmd-button";
 			quoteButton.id = "wmd-quote-button";
@@ -965,7 +965,9 @@ Attacklab.wmdBase = function(){
 			quoteButton.textOp = command.doBlockquote;
 			setupButton(quoteButton, true);
 			buttonRow.appendChild(quoteButton);
+			/**/
 			
+			/*/
 			var codeButton = document.createElement("li");
 			codeButton.className = "wmd-button";
 			codeButton.id = "wmd-code-button";
@@ -974,11 +976,12 @@ Attacklab.wmdBase = function(){
 			codeButton.textOp = command.doCode;
 			setupButton(codeButton, true);
 			buttonRow.appendChild(codeButton);
+			/**/
 
 			var imageButton = document.createElement("li");
 			imageButton.className = "wmd-button";
 			imageButton.id = "wmd-image-button";
-			imageButton.title = "Image <img> Ctrl+G";
+			imageButton.title = "Image <img>";
 			imageButton.XShift = "-100px";
 			imageButton.textOp = function(chunk, postProcessing, useDefaultText){
 				return command.doLinkOrImage(chunk, postProcessing, true);
@@ -994,7 +997,7 @@ Attacklab.wmdBase = function(){
 			var olistButton = document.createElement("li");
 			olistButton.className = "wmd-button";
 			olistButton.id = "wmd-olist-button";
-			olistButton.title = "Numbered List <ol> Ctrl+O";
+			olistButton.title = "Numbered List <ol>";
 			olistButton.XShift = "-120px";
 			olistButton.textOp = function(chunk, postProcessing, useDefaultText){
 				command.doList(chunk, postProcessing, true, useDefaultText);
@@ -1005,7 +1008,7 @@ Attacklab.wmdBase = function(){
 			var ulistButton = document.createElement("li");
 			ulistButton.className = "wmd-button";
 			ulistButton.id = "wmd-ulist-button";
-			ulistButton.title = "Bulleted List <ul> Ctrl+U";
+			ulistButton.title = "Bulleted List <ul>";
 			ulistButton.XShift = "-140px";
 			ulistButton.textOp = function(chunk, postProcessing, useDefaultText){
 				command.doList(chunk, postProcessing, false, useDefaultText);
@@ -1016,7 +1019,7 @@ Attacklab.wmdBase = function(){
 			var headingButton = document.createElement("li");
 			headingButton.className = "wmd-button";
 			headingButton.id = "wmd-heading-button";
-			headingButton.title = "Heading <h1>/<h2> Ctrl+H";
+			headingButton.title = "Heading <h1>/<h2>";
 			headingButton.XShift = "-160px";
 			headingButton.textOp = command.doHeading;
 			setupButton(headingButton, true);
@@ -1025,7 +1028,7 @@ Attacklab.wmdBase = function(){
 			var hrButton = document.createElement("li");
 			hrButton.className = "wmd-button";
 			hrButton.id = "wmd-hr-button";
-			hrButton.title = "Horizontal Rule <hr> Ctrl+R";
+			hrButton.title = "Horizontal Rule <hr>";
 			hrButton.XShift = "-180px";
 			hrButton.textOp = command.doHorizontalRule;
 			setupButton(hrButton, true);
@@ -1065,11 +1068,13 @@ Attacklab.wmdBase = function(){
 			setupButton(redoButton, true);
 			buttonRow.appendChild(redoButton); 
 			
+			/*/
 			var helpButton = document.createElement("li");
 			helpButton.className = "wmd-button";
 			helpButton.id = "wmd-help-button";
 			helpButton.XShift = "-240px";
 			helpButton.isHelp = true;
+			/**/
 			
 			var helpAnchor = document.createElement("a");
 			helpAnchor.href = helpLink;
@@ -1084,7 +1089,7 @@ Attacklab.wmdBase = function(){
 		}
 		
 		var setupEditor = function(){
-		
+		  
 			if (/\?noundo/.test(doc.location.href)) {
 				wmd.nativeUndo = true;
 			}
@@ -1119,30 +1124,6 @@ Attacklab.wmdBase = function(){
 						case "i":
 							doClick(document.getElementById("wmd-italic-button"));
 							break;
-						case "l":
-							doClick(document.getElementById("wmd-link-button"));
-							break;
-						case "q":
-							doClick(document.getElementById("wmd-quote-button"));
-							break;
-						case "k":
-							doClick(document.getElementById("wmd-code-button"));
-							break;
-						case "g":
-							doClick(document.getElementById("wmd-image-button"));
-							break;
-						case "o":
-							doClick(document.getElementById("wmd-olist-button"));
-							break;
-						case "u":
-							doClick(document.getElementById("wmd-ulist-button"));
-							break;
-						case "h":
-							doClick(document.getElementById("wmd-heading-button"));
-							break;
-						case "r":
-							doClick(document.getElementById("wmd-hr-button"));
-							break;
 						case "y":
 							doClick(document.getElementById("wmd-redo-button"));
 							break;
@@ -1171,6 +1152,7 @@ Attacklab.wmdBase = function(){
 			
 			// Auto-continue lists, code blocks and block quotes when
 			// the enter key is pressed.
+			/*/
 			util.addEvent(inputBox, "keyup", function(key){
 				if (!key.shiftKey && !key.ctrlKey && !key.metaKey) {
 					var keyCode = key.charCode || key.keyCode;
@@ -1182,6 +1164,7 @@ Attacklab.wmdBase = function(){
 					}
 				}
 			});
+			/**/
 			
 			// Disable ESC clearing the input textarea on IE
 			if (global.isIE) {
@@ -1249,9 +1232,9 @@ Attacklab.wmdBase = function(){
 			if (undoMgr) {
 				undoMgr.destroy();
 			}
-			if (div.parentNode) {
-				div.parentNode.removeChild(div);
-			}
+      // if (div.parentNode) {
+      //  div.parentNode.removeChild(div);
+      // }
 			if (inputBox) {
 				inputBox.style.marginTop = "";
 			}
@@ -1750,13 +1733,22 @@ Attacklab.wmdBase = function(){
 		wmd.wmd = {};
 		wmd.wmd.editor = wmd.editor;
 		wmd.wmd.previewManager = wmd.previewManager;
+		wmd.wmd.start = function () {
+		  wmd.panels = new wmd.PanelCollection();
+		  wmd.wmd.currentEditor = new wmd.editor();
+		};
+		wmd.wmd.stop = function () {
+		  if (!wmd.wmd.currentEditor) return;
+		  console.log('Stopping editor...');
+		  wmd.wmd.currentEditor.destroy();
+		};
 	};
 	
 	util.startEditor = function(){
 	
 		if (wmd.wmd_env.autostart === false) {
 			util.makeAPI();
-			return;
+			return wmd.wmd;
 		}
 
 		var edit;		// The editor (buttons + input + outputs) - the main object.
@@ -2400,7 +2392,7 @@ Attacklab.wmdBase = function(){
 
 Attacklab.wmd_env = {};
 Attacklab.account_options = {};
-Attacklab.wmd_defaults = {version:1, output:"HTML", lineLength:40, delayLoad:false};
+Attacklab.wmd_defaults = {version:1, output:"HTML", lineLength:40, delayLoad:false, autostart:false};
 
 if(!Attacklab.wmd)
 {
@@ -2426,15 +2418,15 @@ if(!Attacklab.wmd)
 			mergeEnv(top["wmd_options"]);
 			Attacklab.full = true;
 			
-			var defaultButtons = "bold italic link blockquote code image ol ul heading hr";
+			var defaultButtons = "bold italic link image ol ul heading hr";
 			Attacklab.wmd_env.buttons = Attacklab.wmd_env.buttons || defaultButtons;
 		};
 		Attacklab.loadEnv();
 
 	};
 	
-  // Attacklab.wmd();
-  // Attacklab.wmdBase();
-  // Attacklab.Util.startEditor();
+  Attacklab.wmd();
+  Attacklab.wmdBase();
+  bapp.wmd = Attacklab.Util.startEditor();
 };
 
