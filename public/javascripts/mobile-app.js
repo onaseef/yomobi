@@ -146,7 +146,7 @@
     
     render: function () {
       util.log('app render');
-      $('#company-info').html(this.headerTemplate({
+      $('#top-bar .company-info').html(this.headerTemplate({
         name: g.appData.company,
         prettyName: util.prettify(g.appData.company)
       }));
@@ -185,7 +185,7 @@
     
     getActivePage: function () {
       var page = this.el.find('.page:eq('+this.pageLevel+')');
-      page.topBar = page.find('.top-bar');
+      page.topBar = page.find('.back-bar');
       page.content = page.find('.content');
 
       return page;
@@ -196,7 +196,7 @@
       var mod = (direction === 'forward') ? 1 : -1;
 
       var page = this.el.find('.page:eq(' + (this.pageLevel+mod) + ')');
-      page.topBar = page.find('.top-bar');
+      page.topBar = page.find('.back-bar');
       page.content = page.find('.content');
       
       return page;
@@ -243,6 +243,7 @@
     
     resize: function (height) {
       height = height || mapp.getActivePage().height();
+      height += $('#top-bar').height();
       $('#mobile-container').height(height);
     },
     

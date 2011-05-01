@@ -23,14 +23,15 @@ body
       padding: 0 4px
       font-size: 16px
 
-.top-bar
+.back-bar
   width: $dynamic-width - 16px
   height: 48px
   padding: 8px
   background: $color-topbar
   color: #fff
 
-#company-info
+.company-info
+  @extend .back-bar
   .logo
     float: left
     width: 48px
@@ -40,6 +41,29 @@ body
     float: left
     font-size: 24px
     padding: 8px 0 0 12px
+
+.tab-bar
+  background: $color-topbar
+  color: #fff
+  padding: 0 4px
+  .tab
+    float: left
+    width: ($emulator-width - 8) / 4
+    height: 24px
+    padding-top: 6px
+    text-align: center
+    font-weight: bold
+    font-size: 12px
+  .tab:hover, .tab.active
+    background: $secondary-color
+    cursor: pointer
+
+.ad-bar
+  padding: 4px 0
+  border-top: 4px solid #fff
+  border-bottom: 4px solid #fff
+  background: $color-topbar
+  text-align: center
 
 .back-btn
   float: left

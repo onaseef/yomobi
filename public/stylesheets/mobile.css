@@ -19,22 +19,45 @@ body {
       padding: 0 4px;
       font-size: 16px; }
 
-.top-bar {
+.back-bar, .company-info {
   width: 304px;
   height: 48px;
   padding: 8px;
   background: #3b5998;
   color: white; }
 
-#company-info .logo {
+.company-info .logo {
   float: left;
   width: 48px;
   height: 48px;
   background: no-repeat; }
-#company-info .name {
+.company-info .name {
   float: left;
   font-size: 24px;
   padding: 8px 0 0 12px; }
+
+.tab-bar {
+  background: #3b5998;
+  color: white;
+  padding: 0 4px; }
+  .tab-bar .tab {
+    float: left;
+    width: 78px;
+    height: 24px;
+    padding-top: 6px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px; }
+  .tab-bar .tab:hover, .tab-bar .tab.active {
+    background: #627aad;
+    cursor: pointer; }
+
+.ad-bar {
+  padding: 4px 0;
+  border-top: 4px solid white;
+  border-bottom: 4px solid white;
+  background: #3b5998;
+  text-align: center; }
 
 .back-btn {
   float: left;
