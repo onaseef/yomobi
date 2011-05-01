@@ -156,6 +156,15 @@
     .input-wrap
       p Leave us a message:
       = form_tag '/leave_msg/submit', :method => 'post' do
+        label Your Email Address:
+        br
+        input type="text" name="email"
+        br
+        label Subject:
+        br
+        input type="text" name="subject"
+        br
+        label Message Content:
         textarea name="msg_content" rows=5
         input(type="submit" value="Send")
     .thanks-wrap style="display:none"
