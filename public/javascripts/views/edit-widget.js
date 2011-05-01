@@ -40,6 +40,7 @@
           util.showSuccess(self.el.find('.action-bar'));
           util.releaseWidget(model);
           model.onSave && model.onSave();
+          self.startEditing();
         }
       });
     },

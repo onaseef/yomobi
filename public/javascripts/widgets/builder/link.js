@@ -8,8 +8,20 @@
           window.location = this.get('url');
       }
       return false;
+    },
+    
+    validate: function (attrs) {
+      if (attrs.url && !attrs.url.match(/^http:\/\//))
+        attrs.url = 'http://' + attrs.url;
     }
     
+  });
+  
+  window.widgetEditors.category = window.EditWidgetView.extend({
+
+    events: {
+      
+    }
   });
   
 })(jQuery);
