@@ -190,6 +190,7 @@
             // TODO: use data from server
             if (bdata[newWidget.get('wtype')].singleton)
               bapp.sidebar.setSingletonInUse(newWidget.get('name'),true);
+            mapp.resize();
           }
         },
         onCancel: function () {
