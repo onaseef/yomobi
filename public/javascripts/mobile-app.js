@@ -260,6 +260,7 @@
         , nextHeight = this.getNextPage(direction).height()
       ;
       mapp.resize( Math.max(currentHeight,nextHeight) );
+      window.scrollTo(0,0);
       
       this.el.find('#canvas').animate({
         left: deltaStr + g.width
