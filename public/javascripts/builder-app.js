@@ -264,6 +264,7 @@
           // TODO: use data from server
           if (bdata[widget.get('wtype')].singleton)
             bapp.sidebar.setSingletonInUse(widget.get('name'),false);
+          mapp.resize();
         }
       });
     },
