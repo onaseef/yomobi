@@ -8,7 +8,7 @@
   window.widgetClasses.hours = Widget.extend({
     
     isDayAllDay: function (day) {
-      return this.get('hours')[day] === '00:00-23:59';
+      return this.get('hours')[day] === '12:00am|11:59pm';
     },
     
     getShowData: function () {

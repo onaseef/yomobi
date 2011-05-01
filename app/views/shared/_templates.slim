@@ -264,12 +264,16 @@
         .all-day-wrap
           | All Day
           input type="checkbox" name="#{day}_allday"
+        
+        | <% for (var i=0; i < #{day}FromHours.length; i++) { %>
         .row
           .hour-wrap class=".all-day-{{ _maybe.#{day}AllDay }}"
             label From:
-            input.hour.from type="text" name="#{day}_from" value="{{ _maybe.#{day}FromHour }}"
+            input.hour.from type="text" value="{{ #{day}FromHours[i] }}"
             label To:
-            input.hour.to type="text" name="#{day}_to" value="{{ _maybe.#{day}ToHour }}"
+            input.hour.to type="text" value="{{ #{day}ToHours[i] }}"
+        | <% } %>
+        
         .all-day-label class=".all-day-{{ _maybe.#{day}AllDay }}"
           span Open All Day
         .add-time

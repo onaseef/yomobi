@@ -13,8 +13,9 @@
       if (!this.get('hours')) {
         // set standard example hours
         hours = {};
-        var weekDays = ['mon','wed','fri'];
-        _.each(weekDays, function (day) { hours[day] = '8:00-18:00' });
+        _.each(['mon','wed','fri'], function (day) { hours[day] = ['8:00am|6:00pm'] });
+        _.each(['sun','tue','thu','sat'], function (day) { hours[day] = [] });
+        
         util.log('hours',hours);
         this.set({ hours:hours });
       }
@@ -24,17 +25,26 @@
       var data = {}, self = this;
       _.each(days, function (day) {
         var hours = self.get('hours')[day]
-          , dayStatus = hours && 'checked'
-          , from = hours ? util.from24to12(hours.split('-')[0]) : ''
-          , to   = hours ? util.from24to12(hours.split('-')[1]) : ''
-          , allDay = (hours === '00:00-23:59') ? 'checked' : ''
+          , dayStatus = (hours.length > 0) && 'checked'
+          , allDay = (hours[0] === '12:00am|11:59pm') ? 'checked' : ''
         ;
         data[day+'Status']   = dayStatus;
-        data[day+'FromHour'] = from;
-        data[day+'ToHour']   = to;
         data[day+'AllDay']   = allDay;
+
+        var fromHours = data[day+'FromHours'] = [];
+        var toHours   = data[day+'ToHours']   = [];
+
+        _.each(hours, function (h) {
+          var from = h.split('|')[0], to = h.split('|')[1];
+          fromHours.push(from);
+          toHours.push(to);
+        });
+        
+        if (hours.length == 0) {
+          fromHours.push(''); toHours.push('');
+        }
       });
-      return _.extend(this.toJSON(),data);;
+      return _.extend(this.toJSON(),data);
     }
     
   });
@@ -43,7 +53,8 @@
 
     events: {
       'click .checkbox':            'toggleDayCheckbox',
-      'click input[type=checkbox]': 'toggleAllDayCheckbox'
+      'click input[type=checkbox]': 'toggleAllDayCheckbox',
+      'click .add-time':            'addTime'
     },
     
     init: function (widget) {
@@ -52,21 +63,6 @@
     
     onEditStart: function () {
       var self = this;
-      
-      this.el.find('.edit-area input.hour').timepicker({
-        ampm: true,
-        timeFormat: 'hh:mmtt',
-        stepMinute: 15,
-        onTimeChange: function (input) {
-          var $input = $(input);
-          if ( $input.hasClass('hour from') )
-            var from = $input, to = $input.siblings('input.to'), active = 'from';
-          else
-            var from = $input.siblings('input.from'), to = $input, active = 'to';
-
-          self.adjustHours(from,to,active);
-        }
-      });
       
       this.el.find('.edit-area .day-hours').each(function (idx,elem) {
         var $elem = $(elem), day = $elem.attr('day');
@@ -111,44 +107,36 @@
       $addTime.toggle(!isChecked);
     },
     
+    addTime: function (e) {
+      var lastRow = $(e.target).parent().find('.row:first')
+        , newRow = lastRow.clone().find('input').val('').end()
+      ;
+      lastRow.after(newRow);
+    },
+    
     grabWidgetValues: function () {
-      var hours = {};
+      var weekHours = {};
       this.el.find('.day-hours').each(function (idx,elem) {
         
         var $this = $(this)
           , day = $this.attr('day')
           , dayCheckbox = $this.siblings('.day-checkbox[day='+day+']').find('.checkbox')
         ;
-        if ( !dayCheckbox.hasClass('checked') ) return;
+        if ( !dayCheckbox.hasClass('checked') ) return weekHours[day] = [];
         
-        var from = util.from12to24( $this.find('.hour.from').val() || '00:00am' )
-          , to   = util.from12to24( $this.find('.hour.to').val()   || '23:59pm' )
+        var pluckVal = function (idx,input) { return input.value; }
+          , isEmpty  = function (h) { return _.compact(h).length == 0; }
+          , hourJoin = function (h) { return h.join('|'); }
+          
+          , fromHours = $this.find('.hour.from').map(pluckVal)
+          , toHours   = $this.find('.hour.to').map(pluckVal)
+          , hours = _(fromHours).chain().zip(toHours).reject(isEmpty).map(hourJoin).value()
           , allDay = $this.find('input[type=checkbox]').is(':checked')
         ;
-        hours[day] = allDay ? '00:00-23:59' : from + '-' + to;
+        weekHours[day] = allDay ? ['12:00am|11:59pm'] : hours;
       });
-      util.log('grab hours',hours);
-      return { hours:hours };
-    },
-    
-    // fromElem and toElem are assumed to be jQuery-extended
-    // 
-    adjustHours: function ($fromElem,$toElem,active) {
-      var fromTime = util.parseTimeTo24($fromElem.val() || '00:00am')
-        , toTime   = util.parseTimeTo24($toElem.val() || '00:00am')
-      ;
-      if (active == 'from' && fromTime.toMinutes() >= toTime.toMinutes()) {
-        // adjust toTime to be one hour after fromTime
-        toTime.hour = fromTime.hour + 1;
-        toTime.minute = fromTime.minute;
-        $toElem.val(toTime.toString12());
-      }
-      else if (active == 'to' && fromTime.toMinutes() >= toTime.toMinutes()) {
-        // adjust fromTime to be one hour less than toTime
-        fromTime.hour = toTime.hour - 1;
-        fromTime.minute = toTime.minute;
-        $fromElem.val(fromTime.toString12());
-      }
+      util.log('grab hours',weekHours);
+      return { hours:weekHours };
     }
   })
 
