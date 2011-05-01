@@ -174,13 +174,14 @@
     
     viewWidget: function (widget,subpage) {
       var direction = widget.pageView.onPageView(subpage)
-        , wpage = this.getNextPage(direction)
+        , wpage = this.getNextPage(direction,true)
       ;
       wpage.content.html(widget.getPageContent());
       wpage.topBar.find('.title').html(widget.getTitleContent());
       
       widget.pageView.setContentElem(wpage.content);
       mapp.transition(direction);
+      this.currentWidget = widget;
     },
     
     getActivePage: function () {
@@ -191,15 +192,41 @@
       return page;
     },
     
-    getNextPage: function (direction) {
+    getNextPage: function (direction,noHomeAllowed) {
       direction = direction || 'forward';
       var mod = (direction === 'forward') ? 1 : -1;
 
       var page = this.el.find('.page:eq(' + (this.pageLevel+mod) + ')');
+      
+      if (page.length == 0 || noHomeAllowed && this.pageLevel == 1) {
+        page = this.injectNewPage(direction);
+      }
       page.topBar = page.find('.back-bar');
       page.content = page.find('.content');
-      
+
       return page;
+    },
+    
+    injectNewPage: function (direction) {
+      var originalCount = this.el.find('.page').length
+        , newPage = $(this.pageTemplate())
+        , pivot = this.el.find('.page:eq(' + this.pageLevel + ')')
+      ;
+      (direction == 'forward') ? pivot.after(newPage) : pivot.before(newPage);
+      
+      var newCount = this.el.find('.page').length
+        , canvasWidth = $('#canvas').width()
+        , newWidth = canvasWidth * (newCount / originalCount)
+      ;
+      $('#canvas').css('width',newWidth);
+
+      if (direction == 'backward') {
+        var currentOffset = parseInt( $('#canvas').css('left') );
+        $('#canvas').css('left',currentOffset - g.width);
+        this.pageLevel += 1;
+      }
+
+      return newPage;
     },
     
     goToPage: function (widgetName,subpage) {
@@ -219,6 +246,8 @@
         }
         this.pageLevel = 1;
         mapp.transition('back');
+        this.currentWidget.pageView.onGoHome();
+        delete this.currentWidget;
       }
     },
     
@@ -238,6 +267,8 @@
         mapp.pageLevel += delta;
         mapp.resize(nextHeight);
         util.release('pageTransition');
+        
+        if (mapp.pageLevel == 0) delete mapp.currentWidget;
       });
     },
     

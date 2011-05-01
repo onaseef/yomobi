@@ -89,13 +89,7 @@
       subpage && (subpage += '/');
       
       mapp.goToPage(this.widget.get('name'), subpage + item.name);
-    },
-    
-    onPageView: function (subpage) {
-      mapp.requirePageCount(this.widget.getLevelDepth() + 1);
-      return widgetPages.category.prototype.onPageView.call(this,subpage);
     }
-
   });
   
 })(jQuery);

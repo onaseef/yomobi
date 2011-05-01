@@ -40,7 +40,11 @@ body {
   background: #3b5998;
   color: white;
   padding: 0 4px; }
+  .tab-bar a, .tab-bar a:visited {
+    color: white;
+    text-decoration: none; }
   .tab-bar .tab {
+    display: block;
     float: left;
     width: 78px;
     height: 24px;

@@ -78,7 +78,6 @@
     
     onPageView: function (subpage) {
       util.log('subpage: ' + subpage);
-      mapp.requirePageCount(this.widget.getLevelDepth());
       if (!subpage && this.widget.catStack.length === 0) return 'forward';
       
       var subpage = subpage || ''
@@ -88,8 +87,13 @@
       ;
       this.widget.catStack = newStack;
       return direction;
+    },
+    
+    onGoHome: function () {
+      util.log('OMG GO HOME');
+      this.widget.catStack = [];
     }
-
+    
   });
   
 })(jQuery);

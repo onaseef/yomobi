@@ -68,7 +68,9 @@
       // Since most widgets only have one page,
       // the default direction is 'forward'
       return 'forward';
-    }
+    },
+    
+    onGoHome: function () {}
   });
   
 })(jQuery);
