@@ -17,9 +17,9 @@
         var struct = {
           _items:[],
           "Cat One|0": {
-            _items: [{name:'Page 1',markdown:'Blah blah blah'}],
+            _items: [{name:'Page 1',content:'<p>Blah blah blah</p>'}],
             "Subcat A|0": {
-              _items: [{name:'Page 2',markdown:'yadda yadda yadda'}],
+              _items: [{name:'Page 2',content:'<p>yadda yadda yadda</p>'}],
             }
           }
         };
@@ -37,7 +37,7 @@
           , extraData = {
               isLeaf: true,
               title: leaf.name,
-              html: util.markdownToHtml(leaf.markdown)
+              content: leaf.content
             }
         ;
       }

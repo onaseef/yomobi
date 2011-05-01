@@ -18,8 +18,7 @@
       
       var extraData = {
         currentCat: util.catName(_.last(this.catStack)) || this.get('prettyName'),
-        catCrumbs: util.catStackCrumbs(this.get('prettyName'),this.catStack),
-        markdown: showData.isLeaf && this.getCurrentLeaf().markdown
+        catCrumbs: util.catStackCrumbs(this.get('prettyName'),this.catStack)
       };
       return _.extend({},showData,extraData);
     },
@@ -54,13 +53,15 @@
       'click input[name=up_item]':          'moveItem',
       'click input[name=down_item]':        'moveItem',
       
-      'keyup textarea':                     'queueActiveLeafUpdate',
-      'click #wmd-button-row':              'queueActiveLeafUpdate'
+      'click .wysiwyg':                     'queueActiveLeafUpdate'
     },
     
     init: function (widget) {
       // this is needed for proper inheritance due to closures
       this.AddItemDialog = AddItemDialog;
+
+      _.bindAll(this,'queueActiveLeafUpdate');
+      this.bind('wysiwyg-change',this.queueActiveLeafUpdate);
     },
     
     addItem: function (e,error) {
@@ -87,8 +88,9 @@
         , leafName = _.last(this.widget.catStack)
         , leaf = _.detect(level._items, function (i) { return i.name == leafName; })
       ;
-      leaf.markdown = this.el.find('.leaf-markdown').val();
+      leaf.content = $('#jeditor').val();
       this.widget.pageView.refresh();
+      mapp.resize();
     }
     
   });
@@ -114,7 +116,24 @@
       
       mapp.viewWidget(this.widget, subpage + item.name);
       this.widget.getEditor().startEditing();
-      bapp.wmd.start();
+
+      $('#jeditor').wysiwyg({
+        css: '/stylesheets/jwysiwyg.css',
+        autoGrow: true,
+        maxHeight: 300,
+        formWidth: 340,
+        events: {
+          keyup: function () { bapp.currentEditor.trigger('wysiwyg-change'); },
+          paste: function (a,b,c) { util.log('PASTE',a,b,c); return false; }
+        },
+        controls: {
+          createLink: { visible:false },
+          insertImage: { visible:false },
+          insertTable: { visible:false },
+          subscript: { visible:false },
+          superscript: { visible:false },
+        }
+      });
     },
     
     // this event is only triggered by bapp,
@@ -128,7 +147,6 @@
       
       if (!newSubpage) return mapp.transition('back');
       mapp.viewWidget(this.widget,newSubpage);
-      bapp.wmd.stop();
     },
     
     refresh: function () {

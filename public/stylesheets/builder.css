@@ -8,7 +8,7 @@
 
 #builder .widget-editor {
   float: left;
-  width: 390px;
+  width: 375px;
   padding: 10px; }
   #builder .widget-editor .header {
     height: 72px; }
@@ -95,6 +95,15 @@
 #emulator.drophover .drophover-overlay {
   display: block; }
 
+#emulator {
+  overflow: hidden;
+  height: 480px; }
+
+#mobile-scroller {
+  overflow-y: scroll;
+  height: 480px;
+  width: 335px; }
+
 #builder .edit-area.hours .day-checkbox {
   float: left;
   width: 32px;
@@ -170,6 +179,8 @@
   padding-top: 0; }
   #builder .edit-area.category select, #builder .edit-area.page_tree select {
     width: 97%; }
+  #builder .edit-area.category #jeditor-wrapper, #builder .edit-area.page_tree #jeditor-wrapper {
+    width: 324px; }
 
 #dialog-confirm .error {
   color: #880000; }

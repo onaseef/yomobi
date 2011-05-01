@@ -76,12 +76,12 @@ body {
   height: 480px; }
 
 #emulator.portrait {
-  width: 320px;
+  width: 335px;
   min-height: 480px; }
 
 #emulator.landscape {
   width: 480px;
-  height: 320px; }
+  height: 335px; }
 
 .main-btn {
   background: #5b74a8;

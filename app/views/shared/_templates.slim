@@ -80,7 +80,7 @@
       p
         | Please name your Page:
         input.item-input type="text" name="name" value="{{ name }}"
-        input.item-input type="hidden" name="markdown" value="This is a paragraph. **This is bold.**&#010;&#010;Another paragraph. *This is italic.*&#010;&#010;----------&#010;# HUGE Header&#010;## Normal Header&#010;### Small Header&#010;"
+        input.item-input type="hidden" name="content" value="<p>Change Me</p>"
         | <% if(_maybe.error) { %>
         p.error Error: {{ _maybe.error }}
         | <% } %>
@@ -230,7 +230,7 @@
       | {{ items[i].name }}
     | <% } } else { %>
     h1 {{ title }}
-    .leaf-content {{ html }}
+    .leaf-content {{ content }}
     | <% } %>
 
   / ===========================
@@ -397,8 +397,8 @@
     | <% } else { %>
     p {{ catCrumbs }}
     h2 Editing Page: {{ currentCat }}
-    #wmd-button-bar
-    textarea#wmd-input.leaf-markdown {{ markdown }}
+    #jeditor-wrapper
+      textarea#jeditor {{ content }}
     | <% } %>
 
 #wname-test

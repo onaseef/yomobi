@@ -6,13 +6,14 @@ h1 Chipotle
 #builder-container
   #builder
     #emulator.portrait
-      #mobile-container
-        = render 'shared/mobile-render'
-        .loader-overlay
-          .icon
-        .drophover-overlay
-          .icon
-          .text Add to Mobile Site
+      #mobile-scroller
+        #mobile-container
+          = render 'shared/mobile-render'
+          .loader-overlay
+            .icon
+          .drophover-overlay
+            .icon
+            .text Add to Mobile Site
     .widget-editor
       h1 Click an icon
       h2 in the Emulator to begin editing
