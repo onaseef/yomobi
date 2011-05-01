@@ -40,19 +40,18 @@ body {
   background: #3b5998;
   color: white;
   padding: 0 4px; }
+  .tab-bar table {
+    width: 100%; }
   .tab-bar a, .tab-bar a:visited {
     color: white;
     text-decoration: none; }
-  .tab-bar .tab {
-    display: block;
-    float: left;
+  .tab-bar td {
     width: 78px;
-    padding-top: 6px;
-    padding-bottom: 6px;
+    padding: 6px 0;
     text-align: center;
     font-weight: bold;
     font-size: 12px; }
-  .tab-bar .tab:hover, .tab-bar .tab.active {
+  .tab-bar td:hover, .tab-bar td.active {
     background: #627aad;
     cursor: pointer; }
 
