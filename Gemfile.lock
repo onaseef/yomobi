@@ -37,7 +37,6 @@ GEM
       rest-client (>= 1.5.1)
     erubis (2.6.6)
       abstract (>= 1.0.0)
-    haml (3.0.25)
     heroku (1.18.3)
       launchy (~> 0.3.2)
       rest-client (< 1.7.0, >= 1.4.0)
@@ -74,6 +73,7 @@ GEM
     rake (0.8.7)
     rest-client (1.6.1)
       mime-types (>= 1.16)
+    sass (3.1.0.alpha.221)
     slim (0.9.1)
       temple (~> 0.1.8)
       tilt (~> 1.2)
@@ -90,9 +90,9 @@ PLATFORMS
 
 DEPENDENCIES
   couchrest
-  haml
   heroku
   json
   rails (= 3.0.5)
+  sass
   slim
   sqlite3

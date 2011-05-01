@@ -5,7 +5,7 @@ gem 'sqlite3'
 gem 'couchrest'
 
 gem 'slim', :require => 'slim/rails'
-gem 'haml'
+gem 'sass'
 gem 'json'
 
 group :development, :test do
