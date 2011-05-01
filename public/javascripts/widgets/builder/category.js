@@ -17,7 +17,6 @@
     },
     
     onHomeViewClick: function () {
-      util.log('this',this);
       mapp.viewWidget(this);
       
       bapp.homeViewWidgetClick(this);
@@ -132,7 +131,9 @@
     remCat: function (e) {
       var level = this.widget.getCurrentLevel();
       this.el.find('select[name=cats] option:selected').map(function (idx,elem) {
-        var cat = elem.innerHTML;
+        var catName = elem.innerHTML
+          , cat = catName + '|' + $(elem).index()
+        ;
         if (level[cat]) delete level[cat];
       });
       this.refreshViews();
@@ -360,7 +361,6 @@
           }
           else if (self.mode == 'edit') {
             var oldItem = _.detect(level._items,function (i) { return i.name == item.name });
-            util.log('EDIT',oldItem,activeItemData,level._items);
             _.extend(oldItem,activeItemData);
 
             self.options.onClose && self.options.onClose();

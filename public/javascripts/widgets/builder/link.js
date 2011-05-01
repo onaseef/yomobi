@@ -17,11 +17,4 @@
     
   });
   
-  window.widgetEditors.category = window.EditWidgetView.extend({
-
-    events: {
-      
-    }
-  });
-  
 })(jQuery);
