@@ -99,6 +99,20 @@ $(document).ready(function(){
              JSON.stringify(kase.catName)+' not correctly found in '+JSON.stringify(kase.level));
     });
   });
+  
+  test("Line wrapping", function() {
+    var io = {
+      "Hours Of Operation": "Hours&nbsp;Of&shy;Operatio&shy;n",
+      "12345678_abcde":"12345678&shy;_abcde",
+      "1234 abc 999": "1234&nbsp;abc&shy;999"
+    };
+    for (var input in io) {
+      var output = util.lineWrap(input)
+        , expected = io[input]
+      ;
+      equals(output,expected,input + ' to ' + expected);
+    }
+  });
 
 });
 </script>

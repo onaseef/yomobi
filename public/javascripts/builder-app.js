@@ -214,7 +214,7 @@
         , exception = options.exception || '_'
         , isSameName = function (w) { var n=w.get('name'); return n == name && n != exception; }
         , isValid = error || !mapp.widgetsInUse.find(isSameName) || (error = 'Name already in use.')
-        , isValid = error || util.isTextBounded(prettyName,68,37) || (error = 'Name is too big.')
+        , isValid = error || prettyName.length <= 16 || (error = 'Name is too long (16 characters max).')
       ;
       
       if (isValid === true) return options.onValid(name);

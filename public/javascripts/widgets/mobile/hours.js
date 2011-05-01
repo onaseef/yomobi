@@ -29,8 +29,9 @@
           }).join('<br />');
         }
       });
-      util.log('showdata',data);
-      return _.extend(this.toJSON(),data);;
+
+      data.prettyName = util.lineWrap(this.get('prettyName'))
+      return _.extend(this.toJSON(),data);
     }
   });
   

@@ -180,10 +180,40 @@ var util = {
     return null;
   },
   
-  isTextBounded: function (text,width,height) {
-    var $box = $('#wname-test').text(text).width(width), box = $box[0];
-    return box.clientWidth >= box.scrollWidth && $box.height() <= height;
+  // Returns a string with <wbr /> tags between
+  // every `interval` number of characters
+  lineWrap: function (text,interval) {
+    var result = '', interval = interval || 8, skipCount = 0;
+    
+    for (var i=0; i<text.length; i++) {
+      var c = text.charAt(i);
+      
+      if (c == ' ' && i % interval != 0)
+        result += '&nbsp;';
+      else if (c == ' ') {
+        skipCount += 1;
+        continue;
+      }
+      else
+        result += c;
+      
+      if ((i - skipCount) % interval == interval - 1) {
+        result += '&shy;';
+      }
+    }
+    return result;
   },
+  
+  splitStr: function (str) {
+    var result = '';
+    for (var i=0; i<str.length; i++) {
+      var c = str.charAt(i);
+      result += c;
+      if (i % 3 == 2) result += '_';
+    }
+    return result;
+  },
+  
   
   // Example inputs/outputs:
   // "08:00" -> "08:00am"
