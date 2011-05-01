@@ -69,6 +69,11 @@
     resize: window.MobileAppView.prototype.resize
   }
   window.MobileAppView = window.MobileAppView.extend({
+    
+    events: {
+      'click .back-btn':      'goBack',
+      'click .go-home':       'goHome'
+    },
 
     goBack: function () {
       // a widget is guarenteed to be being edited,
