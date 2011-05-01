@@ -277,6 +277,7 @@
       height = height || mapp.getActivePage().height();
       height += $('#top-bar').height();
       $('#mobile-container').height(height);
+      return height;
     },
     
     fetchWorder: function (callback) {

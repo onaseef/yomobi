@@ -65,6 +65,9 @@
   });
   
   // -----------------------------------------------
+  var super = {
+    resize: window.MobileAppView.prototype.resize
+  }
   window.MobileAppView = window.MobileAppView.extend({
 
     goBack: function () {
@@ -91,7 +94,13 @@
       util.log('Scrolling to elem',elem,'dest',dest,'scrollTop',this.el.parent().scrollTop());
       
       // this.el.parent().scrollTop(dest);
-    }
+    },
+    
+    resize: function (height) {
+      super.resize.call(this,height);
+      var emulatorWidth = ($('#mobile-container').height() < 480) ? 320 : 335;
+      $('#emulator').width(emulatorWidth);
+    },
   });
   
   // ----------------------------------

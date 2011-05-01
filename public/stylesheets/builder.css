@@ -67,6 +67,26 @@
     #builder .widget-editor .widget-name-edit input[type=text] {
       font-size: 2.5em; }
 
+#emulator-wrapper {
+  float: left;
+  width: 335px; }
+
+#emulator {
+  border: 4px solid #1d4088;
+  background: #edeff4; }
+
+#emulator-scroller {
+  width: 335px;
+  height: 480px; }
+
+#emulator.portrait {
+  width: 335px;
+  min-height: 480px; }
+
+#emulator.landscape {
+  width: 480px;
+  height: 335px; }
+
 #emulator .loader-overlay {
   position: absolute;
   width: 320px;
