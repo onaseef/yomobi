@@ -192,19 +192,22 @@
     // validateWidget
     //  If widget name is not valid, returns false and opens a dialog box
     //  else returns true
+    // NOTE: name is in uglified form
     // 
     validateWidgetName: function (name,wtype,options) {
-      var self = this
+      var error = null
+        , self = this
         , options = options || {}
-        , name = util.uglifyName($.trim(name))
-        , isValid = !!name.match(/^[a-z][a-z0-9\-]*$/)
+        , prettyName = util.prettifyName(name)
+        , isValid = !!name.match(/^[a-z][a-z0-9\-]*$/) || (error = 'Invalid name')
 
         , exception = options.exception || '_'
         , isSameName = function (w) { var n=w.get('name'); return n == name && n != exception; }
-        , isValid = isValid && !mapp.widgetsInUse.find(isSameName)
+        , isValid = error || !mapp.widgetsInUse.find(isSameName) || (error = 'Name already in use.')
+        , isValid = error || util.isTextBounded(prettyName,68,37) || (error = 'Name is too big.')
       ;
       
-      if (isValid) return options.onValid(name);
+      if (isValid === true) return options.onValid(name);
       
       // find ALL widgets of this wtype
       var isSameWtype = function (w) { return w.get('wtype') == wtype }
@@ -214,7 +217,8 @@
       var dialogHtml = util.getTemplate('add-widget-dialog')({
         wtype: wtype.toUpperCase(),
         defaultName: util.prettifyName(name),
-        names: existingNames
+        names: existingNames,
+        error: error
       });
       
       $(dialogHtml).dialog({

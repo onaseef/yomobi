@@ -48,13 +48,16 @@
   	  p
   	    span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"
   	    | Please name your new <b>{{ wtype }}</b> widget:
-  	    input type="text" value="{{ defaultName }}" name="wname"
-  	    .other-names
-    	    b Other names in use by this widget type:
-    	    ul
-      	    | <% for(var i=0; i < names.length; i++) { %>
-      	    |    <li> {{ names[i] }} </li>
-      	    |  <% } %>
+        input type="text" value="{{ defaultName }}" name="wname"
+        | <% if(_maybe.error) { %>
+        p.error Error: {{ _maybe.error }}
+        | <% } %>
+	    .other-names
+  	    b Other names in use by this widget type:
+  	    ul
+    	    | <% for(var i=0; i < names.length; i++) { %>
+    	    |    <li> {{ names[i] }} </li>
+    	    |  <% } %>
   
   script.add-subcat-dialog(type="text/template")
     #dialog-confirm title="Name your Sub-Category"
@@ -386,3 +389,5 @@
     #wmd-button-bar
     textarea#wmd-input.leaf-markdown {{ markdown }}
     | <% } %>
+
+#wname-test

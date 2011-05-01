@@ -180,6 +180,11 @@ var util = {
     return null;
   },
   
+  isTextBounded: function (text,width,height) {
+    var $box = $('#wname-test').text(text).width(width), box = $box[0];
+    return box.clientWidth >= box.scrollWidth && $box.height() <= height;
+  },
+  
   // Example inputs/outputs:
   // "08:00" -> "08:00am"
   // "16:00" -> "04:00pm"
