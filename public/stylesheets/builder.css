@@ -11,7 +11,7 @@
 
 #builder .widget-editor {
   float: left;
-  width: 375px;
+  width: 370px;
   padding: 10px; }
   #builder .widget-editor .header {
     height: 72px; }
@@ -69,7 +69,7 @@
 
 #emulator-wrapper {
   float: left;
-  width: 335px; }
+  width: 340px; }
 
 #emulator {
   border: 4px solid #1d4088;
@@ -80,12 +80,12 @@
   height: 480px; }
 
 #emulator.portrait {
-  width: 335px;
+  width: 340px;
   min-height: 480px; }
 
 #emulator.landscape {
   width: 480px;
-  height: 335px; }
+  height: 340px; }
 
 #emulator .loader-overlay {
   position: absolute;

@@ -251,7 +251,7 @@
       }
     },
     
-    transition: function (direction) {
+    transition: function (direction,noScroll) {
       if(!util.reserve('pageTransition')) return;
       var self = this
         , delta = (direction == 'forward') ? 1 : -1
@@ -260,7 +260,7 @@
         , nextHeight = this.getNextPage(direction).height()
       ;
       mapp.resize( Math.max(currentHeight,nextHeight) );
-      window.scrollTo(0,0);
+      if (!noScroll) window.scrollTo(0,0);
       
       this.el.find('#canvas').animate({
         left: deltaStr + g.width

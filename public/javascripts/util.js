@@ -459,7 +459,26 @@ var util = {
     }
 
     throw new Error("Unable to copy obj! Its type isn't supported.");
+  },
+  
+  /* http://jdsharp.us/jQuery/minute/calculate-scrollbar-width.php */
+  scrollbarWidth: function () {
+    if (this._scrollbarWidth) return this._scrollbarWidth;
+
+    document.body.style.overflow = 'hidden';
+    var width = document.body.clientWidth;
+ 
+    document.body.style.overflow = 'scroll';
+    width -= document.body.clientWidth;
+ 
+    if(!width) width = document.body.offsetWidth-document.body.clientWidth;
+ 
+    document.body.style.overflow = '';
+    this._scrollbarWidth = width;
+ 
+    return this._scrollbarWidth;
   }
+  
 }
 
 // useful extensions

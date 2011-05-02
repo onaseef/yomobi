@@ -66,7 +66,9 @@
   
   // -----------------------------------------------
   var super = {
-    resize: window.MobileAppView.prototype.resize
+    resize: window.MobileAppView.prototype.resize,
+    transition: window.MobileAppView.prototype.transition,
+    goHome: window.MobileAppView.prototype.goHome,
   }
   window.MobileAppView = window.MobileAppView.extend({
     
@@ -81,6 +83,11 @@
       if (bapp.currentEditor.widget.pageView.onBackBtnClick)
         return bapp.currentEditor.widget.pageView.onBackBtnClick();
       this.transition('back');
+    },
+    
+    goHome: function (e) {
+      e.preventDefault();
+      super.goHome.call(this);
     },
     
     goToPage: function (widgetName) {
@@ -101,9 +108,14 @@
       // this.el.parent().scrollTop(dest);
     },
     
+    transition: function (direction) {
+      $('#mobile-scroller').scrollTop(0);
+      super.transition.call(this,direction,true);
+    },
+    
     resize: function (height) {
       super.resize.call(this,height);
-      var emulatorWidth = ($('#mobile-container').height() < 480) ? 320 : 335;
+      var emulatorWidth = ($('#mobile-container').height() < 480) ? 320 : 320+util.scrollbarWidth();
       $('#emulator').width(emulatorWidth);
     },
   });

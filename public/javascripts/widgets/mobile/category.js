@@ -42,7 +42,6 @@
         catTemplate: this.catTemplate,
         prettyName: util.lineWrap(this.get('prettyName'))
       };
-      util.log('PRETTY NAME',extraData.prettyName);
       return _.extend({},this.toJSON(),extraData);
     },
     
@@ -92,7 +91,6 @@
     },
     
     onGoHome: function () {
-      util.log('OMG GO HOME');
       this.widget.catStack = [];
     }
     
