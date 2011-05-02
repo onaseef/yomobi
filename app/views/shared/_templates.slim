@@ -247,8 +247,15 @@
   / = Widget Edit Pages =
   / =====================
   script.link-edit-area(type="text/template")
-    label Your website's address [e.g. www.mysite.com]:
+    label Enter your website's address [e.g. www.mysite.com]:
     input(name="url" type="text" value="{{ _maybe.url }}")
+  
+  script.link_fb-edit-area(type="text/template")
+    h3 Current Link
+    p
+      a href="{{ url }}" target="_blank" {{ anchorText }}
+    label Enter your facebook id [e.g. Starbucks]:
+    input(name="fbid" type="text" value="{{ _maybe.fbid }}")
   
   script.custom_page-edit-area(type="text/template")
     label Write a short description of your website:
