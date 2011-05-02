@@ -22,7 +22,7 @@
     },
     
     validate: function (attrs) {
-      if (attrs.fbid && attrs.fbid.match(/^(www.)?facebook\.com\//))
+      if (attrs.fbid && attrs.fbid.match(new RegExp('^(www\\.)?'+this.baseName+'\\.com')))
         attrs.fbid = 'http://' + attrs.fbid;
     }
     

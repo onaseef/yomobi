@@ -254,7 +254,14 @@
     h3 Current Link
     p
       a href="{{ url }}" target="_blank" {{ anchorText }}
-    label Enter your facebook id [e.g. Starbucks]:
+    label Enter your facebook id [e.g. Starbucks] or url [e.g. www.facebook.com/Starbucks]:
+    input(name="fbid" type="text" value="{{ _maybe.fbid }}")
+  
+  script.link_twitter-edit-area(type="text/template")
+    h3 Current Link
+    p
+      a href="{{ url }}" target="_blank" {{ anchorText }}
+    label Enter your twitter username [e.g. nytimes]:
     input(name="fbid" type="text" value="{{ _maybe.fbid }}")
   
   script.custom_page-edit-area(type="text/template")
