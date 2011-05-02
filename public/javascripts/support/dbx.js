@@ -864,7 +864,6 @@ function dbxGroup()
 //initialize the boxes in this group
 dbxGroup.prototype.initBoxes = function(recover, getspare)
 {
-  util.log('initing boxes');
 	//dictionary of box objects, including a manual length property
 	//because we won't be able to derive one otherwise
 	this.boxes = { 'length' : 0 };

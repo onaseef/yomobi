@@ -22,7 +22,6 @@
     },
     
     validate: function (attrs) {
-      util.log('VALIDATE',attrs,attrs.fbid);
       if (attrs.fbid && attrs.fbid.match(/^(www.)?facebook\.com\//))
         attrs.fbid = 'http://' + attrs.fbid;
     }

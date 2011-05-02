@@ -24,7 +24,6 @@
     },
     
     onHomeViewClick: function () {
-      util.log('this',this);
       mapp.viewWidget(this);
       
       bapp.homeViewWidgetClick(this);
@@ -201,7 +200,6 @@
           }
           else if (self.mode == 'edit') {
             var oldItem = _.detect(level._items,function (i) { return i.name == item.name });
-            util.log('EDIT',oldItem,activeItemData,level._items);
             _.extend(oldItem,activeItemData);
 
             self.options.onClose && self.options.onClose();

@@ -1,3 +1,6 @@
+//
+// MOBILE
+//
 (function ($) {
   var mapUrlBase = 'http://maps.google.com/maps/api/staticmap?'
     , mapUrlOptions = '&size=300x300&sensor=false'

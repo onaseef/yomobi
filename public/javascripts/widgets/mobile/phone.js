@@ -1,3 +1,6 @@
+//
+// MOBILE
+//
 (function ($) {
   
   window.widgetClasses.phone = Widget.extend({

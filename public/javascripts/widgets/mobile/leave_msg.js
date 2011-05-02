@@ -1,3 +1,6 @@
+//
+// MOBILE
+//
 (function ($) {
   
   window.widgetClasses.leave_msg = Widget.extend({

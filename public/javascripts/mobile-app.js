@@ -71,7 +71,6 @@
     },
     
     render: function () {
-      util.log('homeview render');
       var content = this.el.find('.content').empty();
 
       this.widgets.each(function (w) {
@@ -103,8 +102,7 @@
     },
     
     viewWidgetByName: function (name,subpage) {
-      util.log('viewing',name);
-      util.log(mapp.widgets);
+      util.log('viewing widget:',name);
       var widget = mapp.widgets.find(function (w) {
         return w.get('name') == name;
       });

@@ -75,7 +75,6 @@
         else {
           $elem.find('input[type=checkbox]').removeAttr('checked');
         }
-        util.log(day,self.widget.isDayAllDay(day));
       });
     },
     
@@ -94,7 +93,6 @@
     },
     
     toggleAllDayCheckbox: function (e) {
-      util.log('toogle');
       var $target = $(e.target)
         , row = $target.parent().siblings('.row')
         , $hourWrap = row.find('.hour-wrap')

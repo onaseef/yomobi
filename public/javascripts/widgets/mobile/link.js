@@ -1,3 +1,6 @@
+//
+// MOBILE
+//
 (function ($) {
   
   window.widgetClasses.link = Widget.extend({

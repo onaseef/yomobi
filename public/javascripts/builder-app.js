@@ -45,11 +45,6 @@
                   || newNames.length != oldNames.length
                   || newNames.length != _.intersect(newNames,oldNames).length
       ;
-      util.log('NEW ORDER',worder,
-               'changed?',changed,
-               'sync?',!options.noSync,
-               'update?',!options.noUpdate,
-               'forceSync?',!!options.forceSync);
 
       if (!options.noSync && changed && (util.reserveUI() || options.forceSync)) {
         util.log('Syncing worder...');
@@ -141,9 +136,6 @@
       mapp.widgetsInUse.bind('remove',mapp.homeView.render);
 
       mapp.homeView.bind('render',this.rebindSortables);
-      mapp.homeView.bind('render',function () {
-        util.log('RENDER RENDER RENDER');
-      });
       
       // first fetch overall widget order
       var self = this;
@@ -199,7 +191,6 @@
           var newWidget = self.sidebar.cloneWidgetByType(wtype);
       
           if (newWidget) {
-            util.log('new');
             newWidget.set({ name:validName });
             util.pushUIBlock(validName);
             mapp.widgetsInUse.add(newWidget);

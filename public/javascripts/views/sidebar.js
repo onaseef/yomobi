@@ -29,7 +29,6 @@
       var w_area = $('#sidebar .widgets').empty()
         , self = this
       ;
-      util.log(this.widgets);
       this.widgets.each(function (widget) {
         if (widget.get('singletonInUse')) return;
         w_area.append( self.widgetTemplate(widget.toJSON()) );

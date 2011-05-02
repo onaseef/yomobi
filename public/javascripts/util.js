@@ -96,7 +96,6 @@ var util = {
   
   isUIFree: function () {
     var reservations = _.map(this.busy, function (isReserved) { return isReserved; });
-    util.log('ui free?',!_.any(reservations) && this.reserve('ui',false));
     return !_.any(reservations) && this.reserve('ui',false);
   },
   

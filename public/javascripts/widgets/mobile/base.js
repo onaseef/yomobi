@@ -27,7 +27,6 @@
       var extraData = {
         prettyName: util.lineWrap(this.get('prettyName'))
       };
-      util.log('EXTRA DATA',extraData);
       return _.extend({},this.toJSON(),extraData);
     },
     
