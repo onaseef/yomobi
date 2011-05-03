@@ -48,6 +48,7 @@
     getEditAreaData: function () {
       var data = {};
       var templateId = this.get('singleton') ? this.get('name') : this.get('wtype');
+      util.log('TEMPLATE ID',templateId);
 
       var editAreaTemplate = util.getTemplate(templateId + '-edit-area');
       data.editAreaContent = editAreaTemplate(this.getEditData());

@@ -110,36 +110,7 @@
   / = Category Add-Item Dialogs =
   / =============================
   
-  script.restaurant-menu-item-dialog(type="text/template")
-    #dialog-confirm title="Name your Item"
-      p Please enter your Menu Item:
-      label Name
-      br
-      input.item-input type="text" value="{{ _maybe.name }}" name="name"
-      br
-      label Price
-      br
-      input.item-input type="text" value="{{ _maybe.price }}" name="price"
-      br
-      label Short Description
-      br
-      textarea.item-input name="desc" {{ _maybe.desc }}
-      br
-      
-      | <% if(flash.error) { %>
-      p.error Error: {{ flash.error }}
-      | <% } if(flash.success) { %>
-      p.success {{ flash.success }}
-      | <% } %>
-      
-      | <% if(_items.length > 0) { %>
-      .other-names
-        b Other Menu Item names being used in this category:
-        ul
-          | <% for(var i=0; i < _items.length; i++) { %>
-          |    <li> {{ _items[i].name }} </li>
-          |  <% } %>
-      | <% } %>
+  = render :partial => 'shared/category-templates'
 
   / =====================
   / = Widget Show Pages =
@@ -232,16 +203,6 @@
     h1 {{ title }}
     .leaf-content {{ content }}
     | <% } %>
-
-  / ===========================
-  / = Specific Category Items =
-  / ===========================
-
-  script.restaurant-menu-item
-    .item class="{{ cycle }}"
-      div Name: {{ item.name }}
-      div Price: {{ item.price }}
-      div Description: {{ item.desc }}
 
   / =====================
   / = Widget Edit Pages =
@@ -343,7 +304,7 @@
     label Paste your "Embed this Calendar" link here:
     textarea(name="paste" type="text") {{ _maybe.description }}
   
-  script.restaurant-menu-edit-area(type="text/template")
+  script.restaurant-menu-edit-area.services-edit-area.products-edit-area(type="text/template")
     h2 {{ currentCat }}
     label Sub-Categories:
     br

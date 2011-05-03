@@ -197,8 +197,8 @@
             mapp.widgetsInUse.add(newWidget);
 
             // TODO: use data from server
-            if (bdata[newWidget.get('wtype')].singleton)
-              bapp.sidebar.setSingletonInUse(newWidget.get('name'),true);
+            if (newWidget.get('singleton'))
+              bapp.sidebar.setSingletonInUse(newWidget,true);
             mapp.resize();
           }
         },

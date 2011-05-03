@@ -31,7 +31,6 @@
     
     getShowData: function () {
       var level = this.getCurrentLevel();
-      util.log('SHOOOEWWW',level);
       
       if (this.hasLeafOnTop()) {
         var leaf = this.getCurrentLeaf(level)

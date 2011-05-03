@@ -20,7 +20,6 @@
         currentCat: util.catName(_.last(this.catStack)) || this.get('prettyName'),
         catCrumbs: util.catStackCrumbs(this.get('prettyName'),this.catStack)
       };
-      util.log('EDDDIITTT',showData);
       return _.extend({},showData,extraData);
     },
     

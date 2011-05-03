@@ -154,22 +154,6 @@
       history.go(-1);
     },
     
-    requirePageCount: function (numOfPages) {
-      var originalCount = this.el.find('.page').length;
-
-      // we need the +1 because the first page is the home page
-      if (originalCount >= numOfPages + 1) return;
-      
-      while (this.el.find('.page').length - 1 < numOfPages) {
-        $(this.pageTemplate()).appendTo('#canvas');
-      }
-      var newCount = this.el.find('.page').length
-        , canvasWidth = $('#canvas').width()
-        , newWidth = canvasWidth * (newCount / originalCount)
-      ;
-      $('#canvas').css('width',newWidth);
-    },
-    
     viewWidget: function (widget,subpage) {
       var direction = widget.pageView.onPageView(subpage)
         , wpage = this.getNextPage(direction,true)

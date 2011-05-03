@@ -19,8 +19,11 @@
       this.render();
     },
     
-    setSingletonInUse: function (name,inUse) {
-      var w = this.widgets.find(function (w) { return w.get('name') == name; });
+    setSingletonInUse: function (widget,inUse) {
+      var w = this.widgets.find(function (w) {
+        return w.get('name') == widget.get('name') &&
+               w.get('wtype') == widget.get('wtype');
+      });
       w.set({ singletonInUse:inUse });
       this.render();
     },

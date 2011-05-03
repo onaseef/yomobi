@@ -77,7 +77,6 @@
         model: this.widget,
         onClose: function () {
           self.refreshViews();
-          mapp.requirePageCount(self.widget.getLevelDepth(true));
         }
       });
       dialog.enterMode('add').prompt();
@@ -198,6 +197,7 @@
     refreshViews: function () {
       this.widget.editor.startEditing();
       this.widget.pageView.refresh();
+      mapp.resize();
     }
     
   });
@@ -227,7 +227,8 @@
     },
     
     refresh: function () {
-      var wpage = mapp.getActivePage().content.html(this.widget.getPageContent());
+      var pcontent = this.widget.getPageContent();
+      var wpage = mapp.getActivePage().content.html(pcontent);
       this.widget.pageView.setContentElem(wpage);
     }
     
