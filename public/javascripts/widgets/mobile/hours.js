@@ -30,7 +30,6 @@
         }
       });
 
-      data.prettyName = util.lineWrap(this.get('prettyName'))
       return _.extend(this.toJSON(),data);
     }
   });

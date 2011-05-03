@@ -14,7 +14,7 @@
       util.log('widget res',res);
       return _.map(res.rows, function (row) {
         var wdata = row.doc
-          , widget = new window.widgetClasses[wdata.wtype](wdata)
+          , widget = util.newWidget(wdata)
         ;
         widget.order = parseInt(mapp.worder[widget.get('name')]);
         return widget;
@@ -43,7 +43,7 @@
     },
     
     render: function () {
-      $(this.el).html(this.template(this.model.getShowData()));
+      $(this.el).html( this.template(this.model.getIconData()) );
       return this;
     },
     

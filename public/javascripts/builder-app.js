@@ -81,7 +81,7 @@
     },
     
     goHome: function (e) {
-      e.preventDefault();
+      e && e.preventDefault();
       super.goHome.call(this);
     },
     
@@ -152,9 +152,10 @@
             mapp.widgetsInUse.updateOverallOrder({ noSync:true });
 
             // TODO: grab data from server (bdata)
-            var widgetsAvailable =  _.map(bdata, function (data,name) {
+            var widgetsAvailable =  _.map(bdata, function (data) {
               var wdata = _.extend({},data);
               delete wdata.editAreaTemplate;
+              
               if (wdata.singleton)
                 wdata.singletonInUse = !!mapp.widgetsInUse.getWidgetByName(wdata.name);
               return wdata;
@@ -188,7 +189,7 @@
       
       this.validateWidgetName(name,wtype, {
         onValid: function (validName) {
-          var newWidget = self.sidebar.cloneWidgetByType(wtype);
+          var newWidget = self.sidebar.cloneWidget(wtype,name);
       
           if (newWidget) {
             newWidget.set({ name:validName });

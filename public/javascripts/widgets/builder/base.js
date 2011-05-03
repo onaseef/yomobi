@@ -45,6 +45,17 @@
       return this.toJSON();
     },
     
+    getEditAreaData: function () {
+      var data = {};
+      var templateId = this.get('singleton') ? this.get('name') : this.get('wtype');
+
+      var editAreaTemplate = util.getTemplate(templateId + '-edit-area');
+      data.editAreaContent = editAreaTemplate(this.getEditData());
+      data.iconName = templateId;
+      
+      return _.extend(data, this.toJSON());
+    },
+    
     set: function(attributes, options) {
       if(attributes._id) {
         attributes.id = attributes._id;

@@ -39,8 +39,7 @@
         items: level._items || [],
         cats: util.catNamesFromLevel(level) || [],
         itemTemplate: this.itemTemplate,
-        catTemplate: this.catTemplate,
-        prettyName: util.lineWrap(this.get('prettyName'))
+        catTemplate: this.catTemplate
       };
       return _.extend({},this.toJSON(),extraData);
     },

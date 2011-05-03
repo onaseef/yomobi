@@ -19,8 +19,8 @@
       this.render();
     },
     
-    setSingletonInUse: function (wname,inUse) {
-      var w = this.widgets.find(function (w) { return w.get('name') == wname; });
+    setSingletonInUse: function (name,inUse) {
+      var w = this.widgets.find(function (w) { return w.get('name') == name; });
       w.set({ singletonInUse:inUse });
       this.render();
     },
@@ -31,20 +31,19 @@
       ;
       this.widgets.each(function (widget) {
         if (widget.get('singletonInUse')) return;
-        w_area.append( self.widgetTemplate(widget.toJSON()) );
+        w_area.append( self.widgetTemplate(widget.getIconData()) );
       });
       w_area.append('<div class="clearfix">');
     },
     
-    cloneWidgetByType: function (widgetType) {
+    cloneWidget: function (wtype,name) {
       var found = this.widgets.find(function (w) {
-        return w.get('wtype') == widgetType;
+        return w.get('wtype') == wtype && w.get('name') == name;
       });
       // this.widgets.remove(found);
-      util.log('cloneWidgetByType',widgetType,found,this.widgets);
+      util.log('cloneWidgetByType',wtype,name,found);
       if (found) {
         found = util.newWidget(found.attributes);
-        found.set({ order:0 },{ silent:true });
       }
       return found;
     }

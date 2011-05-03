@@ -24,10 +24,16 @@
     },
     
     getShowData: function () {
-      var extraData = {
-        prettyName: util.lineWrap(this.get('prettyName'))
+      return this.toJSON();
+    },
+    
+    getIconData: function () {
+      return {
+        wtype: this.get('wtype'),
+        name: this.get('name'),
+        prettyName: util.lineWrap(this.get('prettyName')),
+        iconName: this.get('singleton') ? this.get('name') : this.get('wtype')
       };
-      return _.extend({},this.toJSON(),extraData);
     },
     
     initialize: function () {

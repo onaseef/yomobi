@@ -18,102 +18,87 @@ window.widgetEditors = {};
 
 _.templateSettings.interpolate = /\{\{([^\{].*?)\}\}/g;
 
-// wdata = [
-//   {
-//     name:  "full-website",
-//     wtype: "link",
-//     url:   "http://www.google.com"
-//   },
-//   {
-//     name: "about-us",
-//     wtype: "custom_page",
-//     content: "<h1>About Us</h1><p>This is our mobile website. Lorem ipsum dolor sit amet, "+
-//              "consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et "+
-//              "dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation "+
-//              "ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor "+
-//              "in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>"
-//   }
-// ];
-
-bdata = {
-  "link": {
+bdata = [
+  {
     name: "full-website",
     wtype: 'link',
     helpText: "Add a link from your YoMobi mobile website to your full website."
   },
   
-  "link_fb": {
+  {
+    name: "picasa",
+    wtype: 'link',
+    helpText: "Add a one-tap link to your Picasa page.",
+    singleton: true
+  },
+  
+  {
     name: "facebook-page",
     wtype: 'link_fb',
     helpText: "Add a one-tap link to your businesses's Facebook page."
   },
   
-  "link_twitter": {
+  {
     name: "twitter-page",
     wtype: 'link_twitter',
     helpText: "Add a one-tap link to your businesses's Twitter page."
   },
   
-  "custom_page": {
+  {
     name: "about-us",
     wtype: 'custom_page',
     helpText: "A page describing what your business is about."
   },
   
-  "phone": {
+  {
     name: "call-us",
     wtype: 'phone',
     helpText: "Add a number for one-click calling."
   },
   
-  "leave_msg": {
+  {
     name: "leave-a-message",
     wtype: 'leave_msg',
-    helpText: "Allow your customers to leave you an email message."
+    helpText: "Allow your customers to leave you an email message.",
+    singleton: true
   },
   
-  "hours": {
+  {
     name: "operation-hours",
     wtype: 'hours',
     helpText: "Let your customers know when you're open for business."
   },
   
-  "gmap": {
+  {
     name: "find-us",
     wtype: 'gmap',
     helpText: "Show your customers a map of where your business is located."
   },
   
-  "coupon": {
+  {
     name: "coupon",
     wtype: 'coupon',
     helpText: "Give your customers an incentive to choose your business."
   },
   
-  "calendar": {
+  {
     name: "event-calendar",
     wtype: 'calendar',
     helpText: "Keep your customers up-to-date on your business's events."
   },
   
-  "category": {
+  {
     name: "restaurant-menu",
     wtype: 'category',
     helpText: "Give your customers instant access to your restaurant's cuisine.",
     singleton: true
   },
   
-  "page_tree": {
+  {
     name: "category",
     wtype: 'page_tree',
     helpText: "Create your own mobile site map of custom pages."
   }
-}
-
-var i = 0;
-for (var wtype in bdata) {
-  bdata[wtype].editAreaTemplate = util.getTemplate(wtype + '-edit-area');
-  i += 1;
-}
+];
 
 </script>

@@ -128,11 +128,9 @@
     
     startEditing: function () {
       util.log('Editing widget:',this.widget.get('name'),this.widget.isNew());
-      var widget = this.widget
-        , editAreaData = this.getEditAreaData(widget)
-        , templateData = _.extend(widget.toJSON(), editAreaData)
-      ;
-      this.el.html(this.template(templateData));
+      var widget = this.widget;
+      
+      this.el.html( this.template(widget.getEditAreaData()) );
       this.delegateEvents(this.extendedEvents);
 
       widget.homeView.highlight(true);
@@ -141,13 +139,6 @@
         this.el.find('.change-label').remove();
 
       if (this.onEditStart) this.onEditStart();
-    },
-    
-    getEditAreaData: function (widget) {
-      // TODO: grab edit area data from the server
-      var data = bdata[widget.get('wtype')];
-      data.editAreaContent = data.editAreaTemplate(widget.getEditData());
-      return data;
     },
     
     stopEditing: function () {
