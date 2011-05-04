@@ -276,13 +276,13 @@
           util.releaseUI();
           util.releaseWidget(model);
         },
-        success: function (model,res) {
-          util.log('Saved widget',model,res);
+        success: function (deadWidget,res) {
+          util.log('Saved widget',deadWidget,res);
           util.releaseUI();
-          util.releaseWidget(model);
+          util.releaseWidget(deadWidget);
           // TODO: use data from server
-          if (bdata[widget.get('wtype')].singleton)
-            bapp.sidebar.setSingletonInUse(widget.get('name'),false);
+          if (deadWidget.get('singleton'))
+            bapp.sidebar.setSingletonInUse(deadWidget,false);
           mapp.resize();
         }
       });
