@@ -15,7 +15,7 @@
     
     getEditData: function () {
       var extraData = {
-        url: this.get('fbid') || '#',
+        url: this.getUrl() || '#',
         anchorText: this.getUrl() || 'None'
       };
       return _.extend({},this.toJSON(),extraData);
