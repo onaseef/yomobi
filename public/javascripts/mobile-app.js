@@ -85,6 +85,8 @@
       // this is needed so that the overlays
       // don't look awkwardly short nor long
       util.resizeOverlays();
+      
+      mapp.resize();
     }
   });
   

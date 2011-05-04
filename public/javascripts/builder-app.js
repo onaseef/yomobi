@@ -199,7 +199,6 @@
             // TODO: use data from server
             if (newWidget.get('singleton'))
               bapp.sidebar.setSingletonInUse(newWidget,true);
-            mapp.resize();
           }
         },
         onCancel: function () {
@@ -283,7 +282,6 @@
           // TODO: use data from server
           if (deadWidget.get('singleton'))
             bapp.sidebar.setSingletonInUse(deadWidget,false);
-          mapp.resize();
         }
       });
     },
