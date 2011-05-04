@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  email: MyString
+  type: 1
+  delete_hash: MyString
+  custom: MyText
+
+two:
+  email: MyString
+  type: 1
+  delete_hash: MyString
+  custom: MyText
