@@ -4,6 +4,10 @@ body {
   font-size: 11px;
   overflow-y: scroll; }
 
+p.notice, p.alert {
+  text-align: center;
+  font-size: 16px; }
+
 #page-container {
   width: 960px;
   margin: 0 auto; }

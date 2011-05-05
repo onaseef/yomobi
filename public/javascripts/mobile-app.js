@@ -7,7 +7,7 @@
 
     sync: util.couchSync,
     // TODO: only query in-use widgets and move all-query to builder-app.js
-    url: 'http://yomobi.couchone.com/' + g.appData.company +
+    url: 'http://yomobi.couchone.com/' + g.db_name +
          '/_design/widgets/_view/inuse_by_name?include_docs=true',
 
     parse: function (res) {
@@ -147,8 +147,9 @@
     render: function () {
       util.log('app render');
       $('#top-bar .company-info').html(this.headerTemplate({
-        name: g.appData.company,
-        prettyName: util.prettify(g.appData.company)
+        // TODO: use stored icon from couch instead
+        name: g.db_name,
+        prettyName: g.appData.company
       }));
     },
     

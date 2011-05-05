@@ -5,11 +5,9 @@ window.g = {
   width: 320,
   height: 480,
   couchLocation: 'http://yomobi.couchone.com',
-  db_name: 'chipotle',
-  username: 'admin_chipotle',
-  password: '123123',
+  db_name: '<%= @company.db_name %>',
   appData: {
-    company: "chipotle"
+    company: "<%= @company.name %>"
   }
 };
 window.widgetClasses = {};

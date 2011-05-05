@@ -7,7 +7,7 @@
     
     sync: util.couchSync,
     url: function () {
-      return 'http://yomobi.couchone.com/' + g.appData.company +
+      return 'http://yomobi.couchone.com/' + g.db_name +
              '/_design/widgets/_view/by_name?include_docs=true' +
              '&key="' + this.get('name') + '"';
     },

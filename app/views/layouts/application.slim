@@ -5,7 +5,13 @@ html
     = stylesheet_link_tag 'builder-app'
     = stylesheet_link_tag 'flick/jquery-ui-1.8.11.custom'
     = stylesheet_link_tag 'jquery.wysiwyg'
+    = csrf_meta_tag
   body
+    - if notice
+      p.notice = notice
+    - if alert
+      p.alert = alert
+    
     #global-container
       #header
         .content
@@ -22,13 +28,14 @@ html
     = render 'shared/templates'
     
     = javascript_include_tag 'http://code.jquery.com/jquery-1.5.1.js'
-    / = javascript_include_tag 'support/jquery.animate-enhanced.min'
+    = render 'shared/jquery-auth-patch'
+
     = javascript_include_tag 'support/jquery-ui-1.8.11.custom.min'
     = javascript_include_tag 'support/dbx'
     = javascript_include_tag 'support/underscore'
     = javascript_include_tag 'support/backbone'
     = javascript_include_tag 'util'
-    = render :partial => 'shared/data-loader'
+    = render :partial => 'shared/data-loader' if @company
     
     
     = javascript_include_tag 'widgets/mobile/base'

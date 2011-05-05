@@ -124,7 +124,7 @@
     initialize: function () {
       _.bindAll(this,'rebindSortables');
       
-      window.Widgets.prototype.url = 'http://yomobi.couchone.com/' + g.appData.company +
+      window.Widgets.prototype.url = 'http://yomobi.couchone.com/' + g.db_name +
          '/_design/widgets/_view/by_name?include_docs=true',
       
       window.mapp = new MobileAppView({
