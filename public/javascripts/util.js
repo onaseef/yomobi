@@ -345,7 +345,7 @@ var util = {
   
   catOrder: function (cat) {
     cat || (cat = '');
-    return parseInt( cat.substring(cat.lastIndexOf('|')+1) );
+    return parseInt( cat.substring(cat.lastIndexOf('|')+1),10 );
   },
   
   catName: function (cat) {

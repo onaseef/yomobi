@@ -97,7 +97,7 @@
     },
     
     moveCat: function (e) {
-      var mod = parseInt( $(e.target).attr('data-mod') )
+      var mod = parseInt( $(e.target).attr('data-mod'),10 )
         , $select = $(this.el).find('select[name=cats]')
         
         , targetOption = $select.find('option:selected:first')
@@ -163,7 +163,7 @@
     },
     
     moveItem: function (e) {
-      var mod = parseInt( $(e.target).attr('data-mod') )
+      var mod = parseInt( $(e.target).attr('data-mod'),10 )
         , $select = $(this.el).find('select[name=items]')
         , _items = this.widget.getCurrentLevel()._items
         

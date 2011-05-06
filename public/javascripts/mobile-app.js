@@ -16,7 +16,7 @@
         var wdata = row.doc
           , widget = util.newWidget(wdata)
         ;
-        widget.order = parseInt(mapp.worder[widget.get('name')]);
+        widget.order = parseInt(mapp.worder[widget.get('name')],10);
         return widget;
       });
     },
@@ -206,7 +206,7 @@
       $('#canvas').css('width',newWidth);
 
       if (direction == 'backward') {
-        var currentOffset = parseInt( $('#canvas').css('left') );
+        var currentOffset = parseInt( $('#canvas').css('left'),10 );
         $('#canvas').css('left',currentOffset - g.width);
         this.pageLevel += 1;
       }
@@ -227,7 +227,7 @@
       if (this.pageLevel > 0){
         for (var i = this.pageLevel; i > 1; i --) {
           this.el.find('.page:eq(1)').remove();
-          canvas.css('left', parseInt(canvas.css('left')) + g.width);
+          canvas.css('left', parseInt(canvas.css('left'),10) + g.width);
         }
         this.pageLevel = 1;
         mapp.transition('back');
