@@ -48,13 +48,10 @@ html
 
 
     = javascript_include_tag 'views/edit-widget'
+    = javascript_include_tag 'views/edit-tab-bar'
 
     - Dir[widgets_dir('builder/*.js')].sort.each do |widget|
       - next if File.basename(widget) == 'base.js'
       = javascript_include_tag "widgets/builder/#{File.basename widget}"
-
-    = javascript_include_tag 'views/sidebar'
-    = javascript_include_tag 'mobile-app'
-    = javascript_include_tag 'builder-app'
     
-    = javascript_include_tag 'support/jquery.wysiwyg'
+    = yield :js

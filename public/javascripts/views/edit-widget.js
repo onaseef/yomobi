@@ -142,7 +142,7 @@
     },
     
     stopEditing: function () {
-      this.el.empty();
+      this.el.html(bapp.idleTemplate());
     },
     
     grabWidgetValues: function () {

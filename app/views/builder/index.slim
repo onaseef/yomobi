@@ -2,6 +2,13 @@
   = render :partial => 'shared/sidebar', :locals => {:active => 'builder'}
   .widgets
 
+- content_for :js do
+  = javascript_include_tag 'views/sidebar'
+  = javascript_include_tag 'mobile-app'
+  = javascript_include_tag 'builder-app'
+  
+  = javascript_include_tag 'support/jquery.wysiwyg'
+
 h1 Chipotle
 #builder-container
   #builder

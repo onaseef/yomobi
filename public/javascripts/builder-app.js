@@ -23,10 +23,6 @@
       });
     },
     
-    getWidgetByName: function (widgetName) {
-      return this.find(function (w) { return w.get('name') == widgetName; });
-    },
-    
     updateOverallOrder: function (options) {
       var i = 0, worder = {}, changed = false, options = options || {};
       this.each(function (widget) {
@@ -47,13 +43,9 @@
       ;
 
       if (!options.noSync && changed && (util.reserveUI() || options.forceSync)) {
-        util.log('Syncing worder...');
         // tell server to update order
         bapp.worderDoc.worder = worder;
-        $.post('/order',bapp.worderDoc,function (newWorderDoc) {
-          bapp.worderDoc = newWorderDoc;
-          util.releaseUI();
-        });
+        bapp.syncWorderDoc();
       }
     }
     
@@ -69,7 +61,8 @@
     
     events: {
       'click .back-btn':      'goBack',
-      'click .go-home':       'goHome'
+      'click .go-home':       'goHome',
+      'click .wtab':          'onWidgetTabClick'
     },
 
     goBack: function () {
@@ -87,6 +80,11 @@
     
     goToPage: function (widgetName) {
       mapp.transition('forward');
+    },
+    
+    onWidgetTabClick: function (e) {
+      e.preventDefault();
+      bapp.startEditingTabBar();
     },
     
     scrollTo: function (position,elem) {
@@ -120,6 +118,9 @@
     
     // can either be 'edit' or 'emulate'
     mode: 'edit',
+    idleTemplate: util.getTemplate('edit-widget-idle'),
+    
+    tabBarEditor: new window.EditTabBarView(),
     
     initialize: function () {
       _.bindAll(this,'rebindSortables');
@@ -143,6 +144,8 @@
 
         self.worderDoc = worderDoc;
         mapp.worder = worderDoc.worder;
+        mapp.wtabs  = worderDoc.wtabs;
+        mapp.updateWtabs();
         
         // now fetch the widgets themselves
         mapp.widgets.fetch({
@@ -157,7 +160,7 @@
               delete wdata.editAreaTemplate;
               
               if (wdata.singleton)
-                wdata.singletonInUse = !!mapp.widgetsInUse.getWidgetByName(wdata.name);
+                wdata.singletonInUse = !!mapp.widgetsInUse.findByName(wdata.name);
               return wdata;
             });
             mapp.widgetsAvailable.refresh( _.compact(widgetsAvailable) );
@@ -290,6 +293,26 @@
       g.homeDbx.initBoxes();
       mapp.widgetsInUse.updateOverallOrder({ forceSync:true });
     },
+    
+    syncWorderDoc: function (callback) {
+      util.log('Syncing worder...');
+      
+      $.post('/order',bapp.worderDoc,function (newWorderDoc) {
+        bapp.worderDoc = newWorderDoc;
+        mapp.worder = newWorderDoc.worder;
+        mapp.wtabs  = newWorderDoc.wtabs;
+        util.releaseUI();
+        callback && callback();
+      });
+    },
+    
+    startEditingTabBar: function () {
+      if (this.currentEditor && this.currentEditor.widget) {
+        this.currentEditor.widget.homeView.highlight(false);
+        mapp.goHome();
+      }
+      this.tabBarEditor.startEditing();
+    }
     
   });
 

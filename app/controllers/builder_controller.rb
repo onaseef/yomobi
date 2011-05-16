@@ -7,6 +7,11 @@ class BuilderController < ApplicationController
     @company = @user.company
   end
   
+  def configure
+    @user = current_user
+    @company = @user.company
+  end
+  
   def new_widget
     return error 'Not a new document' unless params[:id].nil?
     db = CouchRest.database(couch_db_url current_user.company)

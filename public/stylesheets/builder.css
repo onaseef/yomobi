@@ -23,6 +23,9 @@
     #builder .widget-editor .header .help-text {
       padding: 0 20px 0 72px;
       margin-top: 5px; }
+  #builder .widget-editor .header.edit-tab-bar .help-text, #builder .widget-editor .header.edit-tab-bar .widget-name {
+    padding-left: 0;
+    cursor: auto; }
   #builder .widget-editor .edit-area {
     padding: 20px 20px; }
     #builder .widget-editor .edit-area textarea, #builder .widget-editor .edit-area input[type=text] {

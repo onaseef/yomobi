@@ -21,9 +21,13 @@
       });
     },
     
+    findByName: function (widgetName) {
+      return this.find(function (w) { return w.get('name') == widgetName; });
+    },
+    
     comparator: function (widget) {
       return widget.order || 0;
-    }
+    },
   });
   
   // ==================================
@@ -120,11 +124,13 @@
     el: $('#mobile-container'),
     
     events: {
-      'click .back-btn':      'goBack'
+      'click .back-btn':      'goBack',
+      'click .wtab':          'onWidgetTabClick'
     },
     
     headerTemplate: util.getTemplate('mapp-header'),
     pageTemplate: util.getTemplate('widget-page'),
+    tabBarTemplate: util.getTemplate('tab-bar'),
     
     // n == 0 is home, n > 0 is widget page level depth
     pageLevel: 0,
@@ -155,6 +161,16 @@
     
     goBack: function () {
       history.go(-1);
+    },
+    
+    onWidgetTabClick: function (e) {
+      var prettyName = $(e.target).text()
+        , wname = util.uglifyName(prettyName)
+        , widget = mapp.widgets.findByName(wname)
+      ;
+      if(widget.onHomeViewClick()) {
+        mapp.goToPage(widget.get('name'));
+      }
     },
     
     viewWidget: function (widget,subpage) {
@@ -279,6 +295,12 @@
           util.log(jqXHR,textStatus,errorThrown);
         }
       });
+    },
+    
+    updateWtabs: function () {
+      this.el.find('#top-bar .tab-bar').html(this.tabBarTemplate({
+        prettyTabs: _.map(this.wtabs,util.prettifyName)
+      }));
     }
     
   });

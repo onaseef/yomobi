@@ -143,6 +143,8 @@ var util = {
   },
   
   prettifyName: function (name) {
+    if (!name) return '';
+    
     var prettyName = _(name.split('-')).chain()
         .map(function (word) { return util.prettify(word); })
         .value()

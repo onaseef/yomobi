@@ -15,7 +15,7 @@ html
     = javascript_include_tag 'support/underscore'
     = javascript_include_tag 'support/backbone'
     = javascript_include_tag 'util'
-    = render :partial => 'shared/data-loader'
+    = render :partial => 'shared/mobile-data-loader'
     
     = javascript_include_tag 'widgets/mobile/base'
     
@@ -34,6 +34,8 @@ html
         
         mapp.fetchWorder(function (worderDoc) {
           mapp.worder = worderDoc.worder;
+          mapp.wtabs  = worderDoc.wtabs;
+          mapp.updateWtabs();
           mapp.widgets.fetch();
         });
       });

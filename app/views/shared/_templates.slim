@@ -37,6 +37,34 @@
       .cancel-btn.alt-btn
         .content Discard Changes
       a.remove-link(href="#") Remove Widget
+  
+  script.edit-tab-bar(type="text/template")
+    .header.edit-tab-bar
+      .widget-name
+        | Editing Tab Bar
+      p.help-text
+        em Give your users access to key widgets from anywhere on your mobile site.
+    div class="edit-area"
+      - 3.times do |n|
+        .wtab
+          h3 = "Tab \##{ n+1 }"
+          select name="wtab_1" data-idx="#{ n }"
+            option = "==None=="
+            | <%
+            = "var tabIdx = #{ n };"
+            | for (var i=0; i<wnames.length; i++) {
+            | var selected = (wtabs[tabIdx] == wnames[i]) ? ' selected="selected"' : '';
+            | print('<option'+selected+'>'+util.prettifyName(wnames[i])+'</option>');
+            | } %>
+  
+  script.tab-bar(type="text/template")
+    table
+      tr
+        td.active.go-home
+          a href="#" Home
+        td.wtab {{ prettyTabs[0] }}
+        td.wtab {{ prettyTabs[1] }}
+        td.wtab {{ prettyTabs[2] }}
 
   script.sidebar-widget(type="text/template")
     .sidebar.home-icon data-name="{{ name }}" data-wtype="{{ wtype }}"

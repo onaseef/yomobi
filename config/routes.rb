@@ -1,8 +1,8 @@
 Yomobi::Application.routes.draw do
   devise_for :users
 
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
+  get 'builder/widgets'      => 'builder#index'
+  get 'builder/configure'    => 'builder#configure'
 
   put    'widgets/:id' => 'builder#update_widget'
   post   'widgets'     => 'builder#new_widget'
