@@ -1,0 +1,35 @@
+#account-setup-wrapper
+  h1 = "Setup (Step #{@step_num})"
+  
+  = form_tag account_setup_path(1), :id => 'account-setup-box' do
+    h2 Fill out your Website Information
+    
+    hr
+    h3 The Name of your Business:
+    - if @errors['title']
+      p.error Invalid Title. Only lowercase characters (a-z), digits (0-9), and any of the characters _, $, (, ), +, and - are allowed.
+    input type="text" name="step_data[title]" value="#{@data['title'] }"
+    
+    hr
+    h3 Your YoMobi Mobile Site URL:
+
+    - if @errors['site_url'] == 'illegal'
+      p.error Illegal database name. Only lowercase characters (a-z), digits (0-9), and any of the characters _, $, (, ), +, and - are allowed.
+      p.error Must begin with a letter. Must be at least 3 characters long.
+    - elsif @errors['site_url'] == 'taken'
+      p.error Name is already taken.
+    - elsif @errors['site_url'] == 'taken?'
+      p.error Name is already taken?
+    
+    .site-url
+      span http://www.yomobi.com/b/
+      input type="text" value="#{@data['site_url'] || 'my-business'}" name="step_data[site_url]"
+    
+    hr
+    h3 A short description about your business (optional):
+    - if @errors['desc']
+      p.error Description is too long. 2500 characters max.
+    textarea name="step_data[desc]" rows="10" = @data['desc']
+    
+    .rfloat.main-btn
+      input.content type="submit" value="Save & Continue"

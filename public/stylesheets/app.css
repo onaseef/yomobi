@@ -4,71 +4,16 @@ body {
   font-size: 11px;
   overflow-y: scroll; }
 
-p.notice, p.alert {
+#topline-notice p.notice, #topline-notice p.alert, #topline-notice p.error {
   text-align: center;
   font-size: 16px; }
+
+p.error {
+  color: #f03d25; }
 
 #page-container {
   width: 960px;
   margin: 0 auto; }
-
-#header {
-  padding-top: 10px;
-  background: #3b5998;
-  color: white;
-  height: 31px; }
-  #header .content {
-    width: 960px;
-    margin: 0 auto; }
-  #header #logo {
-    float: left;
-    width: 188px;
-    padding-left: 12px;
-    font-size: 2em; }
-  #header #nav {
-    float: left;
-    width: 758px;
-    height: 30px;
-    border: 1px solid #1d4088;
-    border-bottom: none;
-    background: #627aad; }
-
-#sidebar {
-  float: left;
-  width: 200px; }
-  #sidebar ul {
-    list-style: none;
-    padding-left: 0;
-    margin-top: 54px; }
-  #sidebar .option {
-    height: 16px;
-    padding: 3px 0 2px 4px;
-    clear: left; }
-    #sidebar .option .icon {
-      float: left;
-      width: 16px;
-      height: 16px;
-      margin-right: 4px;
-      background: url(/images/test-icons.png); }
-    #sidebar .option:hover {
-      background-color: #d8dfea;
-      cursor: pointer; }
-  #sidebar .option.basic .icon {
-    background-position: 0 0; }
-  #sidebar .option.config .icon {
-    background-position: 0 -16px; }
-  #sidebar .option.builder .icon {
-    background-position: 0 -32px; }
-  #sidebar .option.active {
-    background-color: #d8dfea; }
-
-#content {
-  float: left;
-  border: 1px solid #b3b3b3;
-  border-top: none;
-  width: 758px; }
-  #content h1 {
-    padding-left: 10px; }
 
 .main-btn {
   background: #5b74a8;
@@ -77,11 +22,14 @@ p.notice, p.alert {
   .main-btn:hover {
     cursor: pointer; }
   .main-btn .content {
+    background: #5b74a8;
     padding: 2px 6px 3px;
+    margin: 0;
     border: 1px solid #5b74a8;
     border-top-color: #8a9cc2;
     color: white;
-    font-weight: bold; }
+    font-weight: bold;
+    cursor: pointer; }
   .main-btn .content:active {
     background: #4f6aa3;
     border-color: #4f6aa3; }
@@ -113,3 +61,9 @@ p.notice, p.alert {
 .home-icon-placeholder {
   padding: 10px 8px;
   border: 1px dashed black; }
+
+.lfloat {
+  float: left; }
+
+.rfloat {
+  float: right; }

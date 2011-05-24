@@ -1,0 +1,86 @@
+@import 'constants'
+
+// layout related
+
+#header
+  padding: 14px 0 20px 0
+  background: $main-color
+  color: $header-font-color
+  height: 31px
+  .content
+    width: $page-width
+    margin: 0 auto
+  #logo
+    float: left
+    width: $sidebar-width - 12px
+    padding-left: 12px
+    font-size: 3em
+  #nav
+    float: left
+    width: $content-width - 2
+    height: 30px
+    border: 1px solid #1D4088
+    border-bottom: none
+    background: $secondary-color
+
+#sidebar
+  float: left
+  width: $sidebar-width
+  ul
+    list-style: none
+    padding-left: 0
+    margin-top: 54px
+  .option
+    height: 16px
+    padding: 3px 0 2px 4px
+    clear: left
+    .icon
+      float: left
+      width: 16px
+      height: 16px
+      margin-right: 4px
+      background: url(/images/test-icons.png)
+    &:hover
+      background-color: $highlight-color
+      cursor: pointer
+  .option.basic .icon
+    background-position: 0 0
+  .option.config .icon
+    background-position: 0 -16px
+  .option.builder .icon
+    background-position: 0 -32px
+  .option.active
+    background-color: $highlight-color
+
+#content
+  float: left
+  border-top: none
+  width: $page-width
+  h1
+    padding-left: 10px
+
+// content related
+
+#banner
+  float: left
+  height: 400px
+  padding-top: 40px
+
+#signup-box
+  float: right
+  width: 400px
+  padding-top: 40px
+
+#account-setup-wrapper
+  width: 500px
+  margin: 20px auto
+
+#account-setup-box
+  textarea, input[type=text]
+    width: 98%
+    font-size: 1.5em
+  .site-url
+    span
+      font-size: 1.5em
+    input
+      width: 200px

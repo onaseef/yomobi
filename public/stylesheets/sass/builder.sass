@@ -1,5 +1,77 @@
 @import 'constants'
 
+// layout related
+
+#header
+  padding-top: 10px
+  background: $main-color
+  color: $header-font-color
+  height: 31px
+  .content
+    width: $page-width
+    margin: 0 auto
+  #logo
+    float: left
+    width: $sidebar-width - 12px
+    padding-left: 12px
+    font-size: 2em
+  #nav
+    float: left
+    width: $content-width - 2 - 8
+    height: 30px
+    border: 1px solid #1D4088
+    border-bottom: none
+    background: $secondary-color
+    text-align: right
+    a, a:visited
+      float: right
+      height: 23px
+      padding: 7px 10px 0
+      color: #fff
+      font-weight: bold
+      text-decoration: none
+    a:hover
+      background-color: #6D86B7
+
+#sidebar
+  float: left
+  width: $sidebar-width
+  ul
+    list-style: none
+    padding-left: 0
+    margin-top: 54px
+  .option
+    height: 16px
+    padding: 3px 0 2px 4px
+    clear: left
+    .icon
+      float: left
+      width: 16px
+      height: 16px
+      margin-right: 4px
+      background: url(/images/test-icons.png)
+    &:hover
+      background-color: $highlight-color
+      cursor: pointer
+  .option.basic .icon
+    background-position: 0 0
+  .option.config .icon
+    background-position: 0 -16px
+  .option.builder .icon
+    background-position: 0 -32px
+  .option.active
+    background-color: $highlight-color
+
+#content
+  float: left
+  border: 1px solid #B3B3B3
+  border-top: none
+  width: $content-width - 2px
+  h1
+    padding-left: 10px
+
+// builder related
+
 .ad-bar
   display: none !important
 

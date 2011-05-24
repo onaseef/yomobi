@@ -1,0 +1,58 @@
+! doctype 5
+html
+  head
+    title YoMobi
+    = stylesheet_link_tag 'builder-app'
+    = stylesheet_link_tag 'flick/jquery-ui-1.8.11.custom'
+    = stylesheet_link_tag 'jquery.wysiwyg'
+    = csrf_meta_tag
+  body
+    - if notice
+      p.notice = notice
+    - if alert
+      p.alert = alert
+    
+    #global-container
+      #header
+        .content
+          #logo YoMobi
+          #nav
+            a href=destroy_user_session_path Sign Out
+          .clearfix
+      #page-container
+        #sidebar
+          = yield :sidebar
+        #content
+          = yield
+        .clearfix
+    
+    = render 'shared/templates'
+    
+    = javascript_include_tag 'http://code.jquery.com/jquery-1.5.1.js'
+    = render 'shared/jquery-auth-patch'
+
+    = javascript_include_tag 'support/jquery-ui-1.8.11.custom.min'
+    = javascript_include_tag 'support/dbx'
+    = javascript_include_tag 'support/underscore'
+    = javascript_include_tag 'support/backbone'
+    = javascript_include_tag 'util'
+    = render :partial => 'shared/data-loader' if @company
+    
+    
+    = javascript_include_tag 'widgets/mobile/base'
+    = javascript_include_tag 'widgets/builder/base'
+
+    - Dir[widgets_dir('mobile/*.js')].sort.each do |widget|
+      - next if File.basename(widget) == 'base.js'
+      = javascript_include_tag "widgets/mobile/#{File.basename widget}"
+
+
+
+    = javascript_include_tag 'views/edit-widget'
+    = javascript_include_tag 'views/edit-tab-bar'
+
+    - Dir[widgets_dir('builder/*.js')].sort.each do |widget|
+      - next if File.basename(widget) == 'base.js'
+      = javascript_include_tag "widgets/builder/#{File.basename widget}"
+    
+    = yield :js

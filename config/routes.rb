@@ -1,7 +1,12 @@
 Yomobi::Application.routes.draw do
-  devise_for :users
 
-  get 'builder/widgets'      => 'builder#index'
+  get 'home/index'
+  
+  match 'account-setup/:step_num' => 'signup#account_setup', :as => :account_setup
+
+  devise_for :users, :controllers => { :registrations => 'registrations' }
+
+  get 'builder/main'      => 'builder#index', :as => :builder_main
   get 'builder/configure'    => 'builder#configure'
 
   put    'widgets/:id' => 'builder#update_widget'
@@ -12,7 +17,7 @@ Yomobi::Application.routes.draw do
   
   get 'mobile' => 'mobile#index'
 
-  root :to => 'builder#index'
+  root :to => 'home#index'
   
   ##########################
   # Widget-specific routes #

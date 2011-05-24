@@ -1,0 +1,11 @@
+#account-setup-wrapper
+  h1 = "Setup (Step #{@step_num})"
+  
+  = form_tag account_setup_path(3), :multipart => true, :id => 'account-setup-box' do
+    h2 Upload your company's logo
+
+    = file_field :step_data, :logo
+    
+    br
+    .rfloat.main-btn
+      input.content type="submit" value="Save & Continue"
