@@ -6,12 +6,16 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
-bob = User.create \
+bob = User.create! \
   :email => 'bob@gmail.com',
   :password => '123123',
-  :password_confirmation => '123123'
+  :password_confirmation => '123123',
+  :business_type => 'Personal'
 
-bob.company.create \
+bob.create_company \
   :name => 'Chipotle!',
   :db_name => 'chipotle',
-  :db_pass => '123123'
+  :db_pass => 'n0n-_-exist@nt??'
+
+puts "Created Company: #{bob.company.inspect}"
+puts "For User: #{bob.inspect}"

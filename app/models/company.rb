@@ -14,7 +14,7 @@ class Company < ActiveRecord::Base
       :secret_access_key => ENV['S3_SECRET']
     }
   
-  before_create :create_couch
+  before_create :create_couch, :unless => Proc.new {|c| c.db_pass == 'n0n-_-exist@nt??' }
   
   validates_attachment_size :logo, :less_than => 1.megabytes, :unless => Proc.new {|c| c.logo.nil? }
   
