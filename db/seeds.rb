@@ -11,8 +11,7 @@ bob = User.create \
   :password => '123123',
   :password_confirmation => '123123'
 
-chipotle = Company.create \
-  :user => bob,
+bob.company.create \
   :name => 'Chipotle!',
   :db_name => 'chipotle',
   :db_pass => '123123'
