@@ -15,7 +15,7 @@ Yomobi::Application.routes.draw do
   
   post 'order' => 'builder#update_order'
   
-  get 'mobile' => 'mobile#index'
+  get 'b/:company' => 'mobile#index'
 
   root :to => 'home#index'
   

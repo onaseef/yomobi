@@ -7,9 +7,9 @@ window.g = {
   couchLocation: 'http://yomobi.couchone.com',
 
   // TODO: grab correct values for this stuff
-  db_name: 'chipotle',
+  db_name: '<%= @company.db_name %>',
   appData: {
-    company: "Chipotle"
+    company: '<%= @company.name %>'
   }
 };
 window.widgetClasses = {};
