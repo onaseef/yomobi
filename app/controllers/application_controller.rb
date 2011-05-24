@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   
   # devise
   def after_sign_in_path_for(resource)
-    return 'setup/1' if resource.company.nil?
+    return account_setup_path(1) if resource.company.nil?
     '/builder/main'
   end
 end
