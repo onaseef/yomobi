@@ -118,8 +118,7 @@
 
       $('#jeditor').wysiwyg({
         css: '/stylesheets/jwysiwyg.css',
-        autoGrow: true,
-        maxHeight: 300,
+        formHeight: 200,
         formWidth: 340,
         events: {
           keyup: function () { bapp.currentEditor.trigger('wysiwyg-change'); },
