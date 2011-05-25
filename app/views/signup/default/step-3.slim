@@ -3,9 +3,10 @@
   
   = form_tag account_setup_path(3), :multipart => true, :id => 'account-setup-box' do
     h2 Upload your company's logo
-
+    
     = file_field :step_data, :logo
     
+    = hidden_field_tag 'step_data[step]', 3
     br
     .rfloat.main-btn
       input.content type="submit" value="Save & Continue"
