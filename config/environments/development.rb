@@ -23,15 +23,21 @@ Yomobi::Application.configure do
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
   
+  # use gmail for test emailing
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { :host => "local.host:3000" }
   ActionMailer::Base.smtp_settings = {
-    :host => "localhost"
-    # :address              => "smtp.gmail.com",
-    # :port                 => 587,
-    # :domain               => "yomobi.com",
-    # :user_name            => "asciicasts",
-    # :password             => "secret",
-    # :authentication       => "plain", 
-    # :enable_starttls_auto => true
+    :address  => "smtp.gmail.com",
+    :port  => 587,
+    :user_name  => "yomobi.test",
+    :password  => "y0Yoy@filler",
+    :authentication  => :plain,
+    :enable_starttls_auto => true
   }
+  # use postfix on da local machine
+  # ActionMailer::Base.smtp_settings = {
+    # :host => "localhost"
+  # }
 end
 
