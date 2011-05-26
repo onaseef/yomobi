@@ -3,6 +3,12 @@
   background: #3b5998;
   color: white;
   height: 31px; }
+  #header a, #header a:visited {
+    color: #98a9ca; }
+  #header a {
+    text-decoration: none; }
+  #header a:hover {
+    text-decoration: underline; }
   #header .content {
     width: 960px;
     margin: 0 auto; }
