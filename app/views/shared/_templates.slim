@@ -151,7 +151,7 @@
     p Call us at:
     h1 {{ _maybe.phone }}
   
-  script.leave_msg-page(type="text/template")
+  script.leave-a-message-page(type="text/template")
     .input-wrap
       p Leave us a message:
       = form_tag '/leave_msg/submit', :method => 'post' do
@@ -267,7 +267,7 @@
     label Your company's phone number:
     input(name="phone" type="text" value="{{ _maybe.phone }}")
   
-  script.leave_msg-edit-area(type="text/template")
+  script.leave-a-message-edit-area(type="text/template")
     label Enter the email you would like to receive your customer's messages on:
     input(name="email" type="text" value="{{ _maybe.email }}")
   
