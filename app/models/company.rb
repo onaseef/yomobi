@@ -37,7 +37,8 @@ class Company < ActiveRecord::Base
   end
   
   def couch_db_url
-    puts "URL:::: http://admin_#{self.db_name}:#{self.db_pass}@yomobi.couchone.com/#{self.db_name}"
-    "http://admin_#{self.db_name}:#{self.db_pass}@yomobi.couchone.com/#{self.db_name}"
+    encoded_pass = URI.escape self.db_pass, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")
+    puts "URL:::: http://admin_#{self.db_name}:#{encoded_pass}@yomobi.couchone.com/#{self.db_name}"
+    "http://admin_#{self.db_name}:#{encoded_pass}@yomobi.couchone.com/#{self.db_name}"
   end
 end
