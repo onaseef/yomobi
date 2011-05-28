@@ -1,7 +1,7 @@
 ul
-  li.option.basic class=active?('basic',active)
+  li.option.basic class=active?('mobile',active)
     .icon
-    | Basic Information
+    a href="/b/#{@company.db_name}" target="_blank" View Mobile Site
   li.option.config class=active?('config',active)
     .icon
     | Mobile Configuration
