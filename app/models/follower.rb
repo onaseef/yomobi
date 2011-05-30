@@ -37,7 +37,7 @@ class Follower < ActiveRecord::Base
     self.phone.gsub! /[^0-9]+/, ''
     (self.phone = nil) && (self.carrier = nil) if !phone.present? || !carrier.present?
     self.email = nil if !email.present?
-    opt_out_key ||= new_opt_out_key
+    self.opt_out_key ||= new_opt_out_key
     true
   end
 
