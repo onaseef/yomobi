@@ -2,6 +2,7 @@ class Company < ActiveRecord::Base
   require 'couch_docs'
   
   belongs_to :user
+  has_many :followers
   has_attached_file :logo,
     :styles => {
       :mobile => "112x48>"

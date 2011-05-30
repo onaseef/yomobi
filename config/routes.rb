@@ -23,8 +23,8 @@ Yomobi::Application.routes.draw do
   # Widget-specific routes #
   ##########################
 
-  post 'leave_msg/submit' => 'widgets/leave_msg#submit'
-
+  post '/b/:company/leave_msg/submit' => 'widgets/leave_msg#submit'
+  post '/b/:company/informed/submit' => 'widgets/informed#submit'
 
 
   # Sample of regular route:

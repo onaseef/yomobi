@@ -14,6 +14,8 @@ gem 'slim', :require => 'slim/rails'
 gem 'sass'
 gem 'json'
 
+gem 'validates_as_email_address'
+
 group :development, :test do
   gem 'heroku'
 end

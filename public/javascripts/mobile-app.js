@@ -155,7 +155,7 @@
       $('#top-bar .company-info').html(this.headerTemplate({
         // TODO: use stored icon from couch instead
         name: g.db_name,
-        prettyName: g.appData.company
+        prettyName: g.company
       }));
     },
     

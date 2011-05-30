@@ -154,7 +154,7 @@
   script.leave-a-message-page(type="text/template")
     .input-wrap
       p Leave us a message:
-      = form_tag '/leave_msg/submit', :method => 'post' do
+      = form_tag '/b/#{@company.name}/leave_msg/submit', :method => 'post' do
         label Your Email Address:
         br
         input type="text" name="email"
@@ -169,6 +169,28 @@
     .thanks-wrap style="display:none"
       h1 Thanks for your input!
   
+  script.informed-page(type="text/template")
+    .input-wrap
+      p Stay informed about your favorite business!
+      = form_tag "/b/#{@company.name}/informed/submit", :method => 'post' do
+        label Your Email Address:
+        br
+        input type="text" name="email"
+        br
+        label Phone Number:
+        br
+        input type="text" name="phone"
+        br
+        label Phone Service Carrier:
+        br
+        = select_tag 'carrier', options_for_select(carrier_names)
+        br
+        span.response
+        br
+        input(type="submit" value="Send")
+    .thanks-wrap style="display:none"
+      h3 = "Thanks! You'll be kept up to date with #{@company.name} news."
+
   script.hours-page(type="text/template")
     - %w(sun mon tue wed thu fri sat).each do |day|
       h3 = long_day_name(day)
@@ -270,6 +292,10 @@
   script.leave-a-message-edit-area(type="text/template")
     label Enter the email you would like to receive your customer's messages on:
     input(name="email" type="text" value="{{ _maybe.email }}")
+  
+  script.keep-me-informed-edit-area(type="text/template")
+    p This widget allows your customers to opt-in to receive email and sms notifications from you.
+    p You can send out notifications to your customers by click on the “Manage Customers” link on the left hand side of your browser.
   
   script.hours-edit-area(type="text/template")
     p Click to checkmark the days you are open:

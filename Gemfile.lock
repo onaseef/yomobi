@@ -98,6 +98,7 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.24)
+    validates_as_email_address (0.2.4)
     warden (1.0.4)
       rack (>= 1.0)
     xml-simple (1.0.15)
@@ -117,3 +118,4 @@ DEPENDENCIES
   sass
   slim
   sqlite3
+  validates_as_email_address

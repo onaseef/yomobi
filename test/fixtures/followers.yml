@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  email: MyString
+  phone: MyString
+  carrier: MyString
+  opt_out_key: MyString
+
+two:
+  email: MyString
+  phone: MyString
+  carrier: MyString
+  opt_out_key: MyString

@@ -6,9 +6,7 @@ window.g = {
   height: 480,
   couchLocation: 'http://yomobi.couchone.com',
   db_name: '<%= @company.db_name %>',
-  appData: {
-    company: "<%= @company.name %>"
-  }
+  company: "<%= @company.name %>"
 };
 window.widgetClasses = {};
 window.widgetPages = {};
@@ -58,6 +56,13 @@ bdata = [
     name: "leave-a-message",
     wtype: 'leave_msg',
     helpText: "Allow your customers to leave you an email message.",
+    singleton: true
+  },
+
+  {
+    name: "keep-me-informed",
+    wtype: 'informed',
+    helpText: "This widget allows your customers to opt-in to receive email and sms notifications from you.",
     singleton: true
   },
   

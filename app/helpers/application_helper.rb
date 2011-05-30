@@ -35,4 +35,8 @@ module ApplicationHelper
     Travel\ Service
     }
   end
+
+  def carrier_names
+    Carrier.all.map {|c| c.name}
+  end
 end

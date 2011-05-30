@@ -10,7 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110524035031) do
+ActiveRecord::Schema.define(:version => 20110527042419) do
+
+  create_table "carriers", :force => true do |t|
+    t.string   "name"
+    t.string   "text_email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "carriers", ["name"], :name => "index_carriers_on_name", :unique => true
 
   create_table "companies", :force => true do |t|
     t.integer  "user_id"
@@ -24,6 +33,22 @@ ActiveRecord::Schema.define(:version => 20110524035031) do
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
   end
+
+  add_index "companies", ["db_name"], :name => "index_companies_on_db_name", :unique => true
+
+  create_table "followers", :force => true do |t|
+    t.integer  "company_id"
+    t.integer  "carrier_id"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "opt_out_key"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "followers", ["email"], :name => "index_followers_on_email", :unique => true
+  add_index "followers", ["opt_out_key"], :name => "index_followers_on_opt_out_key", :unique => true
+  add_index "followers", ["phone"], :name => "index_followers_on_phone", :unique => true
 
   create_table "sigs", :force => true do |t|
     t.string   "email"

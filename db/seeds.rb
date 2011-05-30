@@ -11,6 +11,7 @@ bob = User.create! \
   :password => '123123',
   :password_confirmation => '123123',
   :business_type => 'Personal'
+puts "Created User: #{bob.inspect}"
 
 bob.create_company \
   :name => 'Chipotle!',
@@ -18,4 +19,3 @@ bob.create_company \
   :db_pass => 'n0n-_-exist@nt??'
 
 puts "Created Company: #{bob.company.inspect}"
-puts "For User: #{bob.inspect}"

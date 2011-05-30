@@ -8,6 +8,7 @@ class CreateCompanies < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :companies, :db_name, :unique => true
   end
 
   def self.down
