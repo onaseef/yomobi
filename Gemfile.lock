@@ -1,3 +1,13 @@
+GIT
+  remote: https://github.com/fesplugas/typus.git
+  revision: 5214ac82b537c25f00087bff41056e1878b1edc3
+  specs:
+    typus (3.0.10)
+      bcrypt-ruby
+      fastercsv (~> 1.5)
+      render_inheritable
+      will_paginate (~> 3.0.pre2)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -46,6 +56,7 @@ GEM
       warden (~> 1.0.3)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    fastercsv (1.5.4)
     heroku (1.18.3)
       launchy (~> 0.3.2)
       rest-client (< 1.7.0, >= 1.4.0)
@@ -85,6 +96,8 @@ GEM
       thor (~> 0.14.4)
     rake (0.8.7)
     recaptcha (0.3.1)
+    render_inheritable (1.0.0)
+      rails (~> 3.0)
     rest-client (1.6.1)
       mime-types (>= 1.16)
     sass (3.1.0.alpha.221)
@@ -101,6 +114,7 @@ GEM
     validates_as_email_address (0.2.4)
     warden (1.0.4)
       rack (>= 1.0)
+    will_paginate (3.0.pre2)
     xml-simple (1.0.15)
 
 PLATFORMS
@@ -118,4 +132,5 @@ DEPENDENCIES
   sass
   slim
   sqlite3
+  typus!
   validates_as_email_address

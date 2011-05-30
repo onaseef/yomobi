@@ -9,6 +9,7 @@ gem 'aws-s3', :require => 'aws/s3'
 
 gem 'devise', "~> 1.3"
 gem 'recaptcha', :require => 'recaptcha/rails'
+gem 'typus', :git => 'https://github.com/fesplugas/typus.git'
 
 gem 'slim', :require => 'slim/rails'
 gem 'sass'

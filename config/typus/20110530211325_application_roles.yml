@@ -1,0 +1,10 @@
+# Typus Roles Configuration File
+#
+# Use the README file as a reference to customize settings.
+
+admin:
+  Carrier: create, read, update, delete
+  Company: create, read, update, delete
+  Follower: create, read, update, delete
+  Sig: create, read, update, delete
+  User: create, read, update, delete

@@ -1,0 +1,54 @@
+# Typus Models Configuration File
+#
+# Use the README file as a reference to customize settings.
+
+Carrier:
+  fields:
+    default: name, text_email
+    form: name, text_email
+  order_by: 
+  relationships: followers
+  filters: created_at
+  search: name
+  application: yomobi
+
+Company:
+  fields:
+    default: user_id, name, db_name, db_pass, logo_file_name, user
+    form: user_id, name, db_name, db_pass, logo_file_name, user
+  order_by: 
+  relationships: followers, user
+  filters: created_at
+  search: name
+  application: yomobi
+
+Follower:
+  fields:
+    default: company_id, carrier_id, email, phone, opt_out_key, company, carrier
+    form: company_id, carrier_id, email, phone, opt_out_key, company, carrier
+  order_by: 
+  relationships: carrier, company
+  filters: created_at
+  search: 
+  application: yomobi
+
+Sig:
+  fields:
+    default: email, delete_hash, custom
+    form: email, delete_hash, custom
+  order_by: 
+  relationships: 
+  filters: created_at
+  search: 
+  application: yomobi
+
+User:
+  fields:
+    default: email, remember_token, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, confirmation_token, confirmed_at, confirmation_sent_at
+    form: email, reset_password_token, remember_token, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, confirmation_token, confirmed_at, confirmation_sent_at
+  order_by: 
+  relationships: company
+  filters: created_at
+  search: 
+  application: yomobi
+
