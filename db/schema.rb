@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110527042419) do
+ActiveRecord::Schema.define(:version => 20110601055627) do
 
   create_table "carriers", :force => true do |t|
     t.string   "name"
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(:version => 20110527042419) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+    t.string   "informed_email"
+    t.string   "leave_msg_email"
   end
 
   add_index "companies", ["db_name"], :name => "index_companies_on_db_name", :unique => true
@@ -44,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20110527042419) do
     t.string   "opt_out_key"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "short_url"
   end
 
   add_index "followers", ["email"], :name => "index_followers_on_email", :unique => true

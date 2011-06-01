@@ -6,6 +6,7 @@ class Follower < ActiveRecord::Base
 
   validates_as_email_address :email, :on => :create, :unless => Proc.new { self.email.nil? }
   validates_length_of :phone, :is => 10
+
   validates_uniqueness_of :email, :unless => Proc.new { self.email.nil? }
   validates_uniqueness_of :phone, :unless => Proc.new { self.phone.nil? }
 
@@ -31,18 +32,34 @@ class Follower < ActiveRecord::Base
     self[:email] = new_val.present? ? new_val : nil
   end
 
+  def send_text(message)
+    return if phone.nil? || carrier.nil?
+    puts "Sending text to #{phone} (#{carrier})"
+    puts UserMailer.send_text({
+      :follower => self,
+      :company => company,
+      :content => message
+    }).deliver
+  end
+
   private
 
   def handle_empty_values
-    self.phone.gsub! /[^0-9]+/, ''
-    (self.phone = nil) && (self.carrier = nil) if !phone.present? || !carrier.present?
-    self.email = nil if !email.present?
-    self.opt_out_key ||= new_opt_out_key
+    @phone.gsub! /[^0-9]+/, ''
+    (@phone = nil) && (@carrier = nil) if !phone.present? || !carrier.present?
+    @email = nil if !email.present?
+    @opt_out_key, @short_url = new_opt_out_pair if opt_out_key.nil?
     true
   end
 
-  def new_opt_out_key
-    Digest::SHA1.hexdigest((email || phone) + "yomobi-salt")
+  def new_opt_out_pair
+    key = Digest::SHA1.hexdigest((email || phone) + "yomobi-salt")
+
+    url = "#{Rails.application.config.opt_out_url_host}/opt-out/#{key}"
+    api_key = ENV['GOOGLE_API_KEY']
+    short_url = Shortly::Clients::Googl.shorten(url, :apiKey => api_key).shortUrl
+    puts "SHORT URL: #{short_url}"
+    [key,short_url]
   end
 
 end

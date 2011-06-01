@@ -6,6 +6,7 @@ gem 'couchrest'
 
 gem 'paperclip', "~> 2.3"
 gem 'aws-s3', :require => 'aws/s3'
+gem 'shortly'
 
 gem 'devise', "~> 1.3"
 gem 'recaptcha', :require => 'recaptcha/rails'

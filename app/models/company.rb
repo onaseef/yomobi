@@ -36,6 +36,14 @@ class Company < ActiveRecord::Base
   def save_doc(doc)
     CouchRest.database(couch_db_url).save_doc doc
   end
+
+  def text_followers
+    self.followers.select {|f| f.phone.present? }
+  end
+
+  def email_followers
+    self.followers.select {|f| f.email.present? }
+  end
   
   def couch_db_url
     encoded_pass = URI.escape self.db_pass, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")

@@ -296,6 +296,8 @@
   script.keep-me-informed-edit-area(type="text/template")
     p This widget allows your customers to opt-in to receive email and sms notifications from you.
     p You can send out notifications to your customers by click on the “Manage Customers” link on the left hand side of your browser.
+    label Provide your email address to receive opt-ins.
+    input name="email" type="text" value="{{ _maybe.email }}"
   
   script.hours-edit-area(type="text/template")
     p Click to checkmark the days you are open:

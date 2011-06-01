@@ -7,7 +7,8 @@ Yomobi::Application.routes.draw do
   devise_for :users, :controllers => { :registrations => 'registrations' }
 
   get 'builder/main'      => 'builder#index', :as => :builder_main
-  get 'builder/configure'    => 'builder#configure'
+  get 'builder/text'      => 'builder#text_panel', :as => :builder_text
+  post 'builder/text'     => 'builder#send_text'
 
   put    'widgets/:id' => 'builder#update_widget'
   post   'widgets'     => 'builder#new_widget'

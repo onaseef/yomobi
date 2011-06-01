@@ -5,6 +5,6 @@
 admin:
   Carrier: create, read, update, delete
   Company: create, read, update, delete
-  Follower: create, read, update, delete
+  Follower: read, delete
   Sig: create, read, update, delete
   User: create, read, update, delete

@@ -50,6 +50,7 @@ GEM
       json (>= 1.4.6)
       mime-types (>= 1.15)
       rest-client (>= 1.5.1)
+    crack (0.1.8)
     devise (1.3.4)
       bcrypt-ruby (~> 2.1.2)
       orm_adapter (~> 0.0.3)
@@ -60,6 +61,8 @@ GEM
     heroku (1.18.3)
       launchy (~> 0.3.2)
       rest-client (< 1.7.0, >= 1.4.0)
+    httparty (0.7.7)
+      crack (= 0.1.8)
     i18n (0.5.0)
     json (1.5.1)
     launchy (0.3.7)
@@ -101,6 +104,9 @@ GEM
     rest-client (1.6.1)
       mime-types (>= 1.16)
     sass (3.1.0.alpha.221)
+    shortly (0.3.2)
+      httparty
+      json
     slim (0.9.1)
       temple (~> 0.1.8)
       tilt (~> 1.2)
@@ -130,6 +136,7 @@ DEPENDENCIES
   rails (= 3.0.5)
   recaptcha
   sass
+  shortly
   slim
   sqlite3
   typus!
