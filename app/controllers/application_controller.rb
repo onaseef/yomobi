@@ -26,4 +26,8 @@ class ApplicationController < ActionController::Base
     return account_setup_path(1) if resource.company.nil?
     '/builder/main'
   end
+
+  def ensure_user_has_already_setup
+    redirect_to(account_setup_path 1) if current_user.company.nil?
+  end
 end

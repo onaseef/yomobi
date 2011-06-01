@@ -2,9 +2,12 @@ ul
   li.option.basic class=active?('mobile',active)
     .icon
     a href="/b/#{@company.db_name}" target="_blank" View Mobile Site
+  li.option.text class=active?('email',active)
+    .icon
+    a href=builder_email_path Email Your Followers
   li.option.text class=active?('text',active)
     .icon
-    a href=builder_text_path Send Text to Followers
+    a href=builder_text_path Send Text to Your Followers
   li.option.builder class=active?('builder',active)
     .icon
     a href=builder_main_path Mobile Website Bulider

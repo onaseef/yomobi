@@ -4,11 +4,13 @@ class Follower < ActiveRecord::Base
 
   before_validation :handle_empty_values
 
-  validates_as_email_address :email, :on => :create, :unless => Proc.new { self.email.nil? }
-  validates_length_of :phone, :is => 10
 
-  validates_uniqueness_of :email, :unless => Proc.new { self.email.nil? }
-  validates_uniqueness_of :phone, :unless => Proc.new { self.phone.nil? }
+
+  validates_as_email_address :email, :on => :create, :allow_nil => true
+  validates_length_of :phone, :is => 10, :allow_nil => true
+
+  validates_uniqueness_of :email, :allow_nil => true
+  validates_uniqueness_of :phone, :allow_nil => true
 
   def save_new
     begin
@@ -42,10 +44,21 @@ class Follower < ActiveRecord::Base
     }).deliver
   end
 
+  def send_email(subject,content)
+    return if email.nil?
+    puts "Sending email to #{email} (subject=#{subject})"
+    UserMailer.email_follower({
+      :to => email,
+      :from => company.informed_email,
+      :subject => subject,
+      :content => content
+    }).deliver
+  end
+
   private
 
   def handle_empty_values
-    @phone.gsub! /[^0-9]+/, ''
+    @phone.gsub! /[^0-9]+/, '' if @phone
     (@phone = nil) && (@carrier = nil) if !phone.present? || !carrier.present?
     @email = nil if !email.present?
     @opt_out_key, @short_url = new_opt_out_pair if opt_out_key.nil?

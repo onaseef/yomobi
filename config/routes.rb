@@ -7,8 +7,11 @@ Yomobi::Application.routes.draw do
   devise_for :users, :controllers => { :registrations => 'registrations' }
 
   get 'builder/main'      => 'builder#index', :as => :builder_main
-  get 'builder/text'      => 'builder#text_panel', :as => :builder_text
-  post 'builder/text'     => 'builder#send_text'
+
+  get 'builder/text'      => 'widgets/informed#text_panel', :as => :builder_text
+  post 'builder/text'     => 'widgets/informed#send_text'
+  get 'builder/email'     => 'widgets/informed#email_panel', :as => :builder_email
+  post 'builder/email'    => 'widgets/informed#send_email'
 
   put    'widgets/:id' => 'builder#update_widget'
   post   'widgets'     => 'builder#new_widget'
@@ -25,7 +28,7 @@ Yomobi::Application.routes.draw do
   ##########################
 
   post '/b/:company/leave_msg/submit' => 'widgets/leave_msg#submit'
-  post '/b/:company/informed/submit' => 'widgets/informed#submit'
+  post '/b/:company/informed/submit' => 'widgets/informed#mobile_submit'
 
 
   # Sample of regular route:

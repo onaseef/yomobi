@@ -14,4 +14,9 @@ class UserMailer < ActionMailer::Base
       :from => params[:company].informed_email
     })
   end
+
+  def email_follower(params)
+    @params = params
+    mail params
+  end
 end

@@ -1,0 +1,26 @@
+- content_for :sidebar do
+  = render :partial => 'shared/sidebar', :locals => {:active => 'email'}
+  .widgets
+
+h1 = @company.name
+#builder-container
+  #builder
+    h2 Email Your Followers
+    p = "You have #{ @company.email_followers.size } email follower(s)."
+    p
+      | Your FROM email address is: 
+      = @company.informed_email || "NONE"
+      - if @company.informed_email.nil?
+        | ALERT: In order to send emails or texts to followers, you must provide a FROM email address.
+    - if @errors[:no_email]
+      p.error = @errors[:no_email]
+    = form_tag '', :method => :post do
+      label Subject
+      br
+      input type="text" name="subject" value=@old_subject
+      br
+      label Content
+      br
+      textarea rows=12 cols=70 name="content" = @old_content
+      br
+      = submit_tag 'Send Email'
