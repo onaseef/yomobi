@@ -21,6 +21,8 @@ Yomobi::Application.routes.draw do
   
   get 'b/:company' => 'mobile#index'
 
+  get 'opt-out/:key' => 'widgets/informed#opt_out'
+
   root :to => 'home#index'
   
   ##########################

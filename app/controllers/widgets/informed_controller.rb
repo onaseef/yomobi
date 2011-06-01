@@ -65,6 +65,16 @@ class Widgets::InformedController < ApplicationController
     return render 'email_panel'
   end
 
+  def opt_out
+    follower = Follower.find_by_opt_out_key params[:key]
+    return redirect_to root_path if follower.nil?
+
+    @company_name = follower.company.name
+    follower.destroy
+
+    render :layout => 'application'
+  end
+
   private
 
   def follower_data_present? data

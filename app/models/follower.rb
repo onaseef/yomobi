@@ -48,6 +48,8 @@ class Follower < ActiveRecord::Base
     return if email.nil?
     puts "Sending email to #{email} (subject=#{subject})"
     UserMailer.email_follower({
+      :follower => self,
+      :company => company,
       :to => email,
       :from => company.informed_email,
       :subject => subject,
@@ -58,10 +60,10 @@ class Follower < ActiveRecord::Base
   private
 
   def handle_empty_values
-    @phone.gsub! /[^0-9]+/, '' if @phone
-    (@phone = nil) && (@carrier = nil) if !phone.present? || !carrier.present?
-    @email = nil if !email.present?
-    @opt_out_key, @short_url = new_opt_out_pair if opt_out_key.nil?
+    self.phone.gsub! /[^0-9]+/, '' if phone
+    (self.phone = nil) && (self.carrier = nil) if !phone.present? || !carrier.present?
+    self.email = nil if !email.present?
+    self.opt_out_key, self.short_url = new_opt_out_pair if opt_out_key.nil?
     true
   end
 
