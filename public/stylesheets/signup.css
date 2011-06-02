@@ -5,10 +5,6 @@
   height: 42px; }
   #header.signed-out .subtext, #header.signed-out .subtext:visited {
     color: #98a9ca; }
-  #header.signed-out a {
-    text-decoration: none; }
-  #header.signed-out a:hover {
-    text-decoration: underline; }
   #header.signed-out > .content {
     width: 960px;
     margin: 0 auto; }
@@ -74,6 +70,39 @@
   float: right;
   width: 400px;
   padding-top: 40px; }
+
+#signin-box {
+  width: 600px;
+  padding: 10px 20px; }
+  #signin-box h2 {
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 4px; }
+  #signin-box .login-error {
+    margin: 25px 0 15px;
+    padding: 10px;
+    border: 1px solid #dd3c10;
+    background: #ffebe8; }
+    #signin-box .login-error b {
+      font-size: 13px; }
+    #signin-box .login-error a, #signin-box .login-error a:visited {
+      color: #dd3c10; }
+
+#actual-signin-box {
+  width: 295px;
+  margin: 0 auto; }
+  #actual-signin-box .group {
+    padding: 5px 0; }
+    #actual-signin-box .group label {
+      float: left;
+      display: block;
+      width: 100px;
+      padding-top: 4px; }
+  #actual-signin-box input[type=text] {
+    float: left; }
+  #actual-signin-box .meta-group {
+    padding-left: 102px; }
+  #actual-signin-box .main-btn {
+    margin-right: 4px; }
 
 #step-arrows {
   background: #eceef4;

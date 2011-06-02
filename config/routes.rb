@@ -4,7 +4,10 @@ Yomobi::Application.routes.draw do
   
   match 'account-setup/:step_num' => 'signup#account_setup', :as => :account_setup
 
-  devise_for :users, :controllers => { :registrations => 'registrations' }
+  devise_for :users, :controllers => {
+    :registrations => 'registrations',
+    :sessions => 'sessions'
+  }
 
   get 'builder/main'      => 'builder#index', :as => :builder_main
 

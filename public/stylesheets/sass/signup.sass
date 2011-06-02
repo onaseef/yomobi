@@ -9,10 +9,6 @@
   height: 42px
   .subtext, .subtext:visited
     color: #98A9CA
-  a
-    text-decoration: none
-  a:hover
-    text-decoration: underline
   & > .content
     width: $page-width
     margin: 0 auto
@@ -80,6 +76,39 @@
   float: right
   width: 400px
   padding-top: 40px
+
+#signin-box
+  width: 600px
+  padding: 10px 20px
+  h2
+    border-bottom: 1px solid #ccc
+    padding-bottom: 4px
+  .login-error
+    margin: 25px 0 15px
+    padding: 10px
+    border: 1px solid #DD3C10
+    background: #FFEBE8
+    b
+      font-size: 13px
+    a, a:visited
+      color: #DD3C10
+
+#actual-signin-box
+  width: 295px
+  margin: 0 auto
+  .group
+    padding: 5px 0
+    label
+      float: left
+      display: block
+      width: 100px
+      padding-top: 4px
+  input[type=text]
+    float: left
+  .meta-group
+    padding-left: 102px
+  .main-btn
+    margin-right: 4px
 
 #step-arrows
   background: #ECEEF4

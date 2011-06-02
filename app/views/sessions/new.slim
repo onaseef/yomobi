@@ -1,0 +1,33 @@
+- @hide_header_signin_form = true
+
+= form_for resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => 'center-box', :id => 'signin-box' } do |f|
+  
+  h2 Yomobi Sign in
+  - if alert
+    .login-error
+      b Please re-enter your password
+      p The password you entered is incorrect. Please try again (make sure your caps lock is off).
+      p
+        | Forgot your password? 
+        a href=new_password_path(:user) Request a new one.
+
+  #actual-signin-box
+    .group.clearfix
+      = f.label 'Email:'
+      = f.text_field :email
+    .group.clearfix
+      = f.label 'Password:'
+      = f.password_field :password
+    .meta-group
+      - if devise_mapping.rememberable?
+        p
+          = f.check_box :remember_me
+          = f.label :remember_me
+      .main-btn.lfloat
+        input.content type="submit" value="Sign In"
+      p
+        | or 
+        a href=root_path style="font-weight:bold" Sign Up for Yomobi
+      br
+      a href=new_password_path(:user) Forgot your password?
+  .clearfix
