@@ -1,12 +1,24 @@
 @import url(dbx.css);
 body {
+  margin: 0;
+  padding: 0;
   font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
   font-size: 11px;
   overflow-y: scroll; }
 
-#topline-notice p.notice, #topline-notice p.alert, #topline-notice p.error {
+#topline-notice {
+  background: #d8dfea;
   text-align: center;
-  font-size: 16px; }
+  -webkit-box-shadow: #9c9c9c 0 1px 15px;
+  -moz-box-shadow: 0 1px 15px #9c9c9c;
+  border-bottom: 1px solid #1d4088; }
+  #topline-notice p.notice, #topline-notice p.alert, #topline-notice p.error {
+    margin: 0;
+    text-align: center;
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: bold;
+    padding: 10px 0; }
 
 p.error {
   color: #f03d25; }
