@@ -80,14 +80,47 @@
   width: 400px;
   padding-top: 40px; }
 
-#account-setup-wrapper {
+#step-arrows {
+  background: #eceef4;
   width: 500px;
-  margin: 20px auto; }
+  margin: 20px auto;
+  background: url(/images/ui/step-arrow-inactive-bg.png) repeat-x; }
+  #step-arrows .arrow {
+    float: left; }
+    #step-arrows .arrow .content {
+      height: 40px;
+      padding: 11px 10px 0 15px; }
+    #step-arrows .arrow .title {
+      font-size: 13px;
+      font-weight: bold; }
+    #step-arrows .arrow label {
+      font-size: 9px; }
+    #step-arrows .arrow .part {
+      height: 51px;
+      background: url(/images/ui/step-arrow-parts.png); }
+    #step-arrows .arrow .point {
+      width: 21px; }
+    #step-arrows .arrow .back {
+      width: 3px;
+      background-position: -24px 0; }
+  #step-arrows .arrow > * {
+    float: left; }
+  #step-arrows .arrow.active .content {
+    color: white;
+    background: url(/images/ui/step-arrow-active-bg.png) repeat-x; }
+  #step-arrows .arrow.inactive .point {
+    background-position: -30px 0; }
+  #step-arrows .arrow.just-active .point {
+    background-position: -51px 0; }
+  #step-arrows .arrow.active .back {
+    background-position: -21px 0; }
 
-#account-setup-box textarea, #account-setup-box input[type=text] {
-  width: 98%;
-  font-size: 1.5em; }
-#account-setup-box .site-url span {
-  font-size: 1.5em; }
-#account-setup-box .site-url input {
-  width: 200px; }
+#account-setup-box {
+  width: 500px; }
+  #account-setup-box textarea, #account-setup-box input[type=text] {
+    width: 98%;
+    font-size: 1.5em; }
+  #account-setup-box .site-url span {
+    font-size: 1.5em; }
+  #account-setup-box .site-url input {
+    width: 200px; }

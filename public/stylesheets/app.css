@@ -6,6 +6,9 @@ body {
   font-size: 11px;
   overflow-y: scroll; }
 
+hr {
+  color: #cccccc; }
+
 #topline-notice {
   background: #d8dfea;
   text-align: center;
@@ -26,6 +29,17 @@ p.error {
 #page-container {
   width: 960px;
   margin: 0 auto; }
+
+.center-box {
+  margin: 20px auto;
+  border: 1px solid #cccccc;
+  -webkit-border-radius: 4px; }
+  .center-box .content {
+    padding: 10px 20px; }
+  .center-box .action-bar {
+    padding: 10px 12px;
+    background: #f2f2f2;
+    border-top: 1px solid #cccccc; }
 
 .main-btn {
   background: #5b74a8;

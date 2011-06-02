@@ -86,11 +86,44 @@
   width: 400px
   padding-top: 40px
 
-#account-setup-wrapper
+#step-arrows
+  background: #ECEEF4
   width: 500px
   margin: 20px auto
+  background: url(/images/ui/step-arrow-inactive-bg.png) repeat-x
+  .arrow
+    float: left
+    .content
+      height: 40px
+      padding: 11px 10px 0 15px
+    .title
+      font-size: 13px
+      font-weight: bold
+    label
+      font-size: 9px
+    .part
+      height: 51px
+      background: url(/images/ui/step-arrow-parts.png)
+    .point
+      width: 21px
+    .back
+      width: 3px
+      background-position: -24px 0
+  .arrow > *
+    float: left
+  .arrow.active .content
+    color: #fff
+    background: url(/images/ui/step-arrow-active-bg.png) repeat-x
+  .arrow.inactive .point
+    background-position: -30px 0
+  .arrow.just-active .point
+    background-position: -51px 0
+  .arrow.active .back
+    background-position: -21px 0
+  
 
 #account-setup-box
+  width: 500px
   textarea, input[type=text]
     width: 98%
     font-size: 1.5em

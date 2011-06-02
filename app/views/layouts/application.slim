@@ -16,7 +16,7 @@ html
       #header
         .content
           #logo YoMobi
-          - if current_user.nil?
+          - if current_user.nil? && !@hide_header_signin
             = render :partial => 'shared/header-signin-form'
           .clearfix
       #page-container
