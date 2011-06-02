@@ -2,21 +2,30 @@
   padding: 14px 0 20px 0;
   background: #3b5998;
   color: white;
-  height: 31px; }
-  #header a, #header a:visited {
+  height: 42px; }
+  #header .subtext, #header .subtext:visited {
     color: #98a9ca; }
   #header a {
     text-decoration: none; }
   #header a:hover {
     text-decoration: underline; }
-  #header .content {
+  #header > .content {
     width: 960px;
     margin: 0 auto; }
   #header #logo {
     float: left;
     width: 188px;
-    padding-left: 12px;
+    padding: 8px 0 0 12px;
     font-size: 3em; }
+  #header form {
+    float: right;
+    width: 400px; }
+    #header form .group {
+      width: 160px; }
+    #header form input[type=text], #header form input[type=password] {
+      width: 142px; }
+    #header form .main-btn {
+      margin-top: 14px; }
   #header #nav {
     float: left;
     width: 758px;

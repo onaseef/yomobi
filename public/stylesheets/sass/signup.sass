@@ -6,21 +6,30 @@
   padding: 14px 0 20px 0
   background: $main-color
   color: $header-font-color
-  height: 31px
-  a, a:visited
+  height: 42px
+  .subtext, .subtext:visited
     color: #98A9CA
   a
     text-decoration: none
   a:hover
     text-decoration: underline
-  .content
+  & > .content
     width: $page-width
     margin: 0 auto
   #logo
     float: left
     width: $sidebar-width - 12px
-    padding-left: 12px
+    padding: 8px 0 0 12px
     font-size: 3em
+  form
+    float: right
+    width: 400px
+    .group
+      width: 160px
+    input[type=text], input[type=password]
+      width: 142px
+    .main-btn
+      margin-top: 14px
   #nav
     float: left
     width: $content-width - 2

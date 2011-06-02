@@ -79,3 +79,12 @@ p.error {
 
 .rfloat {
   float: right; }
+
+.clearfix {
+  clear: both; }
+
+.lclear {
+  clear: left; }
+
+.rclear {
+  clear: right; }
