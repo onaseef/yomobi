@@ -45,9 +45,12 @@
       p.help-text
         em Give your users access to key widgets from anywhere on your mobile site.
     div class="edit-area"
+      .wtab
+        h3 = "Tab #1"
+        h2 style="color:#696969" Home
       - 3.times do |n|
         .wtab
-          h3 = "Tab \##{ n+1 }"
+          h3 = "Tab \##{ n+2 }"
           select name="wtab_1" data-idx="#{ n }"
             option = "==None=="
             | <%
