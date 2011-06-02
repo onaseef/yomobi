@@ -26,6 +26,37 @@ hr {
 p.error {
   color: #f03d25; }
 
+#header.signed-in {
+  padding-top: 10px;
+  background: #3b5998;
+  color: white;
+  height: 31px; }
+  #header.signed-in .content {
+    width: 960px;
+    margin: 0 auto; }
+  #header.signed-in #logo {
+    float: left;
+    width: 188px;
+    padding-left: 12px;
+    font-size: 2em; }
+  #header.signed-in #nav {
+    float: left;
+    width: 750px;
+    height: 30px;
+    border: 1px solid #1d4088;
+    border-bottom: none;
+    background: #627aad;
+    text-align: right; }
+    #header.signed-in #nav a, #header.signed-in #nav a:visited {
+      float: right;
+      height: 23px;
+      padding: 7px 10px 0;
+      color: white;
+      font-weight: bold;
+      text-decoration: none; }
+    #header.signed-in #nav a:hover {
+      background-color: #6d86b7; }
+
 #page-container {
   width: 960px;
   margin: 0 auto; }

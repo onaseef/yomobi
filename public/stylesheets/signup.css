@@ -1,38 +1,33 @@
-#header {
+#header.signed-out {
   padding: 14px 0 20px 0;
   background: #3b5998;
   color: white;
   height: 42px; }
-  #header .subtext, #header .subtext:visited {
+  #header.signed-out .subtext, #header.signed-out .subtext:visited {
     color: #98a9ca; }
-  #header a {
+  #header.signed-out a {
     text-decoration: none; }
-  #header a:hover {
+  #header.signed-out a:hover {
     text-decoration: underline; }
-  #header > .content {
+  #header.signed-out > .content {
     width: 960px;
     margin: 0 auto; }
-  #header #logo {
+  #header.signed-out #logo {
     float: left;
     width: 188px;
     padding: 8px 0 0 12px;
     font-size: 3em; }
-  #header form {
+  #header.signed-out form {
     float: right;
     width: 400px; }
-    #header form .group {
+    #header.signed-out form .group {
       width: 160px; }
-    #header form input[type=text], #header form input[type=password] {
+    #header.signed-out form input[type=text], #header.signed-out form input[type=password] {
       width: 142px; }
-    #header form .main-btn {
+    #header.signed-out form .main-btn {
       margin-top: 14px; }
-  #header #nav {
-    float: left;
-    width: 758px;
-    height: 30px;
-    border: 1px solid #1d4088;
-    border-bottom: none;
-    background: #627aad; }
+  #header.signed-out #nav {
+    display: none; }
 
 #sidebar {
   float: left;

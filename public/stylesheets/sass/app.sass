@@ -28,6 +28,37 @@ hr
 p.error
   color: #F03D25
 
+#header.signed-in
+  padding-top: 10px
+  background: $main-color
+  color: $header-font-color
+  height: 31px
+  .content
+    width: $page-width
+    margin: 0 auto
+  #logo
+    float: left
+    width: $sidebar-width - 12px
+    padding-left: 12px
+    font-size: 2em
+  #nav
+    float: left
+    width: $content-width - 2 - 8
+    height: 30px
+    border: 1px solid #1D4088
+    border-bottom: none
+    background: $secondary-color
+    text-align: right
+    a, a:visited
+      float: right
+      height: 23px
+      padding: 7px 10px 0
+      color: #fff
+      font-weight: bold
+      text-decoration: none
+    a:hover
+      background-color: #6D86B7
+
 #page-container
   width: $page-width
   margin: 0 auto

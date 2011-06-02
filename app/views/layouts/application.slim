@@ -13,11 +13,12 @@ html
         p.alert = alert
     
     #global-container
-      #header
+      #header class=(current_user.nil? ? 'signed-out' : 'signed-in')
         .content
           #logo YoMobi
-          - if current_user.nil? && !@hide_header_signin
+          - if current_user.nil?
             = render :partial => 'shared/header-signin-form'
+          = render :partial => 'shared/nav'
           .clearfix
       #page-container
         #sidebar

@@ -14,11 +14,10 @@ html
         p.alert = alert
     
     #global-container
-      #header
+      #header.signed-in
         .content
           #logo YoMobi
-          #nav
-            a href=destroy_user_session_path Sign Out
+          = render :partial => 'shared/nav'
           .clearfix
       #page-container
         #sidebar
