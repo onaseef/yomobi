@@ -52,7 +52,7 @@
   });
   
   // -----------------------------------------------
-  var super = {
+  var superObj = {
     resize: window.MobileAppView.prototype.resize,
     transition: window.MobileAppView.prototype.transition,
     goHome: window.MobileAppView.prototype.goHome,
@@ -75,7 +75,7 @@
     
     goHome: function (e) {
       e && e.preventDefault();
-      super.goHome.call(this);
+      superObj.goHome.call(this);
     },
     
     goToPage: function (widgetName) {
@@ -103,11 +103,11 @@
     
     transition: function (direction) {
       $('#mobile-scroller').scrollTop(0);
-      super.transition.call(this,direction,true);
+      superObj.transition.call(this,direction,true);
     },
     
     resize: function (height) {
-      super.resize.call(this,height);
+      superObj.resize.call(this,height);
       var emulatorWidth = ($('#mobile-container').height() < 480) ? 320 : 320+util.scrollbarWidth();
       $('#emulator').width(emulatorWidth);
     },
