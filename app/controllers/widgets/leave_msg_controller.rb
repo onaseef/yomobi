@@ -3,9 +3,6 @@ class Widgets::LeaveMsgController < ApplicationController
   def submit
     error('bad message') if (params[:msg_content] || '').empty?
 
-    # TODO: remove this line
-    return if Rails.env == 'production'
-    
     UserMailer.leave_msg({
       :to => 'yomobi@mailinator.com',
       :subject => 'You received customer feedback!',
