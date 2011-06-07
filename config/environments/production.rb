@@ -40,7 +40,7 @@ Yomobi::Application.configure do
   # config.action_mailer.raise_delivery_errors = false
   # TODO: move off gmail test account
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { :host => "http://glowing-frost-781.heroku.com" }
+  config.action_mailer.default_url_options = { :host => "glowing-frost-781.heroku.com" }
   ActionMailer::Base.smtp_settings = {
     :address  => "smtp.gmail.com",
     :port  => 587,
