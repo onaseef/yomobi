@@ -10,8 +10,8 @@ class CreateFollowers < ActiveRecord::Migration
       t.timestamps
     end
     add_index :followers, :opt_out_key, :unique => true
-    add_index :followers, :email, :unique => true
-    add_index :followers, :phone, :unique => true
+    add_index :followers, [:email, :company_id], :unique => true
+    add_index :followers, [:phone, :company_id], :unique => true
   end
 
   def self.down

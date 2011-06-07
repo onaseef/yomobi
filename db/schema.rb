@@ -50,9 +50,9 @@ ActiveRecord::Schema.define(:version => 20110606205346) do
     t.string   "short_url"
   end
 
-  add_index "followers", ["email"], :name => "index_followers_on_email", :unique => true
+  add_index "followers", ["email", "company_id"], :name => "index_followers_on_email_and_company_id", :unique => true
   add_index "followers", ["opt_out_key"], :name => "index_followers_on_opt_out_key", :unique => true
-  add_index "followers", ["phone"], :name => "index_followers_on_phone", :unique => true
+  add_index "followers", ["phone", "company_id"], :name => "index_followers_on_phone_and_company_id", :unique => true
 
   create_table "sigs", :force => true do |t|
     t.string   "email"

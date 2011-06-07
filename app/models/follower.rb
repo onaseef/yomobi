@@ -9,8 +9,8 @@ class Follower < ActiveRecord::Base
   validates_as_email_address :email, :on => :create, :allow_nil => true
   validates_length_of :phone, :is => 10, :allow_nil => true
 
-  validates_uniqueness_of :email, :allow_nil => true
-  validates_uniqueness_of :phone, :allow_nil => true
+  validates_uniqueness_of :email, :scope => [:company_id], :allow_nil => true
+  validates_uniqueness_of :phone, :scope => [:company_id], :allow_nil => true
 
   def save_new
     begin
@@ -68,7 +68,7 @@ class Follower < ActiveRecord::Base
   end
 
   def new_opt_out_pair
-    key = Digest::SHA1.hexdigest((email || phone) + "yomobi-salt")
+    key = Digest::SHA1.hexdigest("#{email}#{phone}#{company[:id]}yomobi-salt")
 
     url = "#{Rails.application.config.opt_out_url_host}/opt-out/#{key}"
     api_key = ENV['GOOGLE_API_KEY']
