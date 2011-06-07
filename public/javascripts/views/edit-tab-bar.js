@@ -33,7 +33,6 @@
       // mapp.wtabs points to a special array; can't just reassign a new one
       mapp.wtabs.length = 0;
       _.each(leftJustified, function (t) { mapp.wtabs.push(t); });
-      console.log('AFTER',mapp.wtabs);
       
       bapp.syncWorderDoc(function () {
         mapp.updateWtabs();

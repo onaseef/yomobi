@@ -1739,7 +1739,6 @@ Attacklab.wmdBase = function(){
 		};
 		wmd.wmd.stop = function () {
 		  if (!wmd.wmd.currentEditor) return;
-		  console.log('Stopping editor...');
 		  wmd.wmd.currentEditor.destroy();
 		};
 	};

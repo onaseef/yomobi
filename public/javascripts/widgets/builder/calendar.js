@@ -59,7 +59,7 @@
         ;
         pasteArea.val('Google calendar pasted successfully!');
       
-        console.log('pasted!',tagName,url);
+        util.log('pasted!',tagName,url);
       }
       catch (error) {
         util.log('ERROR',error);
