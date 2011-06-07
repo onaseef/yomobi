@@ -7,8 +7,9 @@ class UserMailer < ActionMailer::Base
   end
 
   def send_text(params)
-    @params = params
     follower = params[:follower]
+    @content = params[:content]
+    @short_url = follower.short_url
     mail({
       :to => "#{follower.phone}@#{follower.carrier.text_email}",
       :from => params[:company].informed_email

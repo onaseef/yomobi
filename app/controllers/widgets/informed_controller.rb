@@ -34,6 +34,7 @@ class Widgets::InformedController < ApplicationController
       @old_message = params[:message]
     elsif valid_text_message? params[:message]
       @company.text_followers.each {|f| f.send_text params[:message]}
+      flash[:notice] = 'Texts successfully sent'
     else
       @errors[:message] = "Message length is too long (must be less than #{max_message_length} characters long)"
       @old_message = params[:message]
