@@ -14,7 +14,7 @@ class Widgets::InformedController < ApplicationController
       :email   => params[:email],
       :phone   => params[:phone]
 
-    follower.save_new ? success(nil) : error('bad data')
+    follower.save_new ? success(nil) : error(follower.errors)
     puts "ERRORS: #{follower.errors.inspect}\nFOLLOWER: #{follower.inspect}"
   end
 
