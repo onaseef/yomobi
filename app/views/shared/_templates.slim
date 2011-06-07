@@ -154,10 +154,10 @@
     p Call us at:
     h1 {{ _maybe.phone }}
   
-  script.leave-a-message-page(type="text/template")
+  script.leave_msg-page(type="text/template")
     .input-wrap
       p Leave us a message:
-      = form_tag '/b/#{@company.name}/leave_msg/submit', :method => 'post' do
+      = form_tag "/b/#{@company.name}/leave_msg/submit", :method => 'post' do
         label Your Email Address:
         br
         input type="text" name="email"
@@ -171,6 +171,25 @@
         input(type="submit" value="Send")
     .thanks-wrap style="display:none"
       h1 Thanks for your input!
+  
+  script.booking-page(type="text/template")
+    .input-wrap
+      p Request a Booking:
+      = form_tag "/b/#{@company.name}/booking/submit", :method => 'post' do
+        label
+          | Please enter your phone number you wish to be conctated at for confirmation:
+        br
+        br
+        label Phone: 
+        input name="phone" type="text"
+        br
+        br
+        label Your name and time request:
+        br
+        textarea name="details" rows=5
+        input(type="submit" value="Send")
+    .thanks-wrap style="display:none"
+      h2 Thank you for your booking request. It will be reviewed shortly.
   
   script.informed-page(type="text/template")
     .input-wrap
@@ -293,7 +312,11 @@
     input(name="phone" type="text" value="{{ _maybe.phone }}")
   
   script.leave-a-message-edit-area(type="text/template")
-    label Enter the email you would like to receive your customer's messages on:
+    label Enter the email you would like to receive your customers' messages on:
+    input(name="email" type="text" value="{{ _maybe.email }}")
+  
+  script.booking-request-edit-area(type="text/template")
+    label Enter the email you would like to receive your customers' booking requests on:
     input(name="email" type="text" value="{{ _maybe.email }}")
   
   script.keep-me-informed-edit-area(type="text/template")

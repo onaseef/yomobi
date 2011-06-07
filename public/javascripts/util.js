@@ -478,6 +478,14 @@ var util = {
     this._scrollbarWidth = width;
  
     return this._scrollbarWidth;
+  },
+
+  getFormValueHash: function ($form) {
+    var hash = {};
+    $form.find('[name^=]').each(function (idx,elem) {
+      hash[elem.name] = $(elem).val();
+    });
+    return hash;
   }
   
 }

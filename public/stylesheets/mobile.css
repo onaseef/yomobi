@@ -18,6 +18,9 @@ body {
     #canvas .page .content {
       padding: 0 4px;
       font-size: 16px; }
+    #canvas .page p.error {
+      margin-bottom: 0;
+      color: #880000; }
 
 .back-bar, .company-info {
   width: 304px;

@@ -1,5 +1,7 @@
 Yomobi::Application.routes.draw do
 
+  get "booking/submit"
+
   get 'home/index'
   
   match 'account-setup/:step_num' => 'signup#account_setup', :as => :account_setup
@@ -34,6 +36,7 @@ Yomobi::Application.routes.draw do
 
   post '/b/:company/leave_msg/submit' => 'widgets/leave_msg#submit'
   post '/b/:company/informed/submit' => 'widgets/informed#mobile_submit'
+  post '/b/:company/booking/submit' => 'widgets/booking#mobile_submit'
 
 
   # Sample of regular route:

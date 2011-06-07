@@ -19,4 +19,9 @@ class UserMailer < ActionMailer::Base
     @params = params
     mail params
   end
+
+  def booking_email(params)
+    @params = params
+    mail params
+  end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110601055627) do
+ActiveRecord::Schema.define(:version => 20110606205346) do
 
   create_table "carriers", :force => true do |t|
     t.string   "name"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20110601055627) do
     t.datetime "logo_updated_at"
     t.string   "informed_email"
     t.string   "leave_msg_email"
+    t.string   "booking_email"
   end
 
   add_index "companies", ["db_name"], :name => "index_companies_on_db_name", :unique => true
