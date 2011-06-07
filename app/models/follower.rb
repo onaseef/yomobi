@@ -48,8 +48,8 @@ class Follower < ActiveRecord::Base
     return if email.nil?
     puts "Sending email to #{email} (subject=#{subject})"
     UserMailer.email_follower({
-      :follower => self,
-      :company => company,
+      :short_url => short_url,
+      :company_name => company.name,
       :to => email,
       :from => company.informed_email,
       :subject => subject,
