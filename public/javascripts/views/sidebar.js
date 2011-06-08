@@ -1,5 +1,7 @@
 (function ($) {
   
+  var singletonInUseTooltip = "<p>You may only use <b>one</b> of this type of widget at a time.</p><p>This widget is already in your Yomobi mobile website.</p>";
+
   SidebarView = Backbone.View.extend({
     
     el: $('#sidebar'),
@@ -27,14 +29,28 @@
       w.set({ singletonInUse:inUse });
       this.render();
     },
+
+    isSingletonInUse: function (name,wtype) {
+      var w = this.widgets.find(function (w) {
+        return w.get('name') == name && w.get('wtype') == wtype;
+      });
+      return w && w.get('singletonInUse');
+    },
     
     render: function () {
       var w_area = $('#sidebar .widgets').empty()
         , self = this
       ;
       this.widgets.each(function (widget) {
-        if (widget.get('singletonInUse')) return;
-        w_area.append( self.widgetTemplate(widget.getIconData()) );
+        // if (widget.get('singletonInUse')) return;
+        var icon = self.widgetTemplate(widget.getIconData());
+        w_area.append(icon);
+        if (widget.get('singletonInUse')) {
+          w_area.find('.home-icon:last')
+            .addClass('singletonInUse')
+            .simpletooltip(singletonInUseTooltip)
+          ;
+        }
       });
       w_area.append('<div class="clearfix">');
     },
@@ -52,13 +68,17 @@
     }
     
   });
-  
-})(jQuery);
 
-function makeDraggable () {
-  if ($(this).data("init")) return;
-  $(this).data("init", true)
-         .draggable({ helper:'clone', revert:'invalid', zIndex:99 })
-         .disableSelection()
-  ;
-}
+  function makeDraggable () {
+    $this = $(this);
+    if ($this.data('init') || $this.hasClass('singletonInUse')) {
+      return;
+    }
+    $this
+      .data('init', true)
+      .draggable({ helper:'clone', revert:'invalid', zIndex:99 })
+      .disableSelection()
+    ;
+  }
+
+})(jQuery);

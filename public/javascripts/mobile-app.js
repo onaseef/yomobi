@@ -49,11 +49,12 @@
     
     render: function () {
       $(this.el).html( this.template(this.model.getIconData()) );
+      // even though this only relates to bapp, it only triggers when
+      // bapp tells mapp to show invalid widgets
       if (mapp.homeView.showInvalidWidgets && !this.model.validForViewing()) {
         $(this.el)
           .addClass('invalid')
-          .attr('title',invalidWidgetTooltip)
-          .simpletooltip()
+          .simpletooltip(invalidWidgetTooltip)
         ;
       }
       return this;

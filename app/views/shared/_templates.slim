@@ -70,7 +70,7 @@
         td.wtab {{ prettyTabs[2] }}
 
   script.sidebar-widget(type="text/template")
-    .sidebar.home-icon data-name="{{ name }}" data-wtype="{{ wtype }}"
+    .sidebar.home-icon class="{{ singletonClass }}" data-name="{{ name }}" data-wtype="{{ wtype }}"
       .icon{ style="background-image: url(/images/widgets/{{ iconName }}.png)" }
       .title {{ prettyName }}
   
