@@ -98,7 +98,8 @@
         | <% if(_maybe.error) { %>
         p.error Error: {{ _maybe.error }}
         | <% } %>
-        p (Press Enter to add)
+        p.error
+          b (Press Enter to add/change)
         .other-names
     	    b Other Sub-Category names being used in this category:
     	    ul

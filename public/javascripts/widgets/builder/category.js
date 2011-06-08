@@ -277,9 +277,9 @@
       this.origName = origName;
       
       if (this.mode == 'add') buttons["I'm Done Adding Categories"] = closeSelf;
-      buttons["Close"] = closeSelf;
+      else buttons["Close"] = closeSelf;
       
-      util.dialog(dialogContent,buttons);
+      util.dialog(dialogContent,buttons).find('p.error').show('pulsate',{times:3});
     },
     
     validateCategory: function () {

@@ -378,7 +378,7 @@ var util = {
   },
   
   dialog: function (html,buttons) {
-    $(html).dialog({
+    return $(html).dialog({
       resizable: false,
       modal: true,
       draggable: false,
