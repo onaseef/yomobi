@@ -7,6 +7,7 @@
   ;
   
   window.widgetClasses.gmap = Widget.extend({
+    requiredAttrs: ['addr1','city','state'],
 
     getFullAddress: function () {
       return [this.get('addr1'), this.get('addr2'),

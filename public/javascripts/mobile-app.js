@@ -66,6 +66,8 @@
   // ===================================
   window.HomeView = Backbone.View.extend({
     el: $('#home'),
+
+    showInvalidWidgets: false,
     
     initialize: function (widgets) {
       _.bindAll(this,'render');
@@ -75,9 +77,10 @@
     },
     
     render: function () {
-      var content = this.el.find('.content').empty();
+      var content = this.el.find('.content').empty(), self = this;
 
       this.widgets.each(function (w) {
+        if (!self.showInvalidWidgets && !w.validForViewing()) return;
         var view = new WidgetHomeView({ model:w });
         content.append(view.render().el);
       });
@@ -145,6 +148,7 @@
       
       var widgetsToUse = options.homeViewWidgets || 'widgets';
       this.homeView = new HomeView(this[widgetsToUse]);
+      this.homeView.showInvalidWidgets = options.showInvalidWidgets || false;
       
       _.bindAll(this, 'render');
       this.widgets.bind('refresh', this.render);

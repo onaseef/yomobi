@@ -4,7 +4,7 @@
 (function ($) {
   
   window.widgetClasses.link_fb = Widget.extend({
-    
+    requiredAttrs: ['fbid'],
     baseName: 'facebook',
     
     initialize: function () {

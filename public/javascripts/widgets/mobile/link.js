@@ -4,6 +4,7 @@
 (function ($) {
   
   window.widgetClasses.link = Widget.extend({
+    requiredAttrs: ['url'],
     
     initialize: function () {
       _.bindAll(this,'onHomeViewClick');

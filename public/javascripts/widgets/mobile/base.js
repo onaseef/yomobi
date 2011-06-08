@@ -5,6 +5,8 @@
   
   window.Widget = Backbone.Model.extend({
     
+    requiredAttrs: [],
+
     sync: util.couchSync,
     url: function () {
       return 'http://yomobi.couchone.com/' + g.db_name +
@@ -46,6 +48,18 @@
       this.init && this.init();
     },
     
+    validForViewing: function () {
+      // this method should return false if this widget should not show
+      // up on the mobile page, i.e. not enough information is present.
+      // 
+      // If validity is more complicated than checking attr presence,
+      // this method should be overridden.
+      var self = this
+        , pluckAttr = function (attr) { return self.get(attr); }
+      ;
+      return _.all(_.map(this.requiredAttrs, pluckAttr));
+    },
+
     onHomeViewClick: function () {
       // returning false will cause the view not
       // to transition into the widget's page

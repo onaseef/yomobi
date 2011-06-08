@@ -130,7 +130,8 @@
       
       window.mapp = new MobileAppView({
         widgetsInUse: new BuilderWidgets(),
-        homeViewWidgets: 'widgetsInUse'
+        homeViewWidgets: 'widgetsInUse',
+        showInvalidWidgets: true
       });
       
       mapp.widgetsInUse.bind('add',mapp.homeView.render);

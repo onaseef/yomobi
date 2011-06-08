@@ -4,7 +4,7 @@
 (function ($) {
   
   window.widgetClasses.leave_msg = Widget.extend({
-    
+    requiredAttrs: ['email']
   });
   
   window.widgetPages.leave_msg = WidgetPageView.extend({

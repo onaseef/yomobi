@@ -4,7 +4,7 @@
 (function ($) {
   
   window.widgetClasses.informed = Widget.extend({
-    
+    requiredAttrs: ['email']
   });
   
   window.widgetPages.informed = WidgetPageView.extend({

@@ -280,49 +280,50 @@
   / = Widget Edit Pages =
   / =====================
   script.link-edit-area(type="text/template")
-    label Enter your website's address [e.g. www.mysite.com]:
+    label Enter your website's address [e.g. www.mysite.com]*:
     input(name="url" type="text" value="{{ _maybe.url }}")
   
   / singleton /
   script.picasa-edit-area(type="text/template")
-    label Enter your Picasa web url:
+    label Enter your Picasa web url*:
     input(name="url" type="text" value="{{ _maybe.url }}")
   
   script.link_fb-edit-area(type="text/template")
     h3 Current Link
     p
       a href="{{ url }}" target="_blank" {{ anchorText }}
-    label Enter your facebook id [e.g. Starbucks] or url [e.g. www.facebook.com/Starbucks]:
+    label Enter your facebook id [e.g. Starbucks] or url [e.g. www.facebook.com/Starbucks]*:
     input(name="fbid" type="text" value="{{ _maybe.fbid }}")
   
   script.link_twitter-edit-area(type="text/template")
     h3 Current Link
     p
       a href="{{ url }}" target="_blank" {{ anchorText }}
-    label Enter your twitter username [e.g. nytimes]:
+    label Enter your twitter username [e.g. nytimes]*:
     input(name="fbid" type="text" value="{{ _maybe.fbid }}")
   
   script.custom_page-edit-area(type="text/template")
-    label Write a short description of your website:
+    label A short description of your website*:
     textarea(name="content" rows="8")
       | {{ _maybe.content }}
 
   script.phone-edit-area(type="text/template")
-    label Your company's phone number:
+    label Your company's phone number*:
     input(name="phone" type="text" value="{{ _maybe.phone }}")
   
   script.leave-a-message-edit-area(type="text/template")
-    label Enter the email you would like to receive your customers' messages on:
+    label Enter the email you would like to receive your customers' messages on*:
     input(name="email" type="text" value="{{ _maybe.email }}")
   
   script.booking-request-edit-area(type="text/template")
-    label Enter the email you would like to receive your customers' booking requests on:
+    label Enter the email you would like to receive your customers' booking requests on*:
     input(name="email" type="text" value="{{ _maybe.email }}")
   
   script.keep-me-informed-edit-area(type="text/template")
     p This widget allows your customers to opt-in to receive email and sms notifications from you.
     p You can send out notifications to your customers by click on the “Manage Customers” link on the left hand side of your browser.
-    label Provide your email address to receive opt-ins.
+    br
+    label Provide your email address to receive opt-ins*:
     input name="email" type="text" value="{{ _maybe.email }}"
   
   script.hours-edit-area(type="text/template")
@@ -358,21 +359,21 @@
     .clearfix
 
   script.gmap-edit-area(type="text/template")
-    label Address 1:
+    label Address 1*:
     input(name="addr1" type="text" value="{{ _maybe.addr1 }}")
     label Address 2:
     input(name="addr2" type="text" value="{{ _maybe.addr2 }}")
-    label City:
+    label City*:
     input(name="city" type="text" value="{{ _maybe.city }}")
-    label State:
+    label State*:
     input(name="state" type="text" value="{{ _maybe.state }}")
     label Zip / Postal Code:
     input(name="zip" type="text" value="{{ _maybe.zip }}")
   
   script.coupon-edit-area(type="text/template")
-    label Name:
+    label Name*:
     input(name="couponName" type="text" value="{{ _maybe.couponName }}")
-    label Description:
+    label Description*:
     textarea(name="description" type="text") {{ _maybe.description }}
     label Expiration Date:
     input(name="expire" type="text" value="{{ _maybe.expire }}")

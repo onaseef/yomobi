@@ -4,7 +4,7 @@
 (function ($) {
   
   window.widgetClasses.booking = Widget.extend({
-    
+    requiredAttrs: ['email']
   });
   
   window.widgetPages.booking = WidgetPageView.extend({
