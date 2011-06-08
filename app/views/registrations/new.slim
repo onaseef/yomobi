@@ -1,0 +1,38 @@
+= form_for resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => 'center-box', :id => 'signin-box' } do |f|
+  
+  h2 Yomobi Email
+
+  - if @user.errors
+    .login-error
+      h3 There was problem with your request:
+      ul
+        - @user.errors.each do |name,reason|
+          li = "#{name.capitalize} #{reason}"
+      p
+        | Already a Member? 
+        a href=session_path(:user) Click here to sign in
+  
+  #actual-signin-box
+    .group.clearfix
+      = f.label 'Email:'
+      = f.text_field :email
+    .group.clearfix
+      = f.label 'Password:'
+      = f.password_field :password
+    .group.clearfix
+      = f.label 'Password Confirmation:'
+      = f.password_field :password_confirmation
+    .group.clearfix
+      = f.label "Business Type:"
+      = f.select :business_type, options_for_select(business_types, @user.business_type)
+    .group.clearfix
+      - unless @hide_captcha
+        p
+          | Enter both words below, separated by a space.
+          br
+          | Can't read the words below? Try different words or an audio captcha.
+        = recaptcha_tags
+    .meta-group
+      .main-btn.lfloat
+        input.content type="submit" value="Sign Up"
+  .clearfix

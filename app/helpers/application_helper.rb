@@ -6,8 +6,8 @@ module ApplicationHelper
   
   def business_types
     %w{
-    Personal
     Local\ Business
+    Personal
     Automotive
     Automotive\ Dealer\ /\ Vehicle
     Service

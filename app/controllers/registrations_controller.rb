@@ -1,6 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
   def create
     # TODO (eventually): enable captcha & checkingness
+    @hide_captcha = true
     if true || verify_recaptcha
       super
     else
