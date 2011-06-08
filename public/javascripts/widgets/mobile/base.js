@@ -49,7 +49,7 @@
       this.init && this.init();
     },
     
-    validForViewing: function () {
+    validForShowing: function () {
       // this method should return false if this widget should not show
       // up on the mobile page, i.e. not enough information is present.
       // 

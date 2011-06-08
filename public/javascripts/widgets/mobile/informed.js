@@ -4,7 +4,7 @@
 (function ($) {
   
   window.widgetClasses.informed = Widget.extend({
-    validForViewing: function () {
+    validForShowing: function () {
       return this.get('email') && (this.get('optForEmails') || this.get('optForTexts'));
     }
   });
@@ -34,12 +34,18 @@
         ;
       })
       .error(function (e,textStatus,errorThrown) {
-        self.el.find('.response').text('ERROR: '+e.responseText);
+        var msg = prettyErrorMsg($.parseJSON(e.responseText))
+        self.el.find('.response').text('ERROR: '+msg);
         mapp.resize();
       });
       
       return false;
     }
   });
+
+  function prettyErrorMsg (serverResponse) {
+    var msg = '';
+    util.log('SERVER RESPONSE',serverResponse);
+  }
   
 })(jQuery);

@@ -40,6 +40,8 @@
           util.showSuccess(self.el.find('.action-bar'));
           util.releaseWidget(model);
           model.onSave && model.onSave();
+          if (self.validForShowingStatus != model.validForShowing())
+            mapp.homeView.render();
           self.startEditing();
         }
       });
@@ -129,6 +131,7 @@
     startEditing: function () {
       util.log('Editing widget:',this.widget.get('name'),this.widget.isNew());
       var widget = this.widget;
+      this.validForShowingStatus = widget.validForShowing();
       
       this.el.html( this.template(widget.getEditAreaData()) );
       this.delegateEvents(this.extendedEvents);

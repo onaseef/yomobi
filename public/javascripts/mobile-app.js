@@ -51,7 +51,7 @@
       $(this.el).html( this.template(this.model.getIconData()) );
       // even though this only relates to bapp, it only triggers when
       // bapp tells mapp to show invalid widgets
-      if (mapp.homeView.showInvalidWidgets && !this.model.validForViewing()) {
+      if (mapp.homeView.showInvalidWidgets && !this.model.validForShowing()) {
         $(this.el)
           .addClass('invalid')
           .simpletooltip(invalidWidgetTooltip)
@@ -89,7 +89,7 @@
       var content = this.el.find('.content').empty(), self = this;
 
       this.widgets.each(function (w) {
-        if (!self.showInvalidWidgets && !w.validForViewing()) return;
+        if (!self.showInvalidWidgets && !w.validForShowing()) return;
         var view = new WidgetHomeView({ model:w });
         content.append(view.render().el);
       });
