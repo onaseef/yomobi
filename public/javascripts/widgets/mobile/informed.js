@@ -4,7 +4,9 @@
 (function ($) {
   
   window.widgetClasses.informed = Widget.extend({
-    requiredAttrs: ['email']
+    validForViewing: function () {
+      return this.get('email') && (this.get('optForEmails') || this.get('optForTexts'));
+    }
   });
   
   window.widgetPages.informed = WidgetPageView.extend({

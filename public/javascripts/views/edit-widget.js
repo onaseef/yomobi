@@ -148,7 +148,10 @@
     grabWidgetValues: function () {
       var vals = {};
       util.getInputElements(this.el,'.edit-area').each(function (idx,elem) {
-        vals[$(elem).attr('name')] = $(elem).val();
+        if ($(elem).attr('type') == 'checkbox')
+          vals[$(elem).attr('name')] = $(elem).is(':checked');
+        else
+          vals[$(elem).attr('name')] = $(elem).val();
       });
       return vals;
     }
