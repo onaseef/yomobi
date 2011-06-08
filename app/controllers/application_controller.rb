@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   
   def error(status = 400, reason)
-    render :text => reason, :status => status.to_json
+    render :text => reason.to_json, :status => status
   end
   
   def success(status = 200, data)

@@ -7,7 +7,7 @@ class Follower < ActiveRecord::Base
 
 
   validates_as_email_address :email, :on => :create, :allow_nil => true
-  validates_length_of :phone, :is => 10, :allow_nil => true
+  validates_length_of :phone, :is => 10, :allow_nil => true, :message => 'is not valid'
 
   validates_uniqueness_of :email, :scope => [:company_id], :allow_nil => true
   validates_uniqueness_of :phone, :scope => [:company_id], :allow_nil => true

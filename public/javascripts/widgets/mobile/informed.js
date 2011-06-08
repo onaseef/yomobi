@@ -35,7 +35,7 @@
       })
       .error(function (e,textStatus,errorThrown) {
         var msg = prettyErrorMsg($.parseJSON(e.responseText))
-        self.el.find('.response').text('ERROR: '+msg);
+        self.el.find('.response').html('ERROR: '+msg);
         mapp.resize();
       });
       
@@ -44,8 +44,17 @@
   });
 
   function prettyErrorMsg (serverResponse) {
-    var msg = '';
+    var msg = '<ul>';
+    if (serverResponse === "bad message")
+      msg += '<li>You must provide an email or phone number</li>';
+    _.each(serverResponse.email, function (error) {
+      msg += '<li>Email ' + error + '</li>';
+    });
+    _.each(serverResponse.phone, function (error) {
+      msg += '<li>Mobile number ' + error + '</li>';
+    });
     util.log('SERVER RESPONSE',serverResponse);
+    return msg + '</ul>';
   }
   
 })(jQuery);

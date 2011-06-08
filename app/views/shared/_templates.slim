@@ -194,19 +194,19 @@
   
   script.informed-page(type="text/template")
     .input-wrap
-      p Stay informed about your favorite business!
+      p Stay informed with our latest specials, discounts, and announcements. We respect your privacy.
       = form_tag "/b/#{@company.name}/informed/submit", :method => 'post' do
         | <% if (_maybe.optForEmails) { %>
-        label Your Email Address:
+        label Email Address:
         br
         input type="text" name="email"
         br
         | <% } if (_maybe.optForTexts) { %>
-        label Phone Number:
+        label Mobile Number:
         br
         input type="text" name="phone"
         br
-        label Phone Service Carrier:
+        label Mobile Service Carrier:
         br
         = select_tag 'carrier', options_for_select(carrier_names)
         br
