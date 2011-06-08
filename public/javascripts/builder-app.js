@@ -336,7 +336,7 @@
 
     'open',                                          // word for "open", as in "open this box"
     'close',                                         // word for "close", as in "close this box"
-    'click-down and drag to move this box',          // sentence for "move this box" by mouse
+    '',          // sentence for "move this box" by mouse
     'click to %toggle% this box',                    // pattern-match sentence for "(open|close) this box" by mouse
     
     'use the arrow keys to move this box. ',         // sentence for "move this box" by keyboard

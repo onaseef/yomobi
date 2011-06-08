@@ -31,6 +31,7 @@
   });
   
   // ==================================
+  var invalidWidgetTooltip = "<p>This widget will <b>NOT</b> show up in your mobile site!</p><p>Please click me, fill out all required information, and click <b>Save Changes</b>.";
   WidgetHomeView = Backbone.View.extend({
     tagName: 'div',
     className: 'home-icon dbx-box',
@@ -48,6 +49,13 @@
     
     render: function () {
       $(this.el).html( this.template(this.model.getIconData()) );
+      if (mapp.homeView.showInvalidWidgets && !this.model.validForViewing()) {
+        $(this.el)
+          .addClass('invalid')
+          .attr('title',invalidWidgetTooltip)
+          .simpletooltip()
+        ;
+      }
       return this;
     },
     

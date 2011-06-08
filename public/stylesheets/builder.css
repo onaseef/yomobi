@@ -39,7 +39,10 @@
   display: none !important; }
 
 .home-icon.editing {
-  background-color: #ddef34; }
+  background-color: #ddef34 !important; }
+
+.home-icon.invalid {
+  background-color: #e83d05; }
 
 #builder-container {
   background: #edeff4;

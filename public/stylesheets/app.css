@@ -1,5 +1,4 @@
 @import url(dbx.css);
-
 body {
   margin: 0;
   padding: 0;
@@ -126,6 +125,13 @@ p.error {
 .home-icon-placeholder {
   padding: 10px 8px;
   border: 1px dashed black; }
+
+#simpleTooltip {
+  padding: 7px;
+  border: 1px solid #dd3c10;
+  background: #ffebe8;
+  max-width: 270px;
+  font-size: 14px; }
 
 .lfloat {
   float: left; }
