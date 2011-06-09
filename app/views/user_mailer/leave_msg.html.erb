@@ -1,5 +1,6 @@
-Thanks for using Yomobi. A customer has given you feedback using your mobile Yomobi website!
+Thanks for using Yomobi. A customer has given you feedback using your mobile Yomobi website! Here's what he/she said:
 <br /><br />
-Here's what he/she said:
+<blockquote>Subject: <%= @params[:customer_subject] %></blockquote>
+<blockquote><%= @params[:customer_feedback] %></blockquote>
 <br /><br />
-<%= @params[:feedback] %>
+You can respond to this customer via the email address he/she provided: <%= @params[:customer_email] %>

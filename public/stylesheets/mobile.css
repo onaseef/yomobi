@@ -103,7 +103,7 @@ body {
 .clearfix {
   clear: both; }
 
-.page .content.leave_msg textarea[name="msg_content"] {
+.page .content.leave_msg textarea[name="feedback"] {
   width: 95%; }
 
 .page .content.hours .closed {
