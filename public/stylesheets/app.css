@@ -33,6 +33,9 @@ hr {
 p.error {
   color: #f03d25; }
 
+p.success {
+  color: #008800; }
+
 #header.signed-in {
   padding-top: 10px;
   background: #3b5998;

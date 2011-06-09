@@ -6,6 +6,8 @@ h1 = @company.name
 #builder-container
   #builder
     h2 Text Message your Followers
+    - if notice
+      p.success = notice
     p = "You have #{ @company.text_followers.size } text follower(s)."
     p
       | Your FROM email address is: 
