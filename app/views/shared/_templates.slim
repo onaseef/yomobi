@@ -177,20 +177,30 @@
     .input-wrap
       p Request a Booking:
       = form_tag "/b/#{@company.name}/booking/submit", :method => 'post' do
-        label
-          | Please enter your phone number you wish to be conctated at for confirmation:
+        label Name:
         br
+        input name="name" type="text"
         br
         label Phone: 
+        br
         input name="phone" type="text"
         br
+        label Time (e.g. 7:45pm): 
         br
-        label Your name and time request:
+        = select_tag 'time[h]', options_for_select(1..12, 2)
+        = select_tag 'time[m]', options_for_select(%w{00 15 30 45},30)
+        = select_tag 'time[p]', options_for_select(%w{am pm}, 'pm')
         br
-        textarea name="details" rows=5
+        label Date: 
+        br
+        = select_tag 'date[m]', options_for_select(1..12)
+        = select_tag 'date[d]', options_for_select(1..31)
+        = select_tag 'date[y]', options_for_select(2011..2012)
+        br
+        span.response
         input(type="submit" value="Send")
     .thanks-wrap style="display:none"
-      h2 Thank you for your booking request. It will be reviewed shortly.
+      h3 Your booking request has been sent.
   
   script.informed-page(type="text/template")
     .input-wrap

@@ -23,12 +23,7 @@
         , url  = form.attr('action')
         , params = form.serialize()
         , method = form.attr('method')
-        , error = this.validateParams( util.getFormValueHash(form) )
       ;
-      if (error) {
-        this.showError(error.name,error.reason);
-        return false;
-      }
 
       $.post(url,params,function (data) {
         util.log('data',data);
@@ -36,15 +31,23 @@
           .find('.input-wrap').hide().end()
           .find('.thanks-wrap').show().end()
         ;
+      })
+      .error(function (e,textStatus,errorThrown) {
+        var msg = prettyErrorMsg($.parseJSON(e.responseText))
+        self.el.find('.response').html('ERROR: '+msg);
+        mapp.resize();
       });
       
       return false;
     },
 
     showError: function (name,reason) {
-      this.el.find('form .error').remove();
-      var elem = this.el.find('form [name='+name+']');
-      elem.before( $('<p>').addClass('error').text(reason) );
+      // this.el.find('form .error').remove();
+      // var elem = this.el.find('form [name='+name+']');
+      // elem.before( $('<p>').addClass('error').text(reason) );
+      var msg = prettyErrorMsg($.parseJSON(e.responseText))
+      self.el.find('.response').html('ERROR: '+msg);
+      mapp.resize();
     },
 
     validateParams: function (params) {
@@ -56,4 +59,14 @@
 
   });
   
+  function prettyErrorMsg (serverResponse) {
+    var msg = '<ul>';
+    if (serverResponse === "bad message")
+      msg += '<li>You must provide both a name and phone number.</li>';
+    else if (serverResponse === "bad phone")
+      msg += '<li>Invalid phone number.</li>';
+    util.log('SERVER RESPONSE',serverResponse);
+    return msg + '</ul>';
+  }
+
 })(jQuery);
