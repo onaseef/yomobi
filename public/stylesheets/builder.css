@@ -138,6 +138,7 @@
 
 #emulator .loader-overlay {
   position: absolute;
+  z-index: 99;
   width: 320px;
   height: 480px;
   background: url(/images/ui/overlay.png); }
@@ -150,6 +151,7 @@
 #emulator .drophover-overlay {
   display: none;
   position: absolute;
+  z-index: 98;
   width: 320px;
   height: 100%;
   background: url(/images/ui/overlay.png); }
