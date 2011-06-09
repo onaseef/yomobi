@@ -1,7 +1,7 @@
 ul
   li.option.basic class=active?('mobile',active)
     .icon
-    a href="/b/#{@company.db_name}" target="_blank" View Mobile Site
+    a#preview-mobile-site href="/b/#{@company.db_name}" View Mobile Site
   li.option.text class=active?('email',active)
     .icon
     a href=builder_email_path Email Your Followers

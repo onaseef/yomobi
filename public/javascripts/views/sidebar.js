@@ -7,6 +7,10 @@
     el: $('#sidebar'),
     
     widgetTemplate: util.getTemplate('sidebar-widget'),
+
+    events: {
+      'click #preview-mobile-site': 'previewMobileSite'
+    },
     
     initialize: function (options) {
       var self = this;
@@ -65,6 +69,14 @@
         found = util.newWidget(found.attributes);
       }
       return found;
+    },
+
+    previewMobileSite: function (e) {
+      e.preventDefault();
+      // if (typeof this.winRef == 'undefined' || this.winRef.closed) {
+      var emulatorWidth = ($('#mobile-container').height() < 480) ? 320 : 320+util.scrollbarWidth();
+      this.winRef = window.open(e.target.href,'Your Mobile Website',
+        'width=' + emulatorWidth + ',height=480,scrollbars=yes');
     }
     
   });
