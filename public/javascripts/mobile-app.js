@@ -116,6 +116,7 @@
     },
   
     home: function () {
+      this.highlightHomeTab();
       mapp.goHome();
     },
     
@@ -124,10 +125,26 @@
       var widget = mapp.widgets.find(function (w) {
         return w.get('name') == name;
       });
-      
+      this.highlightTab(name);
       mapp.viewWidget(widget,subpage && unescape(subpage));
     },
     
+    highlightHomeTab: function () {
+      $('#top-bar .tab-bar td')
+        .removeClass('active')
+        .filter(':first').addClass('active')
+    },
+
+    highlightTab: function (name) {
+      var prettyName = util.prettifyName(name);
+      util.log('NAME',name,prettyName);
+      $('#top-bar .tab-bar td')
+        .removeClass('active')
+        .filter(function () { return this.innerHTML == prettyName; })
+        .addClass('active')
+      ;
+    }
+
   });
   
   // ========================================

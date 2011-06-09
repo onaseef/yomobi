@@ -52,8 +52,10 @@ body {
     text-align: center;
     font-weight: bold;
     font-size: 12px; }
-  .tab-bar td:hover, .tab-bar td.active {
+  .tab-bar td.active {
     background: #627aad;
+    cursor: pointer; }
+  .tab-bar td:hover {
     cursor: pointer; }
 
 .ad-bar {
