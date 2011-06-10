@@ -23,4 +23,5 @@ h1 = @company.name
       - if @errors[:message]
         p = "Error: #{ @errors[:message] }"
       textarea rows=4 cols=30 name="message" = @old_message
+      br
       = submit_tag 'Send Text'
