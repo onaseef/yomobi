@@ -28,15 +28,16 @@ html
       $(function () {
         window.mapp = new MobileAppView();
         // TODO: make widget page links actually work
-        window.location.href = '#';
+        // window.location.href = '#';
         new MobileAppController();
-        Backbone.history.start();
         
         mapp.fetchWorder(function (worderDoc) {
           mapp.worder = worderDoc.worder;
           mapp.wtabs  = worderDoc.wtabs;
           mapp.updateWtabs();
-          mapp.widgets.fetch();
+          mapp.widgets.fetch({
+            success: function () { Backbone.history.start(); }
+          });
         });
       });
     
