@@ -18,7 +18,7 @@ Typus.setup do |config|
 
   # Define username and password for +:http_basic+ authentication
   config.username = "yadmin@yomobi.com"
-  config.password = "smed807:bcurs"
+  config.password = "bcurs:smed807"
 
   # Pagination options:
   # These options are passed to `will_paginate`. You can see the available
