@@ -2,6 +2,9 @@
   = render :partial => 'shared/sidebar', :locals => {:active => 'email'}
   .widgets
 
+- content_for :js do
+  = javascript_include_tag 'send_panel.js'
+
 h1 = @company.name
 #builder-container
   #builder
