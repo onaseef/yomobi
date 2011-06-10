@@ -14,7 +14,7 @@
     },
     
     validate: function (attrs) {
-      if (attrs.url && !attrs.url.match(/^http:\/\//))
+      if (attrs.url && !attrs.url.match(/^https?:\/\//))
         attrs.url = 'http://' + attrs.url;
     }
     
