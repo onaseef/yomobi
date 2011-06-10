@@ -250,6 +250,10 @@
       if (code == 13) this.validateCategory();
     },
     
+    initialize: function () {
+      _.bindAll(this,'validateCategory');
+    },
+
     enterMode: function (mode) {
       this.mode = mode;
       return this;
@@ -269,8 +273,8 @@
       var self = this
         , level = this.model.getCurrentLevel()
         , dialogContent = this.render(error,level,origName).el
-        , buttons = {}
         , closeSelf = close(this)
+        , buttons = { "Add":this.validateCategory }
       ;
       // cache for later use
       this.level = level;
