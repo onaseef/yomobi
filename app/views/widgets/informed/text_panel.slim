@@ -24,4 +24,8 @@ h1 = @company.name
         p = "Error: #{ @errors[:message] }"
       textarea rows=4 cols=30 name="message" = @old_message
       br
-      = submit_tag 'Send Text'
+      = submit_tag 'Send Text', :class => 'lfloat'
+      .load-box style="padding-top: 3px; display:none"
+        div.loader.lfloat style="margin:2px 4px 0 5px"
+        span.success Sending. Please wait...
+      .clearfix
