@@ -41,8 +41,19 @@
     
     extractEmbedLink: function () {
       var pasteArea = this.el.find('textarea')
+        , paste = pasteArea.val()
+        , isUrl = paste.match(/^https?:\/\/(?:www.)?google.com\/calendar/)
+      ;
+      if (isUrl) {
+        this.el
+          .find('input[name=url]').val(paste).end()
+          .find('.url a').attr('href',paste).text(paste).end()
+        ;
+        pasteArea.val('Google calendar pasted successfully!');
+        return;
+      }
       try {
-        var maybeElem = $( pasteArea.val() )
+        var maybeElem = $(paste)
           , tagName = maybeElem[0] && maybeElem[0].nodeName.toLowerCase()
           , url = maybeElem.attr('src')
         ;
@@ -63,7 +74,7 @@
       }
       catch (error) {
         util.log('ERROR',error);
-        pasteArea.val('Bad embed link (Please try again)');
+        pasteArea.val('Bad embed link (Please try again)' + error);
       }
     },
     
