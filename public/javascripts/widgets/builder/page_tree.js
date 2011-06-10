@@ -157,6 +157,15 @@
   // =================================
   var AddItemDialog = Backbone.View.extend({
     
+    events: {
+      'keydown input[name="name"]':      'onKeyDown'
+    },
+    
+    onKeyDown: function (e) {
+      var code = e.keyCode || e.which;
+      if (code == 13) this.validateItem();
+    },
+
     template: util.getTemplate('add-item-dialog'),
     
     enterMode: function (mode) {
@@ -185,24 +194,7 @@
       
       util.dialog(dialogContent, {
         "Save Item": function () {
-          $(this).dialog("close");
-          var activeItemData = {};
-          $(self.el).find('.item-input').each(function (idx,elem) {
-            activeItemData[$(elem).attr('name')] = $(elem).val();
-          });
-          
-          if (!self.validateItem(activeItemData)) return;
-          
-          if (self.mode == 'add') {
-            level._items.push(activeItemData);
-            self.prompt({ success:'Item '+self.mode+'ed successfully' });
-          }
-          else if (self.mode == 'edit') {
-            var oldItem = _.detect(level._items,function (i) { return i.name == item.name });
-            _.extend(oldItem,activeItemData);
-
-            self.options.onClose && self.options.onClose();
-          }
+          self.validateItem();
         },
       	"I'm Done": function () {
           $(this).dialog("close");
@@ -213,17 +205,31 @@
     
     validateItem: function (item) {
   		$(this.el).dialog("close");
+      var activeItemData = {};
+      $(this.el).find('.item-input').each(function (idx,elem) {
+        activeItemData[$(elem).attr('name')] = $(elem).val();
+      });
 
-      var name = $.trim(item.name);
+      var name = $.trim(activeItemData.name);
   		if (_.isEmpty(name)) {
-  		  this.prompt({ error:'Name cannot be empty' },item);
-  		  return false;
+  		  this.prompt({ error:'Name cannot be empty' },activeItemData);
+  		  return;
   		}
       else if (this.mode == 'add' && _.include(this.level._items,name)) {
-        this.prompt({ error:'Name is already in use' },item);
-        return false;
+        this.prompt({ error:'Name is already in use' },activeItemData);
+        return;
       }
-      return true;
+
+      if (this.mode == 'add') {
+        this.level._items.push(activeItemData);
+        this.prompt({ success:'Item '+this.mode+'ed successfully' });
+      }
+      else if (this.mode == 'edit') {
+        var oldItem = _.detect(this.level._items,function (i) { return i.name == item.name });
+        _.extend(oldItem,activeItemData);
+
+        this.options.onClose && this.options.onClose();
+      }
     }
   });
 
