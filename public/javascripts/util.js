@@ -382,6 +382,7 @@ var util = {
       resizable: false,
       modal: true,
       draggable: false,
+      closeOnEscape: false,
       buttons: buttons
     });
   },
