@@ -114,6 +114,16 @@
   });
   
   // ----------------------------------
+  BuilderAppController = Backbone.Controller.extend({
+    routes: {
+      'edit-tab-bar':  'editTabBar'
+    },
+    editTabBar: function () {
+      bapp.startEditingTabBar();
+    }
+  });
+
+  // ----------------------------------
   BuilderAppView = Backbone.View.extend({
     
     // can either be 'edit' or 'emulate'
@@ -124,6 +134,8 @@
     
     initialize: function () {
       _.bindAll(this,'rebindSortables');
+
+      new BuilderAppController();
       
       window.Widgets.prototype.url = 'http://yomobi.couchone.com/' + g.db_name +
          '/_design/widgets/_view/by_name?include_docs=true',
@@ -168,6 +180,8 @@
           
             $('#emulator .loader-overlay').hide();
             util.log('fetch',widgets,mapp.widgetsAvailable,mapp.widgetsInUse);
+
+            Backbone.history.start();
           }
         });
       });
