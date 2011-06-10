@@ -34,7 +34,7 @@ class Widgets::InformedController < ApplicationController
       @old_message = params[:message]
     elsif valid_text_message? params[:message]
       @company.text_followers.each {|f| f.send_text params[:message]}
-      flash[:notice] = 'Texts successfully sent'
+      flash.now[:notice] = 'Texts successfully sent'
     else
       @errors[:message] = "Message length is too long (must be less than #{max_message_length} characters long)"
       @old_message = params[:message]
@@ -60,7 +60,7 @@ class Widgets::InformedController < ApplicationController
       @old_content = params[:content]
     else
       @company.email_followers.each {|f| f.send_email params[:subject], params[:content]}
-      flash[:notice] = "Email successfully sent."
+      flash.now[:notice] = "Email successfully sent."
     end
 
     return render 'email_panel'
