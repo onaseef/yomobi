@@ -112,7 +112,10 @@
       #builder .widget-editor .widget-name:hover .change-label {
         display: inline; }
   #builder .widget-editor .widget-name-edit {
-    display: none; }
+    display: none;
+    position: relative;
+    top: -5px;
+    left: 2px; }
     #builder .widget-editor .widget-name-edit input[type=text] {
       font-size: 2.5em; }
 
