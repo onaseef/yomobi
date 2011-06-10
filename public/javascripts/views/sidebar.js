@@ -53,6 +53,7 @@
           w_area.find('.home-icon:last')
             .addClass('singletonInUse')
             .simpletooltip(singletonInUseTooltip)
+            .mousedown(function () { return false; })
           ;
         }
       });
