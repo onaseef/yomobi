@@ -114,10 +114,10 @@
   #builder .widget-editor .widget-name-edit {
     display: none;
     position: relative;
-    top: -5px;
-    left: 2px; }
+    left: 4px; }
     #builder .widget-editor .widget-name-edit input[type=text] {
-      font-size: 2.5em; }
+      font-size: 2.5em;
+      width: 250px; }
 
 #emulator-wrapper {
   float: left;
