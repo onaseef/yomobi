@@ -14,7 +14,7 @@
     },
     
     validate: function (attrs) {
-      if (attrs.url && !attrs.url.match(/^https?:\/\//))
+      if (attrs.url && !attrs.url.match(/^(https?:\/\/)|(ftps?\/\/)/))
         attrs.url = 'http://' + attrs.url;
     }
     
