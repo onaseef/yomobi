@@ -135,6 +135,7 @@
           self.widget.save({ name:validName }, {
             success: function () {
               util.clearUIBlock(validName);
+              bapp.tabBarEditor.replaceTabIfExists(oldName,newName);
               mapp.widgetsInUse.updateOverallOrder({ forceChange:true, forceSync:true });
             }
           });

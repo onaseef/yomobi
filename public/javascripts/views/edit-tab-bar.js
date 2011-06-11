@@ -44,13 +44,17 @@
       _.each(leftJustified, function (t) { mapp.wtabs.push(t); });
     },
 
-    removeTabIfExists: function (wname) {
+    removeTabIfExists: function (name) {
+      this.replaceTabIfExists(name,'');
+    },
+
+    replaceTabIfExists: function (name,newName) {
       var isChanged = false;
 
       for (var i=0; i < mapp.wtabs.length; i++) {
-        if (mapp.wtabs[i] == wname) {
+        if (mapp.wtabs[i] == name) {
           isChanged = true;
-          mapp.wtabs[i] = '';
+          mapp.wtabs[i] = newName;
         }
       }
       if (isChanged) {
