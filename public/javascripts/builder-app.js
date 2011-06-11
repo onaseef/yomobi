@@ -16,10 +16,13 @@
       this.sort({ silent:true });
       this.updateOverallOrder({ noUpdate:true });
 
-      util.reserveWidget(widget,true);
+      // util.reserveWidget(widget,true);
+      util.pushUIBlock('new-widget');
       widget.save(null,{
         success: function () {
-          util.releaseWidget(widget);
+          // util.releaseWidget(widget);
+          util.clearUIBlock('new-widget');
+          bapp.homeViewWidgetClick(widget);
         }
       });
       this.lastMod = 1;
@@ -229,7 +232,6 @@
       
           if (newWidget) {
             newWidget.set({ name:validName });
-            util.pushUIBlock(validName);
             mapp.widgetsInUse.add(newWidget);
 
             if (newWidget.get('singleton'))
@@ -328,12 +330,13 @@
     
     syncWorderDoc: function (callback) {
       util.log('Syncing worder...');
+      util.pushUIBlock('worder');
       
       $.post('/order',bapp.worderDoc,function (newWorderDoc) {
         bapp.worderDoc = newWorderDoc;
         mapp.worder = newWorderDoc.worder;
         mapp.wtabs  = newWorderDoc.wtabs;
-        util.releaseUI();
+        util.clearUIBlock('worder');
         callback && callback();
       });
     },

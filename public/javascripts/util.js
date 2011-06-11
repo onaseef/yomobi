@@ -47,6 +47,9 @@ var util = {
    *    During these 300ms, if another block is pushed using the same
    *  group key, the 300ms timer is stopped, and begins again only once
    *  all blocks under that group key are cleared.
+   *    This function should be called after some successful reserveUI() call.
+   *  It can be used to replace the use of releaseUI() with much more fine-
+   *  grained control.
    */
   pushBlock: function (group_key,block_key) {
     var group = this.groups[group_key] = this.groups[group_key] || {}
@@ -85,7 +88,7 @@ var util = {
   
   releaseWidget: function (widget) {
     this.release('widget:' + widget.get('name'));
-    $('#emulator .loader-overlay').hide();
+    if (util.isUIFree()) $('#emulator .loader-overlay').hide();
   },
   
   reserveUI: function () {
