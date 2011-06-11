@@ -89,6 +89,7 @@
       this.el
         .find('.widget-name').hide().end()
         .find('.widget-name-edit')
+          .find('input').val(this.widget.get('prettyName')).end()
           .show()
           .find('input[type=text]')
             .focus()
@@ -97,6 +98,15 @@
           .end()
         .end()
       ;
+    },
+
+    stopEditingName: function (switchToNewName) {
+      var newName = this.el
+        .find('.widget-name').show().end()
+        .find('.widget-name-edit').hide()
+          .find('input').val()
+      ;
+      if (switchToNewName) this.el.find('.widget-name').text(newName);
     },
     
     changeName: function (e) {
@@ -111,7 +121,7 @@
       ;
       if (newName === oldName) {
         util.releaseUI();
-        self.startEditing();
+        this.stopEditingName();
         return;
       }
       
@@ -120,14 +130,14 @@
         
         onValid: function (validName) {
           util.pushUIBlock(validName);
+          self.stopEditingName(true);
           self.widget.save({ name:validName }, {
             success: function () { util.clearUIBlock(validName); }
           });
-          self.startEditing();
         },
         onCancel: function () {
           util.releaseUI();
-          self.startEditing();
+          self.stopEditingName();
         }
       });
       util.log('changeName',newName);
