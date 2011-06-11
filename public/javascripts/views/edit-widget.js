@@ -129,10 +129,14 @@
         exception: oldName,
         
         onValid: function (validName) {
-          util.pushUIBlock(validName);
           self.stopEditingName(true);
+          util.pushUIBlock(validName);
+
           self.widget.save({ name:validName }, {
-            success: function () { util.clearUIBlock(validName); }
+            success: function () {
+              util.clearUIBlock(validName);
+              mapp.widgetsInUse.updateOverallOrder({ forceChange:true, forceSync:true });
+            }
           });
         },
         onCancel: function () {

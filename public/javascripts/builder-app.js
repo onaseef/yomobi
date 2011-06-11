@@ -29,7 +29,7 @@
     },
     
     updateOverallOrder: function (options) {
-      var i = 0, worder = {}, changed = false, options = options || {};
+      var i = 0, worder = {}, options = options || {}, changed = options.forceChange;
       this.each(function (widget) {
         if (!options.noUpdate) {
           var iconIdx = $(widget.homeView.el).index();
@@ -303,18 +303,22 @@
     },
     
     removeWidget: function (widget) {
+      this.tabBarEditor.removeTabIfExists(widget.get('name'));
       mapp.widgetsInUse.remove(widget);
 
+      util.pushUIBlock(widget.get('name'));
       widget.destroy({
         error: function (model,res) {
           util.log('error saving',model,res);
           // TODO: notify user
-          util.releaseUI();
+          // util.releaseUI();
+          util.clearUIBlock(widget.get('name'));
           util.releaseWidget(model);
         },
         success: function (deadWidget,res) {
           util.log('Saved widget',deadWidget,res);
-          util.releaseUI();
+          // util.releaseUI();
+          util.clearUIBlock(widget.get('name'));
           util.releaseWidget(deadWidget);
           // TODO: use data from server
           if (deadWidget.get('singleton'))

@@ -60,7 +60,7 @@ var util = {
     clearTimeout(timeoutRef);
     this.log('pushing into group',group_key,block_key);
   },
-  
+
   clearBlock: function (group_key,block_key,releaseDelay) {
     var self = this
       , group = this.groups[group_key]
@@ -69,12 +69,14 @@ var util = {
     ;
     if (!group || group[block_key] === undefined) return;
     delete group[block_key];
+    this.log('clearing block',group_key,block_key);
 
     var blocks = _.map(group, function (val) { return val; });
     if (!_.any(blocks)) {
       this.groups[timer_key] = setTimeout(function () {
         self.release(group_key);
         $('#emulator .loader-overlay').hide();
+        util.log('cleared group key',group_key);
       }, releaseDelay);
     }
   },
