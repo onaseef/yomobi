@@ -392,7 +392,7 @@
     },
     drop: function (e,ui) {
       
-      if (bapp.currentEditor.hasChanges() &&
+      if (bapp.currentEditor && bapp.currentEditor.hasChanges() &&
           !confirm('You have unsaved changes. Discard them?'))
       {
         return false;
