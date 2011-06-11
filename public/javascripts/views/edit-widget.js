@@ -10,13 +10,16 @@
       'click .accept-btn':          'accept',
       'click .remove-link':         'remove',
       'click .cancel-btn':          'cancel',
-      'click .widget-name':         'editName'
+      'click .widget-name':         'editName',
+      'keyup input[type=text]':     'checkForChanges',
+      'keyup textarea':             'checkForChanges'
     },
     
     initialize: function (widget) {
       _.bindAll(this,'changeName');
       this.widget = widget;
       this.extendedEvents = _.extend({},this.defaultEvents,this.events);
+      this.changes = {};
       
       if (this.init) this.init();
     },
@@ -42,7 +45,7 @@
           model.onSave && model.onSave();
           if (self.validForShowingStatus != model.validForShowing())
             mapp.homeView.render();
-          self.startEditing();
+          self.startEditing(true);
         }
       });
     },
@@ -71,11 +74,13 @@
       util.log('discard');
       if (!util.reserveWidget(this.widget)) return;
 
-      this.startEditing(this.widget);
+      this.startEditing(true);
 
       util.releaseWidget(this.widget);
     },
     
+    onDiscardByNavigation: function () {},
+
     editName: function (e) {
       util.log('editName',e);
       if (this.widget.get('singleton')) return;
@@ -128,11 +133,14 @@
       util.log('changeName',newName);
     },
     
-    startEditing: function () {
+    startEditing: function (resetChanges) {
       util.log('Editing widget:',this.widget.get('name'),this.widget.isNew());
       var widget = this.widget;
       this.validForShowingStatus = widget.validForShowing();
-      
+
+      if (resetChanges) this.changes = {};
+      if (this.onEditStart) this.onEditStart(resetChanges);
+
       this.el.html( this.template(widget.getEditAreaData()) );
       this.delegateEvents(this.extendedEvents);
 
@@ -140,12 +148,11 @@
 
       if (widget.get('singleton'))
         this.el.find('.change-label').remove();
-
-      if (this.onEditStart) this.onEditStart();
     },
     
     stopEditing: function () {
       this.el.html(bapp.idleTemplate());
+      this.changes = {};
     },
     
     grabWidgetValues: function () {
@@ -157,6 +164,23 @@
           vals[$(elem).attr('name')] = $(elem).val();
       });
       return vals;
+    },
+
+    checkForChanges: function (e) {
+      var elem = $(e.target)
+        , dataName = elem.attr('name')
+        , newData = elem.val()
+        , isChanged = this.widget.get(dataName) != newData
+      this.setChanged(dataName,isChanged);
+    },
+
+    setChanged: function (dataName,isChanged) {
+      if (isChanged) this.changes[dataName] = true;
+      else delete this.changes[dataName];
+    },
+
+    hasChanges: function () {
+      return _.keys(this.changes).length > 0;
     }
     
   });

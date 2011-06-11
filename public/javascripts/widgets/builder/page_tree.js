@@ -90,6 +90,7 @@
       leaf.content = $('#jeditor').val();
       this.widget.pageView.refresh();
       mapp.resize();
+      this.setChanged('leaf-content',true);
     }
     
   });
@@ -223,12 +224,14 @@
       if (this.mode == 'add') {
         this.level._items.push(activeItemData);
         this.prompt({ success:'Item '+this.mode+'ed successfully' });
+        bapp.currentEditor.setChanged('something',true);
       }
       else if (this.mode == 'edit') {
         var oldItem = _.detect(this.level._items,function (i) { return i.name == item.name });
         _.extend(oldItem,activeItemData);
 
         this.options.onClose && this.options.onClose();
+        bapp.currentEditor.setChanged('something',true);
       }
     }
   });

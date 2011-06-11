@@ -192,10 +192,19 @@
     homeViewWidgetClick: function (widget) {
       if(this.mode == 'emulate') return true;
 
-      if (this.currentEditor && this.currentEditor.widget)
-        this.currentEditor.widget.homeView.highlight(false);
+      var editor = this.currentEditor;
+      var isSameWidget = editor && editor.widget != widget;
+
+      if (editor && editor.widget) {
+        editor.widget.homeView.highlight(false);
+        if (editor.hasChanges() && isSameWidget) {
+          if (confirm('You have unsaved changes. Discard them?'))
+            editor.onDiscardByNavigation();
+          else return false;
+        }
+      }
       this.currentEditor = widget.getEditor();
-      this.currentEditor.startEditing();
+      this.currentEditor.startEditing(isSameWidget);
       // returning false will cause the mobile emulator to ignore the click
       return false;
     },

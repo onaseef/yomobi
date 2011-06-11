@@ -50,8 +50,9 @@
       this.AddItemDialog = AddItemDialog;
     },
     
-    onEditStart: function () {
-      var self = this;
+    onEditStart: function (resetChanges) {
+      util.log('ON EDIT START',resetChanges);
+      if (resetChanges) this.discardChanges();
     },
     
     grabWidgetValues: function () {
@@ -64,11 +65,19 @@
     },
     
     cancel: function () {
-      this.widget.set({ struct:util.clone(this.widget.origStruct) });
+      this.discardChanges();
       EditWidgetView.prototype.cancel.call(this);
-      this.widget.catStack = [];
       mapp.goHome();
       bapp.currentEditor.stopEditing();
+    },
+
+    discardChanges: function () {
+      this.widget.set({ struct:util.clone(this.widget.origStruct) });
+      this.widget.catStack = [];
+    },
+
+    onDiscardByNavigation: function () {
+      this.discardChanges();
     },
     
     addCat: function (e) {
@@ -125,6 +134,8 @@
       (mod==1) ? targetOption.before(swapOption) : targetOption.after(swapOption);
       this.refreshViews();
       $(this.el).find('select[name=cats] option').get(swapIdx).selected = 'selected';
+
+      this.setChanged('something',true);
     },
     
     remCat: function (e) {
@@ -136,6 +147,7 @@
         if (level[cat]) delete level[cat];
       });
       this.refreshViews();
+      this.setChanged('something',true);
     },
     
     addItem: function (e) {
@@ -195,7 +207,7 @@
     },
     
     refreshViews: function () {
-      this.widget.editor.startEditing();
+      this.startEditing();
       this.widget.pageView.refresh();
       mapp.resize();
     }
@@ -300,6 +312,7 @@
         var keyCount = _.keys(this.level).length;
         this.level[name+'|'+(keyCount-1)] = {_items:[]};
         this.prompt();
+        bapp.currentEditor.setChanged('something',true);
       }
       else if (this.mode == 'edit' && name !== this.origName) {
         var origCat = util.fullCatFromName(this.level,this.origName)
@@ -308,6 +321,7 @@
         this.level[name+'|'+order] = this.level[origCat];
         delete this.level[origCat];
         this.options.onClose && this.options.onClose();
+        bapp.currentEditor.setChanged('something',true);
       }
     }
   });
@@ -363,12 +377,14 @@
           if (self.mode == 'add') {
             level._items.push(activeItemData);
             self.prompt({ success:'Item '+self.mode+'ed successfully' });
+            bapp.currentEditor.setChanged('something',true);
           }
           else if (self.mode == 'edit') {
             var oldItem = _.detect(level._items,function (i) { return i.name == item.name });
             _.extend(oldItem,activeItemData);
 
             self.options.onClose && self.options.onClose();
+            bapp.currentEditor.setChanged('something',true);
           }
         },
       	"I'm Done": function () {
