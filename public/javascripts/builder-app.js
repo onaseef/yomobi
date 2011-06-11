@@ -331,7 +331,7 @@
     syncWorderDoc: function (callback) {
       util.log('Syncing worder...');
       util.pushUIBlock('worder');
-      
+
       $.post('/order',bapp.worderDoc,function (newWorderDoc) {
         bapp.worderDoc = newWorderDoc;
         mapp.worder = newWorderDoc.worder;
@@ -392,6 +392,12 @@
     },
     drop: function (e,ui) {
       
+      if (bapp.currentEditor.hasChanges() &&
+          !confirm('You have unsaved changes. Discard them?'))
+      {
+        return false;
+      }
+
       if (mapp.pageLevel != 0) {
         $('#dialog-invalid-drag').dialog({
           modal: true,
