@@ -101,7 +101,7 @@
       // this is needed so that the overlays
       // don't look awkwardly short nor long
       util.resizeOverlays();
-      
+
       mapp.resize();
     }
   });
@@ -304,6 +304,7 @@
       });
     },
     
+    // overridden in builder-app.js
     resize: function (height) {
       height = height || mapp.getActivePage().height();
       height += $('#top-bar').height();

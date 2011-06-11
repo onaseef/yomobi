@@ -6,7 +6,8 @@
     initialize: function () {
       _.bindAll(this,'addOrder','updateOverallOrder');
       this.bind('add',this.addOrder);
-      // mapp.homeView.bind('render',this.updateOverallOrder);
+      this.bind('remove', _.bind(function () { this.lastMod = -1; },this));
+      this.lastMod = 0;
     },
     
     addOrder: function (widget) {
@@ -21,6 +22,7 @@
           util.releaseWidget(widget);
         }
       });
+      this.lastMod = 1;
     },
     
     updateOverallOrder: function (options) {
@@ -107,7 +109,7 @@
     },
     
     resize: function (height) {
-      superObj.resize.call(this,height);
+      var newHeight = superObj.resize.call(this,height);
       var emulatorWidth = ($('#mobile-container').height() < 480) ? 320 : 320+util.scrollbarWidth();
       $('#emulator').width(emulatorWidth);
     },
@@ -150,6 +152,13 @@
       mapp.widgetsInUse.bind('remove',mapp.homeView.render);
 
       mapp.homeView.bind('render',this.rebindSortables);
+      mapp.homeView.bind('render',function () {
+        util.log('CHECKING',mapp.widgetsInUse,mapp.widgetsInUse.lastMod);
+        if (mapp.widgetsInUse.lastMod == 1) {
+          var height = mapp.homeView.el.height();
+          $('#mobile-scroller').animate({ scrollTop:height },3000);
+        }
+      });
       
       // first fetch overall widget order
       var self = this;
@@ -223,7 +232,6 @@
             util.pushUIBlock(validName);
             mapp.widgetsInUse.add(newWidget);
 
-            // TODO: use data from server
             if (newWidget.get('singleton'))
               bapp.sidebar.setSingletonInUse(newWidget,true);
           }
