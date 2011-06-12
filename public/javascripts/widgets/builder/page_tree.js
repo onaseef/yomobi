@@ -121,22 +121,7 @@
       mapp.viewWidget(this.widget, subpage + item.name);
       this.widget.getEditor().startEditing();
 
-      $('#jeditor').wysiwyg({
-        css: '/stylesheets/jwysiwyg.css',
-        formHeight: 200,
-        formWidth: 340,
-        events: {
-          keyup: function () { bapp.currentEditor.trigger('wysiwyg-change'); },
-          paste: function (a,b,c) { util.log('PASTE',a,b,c); return false; }
-        },
-        controls: {
-          createLink: { visible:false },
-          insertImage: { visible:false },
-          insertTable: { visible:false },
-          subscript: { visible:false },
-          superscript: { visible:false },
-        }
-      });
+      util.spawnJEditor();
     },
     
     // this event is only triggered by bapp,

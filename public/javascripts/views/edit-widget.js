@@ -154,7 +154,6 @@
       this.validForShowingStatus = widget.validForShowing();
 
       if (resetChanges) this.changes = {};
-      if (this.onEditStart) this.onEditStart(resetChanges);
 
       this.el.html( this.template(widget.getEditAreaData()) );
       this.delegateEvents(this.extendedEvents);
@@ -163,6 +162,8 @@
 
       if (widget.get('singleton'))
         this.el.find('.change-label').remove();
+      
+      if (this.onEditStart) this.onEditStart(resetChanges);
     },
     
     stopEditing: function () {

@@ -320,8 +320,8 @@
   
   script.custom_page-edit-area(type="text/template")
     label A short description of your website*:
-    textarea(name="content" rows="8")
-      | {{ _maybe.content }}
+    #jeditor-wrapper
+      textarea#jeditor {{ content }}
 
   script.phone-edit-area(type="text/template")
     label Your company's phone number*:

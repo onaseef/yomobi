@@ -497,6 +497,25 @@ var util = {
       hash[elem.name] = $(elem).val();
     });
     return hash;
+  },
+
+  spawnJEditor: function () {
+    $('#jeditor').wysiwyg({
+      css: '/stylesheets/jwysiwyg.css',
+      formHeight: 200,
+      formWidth: 340,
+      events: {
+        keyup: function () { bapp.currentEditor.trigger('wysiwyg-change'); },
+        paste: function (a,b,c) { util.log('PASTE',a,b,c); return false; }
+      },
+      controls: {
+        createLink: { visible:false },
+        insertImage: { visible:false },
+        insertTable: { visible:false },
+        subscript: { visible:false },
+        superscript: { visible:false },
+      }
+    });
   }
   
 }
