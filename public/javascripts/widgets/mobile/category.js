@@ -37,7 +37,7 @@
       
       var extraData = {
         items: level._items || [],
-        cats: util.catNamesFromLevel(level) || [],
+        cats: util.sortedCatNamesFromLevel(level) || [],
         itemTemplate: this.itemTemplate,
         catTemplate: this.catTemplate
       };

@@ -360,9 +360,14 @@ var util = {
     return cat.substring(0,cat.lastIndexOf('|'));
   },
   
-  catNamesFromLevel: function (level) {
+  sortedCatNamesFromLevel: function (level) {
     return _(level).chain().keys().reject(util.eq('_items'))
       .sortBy(function (c) { return util.catOrder(c); })
+      .map(function (c) { return util.catName(c); }).value();
+  },
+
+  catNamesFromLevel: function (level) {
+    return _(level).chain().keys().reject(util.eq('_items'))
       .map(function (c) { return util.catName(c); }).value();
   },
   

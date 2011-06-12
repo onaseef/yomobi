@@ -51,7 +51,6 @@
     },
     
     onEditStart: function (resetChanges) {
-      util.log('ON EDIT START',resetChanges);
       if (resetChanges) this.discardChanges();
     },
     
@@ -139,13 +138,32 @@
     },
     
     remCat: function (e) {
-      var level = this.widget.getCurrentLevel();
+      var level = this.widget.getCurrentLevel()
+        , deletedIdx = -1
+      ;
       this.el.find('select[name=cats] option:selected').map(function (idx,elem) {
         var catName = elem.innerHTML
           , cat = catName + '|' + $(elem).index()
         ;
-        if (level[cat]) delete level[cat];
+        if (level[cat]) { delete level[cat]; deletedIdx = $(elem).index(); }
       });
+
+      if (deletedIdx >= 0) {
+        // shift orders down to close gap
+        _.each(level, function (val,cat) {
+
+          if (cat == '_items') return;
+          var orderIdx = util.catOrder(cat)
+            , catName = util.catName(cat)
+          ;
+          util.log('CHECKING',orderIdx,catName);
+          if (orderIdx > deletedIdx) {
+            level[catName + '|' + (orderIdx-1)] = val; // shift down
+            delete level[cat];
+          }
+        });
+        util.log('LEVEL',level);
+      }
       this.refreshViews();
       this.setChanged('something',true);
     },
@@ -278,7 +296,7 @@
     render: function (error,level,name) {
       var dialogHtml = this.addCatTemplate({
         error: error,
-        cats: util.catNamesFromLevel(level),
+        cats: util.sortedCatNamesFromLevel(level),
         name: name
       });
       $(this.el).html(dialogHtml);
@@ -310,7 +328,7 @@
       ;
   		if (_.isEmpty(name))
   		  this.prompt('Name cannot be empty');
-      else if (this.mode == 'add' && this.level[name] !== undefined)
+      else if ( this.mode == 'add' && _.contains(util.catNamesFromLevel(this.level),name) )
         this.prompt('Name is already in use');
       else if (this.mode == 'add') {
         var keyCount = _.keys(this.level).length;
