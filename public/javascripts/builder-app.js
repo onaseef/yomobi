@@ -294,7 +294,7 @@
             ;
         		$(this).dialog("close");
 
-            self.validateWidgetName(newName,wtype,options);
+            self.validateWidgetName(newName,wtype,singleton,options);
         	},
         	Cancel: function() {
         		$(this).dialog("close");

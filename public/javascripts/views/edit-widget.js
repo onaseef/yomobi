@@ -125,7 +125,7 @@
         return;
       }
       
-      bapp.validateWidgetName(newName,this.widget.get('wtype'), {
+      bapp.validateWidgetName(newName,this.widget.get('wtype'),this.widget.get('singleton'), {
         exception: oldName,
         
         onValid: function (validName) {
