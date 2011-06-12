@@ -200,14 +200,14 @@
       this.level = level;
       
       util.dialog(dialogContent, {
-        "Save Item": function () {
+        "Add": function () {
           self.validateItem();
         },
-      	"I'm Done": function () {
+      	"I'm Done Adding Pages": function () {
           $(this).dialog("close");
           self.options.onClose && self.options.onClose();
       	}
-    	});
+    	}).find('p.error').show('pulsate',{times:3});
     },
     
     validateItem: function (item) {
