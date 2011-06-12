@@ -41,6 +41,10 @@
       return w && w.get('singletonInUse');
     },
     
+    singletonsInUse: function () {
+      return this.widgets.select(function (w) { return !!w.get('singleton'); });
+    },
+
     render: function () {
       var w_area = $('#sidebar .widgets').empty()
         , self = this

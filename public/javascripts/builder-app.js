@@ -1,5 +1,6 @@
 (function ($) {
-  
+
+  var pluckPrettyName = function (w) { return util.prettifyName(w.get('name')) };
   var unsavedChangesText = "You have unsaved changes. Click Cancel to go back and save changes, or click OK if you wish to discard your changes.";
 
   // ----------------------------
@@ -223,12 +224,12 @@
       return false;
     },
     
-    addNewWidget: function (name,wtype) {
+    addNewWidget: function (name,wtype,singleton) {
       util.log('adding new widget',name,wtype);
       if (!util.reserveUI()) return;
       var self = this;
       
-      this.validateWidgetName(name,wtype, {
+      this.validateWidgetName(name,wtype,singleton, {
         onValid: function (validName) {
           var newWidget = self.sidebar.cloneWidget(wtype,name);
       
@@ -251,7 +252,7 @@
     //  else returns true
     // NOTE: name is in uglified form
     // 
-    validateWidgetName: function (name,wtype,options) {
+    validateWidgetName: function (name,wtype,singleton,options) {
       var error = null
         , self = this
         , options = options || {}
@@ -262,14 +263,15 @@
         , isSameName = function (w) { var n=w.get('name'); return n == name && n != exception; }
         , isValid = error || !mapp.widgetsInUse.find(isSameName) || (error = 'Name already in use.')
         , isValid = error || prettyName.length <= 16 || (error = 'Name is too long (16 characters max).')
+        , singletonNamesInUse = error || (singleton && []) || _.map(bapp.sidebar.singletonsInUse(), pluckPrettyName)
+        , isValid = error || !_.include(singletonNamesInUse,prettyName) || (error = 'Sorry, that name is reserved.')
       ;
       
       if (isValid === true) return options.onValid(name);
       
       // find ALL widgets of this wtype
       var isSameWtype = function (w) { return w.get('wtype') == wtype }
-        , pluckPrettyName = function (w) { return util.prettifyName(w.get('name')) }
-        , existingNames = mapp.widgetsInUse.select(isSameWtype).map(pluckPrettyName)
+        , existingNames = _.map(mapp.widgetsInUse.select(isSameWtype), pluckPrettyName)
       ;
       var dialogHtml = util.getTemplate('add-widget-dialog')({
         wtype: wtype.toUpperCase(),
@@ -415,13 +417,14 @@
       }
       
       var elem = $(ui.draggable)
-        , name = elem.attr('data-name')
-        , wtype = elem.attr('data-wtype')
+        , name = elem.data('name')
+        , wtype = elem.data('wtype')
+        , singleton = elem.hasClass('singleton')
       ;
       if(!elem.hasClass('sidebar')) return;
       
-      util.log('dropped',name,wtype);
-      bapp.addNewWidget(name,wtype);
+      util.log('dropped',name,wtype,singleton);
+      bapp.addNewWidget(name,wtype,singleton);
     }
   }).disableSelection();
   
