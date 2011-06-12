@@ -6,7 +6,8 @@ window.g = {
   height: 480,
   couchLocation: 'http://yomobi.couchone.com',
   db_name: '<%= @company.db_name %>',
-  company: "<%= @company.name %>"
+  company: "<%= @company.name %>",
+  MAX_CHARS: <%= @max_chars || -1 %>
 };
 window.widgetClasses = {};
 window.widgetPages = {};

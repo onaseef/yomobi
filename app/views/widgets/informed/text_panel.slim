@@ -4,6 +4,7 @@
 
 - content_for :js do
   = javascript_include_tag 'send_panel.js'
+  = javascript_include_tag 'text_panel.js'
 
 h1 = @company.name
 #builder-container
@@ -18,11 +19,13 @@ h1 = @company.name
       - if @company.informed_email.nil?
         | ALERT: In order to send emails or texts to followers, you must provide a FROM email address.
     = form_tag '', :method => :post do
-      label = "Maximum #{@max_chars} characters."
+      label
+        span#chars-left = @max_chars
+        = "/#{@max_chars} characters remaining."
       br
       - if @errors[:message]
         p = "Error: #{ @errors[:message] }"
-      textarea rows=4 cols=30 name="message" = @old_message
+      textarea rows=5 cols=40 name="message" = @old_message
       br
       = submit_tag 'Send Text', :class => 'lfloat'
       .load-box style="padding-top: 3px; display:none"

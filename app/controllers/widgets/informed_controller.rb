@@ -88,6 +88,6 @@ class Widgets::InformedController < ApplicationController
   end
 
   def max_message_length
-    160 - (" To Unsubscribe: ".length + SHORT_URL_RESERVED_COUNT)
+    140 - (" To Unsubscribe: ".length + SHORT_URL_RESERVED_COUNT)
   end
 end
