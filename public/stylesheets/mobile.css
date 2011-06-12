@@ -4,6 +4,7 @@ body {
 
 #mobile-container {
   width: 320px;
+  margin: 0 auto;
   overflow: hidden;
   font-family: "lucida grande", tahoma, verdana, arial, sans-serif; }
 
