@@ -95,6 +95,7 @@
       p
         | Please name your Sub-Category:
         input type="text" value="{{ _maybe.name }}" name="cat"
+        input.add-btn type="button" value="Add"
         | <% if(_maybe.error) { %>
         p.error Error: {{ _maybe.error }}
         | <% } %>
@@ -112,6 +113,7 @@
       p
         | Please name your Page:
         input.item-input type="text" name="name" value="{{ name }}"
+        input.add-btn type="button" value="Add"
         input.item-input type="hidden" name="content" value="<p>Change Me</p>"
         | <% if(_maybe.error) { %>
         p.error Error: {{ _maybe.error }}

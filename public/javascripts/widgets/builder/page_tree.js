@@ -172,7 +172,11 @@
         flash: flash,
         _items: level._items
       }));
-      $(this.el).html(dialogHtml);
+
+      var self = this;
+      $(this.el).html(dialogHtml).find('.add-btn')
+        .click(function () { self.validateItem(); })
+      ;
       return this;
     },
     
@@ -185,9 +189,6 @@
       this.level = level;
       
       util.dialog(dialogContent, {
-        "Add": function () {
-          self.validateItem();
-        },
       	"I'm Done Adding Pages": function () {
           $(this).dialog("close");
           self.options.onClose && self.options.onClose();

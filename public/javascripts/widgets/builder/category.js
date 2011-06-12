@@ -299,7 +299,11 @@
         cats: util.sortedCatNamesFromLevel(level),
         name: name
       });
-      $(this.el).html(dialogHtml);
+
+      var self = this;
+      $(this.el).html(dialogHtml).find('.add-btn')
+        .click(function () { self.validateCategory(); })
+      ;
       return this;
     },
     
@@ -308,7 +312,7 @@
         , level = this.model.getCurrentLevel()
         , dialogContent = this.render(error,level,origName).el
         , closeSelf = close(this)
-        , buttons = { "Add":this.validateCategory }
+        , buttons = {}
       ;
       // cache for later use
       this.level = level;
