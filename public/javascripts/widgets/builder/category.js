@@ -217,6 +217,8 @@
   window.widgetPages.category = window.widgetPages.category.extend({
 
     onCategoryClick: function (e) {
+      if (!mapp.canTransition()) return;
+
       var cat = $(e.target).attr('data-cat');
       var subpage = this.widget.catStack.join('/');
       subpage && (subpage += '/');
@@ -229,12 +231,14 @@
     // thus it's only useful when declared in the builder.
     // 
     onBackBtnClick: function () {
+      if (!mapp.canTransition()) return;
+
       var catStack = this.widget.catStack
         , newSubpage = _.compact(catStack.pop() && catStack).join('/')
       ;
       this.widget.getEditor().startEditing();
       
-      if (!newSubpage) return mapp.transition('back');
+      if (!newSubpage) mapp.transition('back')
       mapp.viewWidget(this.widget,newSubpage);
     },
     

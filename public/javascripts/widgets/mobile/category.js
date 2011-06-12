@@ -69,6 +69,8 @@
     },
     
     onCategoryClick: function (e) {
+      if (!mapp.canTransition()) return;
+
       var cat = $(e.target).attr('data-cat');
       var subpage = this.widget.catStack.join('/');
       subpage && (subpage += '/');
@@ -77,6 +79,8 @@
     },
     
     onPageView: function (subpage) {
+      if (!mapp.canTransition()) return;
+      
       util.log('subpage: ' + subpage);
       if (!subpage && this.widget.catStack.length === 0) return 'forward';
       

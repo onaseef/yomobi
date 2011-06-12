@@ -81,6 +81,8 @@
     },
     
     onLeafNameClick: function (e) {
+      if (!mapp.canTransition()) return;
+      
       var level = this.widget.getCurrentLevel()
         , itemIdx = $(e.target).index() - util.catNamesFromLevel(level).length
         , item = level._items[itemIdx]

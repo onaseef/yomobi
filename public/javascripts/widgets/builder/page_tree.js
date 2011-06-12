@@ -98,6 +98,8 @@
   window.widgetPages.page_tree = window.widgetPages.page_tree.extend({
 
     onCategoryClick: function (e) {
+      if (!mapp.canTransition()) return;
+
       var cat = $(e.target).attr('data-cat');
       var subpage = this.widget.catStack.join('/');
       subpage && (subpage += '/');
@@ -107,6 +109,8 @@
     },
     
     onLeafNameClick: function (e) {
+      if (!mapp.canTransition()) return;
+
       var level = this.widget.getCurrentLevel()
         , itemIdx = $(e.target).index() - util.catNamesFromLevel(level).length
         , item = level._items[itemIdx]
@@ -139,6 +143,8 @@
     // thus it's only useful when declared in the builder.
     // 
     onBackBtnClick: function () {
+      if (!mapp.canTransition()) return;
+      
       var catStack = this.widget.catStack
         , newSubpage = _.compact(catStack.pop() && catStack).join('/')
       ;

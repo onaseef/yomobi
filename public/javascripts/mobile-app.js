@@ -282,8 +282,12 @@
       }
     },
     
+    canTransition: function () {
+      return util.reserve('pageTransition',false);
+    },
+
     transition: function (direction,noScroll) {
-      if(!util.reserve('pageTransition')) return;
+      if(!util.reserve('pageTransition')) return false;
       var self = this
         , delta = (direction == 'forward') ? 1 : -1
         , deltaStr = (direction == 'forward') ? '-=' : '+='
@@ -302,6 +306,8 @@
         
         if (mapp.pageLevel == 0) delete mapp.currentWidget;
       });
+
+      return true;
     },
     
     // overridden in builder-app.js
