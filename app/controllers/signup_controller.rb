@@ -48,8 +48,8 @@ class SignupController < ApplicationController
   def validate_step_2(data)
     puts "Validating step 2: #{data.inspect}"
     company = current_user.company
-    company.save_doc CouchDocs.phone_doc(data['phone'])
-    company.save_doc CouchDocs.gmap_doc(data['address'])
+    company.save_doc CouchDocs.phone_doc(data['phone']) if data['phone'].present?
+    company.save_doc CouchDocs.gmap_doc(data['address']) if data['address'].map{|k,v| v.present?}.any?
   end
   
   def validate_step_3(data)
