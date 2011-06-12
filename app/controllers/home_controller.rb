@@ -3,6 +3,7 @@ class HomeController < ApplicationController
   before_filter :redirect_if_logged_in
   
   def index
+    prevent_caching
     redirect_to :controller => 'builder', :action => 'index' if user_signed_in?
     @user = User.new
   end

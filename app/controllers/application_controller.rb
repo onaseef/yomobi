@@ -21,6 +21,12 @@ class ApplicationController < ActionController::Base
     "http://admin_#{db_name}:#{db_pass}@yomobi.couchone.com/#{db_name}"
   end
   
+  def prevent_caching
+    response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+  end
+
   # devise
   def after_sign_in_path_for(resource)
     return account_setup_path(1) if resource.company.nil?
