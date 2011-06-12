@@ -1,5 +1,7 @@
 (function ($) {
   
+  var unsavedChangesText = "You have unsaved changes. Click Cancel to go back and save changes, or click OK if you wish to discard your changes.";
+
   // ----------------------------
   window.BuilderWidgets = Widgets.extend({
     
@@ -210,7 +212,7 @@
       if (editor && editor.widget) {
         editor.widget.homeView.highlight(false);
         if (editor.hasChanges() && isSameWidget) {
-          if (confirm('You have unsaved changes. Discard them?'))
+          if (confirm(unsavedChangesText))
             editor.onDiscardByNavigation();
           else return false;
         }
@@ -397,7 +399,7 @@
     drop: function (e,ui) {
       
       if (bapp.currentEditor && bapp.currentEditor.hasChanges() &&
-          !confirm('You have unsaved changes. Discard them?'))
+          !confirm(unsavedChangesText))
       {
         return false;
       }
