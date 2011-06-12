@@ -23,8 +23,6 @@ Yomobi::Application.routes.draw do
   delete 'widgets/:_id/:_rev' => 'builder#delete_widget'
   
   post 'order' => 'builder#update_order'
-  
-  get 'b/:company' => 'mobile#index'
 
   get 'opt-out/:key' => 'widgets/informed#opt_out'
 
@@ -34,9 +32,10 @@ Yomobi::Application.routes.draw do
   # Widget-specific routes #
   ##########################
 
-  post '/b/:company/leave_msg/submit' => 'widgets/leave_msg#submit'
-  post '/b/:company/informed/submit' => 'widgets/informed#mobile_submit'
-  post '/b/:company/booking/submit' => 'widgets/booking#mobile_submit'
+  get ':company' => 'mobile#index'
+  post ':company/leave_msg/submit' => 'widgets/leave_msg#submit'
+  post ':company/informed/submit' => 'widgets/informed#mobile_submit'
+  post ':company/booking/submit' => 'widgets/booking#mobile_submit'
 
 
   # Sample of regular route:

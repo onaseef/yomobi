@@ -162,7 +162,7 @@
   script.leave_msg-page(type="text/template")
     .input-wrap
       p Leave us a message:
-      = form_tag "/b/#{@company.name}/leave_msg/submit", :method => 'post' do
+      = form_tag "/#{@company.name}/leave_msg/submit", :method => 'post' do
         label Your Email Address:
         br
         input type="text" name="email"
@@ -180,7 +180,7 @@
   script.booking-page(type="text/template")
     .input-wrap
       p Request a Booking:
-      = form_tag "/b/#{@company.name}/booking/submit", :method => 'post' do
+      = form_tag "/#{@company.name}/booking/submit", :method => 'post' do
         label Name:
         br
         input name="name" type="text"
@@ -209,7 +209,7 @@
   script.informed-page(type="text/template")
     .input-wrap
       p Stay informed with our latest specials, discounts, and announcements. We respect your privacy.
-      = form_tag "/b/#{@company.name}/informed/submit", :method => 'post' do
+      = form_tag "/#{@company.name}/informed/submit", :method => 'post' do
         | <% if (_maybe.optForEmails) { %>
         label Email Address:
         br
