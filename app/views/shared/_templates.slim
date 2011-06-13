@@ -6,9 +6,11 @@
       .title {{ prettyName }}
   
   script.mapp-header(type="text/template")
-    img.logo{src="http://s3.amazonaws.com/yomobi/logos/{{ name }}_mobile" }
-    .name {{ prettyName }}
-    .clearfix
+    table
+      tr
+        td
+          img.logo{src="http://s3.amazonaws.com/yomobi/logos/{{ name }}_mobile" }
+        td.name {{ prettyName }}
   
   script.edit-widget-idle(type="text/template")
     h1 Click an icon
