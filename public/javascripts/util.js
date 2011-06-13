@@ -75,14 +75,14 @@ var util = {
     if (!_.any(blocks)) {
       this.groups[timer_key] = setTimeout(function () {
         self.release(group_key);
-        $('#emulator .loader-overlay').hide();
+        util.toggleLoaderOverlay(false);
         util.log('cleared group key',group_key);
       }, releaseDelay);
     }
   },
   
   reserveWidget: function (widget,force) {
-    util.showLoaderOverlay();
+    util.toggleLoaderOverlay(true);
     // TODO: use a combination of id and name once starting
     // to implement multiple copies of the same widget
     return (!this.busy['ui'] || force) && this.reserve('widget:' + widget.get('name'));
@@ -90,11 +90,11 @@ var util = {
   
   releaseWidget: function (widget) {
     this.release('widget:' + widget.get('name'));
-    if (util.isUIFree()) $('#emulator .loader-overlay').hide();
+    if (util.isUIFree()) util.toggleLoaderOverlay(false);
   },
   
   reserveUI: function () {
-    util.showLoaderOverlay();
+    util.toggleLoaderOverlay(true);
     var reservations = _.map(this.busy, function (isReserved) { return isReserved; });
     return !_.any(reservations) && this.reserve('ui');
   },
@@ -113,18 +113,21 @@ var util = {
   },
   
   releaseUI: function () {
-    $('#emulator .loader-overlay').hide();
+    util.toggleLoaderOverlay(false);
     this.release('ui');
   },
   
   resizeOverlays: function () {
-    var targetHeight = $('#emulator').height();
-    $('#emulator').find('.loader-overlay, .drophover-overlay').height(targetHeight);
+    var targetHeight = $('#emulator').height() + 8;
+    $('#builder').find('.loader-overlay, .drophover-overlay')
+      .height(targetHeight)
+      .css('top',$('#emulator-wrapper').position().top)
+    ;
   },
   
-  showLoaderOverlay: function () {
+  toggleLoaderOverlay: function (showOrHide) {
     util.resizeOverlays();
-    $('#emulator .loader-overlay').show();
+    $('#builder .loader-overlay').toggle(showOrHide);
   },
   
   capitalize: function (string) {
