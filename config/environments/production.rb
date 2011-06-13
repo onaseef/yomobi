@@ -1,7 +1,7 @@
 Yomobi::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
-  config.opt_out_url_host = 'http://glowing-frost-781.heroku.com'
+  config.opt_out_url_host = 'http://high-robot-871.heroku.com'
 
   # The production environment is meant for finished, "live" apps.
   # Code is not reloaded between requests
@@ -40,7 +40,7 @@ Yomobi::Application.configure do
   # config.action_mailer.raise_delivery_errors = false
   # TODO: move off gmail test account
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { :host => "glowing-frost-781.heroku.com" }
+  config.action_mailer.default_url_options = { :host => "high-robot-871.heroku.com" }
   ActionMailer::Base.smtp_settings = {
     :address  => "smtp.gmail.com",
     :port  => 587,
