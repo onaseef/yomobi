@@ -118,10 +118,11 @@ var util = {
   },
   
   resizeOverlays: function () {
+    return;
     var targetHeight = $('#emulator').height() + 8;
     $('#builder').find('.loader-overlay, .drophover-overlay')
       .height(targetHeight)
-      .css('top',$('#emulator-wrapper').position().top)
+      // .css('top',$('#emulator-wrapper').position().top)
     ;
   },
   

@@ -148,7 +148,6 @@
 #builder .loader-overlay {
   position: absolute;
   z-index: 99;
-  top: 117px;
   width: 324px;
   height: 488px;
   background: url(/images/ui/overlay.png); }
@@ -162,8 +161,8 @@
   display: none;
   position: absolute;
   z-index: 98;
-  width: 320px;
-  height: 100%;
+  width: 324px;
+  height: 488px;
   background: url(/images/ui/overlay.png); }
   #builder .drophover-overlay .icon {
     width: 128px;

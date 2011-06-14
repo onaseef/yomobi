@@ -395,8 +395,11 @@
     hoverClass: 'drophover',
 
     over: function () {
-      var targetHeight = $('#emulator').height();
-      $('#builder .drophover-overlay').height(targetHeight);
+      var targetHeight = $('#emulator').height() + 8;
+      $('#builder .drophover-overlay').height(targetHeight).show();
+    },
+    out: function () {
+      $('#builder .drophover-overlay').hide();
     },
     drop: function (e,ui) {
       

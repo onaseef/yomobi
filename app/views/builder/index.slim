@@ -13,15 +13,15 @@ h1 = @company.name
 #builder-container
   #builder
     #emulator-wrapper
-      #emulator.portrait
-        #mobile-scroller
-          #mobile-container
-            = render 'shared/mobile-render'
       .loader-overlay
         .icon
       .drophover-overlay
         .icon
         .text Add to Mobile Site
+      #emulator.portrait
+        #mobile-scroller
+          #mobile-container
+            = render 'shared/mobile-render'
     .widget-editor
       h1 Click an icon
       h2 in the Emulator to begin editing
