@@ -413,7 +413,10 @@
         $('#dialog-invalid-drag').dialog({
           modal: true,
           buttons: {
-            Ok: function () { $(this).dialog('close'); }
+            Ok: function () {
+              $(this).dialog('close');
+              $('#builder .drophover-overlay').hide();
+            }
           }
         });
         return;
