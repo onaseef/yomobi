@@ -100,7 +100,7 @@
 
       // this is needed so that the overlays
       // don't look awkwardly short nor long
-      util.resizeOverlays();
+      if (window.bapp) util.resizeOverlays();
 
       mapp.resize();
     }
