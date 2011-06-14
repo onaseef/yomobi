@@ -7,8 +7,8 @@
     
     onHomeViewClick: function () {
       if (bapp.homeViewWidgetClick(this)) {
-        if (confirm('Visit '+this.get('fbid')+"'s facebook page?"))
-          window.location = 'http://facebook.com/' + this.get('url');
+        if (confirm('Visit '+this.get('userId')+"'s this page?"))
+          window.location = this.get('host') + this.get('url');
       }
       return false;
     },
@@ -22,8 +22,11 @@
     },
     
     validate: function (attrs) {
-      if (attrs.fbid && attrs.fbid.match(new RegExp('^(www\\.)?'+this.baseName+'\\.com')))
-        attrs.fbid = 'http://' + attrs.fbid;
+      var urlRegex = new RegExp('^([^.\\/]+\\.)?'+this.get('basename')+'\\.com');
+      if (attrs.userId && attrs.userId.match(urlRegex)) {
+        util.log('NOT FULL LINK',attrs.userId);
+        attrs.userId = 'http://' + attrs.userId;
+      }
     }
     
   });
