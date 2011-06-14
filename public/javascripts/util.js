@@ -129,6 +129,7 @@ var util = {
   toggleLoaderOverlay: function (showOrHide) {
     util.resizeOverlays();
     $('#builder .loader-overlay').toggle(showOrHide);
+    if (!showOrHide) $('#builder .drophover-overlay').hide();
   },
   
   capitalize: function (string) {

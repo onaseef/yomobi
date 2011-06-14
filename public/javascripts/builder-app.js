@@ -240,6 +240,7 @@
             if (newWidget.get('singleton'))
               bapp.sidebar.setSingletonInUse(newWidget,true);
           }
+          $('#builder .drophover-overlay').hide();
         },
         onCancel: function () {
           util.releaseUI();
