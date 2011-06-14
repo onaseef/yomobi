@@ -9,7 +9,8 @@
     widgetTemplate: util.getTemplate('sidebar-widget'),
 
     events: {
-      'click #preview-mobile-site': 'previewMobileSite'
+      'click #preview-mobile-site': 'previewMobileSite',
+      'click .edit-tab-bar': 'tellBappToEditTabBar'
     },
     
     initialize: function (options) {
@@ -82,6 +83,10 @@
       var emulatorWidth = ($('#mobile-container').height() < 480) ? 320 : 320+util.scrollbarWidth();
       this.winRef = window.open(e.target.href,'Your Mobile Website',
         'width=' + emulatorWidth + ',height=480,scrollbars=yes');
+    },
+
+    tellBappToEditTabBar: function () {
+      bapp.tabBarEditor.startEditing();
     }
     
   });
