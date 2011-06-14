@@ -4,8 +4,7 @@
 (function ($) {
   
   window.widgetClasses.link_fb = Widget.extend({
-    requiredAttrs: ['fbid'],
-    baseName: 'facebook',
+    requiredAttrs: ['userId'],
     
     initialize: function () {
       _.bindAll(this,'onHomeViewClick');
@@ -13,12 +12,14 @@
     },
     
     getUrl: function () {
-      var fbid = this.get('fbid');
-      if (!fbid) return null;
+      var userId = this.get('userId');
+      if (!userId) return null;
       
-      if ( fbid.match(new RegExp('^(https?:\\/\\/)?(www\\.)?' + this.baseName + '\\.com/')) )
-        return fbid;
-      return 'http://www.' + this.baseName + '.com/' + fbid;
+      var urlRegex = new RegExp('^(https?:\\/\\/)?([^.]+\\.)?' + this.get('basename') + '\\.com');
+      util.log('REGEX',urlRegex);
+      if (userId.match(urlRegex))
+        return userId;
+      return 'http://www.' + this.get('basename') + '.com/' + userId;
     },
     
     onHomeViewClick: function () {
