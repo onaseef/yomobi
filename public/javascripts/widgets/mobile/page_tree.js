@@ -44,7 +44,7 @@
       else {
         var extraData = {
           items: level._items || [],
-          cats: util.catNamesFromLevel(level) || [],
+          cats: util.sortedCatNamesFromLevel(level) || [],
           catTemplate: this.catTemplate
         };
       }
