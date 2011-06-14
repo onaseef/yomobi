@@ -1,5 +1,6 @@
 class Widgets::InformedController < ApplicationController
   layout "builder"
+  before_filter :authenticate_user!, :only => [:text_panel,:email_panel,:send_text]
 
   def mobile_submit
     return error('bad message') unless follower_data_present? params
@@ -9,12 +10,10 @@ class Widgets::InformedController < ApplicationController
 
     return error('bad company') if company.nil?
 
-    follower = company.followers.build \
-      :carrier => carrier,
-      :email   => params[:email],
-      :phone   => params[:phone]
+    follower, isNew = find_or_build_follower company, params[:email], params[:phone], carrier
 
-    follower.save_new ? success(nil) : error(follower.errors)
+    save_success = isNew ? follower.save_new : follower.save
+    save_success ? success(nil) : error(follower.errors)
     puts "ERRORS: #{follower.errors.inspect}\nFOLLOWER: #{follower.inspect}"
   end
 
@@ -72,7 +71,8 @@ class Widgets::InformedController < ApplicationController
 
     @company_name = follower.company.name
     @company_url = follower.company.db_name
-    follower.destroy
+    follower.active = false
+    follower.save
 
     @opt_in_url = "#{Rails.application.config.opt_out_url_host}/#{@company_url}#page/keep-me-informed"
     render :layout => 'application'
@@ -91,5 +91,19 @@ class Widgets::InformedController < ApplicationController
 
   def max_message_length
     140 - (" To Unsubscribe: ".length + SHORT_URL_RESERVED_COUNT)
+  end
+
+  def find_or_build_follower(company,email,phone,carrier)
+    follower = Follower.where(:email => email, :phone => phone.gsub!(/[^0-9]+/,'')).first
+    if follower && follower.active == false
+      follower.active = true
+      return [follower,false]
+    end
+
+    follower = company.followers.build \
+      :carrier => carrier,
+      :email   => email,
+      :phone   => phone
+    return [follower,true]
   end
 end

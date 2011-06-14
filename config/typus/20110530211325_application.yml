@@ -24,8 +24,8 @@ Company:
 
 Follower:
   fields:
-    default: company, carrier, email, phone, opt_out_key, short_url
-    form: email, phone, company, carrier
+    default: active, company, carrier, email, phone, opt_out_key, short_url
+    form: active, email, phone, company, carrier
   order_by: 
   relationships: carrier, company
   filters: created_at

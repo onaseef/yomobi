@@ -38,11 +38,11 @@ class Company < ActiveRecord::Base
   end
 
   def text_followers
-    self.followers.select {|f| f.phone.present? }
+    followers.where(:company_id => self[:id], :active => true).select {|f| f.phone.present? }
   end
 
   def email_followers
-    self.followers.select {|f| f.email.present? }
+    followers.where(:company_id => self[:id], :active => true).select {|f| f.email.present? }
   end
   
   def couch_db_url
