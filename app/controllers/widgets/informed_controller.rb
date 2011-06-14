@@ -71,8 +71,10 @@ class Widgets::InformedController < ApplicationController
     return redirect_to root_path if follower.nil?
 
     @company_name = follower.company.name
+    @company_url = follower.company.db_name
     follower.destroy
 
+    @opt_in_url = "#{Rails.application.config.opt_out_url_host}/#{@company_url}#page/keep-me-informed"
     render :layout => 'application'
   end
 
