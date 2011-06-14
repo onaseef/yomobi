@@ -1,7 +1,5 @@
 Yomobi::Application.routes.draw do
 
-  get "booking/submit"
-
   get 'home/index'
   
   match 'account-setup/:step_num' => 'signup#account_setup', :as => :account_setup
@@ -31,12 +29,13 @@ Yomobi::Application.routes.draw do
   ##########################
   # Widget-specific routes #
   ##########################
-
-  get ':company' => 'mobile#index'
-  post ':company/leave_msg/submit' => 'widgets/leave_msg#submit'
-  post ':company/informed/submit' => 'widgets/informed#mobile_submit'
-  post ':company/booking/submit' => 'widgets/booking#mobile_submit'
-
+  exceptions = ['/admin']
+  constraints lambda {|req| exceptions.map{|route| !req.path.starts_with? route}.any?} do
+    get ':company' => 'mobile#index', :as => :mobile
+    post ':company/leave_msg/submit' => 'widgets/leave_msg#submit'
+    post ':company/informed/submit' => 'widgets/informed#mobile_submit'
+    post ':company/booking/submit' => 'widgets/booking#mobile_submit'
+  end
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

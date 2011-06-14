@@ -145,31 +145,32 @@
   width: 480px;
   height: 340px; }
 
-#emulator .loader-overlay {
+#builder .loader-overlay {
   position: absolute;
   z-index: 99;
-  width: 320px;
-  height: 480px;
+  top: 117px;
+  width: 324px;
+  height: 488px;
   background: url(/images/ui/overlay.png); }
-  #emulator .loader-overlay .icon {
+  #builder .loader-overlay .icon {
     width: 64px;
     height: 64px;
     margin: 210px auto;
     background: url(/images/ui/ajax-loader-large.gif); }
 
-#emulator .drophover-overlay {
+#builder .drophover-overlay {
   display: none;
   position: absolute;
   z-index: 98;
   width: 320px;
   height: 100%;
   background: url(/images/ui/overlay.png); }
-  #emulator .drophover-overlay .icon {
+  #builder .drophover-overlay .icon {
     width: 128px;
     height: 128px;
     margin: 170px auto 0;
     background: url(/images/ui/drophover.png); }
-  #emulator .drophover-overlay .text {
+  #builder .drophover-overlay .text {
     margin: 8px 0;
     color: white;
     text-align: center;

@@ -153,11 +153,12 @@
   width: 480px
   height: $emulator-width
 
-#emulator .loader-overlay
+#builder .loader-overlay
   position: absolute
   z-index: 99
-  width: 320px
-  height: 480px
+  top: 117px
+  width: 320px + 4px
+  height: 480px + 8px
   background: url(/images/ui/overlay.png)
   .icon
     width: 64px
@@ -165,7 +166,7 @@
     margin: 210px auto
     background: url(/images/ui/ajax-loader-large.gif)
 
-#emulator .drophover-overlay
+#builder .drophover-overlay
   display: none
   position: absolute
   z-index: 98

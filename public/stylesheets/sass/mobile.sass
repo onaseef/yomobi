@@ -36,13 +36,16 @@ body
 
 .company-info
   @extend .back-bar
+  padding-left: 4px
+  width: $dynamic-width - 12px
+  td
+    vertical-align: center
   .logo
-    float: left
     background: no-repeat
   .name
-    float: left
-    font-size: 24px
-    padding: 8px 0 0 12px
+    padding-left: 5px
+    font-size: 17px
+    font-weight: bold
 
 .tab-bar
   background: $color-topbar

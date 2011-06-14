@@ -193,7 +193,7 @@
             });
             mapp.widgetsAvailable.refresh( _.compact(widgetsAvailable) );
           
-            $('#emulator .loader-overlay').hide();
+            util.toggleLoaderOverlay(false);
             util.log('fetch',widgets,mapp.widgetsAvailable,mapp.widgetsInUse);
 
             Backbone.history.start();
@@ -396,7 +396,7 @@
 
     over: function () {
       var targetHeight = $('#emulator').height();
-      $('#emulator .drophover-overlay').height(targetHeight);
+      $('#builder .drophover-overlay').height(targetHeight);
     },
     drop: function (e,ui) {
       
