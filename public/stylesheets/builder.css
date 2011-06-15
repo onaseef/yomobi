@@ -78,13 +78,15 @@
     #builder .widget-editor .header .help-text {
       padding: 0 20px 0 72px;
       margin-top: 5px; }
-  #builder .widget-editor .header.edit-tab-bar .help-text, #builder .widget-editor .header.edit-tab-bar .widget-name {
+  #builder .widget-editor .header.edit-tab-bar .help-text, #builder .widget-editor .header.edit-tab-bar .widget-name, #builder .widget-editor .header.edit-settings .help-text, #builder .widget-editor .header.edit-settings .widget-name {
     padding-left: 0;
     cursor: auto; }
+  #builder .widget-editor .logo {
+    margin: 10px 0; }
   #builder .widget-editor .edit-area {
     padding: 20px 20px; }
     #builder .widget-editor .edit-area textarea, #builder .widget-editor .edit-area input[type=text] {
-      width: 98%;
+      width: 317px;
       font-size: 1.5em; }
     #builder .widget-editor .edit-area textarea {
       padding: 8px; }

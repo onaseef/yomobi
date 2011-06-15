@@ -10,6 +10,7 @@ Yomobi::Application.routes.draw do
   }
 
   get 'builder/main'      => 'builder#index', :as => :builder_main
+  post 'builder/settings' => 'builder#change_settings'
 
   get 'builder/text'      => 'widgets/informed#text_panel', :as => :builder_text
   post 'builder/text'     => 'widgets/informed#send_text'

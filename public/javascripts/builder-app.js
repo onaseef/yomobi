@@ -124,10 +124,14 @@
   // ----------------------------------
   BuilderAppController = Backbone.Controller.extend({
     routes: {
-      'edit-tab-bar':  'editTabBar'
+      'edit-tab-bar':  'editTabBar',
+      'edit-settings': 'editSettings'
     },
     editTabBar: function () {
       bapp.startEditingTabBar();
+    },
+    editSettings: function () {
+      bapp.startEditingSettings();
     }
   });
 
@@ -139,6 +143,7 @@
     idleTemplate: util.getTemplate('edit-widget-idle'),
     
     tabBarEditor: new window.EditTabBarView(),
+    settingsEditor: new window.EditSettingsView(),
     
     initialize: function () {
       _.bindAll(this,'rebindSortables');
@@ -356,6 +361,14 @@
         mapp.goHome();
       }
       this.tabBarEditor.startEditing();
+    },
+
+    startEditingSettings: function () {
+      if (this.currentEditor && this.currentEditor.widget) {
+        this.currentEditor.widget.homeView.highlight(false);
+        mapp.goHome();
+      }
+      this.settingsEditor.startEditing();
     }
     
   });

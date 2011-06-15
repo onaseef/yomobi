@@ -10,7 +10,8 @@
 
     events: {
       'click #preview-mobile-site': 'previewMobileSite',
-      'click .edit-tab-bar': 'tellBappToEditTabBar'
+      'click .edit-tab-bar': 'tellBappToEditTabBar',
+      'click .edit-settings': 'tellBappToEditSettings'
     },
     
     initialize: function (options) {
@@ -85,9 +86,8 @@
         'width=' + emulatorWidth + ',height=480,scrollbars=yes');
     },
 
-    tellBappToEditTabBar: function () {
-      bapp.tabBarEditor.startEditing();
-    }
+    tellBappToEditTabBar: function () { bapp.tabBarEditor.startEditing(); },
+    tellBappToEditSettings: function () { bapp.settingsEditor.startEditing(); }
     
   });
 

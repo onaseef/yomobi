@@ -58,6 +58,19 @@ class BuilderController < ApplicationController
     success params
   end
   
+  def change_settings
+    if params[:company_name].present?
+      attrs = { :name => params[:company_name], :logo => params[:logo]}
+      attrs.delete :logo unless params[:logo].present?
+      attrs.delete :name unless attrs[:name].match /^[a-z0-9 _$()+-]{2,16}$/i
+
+      save_success = current_user.company.update_attributes(attrs)
+      puts "Updated settings? #{save_success.inspect}"
+    end
+
+    return redirect_to builder_main_path(:anchor => 'edit-settings')
+  end
+
   private
 
   def handle_special_widget_cases(widget)

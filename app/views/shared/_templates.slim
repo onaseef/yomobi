@@ -9,7 +9,7 @@
     table
       tr
         td
-          img.logo{src="http://s3.amazonaws.com/yomobi/logos/{{ name }}_mobile" }
+          img.logo{src="http://s3.amazonaws.com/yomobi/logos/{{ name }}_mobile?_=#{Time.now}" }
         td.name {{ prettyName }}
   
   script.edit-widget-idle(type="text/template")
@@ -61,6 +61,32 @@
             | var selected = (wtabs[tabIdx] == wnames[i]) ? ' selected="selected"' : '';
             | print('<option'+selected+'>'+util.prettifyName(wnames[i])+'</option>');
             | } %>
+  
+  script.edit-settings(type="text/template")
+    .header.edit-settings
+      .icon{ style="background-image: url(/images/edit-settings.png)" }
+      .widget-name
+        | General Settings
+      p.help-text
+        em Change your Business name and logo
+    div class="edit-area"
+      = form_tag '/builder/settings', :multipart => true, do
+        label Company Name:
+        p.error
+        input type="text" name="company_name" value=@company.name
+        br
+        br
+        label Current Logo:
+        br
+        img.logo{src="http://s3.amazonaws.com/yomobi/logos/<% print(g.db_name); %>_mobile?_=#{Time.now}" }
+        br
+        label Upload a new one:
+        input type="file" name="logo"
+        input type="submit" value="Upload"
+        .action-bar style="padding-right: 0"
+          .accept-btn.main-btn
+            input.content type="submit" value="Save Settings"
+          .loader
   
   script.tab-bar(type="text/template")
     table
