@@ -63,7 +63,7 @@
   var superObj = {
     resize: window.MobileAppView.prototype.resize,
     transition: window.MobileAppView.prototype.transition,
-    goHome: window.MobileAppView.prototype.goHome,
+    goHome: window.MobileAppView.prototype.goHome
   }
   window.MobileAppView = window.MobileAppView.extend({
     
@@ -118,7 +118,7 @@
       var newHeight = superObj.resize.call(this,height);
       var emulatorWidth = ($('#mobile-container').height() < 480) ? 320 : 320+util.scrollbarWidth();
       $('#emulator').width(emulatorWidth);
-    },
+    }
   });
   
   // ----------------------------------

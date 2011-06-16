@@ -145,6 +145,8 @@
 #emulator
   border: 4px solid #1D4088
   background: $light-bg-color
+  overflow: hidden
+  height: 480px
 
 #emulator-scroller
   width: 335px
@@ -191,12 +193,11 @@
 #emulator.drophover .drophover-overlay
   display: block
 
-#emulator
-  overflow: hidden
-  height: 480px
-
 #mobile-scroller
+  // ie7 requires position: relative
+  position: relative
   overflow-y: scroll
+  overflow-x: hidden
   height: 480px
   width: 335px
 

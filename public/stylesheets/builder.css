@@ -136,7 +136,9 @@
 
 #emulator {
   border: 4px solid #1d4088;
-  background: #edeff4; }
+  background: #edeff4;
+  overflow: hidden;
+  height: 480px; }
 
 #emulator-scroller {
   width: 335px;
@@ -183,12 +185,10 @@
 #emulator.drophover .drophover-overlay {
   display: block; }
 
-#emulator {
-  overflow: hidden;
-  height: 480px; }
-
 #mobile-scroller {
+  position: relative;
   overflow-y: scroll;
+  overflow-x: hidden;
   height: 480px;
   width: 335px; }
 

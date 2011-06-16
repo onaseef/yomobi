@@ -19,7 +19,7 @@
           "Cat One|0": {
             _items: [{name:'Page 1',content:'<p>Blah blah blah</p>'}],
             "Subcat A|0": {
-              _items: [{name:'Page 2',content:'<p>yadda yadda yadda</p>'}],
+              _items: [{name:'Page 2',content:'<p>yadda yadda yadda</p>'}]
             }
           }
         };
@@ -69,7 +69,7 @@
       var level = level || this.getCurrentLevel()
         , leafName = _.last(this.catStack);
       return _.detect(level._items, function (i) { return i.name == leafName; });
-    },
+    }
     
   });
   

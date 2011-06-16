@@ -183,7 +183,11 @@ var util = {
   },
   
   scrubWord: function (word) {
-    return _(word).chain().map(util.scrubChar).value().join('');
+    // ie7 does not allow the following like :(
+    // return _(word).chain().map(util.scrubChar).value().join('');
+    var chars = [];
+    for (var i=0;i<word.length;i++) { chars.push( util.scrubChar(word.charAt(i)) ); };
+    return chars.join('');
   },
   
   scrubChar: function (c) {
@@ -518,7 +522,7 @@ var util = {
         insertImage: { visible:false },
         insertTable: { visible:false },
         subscript: { visible:false },
-        superscript: { visible:false },
+        superscript: { visible:false }
       }
     });
   }

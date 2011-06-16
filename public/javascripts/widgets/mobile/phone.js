@@ -9,7 +9,7 @@
     onHomeViewClick: function () {
       window.location = 'tel:' + this.get('phone');
       return false;
-    },
+    }
   });
   
 })(jQuery);

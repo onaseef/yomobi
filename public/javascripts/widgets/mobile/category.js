@@ -22,7 +22,7 @@
           },
           "Drinks|1": {
             _items: [{name:'Apple Juice',price:'$0.10',desc:'Not actually apple juice'}
-                    ,{name:'Orange Juice',price:'$0.15',desc:'Not actually orange juice'}],
+                    ,{name:'Orange Juice',price:'$0.15',desc:'Not actually orange juice'}]
           }
         };
         this.set({ struct:struct });

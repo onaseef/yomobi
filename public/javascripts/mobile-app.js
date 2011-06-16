@@ -27,7 +27,7 @@
     
     comparator: function (widget) {
       return widget.order || 0;
-    },
+    }
   });
   
   // ==================================

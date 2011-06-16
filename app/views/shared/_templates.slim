@@ -427,8 +427,10 @@
   script.coupon-edit-area(type="text/template")
     label Name*:
     input(name="couponName" type="text" value="{{ _maybe.couponName }}")
+    br
     label Description*:
     textarea(name="description" type="text") {{ _maybe.description }}
+    br
     label Expiration Date:
     input(name="expire" type="text" value="{{ _maybe.expire }}")
   
