@@ -62,6 +62,11 @@
       _.bindAll(this,'queueActiveLeafUpdate');
       this.bind('wysiwyg-change',this.queueActiveLeafUpdate);
     },
+
+    onEditStart: function (resetChanges) {
+      if (resetChanges) this.discardChanges();
+      if (this.widget.hasLeafOnTop()) util.spawnJEditor();
+    },
     
     addItem: function (e,error) {
       var self = this;

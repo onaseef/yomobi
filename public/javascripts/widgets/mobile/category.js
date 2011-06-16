@@ -89,12 +89,15 @@
         , newStack = _.compact(subpage.split('/'))
         , direction = newStack.length > catStack.length ? 'forward' : 'backward'
       ;
-      this.widget.catStack = newStack;
+      // manually push each element for builder purposes
+      catStack.length = 0;
+      _.each(newStack, function (e) { catStack.push(e); });
       return direction;
     },
     
     onGoHome: function () {
-      this.widget.catStack = [];
+      // directly empty instead of setting to empty array for builder purposes
+      this.widget.catStack.length = 0;
     }
     
   });

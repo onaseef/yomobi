@@ -213,7 +213,7 @@
       if(this.mode == 'emulate') return true;
 
       var editor = this.currentEditor;
-      var isSameWidget = editor && editor.widget != widget;
+      var isDifferentWidget = editor && editor.widget != widget;
 
       if (editor && editor.widget) {
         editor.widget.homeView.highlight(false);
@@ -224,7 +224,7 @@
         }
       }
       this.currentEditor = widget.getEditor();
-      this.currentEditor.startEditing(isSameWidget);
+      this.currentEditor.startEditing(isDifferentWidget);
       // returning false will cause the mobile emulator to ignore the click
       return false;
     },

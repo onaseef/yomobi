@@ -3,6 +3,8 @@
 //
 (function ($) {
 
+  var tempCatStack = [];
+
   window.widgetClasses.category = window.widgetClasses.category.extend({
     
     getEditData: function () {
@@ -17,6 +19,7 @@
     },
     
     onHomeViewClick: function () {
+      tempCatStack = [];
       mapp.viewWidget(this);
       
       bapp.homeViewWidgetClick(this);
@@ -52,6 +55,7 @@
     
     onEditStart: function (resetChanges) {
       if (resetChanges) this.discardChanges();
+      this.widget.catStack = tempCatStack;
     },
     
     grabWidgetValues: function () {
@@ -71,8 +75,9 @@
     },
 
     discardChanges: function () {
+      util.log('Discarding changes for category widget');
       this.widget.set({ struct:util.clone(this.widget.origStruct) });
-      this.widget.catStack = [];
+      this.widget.catStack = tempCatStack;
     },
 
     onDiscardByNavigation: function () {
