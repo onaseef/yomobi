@@ -80,7 +80,8 @@
 
     previewMobileSite: function (e) {
       e.preventDefault();
-      // if (typeof this.winRef == 'undefined' || this.winRef.closed) {
+      if (this.winRef && !this.winRef.closed) { this.winRef.close() };
+
       var emulatorWidth = ($('#mobile-container').height() < 480) ? 320 : 320+util.scrollbarWidth();
       this.winRef = window.open(e.target.href,'Your_Mobile_Website',
         'width=' + emulatorWidth + ',height=480,scrollbars=yes');
