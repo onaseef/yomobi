@@ -285,29 +285,27 @@
         names: existingNames,
         error: error
       });
-      
-      $(dialogHtml).dialog({
-        resizable: false,
-        modal: true,
-        draggable: false,
-        close: function () { options.onCancel && options.onCancel(); },
-        buttons: {
-        	"Add New Widget": function() {
-            var newName = $(this).find('input[name=wname]').val()
-              , newName = $.trim(newName)
-              , newName = util.uglifyName(newName)
-                newName = util.scrubUglyName(newName)
-            ;
-        		$(this).dialog("close");
 
-            self.validateWidgetName(newName,wtype,singleton,options);
-        	},
-        	Cancel: function() {
-        		$(this).dialog("close");
-        		options.onCancel && options.onCancel();
-        	}
-      	}
-    	});
+      var buttons = {};
+
+      var actionName = options.mode === 'rename' ? 'Save Name' : 'Add New Widget';
+      buttons[actionName] = function () {
+        var newName = $(this).find('input[name=wname]').val()
+          , newName = $.trim(newName)
+          , newName = util.uglifyName(newName)
+            newName = util.scrubUglyName(newName)
+        ;
+        $(this).dialog("close");
+
+        self.validateWidgetName(newName,wtype,singleton,options);
+      };
+
+      buttons['Cancel'] = function() {
+        $(this).dialog("close");
+        options.onCancel && options.onCancel();
+      };
+
+      util.dialog(dialogHtml,buttons);
     	
     	return false;
     },

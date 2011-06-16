@@ -100,13 +100,13 @@
       ;
     },
 
-    stopEditingName: function (switchToNewName) {
+    stopEditingName: function () {
       var newName = this.el
         .find('.widget-name').show().end()
         .find('.widget-name-edit').hide()
           .find('input').val()
       ;
-      if (switchToNewName) this.el.find('.widget-name').text(newName);
+      this.el.find('.widget-name').text(this.widget.get('prettyName'));
     },
     
     changeName: function (e) {
@@ -127,14 +127,14 @@
       
       bapp.validateWidgetName(newName,this.widget.get('wtype'),this.widget.get('singleton'), {
         exception: oldName,
-        
+        mode: 'rename',
         onValid: function (validName) {
-          self.stopEditingName(true);
           util.pushUIBlock(validName);
 
           self.widget.save({ name:validName }, {
             success: function () {
               util.clearUIBlock(validName);
+              self.stopEditingName();
               bapp.tabBarEditor.replaceTabIfExists(oldName,newName);
               mapp.widgetsInUse.updateOverallOrder({ forceChange:true, forceSync:true });
             }
