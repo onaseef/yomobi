@@ -18,14 +18,14 @@
       
       var extraData = {
         currentCat: util.catName(_.last(this.catStack)) || this.get('prettyName'),
-        catCrumbs: util.catStackCrumbs(this.get('prettyName'),this.catStack)
+        catCrumbs: util.catStackCrumbs(this.get('prettyName'),this.catStack),
+        onHomePage: mapp.pageLevel === 0 && mapp.canTransition() ||
+                    mapp.pageLevel === 1 && mapp.canTransition() && this.catStack.length == 0
       };
       return _.extend({},showData,extraData);
     },
     
     onHomeViewClick: function () {
-      mapp.viewWidget(this);
-      
       bapp.homeViewWidgetClick(this);
       return false;
     },
@@ -40,6 +40,8 @@
     AddItemDialog: AddItemDialog,
 
     events: {
+      'click input[name=beginEditing]':     'enterEditMode',
+
       'click input[name=add_cat]':          'addCat',
       'click input[name=edit_cat]':         'editCat',
       'click input[name=rem_cat]':          'remCat',
@@ -61,6 +63,12 @@
 
       _.bindAll(this,'queueActiveLeafUpdate');
       this.bind('wysiwyg-change',this.queueActiveLeafUpdate);
+    },
+
+    // the button that activates this should only be available on the home page
+    enterEditMode: function () {
+      mapp.viewWidget(this.widget);
+      this.startEditing();
     },
 
     onEditStart: function (resetChanges) {

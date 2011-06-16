@@ -87,8 +87,8 @@
         'width=' + emulatorWidth + ',height=480,scrollbars=yes');
     },
 
-    tellBappToEditTabBar: function () { bapp.tabBarEditor.startEditing(); },
-    tellBappToEditSettings: function () { bapp.settingsEditor.startEditing(); }
+    tellBappToEditTabBar: function () { bapp.startEditingTabBar(); },
+    tellBappToEditSettings: function () { bapp.startEditingSettings(); }
     
   });
 

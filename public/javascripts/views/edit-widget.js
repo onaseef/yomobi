@@ -169,6 +169,7 @@
     stopEditing: function () {
       this.el.html(bapp.idleTemplate());
       this.changes = {};
+      this.widget && this.widget.homeView.highlight(false);
     },
     
     grabWidgetValues: function () {

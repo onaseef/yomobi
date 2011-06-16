@@ -448,6 +448,14 @@
     textarea(name="paste" type="text") {{ _maybe.description }}
   
   script.restaurant-menu-edit-area.services-edit-area.products-edit-area(type="text/template")
+    | <% if (onHomePage === true) { %>
+
+    p This is the {{ prettyName }} widget. You can add subcategories and items.
+    p Click the button below to begin editing.
+    input type="button" name="beginEditing" value="Begin Editing"
+
+    | <% } else { %>
+
     h2 {{ currentCat }}
     label Sub-Categories:
     br
@@ -479,10 +487,16 @@
     br
     input type="button" name="up_item" data-mod="-1" value="Move Up"
     input type="button" name="down_item" data-mod="1" value="Move Down"
+    | <% } %>
   
   script.page_tree-edit-area(type="text/template")
-    
-    | <% if (!_maybe.isLeaf) { %>
+    | <% if (onHomePage === true) { %>
+
+    p This is the {{ prettyName }} widget. You can add subcategories and items.
+    p Click the button below to begin editing.
+    input type="button" name="beginEditing" value="Begin Editing"
+
+    | <% } else if (!_maybe.isLeaf) { %>
     
     p {{ catCrumbs }}
     h2 Category: {{ currentCat }}

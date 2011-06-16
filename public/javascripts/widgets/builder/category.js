@@ -13,14 +13,15 @@
       if (showData.cats.length === 0) showData.cats = ['==None=='];
       
       var extraData = {
-        currentCat: util.catName(_.last(this.catStack)) || this.get('prettyName')
+        currentCat: util.catName(_.last(this.catStack)) || this.get('prettyName'),
+        onHomePage: mapp.pageLevel === 0 && mapp.canTransition() ||
+                    mapp.pageLevel === 1 && mapp.canTransition() && this.catStack.length == 0
       };
       return _.extend({},showData,extraData);
     },
     
     onHomeViewClick: function () {
       tempCatStack = [];
-      mapp.viewWidget(this);
       
       bapp.homeViewWidgetClick(this);
       return false;
@@ -35,6 +36,8 @@
   window.widgetEditors.category = window.EditWidgetView.extend({
 
     events: {
+      'click input[name=beginEditing]':     'enterEditMode',
+
       'click input[name=add_cat]':          'addCat',
       'click input[name=edit_cat]':         'editCat',
       'click input[name=rem_cat]':          'remCat',
@@ -53,6 +56,12 @@
       this.AddItemDialog = AddItemDialog;
     },
     
+    // the button that activates this should only be available on the home page
+    enterEditMode: function () {
+      mapp.viewWidget(this.widget);
+      this.startEditing();
+    },
+
     onEditStart: function (resetChanges) {
       if (resetChanges) this.discardChanges();
       this.widget.catStack = tempCatStack;

@@ -82,6 +82,16 @@
     },
     
     goHome: function (e) {
+      var editor = bapp.currentEditor;
+      if (editor && editor.hasChanges()) {
+        if (confirm(unsavedChangesText)) {
+          editor.onDiscardByNavigation();
+          editor.stopEditing();
+        }
+        else return;
+      }
+      else if (editor) editor.stopEditing();
+
       e && e.preventDefault();
       superObj.goHome.call(this);
     },
@@ -354,16 +364,16 @@
     },
     
     startEditingTabBar: function () {
-      if (this.currentEditor && this.currentEditor.widget) {
-        this.currentEditor.widget.homeView.highlight(false);
+      if (this.currentEditor) {
+        this.currentEditor.stopEditing();
         mapp.goHome();
       }
       this.tabBarEditor.startEditing();
     },
 
     startEditingSettings: function () {
-      if (this.currentEditor && this.currentEditor.widget) {
-        this.currentEditor.widget.homeView.highlight(false);
+      if (this.currentEditor) {
+        this.currentEditor.stopEditing();
         mapp.goHome();
       }
       this.settingsEditor.startEditing();
