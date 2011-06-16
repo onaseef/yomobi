@@ -408,19 +408,23 @@
         .all-day-label class=".all-day-{{ _maybe.#{day}AllDay }}"
           span Open All Day
         .add-time
-          | Add another time
           .plus-icon
+          | Add another time
     .clearfix
 
   script.gmap-edit-area(type="text/template")
     label Address 1*:
     input(name="addr1" type="text" value="{{ _maybe.addr1 }}")
+    br
     label Address 2:
     input(name="addr2" type="text" value="{{ _maybe.addr2 }}")
+    br
     label City*:
     input(name="city" type="text" value="{{ _maybe.city }}")
+    br
     label State*:
     input(name="state" type="text" value="{{ _maybe.state }}")
+    br
     label Zip / Postal Code:
     input(name="zip" type="text" value="{{ _maybe.zip }}")
   

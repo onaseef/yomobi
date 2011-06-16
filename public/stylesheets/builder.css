@@ -135,6 +135,7 @@
   width: 340px; }
 
 #emulator {
+  position: relative;
   border: 4px solid #1d4088;
   background: #edeff4;
   overflow: hidden;
