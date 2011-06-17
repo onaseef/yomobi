@@ -71,6 +71,14 @@ class BuilderController < ApplicationController
     return redirect_to builder_main_path(:anchor => 'edit-settings')
   end
 
+  def traffic_booster
+    @user = current_user
+    @company = @user.company
+    return if !params[:keywords].present?
+    @company.keywords = params[:keywords]
+    flash.now[:notice] = "Keywords successfully saved" if @company.save
+  end
+
   private
 
   def handle_special_widget_cases(widget)

@@ -4,6 +4,7 @@ html
     title YoMobi
     = render 'shared/iphone-meta.html'
     = stylesheet_link_tag 'mobile'
+    meta name="keywords" content=@company.keywords
   body
     #mobile-container
       = yield

@@ -1,0 +1,21 @@
+- content_for :sidebar do
+  = render :partial => 'shared/sidebar', :locals => {:active => 'booster'}
+
+- content_for :js do
+  = javascript_include_tag 'send_panel.js'
+
+h1 = @company.name
+#builder-container
+  #builder
+    h2 Traffic Booster
+    - if notice
+      p.success = notice
+    p Enter keywords that describe your website, separated by commas:
+    = form_tag '', :method => :post do
+      textarea name="keywords" rows="7" cols="50" = h @company.keywords
+      br
+      = submit_tag 'Save', :class => 'lfloat'
+      .load-box style="padding-top: 3px; display:none"
+        div.loader.lfloat style="margin:2px 4px 0 5px"
+        span.success Sending. Please wait...
+      .clearfix
