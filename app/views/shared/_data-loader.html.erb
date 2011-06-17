@@ -37,12 +37,12 @@ bdata = [
   },
   
   {
-    name: "picasa",
+    name: "photo-bucket",
     wtype: 'link',
-    helpText: "Add a one-tap link to your Picasa page.",
+    helpText: "Add a one-tap link to your PhotoBucket page.",
     singleton: true
   },
-  
+
   {
     name: "facebook",
     wtype: 'link_fb',
@@ -61,6 +61,24 @@ bdata = [
     singleton: true
   },
   
+  {
+    name: "picasa",
+    wtype: 'link_fb',
+    helpText: "Add a one-tap link to your Picasa page.",
+    host: 'http://picasaweb.google.com/',
+    basename: 'picasa',
+    singleton: true
+  },
+
+  {
+    name: "flickr",
+    wtype: 'link_fb',
+    helpText: "Add a one-tap link to your mobile Flickr page.",
+    host: 'http://m.flickr.com/photos/',
+    basename: 'flickr',
+    singleton: true
+  },
+
   {
     name: "custom-page",
     wtype: 'custom_page',

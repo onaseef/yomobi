@@ -325,20 +325,15 @@
   / =====================
   / = Widget Edit Pages =
   / =====================
-  script.link-edit-area.news-edit-area.blog-edit-area(type="text/template")
+  script.link-edit-area.news-edit-area.blog-edit-area.photo-bucket-edit-area(type="text/template")
     label Enter your website's address [e.g. www.mysite.com]*:
     input(name="url" type="text" value="{{ _maybe.url }}")
   
-  / singleton /
-  script.picasa-edit-area(type="text/template")
-    label Enter your Picasa web url*:
-    input(name="url" type="text" value="{{ _maybe.url }}")
-  
-  script.facebook-edit-area.twitter-edit-area(type="text/template")
+  script.facebook-edit-area.twitter-edit-area.picasa-edit-area.flickr-edit-area(type="text/template")
     h3 Current Link
     p
       a href="{{ url }}" target="_blank" {{ anchorText }}
-    label Enter your {{ basename }} id [e.g. Starbucks] or url [e.g. www.{{ basename }}.com/path/to/Starbucks]*:
+    label Enter your {{ basename }} id [e.g. Starbucks] or url [e.g. {{ host }}path/to/Starbucks]*:
     input(name="userId" type="text" value="{{ _maybe.userId }}")
   
   script.custom_page-edit-area.about-us-edit-area(type="text/template")

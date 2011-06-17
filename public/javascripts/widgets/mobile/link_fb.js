@@ -19,7 +19,7 @@
       util.log('REGEX',urlRegex);
       if (userId.match(urlRegex))
         return userId;
-      return 'http://www.' + this.get('basename') + '.com/' + userId;
+      return this.get('host') + userId;
     },
     
     onHomeViewClick: function () {
