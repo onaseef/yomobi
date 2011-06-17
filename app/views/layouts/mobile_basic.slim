@@ -1,0 +1,13 @@
+! doctype 5
+html
+  head
+    title YoMobi
+    = render 'shared/iphone-meta.html'
+    = stylesheet_link_tag 'mobile-basic'
+  body
+    #mobile-container
+      #header
+        .content
+          #logo Yomobi
+      #main-content
+        = yield

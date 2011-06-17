@@ -75,7 +75,7 @@ class Widgets::InformedController < ApplicationController
     follower.save
 
     @opt_in_url = "#{Rails.application.config.opt_out_url_host}/#{@company_url}#page/keep-me-informed"
-    render :layout => 'application'
+    render :layout => 'mobile_basic'
   end
 
   private
