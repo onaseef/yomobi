@@ -288,6 +288,7 @@
 
     transition: function (direction,noScroll) {
       if(!util.reserve('pageTransition')) return false;
+
       var self = this
         , delta = (direction == 'forward') ? 1 : -1
         , deltaStr = (direction == 'forward') ? '-=' : '+='
@@ -297,10 +298,11 @@
       mapp.resize( Math.max(currentHeight,nextHeight) );
       if (!noScroll) window.scrollTo(0,0);
       
+      this.pageLevel += delta;
+
       this.el.find('#canvas').animate({
         left: deltaStr + g.width
       }, 350, function () {
-        mapp.pageLevel += delta;
         mapp.resize(nextHeight);
         util.release('pageTransition');
         

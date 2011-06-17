@@ -267,7 +267,8 @@
 #builder .edit-area.category, #builder .edit-area.page_tree {
   padding-top: 0; }
   #builder .edit-area.category select, #builder .edit-area.page_tree select {
-    width: 97%; }
+    width: 97%;
+    height: 111px; }
   #builder .edit-area.category #jeditor-wrapper, #builder .edit-area.page_tree #jeditor-wrapper {
     width: 324px; }
 

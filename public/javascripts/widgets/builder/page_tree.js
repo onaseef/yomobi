@@ -21,8 +21,7 @@
       var extraData = {
         currentCat: util.catName(_.last(this.catStack)) || this.get('prettyName'),
         catCrumbs: util.catStackCrumbs(this.get('prettyName'),this.catStack),
-        onHomePage: mapp.pageLevel === 0 && mapp.canTransition() ||
-                    mapp.pageLevel === 1 && mapp.canTransition() && this.catStack.length == 0
+        onHomePage: mapp.pageLevel === 0
       };
       return _.extend({},showData,extraData);
     },
@@ -152,10 +151,10 @@
       var catStack = this.widget.catStack
         , newSubpage = _.compact(catStack.pop() && catStack).join('/')
       ;
-      this.widget.getEditor().startEditing();
-      
-      if (!newSubpage) return mapp.transition('back');
+      if (!newSubpage) mapp.transition('back');
       mapp.viewWidget(this.widget,newSubpage);
+
+      this.widget.getEditor().startEditing();
     },
     
     refresh: function () {
