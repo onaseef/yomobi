@@ -17,7 +17,7 @@ Yomobi::Application.routes.draw do
   get 'builder/email'     => 'widgets/informed#email_panel', :as => :builder_email
   post 'builder/email'    => 'widgets/informed#send_email'
 
-  match 'builder/booster'   => 'widgets/builder#traffic_booster', :as => :builder_booster
+  match 'builder/booster'   => 'builder#traffic_booster', :as => :builder_booster
 
   put    'widgets/:id' => 'builder#update_widget'
   post   'widgets'     => 'builder#new_widget'
