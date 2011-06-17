@@ -205,6 +205,23 @@
     .thanks-wrap style="display:none"
       h3 Thanks for your input. We'll be sure to contact you later if needed.
   
+  script.call_back-page(type="text/template")
+    .input-wrap
+      p Leave us a message:
+      = form_tag "/#{@company.name}/call_back/submit", :method => 'post' do
+        label Your Mobile Number:
+        br
+        input type="text" name="phone"
+        br
+        label Message:
+        br
+        textarea name="message" rows=5 cols=30
+        p.error.response
+        br
+        input(type="submit" value="Send")
+    .thanks-wrap style="display:none"
+      h3 Thank you for your message. We will contact you soon.
+  
   script.booking-page(type="text/template")
     .input-wrap
       p Request a Booking:
@@ -344,7 +361,7 @@
     label Your company's phone number*:
     input(name="phone" type="text" value="{{ _maybe.phone }}")
   
-  script.leave-a-message-edit-area(type="text/template")
+  script.leave-a-message-edit-area.call-me-back-edit-area(type="text/template")
     label Enter the email you would like to receive your customers' messages on*:
     input(name="email" type="text" value="{{ _maybe.email }}")
   

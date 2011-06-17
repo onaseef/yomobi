@@ -6,6 +6,11 @@ class UserMailer < ActionMailer::Base
     mail params
   end
 
+  def call_back(params)
+    @params = params
+    mail params
+  end
+
   def send_text(params)
     follower = params[:follower]
     @content = params[:content]

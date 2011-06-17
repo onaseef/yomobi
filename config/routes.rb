@@ -36,6 +36,7 @@ Yomobi::Application.routes.draw do
   constraints lambda {|req| exceptions.map{|route| !req.path.starts_with? route}.any?} do
     get ':company' => 'mobile#index', :as => :mobile
     post ':company/leave_msg/submit' => 'widgets/leave_msg#submit'
+    post ':company/call_back/submit' => 'widgets/call_back#mobile_submit'
     post ':company/informed/submit' => 'widgets/informed#mobile_submit'
     post ':company/booking/submit' => 'widgets/booking#mobile_submit'
   end

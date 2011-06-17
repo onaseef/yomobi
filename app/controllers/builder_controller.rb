@@ -89,6 +89,9 @@ class BuilderController < ApplicationController
     when 'leave_msg'
       current_user.company.leave_msg_email = widget[:email]
       current_user.company.save
+    when 'call_back'
+      current_user.company.call_back_email = widget[:email]
+      current_user.company.save
     when 'booking'
       current_user.company.booking_email = widget[:email]
       current_user.company.save
