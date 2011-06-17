@@ -3,6 +3,8 @@
 //
 (function ($) {
 
+  var tempCatStack = [];
+
   window.widgetClasses.page_tree = window.widgetClasses.page_tree.extend({
     
     getEditData: function () {
@@ -26,6 +28,8 @@
     },
     
     onHomeViewClick: function () {
+      tempCatStack = [];
+
       bapp.homeViewWidgetClick(this);
       return false;
     },
@@ -73,6 +77,8 @@
 
     onEditStart: function (resetChanges) {
       if (resetChanges) this.discardChanges();
+
+      this.widget.catStack = tempCatStack;
       if (this.widget.hasLeafOnTop()) util.spawnJEditor();
     },
     

@@ -2,7 +2,7 @@
 // MOBILE
 // 
 (function ($) {
-  
+
   // page_tree can extend category based on the hacky fact that
   // category is included first based on the english alphabet
   // (c comes before p)
