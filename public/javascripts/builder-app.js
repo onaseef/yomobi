@@ -227,7 +227,7 @@
 
       if (editor && editor.widget) {
         editor.widget.homeView.highlight(false);
-        if (editor.hasChanges() && isSameWidget) {
+        if (editor.hasChanges() && isDifferentWidget) {
           if (confirm(unsavedChangesText))
             editor.onDiscardByNavigation();
           else return false;
