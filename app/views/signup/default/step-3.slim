@@ -4,9 +4,20 @@
   .content
     h2 Upload your company's logo
     
-    = file_field :step_data, :logo
+    table
+      tr
+        td.logo-preview
+          - if @company.logo
+            = image_tag @company.logo.url :mobile
+          - else
+            = image_tag 'no-logo.png'
+        td
+          = file_field :step_data, :logo
+          input type="submit" value="Upload"
+
     
     = hidden_field_tag 'step_data[step]', 3
+    = hidden_field_tag 'account_setup', 3
   .action-bar
     .rfloat.main-btn
       input.content type="submit" value="Save & Continue"

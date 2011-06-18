@@ -150,3 +150,7 @@
     width: 200px; }
   #account-setup-box a.skip-link {
     padding: 3px 6px 0 0; }
+  #account-setup-box td.logo-preview {
+    width: 125px;
+    height: 100px;
+    text-align: center; }

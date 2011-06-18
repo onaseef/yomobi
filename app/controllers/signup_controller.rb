@@ -57,7 +57,8 @@ class SignupController < ApplicationController
   
   def validate_step_3(data)
     puts "Validating step 3: #{data.inspect}"
-    success = current_user.company.update_attribute :logo, data['logo']
+    success = current_user.company.update_attribute :logo, data['logo'] if data['logo']
+    @errors['logo'] = true if data['logo'].present?
     puts "Updated logo? #{success.inspect}"
   end
 
