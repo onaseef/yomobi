@@ -26,7 +26,7 @@ class SignupController < ApplicationController
 
     @errors['title'] = true unless data['title'].match /^[a-z0-9 _$()+-'"]{2,40}$/i
 
-    if data['site_url'].match(/^[a-z][a-z0-9 _$()+-]{2,16}$/).nil?
+    if data['site_url'].match(/^[a-z][a-z0-9 _$()+-]{2,16}$/i).nil?
       @errors['site_url'] = 'illegal'
     elsif couchdb_exists? data['site_url']
       @errors['site_url'] = 'taken'
@@ -34,7 +34,10 @@ class SignupController < ApplicationController
     
     if @errors.size == 0
       # TODO: randomly generate password
-      result = current_user.create_company :name => data['title'], :db_name => data['site_url'], :db_pass => '123123'
+      result = current_user.create_company\
+        :name => data['title'],
+        :db_name => data['site_url'].downcase,
+        :db_pass => '123123'
       if result[:id].nil?
         @errors['site_url'] = 'taken?'
       elsif
