@@ -8,13 +8,24 @@
   window.widgetClasses.category = window.widgetClasses.category.extend({
     
     getEditData: function () {
-      var showData = this.getShowData();
-      if (showData.items.length === 0) showData.items = [{ name:'==None==' }];
-      if (showData.cats.length === 0) showData.cats = ['==None=='];
+      var showData = this.getShowData()
+        , emptyItems = false
+        , emptyCats = false
+      ;
+      if (showData.items.length === 0) {
+        showData.items = [{ name:'==None==' }];
+        emptyItems = true;
+      }
+      if (showData.cats.length === 0) {
+        showData.cats = ['==None=='];
+        emptyCats = true;
+      }
       
       var extraData = {
         currentCat: util.catName(_.last(this.catStack)) || this.get('prettyName'),
-        onHomePage: mapp.pageLevel === 0
+        onHomePage: mapp.pageLevel === 0,
+        emptyItems: emptyItems,
+        emptyCats: emptyCats
       };
       return _.extend({},showData,extraData);
     },

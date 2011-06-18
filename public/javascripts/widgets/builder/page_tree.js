@@ -8,11 +8,19 @@
   window.widgetClasses.page_tree = window.widgetClasses.page_tree.extend({
     
     getEditData: function () {
-      var showData = this.getShowData();
-
+      var showData = this.getShowData()
+        , emptyItems = false
+        , emptyCats = false
+      ;
       if (!showData.isLeaf) {
-        if (showData.items.length === 0) showData.items = [{ name:'==None==' }];
-        if (showData.cats.length === 0) showData.cats = ['==None=='];
+        if (showData.items.length === 0) {
+          showData.items = [{ name:'==None==' }];
+          emptyItems = true;
+        }
+        if (showData.cats.length === 0) {
+          showData.cats = ['==None=='];
+          emptyCats = true;
+        }
       }
       else {
         var leafName = _.last(this.catStack);
@@ -21,7 +29,9 @@
       var extraData = {
         currentCat: util.catName(_.last(this.catStack)) || this.get('prettyName'),
         catCrumbs: util.catStackCrumbs(this.get('prettyName'),this.catStack),
-        onHomePage: mapp.pageLevel === 0
+        onHomePage: mapp.pageLevel === 0,
+        emptyItems: emptyItems,
+        emptyCats: emptyCats
       };
       return _.extend({},showData,extraData);
     },

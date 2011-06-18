@@ -502,12 +502,14 @@
       | <% } %>
     br
     input type="button" name="add_cat" value="Add Sub-Category"
+    | <%       if (!emptyCats) { %>
     input type="button" name="edit_cat" value="Edit"
     input type="button" name="rem_cat" value="Remove Sub-Category"
+    | <%       } if (cats.length >= 2) { %>
     br
     input type="button" name="up_cat" data-mod="-1" value="Move Up"
     input type="button" name="down_cat" data-mod="1" value="Move Down"
-
+    | <%       } %>
     br
     br
     
@@ -519,11 +521,14 @@
       | <% } %>
     br
     input type="button" name="add_item" value="Add Item"
+    | <%       if (!emptyItems) { %>
     input type="button" name="edit_item" value="Edit Item"
     input type="button" name="rem_item" value="Remove Item"
+    | <%       } if (items.length >= 2) { %>
     br
     input type="button" name="up_item" data-mod="-1" value="Move Up"
     input type="button" name="down_item" data-mod="1" value="Move Down"
+    | <%       } %>
     | <% } %>
   
   script.page_tree-edit-area(type="text/template")
@@ -545,11 +550,14 @@
       | <% } %>
     br
     input type="button" name="add_cat" value="Add Sub-Category"
+    | <%       if (!emptyCats) { %>
     input type="button" name="edit_cat" value="Edit"
     input type="button" name="rem_cat" value="Remove Sub-Category"
+    | <%       } if (cats.length >= 2) { %>
     br
     input type="button" name="up_cat" data-mod="-1" value="Move Up"
     input type="button" name="down_cat" data-mod="1" value="Move Down"
+    | <%       } %>
 
     br
     br
@@ -562,11 +570,14 @@
       | <% } %>
     br
     input type="button" name="add_item" value="Add Page"
+    | <%       if (!emptyItems) { %>
     input type="button" name="edit_item" value="Edit Page Name"
     input type="button" name="rem_item" value="Remove Page"
+    | <%       } if (items.length >= 2) { %>
     br
     input type="button" name="up_item" data-mod="-1" value="Move Up"
     input type="button" name="down_item" data-mod="1" value="Move Down"
+    | <%       } %>
     
     | <% } else { %>
     p {{ catCrumbs }}
