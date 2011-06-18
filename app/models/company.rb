@@ -45,6 +45,10 @@ class Company < ActiveRecord::Base
     followers.where(:company_id => self[:id], :active => true).select {|f| f.email.present? }
   end
   
+  def mobile_url
+    "http://yomobi.com/#{db_name}"
+  end
+
   def couch_db_url
     encoded_pass = URI.escape self.db_pass, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")
     puts "URL:::: http://admin_#{self.db_name}:#{encoded_pass}@yomobi.couchone.com/m_#{self.db_name}"

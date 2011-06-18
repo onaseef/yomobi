@@ -222,6 +222,28 @@
     .thanks-wrap style="display:none"
       h3 Thank you for your message. We will contact you soon.
   
+  script.tell_friend-page(type="text/template")
+    .input-wrap
+      p Tell a friend about this website:
+      = form_tag "/#{@company.name}/tell_friend/submit", :method => 'post' do
+        label Your Friend's Email:
+        br
+        input type="text" name="email_to"
+        br
+        label Your Name:
+        br
+        input type="text" name="name_from"
+        br
+        label Your Email:
+        br
+        input type="text" name="email_from"
+        br
+        p.error.response
+        br
+        input(type="submit" value="Send")
+    .thanks-wrap style="display:none"
+      h3 Thank you for your message. We will contact you soon.
+  
   script.booking-page(type="text/template")
     .input-wrap
       p Request a Booking:
@@ -364,6 +386,9 @@
   script.leave-a-message-edit-area.call-me-back-edit-area(type="text/template")
     label Enter the email you would like to receive your customers' messages on*:
     input(name="email" type="text" value="{{ _maybe.email }}")
+  
+  script.tell-a-friend-edit-area(type="text/template")
+    p This widget will appear on your mobile website and allow your customers to instantly tell their friends about your mobile website.
   
   script.booking-request-edit-area(type="text/template")
     label Enter the email you would like to receive your customers' booking requests on*:

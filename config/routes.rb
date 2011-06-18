@@ -37,6 +37,7 @@ Yomobi::Application.routes.draw do
     get ':company' => 'mobile#index', :as => :mobile
     post ':company/leave_msg/submit' => 'widgets/leave_msg#submit'
     post ':company/call_back/submit' => 'widgets/call_back#mobile_submit'
+    post ':company/tell_friend/submit' => 'widgets/tell_friend#mobile_submit'
     post ':company/informed/submit' => 'widgets/informed#mobile_submit'
     post ':company/booking/submit' => 'widgets/booking#mobile_submit'
   end

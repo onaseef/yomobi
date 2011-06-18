@@ -11,6 +11,11 @@ class UserMailer < ActionMailer::Base
     mail params
   end
 
+  def tell_friend(params)
+    @params = params
+    mail params
+  end
+
   def send_text(params)
     follower = params[:follower]
     @content = params[:content]
