@@ -60,7 +60,8 @@ class CouchDocs
       "name" => "about-us",
       "wtype" => "custom_page",
       "helpText" => "A page describing what your business is about.",
-      "content" => desc
+      "content" => desc,
+      "singleton" => true
     }
   end
   
