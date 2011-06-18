@@ -135,25 +135,6 @@
       	    | <% for(var i=0; i < cats.length; i++) { %>
       	    |    <li> {{ cats[i] }} </li>
       	    |  <% } %>
-  
-  script.add-item-dialog(type="text/template")
-    #dialog-confirm title="Name your Page"
-      p
-        | Please name your Page:
-        input.item-input type="text" name="name" value="{{ name }}"
-        input.add-btn type="button" value="Add"
-        input.item-input type="hidden" name="content" value="<p>Change Me</p>"
-        | <% if(_maybe.error) { %>
-        p.error Error: {{ _maybe.error }}
-        | <% } %>
-        p.error
-          b (Press Enter to add/change)
-        .other-names
-    	    b Other Page names being used in this category:
-    	    ul
-      	    | <% for(var i=0; i < _items.length; i++) { %>
-      	    |    <li> {{ _items[i].name }} </li>
-      	    |  <% } %>
 
   script.widget-page(type="text/template")
     .page

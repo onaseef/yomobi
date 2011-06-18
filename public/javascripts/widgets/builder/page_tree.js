@@ -3,6 +3,7 @@
 //
 (function ($) {
 
+  var defaultPageContent = '<p>[Change Me]</p>';
   var tempCatStack = [];
 
   window.widgetClasses.page_tree = window.widgetClasses.page_tree.extend({
@@ -100,6 +101,21 @@
       dialog.enterMode('add').prompt();
     },
     
+    editItem: function (e) {
+      var self = this
+        , level = this.widget.getCurrentLevel()
+        , name = $(this.el).find('select[name=items] option:selected:first').html()
+        , item = _.detect(level._items,function (i) { return i.name == name })
+      ;
+      if (_.isEmpty(item)) return;
+      
+      var dialog =  new this.AddItemDialog({
+        model: this.widget,
+        onClose: function () { self.refreshViews(); }
+      });
+      dialog.enterMode('edit').prompt(null,item.name);
+    },
+
     queueActiveLeafUpdate: function () {
       if (!this.updateTimeoutId) {
         var self = this;
@@ -177,29 +193,32 @@
   // =================================
   var AddItemDialog = Backbone.View.extend({
     
+    addItemTemplate: util.getTemplate('add-subcat-dialog'),
+
     events: {
-      'keydown input[name="name"]':      'onKeyDown'
+      'keydown input[name="cat"]':      'onKeyDown'
     },
     
     onKeyDown: function (e) {
       var code = e.keyCode || e.which;
       if (code == 13) this.validateItem();
     },
-
-    template: util.getTemplate('add-item-dialog'),
     
+    initialize: function () {
+      _.bindAll(this,'validateItem');
+    },
+
     enterMode: function (mode) {
       this.mode = mode;
       return this;
     },
     
-    render: function (flash,level,item) {
-      flash || (flash = {});
-      item || (item = {});
-      var dialogHtml = this.template(_.extend({},item, {
-        flash: flash,
-        _items: level._items
-      }));
+    render: function (error,level,name) {
+      var dialogHtml = this.addItemTemplate({
+        error: error,
+        cats: _.pluck(level._items,'name'),
+        name: name
+      });
 
       var self = this;
       $(this.el).html(dialogHtml).find('.add-btn')
@@ -208,53 +227,55 @@
       return this;
     },
     
-    prompt: function (flash,item) {
+    prompt: function (error,origName) {
       var self = this
         , level = this.model.getCurrentLevel()
-        , dialogContent = this.render(flash,level,item).el
+        , dialogContent = this.render(error,level,origName).el
+        , closeSelf = close(this)
+        , buttons = {}
       ;
       // cache for later use
       this.level = level;
+      this.origName = origName;
       
-      util.dialog(dialogContent, {
-      	"I'm Done Adding Pages": function () {
-          $(this).dialog("close");
-          self.options.onClose && self.options.onClose();
-      	}
-    	}).find('p.error').show('pulsate',{times:3});
+      if (this.mode == 'add') buttons["I'm Done Adding Pages"] = closeSelf;
+      else buttons["Close"] = closeSelf;
+      
+      util.dialog(dialogContent,buttons).find('p.error').show('pulsate',{times:3});
     },
     
-    validateItem: function (item) {
+    validateItem: function () {
   		$(this.el).dialog("close");
-      var activeItemData = {};
-      $(this.el).find('.item-input').each(function (idx,elem) {
-        activeItemData[$(elem).attr('name')] = $(elem).val();
-      });
 
-      var name = $.trim(activeItemData.name);
-  		if (_.isEmpty(name)) {
-  		  this.prompt({ error:'Name cannot be empty' },activeItemData);
-  		  return;
-  		}
-      else if (this.mode == 'add' && _.include(this.level._items,name)) {
-        this.prompt({ error:'Name is already in use' },activeItemData);
-        return;
-      }
-
-      if (this.mode == 'add') {
-        this.level._items.push(activeItemData);
-        this.prompt({ success:'Item '+this.mode+'ed successfully' });
+      var name = $(this.el).find('input[name=cat]').val()
+        , name = $.trim(name)
+      ;
+  		if (_.isEmpty(name))
+        this.prompt('Name cannot be empty');
+      else if ( this.mode == 'add' && _.contains(_.pluck(this.level._items,'name'),name) )
+        this.prompt('Name is already in use');
+      else if (this.mode == 'add') {
+        this.level._items.push({ name:name, content:defaultPageContent });
+        this.prompt();
         bapp.currentEditor.setChanged('something',true);
       }
       else if (this.mode == 'edit') {
-        var oldItem = _.detect(this.level._items,function (i) { return i.name == item.name });
-        _.extend(oldItem,activeItemData);
+        var origName = this.origName;
+        var targetItem = _.detect(this.level._items,function (i) { return i.name == origName });
+        targetItem.name = name;
 
         this.options.onClose && this.options.onClose();
         bapp.currentEditor.setChanged('something',true);
       }
     }
   });
+
+  var close = function (dialogView) {
+    return function () {
+      $(this).dialog("close");
+      dialogView.options.onClose && dialogView.options.onClose();
+    };
+  }
 
 })(jQuery);
 
