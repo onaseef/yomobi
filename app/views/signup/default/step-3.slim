@@ -1,5 +1,8 @@
 = render :partial => 'signup-step-arrows', :locals => { :step => 3 }
 
+- content_for :js do
+  = javascript_include_tag 'send_panel'
+
 = form_tag account_setup_path(3), :multipart => true, :id => 'account-setup-box', :class => 'center-box' do
   .content
     h2 Upload your company's logo
@@ -14,6 +17,9 @@
         td
           = file_field :step_data, :logo
           input type="submit" value="Upload"
+          .load-box.rfloat.hide
+            span.success Working...
+            div.loader.rfloat style="margin:2px 4px 0 5px"
 
     
     = hidden_field_tag 'step_data[step]', 3
