@@ -24,7 +24,7 @@ class SignupController < ApplicationController
     
     return unless current_user.company.nil?
 
-    @errors['title'] = true unless data['title'].match /^[a-z0-9 _$()+-]{2,16}$/i
+    @errors['title'] = true unless data['title'].match /^[a-z0-9 _$()+-'"]{2,40}$/i
 
     if data['site_url'].match(/^[a-z][a-z0-9 _$()+-]{2,16}$/).nil?
       @errors['site_url'] = 'illegal'
