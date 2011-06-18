@@ -24,9 +24,9 @@ class SignupController < ApplicationController
     
     return unless current_user.company.nil?
 
-    @errors['title'] = true unless data['title'].match /^[a-z0-9 _$()+-'"]{2,40}$/i
+    @errors['title'] = true unless data['title'].match /^[a-z0-9 _$()+\-'"]{2,40}$/i
 
-    if data['site_url'].match(/^[a-z][a-z0-9 _$()+-]{2,16}$/i).nil?
+    if data['site_url'].match(/^[a-z0-9][a-z0-9 _$()+-]{2,16}$/i).nil?
       @errors['site_url'] = 'illegal'
     elsif couchdb_exists? data['site_url']
       @errors['site_url'] = 'taken'
@@ -64,7 +64,7 @@ class SignupController < ApplicationController
   private
   
   def couchdb_exists?(db_name)
-    db = CouchRest.database "http://yomobi.couchone.com/#{db_name}"
+    db = CouchRest.database "http://yomobi.couchone.com/m_#{db_name}"
     begin
       return !db.info.nil?
     rescue RestClient::ResourceNotFound => nfe

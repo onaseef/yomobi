@@ -7,7 +7,7 @@
 
     sync: util.couchSync,
     // TODO: only query in-use widgets and move all-query to builder-app.js
-    url: 'http://yomobi.couchone.com/' + g.db_name +
+    url: 'http://yomobi.couchone.com/m_' + g.db_name +
          '/_design/widgets/_view/in_use_by_name?include_docs=true',
 
     parse: function (res) {
@@ -322,7 +322,7 @@
     
     fetchWorder: function (callback) {
       $.ajax({
-        url: 'http://yomobi.couchone.com/' + g.db_name + '/worder',
+        url: 'http://yomobi.couchone.com/m_' + g.db_name + '/worder',
         type: 'get',
         dataType: 'jsonp',
         success: function(data) {
