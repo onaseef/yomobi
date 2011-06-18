@@ -4,7 +4,7 @@
   #sidebar ul {
     list-style: none;
     padding-left: 0;
-    margin-top: 54px; }
+    margin: 54px 0 10px 0; }
   #sidebar .spacer {
     border-top: 1px solid #dddddd;
     margin: 5px 0; }
@@ -38,6 +38,7 @@
 
 #sidebar .widgets {
   height: 414px;
+  padding-left: 23px;
   overflow: auto; }
   #sidebar .widgets .home-icon {
     height: 105px; }
