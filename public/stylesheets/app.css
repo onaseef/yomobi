@@ -16,12 +16,13 @@ hr {
   color: #cccccc; }
 
 #topline-notice {
-  background: #d8dfea;
-  text-align: center;
-  -webkit-box-shadow: #9c9c9c 0 1px 15px;
-  -moz-box-shadow: 0 1px 15px #9c9c9c;
-  border-bottom: 1px solid #1d4088; }
+  overflow: hidden; }
   #topline-notice p.notice, #topline-notice p.alert, #topline-notice p.error {
+    background: #d8dfea;
+    text-align: center;
+    -webkit-box-shadow: #9c9c9c 0 1px 15px;
+    -moz-box-shadow: 0 1px 15px #9c9c9c;
+    border-bottom: 1px solid #1d4088;
     margin: 0;
     text-align: center;
     font-size: 20px;
