@@ -106,12 +106,12 @@
     },
     
     addTime: function (e) {
-util.log('UCRHOERU',e.target);
-      var $target = $(e.target)
-        , parent = $target.hasClass('.plus-icon') ? $target.parent().parent() : $target.parent()
-        , lastRow = .find('.row:first')
+      var target = $(e.target)
+        , parent = target.hasClass('plus-icon') ? target.parent().parent() : target.parent()
+        , lastRow = parent.find('.row:first')
         , newRow = lastRow.clone().find('input').val('').end()
       ;
+util.log('UCRHOERU',parent);
       lastRow.after(newRow);
     },
     
