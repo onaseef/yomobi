@@ -62,7 +62,7 @@ class BuilderController < ApplicationController
     if params[:company_name].present?
       attrs = { :name => params[:company_name], :logo => params[:logo]}
       attrs.delete :logo unless params[:logo].present?
-      attrs.delete :name unless attrs[:name].match /^[a-z0-9 _$()+-]{2,16}$/i
+      attrs.delete :name unless attrs[:name].match /^[a-z0-9 _$()+-]{2,40}$/i
 
       save_success = current_user.company.update_attributes(attrs)
       puts "Updated settings? #{save_success.inspect}"

@@ -26,7 +26,7 @@ class SignupController < ApplicationController
 
     @errors['title'] = true unless data['title'].match /^[a-z0-9 _$()+\-'"]{2,40}$/i
 
-    if data['site_url'].match(/^[a-z0-9][a-z0-9 _$()+-]{2,16}$/i).nil?
+    if data['site_url'].match(/^[a-z0-9][a-z0-9_\-]{2,40}$/i).nil?
       @errors['site_url'] = 'illegal'
     elsif couchdb_exists? data['site_url'].downcase
       @errors['site_url'] = 'taken'

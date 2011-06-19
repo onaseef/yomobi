@@ -106,7 +106,10 @@
     },
     
     addTime: function (e) {
-      var lastRow = $(e.target).parent().find('.row:first')
+util.log('UCRHOERU',e.target);
+      var $target = $(e.target)
+        , parent = $target.hasClass('.plus-icon') ? $target.parent().parent() : $target.parent()
+        , lastRow = .find('.row:first')
         , newRow = lastRow.clone().find('input').val('').end()
       ;
       lastRow.after(newRow);
