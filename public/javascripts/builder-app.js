@@ -273,7 +273,7 @@
         , self = this
         , options = options || {}
         , prettyName = util.prettifyName(name)
-        , isValid = !!name.match(/^[a-z][a-z0-9\-]*$/) || (error = 'Invalid name')
+        , isValid = !!name.match(/^[a-z0-9\-]*$/) || (error = 'Invalid name')
 
         , exception = options.exception || '_'
         , isSameName = function (w) { var n=w.get('name'); return n == name && n != exception; }
