@@ -160,7 +160,7 @@
 
       new BuilderAppController();
       
-      window.Widgets.prototype.url = 'http://yomobi.couchone.com/m_' + g.db_name +
+      window.Widgets.prototype.url = 'http://'+g.couchLocation+'/m_' + g.db_name +
          '/_design/widgets/_view/by_name?include_docs=true',
       
       window.mapp = new MobileAppView({

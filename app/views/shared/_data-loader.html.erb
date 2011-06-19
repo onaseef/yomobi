@@ -4,7 +4,7 @@
 window.g = {
   width: 320,
   height: 480,
-  couchLocation: 'http://yomobi.couchone.com',
+  couchLocation: '<%= @company.couch_host %>',
   db_name: '<%= @company.db_name %>',
   company: "<%= @company.name %>",
   MAX_CHARS: <%= @max_chars || -1 %>

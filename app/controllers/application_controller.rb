@@ -15,11 +15,16 @@ class ApplicationController < ActionController::Base
   end
 
   def self.couch_url(db_name=nil,db_pass=nil)
-    return "http://yomobi.couchone.com" if db_name.nil?
-    return "http://yomobi.couchone.com/#{db_name}" if db_name == '_users'
-    return "http://yomobi.couchone.com/m_#{db_name}" if db_pass.nil?
-    return "http://yadmin:C0uch!tUp@yomobi.couchone.com/m_#{db_name}" if db_pass == :@admin
-    "http://admin_#{db_name}:#{db_pass}@yomobi.couchone.com/m_#{db_name}"
+    couch_host = Rails.application.config.couch_host
+    return "http://#{couch_host}" if db_name.nil?
+    return "http://#{couch_host}/#{db_name}" if db_name == '_users'
+    return "http://#{couch_host}/m_#{db_name}" if db_pass.nil?
+
+    if db_pass == :@admin
+      user, pass = Rails.application.config.couch_cred
+      return "http://#{user}:#{pass}@#{couch_host}/m_#{db_name}"
+    end
+    "http://admin_#{db_name}:#{db_pass}@#{couch_host}/m_#{db_name}"
   end
   
   def prevent_caching

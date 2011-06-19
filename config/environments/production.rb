@@ -3,6 +3,9 @@ Yomobi::Application.configure do
 
   config.opt_out_url_host = 'http://high-robot-871.heroku.com'
 
+  config.couch_host = 'supersaleshopper.couchone.com'
+  config.couch_cred = ['fadmin', 'Super$4le']
+
   # The production environment is meant for finished, "live" apps.
   # Code is not reloaded between requests
   config.cache_classes = true

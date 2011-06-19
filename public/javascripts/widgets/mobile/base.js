@@ -9,7 +9,7 @@
 
     sync: util.couchSync,
     url: function () {
-      return 'http://yomobi.couchone.com/m_' + g.db_name +
+      return 'http://'+g.couchLocation+'/m_' + g.db_name +
              '/_design/widgets/_view/by_name?include_docs=true' +
              '&key="' + this.get('name') + '"';
     },
@@ -80,6 +80,7 @@
       elem.attr('class','content '+this.widget.get('wtype'));
       this.el = elem;
       this.delegateEvents(this.events);
+      this.el.trigger('postRender');
     },
     
     // this callback is triggered every time a widget's page is
