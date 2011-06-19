@@ -68,7 +68,8 @@
       'click input[name=up_item]':          'moveItem',
       'click input[name=down_item]':        'moveItem',
       
-      'click .wysiwyg':                     'queueActiveLeafUpdate'
+      'click .wysiwyg':                     'queueActiveLeafUpdate',
+      'click input[name=discard_leaf]':     'discardActiveLeafChanges'
     },
     
     init: function (widget) {
@@ -135,6 +136,19 @@
       this.widget.pageView.refresh();
       mapp.resize();
       this.setChanged('leaf-content',true);
+    },
+
+    discardActiveLeafChanges: function () {
+      if (!this.widget.hasLeafOnTop()) return;
+
+      var level = this.widget.getCurrentLevel()
+        , origLevel = this.widget.getCurrentLevel(this.widget.origStruct)
+        , leaf = this.widget.getCurrentLeaf(level)
+        , origLeaf = this.widget.getCurrentLeaf(origLevel)
+      ;
+      if (!origLevel || !origLeaf) return;
+      leaf.content = origLeaf.content;
+      this.refreshViews();
     }
     
   });

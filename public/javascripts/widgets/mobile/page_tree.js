@@ -51,11 +51,11 @@
       return _.extend({},this.toJSON(),extraData);
     },
     
-    getCurrentLevel: function () {
-      var level = this.get('struct');
+    getCurrentLevel: function (struct) {
+      var level = struct || this.get('struct');
       _.each(this.catStack, function (cat) {
         if (isNaN( util.catOrder(cat) )) return;
-        level = level[cat];
+        if (level) level = level[cat];
       });
       return level;
     },

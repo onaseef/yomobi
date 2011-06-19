@@ -332,13 +332,15 @@
     | } %>
   
   script.page_tree-page(type="text/template")
-    | <% if (!_maybe.isLeaf) { for (var i=0; i<cats.length;i++) {
+    | <% if (!_maybe.isLeaf) {
+    |       for (var i=0; i<cats.length;i++) {
     |         print( catTemplate({ catName:cats[i], cycle:util.cycle('c0','c1'), order:i }) );
-    | } for (var i=0;i<items.length;i++) { %>
+    |       } for (var i=0;i<items.length;i++) { %>
     .leaf-name.item class="<% print(util.cycle('c0','c1')); %>"
       .leaf-arrow
       | {{ items[i].name }}
-    | <% } } else { %>
+    | <%    } 
+    | } else { %>
     h1 {{ title }}
     .leaf-content {{ content }}
     | <% } %>
@@ -566,6 +568,8 @@
     h2 Editing Page: {{ currentCat }}
     #jeditor-wrapper
       textarea#jeditor {{ content }}
+    br
+    input type="button" name="discard_leaf" value="Discard Page Changes"
     | <% } %>
 
 #wname-test
