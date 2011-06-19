@@ -4,6 +4,7 @@ class Widgets::InformedController < ApplicationController
 
   def mobile_submit
     return error('bad message') unless follower_data_present? params
+    return error('captcha') unless verify_recaptcha
 
     company = Company.find_by_name params[:company]
     carrier = Carrier.find_by_name params[:carrier]
@@ -94,7 +95,7 @@ class Widgets::InformedController < ApplicationController
   end
 
   def find_or_build_follower(company,email,phone,carrier)
-    follower = Follower.where(:email => email, :phone => phone.gsub!(/[^0-9]+/,'')).first
+    follower = Follower.where(:email => email, :phone => phone && phone.gsub!(/[^0-9]+/,'')).first
     if follower && follower.active == false
       follower.active = true
       return [follower,false]

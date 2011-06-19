@@ -12,13 +12,21 @@
   window.widgetPages.informed = WidgetPageView.extend({
 
     events: {
-      'submit': 'submit'
+      'submit': 'submit',
+      'postRender': 'spawnCaptcha'
     },
     
     init: function (widget) {
       _.bindAll(this,'submit');
     },
     
+    spawnCaptcha: function () {
+      var myWidget = this.widget;
+      setTimeout(function () {
+        if (mapp.currentWidget === myWidget) util.spawnRecaptcha();
+      },1000);
+    },
+
     submit: function () {
       var self = this
         , form = this.el.find('form')
@@ -47,6 +55,10 @@
     var msg = '<ul>';
     if (serverResponse === "bad message")
       msg += '<li>You must provide an email or phone number</li>';
+    else if (serverResponse === "captcha") {
+      msg += '<li>Incorrect typed word(s). Please try again.</li>';
+      if (Recaptcha) Recaptcha.reload();
+    }
     _.each(serverResponse.email, function (error) {
       msg += '<li>Email ' + error + '</li>';
     });

@@ -525,6 +525,22 @@ var util = {
         superscript: { visible:false }
       }
     });
+  },
+
+  spawnRecaptcha: function () {
+    if (!window.Recaptcha) return;
+    Recaptcha.create("6LdLd8QSAAAAAE9J9A7Vm_bkwK01AdMo4bGInCVv",
+      'recaptcha-container',
+      {
+        // theme: 'custom',
+        // custom_theme_widget: 'recaptcha_container',
+        theme: 'red',
+        callback: function () {
+          Recaptcha.focus_response_field();
+          mapp.resize();
+        }
+      }
+    );
   }
   
 }
