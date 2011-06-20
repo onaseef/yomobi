@@ -428,6 +428,7 @@
       if (bapp.currentEditor && bapp.currentEditor.hasChanges() &&
           !confirm(unsavedChangesText))
       {
+        $('#builder .drophover-overlay').hide();
         return false;
       }
 
