@@ -306,7 +306,10 @@
         mapp.resize(nextHeight);
         util.release('pageTransition');
         
-        if (mapp.pageLevel == 0) delete mapp.currentWidget;
+        if (mapp.pageLevel == 0) {
+          delete mapp.currentWidget;
+          util.ensureActiveWidgetIsVisible();
+        }
       });
 
       return true;

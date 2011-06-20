@@ -541,6 +541,21 @@ var util = {
         }
       }
     );
+  },
+
+  ensureActiveWidgetIsVisible: function () {
+    if (!bapp.currentEditor) return;
+
+    var widget = bapp.currentEditor.widget
+      , scrollTop = $('#mobile-scroller').scrollTop()
+      , offset = $(widget.homeView.el).offset().top - scrollTop
+    ;
+    if (offset < 0) {
+      $('#mobile-scroller').scrollTop(scrollTop + offset);
+    }
+    else if (offset > 480) {
+      $('#mobile-scroller').scrollTop(scrollTop + offset - 480);
+    }
   }
   
 }
