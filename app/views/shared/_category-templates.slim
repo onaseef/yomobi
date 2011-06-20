@@ -134,6 +134,37 @@ script.home-listings-item-dialog(type="text/template")
         |  <% } %>
     | <% } %>
 
+script.locations-item-dialog(type="text/template")
+  #dialog-confirm title="Name your Location"
+    p Please enter your Location:
+    label Name
+    br
+    input.item-input type="text" value="{{ _maybe.name }}" name="name"
+    br
+    label Phone Number
+    br
+    input.item-input type="text" value="{{ _maybe.phone }}" name="phone"
+    br
+    label Address
+    br
+    input.item-input type="text" value="{{ _maybe.address }}" name="address"
+    br
+    
+    | <% if(flash.error) { %>
+    p.error Error: {{ flash.error }}
+    | <% } if(flash.success) { %>
+    p.success {{ flash.success }}
+    | <% } %>
+    
+    | <% if(_items.length > 0) { %>
+    .other-names
+      b Other Location names being used in this category:
+      ul
+        | <% for(var i=0; i < _items.length; i++) { %>
+        |    <li> {{ _items[i].name }} </li>
+        |  <% } %>
+    | <% } %>
+
 / ===========================
 / = Specific Category Items =
 / ===========================
@@ -164,3 +195,11 @@ script.home-listings-item
     div MLS# {{ item.mls }}
     div Price: {{ item.price }}
     div Description: {{ item.desc }}
+
+script.locations-item
+  .item class="{{ cycle }}"
+    div {{ item.name }}
+    div
+      | Phone:
+      a href="tel:{{ item.phone }}" {{ item.phone }}
+    div Address: {{ item.address }}
