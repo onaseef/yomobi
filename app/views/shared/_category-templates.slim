@@ -1,4 +1,4 @@
-script.restaurant-menu-item-dialog(type="text/template")
+script.menu-item-dialog(type="text/template")
   #dialog-confirm title="Name your Item"
     p Please enter your Menu Item:
     label Name
@@ -91,10 +91,53 @@ script.products-item-dialog(type="text/template")
         |  <% } %>
     | <% } %>
 
+script.home-listings-item-dialog(type="text/template")
+  #dialog-confirm title="Enter your Home Listing"
+    p Please enter your Home Listing:
+    label Title
+    br
+    input.item-input type="text" value="{{ _maybe.name }}" name="name"
+    br
+    label MLS #
+    br
+    input.item-input type="text" value="{{ _maybe.mls }}" name="mls"
+    br
+    label Price
+    br
+    input.item-input type="text" value="{{ _maybe.price }}" name="price"
+    br
+    label Address
+    br
+    input.item-input type="text" value="{{ _maybe.address }}" name="address"
+    br
+    label Photo URL
+    br
+    input.item-input type="text" value="{{ _maybe.photo_url }}" name="photo_url"
+    br
+    label Description
+    br
+    textarea.item-input name="desc" {{ _maybe.desc }}
+    br
+    
+    | <% if(flash.error) { %>
+    p.error Error: {{ flash.error }}
+    | <% } if(flash.success) { %>
+    p.success {{ flash.success }}
+    | <% } %>
+    
+    | <% if(_items.length > 0) { %>
+    .other-names
+      b Other Home Listing titles being used in this category:
+      ul
+        | <% for(var i=0; i < _items.length; i++) { %>
+        |    <li> {{ _items[i].name }} </li>
+        |  <% } %>
+    | <% } %>
+
 / ===========================
 / = Specific Category Items =
 / ===========================
-script.restaurant-menu-item
+script.menu-item
   .item class="{{ cycle }}"
     div Name: {{ item.name }}
     div Price: {{ item.price }}
@@ -109,5 +152,15 @@ script.services-item
 script.products-item
   .item class="{{ cycle }}"
     div Name: {{ item.name }}
+    div Price: {{ item.price }}
+    div Description: {{ item.desc }}
+
+script.home-listings-item
+  .item class="{{ cycle }}"
+    div {{ item.name }}
+    | <% if (item.photo_url) { %>
+    img src="{{ item.photo_url }}"
+    | <% } %>
+    div MLS# {{ item.mls }}
     div Price: {{ item.price }}
     div Description: {{ item.desc }}

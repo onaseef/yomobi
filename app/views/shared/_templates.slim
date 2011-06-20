@@ -270,7 +270,7 @@
         br
         label Mobile Service Carrier:
         br
-        = select_tag 'carrier', options_for_select(carrier_names)
+        = select_tag 'carrier', options_for_select(carrier_names,'AT&T')
         br
         | <% } %>
         #recaptcha-container
@@ -472,7 +472,7 @@
     label Paste your "Embed this Calendar" link here:
     textarea(name="paste" type="text") {{ _maybe.description }}
   
-  script.restaurant-menu-edit-area.services-edit-area.products-edit-area(type="text/template")
+  script.menu-edit-area.services-edit-area.products-edit-area.home-listings-edit-area(type="text/template")
     | <% if (onHomePage === true) { %>
 
     p This is the {{ prettyName }} widget. You can add subcategories and items.

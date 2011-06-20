@@ -132,6 +132,9 @@ body {
   .page .content.category .item, .page .content.page_tree .item {
     padding: 8px 0 8px 12px;
     font-size: 18px; }
+    .page .content.category .item img, .page .content.page_tree .item img {
+      max-height: 290px;
+      max-width: 290px; }
   .page .content.category .item.category, .page .content.category .item.leaf-name, .page .content.page_tree .item.category, .page .content.page_tree .item.leaf-name {
     cursor: pointer; }
   .page .content.category .c0, .page .content.page_tree .c0 {
