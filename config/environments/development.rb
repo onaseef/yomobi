@@ -3,8 +3,8 @@ Yomobi::Application.configure do
 
   config.opt_out_url_host = 'http://local.host:3000'
 
-  config.couch_host = 'supersaleshopper.couchone.com'
-  config.couch_cred = ['fadmin', 'Super$4le']
+  config.couch_host = 'yomobi.couchone.com'
+  config.couch_cred = ['yadmin', 'C0uch!tUp']
 
   # In the development environment your application's code is reloaded on
   # every request.  This slows down response time but is perfect for development
