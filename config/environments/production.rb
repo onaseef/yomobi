@@ -1,7 +1,7 @@
 Yomobi::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
-  config.opt_out_url_host = 'http://high-robot-871.heroku.com'
+  config.opt_out_url_host = 'http://yomobi.com'
 
   config.couch_host = 'yomobi.couchone.com'
   config.couch_cred = ['yadmin', 'C0uch!tUp']
@@ -43,7 +43,7 @@ Yomobi::Application.configure do
   # config.action_mailer.raise_delivery_errors = false
   # TODO: move off gmail test account
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { :host => "high-robot-871.heroku.com" }
+  config.action_mailer.default_url_options = { :host => "yomobi.com" }
   ActionMailer::Base.smtp_settings = {
     :address  => "smtp.gmail.com",
     :port  => 587,
