@@ -4,9 +4,9 @@
 window.g = {
   width: 320,
   height: 480,
-  couchLocation: '<%= @company.couch_host %>',
-  db_name: '<%= @company.db_name %>',
-  company: '<%= @company.name %>'
+  couchLocation: '<%=escape_javascript @company.couch_host %>',
+  db_name: '<%=escape_javascript @company.db_name %>',
+  company: '<%=escape_javascript @company.name %>'
 };
 window.widgetClasses = {};
 window.widgetPages = {};
