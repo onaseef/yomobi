@@ -195,30 +195,6 @@ var util = {
     return null;
   },
   
-  // Returns a string with <wbr /> tags between
-  // every `interval` number of characters
-  lineWrap: function (text,interval) {
-    var result = '', interval = interval || 8, skipCount = 0;
-    
-    for (var i=0; i<text.length; i++) {
-      var c = text.charAt(i);
-      
-      if (c == ' ' && i % interval != 0)
-        result += '&nbsp;';
-      else if (c == ' ') {
-        skipCount += 1;
-        continue;
-      }
-      else
-        result += c;
-      
-      if ((i - skipCount) % interval == interval - 1) {
-        result += '&shy;';
-      }
-    }
-    return result;
-  },
-  
   splitStr: function (str) {
     var result = '';
     for (var i=0; i<str.length; i++) {
