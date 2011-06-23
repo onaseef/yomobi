@@ -17,8 +17,8 @@ class Follower < ActiveRecord::Base
       save    
     rescue ActiveRecord::StatementInvalid => error
       if DUPLICATE_ERROR_MESSAGES.any? { |msg| error.message =~ /#{Regexp.escape(msg)}/i }
-        logger.info "Duplicate Entry exception from DB"
-        errors.add_to_base('Duplicate item in database level')
+        logger.info "Duplicate Entry exception from DB\n====\n#{error.message}\n===="
+        errors.add(:base,'Duplicate item in database level')
         return false
       else
         raise

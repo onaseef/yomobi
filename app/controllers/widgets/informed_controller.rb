@@ -11,11 +11,32 @@ class Widgets::InformedController < ApplicationController
 
     return error('bad company') if company.nil?
 
-    follower, isNew = find_or_build_follower company, params[:email], params[:phone], carrier
+    save_success = true
 
-    save_success = isNew ? follower.save_new : follower.save
-    save_success ? success(nil) : error(follower.errors)
-    puts "ERRORS: #{follower.errors.inspect}\nFOLLOWER: #{follower.inspect}"
+    if params[:phone].present? && !carrier.nil?
+      text_follower, isNew = find_or_build_follower company, {
+        :phone => params[:phone].gsub(/[^0-9]+/,''),
+        :carrier => carrier
+      }
+      save_success &&= isNew ? text_follower.save_new : text_follower.save
+    else
+      text_follower = Follower.new
+    end
+
+    if params[:email].present?
+      email_follower, isNew = find_or_build_follower company, {
+        :email => params[:email]
+      }
+      save_success &&= isNew ? email_follower.save_new : email_follower.save
+    else
+      email_follower = Follower.new
+    end
+
+    save_errors = text_follower.errors.merge email_follower.errors
+    save_success ? success(nil) : error(save_errors)
+    puts "ERRORS: #{save_errors.inspect}"
+    puts "TEXT FOLLOWER: #{text_follower.inspect}"
+    puts "EMAIL FOLLOWER: #{email_follower.inspect}"
   end
 
   def text_panel
@@ -68,14 +89,17 @@ class Widgets::InformedController < ApplicationController
 
   def opt_out
     follower = Follower.find_by_opt_out_key params[:key]
-    return redirect_to root_path if follower.nil?
 
-    @company_name = follower.company.name
-    @company_url = follower.company.db_name
-    follower.active = false
-    follower.save
+    if follower
+      @company_name = follower.company.name
+      @company_url = follower.company.db_name
+      @opt_out_type = follower.email ? 'email' : 'text'
 
-    @opt_in_url = "#{Rails.application.config.opt_out_url_host}/#{@company_url}#page/keep-me-informed"
+      follower.active = false
+      follower.save
+
+      @opt_in_url = "#{Rails.application.config.opt_out_url_host}/#{@company_url}#page/keep-me-informed"
+    end
     render :layout => 'mobile_basic'
   end
 
@@ -94,17 +118,19 @@ class Widgets::InformedController < ApplicationController
     140 - (" To Unsubscribe: ".length + SHORT_URL_RESERVED_COUNT)
   end
 
-  def find_or_build_follower(company,email,phone,carrier)
-    follower = Follower.where(:email => email, :phone => phone && phone.gsub!(/[^0-9]+/,'')).first
-    if follower && follower.active == false
+  def find_or_build_follower(company,params)
+    puts "\nBUILDING: #{params.inspect}"
+    follower = Follower.where(params.reject {|k| k==:carrier}).first
+    if follower
+      puts "PREVIOUSLY ACTIVE"
       follower.active = true
       return [follower,false]
     end
 
     follower = company.followers.build \
-      :carrier => carrier,
-      :email   => email,
-      :phone   => phone
+      :carrier => params[:carrier],
+      :email   => params[:email],
+      :phone   => params[:phone]
     return [follower,true]
   end
 end
