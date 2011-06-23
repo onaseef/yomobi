@@ -32,13 +32,18 @@
     div class="edit-area {{ wtype }}" {{ editAreaContent }}
 
     .action-bar
+      | <% if (!_maybe.hideSaveButton) { %>
       .accept-btn.main-btn
         .content Save Changes
+      | <% } %>
       .checkmark
       .loader
+      | <% if (!_maybe.hideCancelButton) { %>
       .cancel-btn.alt-btn
         .content Discard Changes
+      | <% } if (!_maybe.hideRemoveLink) { %>
       a.remove-link(href="#") Remove Widget
+      | <% } %>
   
   script.edit-tab-bar(type="text/template")
     .header.edit-tab-bar
@@ -495,7 +500,8 @@
     br
     input type="button" name="add_cat" value="Add Sub-Category"
     | <%       if (!emptyCats) { %>
-    input type="button" name="edit_cat" value="Edit Name"
+    input type="button" name="edit_cat" value="Edit"
+    input type="button" name="rename_cat" value="Rename"
     input type="button" name="rem_cat" value="Delete"
     | <%       } if (cats.length >= 2) { %>
     br
@@ -514,7 +520,7 @@
     br
     input type="button" name="add_item" value="Add Item"
     | <%       if (!emptyItems) { %>
-    input type="button" name="edit_item" value="Edit Item"
+    input type="button" name="edit_item" value="Edit"
     input type="button" name="rem_item" value="Delete"
     | <%       } if (items.length >= 2) { %>
     br
@@ -576,8 +582,6 @@
     h2 Editing Page: {{ currentCat }}
     #jeditor-wrapper
       textarea#jeditor {{ content }}
-    br
-    input type="button" name="discard_leaf" value="Discard Page Changes"
     | <% } %>
 
 #wname-test

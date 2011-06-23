@@ -6,8 +6,21 @@
   var defaultPageContent = '<p>[Change Me]</p>';
   var tempCatStack = [];
 
+  var super_getEditAreaData = window.Widget.prototype.getEditAreaData;
   window.widgetClasses.page_tree = window.widgetClasses.page_tree.extend({
     
+    getEditAreaData: function () {
+      var editAreaData = super_getEditAreaData.call(this)
+        , isLeaf = this.hasLeafOnTop()
+      ;
+      var extraData = {
+        hideSaveButton: !isLeaf,
+        hideCancelButton: !isLeaf,
+        hideRemoveLink: mapp.pageLevel != 0
+      };
+      return _.extend({},editAreaData,extraData);
+    },
+
     getEditData: function () {
       var showData = this.getShowData()
         , emptyItems = false
@@ -69,14 +82,14 @@
       'click input[name=down_item]':        'moveItem',
       
       'click .wysiwyg':                     'queueActiveLeafUpdate',
-      'click input[name=discard_leaf]':     'discardActiveLeafChanges'
+      'click .cancel-btn':                  'discardActiveLeafChanges'
     },
     
     init: function (widget) {
       // this is needed for proper inheritance due to closures
       this.AddItemDialog = AddItemDialog;
 
-      _.bindAll(this,'queueActiveLeafUpdate');
+      _.bindAll(this,'queueActiveLeafUpdate','refreshViews');
       this.bind('wysiwyg-change',this.queueActiveLeafUpdate);
     },
 
@@ -94,6 +107,8 @@
     },
     
     addItem: function (e,error) {
+      if (!util.isUIFree()) return;
+
       var self = this;
       var dialog =  new this.AddItemDialog({
         model: this.widget,
@@ -103,6 +118,8 @@
     },
     
     editItem: function (e) {
+      if (!util.isUIFree()) return;
+
       var self = this
         , level = this.widget.getCurrentLevel()
         , name = $(this.el).find('select[name=items] option:selected:first').html()
@@ -148,7 +165,8 @@
       ;
       if (!origLevel || !origLeaf) return;
       leaf.content = origLeaf.content;
-      this.refreshViews();
+      this.setChanged('leaf-content',false);
+      this.refreshViews({ forceEditAreaRefresh:true });
     }
     
   });
@@ -270,16 +288,16 @@
         this.prompt('Name is already in use');
       else if (this.mode == 'add') {
         this.level._items.push({ name:name, content:defaultPageContent });
-        this.prompt();
         bapp.currentEditor.setChanged('something',true);
+        this.prompt();
       }
       else if (this.mode == 'edit') {
         var origName = this.origName;
         var targetItem = _.detect(this.level._items,function (i) { return i.name == origName });
         targetItem.name = name;
 
-        this.options.onClose && this.options.onClose();
         bapp.currentEditor.setChanged('something',true);
+        this.options.onClose && this.options.onClose();
       }
     }
   });

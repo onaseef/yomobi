@@ -24,7 +24,7 @@
       if (this.init) this.init();
     },
     
-    accept: function () {
+    accept: function (e,callback) {
       util.log('accept');
       if (!util.reserveWidget(this.widget)) return;
       util.showLoading(this.el.find('.action-bar'));
@@ -46,6 +46,7 @@
           if (self.validForShowingStatus != model.validForShowing())
             mapp.homeView.render();
           self.startEditing(true);
+          callback && callback();
         }
       });
     },
@@ -192,7 +193,7 @@
     },
 
     setChanged: function (dataName,isChanged) {
-      if (isChanged) this.changes[dataName] = true;
+      if (isChanged === true) this.changes[dataName] = true;
       else delete this.changes[dataName];
     },
 
