@@ -3,6 +3,10 @@
 
 - content_for :js do
   = javascript_include_tag 'send_panel.js'
+  = javascript_include_tag 'views/sidebar'
+
+  script type="text/javascript"
+    | new SidebarView({ widgets:new Backbone.Collection, skipRender:true });
 
 h1 = @company.name
 #builder-container

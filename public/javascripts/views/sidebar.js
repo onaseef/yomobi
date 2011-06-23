@@ -24,7 +24,7 @@
       this.widgets.bind('refresh',this.render);
       
       this.el.find('.widgets .home-icon').live('mouseover',makeDraggable);
-      this.render();
+      if (!options.skipRender) this.render();
     },
     
     setSingletonInUse: function (widget,inUse) {
