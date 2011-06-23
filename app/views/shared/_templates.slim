@@ -361,6 +361,10 @@
     label Enter your website's address [e.g. www.mysite.com]*:
     input(name="url" type="text" value="{{ _maybe.url }}")
   
+  script.reviews-edit-area(type="text/template")
+    label Enter the website's address [e.g. www.mysite.com]*:
+    input(name="url" type="text" value="{{ _maybe.url }}")
+  
   script.event-calendar-edit-area
     label Enter your website's address [e.g. www.mysite.com]*:
     textarea name="url" type="text" rows="5" cols="30" {{ _maybe.url }}
