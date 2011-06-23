@@ -237,6 +237,10 @@
         br
         input name="phone" type="text"
         br
+        label Number of People:
+        br
+        = select_tag 'party_size', options_for_select(1..25,2)
+        br
         label Time (e.g. 7:45pm): 
         br
         = select_tag 'time[h]', options_for_select(1..12, 2)

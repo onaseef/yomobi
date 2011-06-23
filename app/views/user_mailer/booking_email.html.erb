@@ -1,5 +1,7 @@
-<p><%= @params[:name] %> (<%= @params[:phone] %>), a potential customer, has sent you a booking request for <%= @params[:company_name] %> at <%= @params[:time] %> on <%= @params[:date] %>.</p>
+<p>A potential customer has sent you a booking request for <%= @params[:company_name] %>:<p>
+
+<blockquote>Hi, my name is <%= @params[:name] %>. I need to reserve <%= @params[:party_size] %> people on <%= @params[:date] %> at <%= @params[:time] %>. You can reach me at <%= @params[:phone] %>.</p>
 
 <p>You may call this customer to confirm the booking at the number they provided: <%= @params[:phone] %></p>
 
-<p>Send from your Yomobi mobile site.</p>
+<p>Sent from <a href="<%= @params[:company_mobile_url] %>">your YoMobi site.</a></p>

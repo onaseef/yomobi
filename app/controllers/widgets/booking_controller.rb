@@ -25,9 +25,11 @@ class Widgets::BookingController < ApplicationController
       :from => 'booking@yomobi.com',
       :name => params[:name],
       :phone => params[:phone],
+      :party_size => params[:party_size],
       :time => time,
       :date => date,
-      :company_name => company.name
+      :company_name => company.name,
+      :company_mobile_url => company.mobile_url
     }).deliver
     return success :msg => params[:details]
   end
