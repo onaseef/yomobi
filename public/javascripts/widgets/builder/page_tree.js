@@ -71,6 +71,7 @@
 
       'click input[name=add_cat]':          'addCat',
       'click input[name=edit_cat]':         'editCat',
+      'click input[name=rename_cat]':       'renameCat',
       'click input[name=rem_cat]':          'remCat',
       'click input[name=up_cat]':           'moveCat',
       'click input[name=down_cat]':         'moveCat',
@@ -78,6 +79,7 @@
       'click input[name=add_item]':         'addItem',
       'click input[name=rem_item]':         'remItem',
       'click input[name=edit_item]':        'editItem',
+      'click input[name=rename_item]':      'renameItem',
       'click input[name=up_item]':          'moveItem',
       'click input[name=down_item]':        'moveItem',
       
@@ -118,6 +120,12 @@
     },
     
     editItem: function (e) {
+      // simply transition into subcat by emulating a click
+      var idx = $(this.el).find('select[name=items] option:selected:first').index();
+      $(this.widget.pageView.el).find('.leaf-name:eq('+idx+')').click();
+    },
+
+    renameItem: function (e) {
       if (!util.isUIFree()) return;
 
       var self = this

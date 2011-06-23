@@ -549,7 +549,8 @@
     br
     input type="button" name="add_cat" value="Add Sub-Category"
     | <%       if (!emptyCats) { %>
-    input type="button" name="edit_cat" value="Edit Name"
+    input type="button" name="edit_cat" value="Edit"
+    input type="button" name="rename_cat" value="Rename"
     input type="button" name="rem_cat" value="Delete"
     | <%       } if (cats.length >= 2) { %>
     br
@@ -569,7 +570,8 @@
     br
     input type="button" name="add_item" value="Add Page"
     | <%       if (!emptyItems) { %>
-    input type="button" name="edit_item" value="Edit Page Name"
+    input type="button" name="edit_item" value="Edit"
+    input type="button" name="rename_item" value="Rename"
     input type="button" name="rem_item" value="Delete"
     | <%       } if (items.length >= 2) { %>
     br
