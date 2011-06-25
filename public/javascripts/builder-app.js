@@ -119,11 +119,6 @@
       // this.el.parent().scrollTop(dest);
     },
     
-    transition: function (direction) {
-      $('#mobile-scroller').scrollTop(0);
-      superObj.transition.call(this,direction,true);
-    },
-    
     resize: function (height) {
       var newHeight = superObj.resize.call(this,height);
       var emulatorWidth = ($('#mobile-container').height() < 480) ? 320 : 320+util.scrollbarWidth();
@@ -166,7 +161,8 @@
       window.mapp = new MobileAppView({
         widgetsInUse: new BuilderWidgets(),
         homeViewWidgets: 'widgetsInUse',
-        showInvalidWidgets: true
+        showInvalidWidgets: true,
+        scrollElem: $('#mobile-scroller')
       });
       
       mapp.widgetsInUse.bind('add',mapp.homeView.render);

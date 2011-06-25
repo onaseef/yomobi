@@ -520,7 +520,7 @@ var util = {
   },
 
   ensureActiveWidgetIsVisible: function () {
-    if (!bapp.currentEditor) return;
+    if (!window.bapp || !bapp.currentEditor) return;
 
     var widget = bapp.currentEditor.widget
       , scrollTop = $('#mobile-scroller').scrollTop()

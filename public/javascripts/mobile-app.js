@@ -163,6 +163,7 @@
     
     // n == 0 is home, n > 0 is widget page level depth
     pageLevel: 0,
+    scrollStack: [],
     
     initialize: function (options) {
       options = options || {};
@@ -175,6 +176,8 @@
       var widgetsToUse = options.homeViewWidgets || 'widgets';
       this.homeView = new HomeView(this[widgetsToUse]);
       this.homeView.showInvalidWidgets = options.showInvalidWidgets || false;
+
+      this.scrollElem = options.scrollElem || $(window);
       
       _.bindAll(this, 'render');
       this.widgets.bind('refresh', this.render);
@@ -296,7 +299,7 @@
         , nextHeight = this.getNextPage(direction).height()
       ;
       mapp.resize( Math.max(currentHeight,nextHeight) );
-      if (!noScroll) window.scrollTo(0,0);
+      (delta == 1) ? this.scrollPush() : this.scrollPop();
       
       this.pageLevel += delta;
 
@@ -323,6 +326,15 @@
       return height;
     },
     
+    scrollPush: function () {
+      this.scrollStack.push( this.scrollElem.scrollTop() );
+      this.scrollElem.scrollTop(0);
+    },
+
+    scrollPop: function () {
+      this.scrollElem.scrollTop( this.scrollStack.pop() );
+    },
+
     fetchWorder: function (callback) {
       $.ajax({
         url: 'http://'+g.couchLocation+'/m_' + g.db_name + '/worder',
