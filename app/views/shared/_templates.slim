@@ -104,8 +104,9 @@
 
   script.sidebar-widget(type="text/template")
     .sidebar.home-icon class="{{ singletonClass }}" data-name="{{ name }}" data-wtype="{{ wtype }}"
-      .icon{ style="background-image: url(/images/widgets/{{ iconName }}.png)" }
-      .title {{ prettyName }}
+      img.icon{ src="/images/widgets/{{ iconName }}.png" }
+      .title
+        | {{ prettyName }}
   
   script.add-widget-dialog(type="text/template")
     #dialog-confirm title="Please Rename your Widget"

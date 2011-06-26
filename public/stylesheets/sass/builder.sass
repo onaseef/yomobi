@@ -33,6 +33,22 @@
     background-position: 0 -32px
   .option.active
     background-color: $highlight-color
+  
+  .home-icon
+    width: 150px
+    height: auto
+    padding: 5px 0 5px 5px
+    cursor: pointer
+    .title
+      width: auto
+      padding: 4px 0 0 28px
+      text-align: left
+    .icon
+      float: left
+      width: 24px
+      height: 24px
+  .home-icon:hover
+    background: #ffff00
   .home-icon.singletonInUse
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"
     filter: alpha(opacity=50)
@@ -42,10 +58,8 @@
 
 #sidebar .widgets
   height: 414px
-  padding-left: 23px
+  padding-left: 20px
   overflow: auto
-  .home-icon
-    height: 105px
 
 #content
   float: left
@@ -69,7 +83,24 @@
 #builder-container
   background: $light-bg-color
   border-top: 1px solid #B3B3B3
-  padding: 20px 10px
+  padding: 0 10px 27px 10px
+
+#builder
+  .left, .right
+    & > .title
+      padding: 10px 0 54px
+      font-size: 20px
+      font-weight: bold
+      color: #000066
+  .left
+    width: $content-width - $widget-editor-width
+    height: 100%
+  .right
+    width: $widget-editor-width - 20px - 20px - 1px
+    border-left: 1px solid #b3b3b3
+    height: 100%
+    .title
+      padding-left: 10px
 
 #builder .widget-editor
   float: left
