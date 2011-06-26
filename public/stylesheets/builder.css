@@ -37,7 +37,8 @@
     #sidebar .home-icon .title {
       width: auto;
       padding: 0 0 0 20px;
-      text-align: left; }
+      text-align: left;
+      height: auto; }
     #sidebar .home-icon .icon {
       float: left;
       width: 16px;
@@ -68,7 +69,9 @@
   display: none !important; }
 
 .home-icon.editing {
-  background-color: #ddef34 !important; }
+  background: url(/images/ui/highlight.png) no-repeat 0px 2px !important; }
+  .home-icon.editing .title {
+    background: #3658ff; }
 
 .home-icon.invalid {
   background-color: #e83d05; }
