@@ -140,7 +140,8 @@
     margin: 4px 6px 0 0; }
   #builder .widget-editor .widget-name {
     padding: 0 0 0 72px;
-    font-size: 2.5em; }
+    font-size: 2.5em;
+    word-wrap: break-word; }
     #builder .widget-editor .widget-name .change-label {
       display: none;
       padding-left: 8px;

@@ -58,6 +58,9 @@ body {
     text-align: center;
     font-weight: bold;
     font-size: 12px; }
+    .tab-bar td div {
+      width: 79.25px;
+      word-wrap: break-word; }
   .tab-bar td:hover {
     cursor: pointer; }
   .tab-bar td.active {

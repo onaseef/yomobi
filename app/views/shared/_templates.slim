@@ -94,9 +94,12 @@
       tr
         td.active.go-home
           a href="#" Home
-        td.wtab {{ prettyTabs[0] }}
-        td.wtab {{ prettyTabs[1] }}
-        td.wtab {{ prettyTabs[2] }}
+        td.wtab
+          div {{ prettyTabs[0] }}
+        td.wtab
+          div {{ prettyTabs[1] }}
+        td.wtab
+          div {{ prettyTabs[2] }}
 
   script.sidebar-widget(type="text/template")
     .sidebar.home-icon class="{{ singletonClass }}" data-name="{{ name }}" data-wtype="{{ wtype }}"
