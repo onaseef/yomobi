@@ -37,16 +37,16 @@
   .home-icon
     width: 150px
     height: auto
-    padding: 5px 0 5px 5px
+    padding: 2px 0 2px 5px
     cursor: pointer
     .title
       width: auto
-      padding: 4px 0 0 28px
+      padding: 0 0 0 20px
       text-align: left
     .icon
       float: left
-      width: 24px
-      height: 24px
+      width: 16px
+      height: 16px
   .home-icon:hover
     background: #ffff00
   .home-icon.singletonInUse
@@ -83,7 +83,7 @@
 #builder-container
   background: $light-bg-color
   border-top: 1px solid #B3B3B3
-  padding: 0 10px 27px 10px
+  padding: 0 0 27px 0
 
 #builder
   .left, .right
@@ -95,19 +95,21 @@
   .left
     width: $content-width - $widget-editor-width
     height: 100%
+    padding: 0 0 0 10px
   .right
-    width: $widget-editor-width - 20px - 20px - 1px
+    width: $widget-editor-width - 10px - 1px - 3px
     border-left: 1px solid #b3b3b3
     height: 100%
     .title
       padding-left: 10px
 
 #builder .widget-editor
-  float: left
-  width: $widget-editor-width - 20px - 20px
-  padding: 10px
+  width: $widget-editor-width - 25px - 25px
+  padding: 0
+  margin: 0 auto
   .header
     height: 72px
+    margin: 0 auto
     .icon
       float: left
       width: 64px
@@ -124,16 +126,19 @@
     margin: 10px 0
   
   .edit-area
-    padding: 20px 20px
-    textarea, input[type=text]
-      width: 317px
-      font-size: 1.5em
+    padding: 20px 0
+    margin: 0 auto
     textarea
-      padding: 8px
+      width: 360px
+      //padding: 8px
+      font-size: 1em
     input[type=text]
-      padding: 0px 4px 8px 5px
+      width: 360px - 9px - 4px
+      //padding: 0px 4px 8px 5px
+      font-size: 1em
   .action-bar
-    padding: 12px 20px 0
+    padding: 12px 0 0
+    margin: 0 auto
   .accept-btn
     float: right
   .remove-link

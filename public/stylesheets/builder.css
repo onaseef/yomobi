@@ -32,16 +32,16 @@
   #sidebar .home-icon {
     width: 150px;
     height: auto;
-    padding: 5px 0 5px 5px;
+    padding: 2px 0 2px 5px;
     cursor: pointer; }
     #sidebar .home-icon .title {
       width: auto;
-      padding: 4px 0 0 28px;
+      padding: 0 0 0 20px;
       text-align: left; }
     #sidebar .home-icon .icon {
       float: left;
-      width: 24px;
-      height: 24px; }
+      width: 16px;
+      height: 16px; }
   #sidebar .home-icon:hover {
     background: yellow; }
   #sidebar .home-icon.singletonInUse {
@@ -76,7 +76,7 @@
 #builder-container {
   background: #edeff4;
   border-top: 1px solid #b3b3b3;
-  padding: 0 10px 27px 10px; }
+  padding: 0 0 27px 0; }
 
 #builder .left > .title, #builder .right > .title {
   padding: 10px 0 54px;
@@ -85,20 +85,22 @@
   color: #000066; }
 #builder .left {
   width: 350px;
-  height: 100%; }
+  height: 100%;
+  padding: 0 0 0 10px; }
 #builder .right {
-  width: 369px;
+  width: 396px;
   border-left: 1px solid #b3b3b3;
   height: 100%; }
   #builder .right .title {
     padding-left: 10px; }
 
 #builder .widget-editor {
-  float: left;
-  width: 370px;
-  padding: 10px; }
+  width: 360px;
+  padding: 0;
+  margin: 0 auto; }
   #builder .widget-editor .header {
-    height: 72px; }
+    height: 72px;
+    margin: 0 auto; }
     #builder .widget-editor .header .icon {
       float: left;
       width: 64px;
@@ -113,16 +115,17 @@
   #builder .widget-editor .logo {
     margin: 10px 0; }
   #builder .widget-editor .edit-area {
-    padding: 20px 20px; }
-    #builder .widget-editor .edit-area textarea, #builder .widget-editor .edit-area input[type=text] {
-      width: 317px;
-      font-size: 1.5em; }
+    padding: 20px 0;
+    margin: 0 auto; }
     #builder .widget-editor .edit-area textarea {
-      padding: 8px; }
+      width: 360px;
+      font-size: 1em; }
     #builder .widget-editor .edit-area input[type=text] {
-      padding: 0px 4px 8px 5px; }
+      width: 347px;
+      font-size: 1em; }
   #builder .widget-editor .action-bar {
-    padding: 12px 20px 0; }
+    padding: 12px 0 0;
+    margin: 0 auto; }
   #builder .widget-editor .accept-btn {
     float: right; }
   #builder .widget-editor .remove-link {

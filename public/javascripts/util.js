@@ -486,9 +486,9 @@ var util = {
 
   spawnJEditor: function () {
     $('#jeditor').wysiwyg({
-      css: '/stylesheets/jwysiwyg.css',
-      formHeight: 200,
-      formWidth: 340,
+      css: '/stylesheets/jwysiwyg.css?_=' + Math.random(),
+      formHeight: 400,
+      formWidth: 320,
       events: {
         keyup: function () { bapp.currentEditor.trigger('wysiwyg-change'); },
         paste: function (a,b,c) { util.log('PASTE',a,b,c); return false; }
@@ -501,6 +501,7 @@ var util = {
         superscript: { visible:false }
       }
     });
+    // $('.wysiwyg iframe').css('height',250).css('width',320);
   },
 
   spawnRecaptcha: function () {
