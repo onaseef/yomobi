@@ -83,7 +83,6 @@
 #builder-container
   background: $light-bg-color
   border-top: 1px solid #B3B3B3
-  padding: 0 0 27px 0
 
 #builder
   .left, .right
@@ -95,10 +94,10 @@
   .left
     width: $content-width - $widget-editor-width
     height: 100%
-    padding: 0 0 0 10px
+    border-right: 1px solid #b3b3b3
+    padding: 0 0 27px 10px
   .right
     width: $widget-editor-width - 10px - 1px - 3px
-    border-left: 1px solid #b3b3b3
     height: 100%
     .title
       padding-left: 10px
@@ -130,15 +129,16 @@
     margin: 0 auto
     textarea
       width: 360px
-      //padding: 8px
+      margin-bottom: 15px
       font-size: 1em
     input[type=text]
-      width: 360px - 9px - 4px
-      //padding: 0px 4px 8px 5px
+      width: 360px - 6px
+      margin-bottom: 15px
       font-size: 1em
   .action-bar
     padding: 12px 0 0
     margin: 0 auto
+    border-top: 1px solid #b3b3b3
   .accept-btn
     float: right
   .remove-link

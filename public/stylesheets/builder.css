@@ -75,8 +75,7 @@
 
 #builder-container {
   background: #edeff4;
-  border-top: 1px solid #b3b3b3;
-  padding: 0 0 27px 0; }
+  border-top: 1px solid #b3b3b3; }
 
 #builder .left > .title, #builder .right > .title {
   padding: 10px 0 54px;
@@ -86,10 +85,10 @@
 #builder .left {
   width: 350px;
   height: 100%;
-  padding: 0 0 0 10px; }
+  border-right: 1px solid #b3b3b3;
+  padding: 0 0 27px 10px; }
 #builder .right {
   width: 396px;
-  border-left: 1px solid #b3b3b3;
   height: 100%; }
   #builder .right .title {
     padding-left: 10px; }
@@ -119,13 +118,16 @@
     margin: 0 auto; }
     #builder .widget-editor .edit-area textarea {
       width: 360px;
+      margin-bottom: 15px;
       font-size: 1em; }
     #builder .widget-editor .edit-area input[type=text] {
-      width: 347px;
+      width: 354px;
+      margin-bottom: 15px;
       font-size: 1em; }
   #builder .widget-editor .action-bar {
     padding: 12px 0 0;
-    margin: 0 auto; }
+    margin: 0 auto;
+    border-top: 1px solid #b3b3b3; }
   #builder .widget-editor .accept-btn {
     float: right; }
   #builder .widget-editor .remove-link {

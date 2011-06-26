@@ -1,5 +1,9 @@
 /* css for jwysiwyg */
 body {
   font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
-  font-size: 1em;
+  font-size: 0.8em;
+}
+
+p {
+  margin-top: 0;
 }
