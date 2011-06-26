@@ -2,6 +2,7 @@ class Company < ActiveRecord::Base
   require 'couch_docs'
   
   belongs_to :user
+  belongs_to :company_type
   has_many :followers
   has_attached_file :logo,
     :styles => {
@@ -45,6 +46,10 @@ class Company < ActiveRecord::Base
     followers.where(:company_id => self[:id], :active => true).select {|f| f.email.present? }
   end
   
+  def type
+    (self.company_type && self.company_type.name) || 'Local Business'
+  end
+
   def mobile_url
     "http://yomobi.com/#{db_name}"
   end

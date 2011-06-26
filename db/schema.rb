@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110617212046) do
+ActiveRecord::Schema.define(:version => 20110626195244) do
 
   create_table "carriers", :force => true do |t|
     t.string   "name"
@@ -37,9 +37,18 @@ ActiveRecord::Schema.define(:version => 20110617212046) do
     t.string   "booking_email"
     t.string   "keywords"
     t.string   "call_back_email"
+    t.integer  "company_type_id"
   end
 
   add_index "companies", ["db_name"], :name => "index_companies_on_db_name", :unique => true
+
+  create_table "company_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "company_types", ["name"], :name => "index_company_types_on_name", :unique => true
 
   create_table "followers", :force => true do |t|
     t.integer  "company_id"

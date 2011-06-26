@@ -77,6 +77,11 @@
         input type="text" name="company_name" value=@company.name
         br
         br
+        label Company Type:
+        p.error
+        = select_tag :company_type, options_for_select(business_types,@company.type)
+        br
+        br
         label Current Logo:
         br
         img.logo{src="http://s3.amazonaws.com/yomobi/logos/<% print(g.db_name); %>_mobile?_=#{Time.now}" }

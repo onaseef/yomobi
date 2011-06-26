@@ -5,35 +5,7 @@ module ApplicationHelper
   end
   
   def business_types
-    %w{
-    Local\ Business
-    Personal
-    Automotive
-    Automotive\ Dealer\ /\ Vehicle
-    Service
-    Banking\ and\ Financial\ Service
-    Bar
-    Cafe
-    Club
-    Convention\ Center\ and\ Sports
-    Complex
-    Education
-    Event\ Planning\ Service
-    Grocery
-    Health\ and\ Beauty
-    Library\ /\ Public\ Building
-    Medical\ Service
-    Museum\ /\ Attraction
-    Park
-    Pest
-    Profesional\ Service
-    Real\ Estate
-    Religious\ Center
-    Restaurant
-    Store
-    Technology\ and\ Telecommunications\ Service
-    Travel\ Service
-    }
+    CompanyType.all.map {|t| t.name}
   end
 
   def carrier_names
