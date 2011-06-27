@@ -92,7 +92,7 @@ body {
 .home-icon {
   float: left;
   width: 75px;
-  height: 98px; }
+  height: 102px; }
   .home-icon .inner {
     padding: 7.5px 5.5px 7.5px 5.5px; }
   .home-icon .icon {
@@ -103,12 +103,12 @@ body {
       cursor: pointer; }
   .home-icon .title {
     width: 64px;
-    height: 26px;
+    line-height: 1.2em;
+    height: 2.4em;
     overflow: hidden;
     text-align: center;
     font-size: 11px;
-    word-wrap: break-word;
-    font-weight: bold; }
+    word-wrap: break-word; }
 
 #templates {
   display: none; }
