@@ -33,10 +33,11 @@
     width: 150px;
     height: auto;
     padding: 2px 0 2px 5px;
+    margin: 0;
     cursor: pointer; }
     #sidebar .home-icon .title {
       width: auto;
-      padding: 0 0 0 20px;
+      padding: 0 0 0 5px;
       text-align: left;
       height: auto; }
     #sidebar .home-icon .icon {
@@ -69,8 +70,9 @@
   display: none !important; }
 
 .home-icon.editing {
-  background: url(/images/ui/highlight.png) no-repeat 0px 2px !important; }
+  background: url(/images/ui/highlight.png) no-repeat 4px 2px !important; }
   .home-icon.editing .title {
+    color: white;
     background: #3658ff; }
 
 .home-icon.invalid {

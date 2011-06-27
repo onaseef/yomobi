@@ -68,8 +68,8 @@ body {
 
 .ad-bar {
   padding: 4px 0;
-  border-top: 4px solid white;
-  border-bottom: 4px solid white;
+  border-top: 2px solid #627aad;
+  border-bottom: 2px solid #627aad;
   background: #3b5998;
   text-align: center; }
 
@@ -96,8 +96,9 @@ body {
   .home-icon .inner {
     padding: 7.5px 5.5px 7.5px 5.5px; }
   .home-icon .icon {
-    width: 64px;
-    height: 64px;
+    width: 57px;
+    height: 57px;
+    margin: 0 auto 4px auto;
     background: no-repeat; }
     .home-icon .icon:hover {
       cursor: pointer; }
