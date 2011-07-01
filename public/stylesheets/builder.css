@@ -37,7 +37,7 @@
     cursor: pointer; }
     #sidebar .home-icon .title {
       width: auto;
-      padding: 0 0 0 5px;
+      padding: 1px 0 0 4px;
       text-align: left;
       height: auto; }
     #sidebar .home-icon .icon {
@@ -111,8 +111,8 @@
       height: 64px;
       background: no-repeat; }
     #builder .widget-editor .header .help-text {
-      padding: 0 20px 0 72px;
-      margin-top: 5px; }
+      padding: 0 20px 0 64px;
+      margin-top: 3px; }
   #builder .widget-editor .header.edit-tab-bar .help-text, #builder .widget-editor .header.edit-tab-bar .widget-name, #builder .widget-editor .header.edit-settings .help-text, #builder .widget-editor .header.edit-settings .widget-name {
     padding-left: 0;
     cursor: auto; }
@@ -149,8 +149,8 @@
     float: right;
     margin: 4px 6px 0 0; }
   #builder .widget-editor .widget-name {
-    padding: 0 0 0 72px;
-    font-size: 2.5em;
+    padding: 0 0 0 64px;
+    font-size: 2em;
     word-wrap: break-word; }
     #builder .widget-editor .widget-name .change-label {
       display: none;
