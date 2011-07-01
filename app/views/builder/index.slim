@@ -14,6 +14,8 @@ h1 = @company.name
   #builder
     .left.lfloat
       .title Mobile Phone Emulator
+      .title-subtext
+        em Drag a widget from the sidebar on the left into the emulator below to add it to your mobile website.
       #emulator-wrapper
         .loader-overlay
           .icon
@@ -26,6 +28,8 @@ h1 = @company.name
               = render 'shared/mobile-render'
     .right.lfloat
       .title Widget Editor
+      .title-subtext
+        em Click on a widget in the Mobile Phone Emulator to edit it here.
       .widget-editor
         img src="/images/home-help.png"
     .clearfix

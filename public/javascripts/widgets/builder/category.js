@@ -35,6 +35,7 @@
       
       var extraData = {
         currentCat: util.catName(_.last(this.catStack)) || this.get('prettyName'),
+        catCrumbs: util.catStackCrumbs(this.get('prettyName'),this.catStack),
         onHomePage: mapp.pageLevel === 0,
         emptyItems: emptyItems,
         emptyCats: emptyCats

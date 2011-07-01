@@ -37,8 +37,8 @@
   .home-icon
     width: 150px
     height: auto
-    padding: 2px 0 2px 5px
-    margin: 0
+    padding: 1px 0 0px 5px
+    margin: 1px 0
     cursor: pointer
     .title
       width: auto
@@ -46,6 +46,7 @@
       text-align: left
       height: auto
     .icon
+      margin: 0
       float: left
       width: 16px
       height: 16px
@@ -70,6 +71,7 @@
   width: $content-width - 2px - 1px
   h1
     padding-left: 10px
+    margin: 3px 0px 3px 0px
 
 // builder related
 
@@ -77,10 +79,10 @@
   display: none !important
 
 .home-icon.editing
-  background: url(/images/ui/highlight.png) no-repeat 4px 2px !important
+  background: url(/images/ui/highlight.png) no-repeat 0px 1px !important
   .title
-    color: #fff
-    background: #3658FF
+    color: #000066
+    font-weight: bold
 
 .home-icon.invalid
   background-color: #E83D05
@@ -92,16 +94,23 @@
 #builder
   .left, .right
     & > .title
-      padding: 10px 0 54px
-      font-size: 20px
+      padding: 10px 0 10px 0
+      font-size: 1.75em
       font-weight: bold
       color: #000066
+    & > .title-subtext
+      height: 44px
+      padding: 0 10px 0 0
   .left
     width: $content-width - $widget-editor-width
     height: 100%
     border-right: 1px solid #b3b3b3
     padding: 0 0 27px 10px
   .right
+    & > .title
+      padding: 10px 15px 10px
+    & > .title-subtext
+      padding-left: 10px
     width: $widget-editor-width - 10px - 1px - 3px
     height: 100%
     .title
@@ -112,8 +121,9 @@
   padding: 0
   margin: 0 auto
   .header
-    height: 72px
+    height: 55px
     margin: 0 auto
+    padding-bottom: 4px
     .icon
       float: left
       width: 64px
@@ -133,12 +143,15 @@
     padding: 20px 0
     margin: 0 auto
     textarea
-      width: 360px
-      margin-bottom: 15px
+      width: 354px
+      height: 6em
+      margin-top: 0
+      margin-bottom: 5px
       font-size: 1em
     input[type=text]
       width: 360px - 6px
-      margin-bottom: 15px
+      margin-top: 1px
+      margin-bottom: 5px
       font-size: 1em
   .action-bar
     padding: 12px 0 0
@@ -167,7 +180,7 @@
       display: none
       padding-left: 8px
       color: #FF530D
-      font-size: 0.4em
+      font-size: 0.6em
     &:hover
       background: $highlight-color
       cursor: pointer
@@ -178,7 +191,7 @@
     position: relative
     left: 4px
     input[type=text]
-      font-size: 2.5em
+      font-size: 1.5em
       width: 250px
 
 #emulator-wrapper
@@ -326,10 +339,15 @@
 #builder .edit-area.category, #builder .edit-area.page_tree
   padding-top: 0
   select
-    width: 97%
+    width: 358px
+    margin: 2px 0
     height: 111px
   #jeditor-wrapper
     width: 324px
+
+#builder .edit-area.link_fb
+  .current_link_label
+    font-size: 1.5em
 
 #dialog-confirm
   .error
@@ -360,4 +378,4 @@
   width: 68px
   text-align: center
   font-size: 14px
-  font-family: "lucida grande", tahoma, verdana, arial, sans-serif
+  font-family: Arial, Helvetica, sans-serif

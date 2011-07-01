@@ -141,13 +141,21 @@
 
 #account-setup-box {
   width: 500px; }
+  #account-setup-box h2 {
+    margin: 5px 0px 15px 0px; }
+  #account-setup-box h3 {
+    margin: 10px 0px 5px 0px; }
   #account-setup-box textarea, #account-setup-box input[type=text] {
-    width: 98%;
-    font-size: 1.5em; }
+    width: 450px;
+    font-size: 1.2em; }
+  #account-setup-box input[type=text] {
+    margin-bottom: 10px; }
+  #account-setup-box textarea {
+    height: 10em; }
   #account-setup-box .site-url span {
     font-size: 1.5em; }
   #account-setup-box .site-url input {
-    width: 200px; }
+    width: 270px; }
   #account-setup-box a.skip-link {
     padding: 3px 6px 0 0; }
   #account-setup-box td.logo-preview {

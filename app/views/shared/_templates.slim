@@ -73,12 +73,10 @@
     div class="edit-area"
       = form_tag '/builder/settings', :multipart => true, do
         label Company Name:
-        p.error
         input type="text" name="company_name" value=@company.name
         br
         br
         label Company Type:
-        p.error
         = select_tag :company_type, options_for_select(business_types,@company.type)
         br
         br
@@ -90,6 +88,7 @@
         input type="file" name="logo"
         input type="submit" value="Upload"
         .action-bar style="padding-right: 0"
+          p.error.lfloat style="margin-top:2px"
           .accept-btn.main-btn
             input.content type="submit" value="Save Settings"
           .loader
@@ -334,7 +333,7 @@
     | <% } %>
   
   script.category-cat(type="text/template")
-    .category.item class="{{ cycle }}" data-cat="{{ catName }}|{{ order }}"
+    .category.item class="{{ cycle }} <%if(order==0) print('first');%>" data-cat="{{ catName }}|{{ order }}"
       .subcat-arrow
       | {{ catName }}
 
@@ -375,7 +374,7 @@
     textarea name="url" type="text" rows="5" cols="30" {{ _maybe.url }}
 
   script.facebook-edit-area.twitter-edit-area.picasa-edit-area.flickr-edit-area(type="text/template")
-    h3 Current Link
+    b.current_link_label Current Link
     p
       a href="{{ url }}" target="_blank" {{ anchorText }}
     label Enter your {{ basename }} id [e.g. Starbucks] or url [e.g. {{ host }}path/to/Starbucks]*:
@@ -499,7 +498,8 @@
 
     | <% } else { %>
 
-    h2 {{ currentCat }}
+    p {{ catCrumbs }}
+    br
     label Sub-Categories:
     br
     select name="cats" multiple="multiple"
@@ -507,16 +507,16 @@
       option {{ cats[i] }}
       | <% } %>
     br
-    input type="button" name="add_cat" value="Add Sub-Category"
+    input type="button" name="add_cat" value="Add"
     | <%       if (!emptyCats) { %>
     input type="button" name="edit_cat" value="Edit"
     input type="button" name="rename_cat" value="Rename"
     input type="button" name="rem_cat" value="Delete"
     | <%       } if (cats.length >= 2) { %>
-    br
-    input type="button" name="up_cat" data-mod="-1" value="Move Up"
-    input type="button" name="down_cat" data-mod="1" value="Move Down"
+    input.rfloat type="button" name="down_item" data-mod="1" value="Down"
+    input.rfloat type="button" name="up_item" data-mod="-1" value="Up"
     | <%       } %>
+    br
     br
     br
     
@@ -527,14 +527,13 @@
       option {{ items[i].name }}
       | <% } %>
     br
-    input type="button" name="add_item" value="Add Item"
+    input type="button" name="add_item" value="Add"
     | <%       if (!emptyItems) { %>
     input type="button" name="edit_item" value="Edit"
     input type="button" name="rem_item" value="Delete"
     | <%       } if (items.length >= 2) { %>
-    br
-    input type="button" name="up_item" data-mod="-1" value="Move Up"
-    input type="button" name="down_item" data-mod="1" value="Move Down"
+    input.rfloat type="button" name="down_item" data-mod="1" value="Down"
+    input.rfloat type="button" name="up_item" data-mod="-1" value="Up"
     | <%       } %>
     | <% } %>
   
@@ -548,7 +547,7 @@
     | <% } else if (!_maybe.isLeaf) { %>
     
     p {{ catCrumbs }}
-    h2 Category: {{ currentCat }}
+    br
     label Sub-Categories:
     br
     select name="cats" multiple="multiple"
@@ -556,17 +555,17 @@
       option {{ cats[i] }}
       | <% } %>
     br
-    input type="button" name="add_cat" value="Add Sub-Category"
+    input type="button" name="add_cat" value="Add"
     | <%       if (!emptyCats) { %>
     input type="button" name="edit_cat" value="Edit"
     input type="button" name="rename_cat" value="Rename"
     input type="button" name="rem_cat" value="Delete"
     | <%       } if (cats.length >= 2) { %>
-    br
-    input type="button" name="up_cat" data-mod="-1" value="Move Up"
-    input type="button" name="down_cat" data-mod="1" value="Move Down"
+    input.rfloat type="button" name="down_item" data-mod="1" value="Down"
+    input.rfloat type="button" name="up_item" data-mod="-1" value="Up"
     | <%       } %>
 
+    br
     br
     br
     
@@ -577,20 +576,18 @@
       option {{ items[i].name }}
       | <% } %>
     br
-    input type="button" name="add_item" value="Add Page"
+    input type="button" name="add_item" value="Add"
     | <%       if (!emptyItems) { %>
     input type="button" name="edit_item" value="Edit"
     input type="button" name="rename_item" value="Rename"
     input type="button" name="rem_item" value="Delete"
     | <%       } if (items.length >= 2) { %>
-    br
-    input type="button" name="up_item" data-mod="-1" value="Move Up"
-    input type="button" name="down_item" data-mod="1" value="Move Down"
+    input.rfloat type="button" name="down_item" data-mod="1" value="Down"
+    input.rfloat type="button" name="up_item" data-mod="-1" value="Up"
     | <%       } %>
     
     | <% } else { %>
     p {{ catCrumbs }}
-    h2 Editing Page: {{ currentCat }}
     #jeditor-wrapper
       textarea#jeditor {{ content }}
     | <% } %>

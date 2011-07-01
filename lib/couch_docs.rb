@@ -46,7 +46,7 @@ class CouchDocs
     {
       "_id" => "worder",
       "worder" => {
-        "hours-of-operaton" => 0,
+        "business-hours" => 0,
         "call-us" => 1,
         "find-us" => 2,
         "about-us" => 3
@@ -84,7 +84,7 @@ class CouchDocs
   
   def self.hours_doc
     {
-      "name" => "operation-hours",
+      "name" => "widget-hours",
       "wtype" => "hours",
       "helpText" => "Let your customers know when you're open for business.",
       "hours" => {

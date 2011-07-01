@@ -2,14 +2,14 @@
 
 = form_tag account_setup_path(2), :id => 'account-setup-box', :class => 'center-box' do
   .content
-    h2 Please Fill out your Business's Public Information
+    h2 Contact Information
 
-    h3 Your Business Phone
-    p Format: (XXX) XXX-XXXX
+    h3 Phone
+    label Format: (XXX) XXX-XXXX
     input type="text" name="step_data[phone]"
     
     hr
-    h3 Your Business Address
+    h3 Address
     label Address 1:
     input name="step_data[address][addr1]" type="text"
     label Address 2:

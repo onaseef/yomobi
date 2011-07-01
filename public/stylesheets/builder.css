@@ -32,8 +32,8 @@
   #sidebar .home-icon {
     width: 150px;
     height: auto;
-    padding: 2px 0 2px 5px;
-    margin: 0;
+    padding: 1px 0 0px 5px;
+    margin: 1px 0;
     cursor: pointer; }
     #sidebar .home-icon .title {
       width: auto;
@@ -41,6 +41,7 @@
       text-align: left;
       height: auto; }
     #sidebar .home-icon .icon {
+      margin: 0;
       float: left;
       width: 16px;
       height: 16px; }
@@ -64,16 +65,17 @@
   border-top: none;
   width: 757px; }
   #content h1 {
-    padding-left: 10px; }
+    padding-left: 10px;
+    margin: 3px 0px 3px 0px; }
 
 .ad-bar {
   display: none !important; }
 
 .home-icon.editing {
-  background: url(/images/ui/highlight.png) no-repeat 4px 2px !important; }
+  background: url(/images/ui/highlight.png) no-repeat 0px 1px !important; }
   .home-icon.editing .title {
-    color: white;
-    background: #3658ff; }
+    color: #000066;
+    font-weight: bold; }
 
 .home-icon.invalid {
   background-color: #e83d05; }
@@ -83,10 +85,13 @@
   border-top: 1px solid #b3b3b3; }
 
 #builder .left > .title, #builder .right > .title {
-  padding: 10px 0 54px;
-  font-size: 20px;
+  padding: 10px 0 10px 0;
+  font-size: 1.75em;
   font-weight: bold;
   color: #000066; }
+#builder .left > .title-subtext, #builder .right > .title-subtext {
+  height: 44px;
+  padding: 0 10px 0 0; }
 #builder .left {
   width: 350px;
   height: 100%;
@@ -95,6 +100,10 @@
 #builder .right {
   width: 396px;
   height: 100%; }
+  #builder .right > .title {
+    padding: 10px 15px 10px; }
+  #builder .right > .title-subtext {
+    padding-left: 10px; }
   #builder .right .title {
     padding-left: 10px; }
 
@@ -103,8 +112,9 @@
   padding: 0;
   margin: 0 auto; }
   #builder .widget-editor .header {
-    height: 72px;
-    margin: 0 auto; }
+    height: 55px;
+    margin: 0 auto;
+    padding-bottom: 4px; }
     #builder .widget-editor .header .icon {
       float: left;
       width: 64px;
@@ -122,12 +132,15 @@
     padding: 20px 0;
     margin: 0 auto; }
     #builder .widget-editor .edit-area textarea {
-      width: 360px;
-      margin-bottom: 15px;
+      width: 354px;
+      height: 6em;
+      margin-top: 0;
+      margin-bottom: 5px;
       font-size: 1em; }
     #builder .widget-editor .edit-area input[type=text] {
       width: 354px;
-      margin-bottom: 15px;
+      margin-top: 1px;
+      margin-bottom: 5px;
       font-size: 1em; }
   #builder .widget-editor .action-bar {
     padding: 12px 0 0;
@@ -156,7 +169,7 @@
       display: none;
       padding-left: 8px;
       color: #ff530d;
-      font-size: 0.4em; }
+      font-size: 0.6em; }
     #builder .widget-editor .widget-name:hover {
       background: #d8dfea;
       cursor: pointer; }
@@ -167,7 +180,7 @@
     position: relative;
     left: 4px; }
     #builder .widget-editor .widget-name-edit input[type=text] {
-      font-size: 2.5em;
+      font-size: 1.5em;
       width: 250px; }
 
 #emulator-wrapper {
@@ -307,10 +320,14 @@
 #builder .edit-area.category, #builder .edit-area.page_tree {
   padding-top: 0; }
   #builder .edit-area.category select, #builder .edit-area.page_tree select {
-    width: 97%;
+    width: 358px;
+    margin: 2px 0;
     height: 111px; }
   #builder .edit-area.category #jeditor-wrapper, #builder .edit-area.page_tree #jeditor-wrapper {
     width: 324px; }
+
+#builder .edit-area.link_fb .current_link_label {
+  font-size: 1.5em; }
 
 #dialog-confirm .error {
   color: #880000; }
@@ -344,4 +361,4 @@
   width: 68px;
   text-align: center;
   font-size: 14px;
-  font-family: "lucida grande", tahoma, verdana, arial, sans-serif; }
+  font-family: Arial, Helvetica, sans-serif; }

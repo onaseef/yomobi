@@ -18,7 +18,7 @@
     validateInput: function () {
       // /^[a-z0-9 _$()+-]{2,16}$/i
       var name = this.el.find('input[name=company_name]').val();
-      if (!name.match(/^[a-z0-9 _$()+-]{2,16}$/i)) {
+      if (!name.match(/^[a-z0-9 _$()+-]{2,40}$/i)) {
         this.el.find('p.error').text('Invalid company name ('+this.errorCount+')');
         this.errorCount += 1;
         return false;

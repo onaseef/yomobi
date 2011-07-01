@@ -11,7 +11,7 @@ body
   width: $dynamic-width
   margin: 0 auto
   overflow: hidden
-  font-family: 'lucida grande', tahoma, verdana, arial, sans-serif
+  font-family: Arial, Helvetica, sans-serif
 
 #canvas
   position: relative
@@ -30,10 +30,15 @@ body
 
 .back-bar
   width: $dynamic-width - 16px
-  height: 48px
-  padding: 8px
+  height: 40px
+  padding: 0 8px
   background: $color-topbar
   color: #fff
+  .title
+    padding-top: 3px
+    h3
+      font-weight: bold
+      font-size: 12px
 
 .company-info
   @extend .back-bar
@@ -82,18 +87,17 @@ body
   float: left
   width: 50px
   height: 30px
-  margin: 8px 8px 0 0
+  margin: 4px 8px 0 0
   background: url(/images/back-btn.png) no-repeat
 
 .title
   h2, h3
     margin: 9px 0 0 15px
-    font-family: "lucida grande", tahoma, verdana, arial, sans-serif
     font-weight: normal
   h2
     font-size: 24px
   h3
-    font-size: 18px
+    font-size: 1em
 
 .home-icon
   float: left
@@ -149,7 +153,7 @@ body
       margin: 10px 0
 
 .page .content.category, .page .content.page_tree
-  padding: 0
+  padding: 0 !important
   .item
     padding: 8px 0 8px 12px
     font-size: 18px
@@ -158,10 +162,10 @@ body
       max-width: 290px
   .item.category, .item.leaf-name
     cursor: pointer
-  .c0
-    background: #fff
-  .c1
-    background: $highlight-color
+  .c0, .c1
+    border-top: 1px solid #d2d2d2
+  .first
+    border-top: none
   .subcat-arrow, .leaf-arrow
     float: right
     width: 29px

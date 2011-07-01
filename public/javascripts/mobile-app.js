@@ -329,6 +329,7 @@
     scrollPush: function () {
       this.scrollStack.push( this.scrollElem.scrollTop() );
       this.scrollElem.scrollTop(0);
+      // $(this.scrollElem).animate({ scrollTop:0 },350);
     },
 
     scrollPop: function () {
