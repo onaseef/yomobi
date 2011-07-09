@@ -4,29 +4,37 @@
 (function ($) {
 
   var days = ['sun','mon','tue','wed','thu','fri','sat'];
+
+  var isEmpty = function (str) { return !str; };
   
   window.widgetClasses.hours = Widget.extend({
     
     isDayAllDay: function (day) {
-      return this.get('hours')[day] === '12:00am|11:59pm';
+      return this.get('hours')[day][2] === true;
     },
     
+    isDayEnabled: function (day) {
+      return this.get('hours')[day+'Enabled'];
+    },
+
     getShowData: function () {
       util.log('show data');
       var data = {}, self = this;
+
       _.each(days, function (day) {
         var hours = self.get('hours')[day];
-        if (hours.length == 0) {
+
+        if (!self.isDayEnabled(day)) {
           data[day+'Hours'] = '<span class="closed">Closed</span>';
         }
         else if (self.isDayAllDay(day)) {
           data[day+'Hours'] = '<span class="all-day">Open All Day</span>';
         }
         else {
-          data[day+'Hours'] = _.map(hours, function (h) {
+          data[day+'Hours'] = _(hours).chain().first(2).reject(isEmpty).map(function (h) {
             var from = h.split('|')[0], to = h.split('|')[1];
             return '<span class="open">' + from + ' to ' + to + '</span>';
-          }).join('<br />');
+          }).value().join('<br />');
         }
       });
 

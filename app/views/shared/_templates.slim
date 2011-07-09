@@ -424,34 +424,26 @@
   
   script.hours-edit-area(type="text/template")
     p Click to checkmark the days you are open:
+    .double-time
+      input type="checkbox" name="doubleTime"
+      b Specify two sets of hours for each day.
+    br
     - %w(sun mon tue wed thu fri sat).each do |day|
-      .day-checkbox day=day
-        span = day.upcase
-        .checkbox day=day class="{{ _maybe.#{day}Status }}"
-    .clearfix
-    
-    - %w(sun mon tue wed thu fri sat).each do |day|
-      .day-hours day=day class="{{ _maybe.#{day}Status }}"
-        .day-name
-          = long_day_name(day)
-        .all-day-wrap
-          | All Day
+      .day-hours day=day class="{{ _maybe.#{day}Checked }}"
+        .day-name = long_day_name day
+        .day-enabled.lfloat
+          input type="checkbox" day=day name="#{day}Enabled"
+        div class=".all-day-{{ _maybe.#{day}AllDayChecked }}"
+        .times
+          - 2.times do |i|
+            div class="t#{i}"
+              input.hour.from type="text" value="{{ #{day}FromHours[#{i}] }}"
+              label to
+              input.hour.to type="text" value="{{ #{day}ToHours[#{i}] }}"
+        .all-day
+          span All Day
           input type="checkbox" name="#{day}_allday"
-        
-        | <% for (var i=0; i < #{day}FromHours.length; i++) { %>
-        .row
-          .hour-wrap class=".all-day-{{ _maybe.#{day}AllDay }}"
-            label From:
-            input.hour.from type="text" value="{{ #{day}FromHours[i] }}"
-            label To:
-            input.hour.to type="text" value="{{ #{day}ToHours[i] }}"
-        | <% } %>
-        
-        .all-day-label class=".all-day-{{ _maybe.#{day}AllDay }}"
-          span Open All Day
-        .add-time
-          .plus-icon
-          | Add another time
+        .clearfix
     .clearfix
 
   script.gmap-edit-area(type="text/template")
