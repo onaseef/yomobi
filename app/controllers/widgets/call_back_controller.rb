@@ -4,7 +4,7 @@ class Widgets::CallBackController < ApplicationController
       return error('bad message')
     end
 
-    company = Company.find_by_name params[:company]
+    company = Company.find_by_db_name params[:company]
 
     return error('bad company') if company.nil?
     return error('bad phone') if !params[:phone].gsub(/[^0-9]+/,'').present?

@@ -5,7 +5,7 @@ class Widgets::TellFriendController < ApplicationController
       return error('bad message')
     end
 
-    company = Company.find_by_name params[:company]
+    company = Company.find_by_db_name params[:company]
 
     return error('bad company') if company.nil?
     return error('bad email to') unless params[:email_to].match email_regex

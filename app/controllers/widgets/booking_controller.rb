@@ -7,7 +7,7 @@ class Widgets::BookingController < ApplicationController
       return error('bad message')
     end
 
-    company = Company.find_by_name params[:company]
+    company = Company.find_by_db_name params[:company]
     return error('bad company') if company.nil?
 
     phone = params[:phone]

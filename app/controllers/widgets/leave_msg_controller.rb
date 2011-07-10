@@ -5,7 +5,7 @@ class Widgets::LeaveMsgController < ApplicationController
       return error('bad message')
     end
 
-    company = Company.find_by_name params[:company]
+    company = Company.find_by_db_name params[:company]
     return error('bad message') if company.nil?
 
     UserMailer.leave_msg({
