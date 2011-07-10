@@ -540,6 +540,14 @@ var util = {
     else if (offset > 480) {
       $('#mobile-scroller').scrollTop(scrollTop + offset - 480);
     }
+  },
+
+  adsenseScript: function () {
+    if (!window.googleAfmcRequest) return '';
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'http://pagead2.googlesyndication.com/pagead/show_afmc_ads.js';
+    return script;
   }
   
 }

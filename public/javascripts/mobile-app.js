@@ -190,6 +190,9 @@
         name: g.db_name,
         prettyName: g.company
       }));
+var h = util.adsenseScript();
+util.log('H',h);
+      $('#top-bar .ad-bar').empty().append(h);
     },
     
     goBack: function () {
@@ -243,7 +246,7 @@
     
     injectNewPage: function (direction) {
       var originalCount = this.el.find('.page').length
-        , newPage = $(this.pageTemplate())
+        , newPage = $(this.pageTemplate({ adHtml:util.adsenseHtml() }))
         , pivot = this.el.find('.page:eq(' + this.pageLevel + ')')
       ;
       (direction == 'forward') ? pivot.after(newPage) : pivot.before(newPage);
