@@ -77,8 +77,13 @@
     color: #000066;
     font-weight: bold; }
 
-.home-icon.invalid {
-  background-color: #e83d05; }
+.home-icon.invalid .invalid-icon {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  top: -94px;
+  left: 37px;
+  background: url(/images/ui/invalid-for-showing.png); }
 
 #builder-container {
   background: #edeff4;

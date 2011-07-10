@@ -22,7 +22,7 @@
     },
     
     getTitleContent: function () {
-      return '<h2>' + this.get('prettyName') + '</h2>';
+      return '<h3>' + this.get('prettyName') + '</h3>';
     },
     
     getShowData: function () {
