@@ -190,9 +190,8 @@
         name: g.db_name,
         prettyName: g.company
       }));
-var h = util.adsenseScript();
-util.log('H',h);
-      $('#top-bar .ad-bar').empty().append(h);
+      if (window.bapp)
+        $('#top-bar .ad-bar').empty();
     },
     
     goBack: function () {
