@@ -46,10 +46,6 @@ class Company < ActiveRecord::Base
     followers.where(:company_id => self[:id], :active => true).select {|f| f.email.present? }
   end
   
-  def type
-    (self.company_type && self.company_type.name) || 'Local Business'
-  end
-
   def mobile_url
     "http://yomobi.com/#{db_name}"
   end

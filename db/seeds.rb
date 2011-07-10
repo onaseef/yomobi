@@ -10,7 +10,7 @@ bob = User.create! \
   :email => 'bob@gmail.com',
   :password => '123123',
   :password_confirmation => '123123',
-  :business_type => 'Personal'
+  :company_type_id => 2
 puts "Created User: #{bob.inspect}"
 
 bob.create_company \

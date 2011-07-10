@@ -37,7 +37,8 @@ class SignupController < ApplicationController
       result = current_user.create_company\
         :name => data['title'],
         :db_name => data['site_url'].downcase,
-        :db_pass => '123123'
+        :db_pass => '123123',
+        :company_type_id => current_user.company_type_id
       if result[:id].nil?
         @errors['site_url'] = 'taken?'
       elsif

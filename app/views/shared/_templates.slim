@@ -77,7 +77,7 @@
         br
         br
         label Company Type:
-        = select_tag :company_type, options_for_select(business_types,@company.type)
+        = select_tag :company_type, options_for_select(company_types,@company.company_type_id)
         br
         br
         label Current Logo:

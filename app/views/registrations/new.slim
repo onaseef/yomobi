@@ -24,7 +24,7 @@
       = f.password_field :password_confirmation
     .group.clearfix
       = f.label "Business Type:"
-      = f.select :business_type, options_for_select(business_types, @user.business_type)
+      = f.select :company_type_id, options_for_select(company_types, @user.company_type_id)
     .group.clearfix
       - unless @hide_captcha
         p

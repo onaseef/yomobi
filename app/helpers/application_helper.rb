@@ -4,8 +4,8 @@ module ApplicationHelper
     File.join Rails.root, 'public/javascripts/widgets', *path_ext
   end
   
-  def business_types
-    CompanyType.all.map {|t| t.name}
+  def company_types
+    CompanyType.all.map {|t| [t.name, t[:id]]}
   end
 
   def carrier_names
