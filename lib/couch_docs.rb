@@ -86,12 +86,7 @@ class CouchDocs
     {
       "name" => "widget-hours",
       "wtype" => "hours",
-      "helpText" => "Let your customers know when you're open for business.",
-      "hours" => {
-        "sun" => [], "mon" => ["8:00am|2:00pm"],
-        "tue" => [], "wed" => ["9:00am|12:00pm","8:00pm|2:00am"],
-        "thu" => [], "fri" => [], "sat" => []
-      }
+      "helpText" => "Let your customers know when you're open for business."
     }
   end
   
