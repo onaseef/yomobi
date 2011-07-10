@@ -23,3 +23,17 @@
     #home-widgets.content.dbx-group
     .ad-bar
       img src="/images/brandSample04.jpeg"
+    script type="text/javascript"
+      | var switchTo5x=true;
+    script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"
+    script type="text/javascript"
+      | stLight.options({publisher:'ac9391da-2465-423f-a4e3-2c9736d44738'});
+    - if @is_mobile
+      .mobile-footer
+        p Share This:
+        span.st_facebook_large
+        span.st_twitter_large
+        span.st_linkedin_large
+        span.st_digg_large
+        span.st_google_bmarks_large
+        span.st_stumbleupon_large

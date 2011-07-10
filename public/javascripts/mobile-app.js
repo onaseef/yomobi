@@ -249,6 +249,8 @@
         , pivot = this.el.find('.page:eq(' + this.pageLevel + ')')
       ;
       (direction == 'forward') ? pivot.after(newPage) : pivot.before(newPage);
+      // generate share buttons in footer
+      if (!window.bapp) stButtons.makeButtons();
       
       var newCount = this.el.find('.page').length
         , canvasWidth = $('#canvas').width()
