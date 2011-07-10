@@ -30,7 +30,8 @@ body {
   background: #3b5998;
   color: white; }
   .back-bar .title, .company-info .title {
-    padding-top: 3px; }
+    padding-top: 3px;
+    height: 36px; }
     .back-bar .title h3, .company-info .title h3 {
       font-weight: bold;
       font-size: 12px; }
