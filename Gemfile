@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.5'
+gem 'rails', '3.0.8'
 gem 'sqlite3'
 gem 'couchrest'
 
@@ -11,9 +11,9 @@ gem 'shortly'
 
 gem 'devise', "~> 1.3"
 gem 'recaptcha', :require => 'recaptcha/rails'
-gem 'typus', :git => 'https://github.com/fesplugas/typus.git'
+gem 'typus', :git => 'https://github.com/typus/typus.git'
 
-gem 'slim', :require => 'slim/rails'
+gem 'slim', :require => 'slim'
 gem 'sass'
 gem 'json'
 
