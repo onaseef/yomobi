@@ -245,7 +245,7 @@
     
     injectNewPage: function (direction) {
       var originalCount = this.el.find('.page').length
-        , newPage = $(this.pageTemplate({ adHtml:util.adsenseHtml() }))
+        , newPage = $(this.pageTemplate())
         , pivot = this.el.find('.page:eq(' + this.pageLevel + ')')
       ;
       (direction == 'forward') ? pivot.after(newPage) : pivot.before(newPage);
