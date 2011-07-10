@@ -24,7 +24,12 @@ class Company < ActiveRecord::Base
     db = CouchRest.database(ApplicationController::couch_url self.db_name, :@admin)
     result = db.create!
     if result == true
-      db.bulk_save [CouchDocs::view_doc, CouchDocs::worder_doc, CouchDocs::hours_doc], false
+      worder_doc = CouchDocs::worder_doc self.company_type_id
+      
+      default_docs = CouchDocs::default_docs self.company_type_id
+      default_docs.push worder_doc, CouchDocs::view_doc
+
+      db.bulk_save default_docs, false
       
       # create new admin user
       user_doc = CouchDocs::admin_user_doc self.db_name, self.db_pass

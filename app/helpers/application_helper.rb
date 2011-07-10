@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def widget_docs
+    CouchDocs.all.to_json
+  end
+
   def widgets_dir(*path_ext)
     File.join Rails.root, 'public/javascripts/widgets', *path_ext
   end
