@@ -446,6 +446,11 @@
     .clearfix
 
   script.gmap-edit-area(type="text/template")
+    | <% if (!validForShowing) { %><p class="invalidForShowing">Please enter your business <b>name</b>, business <b>address</b>, or both.</p><% } %>
+    label Business Name:
+    input(name="bname" type="text" value="{{ _maybe.bname }}")
+    br
+    .hr
     label Address 1*:
     input(name="addr1" type="text" value="{{ _maybe.addr1 }}")
     br

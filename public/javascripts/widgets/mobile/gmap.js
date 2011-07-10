@@ -4,13 +4,24 @@
 (function ($) {
   var mapUrlBase = 'http://maps.google.com/maps/api/staticmap?'
     , mapUrlOptions = '&size=300x300&sensor=false'
+    , externalMapUrlBase = 'http://maps.google.com/maps?'
   ;
   
   window.widgetClasses.gmap = Widget.extend({
-    requiredAttrs: ['addr1','city','state'],
+    validForShowing: function () {
+      return this.get('bname') || (this.get('addr1') && this.get('city') && this.get('state'));
+    },
+
+    onHomeViewClick: function () {
+      if (!this.get('addr1') && this.validForShowing()) {
+        window.open(externalMapUrlBase + 'q=' + this.get('bname'));
+        return false;
+      }
+      return true;
+    },
 
     getFullAddress: function () {
-      return [this.get('addr1'), this.get('addr2'),
+      return [this.get('bname'), this.get('addr1'), this.get('addr2'),
               this.get('city') + ', ' + this.get('state'),
               this.get('zip'),   this.get('country')].join(' ');
     },

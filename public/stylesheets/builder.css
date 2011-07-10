@@ -307,6 +307,12 @@
 #builder .edit-area.link_fb .current_link_label {
   font-size: 1.5em; }
 
+#builder .edit-area.gmap p.invalidForShowing {
+  padding: 7px;
+  border: 1px solid #dd3c10;
+  background: #ffebe8;
+  font-size: 14px; }
+
 #dialog-confirm .error {
   color: #880000; }
 #dialog-confirm .success {
