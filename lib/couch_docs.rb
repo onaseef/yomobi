@@ -78,7 +78,7 @@ class CouchDocs
   end
   
   def self.phone_doc(phone)
-    self.by_name('phone').merge :phone => phone
+    self.by_name('call-us').merge :phone => phone
   end
   
   def self.gmap_doc(address)
