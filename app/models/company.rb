@@ -6,7 +6,7 @@ class Company < ActiveRecord::Base
   has_many :followers
   has_attached_file :logo,
     :styles => {
-      :mobile => "76x48>"
+      :mobile => "100x75>"
     },
     :storage => :s3,
     :bucket => 'yomobi',

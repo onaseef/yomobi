@@ -26,7 +26,6 @@ body {
 
 .back-bar, .company-info {
   width: 304px;
-  height: 40px;
   padding: 0 8px;
   background: #3b5998;
   color: white; }
@@ -68,8 +67,6 @@ body {
       word-wrap: break-word; }
   .tab-bar td:hover {
     cursor: pointer; }
-  .tab-bar td.active {
-    background: #627aad; }
 
 .ad-bar {
   padding: 4px 0;

@@ -116,7 +116,6 @@
     },
   
     home: function () {
-      this.highlightHomeTab();
       mapp.goHome();
     },
     
@@ -127,12 +126,6 @@
       });
       this.highlightTab(name);
       mapp.viewWidget(widget,subpage && unescape(subpage));
-    },
-    
-    highlightHomeTab: function () {
-      $('#top-bar .tab-bar td')
-        .removeClass('active')
-        .filter(':first').addClass('active')
     },
 
     highlightTab: function (name) {
