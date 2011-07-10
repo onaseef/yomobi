@@ -44,5 +44,6 @@ Yomobi::Application.configure do
   # ActionMailer::Base.smtp_settings = {
     # :host => "localhost"
   # }
+  Slim::Engine.set_default_options :pretty => true
 end
 
