@@ -11,4 +11,9 @@ module ApplicationHelper
   def carrier_names
     Carrier.all.map {|c| c.name}
   end
+
+  def s3_base_path
+    config = Rails.application.config
+    "#{config.s3_base_path}/#{config.logo_s3_bucket}"
+  end
 end

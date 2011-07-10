@@ -4,9 +4,9 @@ class Widgets::InformedController < ApplicationController
 
   def mobile_submit
     return error('bad message') unless follower_data_present? params
-    return error('captcha') unless verify_recaptcha
+    return error('captcha') unless verify_aritcaptcha params
 
-    company = Company.find_by_name params[:company]
+    company = Company.find_by_db_name params[:company]
     carrier = Carrier.find_by_name params[:carrier]
 
     return error('bad company') if company.nil?

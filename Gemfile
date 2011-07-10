@@ -6,6 +6,7 @@ gem 'couchrest'
 
 gem 'paperclip', "~> 2.3"
 gem 'aws-s3', :require => 'aws/s3'
+gem 'rmagick', :require => false
 gem 'shortly'
 
 gem 'devise', "~> 1.3"
@@ -17,6 +18,7 @@ gem 'sass'
 gem 'json'
 
 gem 'validates_as_email_address'
+gem 'aritcaptcha', :git => 'https://github.com/mindeavor/aritcaptcha.git'
 
 group :development, :test do
   gem 'heroku'

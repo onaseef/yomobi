@@ -9,7 +9,7 @@
     table
       tr
         td
-          img.logo{src="http://s3.amazonaws.com/yomobi/logos/{{ name }}_mobile?_=#{Time.now}" }
+          img.logo{src="#{s3_base_path}/logos/{{ name }}_mobile?_=#{Time.now}" }
         td.name {{ prettyName }}
   
   script.edit-widget-idle(type="text/template")
@@ -82,7 +82,7 @@
         br
         label Current Logo:
         br
-        img.logo{src="http://s3.amazonaws.com/yomobi/logos/<% print(g.db_name); %>_mobile?_=#{Time.now}" }
+        img.logo{src="#{s3_base_path}/logos/<% print(g.db_name); %>_mobile?_=#{Time.now}" }
         br
         label Upload a new one:
         input type="file" name="logo"
@@ -151,8 +151,7 @@
         .back-btn
         .title
       .content
-      .ad-bar
-        img src="/images/brandSample04.jpeg"
+      .ad-bar {{ adHtml }}
   
   #dialog-invalid-drag title="Oops"
     p
@@ -180,7 +179,7 @@
   script.leave_msg-page(type="text/template")
     .input-wrap
       p Leave us a message:
-      = form_tag "/#{@company.name}/leave_msg/submit", :method => 'post' do
+      = form_tag "/#{@company.db_name}/leave_msg/submit", :method => 'post' do
         label Your Email Address:
         br
         input type="text" name="email"
@@ -198,7 +197,7 @@
   script.call_back-page(type="text/template")
     .input-wrap
       p Leave us a message:
-      = form_tag "/#{@company.name}/call_back/submit", :method => 'post' do
+      = form_tag "/#{@company.db_name}/call_back/submit", :method => 'post' do
         label Your Mobile Number:
         br
         input type="text" name="phone"
@@ -215,7 +214,7 @@
   script.tell_friend-page(type="text/template")
     .input-wrap
       p Tell a friend about this website:
-      = form_tag "/#{@company.name}/tell_friend/submit", :method => 'post' do
+      = form_tag "/#{@company.db_name}/tell_friend/submit", :method => 'post' do
         label Your Friend's Email:
         br
         input type="text" name="email_to"
@@ -237,7 +236,7 @@
   script.booking-page(type="text/template")
     .input-wrap
       p Request a Booking:
-      = form_tag "/#{@company.name}/booking/submit", :method => 'post' do
+      = form_tag "/#{@company.db_name}/booking/submit", :method => 'post' do
         label Name:
         br
         input name="name" type="text"
@@ -270,7 +269,7 @@
   script.informed-page(type="text/template")
     .input-wrap
       p Stay informed with our latest specials, discounts, and announcements. We respect your privacy.
-      = form_tag "/#{@company.name}/informed/submit", :method => 'post' do
+      = form_tag "/#{@company.db_name}/informed/submit", :method => 'post' do
         | <% if (_maybe.optForEmails) { %>
         label Email Address:
         br
@@ -286,7 +285,7 @@
         = select_tag 'carrier', options_for_select(carrier_names,'AT&T')
         br
         | <% } %>
-        #recaptcha-container
+        #aritcaptcha-container
         span.response
         br
         input(type="submit" value="Send")

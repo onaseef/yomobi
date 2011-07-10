@@ -520,6 +520,13 @@ var util = {
     );
   },
 
+  spawnAritcaptcha: function () {
+    $.get('/mobile/aritcaptcha', function (captchaHtml) {
+      $('#aritcaptcha-container').html(captchaHtml);
+      mapp.resize();
+    });
+  },
+
   ensureActiveWidgetIsVisible: function () {
     if (!window.bapp || !bapp.currentEditor) return;
 

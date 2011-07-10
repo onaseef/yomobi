@@ -23,7 +23,7 @@
     spawnCaptcha: function () {
       var myWidget = this.widget;
       setTimeout(function () {
-        if (mapp.currentWidget === myWidget) util.spawnRecaptcha();
+        if (mapp.currentWidget === myWidget) util.spawnAritcaptcha();
       },1000);
     },
 
@@ -56,8 +56,8 @@
     if (serverResponse === "bad message")
       msg += '<li>You must provide an email or phone number</li>';
     else if (serverResponse === "captcha") {
-      msg += '<li>Incorrect typed word(s). Please try again.</li>';
-      if (Recaptcha) Recaptcha.reload();
+      msg += '<li>Incorrect math answer. Please try again.</li>';
+      util.spawnAritcaptcha();
     }
     _.each(serverResponse.email, function (error) {
       msg += '<li>Email ' + error + '</li>';

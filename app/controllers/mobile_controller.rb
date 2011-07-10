@@ -4,4 +4,8 @@ class MobileController < ApplicationController
     # TODO: create "Company not found" page and redirect there instead
     redirect_to root_path if @company.nil?
   end
+
+  def aritcaptcha
+    render :layout => false
+  end
 end

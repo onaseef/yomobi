@@ -29,6 +29,8 @@ Yomobi::Application.routes.draw do
 
   root :to => 'home#index'
   
+  get 'mobile/aritcaptcha' => 'mobile#aritcaptcha'
+
   ##########################
   # Widget-specific routes #
   ##########################
