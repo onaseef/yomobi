@@ -274,6 +274,7 @@
         , exception = options.exception || '_'
         , isSameName = function (w) { var n=w.get('name'); return n == name && n != exception; }
         , isValid = error || !mapp.widgetsInUse.find(isSameName) || (error = 'Name already in use.')
+        , isValid = error || prettyName.length >= 2 || (error = 'Name is too short (minimum 2 characters).')
         , isValid = error || prettyName.length <= 22 || (error = 'Name is too long (22 characters max).')
         , singletonNamesInUse = error || (singleton && []) || _.map(bapp.sidebar.singletonsInUse(), pluckPrettyName)
         , isValid = error || !_.include(singletonNamesInUse,prettyName) || (error = 'Sorry, that name is reserved.')
@@ -347,7 +348,7 @@
     },
     
     syncWorderDoc: function (callback) {
-      util.log('Syncing worder...');
+      util.log('Syncing worder...',bapp.worderDoc);
       util.pushUIBlock('worder');
 
       $.post('/order',bapp.worderDoc,function (newWorderDoc) {
