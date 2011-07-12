@@ -115,15 +115,10 @@ body {
 
 .mobile-footer {
   height: 70px;
-  padding: 10px 0; }
+  padding: 8px 0; }
   .mobile-footer p {
     margin: 0 0 10px 0;
     padding-left: 5px; }
-  .mobile-footer .g-plus-one {
-    display: inline;
-    position: relative;
-    top: -4px;
-    left: 4px; }
 
 #templates {
   display: none; }

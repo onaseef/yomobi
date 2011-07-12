@@ -153,16 +153,9 @@
         .title
       .content
       .ad-bar
-      .mobile-footer
-        p Share This:
-        span.st_facebook_large
-        span.st_twitter_large
-        span.st_linkedin_large
-        span.st_digg_large
-        span.st_google_bmarks_large
-        span.st_stumbleupon_large
-        erb:
-          <div class="g-plus-one"><g:plusone count="false"></g:plusone></div>
+      - if @is_mobile
+        .mobile-footer
+          = render 'mobile/social-share'
   
   #dialog-invalid-drag title="Oops"
     p

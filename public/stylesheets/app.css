@@ -136,6 +136,20 @@ p.success {
   max-width: 270px;
   font-size: 14px; }
 
+#footer {
+  border-top: 1px solid #b3b3b3;
+  margin: 20px auto;
+  padding: 10px 10px 0; }
+
+.social-share {
+  margin: 0;
+    margin-padding: 0 0 0 5px;
+  list-style: none; }
+  .social-share li {
+    float: left;
+    cursor: pointer;
+    margin-right: 8px; }
+
 .hr {
   border-top: 1px solid #b3b3b3;
   padding-top: 14px; }
