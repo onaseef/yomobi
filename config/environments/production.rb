@@ -62,4 +62,17 @@ Yomobi::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  require 'admob'
+  AdMob::config do |c|
+    c.publisher_id = 'a14e1a3b6284bef'
+    c.analytics_id = 'your_analytics_site_id'
+    c.ad_request = true
+    c.analytics_request = false
+    c.test_mode = false
+    c.timeout = 1
+    c.encoding = 'UTF-8'
+    c.raise_exceptions = false
+    c.cookie_domain = 'example.com'
+  end
 end

@@ -21,9 +21,9 @@
 #canvas
   #home.page
     #home-widgets.content.dbx-group
-    .ad-bar
-      img src="/images/brandSample04.jpeg"
     - if @is_mobile
+      .ad-bar.bottom
+        = raw AdMob::request(request, session[:session_id]) if session[:session_id]
       .mobile-footer
         = render 'mobile/social-share'
 

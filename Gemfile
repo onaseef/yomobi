@@ -17,6 +17,8 @@ gem 'slim', :require => 'slim'
 gem 'sass'
 gem 'json'
 
+gem 'admob19'
+
 gem 'validates_as_email_address'
 gem 'aritcaptcha', :git => 'https://github.com/mindeavor/aritcaptcha.git'
 

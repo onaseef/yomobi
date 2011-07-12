@@ -70,11 +70,13 @@ body {
     cursor: pointer; }
 
 .ad-bar {
-  padding: 4px 0;
+  padding: 0 0;
   border-top: 2px solid #627aad;
   border-bottom: 2px solid #627aad;
   background: #3b5998;
   text-align: center; }
+  .ad-bar.bottom {
+    height: 48px; }
 
 .back-btn {
   float: left;
