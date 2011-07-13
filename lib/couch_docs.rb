@@ -82,7 +82,7 @@ class CouchDocs
   end
   
   def self.gmap_doc(address)
-    self.by_name('gmap').merge!(address)
+    self.by_name('find-us').merge!(address)
   end
   
   def self.gen_salt
