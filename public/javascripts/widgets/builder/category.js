@@ -263,7 +263,9 @@
     },
     
     moveItem: function (e) {
+util.log('ehh1');
       if (!util.isUIFree()) return;
+util.log('ehh2');
 
       var mod = parseInt( $(e.target).attr('data-mod'),10 )
         , $select = $(this.el).find('select[name=items]')
