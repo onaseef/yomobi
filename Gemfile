@@ -4,7 +4,7 @@ gem 'rails', '3.0.8'
 gem 'sqlite3'
 gem 'couchrest'
 
-gem 'paperclip', "~> 2"
+gem 'paperclip'
 gem 'aws-s3', :require => 'aws/s3'
 gem 'rmagick', :require => false
 gem 'shortly'
