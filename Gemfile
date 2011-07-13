@@ -4,7 +4,7 @@ gem 'rails', '3.0.8'
 gem 'sqlite3'
 gem 'couchrest'
 
-gem 'paperclip'
+gem 'paperclip', :git => 'https://github.com/thoughtbot/paperclip', :tag => "v2.3.14"
 gem 'aws-s3', :require => 'aws/s3'
 gem 'rmagick', :require => false
 gem 'shortly'

@@ -11,6 +11,17 @@ GIT
     aritcaptcha (2.0.5)
 
 GIT
+  remote: https://github.com/thoughtbot/paperclip
+  revision: 7db7ce8eea292605be29d99d6a7a3d39ac833361
+  tag: v2.3.14
+  specs:
+    paperclip (2.3.14)
+      activerecord (>= 2.3.0)
+      activesupport (>= 2.3.2)
+      cocaine (>= 0.0.2)
+      mime-types
+
+GIT
   remote: https://github.com/typus/typus.git
   revision: 90249dd0ceac3c85d2a619c581f980b04b668859
   specs:
@@ -91,11 +102,6 @@ GEM
     mime-types (1.16)
     multi_json (1.0.3)
     orm_adapter (0.0.5)
-    paperclip (2.3.14)
-      activerecord (>= 2.3.0)
-      activesupport (>= 2.3.2)
-      cocaine (>= 0.0.2)
-      mime-types
     polyglot (0.3.1)
     rack (1.2.3)
     rack-mount (0.6.14)
@@ -154,7 +160,7 @@ DEPENDENCIES
   devise (~> 1.3)
   heroku
   json
-  paperclip
+  paperclip!
   rails (= 3.0.8)
   recaptcha
   rmagick
