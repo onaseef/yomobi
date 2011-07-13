@@ -6,9 +6,16 @@
   var tempCatStack = [];
   var $isSelected = function (idx,elem) { return $(elem).is(':selected'); };
 
-  var super_getEditAreaData = window.Widget.prototype.getEditAreaData;
+  var super_getEditAreaData = window.Widget.prototype.getEditAreaData
+    , super_init = window.widgetClasses.category.prototype.init
+  ;
   window.widgetClasses.category = window.widgetClasses.category.extend({
     
+    init: function () {
+      super_init.call(this);
+      this.origStruct = util.clone(this.get('struct'));
+    },
+
     getEditAreaData: function () {
       var editAreaData = super_getEditAreaData.call(this);
       var extraData = {
@@ -21,24 +28,28 @@
 
     getEditData: function () {
       var showData = this.getShowData()
-        , emptyItems = false
-        , emptyCats = false
+        , areItemsEmpty = false
+        , areCatsEmpty = false
+        , catTypeName = this.get('catTypeName')
+        , itemTypeName = this.get('itemTypeName')
       ;
       if (showData.items.length === 0) {
         showData.items = [{ name:'==None==' }];
-        emptyItems = true;
+        areItemsEmpty = true;
       }
       if (showData.cats.length === 0) {
         showData.cats = ['==None=='];
-        emptyCats = true;
+        areCatsEmpty = true;
       }
       
       var extraData = {
         currentCat: util.catName(_.last(this.catStack)) || this.get('prettyName'),
         catCrumbs: util.catStackCrumbs(this.get('prettyName'),this.catStack),
         onHomePage: mapp.pageLevel === 0,
-        emptyItems: emptyItems,
-        emptyCats: emptyCats
+        areItemsEmpty: areItemsEmpty,
+        areCatsEmpty: areCatsEmpty,
+        catLabel: (catTypeName == 'Category') ? catTypeName : util.pluralize(catTypeName),
+        itemLabel: util.pluralize(itemTypeName)
       };
       return _.extend({},showData,extraData);
     },
@@ -345,9 +356,10 @@ util.log('HAS CHANGES',this.hasChanges());
   ////////////////////////////
   // private helper classes //
   ////////////////////////////
+  var addCatTemplate  = util.getTemplate('add-subcat-dialog')
+    , editCatTemplate = util.getTemplate('edit-subcat-dialog')
+  ;
   window.AddCatDialog = Backbone.View.extend({
-
-    addCatTemplate: util.getTemplate('add-subcat-dialog'),
 
     events: {
       'keydown input[name="cat"]':      'onKeyDown'
@@ -368,15 +380,19 @@ util.log('HAS CHANGES',this.hasChanges());
     },
     
     render: function (error,level,name) {
-      var dialogHtml = this.addCatTemplate({
+      var template = (this.mode == 'add') ? addCatTemplate : editCatTemplate;
+
+      var dialogHtml = template({
         error: error,
+        name: name,
         cats: util.sortedCatNamesFromLevel(level),
-        name: name
+        catTypeName: this.model.get('catTypeName')
       });
 
       var self = this;
       $(this.el).html(dialogHtml).find('.add-btn')
-        .click(function () { self.validateCategory(); })
+        .click(function () { self.validateCategory(); }).end()
+        .attr('title',this.el.children[0].title)
       ;
       return this;
     },
@@ -392,8 +408,8 @@ util.log('HAS CHANGES',this.hasChanges());
       this.level = level;
       this.origName = origName;
       
-      if (this.mode == 'add') buttons["I'm Done Adding Categories"] = closeSelf;
-      else buttons["Close"] = closeSelf;
+      if (this.mode == 'add') buttons["Save"] = closeSelf;
+      else buttons["Cancel"] = closeSelf;
       
       util.dialog(dialogContent,buttons).find('p.error').show('pulsate',{times:3});
     },
@@ -404,9 +420,10 @@ util.log('HAS CHANGES',this.hasChanges());
       var name = $(this.el).find('input[name=cat]').val()
         , name = $.trim(name)
       ;
+util.log(util.catNamesFromLevel(this.level),name,_.contains(util.catNamesFromLevel(this.level),name));
   		if (_.isEmpty(name))
   		  this.prompt('Name cannot be empty');
-      else if ( this.mode == 'add' && _.contains(util.catNamesFromLevel(this.level),name) )
+      else if ( name != this.origName && _.contains(util.catNamesFromLevel(this.level),name) )
         this.prompt('Name is already in use');
       else if (this.mode == 'add') {
         var keyCount = _.keys(this.level).length;
@@ -451,9 +468,12 @@ util.log('HAS CHANGES',this.hasChanges());
       item || (item = {});
       var dialogHtml = this.template(_.extend({},item, {
         flash: flash,
-        _items: level._items
-      }));
-      $(this.el).html(dialogHtml);
+        _items: level._items,
+        itemTypeName: this.model.get('itemTypeName')
+      }) );
+
+      var title = (this.mode == 'add' ? "Add New " : "Edit ") + this.model.get('itemTypeName');
+      $(this.el).html(dialogHtml).attr('title',title);
       return this;
     },
     
@@ -477,7 +497,7 @@ util.log('HAS CHANGES',this.hasChanges());
           
           if (self.mode == 'add') {
             level._items.push(activeItemData);
-            self.prompt({ success:'Item '+self.mode+'ed successfully' });
+            self.prompt({ success:'Item added successfully' });
             bapp.currentEditor.setChanged('something',true);
           }
           else if (self.mode == 'edit') {
@@ -488,11 +508,14 @@ util.log('HAS CHANGES',this.hasChanges());
             self.options.onClose && self.options.onClose();
           }
         },
-      	"I'm Done": function () {
+      	"Cancel": function () {
           $(this).dialog("close");
           self.options.onClose && self.options.onClose();
       	}
-    	});
+    	})
+        .find('p.error').show('pulsate',{times:3}).end()
+        .find('p.success').show('pulsate',{times:1}).end()
+      ;
     },
     
     validateItem: function (item) {

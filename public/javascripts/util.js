@@ -385,6 +385,15 @@ var util = {
   regexEscape: function (str) {
     return str.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
   },
+
+  // A simple, incomplete pluralize function.
+  // Add endings as needed.
+  pluralize: function (word) {
+    if (word.match(/y$/))
+      return word.substring(0, word.length - 1) + 'ies';
+    else
+      return word + 's';
+  },
   
   log: function () {
     if(!this.debug) return;

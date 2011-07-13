@@ -129,22 +129,35 @@
     	    |  <% } %>
   
   script.add-subcat-dialog(type="text/template")
-    #dialog-confirm title="Name your Sub-Category"
+    #dialog-confirm title="Add New {{ catTypeName }}"
       p
-        | Please name your Sub-Category:
+        | {{ catTypeName }} name:
+        br
         input type="text" value="{{ _maybe.name }}" name="cat"
         input.add-btn type="button" value="Add"
         | <% if(_maybe.error) { %>
         p.error Error: {{ _maybe.error }}
         | <% } %>
         p.error
-          b (Press Enter to add/change)
+          b (Click "Add" or press Enter to add new <% print( util.pluralize(catTypeName) ); %>)
         .other-names
-    	    b Other Sub-Category names being used in this category:
+    	    b Current <% print( util.pluralize(catTypeName) ); %>:
     	    ul
       	    | <% for(var i=0; i < cats.length; i++) { %>
       	    |    <li> {{ cats[i] }} </li>
       	    |  <% } %>
+  
+  script.edit-subcat-dialog(type="text/template")
+    #dialog-confirm title="Rename"
+      p
+        | New {{ catTypeName }} name:
+        br
+        input type="text" value="{{ _maybe.name }}" name="cat"
+        | <% if(_maybe.error) { %>
+        p.error Error: {{ _maybe.error }}
+        | <% } %>
+        p.error
+          b (Press Enter to rename)
 
   script.widget-page(type="text/template")
     .page
@@ -489,18 +502,17 @@
     label Paste your "Embed this Calendar" link here:
     textarea(name="paste" type="text") {{ _maybe.description }}
   
-  script.menu-edit-area.services-edit-area.products-edit-area.home-listings-edit-area.locations-edit-area(type="text/template")
+  script.menu-edit-area.services-edit-area.products-edit-area.property-listings-edit-area.locations-edit-area(type="text/template")
     | <% if (onHomePage === true) { %>
 
-    p This is the {{ prettyName }} widget. You can add subcategories and items.
-    p Click the button below to begin editing.
+    p Use this widget to {{ subHelpText }}
     input type="button" name="beginEditing" value="Begin Editing"
 
     | <% } else { %>
 
     p {{ catCrumbs }}
     br
-    label Sub-Categories:
+    label {{ catLabel }}:
     br
     select name="cats" multiple="multiple"
       | <% for (var i=0; i<cats.length;i++) { %>
@@ -508,7 +520,7 @@
       | <% } %>
     br
     input type="button" name="add_cat" value="Add"
-    | <%       if (!emptyCats) { %>
+    | <%       if (areCatsEmpty == false) { %>
     input type="button" name="edit_cat" value="Edit"
     input type="button" name="rename_cat" value="Rename"
     input type="button" name="rem_cat" value="Delete"
@@ -520,7 +532,7 @@
     br
     br
     
-    label Items
+    label {{ itemLabel }}:
     br
     select name="items" multiple="multiple"
       | <% for (var i=0;i<items.length;i++) { %>
@@ -528,7 +540,7 @@
       | <% } %>
     br
     input type="button" name="add_item" value="Add"
-    | <%       if (!emptyItems) { %>
+    | <%       if (areItemsEmpty == false) { %>
     input type="button" name="edit_item" value="Edit"
     input type="button" name="rem_item" value="Delete"
     | <%       } if (items.length >= 2) { %>
@@ -540,8 +552,7 @@
   script.page_tree-edit-area(type="text/template")
     | <% if (onHomePage === true) { %>
 
-    p This is the {{ prettyName }} widget. You can add subcategories and items.
-    p Click the button below to begin editing.
+    p Use this widget to create and organize you web pages on your mobile site.
     input type="button" name="beginEditing" value="Begin Editing"
 
     | <% } else if (!_maybe.isLeaf) { %>
@@ -556,7 +567,7 @@
       | <% } %>
     br
     input type="button" name="add_cat" value="Add"
-    | <%       if (!emptyCats) { %>
+    | <%       if (areCatsEmpty == false) { %>
     input type="button" name="edit_cat" value="Edit"
     input type="button" name="rename_cat" value="Rename"
     input type="button" name="rem_cat" value="Delete"
@@ -577,7 +588,7 @@
       | <% } %>
     br
     input type="button" name="add_item" value="Add"
-    | <%       if (!emptyItems) { %>
+    | <%       if (areItemsEmpty == false) { %>
     input type="button" name="edit_item" value="Edit"
     input type="button" name="rename_item" value="Rename"
     input type="button" name="rem_item" value="Delete"

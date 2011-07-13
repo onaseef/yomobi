@@ -202,10 +202,23 @@ class CouchDocs
       },
 
       {
-        :name => "home-listings",
+        :name => "property-listings",
         :wtype => 'category',
-        :helpText => "Give your customers instant access to your real estate listings.",
-        :singleton => true
+        :helpText => "Give your mobile site visitors instance access to your property listings.",
+        :subHelpText => "create a list of properties for sale or lease.",
+        :catTypeName => "Area",
+        :itemTypeName => "Listing",
+        :singleton => true,
+        # default categories
+        "struct" => {
+          "_items" => [],
+          "North|0"    => { "_items" => [] },
+          "South|1"    => { "_items" => [] },
+          "East|2"     => { "_items" => [] },
+          "West|3"     => { "_items" => [] },
+          "Central|4"  => { "_items" => [] },
+          "Downtown|5" => { "_items" => [] }
+        }
       },
       
       {
@@ -229,7 +242,10 @@ class CouchDocs
       {
         :name => "category",
         :wtype => 'page_tree',
-        :helpText => "Create your own mobile site map of custom pages."
+        :helpText => "Create your own mobile site map of custom pages.",
+        "struct" => {
+          "_items" => []
+        }
       },
 
       {
@@ -297,7 +313,19 @@ class CouchDocs
         :name => "locations",
         :wtype => 'category',
         :helpText => "Give your customers instant access to your business's multiple locations.",
-        :singleton => true
+        :subHelpText => "create a mobile optimized product catalogue.",
+        :catTypeName => "Region",
+        :itemTypeName => "Location",
+        :singleton => true,
+        "struct" => {
+          "_items" => [],
+          "North|0"    => { "_items" => [] },
+          "South|1"    => { "_items" => [] },
+          "East|2"     => { "_items" => [] },
+          "West|3"     => { "_items" => [] },
+          "Central|4"  => { "_items" => [] },
+          "Downtown|5" => { "_items" => [] }
+        }
       },
 
       {
@@ -310,21 +338,44 @@ class CouchDocs
         :name => "services",
         :wtype => 'category',
         :helpText => "Give your customers instant access to your list of services.",
-        :singleton => true
+        :subHelpText => "create a mobile optimized services catalogue.",
+        :catTypeName => "Category",
+        :itemTypeName => "Service",
+        :singleton => true,
+        "struct" => {
+          "_items" => []
+        }
       },
 
       {
         :name => "products",
         :wtype => 'category',
         :helpText => "Give your customers instant access to your list of products.",
-        :singleton => true
+        :subHelpText => "create a mobile optimized product catalogue.",
+        :catTypeName => "Category",
+        :itemTypeName => "Product",
+        :singleton => true,
+        "struct" => {
+          "_items" => []
+        }
       },
 
       {
         :name => "menu",
         :wtype => 'category',
         :helpText => "Give your customers instant access to your restaurant's cuisine.",
-        :singleton => true
+        :subHelpText => "create a mobile optimized version of your menu.",
+        :catTypeName => "Category",
+        :itemTypeName => "item",
+        :singleton => true,
+        "struct" => {
+          "_items" => [],
+          "Appetizers|0" => { "_items" => [] },
+          "Breakfast|1"  => { "_items" => [] },
+          "Lunch|2"      => { "_items" => [] },
+          "Dinner|3"     => { "_items" => [] },
+          "Dinks|4"      => { "_items" => [] }
+        }
       },
 
       {

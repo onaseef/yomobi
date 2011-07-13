@@ -23,17 +23,17 @@
 
     getEditData: function () {
       var showData = this.getShowData()
-        , emptyItems = false
-        , emptyCats = false
+        , areItemsEmpty = false
+        , areCatsEmpty = false
       ;
       if (!showData.isLeaf) {
         if (showData.items.length === 0) {
           showData.items = [{ name:'==None==' }];
-          emptyItems = true;
+          areItemsEmpty = true;
         }
         if (showData.cats.length === 0) {
           showData.cats = ['==None=='];
-          emptyCats = true;
+          areCatsEmpty = true;
         }
       }
       else {
@@ -44,8 +44,8 @@
         currentCat: util.catName(_.last(this.catStack)) || this.get('prettyName'),
         catCrumbs: util.catStackCrumbs(this.get('prettyName'),this.catStack),
         onHomePage: mapp.pageLevel === 0,
-        emptyItems: emptyItems,
-        emptyCats: emptyCats
+        areItemsEmpty: areItemsEmpty,
+        areCatsEmpty: areCatsEmpty
       };
       return _.extend({},showData,extraData);
     },
@@ -231,9 +231,10 @@
   });
   
   // =================================
+  var addItemTemplate  = util.getTemplate('add-subcat-dialog')
+    , editItemTemplate = util.getTemplate('edit-subcat-dialog')
+  ;
   var AddItemDialog = Backbone.View.extend({
-    
-    addItemTemplate: util.getTemplate('add-subcat-dialog'),
 
     events: {
       'keydown input[name="cat"]':      'onKeyDown'
@@ -254,7 +255,7 @@
     },
     
     render: function (error,level,name) {
-      var dialogHtml = this.addItemTemplate({
+      var dialogHtml = addItemTemplate({
         error: error,
         cats: _.pluck(level._items,'name'),
         name: name

@@ -10,25 +10,6 @@
     init: function () {
       _.bindAll(this,'onHomeViewClick');
       this.catStack = [];
-      
-      if (!this.get('struct')) {
-        var struct = {
-          _items:[],
-          "Food|0": {
-            _items: [{name:'Burger',price:'$9.99',desc:'A tasty treat.'}],
-            "Dessert|0": {
-              _items: [{name:'Ice Cream',price:'$49.99',desc:'A tastier treat'}]
-            }
-          },
-          "Drinks|1": {
-            _items: [{name:'Apple Juice',price:'$0.10',desc:'Not actually apple juice'}
-                    ,{name:'Orange Juice',price:'$0.15',desc:'Not actually orange juice'}]
-          }
-        };
-        this.set({ struct:struct });
-      }
-      // TODO: this should really be in builder's category.js
-      this.origStruct = util.clone(this.get('struct'));
     },
     
     getShowData: function () {

@@ -1,7 +1,7 @@
 script.menu-item-dialog(type="text/template")
-  #dialog-confirm title="Name your Item"
-    p Please enter your Menu Item:
-    label Name
+  #dialog-confirm
+    p Menu Item Information:
+    label Name*
     br
     input.item-input type="text" value="{{ _maybe.name }}" name="name"
     br
@@ -9,7 +9,7 @@ script.menu-item-dialog(type="text/template")
     br
     input.item-input type="text" value="{{ _maybe.price }}" name="price"
     br
-    label Short Description
+    label Description
     br
     textarea.item-input name="desc" {{ _maybe.desc }}
     br
@@ -18,21 +18,12 @@ script.menu-item-dialog(type="text/template")
     p.error Error: {{ flash.error }}
     | <% } if(flash.success) { %>
     p.success {{ flash.success }}
-    | <% } %>
-    
-    | <% if(_items.length > 0) { %>
-    .other-names
-      b Other Menu Item names being used in this category:
-      ul
-        | <% for(var i=0; i < _items.length; i++) { %>
-        |    <li> {{ _items[i].name }} </li>
-        |  <% } %>
     | <% } %>
 
 script.services-item-dialog(type="text/template")
-  #dialog-confirm title="Name your Service"
-    p Please enter your Service Listing:
-    label Name
+  #dialog-confirm
+    p Service Information:
+    label Name*
     br
     input.item-input type="text" value="{{ _maybe.name }}" name="name"
     br
@@ -40,7 +31,7 @@ script.services-item-dialog(type="text/template")
     br
     input.item-input type="text" value="{{ _maybe.price }}" name="price"
     br
-    label Short Description
+    label Description
     br
     textarea.item-input name="desc" {{ _maybe.desc }}
     br
@@ -49,21 +40,12 @@ script.services-item-dialog(type="text/template")
     p.error Error: {{ flash.error }}
     | <% } if(flash.success) { %>
     p.success {{ flash.success }}
-    | <% } %>
-    
-    | <% if(_items.length > 0) { %>
-    .other-names
-      b Other Service names being used in this category:
-      ul
-        | <% for(var i=0; i < _items.length; i++) { %>
-        |    <li> {{ _items[i].name }} </li>
-        |  <% } %>
     | <% } %>
 
 script.products-item-dialog(type="text/template")
-  #dialog-confirm title="Name your Product"
-    p Please enter your Product listing:
-    label Name
+  #dialog-confirm
+    p Product Information:
+    label Name*
     br
     input.item-input type="text" value="{{ _maybe.name }}" name="name"
     br
@@ -71,7 +53,7 @@ script.products-item-dialog(type="text/template")
     br
     input.item-input type="text" value="{{ _maybe.price }}" name="price"
     br
-    label Short Description
+    label Description
     br
     textarea.item-input name="desc" {{ _maybe.desc }}
     br
@@ -81,20 +63,11 @@ script.products-item-dialog(type="text/template")
     | <% } if(flash.success) { %>
     p.success {{ flash.success }}
     | <% } %>
-    
-    | <% if(_items.length > 0) { %>
-    .other-names
-      b Other Product names being used in this category:
-      ul
-        | <% for(var i=0; i < _items.length; i++) { %>
-        |    <li> {{ _items[i].name }} </li>
-        |  <% } %>
-    | <% } %>
 
-script.home-listings-item-dialog(type="text/template")
-  #dialog-confirm title="Enter your Home Listing"
-    p Please enter your Home Listing:
-    label Title
+script.property-listings-item-dialog(type="text/template")
+  #dialog-confirm
+    p Listing Information:
+    label Title*
     br
     input.item-input type="text" value="{{ _maybe.name }}" name="name"
     br
@@ -124,20 +97,11 @@ script.home-listings-item-dialog(type="text/template")
     | <% } if(flash.success) { %>
     p.success {{ flash.success }}
     | <% } %>
-    
-    | <% if(_items.length > 0) { %>
-    .other-names
-      b Other Home Listing titles being used in this category:
-      ul
-        | <% for(var i=0; i < _items.length; i++) { %>
-        |    <li> {{ _items[i].name }} </li>
-        |  <% } %>
-    | <% } %>
 
 script.locations-item-dialog(type="text/template")
-  #dialog-confirm title="Name your Location"
-    p Please enter your Location:
-    label Name
+  #dialog-confirm
+    p Location Information:
+    label Name*
     br
     input.item-input type="text" value="{{ _maybe.name }}" name="name"
     br
@@ -149,20 +113,15 @@ script.locations-item-dialog(type="text/template")
     br
     input.item-input type="text" value="{{ _maybe.address }}" name="address"
     br
+    label Additional Information
+    br
+    textarea.item-input name="info" {{ _maybe.info }}
+    br
     
     | <% if(flash.error) { %>
     p.error Error: {{ flash.error }}
     | <% } if(flash.success) { %>
     p.success {{ flash.success }}
-    | <% } %>
-    
-    | <% if(_items.length > 0) { %>
-    .other-names
-      b Other Location names being used in this category:
-      ul
-        | <% for(var i=0; i < _items.length; i++) { %>
-        |    <li> {{ _items[i].name }} </li>
-        |  <% } %>
     | <% } %>
 
 / ===========================
@@ -186,7 +145,7 @@ script.products-item
     div Price: {{ item.price }}
     div Description: {{ item.desc }}
 
-script.home-listings-item
+script.property-listings-item
   .item class="{{ cycle }}"
     div {{ item.name }}
     | <% if (item.photo_url) { %>
