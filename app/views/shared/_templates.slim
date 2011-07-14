@@ -156,8 +156,6 @@
         | <% if(_maybe.error) { %>
         p.error Error: {{ _maybe.error }}
         | <% } %>
-        p.error
-          b (Press Enter to rename)
 
   script.widget-page(type="text/template")
     .page
@@ -519,6 +517,7 @@
       option {{ cats[i] }}
       | <% } %>
     br
+    input type="button" name="back" value="< Back"
     input type="button" name="add_cat" value="Add"
     | <%       if (areCatsEmpty == false) { %>
     input type="button" name="edit_cat" value="Edit"

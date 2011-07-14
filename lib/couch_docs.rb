@@ -366,7 +366,7 @@ class CouchDocs
         :helpText => "Give your customers instant access to your restaurant's cuisine.",
         :subHelpText => "create a mobile optimized version of your menu.",
         :catTypeName => "Category",
-        :itemTypeName => "item",
+        :itemTypeName => "Item",
         :singleton => true,
         "struct" => {
           "_items" => [],

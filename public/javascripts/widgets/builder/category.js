@@ -34,11 +34,11 @@
         , itemTypeName = this.get('itemTypeName')
       ;
       if (showData.items.length === 0) {
-        showData.items = [{ name:'==None (Click the Add button below)==' }];
+        showData.items = [{ name:'--None (Click the Add button below)--' }];
         areItemsEmpty = true;
       }
       if (showData.cats.length === 0) {
-        showData.cats = ['==None (Click the Add button below)=='];
+        showData.cats = ['--None (Click the Add button below)--'];
         areCatsEmpty = true;
       }
       
@@ -72,6 +72,7 @@
 
     events: {
       'click input[name=beginEditing]':     'enterEditMode',
+      'click input[name=back]':             'transitionBack',
 
       'click input[name=add_cat]':          'addCat',
       'click input[name=rename_cat]':       'renameCat',
@@ -140,6 +141,11 @@
       this.discardChanges();
     },
     
+    transitionBack: function (e) {
+      // transition to the previous page by emulating a click
+      mapp.getActivePage().find('.back-btn').click();
+    },
+
     addCat: function (e) {
       if (!util.isUIFree()) return;
 
@@ -151,9 +157,10 @@
     },
     
     editCat: function (e) {
-      // simply transition into subcat by emulating a click
+      // transition into subcat by emulating a click
       var idx = $(this.el).find('select[name=cats] option:selected:first').index();
       $(this.widget.pageView.el).find('.category:eq('+idx+')').click();
+      if (idx == -1) alert('Please select an item to edit.');
     },
 
     renameCat: function (e) {
@@ -162,7 +169,7 @@
       var level = this.widget.getCurrentLevel()
         , name = $(this.el).find('select[name=cats] option:selected:first').html()
       ;
-      if (_.isEmpty(name)) return;
+      if (_.isEmpty(name)) return alert('Please select an item to rename.');
       
       var dialog =  new AddCatDialog({
         model: this.widget,
@@ -182,7 +189,8 @@
         , targetName = targetOption.html()
         , targetCat = targetName + '|' + targetIdx
       ;
-      if (_.isEmpty(targetName)) return;
+      if (_.isEmpty(targetName))
+        return alert('Please select an item to move ' + (mod==1 ? 'down.' : 'up.'));
       
       var swapIdx = targetIdx + mod
         , swapOption = $select.find('option:eq('+swapIdx+')')
@@ -233,6 +241,7 @@
         util.log('LEVEL',level);
         this.setChanged('something',true);
       }
+      else alert('Please select an item to delete.');
       this.refreshViews();
     },
     
@@ -253,7 +262,7 @@
         , name = $(this.el).find('select[name=items] option:selected:first').html()
         , item = _.detect(level._items,function (i) { return i.name == name })
       ;
-      if (_.isEmpty(item)) return;
+      if (_.isEmpty(item)) return alert('Please select an item to edit.');;
       
       var dialog =  new this.AddItemDialog({
         model: this.widget,
@@ -274,7 +283,8 @@
         , swapIdx = targetIdx + mod
         , swapOption = $select.find('option:eq('+swapIdx+')')
       ;
-      if (swapIdx < 0 || swapIdx >= _items.length) return;
+      if (swapIdx < 0 || swapIdx >= _items.length)
+        return alert('Please select an item to move ' + (mod==1 ? 'down.' : 'up.'));
       
       // first swap internally
       _items.swap(targetIdx,swapIdx);
@@ -286,22 +296,26 @@
     },
     
     remItem: function (e) {
-      var level = this.widget.getCurrentLevel();
+      var level = this.widget.getCurrentLevel()
+        , didDelete = false
+      ;
       this.el.find('select[name=items] option:selected').map(function (idx,elem) {
         var itemName = elem.innerHTML
-          , itemIdx = _.indexOf(_.pluck(level._items,'name'),itemName);
+          , itemIdx = _.indexOf(_.pluck(level._items,'name'),itemName)
+        ;
         if (itemIdx != -1) {
           level._items.splice(itemIdx,1);
           bapp.currentEditor.setChanged('something',true);
+          didDelete = true;
         }
       });
+      if (!didDelete) alert('Please select an item to delete.');
       this.refreshViews();
     },
     
     refreshViews: function (options) {
       this.widget.pageView.refresh();
       mapp.resize();
-util.log('HAS CHANGES',this.hasChanges());
       if (this.hasChanges()) this.accept();
       else if (options && options.forceEditAreaRefresh) this.startEditing();
     },
@@ -409,7 +423,10 @@ util.log('HAS CHANGES',this.hasChanges());
       this.origName = origName;
       
       if (this.mode == 'add') buttons["Close"] = closeSelf;
-      else buttons["Cancel"] = closeSelf;
+      else {
+        buttons["Save"] = this.validateCategory;
+        buttons["Cancel"] = closeSelf;
+      }
       
       util.dialog(dialogContent,buttons).find('p.error').show('pulsate',{times:3});
     },
@@ -420,7 +437,6 @@ util.log('HAS CHANGES',this.hasChanges());
       var name = $(this.el).find('input[name=cat]').val()
         , name = $.trim(name)
       ;
-util.log(util.catNamesFromLevel(this.level),name,_.contains(util.catNamesFromLevel(this.level),name));
   		if (_.isEmpty(name))
   		  this.prompt('Name cannot be empty');
       else if ( name != this.origName && _.contains(util.catNamesFromLevel(this.level),name) )
