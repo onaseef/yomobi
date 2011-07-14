@@ -28,7 +28,7 @@ class Company < ActiveRecord::Base
       
       default_docs = CouchDocs::default_docs self.company_type_id
       default_docs.push worder_doc, CouchDocs::view_doc
-
+puts "Default Docs: #{default_docs}"
       db.bulk_save default_docs, false
       
       # create new admin user
