@@ -374,7 +374,7 @@ class CouchDocs
           "Breakfast|1"  => { "_items" => [] },
           "Lunch|2"      => { "_items" => [] },
           "Dinner|3"     => { "_items" => [] },
-          "Dinks|4"      => { "_items" => [] }
+          "Drinks|4"      => { "_items" => [] }
         }
       },
 

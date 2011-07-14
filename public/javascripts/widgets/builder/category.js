@@ -397,18 +397,18 @@ util.log('HAS CHANGES',this.hasChanges());
       return this;
     },
     
-    prompt: function (error,origName) {
+    prompt: function (error,origName,keepAddedItems) {
       var self = this
         , level = this.model.getCurrentLevel()
         , dialogContent = this.render(error,level,origName).el
         , closeSelf = close(this)
         , buttons = {}
       ;
-      // cache for later use in validateCategory()
+      // cache for later use in validateCategory
       this.level = level;
       this.origName = origName;
       
-      if (this.mode == 'add') buttons["Done"] = closeSelf;
+      if (this.mode == 'add') buttons["Close"] = closeSelf;
       else buttons["Cancel"] = closeSelf;
       
       util.dialog(dialogContent,buttons).find('p.error').show('pulsate',{times:3});
@@ -456,6 +456,7 @@ util.log(util.catNamesFromLevel(this.level),name,_.contains(util.catNamesFromLev
     
     initialize: function () {
       this.template = util.getTemplate(this.model.get('name')+'-item-dialog');
+      this.addedItems = [];
     },
     
     enterMode: function (mode) {
@@ -466,18 +467,22 @@ util.log(util.catNamesFromLevel(this.level),name,_.contains(util.catNamesFromLev
     render: function (flash,level,item) {
       flash || (flash = {});
       item || (item = {});
+      var title = (this.mode == 'add' ? "Add New " : "Edit ") + this.model.get('itemTypeName');
       var dialogHtml = this.template(_.extend({},item, {
         flash: flash,
         _items: level._items,
-        itemTypeName: this.model.get('itemTypeName')
+        itemTypeName: this.model.get('itemTypeName'),
+        addedItems: this.addedItems,
+        addButtonText: title
       }) );
 
-      var title = (this.mode == 'add' ? "Add New " : "Edit ") + this.model.get('itemTypeName');
       $(this.el).html(dialogHtml).attr('title',title);
       return this;
     },
     
-    prompt: function (flash,item) {
+    prompt: function (flash,item,keepAddedItems) {
+      if (!keepAddedItems) this.addedItems.length = 0;
+
       var self = this
         , level = this.model.getCurrentLevel()
         , dialogContent = this.render(flash,level,item).el
@@ -485,36 +490,40 @@ util.log(util.catNamesFromLevel(this.level),name,_.contains(util.catNamesFromLev
       // cache for later use
       this.level = level;
       
-      util.dialog(dialogContent, {
-        "Save Item": function () {
-          $(this).dialog("close");
-          var activeItemData = {};
-          $(self.el).find('.item-input').each(function (idx,elem) {
-            activeItemData[$(elem).attr('name')] = $(elem).val();
-          });
-          
-          if (!self.validateItem(activeItemData)) return;
-          
-          if (self.mode == 'add') {
-            level._items.push(activeItemData);
-            self.prompt({ success:'Item added successfully' });
-            bapp.currentEditor.setChanged('something',true);
-          }
-          else if (self.mode == 'edit') {
-            var oldItem = _.detect(level._items,function (i) { return i.name == item.name });
-            _.extend(oldItem,activeItemData);
+      var saveItem = function () {
+        $(this).dialog("close");
+        var activeItemData = {};
+        $(self.el).find('.item-input').each(function (idx,elem) {
+          activeItemData[$(elem).attr('name')] = $(elem).val();
+        });
+        
+        if (!self.validateItem(activeItemData)) return;
+        
+        if (self.mode == 'add') {
+          level._items.push(activeItemData);
+          self.addedItems.push(activeItemData.name);
+          self.prompt({ success:'Item added successfully' },undefined,true);
 
-            bapp.currentEditor.setChanged('something',true);
-            self.options.onClose && self.options.onClose();
-          }
-        },
-      	"Cancel": function () {
+          bapp.currentEditor.setChanged('something',true);
+        }
+        else if (self.mode == 'edit') {
+          var oldItem = _.detect(level._items,function (i) { return i.name == item.name });
+          _.extend(oldItem,activeItemData);
+
+          bapp.currentEditor.setChanged('something',true);
+          self.options.onClose && self.options.onClose();
+        }
+      }
+
+      util.dialog(dialogContent, {
+      	"Close": function () {
           $(this).dialog("close");
           self.options.onClose && self.options.onClose();
       	}
     	})
         .find('p.error').show('pulsate',{times:3}).end()
         .find('p.success').show('pulsate',{times:1}).end()
+        .find('input[name=add]').click(saveItem).end()
       ;
     },
     
@@ -523,11 +532,11 @@ util.log(util.catNamesFromLevel(this.level),name,_.contains(util.catNamesFromLev
 
       var name = $.trim(item.name);
   		if (_.isEmpty(name)) {
-  		  this.prompt({ error:'Name cannot be empty' },item);
+  		  this.prompt({ error:'Name cannot be empty' },item,true);
   		  return false;
   		}
       else if (this.mode == 'add' && _.include(this.level._items,name)) {
-        this.prompt({ error:'Name is already in use' },item);
+        this.prompt({ error:'Name is already in use' },item,true);
         return false;
       }
       return true;

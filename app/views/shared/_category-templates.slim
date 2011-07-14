@@ -13,11 +13,19 @@ script.menu-item-dialog(type="text/template")
     br
     textarea.item-input name="desc" {{ _maybe.desc }}
     br
-    
+    input type="button" value="{{ addButtonText }}" name="add"
+
     | <% if(flash.error) { %>
     p.error Error: {{ flash.error }}
     | <% } if(flash.success) { %>
     p.success {{ flash.success }}
+    | <% } if (addedItems.length > 0) { %>
+    .other-names
+      b Added Items:
+      ul
+        | <% for(var i=0; i < addedItems.length; i++) { %>
+        |    <li> {{ addedItems[i] }} </li>
+        |  <% } %>
     | <% } %>
 
 script.services-item-dialog(type="text/template")
@@ -35,11 +43,19 @@ script.services-item-dialog(type="text/template")
     br
     textarea.item-input name="desc" {{ _maybe.desc }}
     br
+    input type="button" value="{{ addButtonText }}" name="add"
     
     | <% if(flash.error) { %>
     p.error Error: {{ flash.error }}
     | <% } if(flash.success) { %>
     p.success {{ flash.success }}
+    | <% } if (addedItems.length > 0) { %>
+    .other-names
+      b Added Items:
+      ul
+        | <% for(var i=0; i < addedItems.length; i++) { %>
+        |    <li> {{ addedItems[i] }} </li>
+        |  <% } %>
     | <% } %>
 
 script.products-item-dialog(type="text/template")
@@ -57,11 +73,19 @@ script.products-item-dialog(type="text/template")
     br
     textarea.item-input name="desc" {{ _maybe.desc }}
     br
+    input type="button" value="{{ addButtonText }}" name="add"
     
     | <% if(flash.error) { %>
     p.error Error: {{ flash.error }}
     | <% } if(flash.success) { %>
     p.success {{ flash.success }}
+    | <% } if (addedItems.length > 0) { %>
+    .other-names
+      b Added Items:
+      ul
+        | <% for(var i=0; i < addedItems.length; i++) { %>
+        |    <li> {{ addedItems[i] }} </li>
+        |  <% } %>
     | <% } %>
 
 script.property-listings-item-dialog(type="text/template")
@@ -91,11 +115,19 @@ script.property-listings-item-dialog(type="text/template")
     br
     textarea.item-input name="desc" {{ _maybe.desc }}
     br
+    input type="button" value="{{ addButtonText }}" name="add"
     
     | <% if(flash.error) { %>
     p.error Error: {{ flash.error }}
     | <% } if(flash.success) { %>
     p.success {{ flash.success }}
+    | <% } if (addedItems.length > 0) { %>
+    .other-names
+      b Added Items:
+      ul
+        | <% for(var i=0; i < addedItems.length; i++) { %>
+        |    <li> {{ addedItems[i] }} </li>
+        |  <% } %>
     | <% } %>
 
 script.locations-item-dialog(type="text/template")
@@ -117,11 +149,19 @@ script.locations-item-dialog(type="text/template")
     br
     textarea.item-input name="info" {{ _maybe.info }}
     br
+    input type="button" value="{{ addButtonText }}" name="add"
     
     | <% if(flash.error) { %>
     p.error Error: {{ flash.error }}
     | <% } if(flash.success) { %>
     p.success {{ flash.success }}
+    | <% } if (addedItems.length > 0) { %>
+    .other-names
+      b Added Items:
+      ul
+        | <% for(var i=0; i < addedItems.length; i++) { %>
+        |    <li> {{ addedItems[i] }} </li>
+        |  <% } %>
     | <% } %>
 
 / ===========================
