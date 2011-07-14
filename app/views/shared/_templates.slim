@@ -140,12 +140,14 @@
         | <% } %>
         p.error
           b (Click "Add" or press Enter to add new <% print( util.pluralize(catTypeName) ); %>)
+        | <% if (cats.length > 0) { %>
         .other-names
     	    b Current <% print( util.pluralize(catTypeName) ); %>:
     	    ul
       	    | <% for(var i=0; i < cats.length; i++) { %>
       	    |    <li> {{ cats[i] }} </li>
       	    |  <% } %>
+        | <% } %>
   
   script.edit-subcat-dialog(type="text/template")
     #dialog-confirm title="Rename"
@@ -558,7 +560,7 @@
     
     p {{ catCrumbs }}
     br
-    label Sub-Categories:
+    label Subcategories:
     br
     select name="cats" multiple="multiple"
       | <% for (var i=0; i<cats.length;i++) { %>

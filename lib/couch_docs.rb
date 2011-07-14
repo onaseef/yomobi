@@ -243,6 +243,8 @@ class CouchDocs
         :name => "category",
         :wtype => 'page_tree',
         :helpText => "Create your own mobile site map of custom pages.",
+        :catTypeName => "Subcategory",
+        :itemTypeName => "Page",
         "struct" => {
           "_items" => []
         }

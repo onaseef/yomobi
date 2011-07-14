@@ -137,7 +137,7 @@ p.success {
   font-size: 14px; }
 
 #footer {
-  border-top: 1px solid #b3b3b3;
+  border-top: 1px solid #dddddd;
   margin: 20px auto;
   padding: 10px 10px 0; }
 
@@ -151,7 +151,7 @@ p.success {
     margin-right: 8px; }
 
 .hr {
-  border-top: 1px solid #b3b3b3;
+  border-top: 1px solid #dddddd;
   padding-top: 14px; }
 
 .lfloat {
