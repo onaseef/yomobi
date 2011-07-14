@@ -34,11 +34,11 @@
         , itemTypeName = this.get('itemTypeName')
       ;
       if (showData.items.length === 0) {
-        showData.items = [{ name:'==None==' }];
+        showData.items = [{ name:'==None (Click the Add button below)==' }];
         areItemsEmpty = true;
       }
       if (showData.cats.length === 0) {
-        showData.cats = ['==None=='];
+        showData.cats = ['==None (Click the Add button below)=='];
         areCatsEmpty = true;
       }
       
@@ -263,9 +263,7 @@
     },
     
     moveItem: function (e) {
-util.log('ehh1');
       if (!util.isUIFree()) return;
-util.log('ehh2');
 
       var mod = parseInt( $(e.target).attr('data-mod'),10 )
         , $select = $(this.el).find('select[name=items]')
@@ -410,7 +408,7 @@ util.log('HAS CHANGES',this.hasChanges());
       this.level = level;
       this.origName = origName;
       
-      if (this.mode == 'add') buttons["Save"] = closeSelf;
+      if (this.mode == 'add') buttons["Done"] = closeSelf;
       else buttons["Cancel"] = closeSelf;
       
       util.dialog(dialogContent,buttons).find('p.error').show('pulsate',{times:3});
