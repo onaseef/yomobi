@@ -2,6 +2,7 @@ class CouchDocs
   require 'digest/sha1'
 
   def self.default_docs(company_type_id)
+    puts "Getting default docs for compny_type_id: #{company_type_id}"
     docs = []
     self.default_doc_map.each do |ids,doc_names|
       if ids.include?(company_type_id)
