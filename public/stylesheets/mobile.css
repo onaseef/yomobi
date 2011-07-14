@@ -181,3 +181,8 @@ body {
     background: url(/images/ui/subcat-arrow.png); }
   .page .content.category .leaf-arrow, .page .content.page_tree .leaf-arrow {
     background: url(/images/ui/leaf-arrow.png); }
+  .page .content.category .divider, .page .content.page_tree .divider {
+    height: 5px;
+    border-top: 1px solid #b3b3b3;
+    background: #dddddd;
+    margin: 0; }

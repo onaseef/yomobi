@@ -356,7 +356,9 @@
   script.category-page(type="text/template")
     | <% for (var i=0; i<cats.length;i++) {
               print( catTemplate({ catName:cats[i], cycle:util.cycle('c0','c1'), order:i }) );
-    | } for (var i=0;i<items.length;i++) {
+    | } %>
+    .divider
+    | <% for (var i=0;i<items.length;i++) {
     |         print( itemTemplate({ item:items[i], cycle:util.cycle('c0','c1') }) );
     | } %>
   
@@ -509,10 +511,11 @@
     input type="button" name="beginEditing" value="Begin Editing"
 
     | <% } else { %>
-
-    p {{ catCrumbs }}
     br
-    label {{ catLabel }}:
+    b Add or edit {{ catLabel }} in category:
+    br
+    b.blue {{ catCrumbs }}
+    br
     br
     select name="cats" multiple="multiple"
       | <% for (var i=0; i<cats.length;i++) { %>
@@ -531,9 +534,12 @@
     | <%       } %>
     br
     br
-    br
+    .divider style="margin-bottom: 15px"
     
-    label {{ itemLabel }}:
+    b Add or edit {{ itemLabel }} in category:
+    br
+    b.blue {{ catCrumbs }}
+    br
     br
     select name="items" multiple="multiple"
       | <% for (var i=0;i<items.length;i++) { %>

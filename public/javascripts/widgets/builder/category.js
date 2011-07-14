@@ -48,7 +48,7 @@
         onHomePage: mapp.pageLevel === 0,
         areItemsEmpty: areItemsEmpty,
         areCatsEmpty: areCatsEmpty,
-        catLabel: (catTypeName == 'Category') ? catTypeName : util.pluralize(catTypeName),
+        catLabel: util.pluralize(catTypeName),
         itemLabel: util.pluralize(itemTypeName)
       };
       return _.extend({},showData,extraData);
