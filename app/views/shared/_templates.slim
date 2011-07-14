@@ -264,19 +264,22 @@
         br
         label Number of People:
         br
-        = select_tag 'party_size', options_for_select(1..25,2)
+        = select_tag 'party_size', options_for_select(1..50,2)
         br
         label Time (e.g. 7:45pm): 
         br
-        = select_tag 'time[h]', options_for_select(1..12, 2)
-        = select_tag 'time[m]', options_for_select(%w{00 15 30 45},30)
-        = select_tag 'time[p]', options_for_select(%w{am pm}, 'pm')
+        select name="time"
+          | <% for (var i=0; i < times.length; i++) { %>
+          option value="{{ times[i] }}" {{ times[i] }}
+          | <% } %>
         br
         label Date: 
         br
-        = select_tag 'date[m]', options_for_select(1..12)
-        = select_tag 'date[d]', options_for_select(1..31)
-        = select_tag 'date[y]', options_for_select(2011..2012)
+        = select_tag 'date[m]', options_for_select(1..12,Date.today.month)
+        | &nbsp;&frasl;&nbsp;
+        = select_tag 'date[d]', options_for_select(1..31,Date.today.day)
+        | &nbsp;&frasl;&nbsp;
+        = select_tag 'date[y]', options_for_select(2011..2012,Date.today.year)
         br
         span.response
         input(type="submit" value="Send")
