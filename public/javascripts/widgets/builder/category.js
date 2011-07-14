@@ -30,8 +30,6 @@
       var showData = this.getShowData()
         , areItemsEmpty = false
         , areCatsEmpty = false
-        , catTypeName = this.get('catTypeName')
-        , itemTypeName = this.get('itemTypeName')
       ;
       if (showData.items.length === 0) {
         showData.items = [{ name:'--None (Click the Add button below)--' }];
@@ -48,8 +46,8 @@
         onHomePage: mapp.pageLevel === 0,
         areItemsEmpty: areItemsEmpty,
         areCatsEmpty: areCatsEmpty,
-        catLabel: util.pluralize(catTypeName),
-        itemLabel: util.pluralize(itemTypeName)
+        catLabel: util.pluralize( this.get('catTypeName') ),
+        itemLabel: util.pluralize( this.get('itemTypeName') )
       };
       return _.extend({},showData,extraData);
     },

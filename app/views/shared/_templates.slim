@@ -507,13 +507,13 @@
     label Paste your "Embed this Calendar" link here:
     textarea(name="paste" type="text") {{ _maybe.description }}
   
-  script.menu-edit-area.services-edit-area.products-edit-area.property-listings-edit-area.locations-edit-area(type="text/template")
+  script.page_tree-edit-area.menu-edit-area.services-edit-area.products-edit-area.property-listings-edit-area.locations-edit-area(type="text/template")
     | <% if (onHomePage === true) { %>
 
     p Use this widget to {{ subHelpText }}
     input type="button" name="beginEditing" value="Begin Editing"
 
-    | <% } else { %>
+    | <% } else if (!_maybe.isLeaf) { %>
     br
     b Add or edit {{ catLabel }} in category:
     br
@@ -557,60 +557,18 @@
     input.rfloat type="button" name="down_item" data-mod="1" value="Down"
     input.rfloat type="button" name="up_item" data-mod="-1" value="Up"
     | <%       } %>
-    | <% } %>
-  
-  script.page_tree-edit-area(type="text/template")
-    | <% if (onHomePage === true) { %>
 
-    p Use this widget to create and organize you web pages on your mobile site.
-    input type="button" name="beginEditing" value="Begin Editing"
-
-    | <% } else if (!_maybe.isLeaf) { %>
-    
-    p {{ catCrumbs }}
-    br
-    label Subcategories:
-    br
-    select name="cats" multiple="multiple"
-      | <% for (var i=0; i<cats.length;i++) { %>
-      option {{ cats[i] }}
-      | <% } %>
-    br
-    input type="button" name="add_cat" value="Add"
-    | <%       if (areCatsEmpty == false) { %>
-    input type="button" name="edit_cat" value="Edit"
-    input type="button" name="rename_cat" value="Rename"
-    input type="button" name="rem_cat" value="Delete"
-    | <%       } if (cats.length >= 2) { %>
-    input.rfloat type="button" name="down_cat" data-mod="1" value="Down"
-    input.rfloat type="button" name="up_cat" data-mod="-1" value="Up"
-    | <%       } %>
-
-    br
-    br
-    br
-    
-    label Pages
-    br
-    select name="items" multiple="multiple"
-      | <% for (var i=0;i<items.length;i++) { %>
-      option {{ items[i].name }}
-      | <% } %>
-    br
-    input type="button" name="add_item" value="Add"
-    | <%       if (areItemsEmpty == false) { %>
-    input type="button" name="edit_item" value="Edit"
-    input type="button" name="rename_item" value="Rename"
-    input type="button" name="rem_item" value="Delete"
-    | <%       } if (items.length >= 2) { %>
-    input.rfloat type="button" name="down_item" data-mod="1" value="Down"
-    input.rfloat type="button" name="up_item" data-mod="-1" value="Up"
-    | <%       } %>
-    
     | <% } else { %>
-    p {{ catCrumbs }}
+    br
+    b Editing page:
+    br
+    b.blue {{ catCrumbs }}
+    br
+    br
     #jeditor-wrapper
       textarea#jeditor {{ content }}
+    br
+    input type="button" name="back" value="< Back"
     | <% } %>
 
 #wname-test

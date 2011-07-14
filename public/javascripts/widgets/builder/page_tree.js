@@ -45,7 +45,9 @@
         catCrumbs: util.catStackCrumbs(this.get('prettyName'),this.catStack),
         onHomePage: mapp.pageLevel === 0,
         areItemsEmpty: areItemsEmpty,
-        areCatsEmpty: areCatsEmpty
+        areCatsEmpty: areCatsEmpty,
+        catLabel: util.pluralize( this.get('catTypeName') ),
+        itemLabel: util.pluralize( this.get('itemTypeName') )
       };
       return _.extend({},showData,extraData);
     },
@@ -68,6 +70,7 @@
 
     events: {
       'click input[name=beginEditing]':     'enterEditMode',
+      'click input[name=back]':             'transitionBack',
 
       'click input[name=add_cat]':          'addCat',
       'click input[name=edit_cat]':         'editCat',
