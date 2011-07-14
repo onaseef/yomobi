@@ -409,7 +409,10 @@ util.log('HAS CHANGES',this.hasChanges());
       this.origName = origName;
       
       if (this.mode == 'add') buttons["Close"] = closeSelf;
-      else buttons["Cancel"] = closeSelf;
+      else {
+        buttons["Save"] = this.validateCategory;
+        buttons["Cancel"] = closeSelf;
+      }
       
       util.dialog(dialogContent,buttons).find('p.error').show('pulsate',{times:3});
     },
