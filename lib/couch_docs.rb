@@ -2,7 +2,6 @@ class CouchDocs
   require 'digest/sha1'
 
   def self.default_docs(company_type_id)
-    puts "Getting default docs for compny_type_id: #{company_type_id}"
     docs = []
     self.default_doc_map.each do |ids,doc_names|
       if ids.include?(company_type_id)
@@ -115,7 +114,7 @@ class CouchDocs
         business-hours keep-me-informed full-website
       },
       [22] => %w{
-        listings leave-a-message keep-me-informed
+        property-listings leave-a-message keep-me-informed
       }
     }
   end
@@ -147,7 +146,7 @@ class CouchDocs
         leave-a-message facebook news
       },
       [22] => %w{
-        full-website listings
+        full-website property-listings
         photo-bucket keep-me-informed leave-a-message
         facebook business-hours event-calendar news
       }

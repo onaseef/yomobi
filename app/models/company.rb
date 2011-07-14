@@ -28,8 +28,10 @@ class Company < ActiveRecord::Base
       
       default_docs = CouchDocs::default_docs self.company_type_id
       default_docs.push worder_doc, CouchDocs::view_doc
-puts "Default Docs: #{default_docs}"
-      db.bulk_save default_docs, false
+
+      # compact to remove deadly nil-related errors. Better to discover later
+      # than to tell user "we just died, sorry about that"
+      db.bulk_save default_docs.compact, false
       
       # create new admin user
       user_doc = CouchDocs::admin_user_doc self.db_name, self.db_pass

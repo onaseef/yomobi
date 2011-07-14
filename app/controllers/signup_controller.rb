@@ -42,7 +42,7 @@ class SignupController < ApplicationController
         :company_type_id => current_user.company_type_id
       if result[:id].nil?
         @errors['site_url'] = 'taken?'
-      elsif
+      else
         current_user.company.save_doc CouchDocs.about_us_doc(data['desc'])
       end
     end
