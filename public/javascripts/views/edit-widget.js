@@ -152,12 +152,15 @@
     
     startEditing: function (resetChanges) {
       util.log('Editing widget:',this.widget.get('name'),this.widget.isNew());
-      var widget = this.widget;
+      var widget = this.widget
+        , helpText = this.getHelpText(widget.get('name'))
+        , editAreaData = _.extend(widget.getEditAreaData(),{ helpText:helpText })
+      ;
       this.validForShowingStatus = widget.validForShowing();
 
       if (resetChanges) this.changes = {};
 
-      this.el.html( this.template(widget.getEditAreaData()) );
+      this.el.html( this.template(editAreaData) );
       this.delegateEvents(this.extendedEvents);
 
       widget.homeView.highlight(true);
@@ -200,6 +203,13 @@
 
     hasChanges: function () {
       return _.keys(this.changes).length > 0;
+    },
+
+    getHelpText: function (wname) {
+util.log('NAME SEARCH',wname);
+      return _.select(window.bdata, function (w) {
+        return w.name == wname;
+      })[0].helpText;
     }
     
   });
