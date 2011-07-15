@@ -516,7 +516,7 @@ var util = {
         paste: function (a,b,c) { util.log('PASTE',a,b,c); return false; }
       },
       controls: {
-        createLink: { visible:false },
+        // createLink: { visible:false },
         insertImage: { visible:false },
         insertTable: { visible:false },
         subscript: { visible:false },
