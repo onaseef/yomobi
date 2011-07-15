@@ -51,15 +51,17 @@ body {
 .tab-bar {
   background: #3b5998;
   color: white;
-  padding: 0 4px 4px 0; }
+  padding: 0 0 4px 0; }
   .tab-bar table {
-    width: 100%; }
+    width: 100%;
+    border-bottom: 2px solid #627aad;
+    margin-bottom: 4px; }
   .tab-bar a, .tab-bar a:visited {
     color: white;
     text-decoration: none; }
   .tab-bar td {
     width: 79.25px;
-    padding: 6px 0;
+    padding: 4px 4px 2px 0px;
     text-align: center;
     font-weight: bold;
     font-size: 12px; }
@@ -71,7 +73,6 @@ body {
 
 .ad-bar {
   padding: 0 0;
-  border-top: 2px solid #627aad;
   border-bottom: 2px solid #627aad;
   background: #3b5998;
   text-align: center; }
