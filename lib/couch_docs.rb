@@ -295,7 +295,7 @@ class CouchDocs
       {
         :name => "keep-me-informed",
         :wtype => 'informed',
-        :helpText => "This widget allows your customers to opt-in to receive email and sms notifications from you.",
+        :helpText => "Allow your mobile site visitors to request to receive email and and text notifications from you.",
         :singleton => true
       },
 
