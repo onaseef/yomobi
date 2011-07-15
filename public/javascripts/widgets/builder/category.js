@@ -6,6 +6,8 @@
   var tempCatStack = [];
   var $isSelected = function (idx,elem) { return $(elem).is(':selected'); };
 
+  var deleteConfirmText = "Are you sure you want to delete? (Data will be lost)";
+
   var super_getEditAreaData = window.Widget.prototype.getEditAreaData
     , super_init = window.widgetClasses.category.prototype.init
   ;
@@ -214,32 +216,47 @@
       if (!util.isUIFree()) return;
 
       var level = this.widget.getCurrentLevel()
-        , deletedIdx = -1
+        , select = this.el.find('select[name=cats]')
+        , selectedItems = select.find('option:selected')
+        , hasSomeSelected = selectedItems.length > 0
+        , lowestDeletedIdx = 99999
       ;
-      this.el.find('select[name=cats] option:selected').map(function (idx,elem) {
+      if (hasSomeSelected && !confirm(deleteConfirmText)) return;
+      else if (!hasSomeSelected) return alert('Please select an item to delete.');
+
+      selectedItems.map(function (idx,elem) {
         var catName = elem.innerHTML
           , cat = catName + '|' + $(elem).index()
         ;
-        if (level[cat]) { delete level[cat]; deletedIdx = $(elem).index(); }
+        if (level[cat]) {
+          delete level[cat];
+          lowestDeletedIdx = Math.min($(elem).index(), lowestDeletedIdx);
+        }
       });
 
-      if (deletedIdx >= 0) {
-        // shift orders down to close gap
-        _.each(level, function (val,cat) {
+      // reassign selected indicies
+      var i = 0;
+      _.each(level, function (val,cat) {
 
-          if (cat == '_items') return;
-          var orderIdx = util.catOrder(cat)
-            , catName = util.catName(cat)
-          ;
-          if (orderIdx > deletedIdx) {
-            level[catName + '|' + (orderIdx-1)] = val; // shift down
-            delete level[cat];
-          }
-        });
-        util.log('LEVEL',level);
-        this.setChanged('something',true);
-      }
-      else alert('Please select an item to delete.');
+        if (cat == '_items') return;
+        var orderIdx = util.catOrder(cat)
+          , catName = util.catName(cat)
+        ;
+        if (i != orderIdx) {
+          level[catName + '|' + i] = val; // shift down
+          delete level[cat];
+        }
+        i += 1;
+      });
+      util.log('LEVEL',level);
+      this.setChanged('something',true);
+
+      // select the lowest deleted index
+      select
+        .find('option:selected').prop('selected',false).end()
+        .find('option:eq('+lowestDeletedIdx+')').prop('selected',true).end()
+      ;
+
       this.refreshViews();
     },
     
@@ -295,19 +312,29 @@
     
     remItem: function (e) {
       var level = this.widget.getCurrentLevel()
-        , didDelete = false
+        , select = this.el.find('select[name=items]')
+        , selectedItems = select.find('option:selected')
+        , hasSomeSelected = selectedItems.length > 0
+        , lowestDeletedIdx = 99999
       ;
-      this.el.find('select[name=items] option:selected').map(function (idx,elem) {
+      if (hasSomeSelected && !confirm(deleteConfirmText)) return;
+      else if (!hasSomeSelected) return alert('Please select an item to delete.');
+
+      selectedItems.map(function (idx,elem) {
         var itemName = elem.innerHTML
           , itemIdx = _.indexOf(_.pluck(level._items,'name'),itemName)
         ;
         if (itemIdx != -1) {
           level._items.splice(itemIdx,1);
           bapp.currentEditor.setChanged('something',true);
-          didDelete = true;
+          lowestDeletedIdx = Math.min($(elem).index(), lowestDeletedIdx);
         }
       });
-      if (!didDelete) alert('Please select an item to delete.');
+      // reassign selected indicies
+      select
+        .find('option:selected').prop('selected',false).end()
+        .find('option:eq('+lowestDeletedIdx+')').prop('selected',true).end()
+      ;
       this.refreshViews();
     },
     
@@ -319,12 +346,14 @@
     },
 
     selectCatsAndItems: function (catIdxs,itemIdxs) {
-      this.el.find('select[name=cats] option').each(function (idx,elem) {
-        if (catIdxs[idx] === true) elem.selected = 'selected';
-      });
-      this.el.find('select[name=items] option').each(function (idx,elem) {
-        if (itemIdxs[idx] === true) elem.selected = 'selected';
-      });
+      if (catIdxs)
+        this.el.find('select[name=cats] option').each(function (idx,elem) {
+          if (catIdxs[idx] === true) elem.selected = 'selected';
+        });
+      if (itemIdxs)
+        this.el.find('select[name=items] option').each(function (idx,elem) {
+          if (itemIdxs[idx] === true) elem.selected = 'selected';
+        });
     }
     
   });

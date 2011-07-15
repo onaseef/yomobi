@@ -369,7 +369,9 @@
     | <% if (!_maybe.isLeaf) {
     |       for (var i=0; i<cats.length;i++) {
     |         print( catTemplate({ catName:cats[i], cycle:util.cycle('c0','c1'), order:i }) );
-    |       } for (var i=0;i<items.length;i++) { %>
+    |       } %>
+    .divider
+    | <%    for (var i=0;i<items.length;i++) { %>
     .leaf-name.item class="<% print(util.cycle('c0','c1')); %>"
       .leaf-arrow
       | {{ items[i].name }}
