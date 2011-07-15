@@ -206,4 +206,6 @@ script.locations-item
     div
       | Phone:
       a href="tel:{{ item.phone }}" {{ item.phone }}
-    div Address: {{ item.address }}
+    div
+      ' Address:
+      a href="http://maps.google.com/maps?q={{ item.address }}" target="_blank" {{ item.address }}
