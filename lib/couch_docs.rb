@@ -399,6 +399,6 @@ class CouchDocs
         :helpText => "A page describing what your business is about.",
         :singleton => true
       }
-    ]
+    ].sort! {|a,b| b[:name] <=> a[:name]}
   end
 end
