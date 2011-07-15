@@ -288,7 +288,7 @@
   
   script.informed-page(type="text/template")
     .input-wrap
-      p Stay informed with our latest specials, discounts, and announcements. We respect your privacy.
+      p Stay informed with our latest specials, discounts, and announcements. We don't spam and never share your information.
       = form_tag "/#{@company.db_name}/informed/submit", :method => 'post' do
         | <% if (_maybe.optForEmails) { %>
         label Email Address:
