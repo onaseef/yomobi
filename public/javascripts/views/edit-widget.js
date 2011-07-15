@@ -11,8 +11,9 @@
       'click .remove-link':         'remove',
       'click .cancel-btn':          'cancel',
       'click .widget-name':         'editName',
-      'keyup input[type=text]':     'checkForChanges',
-      'keyup textarea':             'checkForChanges'
+
+      'keyup input[type=text][name!=wname]': 'checkForChanges',
+      'keyup textarea':                      'checkForChanges'
     },
     
     initialize: function (widget) {
