@@ -8,6 +8,7 @@ class Company < ActiveRecord::Base
     :styles => {
       :mobile => "100x75>"
     },
+    :default_url => '/images/default-logo_:style.png',
     :storage => :s3,
     :bucket => 'yomobi',
     :path => 'logos/:company_:style',

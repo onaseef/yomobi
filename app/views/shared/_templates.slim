@@ -10,7 +10,7 @@
     table
       tr
         td
-          img.logo{src="#{s3_base_path}/logos/{{ name }}_mobile?_=#{Time.now}" }
+          img.logo src=@company.logo.url(:mobile)
         td.name {{ prettyName }}
   
   script.edit-widget-idle(type="text/template")
@@ -83,7 +83,7 @@
         br
         label Current Logo:
         br
-        img.logo{src="#{s3_base_path}/logos/<% print(g.db_name); %>_mobile?_=#{Time.now}" }
+        img.logo{src=@company.logo.url(:mobile) }
         br
         label Upload a new one:
         input type="file" name="logo"
