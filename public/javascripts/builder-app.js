@@ -422,11 +422,16 @@
     },
     drop: function (e,ui) {
       
-      if (bapp.currentEditor && bapp.currentEditor.hasChanges() &&
-          !confirm(unsavedChangesText))
-      {
-        $('#builder .drophover-overlay').hide();
-        return false;
+      var editor = bapp.currentEditor;
+      if (editor && editor.hasChanges()) {
+        if (!confirm(unsavedChangesText)) {
+          $('#builder .drophover-overlay').hide();
+          return false;
+        }
+        else {
+          editor.onDiscardByNavigation();
+          editor.stopEditing();
+        }
       }
 
       if (mapp.pageLevel != 0) {
