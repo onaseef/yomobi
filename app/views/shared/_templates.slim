@@ -116,7 +116,7 @@
     #dialog-confirm title="Please Rename your Widget"
   	  p
   	    span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"
-  	    | Please rename your <b>{{ wtype }}</b> widget:
+  	    | Please rename your widget:
         input type="text" value="{{ defaultName }}" name="wname"
         | <% if(_maybe.error) { %>
         p.error Error: {{ _maybe.error }}
