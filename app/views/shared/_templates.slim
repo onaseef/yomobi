@@ -20,7 +20,7 @@
     .header
       .icon{ style="background-image: url(/images/widgets/{{ iconName }}.png)" }
       .widget-name-edit
-        input type="text" name="wname" value="{{ prettyName }}"
+        input type="text" name="wname" value="{{ prettyName }}" maxlength="22"
       .widget-name
         | {{ prettyName }}
         span.change-label  Click&nbsp;to&nbsp;Change&nbsp;Name
@@ -74,7 +74,7 @@
     div class="edit-area"
       = form_tag '/builder/settings', :multipart => true, do
         label Company Name:
-        input type="text" name="company_name" value=@company.name
+        input type="text" name="company_name" value=@company.name maxlength="40"
         br
         br
         label Company Type:
