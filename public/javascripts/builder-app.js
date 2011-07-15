@@ -222,12 +222,15 @@
       var isDifferentWidget = editor && editor.widget != widget;
 
       if (editor && editor.widget) {
+        editor.widget.homeView.highlight(false);
         if (editor.hasChanges() && isDifferentWidget) {
           if (confirm(unsavedChangesText)) {
-            editor.widget.homeView.highlight(false);
             editor.onDiscardByNavigation();
           }
-          else return false;
+          else {
+            editor.widget.homeView.highlight(true);
+            return false;
+          }
         }
       }
       this.currentEditor = widget.getEditor();
