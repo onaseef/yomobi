@@ -23,7 +23,7 @@
         input type="text" name="wname" value="{{ prettyName }}" maxlength="22"
       .widget-name
         | {{ prettyName }}
-        span.change-label  Click&nbsp;to&nbsp;Change&nbsp;Name
+        span.change-label  Click&nbsp;to&nbsp;Edit
       p.help-text
         em {{ helpText }}
     div class="edit-area {{ wtype }}" {{ editAreaContent }}
@@ -492,11 +492,11 @@
     label Name*:
     input(name="couponName" type="text" value="{{ _maybe.couponName }}")
     br
-    label Description*:
-    textarea(name="description" type="text") {{ _maybe.description }}
-    br
     label Expiration Date:
     input(name="expire" type="text" value="{{ _maybe.expire }}")
+    br
+    label Description*:
+    textarea(name="description" type="text") {{ _maybe.description }}
   
   script.calendar-edit-area(type="text/template")
     label Current calendar link:

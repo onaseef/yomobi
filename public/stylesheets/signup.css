@@ -154,7 +154,8 @@
   #account-setup-box input[type=text] {
     margin-bottom: 10px; }
   #account-setup-box textarea {
-    height: 10em; }
+    height: 7em;
+    line-height: 110%; }
   #account-setup-box .site-url span {
     font-size: 1.5em; }
   #account-setup-box .site-url input {
