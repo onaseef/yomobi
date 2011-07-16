@@ -245,6 +245,7 @@
       var self = this;
       
       this.validateWidgetName(name,wtype,singleton, {
+        isNewWidget: true,
         onValid: function (validName) {
           var newWidget = self.sidebar.cloneWidget(wtype,name);
       
@@ -285,6 +286,21 @@
       ;
       
       if (isValid === true) return options.onValid(name);
+
+      if (options.isNewWidget) {
+        var numberMatch = name.match(/[^0-9]([0-9]+)$/);
+
+        if (numberMatch) {
+          var matchIdx = name.indexOf(numberMatch[1])
+            , number = parseInt( name.substring(matchIdx) )
+            , newName = name.substring(0,matchIdx) + (number + 1)
+          ;
+        }
+        else { var newName = name + '2'; }
+
+        this.validateWidgetName(newName,wtype,singleton,options);
+        return false;
+      }
       
       // find ALL widgets of this wtype
       var isSameWtype = function (w) { return w.get('wtype') == wtype }
