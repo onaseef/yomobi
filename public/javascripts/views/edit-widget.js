@@ -1,5 +1,5 @@
 (function ($) {
-  
+
   window.EditWidgetView = Backbone.View.extend({
     
     el: $('#builder .widget-editor'),
@@ -153,7 +153,7 @@
     startEditing: function (resetChanges) {
       util.log('Editing widget:',this.widget.get('name'),this.widget.isNew());
       var widget = this.widget
-        , helpText = this.getHelpText(widget.get('name'))
+        , helpText = this.getHelpText(widget)
         , editAreaData = _.extend(widget.getEditAreaData(),{ helpText:helpText })
       ;
       this.validForShowingStatus = widget.validForShowing();
@@ -205,10 +205,10 @@
       return _.keys(this.changes).length > 0;
     },
 
-    getHelpText: function (wname) {
-util.log('NAME SEARCH',wname);
+    getHelpText: function (widget) {
       return _.select(window.bdata, function (w) {
-        return w.name == wname;
+        if (w.singleton == true) return w.name == widget.get('name');
+        return w.wtype == widget.get('wtype');
       })[0].helpText;
     }
     
