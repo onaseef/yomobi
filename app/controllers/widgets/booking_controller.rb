@@ -2,8 +2,8 @@ class Widgets::BookingController < ApplicationController
 
   def mobile_submit
     unless params[:name].present? && params[:phone].present? &&
-           params[:time].present? && params[:time].count == 3 &&
-           params[:date].present? && params[:date].count == 3
+           params[:time].present? && params[:time].length == 8 &&
+           params[:date][:m].present? && params[:date][:d] && params[:data][:y]
       return error('bad message')
     end
 

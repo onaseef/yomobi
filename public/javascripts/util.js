@@ -217,9 +217,9 @@ var util = {
       , minute = parseInt(timeStr.split(':')[1],10)
       , convertedHour = hour % 12
       , convertedHour = (convertedHour == 0) ? 12 : convertedHour
-      , period = (hour < 12) ? 'am' : 'pm'
+      , period = (hour < 12) ? ' am' : ' pm'
       , minuteStr = (minute < 10 ? '0' : '') + minute
-      , hourStr   = (convertedHour < 10 ? '0' : '') + convertedHour
+      , hourStr   = (convertedHour < 10 ? '&nbsp;' : '') + convertedHour
     ;
     return hourStr + ':' + minuteStr + period;
   },

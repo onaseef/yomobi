@@ -510,13 +510,13 @@
     render: function (flash,level,item) {
       flash || (flash = {});
       item || (item = {});
-      var title = (this.mode == 'add') ? "Add New " + this.model.get('itemTypeName') : undefined;
+      var title = (this.mode == 'add' ? "Add New " : "Edit ") + this.model.get('itemTypeName');
       var dialogHtml = this.template(_.extend({},item, {
         flash: flash,
         _items: level._items,
         itemTypeName: this.model.get('itemTypeName'),
         addedItems: this.addedItems,
-        addButtonText: title
+        mode: this.mode
       }) );
 
       $(this.el).html(dialogHtml).attr('title',title);

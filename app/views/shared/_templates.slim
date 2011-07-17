@@ -251,7 +251,7 @@
   
   script.booking-page(type="text/template")
     .input-wrap
-      p Request a Booking:
+      p Send a Booking Request:
       = form_tag "/#{@company.db_name}/booking/submit", :method => 'post' do
         label Name:
         br
@@ -265,12 +265,15 @@
         br
         = select_tag 'party_size', options_for_select(1..50,2)
         br
-        label Time (e.g. 7:45pm): 
+        label Time:
         br
         select name="time"
-          | <% for (var i=0; i < times.length; i++) { %>
+          | <% for (var i=0; i < times.length; i++) {
+          |       if (i == 48) { %>
+          option selected="selected" value="{{ times[i] }}" {{ times[i] }}
+          | <%    } else { %>
           option value="{{ times[i] }}" {{ times[i] }}
-          | <% } %>
+          | <% } } %>
         br
         label Date: 
         br

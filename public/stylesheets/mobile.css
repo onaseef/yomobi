@@ -24,6 +24,8 @@ body {
 #canvas .page .content {
   padding: 20px 10px;
   font-size: 14px; }
+  #canvas .page .content label {
+    margin-bottom: 2px; }
   #canvas .page .content input[type=text] {
     width: 70%;
     margin: 0px 0px 10px 0px;
@@ -36,7 +38,8 @@ body {
     margin: 10px 0;
     font-size: 1em; }
   #canvas .page .content select {
-    font-size: 1em; }
+    font-size: 1em;
+    margin: 0 0 10px 0; }
   #canvas .page .content .divider {
     border-top: 1px solid #dddddd;
     margin: 8px 0; }
@@ -143,14 +146,16 @@ body {
   padding: 12px 0 0 0;
   background: #c4cde0;
   border-top: solid 1px #1d4088;
-  border-bottom: solid 1px #1d4088; }
+  border-bottom: solid 1px #1d4088;
+  color: #3b59a0; }
+  .mobile-footer a, .mobile-footer a:visited {
+    color: #3b59a0; }
   .mobile-footer p {
     margin: 0 0 10px 0;
     padding-left: 5px; }
   .mobile-footer .powered-by {
     font-size: 11px;
-    text-align: center;
-    color: white; }
+    text-align: center; }
 
 #templates {
   display: none; }
@@ -209,7 +214,7 @@ body {
   padding: 0 !important; }
   .page .content.category .item, .page .content.page_tree .item {
     padding: 8px 12px;
-    font-size: 18px; }
+    font-size: 16px; }
     .page .content.category .item img, .page .content.page_tree .item img {
       max-height: 290px;
       max-width: 290px; }
