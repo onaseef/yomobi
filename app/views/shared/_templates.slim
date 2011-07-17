@@ -41,6 +41,7 @@
       | <% } if (!_maybe.hideRemoveLink) { %>
       a.remove-link(href="#") Remove Widget
       | <% } %>
+      .clearfix style="padding-bottom: 10px"
   
   script.edit-tab-bar(type="text/template")
     .header.edit-tab-bar
@@ -361,7 +362,7 @@
     | } %>
     .divider
     | <% for (var i=0;i<items.length;i++) {
-    |         print( itemTemplate({ item:items[i], cycle:util.cycle('c0','c1') }) );
+    |         print( itemTemplate({ item:items[i], cycle:util.cycle('c0','c1'), order:i }) );
     | } %>
   
   script.page_tree-page(type="text/template")
@@ -371,12 +372,12 @@
     |       } %>
     .divider
     | <%    for (var i=0;i<items.length;i++) { %>
-    .leaf-name.item class="<% print(util.cycle('c0','c1')); %>"
+    .leaf-name.item class="<% print(util.cycle('c0','c1')); %> <%if(i==0) print('first');%>"
       .leaf-arrow
       | {{ items[i].name }}
     | <%    } 
     | } else { %>
-    h1 {{ title }}
+    h3 {{ title }}
     .leaf-content {{ content }}
     | <% } %>
 

@@ -79,6 +79,8 @@ body {
   .tab-bar table {
     width: 100%;
     margin-bottom: 0px; }
+    .tab-bar table tr {
+      height: 36px; }
   .tab-bar a, .tab-bar a:visited {
     text-decoration: none; }
   .tab-bar td, .tab-bar td a {
@@ -238,6 +240,8 @@ body {
     border-top: 1px solid #b3b3b3;
     background: #dddddd;
     margin: 0; }
+  .page .content.category .leaf-content, .page .content.category h3, .page .content.page_tree .leaf-content, .page .content.page_tree h3 {
+    padding: 0 10px; }
 
 .page .content.category .name {
   float: left;

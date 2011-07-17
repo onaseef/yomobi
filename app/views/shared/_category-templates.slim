@@ -183,28 +183,28 @@ script.locations-item-dialog(type="text/template")
 / = Specific Category Items =
 / ===========================
 script.menu-item
-  .item class="{{ cycle }}"
+  .item class="{{ cycle }} <%if(order==0){print('first');}%>"
     .name {{ item.name }}
     .price {{ item.price }}
     .clearfix
     .desc {{ item.desc }}
 
 script.services-item
-  .item class="{{ cycle }}"
+  .item class="{{ cycle }} <%if(order==0){print('first');}%>"
     .name {{ item.name }}
     .price {{ item.price }}
     .clearfix
     .desc {{ item.desc }}
 
 script.products-item
-  .item class="{{ cycle }}"
+  .item class="{{ cycle }} <%if(order==0){print('first');}%>"
     .name {{ item.name }}
     .price {{ item.price }}
     .clearfix
     .desc {{ item.desc }}
 
 script.property-listings-item
-  .item class="{{ cycle }}"
+  .item class="{{ cycle }} <%if(order==0){print('first');}%>"
     .name {{ item.name }}
     .clearfix
     a href="http://maps.google.com/maps?q={{ item.address }}" target="_blank" {{ item.address }}
@@ -219,7 +219,7 @@ script.property-listings-item
       | {{ item.desc }}
 
 script.locations-item
-  .item class="{{ cycle }}"
+  .item class="{{ cycle }} <%if(order==0){print('first');}%>"
     div {{ item.name }}
     div
       | Phone:
