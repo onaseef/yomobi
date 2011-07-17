@@ -76,10 +76,7 @@
   padding: 10px 20px; }
   #signin-box h2 {
     border-bottom: 1px solid #cccccc;
-    padding-bottom: 4px;
-    margin: 5px 0 5px 0; }
-  #signin-box h3 {
-    margin: 5px 0 5px 0; }
+    padding-bottom: 4px; }
   #signin-box .login-error {
     margin: 25px 0 15px;
     padding: 10px;
@@ -154,8 +151,7 @@
   #account-setup-box input[type=text] {
     margin-bottom: 10px; }
   #account-setup-box textarea {
-    height: 7em;
-    line-height: 110%; }
+    height: 10em; }
   #account-setup-box .site-url span {
     font-size: 1.5em; }
   #account-setup-box .site-url input {

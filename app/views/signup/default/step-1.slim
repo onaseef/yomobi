@@ -6,8 +6,8 @@
     
     h3 Site Name:
     - if @errors['title']
-      p.error Invalid Title. Title must be at least 2 characters and at most 40 characters.
-    input type="text" name="step_data[title]" value="#{@data['title'] }" maxlength="40"
+      p.error Invalid Title. Only lowercase characters (a-z), digits (0-9), and any of the characters _, $, (, ), +, and - are allowed.
+    input type="text" name="step_data[title]" value="#{@data['title'] }"
     
     hr
     h3 Choose a Mobile Site URL:

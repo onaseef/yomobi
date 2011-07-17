@@ -9,7 +9,6 @@
     list-style: none
     padding-left: 0
     margin: 54px 0 10px 0
-    font-size: 12px
   .spacer
     border-top: 1px solid #ddd
     margin: 5px 0
@@ -21,7 +20,7 @@
       float: left
       width: 16px
       height: 16px
-      margin: -1px 4px 0 0
+      margin-right: 4px
       background: url(/images/test-icons.png)
     &:hover
       background-color: $highlight-color
@@ -43,15 +42,14 @@
     cursor: pointer
     .title
       width: auto
-      padding: 2.5px 0 0 4px
+      padding: 2px 0 0 4px
       text-align: left
       height: auto
-      font-size: 12px
     .icon
       margin: 0
       float: left
-      width: 18px
-      height: 18px
+      width: 16px
+      height: 16px
   .home-icon:hover
     background: #ffff00
   .home-icon.singletonInUse
@@ -92,8 +90,8 @@
     width: 32px
     height: 32px
     top: -94px
-    left: 40px
-    background: url(/images/ui/invalid-for-showing.png) no-repeat
+    left: 37px
+    background: url(/images/ui/invalid-for-showing.png)
 
 #builder-container
   background: $light-bg-color
@@ -107,7 +105,7 @@
       font-weight: bold
       color: #000066
     & > .title-subtext
-      height: 30px
+      height: 44px
       padding: 0 10px 0 0
   .left
     width: $content-width - $widget-editor-width
@@ -182,7 +180,7 @@
     margin: 4px 6px 0 0
   .widget-name
     padding: 0 0 0 64px
-    font-size: 1.75em
+    font-size: 2em
     word-wrap: break-word
     .change-label
       display: none
@@ -201,9 +199,6 @@
     input[type=text]
       font-size: 1.5em
       width: 250px
-
-#builder .panel
-  padding: 0 0 10px 10px
 
 #emulator-wrapper
   float: left
@@ -268,10 +263,6 @@
   overflow-x: hidden
   height: 480px
   width: 335px
-
-.divider
-  border-top: 1px solid $light-border
-  margin: 10px 0
 
 /////////////////////////////
 // Widget-specific styling //

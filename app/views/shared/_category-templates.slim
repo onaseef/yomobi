@@ -13,14 +13,13 @@ script.menu-item-dialog(type="text/template")
     br
     textarea.item-input name="desc" {{ _maybe.desc }}
     br
-    input.lfloat type="button" value="{{ addButtonText }}" name="add" style="margin:10px 15px 0 2px"
+    input type="button" value="{{ addButtonText }}" name="add"
 
     | <% if(flash.error) { %>
     p.error Error: {{ flash.error }}
     | <% } if(flash.success) { %>
     p.success {{ flash.success }}
     | <% } if (addedItems.length > 0) { %>
-    .clearfix.divider style="margin-top: 15px"
     .other-names
       b Added Items:
       ul
@@ -44,14 +43,13 @@ script.services-item-dialog(type="text/template")
     br
     textarea.item-input name="desc" {{ _maybe.desc }}
     br
-    input.lfloat type="button" value="{{ addButtonText }}" name="add" style="margin:10px 15px 0 2px"
+    input type="button" value="{{ addButtonText }}" name="add"
     
     | <% if(flash.error) { %>
     p.error Error: {{ flash.error }}
     | <% } if(flash.success) { %>
     p.success {{ flash.success }}
     | <% } if (addedItems.length > 0) { %>
-    .clearfix.divider style="margin-top: 15px"
     .other-names
       b Added Items:
       ul
@@ -75,14 +73,13 @@ script.products-item-dialog(type="text/template")
     br
     textarea.item-input name="desc" {{ _maybe.desc }}
     br
-    input.lfloat type="button" value="{{ addButtonText }}" name="add" style="margin:10px 15px 0 2px"
+    input type="button" value="{{ addButtonText }}" name="add"
     
     | <% if(flash.error) { %>
     p.error Error: {{ flash.error }}
     | <% } if(flash.success) { %>
     p.success {{ flash.success }}
     | <% } if (addedItems.length > 0) { %>
-    .clearfix.divider style="margin-top: 15px"
     .other-names
       b Added Items:
       ul
@@ -118,14 +115,13 @@ script.property-listings-item-dialog(type="text/template")
     br
     textarea.item-input name="desc" {{ _maybe.desc }}
     br
-    input.lfloat type="button" value="{{ addButtonText }}" name="add" style="margin:10px 15px 0 2px"
+    input type="button" value="{{ addButtonText }}" name="add"
     
     | <% if(flash.error) { %>
     p.error Error: {{ flash.error }}
     | <% } if(flash.success) { %>
     p.success {{ flash.success }}
     | <% } if (addedItems.length > 0) { %>
-    .clearfix.divider style="margin-top: 15px"
     .other-names
       b Added Items:
       ul
@@ -153,14 +149,13 @@ script.locations-item-dialog(type="text/template")
     br
     textarea.item-input name="info" {{ _maybe.info }}
     br
-    input.lfloat type="button" value="{{ addButtonText }}" name="add" style="margin:10px 15px 0 2px"
+    input type="button" value="{{ addButtonText }}" name="add"
     
     | <% if(flash.error) { %>
     p.error Error: {{ flash.error }}
     | <% } if(flash.success) { %>
     p.success {{ flash.success }}
     | <% } if (addedItems.length > 0) { %>
-    .clearfix.divider style="margin-top: 15px"
     .other-names
       b Added Items:
       ul
@@ -206,6 +201,4 @@ script.locations-item
     div
       | Phone:
       a href="tel:{{ item.phone }}" {{ item.phone }}
-    div
-      ' Address:
-      a href="http://maps.google.com/maps?q={{ item.address }}" target="_blank" {{ item.address }}
+    div Address: {{ item.address }}

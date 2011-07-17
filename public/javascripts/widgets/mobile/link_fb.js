@@ -23,7 +23,7 @@
     },
     
     onHomeViewClick: function () {
-      window.open( this.getUrl() );
+      window.location = this.getUrl();
       return false;
     }
     

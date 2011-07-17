@@ -130,12 +130,11 @@ p.success {
   border: 1px dashed black; }
 
 #simpleTooltip {
-  padding: 4px 0px 4px 4px;
-  margin: 0;
+  padding: 7px;
   border: 1px solid #dd3c10;
-  background: #f8e6e0;
-  max-width: 175px;
-  font-size: 11px; }
+  background: #ffebe8;
+  max-width: 270px;
+  font-size: 14px; }
 
 #footer {
   border-top: 1px solid #b3b3b3;
@@ -154,9 +153,6 @@ p.success {
 .hr {
   border-top: 1px solid #b3b3b3;
   padding-top: 14px; }
-
-.blue {
-  color: #1030d0; }
 
 .lfloat {
   float: left; }

@@ -4,14 +4,7 @@
 (function ($) {
   
   window.widgetClasses.booking = Widget.extend({
-    requiredAttrs: ['email'],
-
-    getShowData: function () {
-      var extraData = {
-        times: util.clock15mIncrements()
-      };
-      return _.extend(this.toJSON(),extraData);
-    }
+    requiredAttrs: ['email']
   });
   
   window.widgetPages.booking = WidgetPageView.extend({

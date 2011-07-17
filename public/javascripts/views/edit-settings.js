@@ -1,12 +1,11 @@
 (function ($) {
   
-  var companyNameErrorText = 'Company name must be at least 2 characters and at least 40 characters';
-
   window.EditSettingsView = Backbone.View.extend({
     
     el: $('#builder .widget-editor'),
 
     template: util.getTemplate('edit-settings'),
+    errorCount: 0,
     
     events: {
       'click input[type=submit]': 'validateInput'
@@ -17,9 +16,11 @@
     },
     
     validateInput: function () {
+      // /^[a-z0-9 _$()+-]{2,16}$/i
       var name = this.el.find('input[name=company_name]').val();
-      if (name.length < 2 || name.length > 40) {
-        this.el.find('p.error').text(companyNameErrorText).show('pulsate',{ times:3 });
+      if (!name.match(/^[a-z0-9 _$()+-]{2,40}$/i)) {
+        this.el.find('p.error').text('Invalid company name ('+this.errorCount+')');
+        this.errorCount += 1;
         return false;
       }
       this.el

@@ -1,6 +1,6 @@
 (function ($) {
   
-  var singletonInUseTooltip = "You may only use <b>one</b> of this type of widget at a time.<br /><br />This widget is already in your Yomobi mobile website.";
+  var singletonInUseTooltip = "<p>You may only use <b>one</b> of this type of widget at a time.</p><p>This widget is already in your Yomobi mobile website.</p>";
 
   SidebarView = Backbone.View.extend({
     

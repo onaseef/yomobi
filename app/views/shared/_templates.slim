@@ -10,7 +10,7 @@
     table
       tr
         td
-          img.logo src=@company.logo.url(:mobile)
+          img.logo{src="#{s3_base_path}/logos/{{ name }}_mobile?_=#{Time.now}" }
         td.name {{ prettyName }}
   
   script.edit-widget-idle(type="text/template")
@@ -20,10 +20,10 @@
     .header
       .icon{ style="background-image: url(/images/widgets/{{ iconName }}.png)" }
       .widget-name-edit
-        input type="text" name="wname" value="{{ prettyName }}" maxlength="22"
+        input type="text" name="wname" value="{{ prettyName }}"
       .widget-name
         | {{ prettyName }}
-        span.change-label  Click&nbsp;to&nbsp;Edit
+        span.change-label  Click&nbsp;to&nbsp;Change&nbsp;Name
       p.help-text
         em {{ helpText }}
     div class="edit-area {{ wtype }}" {{ editAreaContent }}
@@ -74,7 +74,7 @@
     div class="edit-area"
       = form_tag '/builder/settings', :multipart => true, do
         label Company Name:
-        input type="text" name="company_name" value=@company.name maxlength="40"
+        input type="text" name="company_name" value=@company.name
         br
         br
         label Company Type:
@@ -83,7 +83,7 @@
         br
         label Current Logo:
         br
-        img.logo{src=@company.logo.url(:mobile) }
+        img.logo{src="#{s3_base_path}/logos/<% print(g.db_name); %>_mobile?_=#{Time.now}" }
         br
         label Upload a new one:
         input type="file" name="logo"
@@ -116,7 +116,7 @@
     #dialog-confirm title="Please Rename your Widget"
   	  p
   	    span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"
-  	    | Please rename your widget:
+  	    | Please rename your <b>{{ wtype }}</b> widget:
         input type="text" value="{{ defaultName }}" name="wname"
         | <% if(_maybe.error) { %>
         p.error Error: {{ _maybe.error }}
@@ -140,14 +140,12 @@
         | <% } %>
         p.error
           b (Click "Add" or press Enter to add new <% print( util.pluralize(catTypeName) ); %>)
-        | <% if (cats.length > 0) { %>
         .other-names
     	    b Current <% print( util.pluralize(catTypeName) ); %>:
     	    ul
       	    | <% for(var i=0; i < cats.length; i++) { %>
       	    |    <li> {{ cats[i] }} </li>
       	    |  <% } %>
-        | <% } %>
   
   script.edit-subcat-dialog(type="text/template")
     #dialog-confirm title="Rename"
@@ -248,7 +246,7 @@
         br
         input(type="submit" value="Send")
     .thanks-wrap style="display:none"
-      h3 Thank you for sharing our mobile site.
+      h3 Thank you for your message. We will contact you soon.
   
   script.booking-page(type="text/template")
     .input-wrap
@@ -264,22 +262,19 @@
         br
         label Number of People:
         br
-        = select_tag 'party_size', options_for_select(1..50,2)
+        = select_tag 'party_size', options_for_select(1..25,2)
         br
         label Time (e.g. 7:45pm): 
         br
-        select name="time"
-          | <% for (var i=0; i < times.length; i++) { %>
-          option value="{{ times[i] }}" {{ times[i] }}
-          | <% } %>
+        = select_tag 'time[h]', options_for_select(1..12, 2)
+        = select_tag 'time[m]', options_for_select(%w{00 15 30 45},30)
+        = select_tag 'time[p]', options_for_select(%w{am pm}, 'pm')
         br
         label Date: 
         br
-        = select_tag 'date[m]', options_for_select(1..12,Date.today.month)
-        | &nbsp;&frasl;&nbsp;
-        = select_tag 'date[d]', options_for_select(1..31,Date.today.day)
-        | &nbsp;&frasl;&nbsp;
-        = select_tag 'date[y]', options_for_select(2011..2012,Date.today.year)
+        = select_tag 'date[m]', options_for_select(1..12)
+        = select_tag 'date[d]', options_for_select(1..31)
+        = select_tag 'date[y]', options_for_select(2011..2012)
         br
         span.response
         input(type="submit" value="Send")
@@ -288,7 +283,7 @@
   
   script.informed-page(type="text/template")
     .input-wrap
-      p Stay informed with our latest specials, discounts, and announcements. We don't spam and never share your information.
+      p Stay informed with our latest specials, discounts, and announcements. We respect your privacy.
       = form_tag "/#{@company.db_name}/informed/submit", :method => 'post' do
         | <% if (_maybe.optForEmails) { %>
         label Email Address:
@@ -359,9 +354,7 @@
   script.category-page(type="text/template")
     | <% for (var i=0; i<cats.length;i++) {
               print( catTemplate({ catName:cats[i], cycle:util.cycle('c0','c1'), order:i }) );
-    | } %>
-    .divider
-    | <% for (var i=0;i<items.length;i++) {
+    | } for (var i=0;i<items.length;i++) {
     |         print( itemTemplate({ item:items[i], cycle:util.cycle('c0','c1') }) );
     | } %>
   
@@ -369,9 +362,7 @@
     | <% if (!_maybe.isLeaf) {
     |       for (var i=0; i<cats.length;i++) {
     |         print( catTemplate({ catName:cats[i], cycle:util.cycle('c0','c1'), order:i }) );
-    |       } %>
-    .divider
-    | <%    for (var i=0;i<items.length;i++) { %>
+    |       } for (var i=0;i<items.length;i++) { %>
     .leaf-name.item class="<% print(util.cycle('c0','c1')); %>"
       .leaf-arrow
       | {{ items[i].name }}
@@ -416,7 +407,7 @@
     input(name="email" type="text" value="{{ _maybe.email }}")
   
   script.tell-a-friend-edit-area(type="text/template")
-    p This widget will appear on your mobile website and allow your customers to tell their friends about your mobile website.
+    p This widget will appear on your mobile website and allow your customers to instantly tell their friends about your mobile website.
   
   script.booking-request-edit-area(type="text/template")
     label Enter the email you would like to receive your customers' booking requests on*:
@@ -424,8 +415,8 @@
     input(name="email" type="text" value="{{ _maybe.email }}")
   
   script.keep-me-informed-edit-area(type="text/template")
-    p This widget will appear on your mobile site and allow your visitors to request to receive email and text notifications from you.
-    p You can send notifications to your followers by clicking on the “Email your Followers” or "Send Text to Your Followers" link on the left hand side of your browser.
+    p This widget allows your customers to opt-in to receive email and sms notifications from you.
+    p You can send out notifications to your customers by click on the “Manage Customers” link on the left hand side of your browser.
     br
     label Provide your email address to receive opt-ins*:
     input name="email" type="text" value="{{ _maybe.email }}"
@@ -494,11 +485,11 @@
     label Name*:
     input(name="couponName" type="text" value="{{ _maybe.couponName }}")
     br
-    label Expiration Date:
-    input(name="expire" type="text" value="{{ _maybe.expire }}")
-    br
     label Description*:
     textarea(name="description" type="text") {{ _maybe.description }}
+    br
+    label Expiration Date:
+    input(name="expire" type="text" value="{{ _maybe.expire }}")
   
   script.calendar-edit-area(type="text/template")
     label Current calendar link:
@@ -509,25 +500,23 @@
     label Paste your "Embed this Calendar" link here:
     textarea(name="paste" type="text") {{ _maybe.description }}
   
-  script.page_tree-edit-area.menu-edit-area.services-edit-area.products-edit-area.property-listings-edit-area.locations-edit-area(type="text/template")
+  script.menu-edit-area.services-edit-area.products-edit-area.property-listings-edit-area.locations-edit-area(type="text/template")
     | <% if (onHomePage === true) { %>
 
     p Use this widget to {{ subHelpText }}
     input type="button" name="beginEditing" value="Begin Editing"
 
-    | <% } else if (!_maybe.isLeaf) { %>
+    | <% } else { %>
+
+    p {{ catCrumbs }}
     br
-    b Add or edit {{ catLabel }} in category:
-    br
-    b.blue {{ catCrumbs }}
-    br
+    label {{ catLabel }}:
     br
     select name="cats" multiple="multiple"
       | <% for (var i=0; i<cats.length;i++) { %>
       option {{ cats[i] }}
       | <% } %>
     br
-    input type="button" name="back" value="< Back"
     input type="button" name="add_cat" value="Add"
     | <%       if (areCatsEmpty == false) { %>
     input type="button" name="edit_cat" value="Edit"
@@ -539,12 +528,9 @@
     | <%       } %>
     br
     br
-    .divider style="margin-bottom: 15px"
+    br
     
-    b Add or edit {{ itemLabel }} in category:
-    br
-    b.blue {{ catCrumbs }}
-    br
+    label {{ itemLabel }}:
     br
     select name="items" multiple="multiple"
       | <% for (var i=0;i<items.length;i++) { %>
@@ -559,18 +545,60 @@
     input.rfloat type="button" name="down_item" data-mod="1" value="Down"
     input.rfloat type="button" name="up_item" data-mod="-1" value="Up"
     | <%       } %>
+    | <% } %>
+  
+  script.page_tree-edit-area(type="text/template")
+    | <% if (onHomePage === true) { %>
 
+    p Use this widget to create and organize you web pages on your mobile site.
+    input type="button" name="beginEditing" value="Begin Editing"
+
+    | <% } else if (!_maybe.isLeaf) { %>
+    
+    p {{ catCrumbs }}
+    br
+    label Sub-Categories:
+    br
+    select name="cats" multiple="multiple"
+      | <% for (var i=0; i<cats.length;i++) { %>
+      option {{ cats[i] }}
+      | <% } %>
+    br
+    input type="button" name="add_cat" value="Add"
+    | <%       if (areCatsEmpty == false) { %>
+    input type="button" name="edit_cat" value="Edit"
+    input type="button" name="rename_cat" value="Rename"
+    input type="button" name="rem_cat" value="Delete"
+    | <%       } if (cats.length >= 2) { %>
+    input.rfloat type="button" name="down_cat" data-mod="1" value="Down"
+    input.rfloat type="button" name="up_cat" data-mod="-1" value="Up"
+    | <%       } %>
+
+    br
+    br
+    br
+    
+    label Pages
+    br
+    select name="items" multiple="multiple"
+      | <% for (var i=0;i<items.length;i++) { %>
+      option {{ items[i].name }}
+      | <% } %>
+    br
+    input type="button" name="add_item" value="Add"
+    | <%       if (areItemsEmpty == false) { %>
+    input type="button" name="edit_item" value="Edit"
+    input type="button" name="rename_item" value="Rename"
+    input type="button" name="rem_item" value="Delete"
+    | <%       } if (items.length >= 2) { %>
+    input.rfloat type="button" name="down_item" data-mod="1" value="Down"
+    input.rfloat type="button" name="up_item" data-mod="-1" value="Up"
+    | <%       } %>
+    
     | <% } else { %>
-    br
-    b Editing page:
-    br
-    b.blue {{ catCrumbs }}
-    br
-    br
+    p {{ catCrumbs }}
     #jeditor-wrapper
       textarea#jeditor {{ content }}
-    br
-    input type="button" name="back" value="< Back"
     | <% } %>
 
 #wname-test

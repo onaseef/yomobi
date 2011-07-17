@@ -4,8 +4,7 @@
   #sidebar ul {
     list-style: none;
     padding-left: 0;
-    margin: 54px 0 10px 0;
-    font-size: 12px; }
+    margin: 54px 0 10px 0; }
   #sidebar .spacer {
     border-top: 1px solid #dddddd;
     margin: 5px 0; }
@@ -17,7 +16,7 @@
       float: left;
       width: 16px;
       height: 16px;
-      margin: -1px 4px 0 0;
+      margin-right: 4px;
       background: url(/images/test-icons.png); }
     #sidebar .option:hover {
       background-color: #d8dfea;
@@ -38,15 +37,14 @@
     cursor: pointer; }
     #sidebar .home-icon .title {
       width: auto;
-      padding: 2.5px 0 0 4px;
+      padding: 2px 0 0 4px;
       text-align: left;
-      height: auto;
-      font-size: 12px; }
+      height: auto; }
     #sidebar .home-icon .icon {
       margin: 0;
       float: left;
-      width: 18px;
-      height: 18px; }
+      width: 16px;
+      height: 16px; }
   #sidebar .home-icon:hover {
     background: yellow; }
   #sidebar .home-icon.singletonInUse {
@@ -84,8 +82,8 @@
   width: 32px;
   height: 32px;
   top: -94px;
-  left: 40px;
-  background: url(/images/ui/invalid-for-showing.png) no-repeat; }
+  left: 37px;
+  background: url(/images/ui/invalid-for-showing.png); }
 
 #builder-container {
   background: #edeff4;
@@ -97,7 +95,7 @@
   font-weight: bold;
   color: #000066; }
 #builder .left > .title-subtext, #builder .right > .title-subtext {
-  height: 30px;
+  height: 44px;
   padding: 0 10px 0 0; }
 #builder .left {
   width: 350px;
@@ -170,7 +168,7 @@
     margin: 4px 6px 0 0; }
   #builder .widget-editor .widget-name {
     padding: 0 0 0 64px;
-    font-size: 1.75em;
+    font-size: 2em;
     word-wrap: break-word; }
     #builder .widget-editor .widget-name .change-label {
       display: none;
@@ -189,9 +187,6 @@
     #builder .widget-editor .widget-name-edit input[type=text] {
       font-size: 1.5em;
       width: 250px; }
-
-#builder .panel {
-  padding: 0 0 10px 10px; }
 
 #emulator-wrapper {
   float: left;
@@ -255,10 +250,6 @@
   overflow-x: hidden;
   height: 480px;
   width: 335px; }
-
-.divider {
-  border-top: 1px solid #b3b3b3;
-  margin: 10px 0; }
 
 #builder .edit-area.hours .day-checkbox {
   float: left;

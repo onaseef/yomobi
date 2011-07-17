@@ -8,7 +8,7 @@
     onHomeViewClick: function () {
       if (bapp.homeViewWidgetClick(this)) {
         if (confirm('Visit '+this.get('userId')+"'s this page?"))
-          window.open( this.get('host') + this.get('url') );
+          window.location = this.get('host') + this.get('url');
       }
       return false;
     },

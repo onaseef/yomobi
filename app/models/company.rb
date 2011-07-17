@@ -8,7 +8,6 @@ class Company < ActiveRecord::Base
     :styles => {
       :mobile => "100x75>"
     },
-    :default_url => '/images/default-logo_:style.png',
     :storage => :s3,
     :bucket => 'yomobi',
     :path => 'logos/:company_:style',
@@ -30,9 +29,7 @@ class Company < ActiveRecord::Base
       default_docs = CouchDocs::default_docs self.company_type_id
       default_docs.push worder_doc, CouchDocs::view_doc
 
-      # compact to remove deadly nil-related errors. Better to discover later
-      # than to tell user "we just died, sorry about that"
-      db.bulk_save default_docs.compact, false
+      db.bulk_save default_docs, false
       
       # create new admin user
       user_doc = CouchDocs::admin_user_doc self.db_name, self.db_pass

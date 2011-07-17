@@ -45,9 +45,7 @@
         catCrumbs: util.catStackCrumbs(this.get('prettyName'),this.catStack),
         onHomePage: mapp.pageLevel === 0,
         areItemsEmpty: areItemsEmpty,
-        areCatsEmpty: areCatsEmpty,
-        catLabel: util.pluralize( this.get('catTypeName') ),
-        itemLabel: util.pluralize( this.get('itemTypeName') )
+        areCatsEmpty: areCatsEmpty
       };
       return _.extend({},showData,extraData);
     },
@@ -70,7 +68,6 @@
 
     events: {
       'click input[name=beginEditing]':     'enterEditMode',
-      'click input[name=back]':             'transitionBack',
 
       'click input[name=add_cat]':          'addCat',
       'click input[name=edit_cat]':         'editCat',
@@ -126,7 +123,6 @@
       // simply transition into subcat by emulating a click
       var idx = $(this.el).find('select[name=items] option:selected:first').index();
       $(this.widget.pageView.el).find('.leaf-name:eq('+idx+')').click();
-      if (idx == -1) alert('Please select an item to edit.');
     },
 
     renameItem: function (e) {
@@ -137,7 +133,7 @@
         , name = $(this.el).find('select[name=items] option:selected:first').html()
         , item = _.detect(level._items,function (i) { return i.name == name })
       ;
-      if (_.isEmpty(item)) return alert('Please select an item to rename.');
+      if (_.isEmpty(item)) return;
       
       var dialog =  new this.AddItemDialog({
         model: this.widget,
@@ -200,12 +196,11 @@
       if (!mapp.canTransition()) return;
 
       var level = this.widget.getCurrentLevel()
-        , itemIdx = $(e.target).index() - util.catNamesFromLevel(level).length - 1 // -1 for divider elem
+        , itemIdx = $(e.target).index() - util.catNamesFromLevel(level).length
         , item = level._items[itemIdx]
         , subpage = this.widget.catStack.join('/')
       ;
       subpage && (subpage += '/');
-util.log('itemIdx',itemIdx,item,level);
       
       mapp.viewWidget(this.widget, subpage + item.name);
       this.widget.getEditor().startEditing();
@@ -260,19 +255,15 @@ util.log('itemIdx',itemIdx,item,level);
     },
     
     render: function (error,level,name) {
-      var template = (this.mode == 'add') ? addItemTemplate : editItemTemplate;
-
-      var dialogHtml = template({
+      var dialogHtml = addItemTemplate({
         error: error,
         cats: _.pluck(level._items,'name'),
-        name: name,
-        catTypeName: this.model.get('itemTypeName')
+        name: name
       });
 
       var self = this;
-      $(this.el).html(dialogHtml)
-        .find('.add-btn').click(function () { self.validateItem(); }).end()
-        .attr('title', this.el.children[0].title)
+      $(this.el).html(dialogHtml).find('.add-btn')
+        .click(function () { self.validateItem(); })
       ;
       return this;
     },
@@ -284,15 +275,12 @@ util.log('itemIdx',itemIdx,item,level);
         , closeSelf = close(this)
         , buttons = {}
       ;
-      // cache for later use in validateItem
+      // cache for later use
       this.level = level;
       this.origName = origName;
       
-      if (this.mode == 'add') buttons["Close"] = closeSelf;
-      else {
-        buttons["Save"] = this.validateItem;
-        buttons["Cancel"] = closeSelf;
-      }
+      if (this.mode == 'add') buttons["I'm Done Adding Pages"] = closeSelf;
+      else buttons["Close"] = closeSelf;
       
       util.dialog(dialogContent,buttons).find('p.error').show('pulsate',{times:3});
     },
@@ -305,14 +293,14 @@ util.log('itemIdx',itemIdx,item,level);
       ;
   		if (_.isEmpty(name))
         this.prompt('Name cannot be empty');
-      else if ( name != this.origName && _.contains(_.pluck(this.level._items,'name'),name) )
+      else if ( this.mode == 'add' && _.contains(_.pluck(this.level._items,'name'),name) )
         this.prompt('Name is already in use');
       else if (this.mode == 'add') {
         this.level._items.push({ name:name, content:defaultPageContent });
         bapp.currentEditor.setChanged('something',true);
         this.prompt();
       }
-      else if (this.mode == 'edit' && name !== this.origName) {
+      else if (this.mode == 'edit') {
         var origName = this.origName;
         var targetItem = _.detect(this.level._items,function (i) { return i.name == origName });
         targetItem.name = name;
