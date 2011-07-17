@@ -357,6 +357,7 @@
     },
 
     showAds: function () {
+util.log('SHowing ads');
       $('.ad-bar').show();
     }
     

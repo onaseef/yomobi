@@ -1,5 +1,5 @@
 script.menu-item-dialog(type="text/template")
-  #dialog-confirm
+  #dialog-confirm class="addItem"
     p Menu Item Information:
     label Name*
     br
@@ -32,7 +32,7 @@ script.menu-item-dialog(type="text/template")
     | <% } %>
 
 script.services-item-dialog(type="text/template")
-  #dialog-confirm
+  #dialog-confirm class="addItem"
     p Service Information:
     label Name*
     br
@@ -65,7 +65,7 @@ script.services-item-dialog(type="text/template")
     | <% } %>
 
 script.products-item-dialog(type="text/template")
-  #dialog-confirm
+  #dialog-confirm class="addItem"
     p Product Information:
     label Name*
     br
@@ -98,7 +98,7 @@ script.products-item-dialog(type="text/template")
     | <% } %>
 
 script.property-listings-item-dialog(type="text/template")
-  #dialog-confirm
+  #dialog-confirm class="addItem"
     p Listing Information:
     label Title*
     br
@@ -143,7 +143,7 @@ script.property-listings-item-dialog(type="text/template")
     | <% } %>
 
 script.locations-item-dialog(type="text/template")
-  #dialog-confirm
+  #dialog-confirm class="addItem"
     p Location Information:
     label Name*
     br
@@ -184,21 +184,24 @@ script.locations-item-dialog(type="text/template")
 / ===========================
 script.menu-item
   .item class="{{ cycle }}"
-    div Name: {{ item.name }}
-    div Price: {{ item.price }}
-    div Description: {{ item.desc }}
+    .name {{ item.name }}
+    .price {{ item.price }}
+    .clearfix
+    .desc {{ item.desc }}
 
 script.services-item
   .item class="{{ cycle }}"
-    div Name: {{ item.name }}
-    div Price: {{ item.price }}
-    div Description: {{ item.desc }}
+    .name {{ item.name }}
+    .price {{ item.price }}
+    .clearfix
+    .desc {{ item.desc }}
 
 script.products-item
   .item class="{{ cycle }}"
-    div Name: {{ item.name }}
-    div Price: {{ item.price }}
-    div Description: {{ item.desc }}
+    .name {{ item.name }}
+    .price {{ item.price }}
+    .clearfix
+    .desc {{ item.desc }}
 
 script.property-listings-item
   .item class="{{ cycle }}"

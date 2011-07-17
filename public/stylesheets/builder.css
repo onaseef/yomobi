@@ -327,6 +327,16 @@
   background: #ffebe8;
   font-size: 14px; }
 
+#dialog-confirm input[type=text] {
+  width: 97%;
+  margin: 1px 0px 6px 0px; }
+#dialog-confirm textarea {
+  margin-left: 1px;
+  margin-right: 1px;
+  width: 97%;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  height: 5em; }
 #dialog-confirm .error {
   color: #880000; }
 #dialog-confirm .success {

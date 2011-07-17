@@ -313,9 +313,13 @@
       h3 = "Thanks! You'll be kept up to date with #{@company.name} news."
 
   script.hours-page(type="text/template")
-    - %w(sun mon tue wed thu fri sat).each do |day|
-      h3 = long_day_name(day)
-      p {{ #{day}Hours }}
+    - %w(mon tue wed thu fri sat sun).each do |day|
+      .day-name = long_day_name(day)
+      .day-hours {{ #{day}Hours }}
+      - if day != 'sun'
+        .clearfix
+        .divider
+    .clearfix
 
   script.gmap-page(type="text/template")
     h3 Address:
@@ -451,7 +455,7 @@
       input type="checkbox" name="doubleTime"
       b Specify two sets of hours for each day.
     br
-    - %w(sun mon tue wed thu fri sat).each do |day|
+    - %w(mon tue wed thu fri sat sun).each do |day|
       .day-hours day=day class="{{ _maybe.#{day}Checked }}"
         .day-name = long_day_name day
         .day-enabled.lfloat

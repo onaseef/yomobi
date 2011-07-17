@@ -44,7 +44,7 @@ html lang="en-US"
           mapp.widgets.fetch({
             success: function () {
               Backbone.history.start();
-              if (showAds && mapp.widgets.validCount > 4) mapp.showAds();
+              if (showAds && mapp.widgets.validCount() > 4) mapp.showAds();
             }
           });
         });
