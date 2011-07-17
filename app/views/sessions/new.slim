@@ -1,6 +1,6 @@
 = form_for resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => 'center-box', :id => 'signin-box' } do |f|
   
-  h2 Yomobi Sign in
+  h2 YoMobi Sign in
   - if alert
     .login-error
       b Please re-enter your password
@@ -25,7 +25,7 @@
         input.content type="submit" value="Sign In"
       p
         | or 
-        a href=root_path style="font-weight:bold" Sign Up for Yomobi
+        a href=root_path style="font-weight:bold" Sign Up for YoMobi
       br
       a href=new_password_path(:user) Forgot your password?
   .clearfix

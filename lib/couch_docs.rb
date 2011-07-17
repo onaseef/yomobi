@@ -254,7 +254,7 @@ class CouchDocs
       {
         :name => "booking-request",
         :wtype => 'booking',
-        :helpText => "Let your customers book a request through your Yomobi mobile website.",
+        :helpText => "Let your customers book a request through your YoMobi mobile website.",
         :singleton => true
       },
 
