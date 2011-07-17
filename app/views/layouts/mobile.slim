@@ -40,9 +40,9 @@ html lang="en-US"
         mapp.fetchWorder(function (worderDoc) {
           mapp.worder = worderDoc.worder;
           mapp.wtabs  = worderDoc.wtabs;
-          mapp.updateWtabs();
           mapp.widgets.fetch({
             success: function () {
+              mapp.updateWtabs(true);
               Backbone.history.start();
               if (showAds && mapp.widgets.validCount() > 4) mapp.showAds();
             }

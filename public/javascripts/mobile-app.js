@@ -1,5 +1,12 @@
 (function ($) {
 
+  var isValidForShowing = function (wname) {
+    var w = mapp.widgets.findByName(wname);
+    return w && w.validForShowing();
+  };
+
+  var isTrueTrue = function () { return true; };
+
   // =================================
   window.Widgets = Backbone.Collection.extend({
 
@@ -350,9 +357,11 @@
       });
     },
     
-    updateWtabs: function () {
+    updateWtabs: function (requireValid) {
+      var isValid = requireValid ? isValidForShowing : isTrueTrue;
+      
       this.el.find('#top-bar .tab-bar').html(this.tabBarTemplate({
-        prettyTabs: _.map(this.wtabs,util.prettifyName)
+        prettyTabs: _(this.wtabs).chain().select(isValid).map(util.prettifyName).value()
       }));
     },
 

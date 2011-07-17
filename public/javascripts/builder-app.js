@@ -184,7 +184,6 @@
         self.worderDoc = worderDoc;
         mapp.worder = worderDoc.worder;
         mapp.wtabs  = worderDoc.wtabs;
-        mapp.updateWtabs();
         
         // now fetch the widgets themselves
         mapp.widgets.fetch({
@@ -207,6 +206,7 @@
             util.toggleLoaderOverlay(false);
             util.log('fetch',widgets,mapp.widgetsAvailable,mapp.widgetsInUse);
 
+            mapp.updateWtabs();
             Backbone.history.start();
           }
         });
