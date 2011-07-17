@@ -16,6 +16,13 @@
       };
       return _.extend({},this.toJSON(),extraData);
     },
+
+    validate: function (attrs) {
+      if (attrs.city)
+        attrs.city = util.capitalize(attrs.city);
+      if (attrs.state)
+        attrs.state = (attrs.state.length == 2) ? attrs.state.toUpperCase() : util.capitalize(attrs.state);
+    }
     
   });
   

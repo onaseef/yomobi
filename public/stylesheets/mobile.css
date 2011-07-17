@@ -196,6 +196,14 @@ body {
   text-align: center; }
   .page .content.gmap .maps .map-link {
     margin: 10px 0; }
+.page .content.gmap .directions {
+  margin-top: 15px; }
+  .page .content.gmap .directions .banner {
+    padding: 2px 0;
+    margin-bottom: 4px;
+    background: #c4cde0;
+    color: #3c59a0;
+    font-weight: bold; }
 
 .page .content.category, .page .content.page_tree {
   padding: 0 !important; }

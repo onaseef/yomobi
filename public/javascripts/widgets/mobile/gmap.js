@@ -13,7 +13,7 @@
     },
 
     onHomeViewClick: function () {
-      if (!this.get('addr1') && this.validForShowing()) {
+      if (!this.get('addr1') && this.validForShowing() && false) {
         window.open(externalMapUrlBase + 'q=' + this.get('bname'));
         return false;
       }

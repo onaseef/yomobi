@@ -186,8 +186,7 @@
   / = Widget Show Pages =
   / =====================
   script.custom_page-page(type="text/template")
-    .content
-      | {{ _maybe.content }}
+    | {{ _maybe.content }}
   
   script.phone-page(type="text/template")
     p Call us at:
@@ -322,31 +321,24 @@
     .clearfix
 
   script.gmap-page(type="text/template")
-    h3 Address:
+    h3 style="margin: 0 0 8px 0" <% print(_maybe.bname || "Address"); %>
     .addr-line {{ _maybe.addr1 }}
     .addr-line {{ _maybe.addr2 }}
     .addr-line {{ _maybe.city }}, {{ _maybe.state }} {{ _maybe.zip }}
     .addr-line {{ _maybe.country }}
-    br
-    br
-    .maps
-      a.map-link href="http://maps.google.com/maps?q={{ fullAddress }}"
-        img src="{{ mapUrl }}"
-    a.map-link href="http://maps.google.com/maps?q={{ fullAddress }}" View Google Map
-    
-    h3 Need Directions?
-    form action="http://maps.google.com/maps" method="get"
-      label Enter starting address:
-      br
-      input type="text" name="saddr"
-      input type="submit" value="submit"
-      input type="hidden" name="daddr" value="{{ fullAddress }}"
-    
-    h3 A closer look:
-    .maps
+    .maps style="margin-top: 8px"
       a.map-link href="http://maps.google.com/maps?q={{ fullAddress }}"
         img src="{{ mapUrl2 }}"
     a.map-link href="http://maps.google.com/maps?q={{ fullAddress }}" View Google Map
+    
+    .directions
+      .banner Get Directions:
+      form action="http://maps.google.com/maps" method="get"
+        label Starting Address:
+        br
+        input type="text" name="saddr"
+        input type="submit" value="Map It"
+        input type="hidden" name="daddr" value="{{ fullAddress }}"
   
   script.coupon-page(type="text/template")
     h2 {{ _maybe.couponName }}
