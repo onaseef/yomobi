@@ -200,11 +200,12 @@
       if (!mapp.canTransition()) return;
 
       var level = this.widget.getCurrentLevel()
-        , itemIdx = $(e.target).index() - util.catNamesFromLevel(level).length
+        , itemIdx = $(e.target).index() - util.catNamesFromLevel(level).length - 1 // -1 for divider elem
         , item = level._items[itemIdx]
         , subpage = this.widget.catStack.join('/')
       ;
       subpage && (subpage += '/');
+util.log('itemIdx',itemIdx,item,level);
       
       mapp.viewWidget(this.widget, subpage + item.name);
       this.widget.getEditor().startEditing();
