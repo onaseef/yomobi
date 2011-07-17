@@ -24,7 +24,7 @@ class SignupController < ApplicationController
     
     return unless current_user.company.nil?
 
-    @errors['title'] = true unless data['title'].match /^[a-z0-9 _$()+\-'"]{2,40}$/i
+    @errors['title'] = true unless data['title'].length > 2 && data['title'].length < 40
 
     if data['site_url'].match(/^[a-z0-9][a-z0-9_\-]{2,40}$/i).nil?
       @errors['site_url'] = 'illegal'
@@ -34,15 +34,20 @@ class SignupController < ApplicationController
     
     if @errors.size == 0
       # TODO: randomly generate password
-      result = current_user.create_company\
-        :name => data['title'],
-        :db_name => data['site_url'].downcase,
-        :db_pass => '123123',
-        :company_type_id => current_user.company_type_id
-      if result[:id].nil?
-        @errors['site_url'] = 'taken?'
-      elsif
-        current_user.company.save_doc CouchDocs.about_us_doc(data['desc'])
+      begin
+        puts "Creating company with company_type_id: #{current_user.company_type_id}"
+        result = current_user.create_company\
+          :name => data['title'],
+          :db_name => data['site_url'].downcase,
+          :db_pass => '123123',
+          :company_type_id => current_user.company_type_id
+        if result[:id].nil?
+          @errors['site_url'] = 'taken?'
+        else
+          current_user.company.save_doc CouchDocs.about_us_doc(data['desc'])
+        end
+      rescue ActiveRecord::RecordNotUnique
+        @errors['site_url'] = 'taken'
       end
     end
     

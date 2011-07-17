@@ -114,7 +114,7 @@ class CouchDocs
         business-hours keep-me-informed full-website
       },
       [22] => %w{
-        listings leave-a-message keep-me-informed
+        property-listings leave-a-message keep-me-informed
       }
     }
   end
@@ -146,7 +146,7 @@ class CouchDocs
         leave-a-message facebook news
       },
       [22] => %w{
-        full-website listings
+        full-website property-listings
         photo-bucket keep-me-informed leave-a-message
         facebook business-hours event-calendar news
       }
@@ -204,7 +204,7 @@ class CouchDocs
       {
         :name => "property-listings",
         :wtype => 'category',
-        :helpText => "Give your mobile site visitors instance access to your property listings.",
+        :helpText => "Give your mobile site visitors access to your property listings.",
         :subHelpText => "create a list of properties for sale or lease.",
         :catTypeName => "Area",
         :itemTypeName => "Listing",
@@ -243,6 +243,9 @@ class CouchDocs
         :name => "category",
         :wtype => 'page_tree',
         :helpText => "Create your own mobile site map of custom pages.",
+        :subHelpText => "create and organize you web pages on your mobile site.",
+        :catTypeName => "Subcategory",
+        :itemTypeName => "Page",
         "struct" => {
           "_items" => []
         }
@@ -258,7 +261,7 @@ class CouchDocs
       {
         :name => "tell-a-friend",
         :wtype => 'tell_friend',
-        :helpText => "This widget allows your customers to instantly email their friends about your mobile website.",
+        :helpText => "This widget allows your customers to email their friends about your mobile website.",
         :singleton => true
       },
 
@@ -292,7 +295,7 @@ class CouchDocs
       {
         :name => "keep-me-informed",
         :wtype => 'informed',
-        :helpText => "This widget allows your customers to opt-in to receive email and sms notifications from you.",
+        :helpText => "Allow your mobile site visitors to request to receive email and and text notifications from you.",
         :singleton => true
       },
 
@@ -312,8 +315,8 @@ class CouchDocs
       {
         :name => "locations",
         :wtype => 'category',
-        :helpText => "Give your customers instant access to your business's multiple locations.",
-        :subHelpText => "create a mobile optimized product catalogue.",
+        :helpText => "Give your customers easy access to the multiple locations of your business.",
+        :subHelpText => "create a directory of your business locations.",
         :catTypeName => "Region",
         :itemTypeName => "Location",
         :singleton => true,
@@ -337,8 +340,8 @@ class CouchDocs
       {
         :name => "services",
         :wtype => 'category',
-        :helpText => "Give your customers instant access to your list of services.",
-        :subHelpText => "create a mobile optimized services catalogue.",
+        :helpText => "Give your customers easy access to your catalog of services.",
+        :subHelpText => "create a mobile optimized services catalog.",
         :catTypeName => "Category",
         :itemTypeName => "Service",
         :singleton => true,
@@ -350,7 +353,7 @@ class CouchDocs
       {
         :name => "products",
         :wtype => 'category',
-        :helpText => "Give your customers instant access to your list of products.",
+        :helpText => "Give your customers easy access to your list of products.",
         :subHelpText => "create a mobile optimized product catalogue.",
         :catTypeName => "Category",
         :itemTypeName => "Product",
@@ -363,10 +366,10 @@ class CouchDocs
       {
         :name => "menu",
         :wtype => 'category',
-        :helpText => "Give your customers instant access to your restaurant's cuisine.",
+        :helpText => "Give your customers easy access to your restaurant's cuisine.",
         :subHelpText => "create a mobile optimized version of your menu.",
         :catTypeName => "Category",
-        :itemTypeName => "item",
+        :itemTypeName => "Item",
         :singleton => true,
         "struct" => {
           "_items" => [],
@@ -393,9 +396,9 @@ class CouchDocs
       {
         :name => "about-us",
         :wtype => 'custom_page',
-        :helpText => "A page describing what your business is about.",
+        :helpText => "Tell your visitors who you are.",
         :singleton => true
       }
-    ]
+    ].sort! {|a,b| b[:name] <=> a[:name]}
   end
 end

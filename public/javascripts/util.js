@@ -267,6 +267,19 @@ var util = {
       }
     };
   },
+
+  clock15mIncrements: function () {
+    var minInc = ['00','15','30','45'];
+
+    var clock24hourInc = _.map(_.range(24*4), function (i) {
+      var hour = (i/4 < 10 ? '0' : '') + (i/4|0)
+        , min  = minInc[i%4]
+      ;
+      return hour + ':' + min;
+    });
+
+    return _.map(clock24hourInc, util.from24to12);
+  },
   
   getTemplate: function (name) {
     return _.template($('#templates .'+name).html());
@@ -503,7 +516,7 @@ var util = {
         paste: function (a,b,c) { util.log('PASTE',a,b,c); return false; }
       },
       controls: {
-        createLink: { visible:false },
+        // createLink: { visible:false },
         insertImage: { visible:false },
         insertTable: { visible:false },
         subscript: { visible:false },

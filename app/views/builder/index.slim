@@ -8,6 +8,7 @@
   = javascript_include_tag 'builder-app'
   
   = javascript_include_tag 'support/jquery.wysiwyg'
+  = javascript_include_tag 'support/jquery.wysiwyg.link'
 
 h1 = @company.name
 #builder-container
@@ -16,6 +17,7 @@ h1 = @company.name
       .title Mobile Phone Emulator
       .title-subtext
         em Drag a widget from the sidebar on the left into the emulator below to add it to your mobile website.
+      .divider style="border-color:#E0E1E2;margin:0 10px 10px 0"
       #emulator-wrapper
         .loader-overlay
           .icon
@@ -30,6 +32,7 @@ h1 = @company.name
       .title Widget Editor
       .title-subtext
         em Click on a widget in the Mobile Phone Emulator to edit it here.
+      .divider style="border-color:#E0E1E2;margin:0 10px 10px 10px"
       .widget-editor
         img src="/images/home-help.png"
     .clearfix

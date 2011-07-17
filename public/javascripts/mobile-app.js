@@ -21,6 +21,10 @@
       });
     },
     
+    validCount: function () {
+      return this.select(function (w) { return w.validForShowing(); }).length;
+    },
+
     findByName: function (widgetName) {
       return this.find(function (w) { return w.get('name') == widgetName; });
     },
@@ -31,7 +35,7 @@
   });
   
   // ==================================
-  var invalidWidgetTooltip = "<p>This widget will <b>NOT</b> show up in your mobile site!</p><p>Please click me, fill out all required information, and click <b>Save Changes</b>.";
+  var invalidWidgetTooltip = "This widget will <b>NOT</b> show up in your mobile site!<br /><br />Please click me, fill out all required information, and click <b>Save Changes</b>.";
   WidgetHomeView = Backbone.View.extend({
     tagName: 'div',
     className: 'home-icon dbx-box',
@@ -350,6 +354,10 @@
       this.el.find('#top-bar .tab-bar').html(this.tabBarTemplate({
         prettyTabs: _.map(this.wtabs,util.prettifyName)
       }));
+    },
+
+    showAds: function () {
+      $('.ad-bar').show();
     }
     
   });

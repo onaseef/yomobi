@@ -63,7 +63,7 @@ class BuilderController < ApplicationController
       attrs = {}
       attrs[:logo] = params[:logo] if params[:logo].present?
       attrs[:name] = params[:company_name] if params[:company_name].match /^[a-z0-9 _$()+-]{2,40}$/i
-      attrs[:company_type] = CompanyType.find_by_name params[:company_type]
+      attrs[:company_type] = CompanyType.find params[:company_type]
 
       attrs.delete :company_type if attrs[:company_type].nil?
 

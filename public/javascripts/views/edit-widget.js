@@ -1,5 +1,5 @@
 (function ($) {
-  
+
   window.EditWidgetView = Backbone.View.extend({
     
     el: $('#builder .widget-editor'),
@@ -11,8 +11,9 @@
       'click .remove-link':         'remove',
       'click .cancel-btn':          'cancel',
       'click .widget-name':         'editName',
-      'keyup input[type=text]':     'checkForChanges',
-      'keyup textarea':             'checkForChanges'
+
+      'keyup input[type=text][name!=wname]': 'checkForChanges',
+      'keyup textarea':                      'checkForChanges'
     },
     
     initialize: function (widget) {
@@ -151,12 +152,15 @@
     
     startEditing: function (resetChanges) {
       util.log('Editing widget:',this.widget.get('name'),this.widget.isNew());
-      var widget = this.widget;
+      var widget = this.widget
+        , helpText = this.getHelpText(widget)
+        , editAreaData = _.extend(widget.getEditAreaData(),{ helpText:helpText })
+      ;
       this.validForShowingStatus = widget.validForShowing();
 
       if (resetChanges) this.changes = {};
 
-      this.el.html( this.template(widget.getEditAreaData()) );
+      this.el.html( this.template(editAreaData) );
       this.delegateEvents(this.extendedEvents);
 
       widget.homeView.highlight(true);
@@ -199,6 +203,13 @@
 
     hasChanges: function () {
       return _.keys(this.changes).length > 0;
+    },
+
+    getHelpText: function (widget) {
+      return _.select(window.bdata, function (w) {
+        if (w.singleton == true) return w.name == widget.get('name');
+        return w.wtype == widget.get('wtype');
+      })[0].helpText;
     }
     
   });

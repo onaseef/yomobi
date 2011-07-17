@@ -18,7 +18,7 @@ body {
     float: left;
     width: 320px; }
     #canvas .page .content {
-      padding: 0 4px;
+      padding: 8px 4px;
       font-size: 16px; }
     #canvas .page p.error {
       margin-bottom: 0;
@@ -51,15 +51,17 @@ body {
 .tab-bar {
   background: #3b5998;
   color: white;
-  padding: 0 4px; }
+  padding: 0 0 4px 0; }
   .tab-bar table {
-    width: 100%; }
+    width: 100%;
+    border-bottom: 2px solid #627aad;
+    margin-bottom: 4px; }
   .tab-bar a, .tab-bar a:visited {
     color: white;
     text-decoration: none; }
   .tab-bar td {
     width: 79.25px;
-    padding: 6px 0;
+    padding: 4px 4px 2px 0px;
     text-align: center;
     font-weight: bold;
     font-size: 12px; }
@@ -70,8 +72,8 @@ body {
     cursor: pointer; }
 
 .ad-bar {
+  display: none;
   padding: 0 0;
-  border-top: 2px solid #627aad;
   border-bottom: 2px solid #627aad;
   background: #3b5998;
   text-align: center; }
@@ -117,10 +119,13 @@ body {
 
 .mobile-footer {
   height: 70px;
-  padding: 8px 0; }
+  padding: 12px 0 0 0; }
   .mobile-footer p {
     margin: 0 0 10px 0;
     padding-left: 5px; }
+  .mobile-footer .powered-by {
+    font-size: 11px;
+    text-align: center; }
 
 #templates {
   display: none; }
@@ -135,7 +140,7 @@ body {
   .social-share li {
     float: left;
     cursor: pointer;
-    margin-right: 8px; }
+    margin-right: 12px; }
 
 .clearfix {
   clear: both; }
@@ -181,3 +186,8 @@ body {
     background: url(/images/ui/subcat-arrow.png); }
   .page .content.category .leaf-arrow, .page .content.page_tree .leaf-arrow {
     background: url(/images/ui/leaf-arrow.png); }
+  .page .content.category .divider, .page .content.page_tree .divider {
+    height: 5px;
+    border-top: 1px solid #b3b3b3;
+    background: #dddddd;
+    margin: 0; }

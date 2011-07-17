@@ -22,7 +22,7 @@ body
     float: left
     width: $dynamic-width
     .content
-      padding: 0 4px
+      padding: 8px 4px
       font-size: 16px
     p.error
       margin-bottom: 0
@@ -56,15 +56,17 @@ body
 .tab-bar
   background: $color-topbar
   color: #fff
-  padding: 0 4px
+  padding: 0 0 4px 0
   table
     width: 100%
+    border-bottom: 2px solid #627aad
+    margin-bottom: 4px
   a, a:visited
     color: #fff
     text-decoration: none
   td
     width: ($emulator-width - 8 - 15) / 4
-    padding: 6px 0
+    padding: 4px 4px 2px 0px
     text-align: center
     font-weight: bold
     font-size: 12px
@@ -75,8 +77,8 @@ body
     cursor: pointer
 
 .ad-bar
+  display: none
   padding: 0 0
-  border-top: 2px solid $secondary-color
   border-bottom: 2px solid $secondary-color
   background: $color-topbar
   text-align: center
@@ -123,10 +125,13 @@ body
 
 .mobile-footer
   height: 70px
-  padding: 8px 0
+  padding: 12px 0 0 0
   p
     margin: 0 0 10px 0
     padding-left: 5px
+  .powered-by
+    font-size: 11px
+    text-align: center
 
 #templates
   display: none
@@ -141,7 +146,7 @@ body
   li
     float: left
     cursor: pointer
-    margin-right: 8px
+    margin-right: 12px
 
 .clearfix
   clear: both
@@ -194,3 +199,8 @@ body
     background: url(/images/ui/subcat-arrow.png)
   .leaf-arrow
     background: url(/images/ui/leaf-arrow.png)
+  .divider
+    height: 5px
+    border-top: 1px solid #b3b3b3
+    background: #ddd
+    margin: 0
