@@ -159,7 +159,7 @@ script.locations-item-dialog(type="text/template")
     br
     label Additional Information
     br
-    textarea.item-input name="info" {{ _maybe.desc }}
+    textarea.item-input name="desc" {{ _maybe.desc }}
     br
     | <% if (mode == 'add') { %>
     input.lfloat type="button" value="Add" name="add" style="margin:10px 15px 0 2px"
@@ -227,4 +227,4 @@ script.locations-item
     div
       ' Address:
       a href="http://maps.google.com/maps?q={{ item.address }}" target="_blank" {{ item.address }}
-    .desc {{ desc }}
+    .desc {{ item.desc }}
