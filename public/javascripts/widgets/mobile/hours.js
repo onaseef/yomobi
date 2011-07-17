@@ -14,7 +14,7 @@
     },
     
     isDayEnabled: function (day) {
-      return this.get('hours')[day+'Enabled'];
+      return this.get('hours')[day][3] === true;
     },
 
     getShowData: function () {

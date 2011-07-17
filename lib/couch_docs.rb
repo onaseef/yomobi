@@ -334,7 +334,14 @@ class CouchDocs
       {
         :name => "business-hours",
         :wtype => 'hours',
-        :helpText => "Let your customers know when you're open for business."
+        :helpText => "Let your customers know when you're open for business.",
+        "hours" => {
+          "mon" => ["9:00am|5:00pm","",false,true],
+          "tue" => ["9:00am|5:00pm","",false,true],
+          "wed" => ["9:00am|5:00pm","",false,true],
+          "thu" => ["9:00am|5:00pm","",false,true],
+          "fri" => ["9:00am|5:00pm","",false,true]
+        }
       },
 
       {

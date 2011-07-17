@@ -13,8 +13,7 @@
       if (!this.get('hours')) {
         // set standard example hours
         hours = {};
-        _.each(days, function (day) { hours[day+'Enabled'] = true });
-        _.each(days, function (day) { hours[day] = ['9:00am|5:00pm','',false] });
+        _.each(days, function (day) { hours[day] = ['9:00am|5:00pm','',false,true] });
         
         util.log('new, default hours',hours);
         this.set({ hours:hours, doubleTime:false });
@@ -121,8 +120,7 @@
           , toHours   = $this.find('.hour.to').map(pluckVal)
           , hours = _(fromHours).chain().zip(toHours).map(hourJoin).map(clearLonePipe).value()
         ;
-        weekHours[day] = hours.concat([allDay]);
-        weekHours[day+'Enabled'] = isEnabled;
+        weekHours[day] = hours.concat([allDay,isEnabled]);
       });
       var isDoubleTime = this.el.find('.double-time input').is(':checked');
 util.log('DOUBLE TIME',isDoubleTime)
