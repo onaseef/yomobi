@@ -13,7 +13,9 @@ script.menu-item-dialog(type="text/template")
     br
     textarea.item-input name="desc" {{ _maybe.desc }}
     br
+    | <% if (_maybe.addButtonText) { %>
     input.lfloat type="button" value="{{ addButtonText }}" name="add" style="margin:10px 15px 0 2px"
+    | <% } %>
 
     | <% if(flash.error) { %>
     p.error Error: {{ flash.error }}
@@ -44,7 +46,9 @@ script.services-item-dialog(type="text/template")
     br
     textarea.item-input name="desc" {{ _maybe.desc }}
     br
+    | <% if (_maybe.addButtonText) { %>
     input.lfloat type="button" value="{{ addButtonText }}" name="add" style="margin:10px 15px 0 2px"
+    | <% } %>
     
     | <% if(flash.error) { %>
     p.error Error: {{ flash.error }}
@@ -75,7 +79,9 @@ script.products-item-dialog(type="text/template")
     br
     textarea.item-input name="desc" {{ _maybe.desc }}
     br
+    | <% if (_maybe.addButtonText) { %>
     input.lfloat type="button" value="{{ addButtonText }}" name="add" style="margin:10px 15px 0 2px"
+    | <% } %>
     
     | <% if(flash.error) { %>
     p.error Error: {{ flash.error }}
@@ -118,7 +124,9 @@ script.property-listings-item-dialog(type="text/template")
     br
     textarea.item-input name="desc" {{ _maybe.desc }}
     br
+    | <% if (_maybe.addButtonText) { %>
     input.lfloat type="button" value="{{ addButtonText }}" name="add" style="margin:10px 15px 0 2px"
+    | <% } %>
     
     | <% if(flash.error) { %>
     p.error Error: {{ flash.error }}
@@ -153,7 +161,9 @@ script.locations-item-dialog(type="text/template")
     br
     textarea.item-input name="info" {{ _maybe.info }}
     br
+    | <% if (_maybe.addButtonText) { %>
     input.lfloat type="button" value="{{ addButtonText }}" name="add" style="margin:10px 15px 0 2px"
+    | <% } %>
     
     | <% if(flash.error) { %>
     p.error Error: {{ flash.error }}

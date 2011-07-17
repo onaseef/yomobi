@@ -449,7 +449,7 @@
       this.level = level;
       this.origName = origName;
       
-      if (this.mode == 'add') buttons["Close"] = closeSelf;
+      if (this.mode == 'add') buttons["Done"] = closeSelf;
       else {
         buttons["Save"] = this.validateCategory;
         buttons["Cancel"] = closeSelf;
@@ -510,7 +510,7 @@
     render: function (flash,level,item) {
       flash || (flash = {});
       item || (item = {});
-      var title = (this.mode == 'add' ? "Add New " : "Edit ") + this.model.get('itemTypeName');
+      var title = (this.mode == 'add') ? "Add New " + this.model.get('itemTypeName') : undefined;
       var dialogHtml = this.template(_.extend({},item, {
         flash: flash,
         _items: level._items,
@@ -559,7 +559,7 @@
       }
 
       util.dialog(dialogContent, {
-      	"Close": function () {
+      	"Done": function () {
           $(this).dialog("close");
           self.options.onClose && self.options.onClose();
       	}
