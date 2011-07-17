@@ -27,19 +27,25 @@ html lang="en-US"
       = javascript_include_tag "widgets/mobile/#{File.basename widget}"
     
     = javascript_include_tag 'mobile-app'
+    - if @is_mobile && !@logged_in
+      javascript:
+        showAds = true
     javascript:
       $(function () {
         window.mapp = new MobileAppView();
         // TODO: make widget page links actually work
         // window.location.href = '#';
         new MobileAppController();
-        
+
         mapp.fetchWorder(function (worderDoc) {
           mapp.worder = worderDoc.worder;
           mapp.wtabs  = worderDoc.wtabs;
           mapp.updateWtabs();
           mapp.widgets.fetch({
-            success: function () { Backbone.history.start(); }
+            success: function () {
+              Backbone.history.start();
+              if (showAds && mapp.widgets.validCount > 4) mapp.showAds();
+            }
           });
         });
       });
