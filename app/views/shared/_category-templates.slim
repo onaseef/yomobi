@@ -215,8 +215,7 @@ script.property-listings-item
     .mls
       ' MLS #:
       a href="http://www.realtor.com/search/searchresults.aspx?mlslid={{ item.mls }}" {{ item.mls }}
-    .desc
-      | {{ item.desc }}
+    .desc style="width:100%" {{ item.desc }}
 
 script.locations-item
   .item class="{{ cycle }} <%if(order==0){print('first');}%>"
@@ -226,4 +225,4 @@ script.locations-item
       a href="tel:{{ item.phone }}" {{ item.phone }}
     div
       a href="http://maps.google.com/maps?q={{ item.address }}" target="_blank" {{ item.address }}
-    .desc {{ item.desc }}
+    .desc style="width:100%" {{ item.desc }}
