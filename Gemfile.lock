@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: https://github.com/mindeavor/aritcaptcha.git
-  revision: ba13d0e7f25531dd5bfb6e7fad7284b391732bff
+  revision: f95ad8292012fa34bc0293e05de267553907a1d9
   specs:
     aritcaptcha (2.0.5)
 
