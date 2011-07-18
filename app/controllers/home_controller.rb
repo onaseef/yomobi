@@ -12,6 +12,7 @@ class HomeController < ApplicationController
   end
   
   def ad_test
+    render :layout => 'mobile_basic'
   end
 
   private
