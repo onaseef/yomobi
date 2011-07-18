@@ -220,11 +220,10 @@ script.property-listings-item
 
 script.locations-item
   .item class="{{ cycle }} <%if(order==0){print('first');}%>"
-    div {{ item.name }}
+    .name {{ item.name }}
+    .clearfix
     div
-      | Phone:
       a href="tel:{{ item.phone }}" {{ item.phone }}
     div
-      ' Address:
       a href="http://maps.google.com/maps?q={{ item.address }}" target="_blank" {{ item.address }}
     .desc {{ item.desc }}

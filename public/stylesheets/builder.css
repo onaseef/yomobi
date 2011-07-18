@@ -138,6 +138,8 @@
   #builder .widget-editor .edit-area {
     padding: 20px 0;
     margin: 0 auto; }
+    #builder .widget-editor .edit-area label {
+      font-size: 14px; }
     #builder .widget-editor .edit-area textarea {
       width: 354px;
       height: 6em;
