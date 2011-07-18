@@ -23,13 +23,13 @@ h1 = @company.name
         = @company.informed_email || "NONE"
         - if @company.informed_email.nil?
           | ALERT: In order to send emails or texts to followers, you must provide a FROM email address.
+        - if @errors[:message]
+          p.error = "Error: #{ @errors[:message] }"
       = form_tag '', :method => :post do
         label
           span#chars-left = @max_chars
           = "/#{@max_chars} characters remaining."
         br
-        - if @errors[:message]
-          p = "Error: #{ @errors[:message] }"
         textarea rows=5 cols=40 name="message" = @old_message
         br
         = submit_tag 'Send Text', :class => 'lfloat'

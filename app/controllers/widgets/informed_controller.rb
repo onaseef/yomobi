@@ -49,8 +49,12 @@ class Widgets::InformedController < ApplicationController
   def send_text
     @company = current_user.company
     @errors = {}
+    @max_chars = max_message_length
 
-    if @company.informed_email.nil?
+    if !params[:message].present? || params[:message].length == 0
+      @errors[:message] = "Please enter a message."
+      @old_message = params[:message]
+    elsif @company.informed_email.nil?
       @errors[:message] = "Your 'Keep Me Informed' widget does not have a valid email"
       @old_message = params[:message]
     elsif valid_text_message? params[:message]
@@ -75,7 +79,12 @@ class Widgets::InformedController < ApplicationController
     @company = current_user.company
     @errors = {}
 
-    if @company.informed_email.nil?
+    if !params[:subject].present? || params[:subject].length == 0 ||
+       !params[:content].present? || params[:content].length == 0
+      @errors[:no_email] = "Please enter both a subject and message."
+      @old_subject = params[:subject]
+      @old_content = params[:content]
+    elsif @company.informed_email.nil?
       @errors[:no_email] = "Your 'Keep Me Informed' widget does not have a valid email"
       @old_subject = params[:subject]
       @old_content = params[:content]
