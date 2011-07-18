@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   
-  before_filter :redirect_if_logged_in
+  before_filter :redirect_if_logged_in, :except => :ad_test
   
   def index
     prevent_caching
@@ -11,6 +11,9 @@ class HomeController < ApplicationController
   def confirm_account
   end
   
+  def ad_test
+  end
+
   private
   
   def redirect_if_logged_in

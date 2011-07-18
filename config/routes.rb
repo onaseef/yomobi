@@ -1,6 +1,7 @@
 Yomobi::Application.routes.draw do
 
   get 'home/index'
+  get 'ad-test' => 'home#ad_test'
   
   match 'account-setup/:step_num' => 'signup#account_setup', :as => :account_setup
 
@@ -34,7 +35,7 @@ Yomobi::Application.routes.draw do
   ##########################
   # Widget-specific routes #
   ##########################
-  exceptions = ['/admin']
+  exceptions = ['/admin','/ad-test']
   constraints lambda {|req| exceptions.map{|route| !req.path.starts_with? route}.any?} do
     get ':company' => 'mobile#index', :as => :mobile
     post ':company/leave_msg/submit' => 'widgets/leave_msg#submit'
