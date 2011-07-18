@@ -405,6 +405,12 @@ class CouchDocs
         :wtype => 'custom_page',
         :helpText => "Tell your visitors who you are.",
         :singleton => true
+      },
+
+      {
+        :name => "link",
+        :wtype => 'link',
+        :helpText => "Add a link to any URL."
       }
     ].sort! {|a,b| b[:name] <=> a[:name]}
   end
