@@ -20,10 +20,4 @@ class Widgets::TellFriendController < ApplicationController
     }).deliver
     return success :msg => params[:feedback]
   end
-
-  private
-
-  def email_regex
-    ValidatesAsEmailAddress::RFC822::EmailAddress
-  end
 end

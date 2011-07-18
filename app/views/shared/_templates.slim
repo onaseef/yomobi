@@ -207,6 +207,8 @@
         br
         label Message Content:
         textarea name="feedback" rows=5
+        #aritcaptcha-container
+        span.response.error
         input(type="submit" value="Send")
     .thanks-wrap style="display:none"
       h3 Thanks for your input. We'll be sure to contact you later if needed.
@@ -309,7 +311,7 @@
         br
         | <% } %>
         #aritcaptcha-container
-        span.response
+        span.response.error
         br
         input(type="submit" value="Send")
     .thanks-wrap style="display:none"
