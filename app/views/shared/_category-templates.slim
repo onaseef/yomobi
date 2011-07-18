@@ -205,7 +205,7 @@ script.products-item
 
 script.property-listings-item
   .item class="{{ cycle }} <%if(order==0){print('first');}%>"
-    .name {{ item.name }}
+    .name.long {{ item.name }}
     .clearfix
     a href="http://maps.google.com/maps?q={{ item.address }}" target="_blank" {{ item.address }}
     div {{ item.price }}
@@ -215,14 +215,14 @@ script.property-listings-item
     .mls
       ' MLS #:
       a href="http://www.realtor.com/search/searchresults.aspx?mlslid={{ item.mls }}" {{ item.mls }}
-    .desc style="width:100%" {{ item.desc }}
+    .desc.long {{ item.desc }}
 
 script.locations-item
   .item class="{{ cycle }} <%if(order==0){print('first');}%>"
-    .name {{ item.name }}
+    .name.long {{ item.name }}
     .clearfix
     div
       a href="tel:{{ item.phone }}" {{ item.phone }}
     div
       a href="http://maps.google.com/maps?q={{ item.address }}" target="_blank" {{ item.address }}
-    .desc style="width:100%" {{ item.desc }}
+    .desc.long {{ item.desc }}

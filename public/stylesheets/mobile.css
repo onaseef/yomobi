@@ -216,7 +216,7 @@ a img {
     font-weight: bold; }
 
 .page .content.category, .page .content.page_tree {
-  padding: 0 !important; }
+  padding: 0 0 20px 0 !important; }
   .page .content.category .item, .page .content.page_tree .item {
     padding: 8px 12px;
     font-size: 16px; }
@@ -252,6 +252,9 @@ a img {
   padding-right: 12px;
   font-size: 16px;
   font-weight: bold; }
+.page .content.category .name.long {
+  width: 100%;
+  padding: 0; }
 .page .content.category .price {
   font-size: 16px; }
 .page .content.category .desc {
@@ -259,3 +262,5 @@ a img {
   margin-top: 0;
   padding-top: 4px;
   font-size: 15px; }
+.page .content.category .desc.long {
+  width: 100%; }
