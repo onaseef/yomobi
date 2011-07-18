@@ -562,7 +562,7 @@ var util = {
     else if (offset > 480) {
       $('#mobile-scroller').scrollTop(scrollTop + offset - 480);
     }
-  },
+  }
   
 }
 
