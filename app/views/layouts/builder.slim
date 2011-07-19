@@ -58,6 +58,7 @@ html lang="en-US"
     = javascript_include_tag 'views/edit-widget'
     = javascript_include_tag 'views/edit-tab-bar'
     = javascript_include_tag 'views/edit-settings'
+    = javascript_include_tag 'views/edit-keywords'
 
     - Dir[widgets_dir('builder/*.js')].sort.each do |widget|
       - next if File.basename(widget) == 'base.js'

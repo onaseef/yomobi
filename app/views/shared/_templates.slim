@@ -95,6 +95,26 @@
             input.content type="submit" value="Save Settings"
           .loader
   
+  script.edit-keywords(type="text/template")
+    .header.edit-keywords
+      .icon{ style="background-image: url(/images/edit-settings.png)" }
+      .widget-name
+        | Traffic Booster
+      p.help-text
+        em Give your traffic... a boost!
+    div class="edit-area"
+      label Enter keywords that describe your website, separated by commas:
+      p.error.hide Something went wrong.
+      textarea name="keywords" {{ keywords }}
+      br
+      br
+      .action-bar style="padding-right: 0"
+        p.error.lfloat style="margin-top:2px"
+        .accept-btn.main-btn
+          input.content type="submit" value="Save Settings"
+        .checkmark
+        .loader
+  
   script.tab-bar(type="text/template")
     table
       tr

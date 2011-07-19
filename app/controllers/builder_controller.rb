@@ -79,9 +79,9 @@ class BuilderController < ApplicationController
   def traffic_booster
     @user = current_user
     @company = @user.company
-    return if !params[:keywords].present?
+    return error 'bad keywords' if !params[:keywords].present?
     @company.keywords = params[:keywords]
-    flash.now[:notice] = "Keywords successfully saved" if @company.save
+    @company.save ? success(true) : error('server error')
   end
 
   private

@@ -8,6 +8,7 @@ window.g = {
   couchLocation: '<%=escape_javascript @company.couch_host %>',
   db_name: '<%=escape_javascript @company.db_name %>',
   company: "<%=escape_javascript @company.name %>",
+  keywords: "<%=escape_javascript @company.keywords %>",
   MAX_CHARS: <%= @max_chars || -1 %>
 };
 window.widgetClasses = {};

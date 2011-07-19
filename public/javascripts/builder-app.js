@@ -130,13 +130,17 @@
   BuilderAppController = Backbone.Controller.extend({
     routes: {
       'edit-tab-bar':  'editTabBar',
-      'edit-settings': 'editSettings'
+      'edit-settings': 'editSettings',
+      'edit-keywords': 'editKeywords'
     },
     editTabBar: function () {
-      bapp.startEditingTabBar();
+      bapp.startEditingPanel('tabBar');
     },
     editSettings: function () {
-      bapp.startEditingSettings();
+      bapp.startEditingPanel('settings');
+    },
+    editKeywords: function () {
+      bapp.startEditingPanel('keywords');
     }
   });
 
@@ -149,6 +153,7 @@
     
     tabBarEditor: new window.EditTabBarView(),
     settingsEditor: new window.EditSettingsView(),
+    keywordsEditor: new window.EditKeywordsView(),
     
     initialize: function () {
       _.bindAll(this,'rebindSortables');
@@ -380,20 +385,12 @@
       });
     },
     
-    startEditingTabBar: function () {
+    startEditingPanel: function (panelType) {
       if (this.currentEditor) {
         this.currentEditor.stopEditing();
         mapp.goHome();
       }
-      this.tabBarEditor.startEditing();
-    },
-
-    startEditingSettings: function () {
-      if (this.currentEditor) {
-        this.currentEditor.stopEditing();
-        mapp.goHome();
-      }
-      this.settingsEditor.startEditing();
+      this[panelType + 'Editor'].startEditing();
     }
     
   });
