@@ -16,6 +16,7 @@ class Widgets::TellFriendController < ApplicationController
       :subject => "#{params[:name_from]} wants you to check out #{company.name}'s mobile website!",
       :from => params[:email_from],
       :name_from => params[:name_from],
+      :email_from => params[:email_from],
       :company_mobile_url => company.mobile_url
     }).deliver
     return success :msg => params[:feedback]
