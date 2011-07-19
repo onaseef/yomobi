@@ -439,18 +439,6 @@
     },
     drop: function (e,ui) {
       
-      var editor = bapp.currentEditor;
-      if (editor && editor.hasChanges()) {
-        if (!confirm(unsavedChangesText)) {
-          $('#builder .drophover-overlay').hide();
-          return false;
-        }
-        else {
-          editor.onDiscardByNavigation();
-          editor.stopEditing();
-        }
-      }
-
       if (mapp.pageLevel != 0) {
         $('#dialog-invalid-drag').dialog({
           modal: true,
@@ -462,6 +450,18 @@
           }
         });
         return;
+      }
+      
+      var editor = bapp.currentEditor;
+      if (editor && editor.hasChanges()) {
+        if (!confirm(unsavedChangesText)) {
+          $('#builder .drophover-overlay').hide();
+          return false;
+        }
+        else {
+          editor.onDiscardByNavigation();
+          editor.stopEditing();
+        }
       }
       
       var elem = $(ui.draggable)
