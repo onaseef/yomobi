@@ -562,6 +562,31 @@ var util = {
     else if (offset > 480) {
       $('#mobile-scroller').scrollTop(scrollTop + offset - 480);
     }
+  },
+
+  widgetPageViewSubmit: function () {
+    var self = this
+      , form = this.el.find('form')
+      , url  = form.attr('action')
+      , params = form.serialize()
+      , method = form.attr('method')
+    ;
+    this.el.find('input[type=submit]').prop('disabled',true);
+    $.post(url,params,function (data) {
+      util.log('data',data);
+      self.el
+        .find('.input-wrap').hide().end()
+        .find('.thanks-wrap').show().end()
+      ;
+    })
+    .error(function (e,textStatus,errorThrown) {
+      var msg = self.prettyErrorMsg($.parseJSON(e.responseText))
+      self.el.find('.response').html('ERROR: '+msg).show('pulsate',{ times:3 });
+      self.el.find('input[type=submit]').prop('disabled',false);
+      mapp.resize();
+    });
+    
+    return false;
   }
   
 }

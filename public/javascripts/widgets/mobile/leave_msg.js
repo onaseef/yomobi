@@ -25,28 +25,8 @@
       },1000);
     },
 
-    submit: function () {
-      var self = this
-        , form = this.el.find('form')
-        , url  = form.attr('action')
-        , params = form.serialize()
-        , method = form.attr('method')
-      ;
-      $.post(url,params,function (data) {
-        util.log('data',data);
-        self.el
-          .find('.input-wrap').hide().end()
-          .find('.thanks-wrap').show().end()
-        ;
-      })
-      .error(function (e,textStatus,errorThrown) {
-        var msg = prettyErrorMsg($.parseJSON(e.responseText))
-        self.el.find('.response').html('ERROR: '+msg).show('pulsate',{ times:3 });
-        mapp.resize();
-      });
-      
-      return false;
-    }
+    prettyErrorMsg: prettyErrorMsg,
+    submit: util.widgetPageViewSubmit
   });
 
   function prettyErrorMsg (serverResponse) {
