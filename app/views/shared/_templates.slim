@@ -380,9 +380,9 @@
   script.category-page(type="text/template")
     | <% for (var i=0; i<cats.length;i++) {
               print( catTemplate({ catName:cats[i], cycle:util.cycle('c0','c1'), order:i }) );
-    | } %>
+    | } if (cats.length > 0) { %>
     .divider
-    | <% for (var i=0;i<items.length;i++) {
+    | <% } for (var i=0;i<items.length;i++) {
     |         print( itemTemplate({ item:items[i], cycle:util.cycle('c0','c1'), order:i }) );
     | } %>
   
@@ -390,9 +390,10 @@
     | <% if (!_maybe.isLeaf) {
     |       for (var i=0; i<cats.length;i++) {
     |         print( catTemplate({ catName:cats[i], cycle:util.cycle('c0','c1'), order:i }) );
-    |       } %>
+    |       } 
+    |       if (cats.length > 0) { %>
     .divider
-    | <%    for (var i=0;i<items.length;i++) { %>
+    | <%    } for (var i=0;i<items.length;i++) { %>
     .leaf-name.item class="<% print(util.cycle('c0','c1')); %> <%if(i==0) print('first');%>"
       .leaf-arrow
       | {{ items[i].name }}
