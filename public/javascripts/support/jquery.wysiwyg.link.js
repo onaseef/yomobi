@@ -34,12 +34,11 @@
 				reset: "Cancel"
 			};
 
-			formLinkHtml = '<form class="wysiwyg" title="{legend}">' +
+			formLinkHtml = '<form class="wysiwyg" title="{legend}" style="padding-top:30px">' +
 				'<label>{url}: </label><input type="text" name="linkhref" value=""/>' +
 				'<input type="text" name="linktitle" value="" style="display:none"/>' +
 				'<input type="text" name="linktarget" value="" style="display:none" />' +
-				'<input type="reset" value="{reset}"/></form>' +
-				'<input type="submit" class="button" value="{submit}"/> ';
+				'</form>';
 
 			for (key in dialogReplacements) {
 				if ($.wysiwyg.i18n) {
@@ -84,11 +83,11 @@
 				} else {
 					dialog = elements.appendTo("body");
 				}
-
 				dialog.dialog({
 					modal: true,
-					open: function (ev, ui) {
-						$("input:submit", dialog).click(function (e) {
+					// open: function (ev, ui) {
+					buttons: {
+						"Submit": function (e,ui) {
 							e.preventDefault();
 
 							var url = $('input[name="linkhref"]', dialog).val(),
@@ -151,11 +150,11 @@
 							Wysiwyg.saveContent();
 
 							$(dialog).dialog("close");
-						});
-						$("input:reset", dialog).click(function (e) {
+						},
+						"Cancel": function (e) {
 							e.preventDefault();
 							$(dialog).dialog("close");
-						});
+						}
 					},
 					close: function (ev, ui) {
 						dialog.dialog("destroy");
