@@ -533,6 +533,13 @@
       // cache for later use
       this.level = level;
       
+      var buttons = {
+        "Done": function () {
+          $(this).dialog("close");
+          self.options.onClose && self.options.onClose();
+        }
+      };
+
       var saveItem = function () {
         $(this).dialog("close");
         var activeItemData = {};
@@ -558,12 +565,12 @@
         }
       }
 
-      util.dialog(dialogContent, {
-      	"Done": function () {
-          $(this).dialog("close");
-          self.options.onClose && self.options.onClose();
-      	}
-    	})
+      if (this.mode == 'edit') {
+        buttons["Save"] = saveItem;
+        buttons["Cancel"] = buttons["Done"]; delete buttons["Done"];
+      }
+
+      util.dialog(dialogContent, buttons)
         .find('p.error').show('pulsate',{times:3}).end()
         .find('p.success').show('pulsate',{times:1}).end()
         .find('input[name=add]').click(saveItem).end()
