@@ -1,0 +1,26 @@
+@import "constants";
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-family: "lucida grande", tahoma, verdana, arial, sans-serif; }
+
+#header {
+  height: 42px;
+  padding: 10px 0;
+  background: $main-color;
+  color: $header-font-color;
+  .content {
+    max-width: 960px;
+    margin: 0 auto; }
+  #logo {
+    float: left;
+    width: $sidebar-width - 12px;
+    padding: 0px 0 0 12px;
+    font-size: 32px; } }
+
+#main-content {
+  margin: 0 auto;
+  padding: 0 10px;
+  max-width: 960px; }

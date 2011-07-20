@@ -1,0 +1,15 @@
+$main-color: #3b5998;
+$secondary-color: #627aad;
+$light-bg-color: #edeff4;
+$highlight-color: #d8dfea;
+
+$header-font-color: white;
+
+$light-border: #b3b3b3;
+
+$page-width: 960px;
+$sidebar-width: 200px;
+$emulator-width: 340px;
+
+$content-width: $page-width - $sidebar-width;
+$widget-editor-width: $content-width - 2px - $emulator-width - 8px;

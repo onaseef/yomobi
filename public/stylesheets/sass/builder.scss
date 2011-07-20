@@ -1,0 +1,399 @@
+@import "constants";
+
+// layout related
+
+#sidebar {
+  float: left;
+  width: $sidebar-width;
+  ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 54px 0 10px 0;
+    font-size: 12px; }
+  .spacer {
+    border-top: 1px solid #dddddd;
+    margin: 5px 0; }
+  .option {
+    height: 16px;
+    padding: 3px 0 2px 4px;
+    clear: left;
+    .icon {
+      float: left;
+      width: 16px;
+      height: 16px;
+      margin: -1px 4px 0 0;
+      background: url(/images/test-icons.png); }
+    &:hover {
+      background-color: $highlight-color;
+      cursor: pointer; } }
+  .option.basic .icon {
+    background-position: 0 0; }
+  .option.config .icon {
+    background-position: 0 -16px; }
+  .option.builder .icon {
+    background-position: 0 -32px; }
+  .option.active {
+    background-color: $highlight-color; }
+  .home-icon {
+    width: 150px;
+    height: auto;
+    padding: 1px 0 0px 5px;
+    margin: 1px 0;
+    cursor: pointer;
+    .title {
+      width: auto;
+      padding: 2.5px 0 0 4px;
+      text-align: left;
+      height: auto;
+      font-size: 12px; }
+    .icon {
+      margin: 0;
+      float: left;
+      width: 18px;
+      height: 18px; } }
+  .home-icon:hover {
+    background: yellow; }
+  .home-icon.singletonInUse {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    filter: alpha(opacity = 50);
+    -moz-opacity: 0.5;
+    -khtml-opacity: 0.5;
+    opacity: 0.5; } }
+
+#sidebar .widgets {
+  height: 414px;
+  padding-left: 20px;
+  overflow: auto; }
+
+#content {
+  float: left;
+  border: 1px solid #b3b3b3;
+  border-top: none;
+  width: $content-width - 2px - 1px;
+  h1 {
+    padding-left: 10px;
+    margin: 3px 0px 3px 0px; } }
+
+// builder related
+
+.ad-bar {
+  display: none !important; }
+
+.home-icon.editing {
+  background: url(/images/ui/highlight.png) no-repeat 0px 1px !important;
+  .title {
+    color: #000066;
+    font-weight: bold; } }
+
+.home-icon.invalid {
+  .invalid-icon {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    top: -94px;
+    left: 40px;
+    background: url(/images/ui/invalid-for-showing.png) no-repeat; } }
+
+#builder-container {
+  background: $light-bg-color;
+  border-top: 1px solid #b3b3b3; }
+
+#builder {
+  .left, .right {
+    & > .title {
+      padding: 10px 0 10px 0;
+      font-size: 1.75em;
+      font-weight: bold;
+      color: #000066; }
+    & > .title-subtext {
+      height: 30px;
+      padding: 0 10px 0 0; } }
+  .left {
+    width: $content-width - $widget-editor-width;
+    height: 100%;
+    border-right: 1px solid #b3b3b3;
+    padding: 0 0 27px 10px; }
+  .right {
+    & > .title {
+      padding: 10px 15px 10px; }
+    & > .title-subtext {
+      padding-left: 10px; }
+    width: $widget-editor-width - 10px - 1px - 3px;
+    height: 100%;
+    .title {
+      padding-left: 10px; } } }
+
+#builder .widget-editor {
+  width: $widget-editor-width - 25px - 25px;
+  padding: 0;
+  margin: 0 auto;
+  .header {
+    height: 55px;
+    margin: 0 auto;
+    padding-bottom: 4px;
+    .icon {
+      float: left;
+      width: 64px;
+      height: 64px;
+      background: no-repeat; }
+    .help-text {
+      padding: 0 20px 0 64px;
+      margin-top: 3px; } }
+  .header.edit-tab-bar, .header.edit-settings {
+    .help-text, .widget-name {
+      padding-left: 0;
+      cursor: auto; } }
+  .logo {
+    margin: 10px 0; }
+  .edit-area {
+    padding: 20px 0;
+    margin: 0 auto;
+    label {
+      font-size: 14px; }
+    textarea {
+      width: 354px;
+      height: 6em;
+      margin-top: 0;
+      margin-bottom: 5px;
+      font-size: 1em; }
+    input[type=text] {
+      width: 360px - 6px;
+      margin-top: 1px;
+      margin-bottom: 5px;
+      font-size: 1em; } }
+  .action-bar {
+    padding: 12px 0 0;
+    margin: 0 auto;
+    border-top: 1px solid $light-border; }
+  .accept-btn {
+    float: right; }
+  .remove-link {
+    float: left;
+    margin: 4px 0 0 6px; }
+  .cancel-btn {
+    float: left; }
+  .loader {
+    display: none;
+    float: right;
+    margin: 5px 6px 0 0; }
+  .checkmark {
+    display: none;
+    float: right;
+    margin: 4px 6px 0 0; }
+  .widget-name {
+    padding: 0 0 0 64px;
+    font-size: 1.75em;
+    word-wrap: break-word;
+    .change-label {
+      display: none;
+      padding-left: 8px;
+      color: #ff530d;
+      font-size: 0.6em; }
+    &:hover {
+      background: $highlight-color;
+      cursor: pointer;
+      .change-label {
+        display: inline; } } }
+  .widget-name-edit {
+    display: none;
+    position: relative;
+    left: 4px;
+    input[type=text] {
+      font-size: 1.5em;
+      width: 250px; } } }
+
+#builder .panel {
+  padding: 0 0 10px 10px; }
+
+#emulator-wrapper {
+  float: left;
+  width: $emulator-width; }
+
+#emulator {
+  position: relative;
+  border: 4px solid #1d4088;
+  background: $light-bg-color;
+  overflow: hidden;
+  height: 480px; }
+
+#emulator-scroller {
+  width: 335px;
+  height: 480px; }
+
+#emulator.portrait {
+  width: $emulator-width;
+  min-height: 480px; }
+
+#emulator.landscape {
+  width: 480px;
+  height: $emulator-width; }
+
+#builder .loader-overlay {
+  position: absolute;
+  z-index: 99;
+  // top: 117px
+  width: 320px + 4px;
+  height: 480px + 8px;
+  background: url(/images/ui/overlay.png);
+  .icon {
+    width: 64px;
+    height: 64px;
+    margin: 210px auto;
+    background: url(/images/ui/ajax-loader-large.gif); } }
+
+#builder .drophover-overlay {
+  display: none;
+  position: absolute;
+  z-index: 98;
+  width: 320px + 4px;
+  height: 480px + 8px;
+  background: url(/images/ui/overlay.png);
+  .icon {
+    width: 128px;
+    height: 128px;
+    margin: 170px auto 0;
+    background: url(/images/ui/drophover.png); }
+  .text {
+    margin: 8px 0;
+    color: white;
+    text-align: center;
+    font-size: 2em; } }
+
+#emulator.drophover .drophover-overlay {
+  display: block; }
+
+#mobile-scroller {
+  // ie7 requires position: relative
+  position: relative;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 480px;
+  width: 335px; }
+
+.divider {
+  border-top: 1px solid $light-border;
+  margin: 10px 0; }
+
+/////////////////////////////
+// Widget-specific styling //
+/////////////////////////////
+
+#builder .edit-area.hours {
+  .day-checkbox {
+    float: left;
+    width: 32px;
+    margin-right: 10px;
+    text-align: center; }
+  .day-hours {
+    display: block;
+    clear: left;
+    .day-name {
+      float: left;
+      width: 75px;
+      margin-top: 4px;
+      font-size: 1.2em; }
+    .day-enabled input[type=checkbox] {
+      margin-top: 6px; }
+    .times {
+      // visible when day-hours has .checked class
+      visibility: hidden;
+      float: left;
+      padding-left: 5px;
+      label {
+        float: left;
+        width: 24px;
+        margin-top: 4px;
+        color: #7e7e7e;
+        text-align: center; }
+      .t1 {
+        display: none; } }
+    .all-day {
+      // displays when day-hours has .checked class
+      visibility: hidden;
+      span {
+        float: left;
+        padding: 4px 2px 0 8px; }
+      input[type=checkbox] {
+        margin-top: 5px; } }
+    input[type=text] {
+      float: left;
+      width: 65px; } }
+  .day-hours.checked {
+    .times {
+      visibility: visible; }
+    .all-day {
+      visibility: visible; } }
+  .day-hours.all-day {
+    .times {
+      visibility: hidden !important; } } }
+
+#builder .edit-area.calendar {
+  .url {
+    padding: 5px 0 20px;
+    font-size: 1.5em;
+    word-wrap: break-word; } }
+
+#builder .edit-area.category, #builder .edit-area.page_tree {
+  padding-top: 0;
+  select {
+    width: 358px;
+    margin: 2px 0;
+    height: 111px; }
+  #jeditor-wrapper {
+    width: 324px; } }
+
+#builder .edit-area.link_fb {
+  .current_link_label {
+    font-size: 1.5em; } }
+
+#builder .edit-area.gmap {
+  p.invalidForShowing {
+    padding: 7px;
+    border: 1px solid #dd3c10;
+    background: #ffebe8;
+    font-size: 14px; } }
+
+#dialog-confirm {
+  input[type=text] {
+    width: 97%;
+    margin: 1px 0px 6px 0px; }
+  textarea {
+    margin-left: 1px;
+    margin-right: 1px;
+    width: 97%;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    height: 5em; }
+  .error {
+    color: #880000; }
+  .success {
+    color: #008800; } }
+
+/* css for timepicker */
+#ui-datepicker-div {
+  border: 3px solid black; }
+
+.ui-timepicker-div .ui-widget-header {
+  margin-bottom: 8px; }
+
+.ui-timepicker-div dl {
+  text-align: left; }
+
+.ui-timepicker-div dl dt {
+  height: 25px; }
+
+.ui-timepicker-div dl dd {
+  margin: -25px 0 10px 65px; }
+
+.ui-timepicker-div td {
+  font-size: 90%; }
+
+#wname-test {
+  position: absolute;
+  visibility: hidden;
+  overflow: hidden;
+  height: auto;
+  width: 68px;
+  text-align: center;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif; }
