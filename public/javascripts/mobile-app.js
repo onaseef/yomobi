@@ -193,9 +193,10 @@
         // TODO: use stored icon from couch instead
         name: g.db_name,
         prettyName: g.company
-      }));
-      if (window.bapp)
-        $('#top-bar .ad-bar').empty();
+      }))
+      .find('img').load(function (e,elem) {
+        g.topBarHeight = Math.max(g.topBarHeight,$('#top-bar').height());
+      });
     },
     
     goBack: function () {
@@ -304,25 +305,31 @@
 
         , activePage = this.getActivePage()
         , nextPage = this.getNextPage(direction)
-
-        , currentHeight = activePage.height()
-        , nextHeight = nextPage.height()
+        , m = !window.bapp // m is used for checking if page is in mobile mode
       ;
-      mapp.resize( Math.max(currentHeight,nextHeight) );
-      (delta == 1) ? this.scrollPush() : this.scrollPop();
+      m && activePage.css('visibility','hidden');
+      if (this.scrollElem.scrollTop() > g.topBarHeight)
+        this.scrollElem.scrollTop(g.topBarHeight);
 
-      activePage.find('.ad-bar,.mobile-footer').appendTo(nextPage);
-      this.pageLevel += delta;
+      self.pageLevel += delta;
 
-      this.el.find('#canvas').css('left', deltaStr + g.width);
-      mapp.resize(nextHeight);
-      util.release('pageTransition');
-      
-      if (mapp.pageLevel == 0 && window.bapp) {
-util.log('ensuring');
-        delete mapp.currentWidget;
-        util.ensureActiveWidgetIsVisible();
-      }
+      setTimeout(function () {
+        m && bezen.domwrite.capture();
+        activePage.find('.ad-bar,.mobile-footer').appendTo(nextPage);
+
+        self.el.find('#canvas').css('left', deltaStr + g.width);
+        mapp.resize(nextPage.height());
+
+        m && activePage.css('visibility','visible');
+        // if (delta === -1) setTimeout(function () { self.scrollPop(); },m ? 500 : 0);
+
+        util.release('pageTransition');
+        
+        if (mapp.pageLevel == 0 && window.bapp) {
+          delete mapp.currentWidget;
+          util.ensureActiveWidgetIsVisible();
+        }
+      },m ? 200 : 0);
 
       return true;
     },
@@ -336,12 +343,16 @@ util.log('ensuring');
     
     scrollPush: function () {
       this.scrollStack.push( this.scrollElem.scrollTop() );
-      this.scrollElem.scrollTop(0);
+      if (this.scrollElem.scrollTop() > g.topBarHeight)
+        this.scrollElem.scrollTop(g.topBarHeight);
       // $(this.scrollElem).animate({ scrollTop:0 },350);
     },
 
     scrollPop: function () {
-      this.scrollElem.scrollTop( this.scrollStack.pop() );
+      var pop = this.scrollStack.pop();
+      if (this.scrollElem.scrollTop() < pop) {
+        this.scrollElem.scrollTop( pop );
+      }
     },
 
     fetchWorder: function (callback) {
@@ -366,10 +377,10 @@ util.log('ensuring');
       this.el.find('#top-bar .tab-bar').html(this.tabBarTemplate({
         prettyTabs: _(this.wtabs).chain().select(isValid).map(util.prettifyName).value()
       }));
+      g.topBarHeight = Math.max(g.topBarHeight, this.el.find('#top-bar').height());
     },
 
     showAds: function () {
-util.log('SHowing ads');
       $('.ad-bar').show();
     }
     

@@ -44,11 +44,12 @@ html lang="en-US"
             success: function () {
               mapp.updateWtabs(true);
               Backbone.history.start();
-              if (showAds && mapp.widgets.validCount() > 4) mapp.showAds();
+              if (window.showAds && mapp.widgets.validCount() > 4) mapp.showAds();
             }
           });
         });
       });
     
+    = javascript_include_tag 'support/bezen.domwrite.js'
     = javascript_include_tag "http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"
     = javascript_include_tag 'support/showdown.js'
