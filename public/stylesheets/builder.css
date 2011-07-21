@@ -262,6 +262,25 @@
   border-top: 1px solid #b3b3b3;
   margin: 10px 0; }
 
+#builder .edit-area.edit-settings {
+  padding-top: 6px; }
+  #builder .edit-area.edit-settings .box {
+    border: 2px solid #d0d7e3;
+    padding: 8px; }
+    #builder .edit-area.edit-settings .box input[type=text] {
+      width: 274px;
+      margin: 0; }
+    #builder .edit-area.edit-settings .box textarea {
+      width: 326px;
+      margin: 0; }
+  #builder .edit-area.edit-settings .divider {
+    border-color: #d0d7e3; }
+  #builder .edit-area.edit-settings form .action-bar {
+    border-top: 2px solid #d0d7e3;
+    padding-right: 0;
+    padding-top: 8px;
+    margin-top: 10px; }
+
 #builder .edit-area.hours .day-checkbox {
   float: left;
   width: 32px;

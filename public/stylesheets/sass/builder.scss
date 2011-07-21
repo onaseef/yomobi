@@ -274,6 +274,23 @@
   border-top: 1px solid $light-border;
   margin: 10px 0; }
 
+#builder .edit-area.edit-settings {
+  padding-top: 6px;
+  .box {
+    border: 2px solid #d0d7e3;
+    padding: 8px;
+    input[type=text] { width: 274px; margin: 0; }
+    textarea { width: 326px; margin: 0; }
+  }
+  .divider { border-color: #d0d7e3; }
+  form {
+    .action-bar {
+      border-top: 2px solid #d0d7e3;
+      padding-right: 0; padding-top:8px; margin-top:10px;
+    }
+  }
+}
+
 /////////////////////////////
 // Widget-specific styling //
 /////////////////////////////

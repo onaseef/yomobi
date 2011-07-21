@@ -7,6 +7,12 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 11px; }
 
+input[type=file] {
+  width: 250px;
+  padding: 2px;
+  background: #fff;
+}
+
 a, a:visited {
   color: #3b5998;
   text-decoration: none; }
@@ -136,12 +142,17 @@ p.success {
   border: 1px dashed black; }
 
 #simpleTooltip {
-  padding: 4px 0px 4px 4px;
+  padding: 4px;
   margin: 0;
   border: 1px solid #dd3c10;
   background: #f8e6e0;
   max-width: 175px;
   font-size: 11px; }
+
+#simpleTooltip.help {
+  background: #EDEFF4;
+  border: 1px solid #1D4088;
+}
 
 #footer {
   border-top: 1px solid $light-border;
@@ -156,6 +167,9 @@ p.success {
     float: left;
     cursor: pointer;
     margin-right: 4px !important; } }
+
+label.help { padding-bottom: 4px; }
+.help-bubble { cursor: help; }
 
 .hr {
   border-top: 1px solid $light-border;

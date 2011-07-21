@@ -6,18 +6,19 @@
 **/
 (function($){
 
-$.fn.simpletooltip = function(tooltipText){
+$.fn.simpletooltip = function(tooltipText,tooltipClassName){
 	return this.each(function() {
 		
 		$this = $(this).unbind('.tooltip');
 		if (tooltipText === false) return;
+		tooltipClassName = tooltipClassName || '';
 
 		var text = tooltipText || $this.attr("title");
 		$this.attr("title", "");
 		if(text != undefined) {
 			$this
-				.bind('mouseenter.tooltip',{ text:text },hoverInHandler)
-				.bind('mouseleave.tooltip',{ text:text },hoverOutHandler)
+				.bind('mouseenter.tooltip',{ text:text, className:tooltipClassName },hoverInHandler)
+				.bind('mouseleave.tooltip',{ text:text, className:tooltipClassName },hoverOutHandler)
 				.bind('mousemove.tooltip',mousemoveHandler)
 			;
 		}
@@ -28,7 +29,8 @@ var hoverInHandler = function (e) {
 // alert('AHHHH '+e.data.text);
 	var tipX = e.pageX + 12;
 	var tipY = e.pageY + 12;
-	$("body").append("<div id='simpleTooltip' style='position: absolute; z-index: 100; display: none;'>" + e.data.text + "</div>");
+	$("body").append("<div id='simpleTooltip' class='" + e.data.className + 
+									 "' style='position: absolute; z-index: 100; display: none;'>" + e.data.text + "</div>");
 	if ($.browser.msie) var tipWidth = $("#simpleTooltip").outerWidth(true);
 	else var tipWidth = $("#simpleTooltip").width();
 	$("#simpleTooltip").width(tipWidth);
