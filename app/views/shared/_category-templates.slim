@@ -207,8 +207,9 @@ script.property-listings-item
   .item class="{{ cycle }} <%if(order==0){print('first');}%>"
     .name.long {{ item.name }}
     .clearfix
-    a href="http://maps.google.com/maps?q={{ item.address }}" target="_blank" {{ item.address }}
     div {{ item.price }}
+    
+    a href="http://maps.google.com/maps?q={{ item.address }}" target="_blank" {{ item.address }}
     | <% if (item.photo_url) { %>
     a href="{{ item.photo_url }}" View Property
     | <% } %>

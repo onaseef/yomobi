@@ -31,7 +31,7 @@ a img {
 
 #canvas .page .content {
   padding: 20px 10px;
-  font-size: 14px;
+  font-size: 16px;
   label {
     margin-bottom: 2px; }
   input[type=text] {
@@ -54,9 +54,10 @@ a img {
 
 .back-bar {
   width: 100%;
-  padding: 0 8px;
-  background: $color-topbar;
-  color: white;
+  padding: 0;
+  margin: 12px 0 0 0;
+  background: url(/images/ui/bg-back-bar.png) repeat-x;
+  color: gray;
   .title {
     padding-top: 3px;
     height: 36px;
@@ -65,9 +66,10 @@ a img {
       font-size: 12px; } } }
 
 .company-info {
-  @extend .back-bar;
-  padding-left: 1px;
   width: 100%;
+  padding-left: 0 1px 0 8px;
+  background: $color-topbar;
+  color: white;
   td {
     vertical-align: center; }
   .logo {
@@ -116,10 +118,13 @@ a img {
 
 .back-btn {
   float: left;
-  width: 50px;
-  height: 30px;
-  margin: 4px 8px 0 0;
-  background: url(/images/back-btn.png) no-repeat; }
+  width: 48px;
+  height: 38px;
+  border-right: 1px solid gray;
+  margin: 0 12px 0 1px;
+  padding: 0;
+  background: url(/images/ui/back-btn.png) no-repeat;
+  background-position: center; }
 
 .title {
   h2, h3 {
