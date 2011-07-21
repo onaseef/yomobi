@@ -44,10 +44,14 @@ html lang="en-US"
             success: function () {
               mapp.updateWtabs(true);
               Backbone.history.start();
-              if (window.showAds && mapp.widgets.validCount() > 4) mapp.showAds();
+              if (window.showAds) mapp.showAds();
             }
           });
         });
+      });
+
+      $(window).load(function () {
+        setTimeout(function () { $(window).scrollTop(0); },1000);
       });
     
     = javascript_include_tag 'support/bezen.domwrite.js'

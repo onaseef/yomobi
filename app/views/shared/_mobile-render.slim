@@ -9,7 +9,7 @@
         td.wtab
         td.wtab
         td.wtab
-  - if @is_mobile && !@logged_in
+  - if @is_mobile
     .ad-bar
       javascript:
         window.googleAfmcRequest = {
@@ -22,7 +22,7 @@
 #canvas
   #home.page
     #home-widgets.content.dbx-group
-    - if @is_mobile && !@logged_in
+    - if @is_mobile
       .ad-bar.bottom
         div align="center"
         javascript:
