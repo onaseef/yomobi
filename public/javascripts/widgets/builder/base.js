@@ -57,10 +57,12 @@
     },
     
     set: function(attributes, options) {
-      if(attributes._id) {
+      if (attributes._id) {
         attributes.id = attributes._id;
         delete attributes._id;
       }
+      delete attributes.helpText; delete attributes.subHelpText;
+
       return Backbone.Model.prototype.set.call(this, attributes, options);
     }
   });

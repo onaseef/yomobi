@@ -158,7 +158,8 @@ class CouchDocs
       {
         :name => "flickr",
         :wtype => 'link_fb',
-        :helpText => "Add a one-tap link to your mobile Flickr page.",
+        :helpText => "Add a link to your Flickr album on your mobile site.",
+        :subHelpText => "Flickr alias or custom URL",
         :host => 'http://m.flickr.com/photos/',
         :basename => 'flickr',
         :singleton => true
@@ -167,7 +168,8 @@ class CouchDocs
       {
         :name => "picasa",
         :wtype => 'link_fb',
-        :helpText => "Add a one-tap link to your Picasa page.",
+        :helpText => "Add a link to your Picasa album on your mobile site.",
+        :subHelpText => "Picasa album URL",
         :host => 'http://picasaweb.google.com/',
         :basename => 'picasa',
         :singleton => true
@@ -176,36 +178,39 @@ class CouchDocs
       {
         :name => "blog",
         :wtype => 'link',
-        :helpText => "Add a link from your YoMobi mobile website to your blog.",
+        :helpText => "Add a link to your blog on your mobile site.",
+        :subHelpText => "Blog",
         :singleton => true
       },
 
       {
         :name => "news",
         :wtype => 'link',
-        :helpText => "Add a link from your YoMobi mobile website to your news webpage.",
+        :helpText => "Add a link to your online news site on your mobile site.",
+        :subHelpText => "online news site",
         :singleton => true
       },
 
       {
         :name => "reviews",
         :wtype => 'link',
-        :helpText => "Add a one-tap link to a website that has reviews of your business.",
+        :helpText => "Show visitors how great you are by adding a link to your online reviews page on your mobile site.",
+        :subHelpText => "reviews page URL",
         :singleton => true
       },
       
       {
         :name => "call-me-back",
         :wtype => 'call_back',
-        :helpText => "This widget allows your customers to request you to call them back.",
+        :helpText => "Allow your mobile site visitors to request a call back from you.",
         :singleton => true
       },
 
       {
         :name => "property-listings",
         :wtype => 'category',
-        :helpText => "Give your mobile site visitors access to your property listings.",
-        :subHelpText => "create a list of properties for sale or lease.",
+        :helpText => "Give your mobile site visitors easy access to your property listings.",
+        :subHelpText => "create a mobile optimized list of properties for lease or sale.",
         :catTypeName => "Area",
         :itemTypeName => "Listing",
         :singleton => true,
@@ -224,7 +229,8 @@ class CouchDocs
       {
         :name => "twitter",
         :wtype => 'link_fb',
-        :helpText => "Add a one-tap link to your businesses's Twitter page.",
+        :helpText => "Add a link to your twitter account on your mobile site to make it easy for visitors to follow you.",
+        :subHelpText => "Twitter ID",
         :host => 'http://twitter.com/',
         :basename => 'twitter',
         :singleton => true
@@ -233,7 +239,8 @@ class CouchDocs
       {
         :name => "facebook",
         :wtype => 'link_fb',
-        :helpText => "Add a one-tap link to your businesses's Facebook page.",
+        :helpText => "Add a link to your Facebook page on your mobile site to make it easy for visitors to friend you.",
+        :subHelpText => "Facebook username",
         :host => 'http://facebook.com/',
         :basename => 'facebook',
         :singleton => true
@@ -242,8 +249,8 @@ class CouchDocs
       {
         :name => "category",
         :wtype => 'page_tree',
-        :helpText => "Create your own mobile site map of custom pages.",
-        :subHelpText => "create and organize web pages on your mobile site.",
+        :helpText => "Create and organize custom web pages for your mobile site.",
+        :subHelpText => "create and organize custom web pages for your mobile site.",
         :catTypeName => "Subcategory",
         :itemTypeName => "Page",
         "struct" => {
@@ -254,68 +261,71 @@ class CouchDocs
       {
         :name => "booking-request",
         :wtype => 'booking',
-        :helpText => "Let your customers book a request through your YoMobi mobile website.",
+        :helpText => "Allow your mobile site visitors to email you a booking request.",
         :singleton => true
       },
 
       {
         :name => "tell-a-friend",
         :wtype => 'tell_friend',
-        :helpText => "This widget allows your customers to email their friends about your mobile website.",
+        :helpText => "Let your mobile site visitors tell their friends about you.",
         :singleton => true
       },
 
       {
         :name => "leave-a-message",
         :wtype => 'leave_msg',
-        :helpText => "Allow your customers to leave you an email message.",
+        :helpText => "Allow your mobile website visitors to easily leave you an email message.",
         :singleton => true
       },
 
       {
         :name => "event-calendar",
         :wtype => 'link',
-        :helpText => "Keep your customers up-to-date on your business's events.",
+        :helpText => "Add a link to your online calendar on your mobile site.",
+        :subHelpText => "online calendar",
         :singleton => true
       },
 
       {
         :name => "custom-page",
         :wtype => 'custom_page',
-        :helpText => "Write a page about whatever you like."
+        :helpText => "Add a custom web page for your mobile site."
       },
 
       {
         :name => "photo-bucket",
         :wtype => 'link',
-        :helpText => "Add a one-tap link to your PhotoBucket page.",
+        :helpText => "Add a link to your PhotoBucket album on your mobile site..",
+        :subHelpText => "Photobucket album custom URL",
         :singleton => true
       },
 
       {
         :name => "keep-me-informed",
         :wtype => 'informed',
-        :helpText => "Allow your mobile site visitors to request to receive email and and text notifications from you.",
+        :helpText => "Allow your mobile site visitors to follow you via email and text notifications.",
         :singleton => true
       },
 
       {
         :name => "coupon",
         :wtype => 'coupon',
-        :helpText => "Give your customers an incentive to choose your business."
+        :helpText => "Add a coupon to your mobile site."
       },
 
       {
         :name => "full-website",
         :wtype => 'link',
-        :helpText => "Add a link from your YoMobi mobile website to your full website.",
+        :helpText => "Add a link to your full website on your mobile site.",
+        :subHelpText => "full website",
         :singleton => true
       },
 
       {
         :name => "locations",
         :wtype => 'category',
-        :helpText => "Give your customers easy access to the multiple locations of your business.",
+        :helpText => "Give your mobile site visitors easy access to a directory of your business locations.",
         :subHelpText => "create a directory of your business locations.",
         :catTypeName => "Region",
         :itemTypeName => "Location",
@@ -334,7 +344,7 @@ class CouchDocs
       {
         :name => "business-hours",
         :wtype => 'hours',
-        :helpText => "Let your customers know when you're open for business.",
+        :helpText => "Let your mobile site visitors know when you are open for business.",
         "doubleTime" => false,
         "hours" => {
           "mon" => ["9:00am|5:00pm","",false,true],
@@ -350,8 +360,8 @@ class CouchDocs
       {
         :name => "services",
         :wtype => 'category',
-        :helpText => "Give your customers easy access to your catalog of services.",
-        :subHelpText => "create a mobile optimized services catalog.",
+        :helpText => "Give your mobile site visitors easy access to your catalog of services.",
+        :subHelpText => "create a mobile optimized catalog of your services.",
         :catTypeName => "Category",
         :itemTypeName => "Service",
         :singleton => true,
@@ -363,8 +373,8 @@ class CouchDocs
       {
         :name => "products",
         :wtype => 'category',
-        :helpText => "Give your customers easy access to your list of products.",
-        :subHelpText => "create a mobile optimized product catalogue.",
+        :helpText => "Give your mobile site visitors easy access to your catalog of products",
+        :subHelpText => "create a mobile optimized catalog of your products.",
         :catTypeName => "Category",
         :itemTypeName => "Product",
         :singleton => true,
@@ -376,7 +386,7 @@ class CouchDocs
       {
         :name => "menu",
         :wtype => 'category',
-        :helpText => "Give your customers easy access to your restaurant's cuisine.",
+        :helpText => "Give your mobile site visitors easy access to your menu.",
         :subHelpText => "create a mobile optimized version of your menu.",
         :catTypeName => "Category",
         :itemTypeName => "Item",
@@ -394,13 +404,13 @@ class CouchDocs
       {
         :name => "call-us",
         :wtype => 'phone',
-        :helpText => "Add a number for one-click calling."
+        :helpText => "Allow your mobile site visitors to call you with a single click."
       },
 
       {
         :name => "find-us",
         :wtype => 'gmap',
-        :helpText => "Show your customers a map of where your business is located."
+        :helpText => "Allow your mobile site visitors to easily find you."
       },
 
       {
@@ -413,7 +423,7 @@ class CouchDocs
       {
         :name => "link",
         :wtype => 'link',
-        :helpText => "Add a link to any URL."
+        :helpText => "Add a link to another website on your mobile site."
       }
     ].sort! {|a,b| b[:name] <=> a[:name]}
   end

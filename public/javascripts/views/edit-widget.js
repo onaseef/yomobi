@@ -153,7 +153,7 @@
     startEditing: function (resetChanges) {
       util.log('Editing widget:',this.widget.get('name'),this.widget.isNew());
       var widget = this.widget
-        , helpText = this.getHelpText(widget)
+        , helpText = util.getWidgetBData(widget).helpText
         , editAreaData = _.extend(widget.getEditAreaData(),{ helpText:helpText })
       ;
       this.validForShowingStatus = widget.validForShowing();
@@ -203,13 +203,6 @@
 
     hasChanges: function () {
       return _.keys(this.changes).length > 0;
-    },
-
-    getHelpText: function (widget) {
-      return _.select(window.bdata, function (w) {
-        if (w.singleton == true) return w.name == widget.get('name');
-        return w.wtype == widget.get('wtype');
-      })[0].helpText;
     }
     
   });

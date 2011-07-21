@@ -285,6 +285,14 @@ var util = {
     return _.template($('#templates .'+name).html());
   },
   
+  getWidgetBData: function (widget) {
+    return _.select(window.bdata, function (w) {
+      if (widget.get('singleton') === true) return w.name == widget.get('name');
+      return w.wtype == widget.get('wtype') && !w.singleton;
+    })[0];
+
+  },
+
   getInputElements: function (elem,selector) {
     selector = selector || '';
     return elem.find(selector + ' input,textarea');

@@ -418,8 +418,12 @@
   / =====================
   / = Widget Edit Pages =
   / =====================
-  script.full-website-edit-area.link-edit-area.news-edit-area.blog-edit-area.photo-bucket-edit-area(type="text/template")
-    label Enter your website's address [e.g. www.mysite.com]*:
+  script.full-website-edit-area.news-edit-area.photo-bucket-edit-area.blog-edit-area(type="text/template")
+    label Your {{ subHelpText }} URL*:
+    input(name="url" type="text" value="{{ _maybe.url }}")
+  
+  script.link-edit-area(type="text/template")
+    label Website URL*:
     input(name="url" type="text" value="{{ _maybe.url }}")
   
   script.reviews-edit-area(type="text/template")
@@ -427,14 +431,14 @@
     input(name="url" type="text" value="{{ _maybe.url }}")
   
   script.event-calendar-edit-area
-    label Enter your website's address [e.g. www.mysite.com]*:
+    label Your {{ subHelpText }} URL*:
     textarea name="url" type="text" rows="5" cols="30" {{ _maybe.url }}
 
   script.facebook-edit-area.twitter-edit-area.picasa-edit-area.flickr-edit-area(type="text/template")
     b.current_link_label Current Link
     p
       a href="{{ url }}" target="_blank" {{ anchorText }}
-    label Enter your {{ basename }} id [e.g. Starbucks] or url [e.g. {{ host }}path/to/Starbucks]*:
+    label Your {{ subHelpText }}*:
     input(name="userId" type="text" value="{{ _maybe.userId }}")
   
   script.custom_page-edit-area.about-us-edit-area(type="text/template")
@@ -442,24 +446,30 @@
       textarea#jeditor rows=8 cols=8 {{ _maybe.content }}
 
   script.phone-edit-area(type="text/template")
-    label Your company's phone number*:
+    label Your phone number*:
     input(name="phone" type="text" value="{{ _maybe.phone }}")
   
-  script.leave-a-message-edit-area.call-me-back-edit-area(type="text/template")
-    label Enter the email you would like to receive your customers' messages on*:
+  script.leave-a-message-edit-area(type="text/template")
+    label Your Email Address*:
+    p Messages will be sent to this email address, so check your mail often.
+    input(name="email" type="text" value="{{ _maybe.email }}")
+  
+  script.call-me-back-edit-area(type="text/template")
+    label Your Email Address*:
+    p Call back requests will be sent to this email address, so check your mail often.
     input(name="email" type="text" value="{{ _maybe.email }}")
   
   script.tell-a-friend-edit-area(type="text/template")
-    p This widget will appear on your mobile website and allow your customers to tell their friends about your mobile website.
+    p This widget appears on your mobile site and makes it easy for your visitors to tell their friends about you.
   
   script.booking-request-edit-area(type="text/template")
-    label Enter the email you would like to receive your customers' booking requests on*:
-    p You will be notified through this email once a customer sends a booking request.
+    label Your Email Address*:
+    p Booking requests will be sent to this email address, so check your mail often.
     input(name="email" type="text" value="{{ _maybe.email }}")
   
   script.keep-me-informed-edit-area(type="text/template")
-    p This widget will appear on your mobile site and allow your visitors to request to receive email and text notifications from you.
-    p You can send notifications to your followers by clicking on the “Email your Followers” or "Send Text to Your Followers" link on the left hand side of your browser.
+    p This widget allows visitors to your mobile site to become fans and follow your latest news via email and text notifications.
+    p You can send email notifications and instant messages to your followers by clicking on the “Email your Followers” or "Send Text to Your Followers" link in the navigation column on the left.
     br
     label Provide your email address to receive opt-ins*:
     input name="email" type="text" value="{{ _maybe.email }}"
@@ -504,7 +514,6 @@
     .clearfix
 
   script.gmap-edit-area(type="text/template")
-    | <% if (!validForShowing) { %><p class="invalidForShowing">Please enter your business <b>name</b>, business <b>address</b>, or both.</p><% } %>
     label Business Name:
     input(name="bname" type="text" value="{{ _maybe.bname }}")
     br
@@ -525,7 +534,7 @@
     input(name="zip" type="text" value="{{ _maybe.zip }}")
   
   script.coupon-edit-area(type="text/template")
-    label Name*:
+    label Deal Name*:
     input(name="couponName" type="text" value="{{ _maybe.couponName }}")
     br
     label Expiration Date:
@@ -547,7 +556,7 @@
     | <% if (onHomePage === true) { %>
 
     p Use this widget to {{ subHelpText }}
-    input type="button" name="beginEditing" value="Begin Editing"
+    input type="button" name="beginEditing" value="Click Here to Start Editing"
 
     | <% } else if (!_maybe.isLeaf) { %>
     br

@@ -47,7 +47,8 @@
         areItemsEmpty: areItemsEmpty,
         areCatsEmpty: areCatsEmpty,
         catLabel: util.pluralize( this.get('catTypeName') ),
-        itemLabel: util.pluralize( this.get('itemTypeName') )
+        itemLabel: util.pluralize( this.get('itemTypeName') ),
+        subHelpText: util.getWidgetBData(this).subHelpText
       };
       return _.extend({},showData,extraData);
     },

@@ -16,7 +16,8 @@
     getEditData: function () {
       var extraData = {
         url: this.getUrl() || '#',
-        anchorText: this.getUrl() || 'None'
+        anchorText: this.getUrl() || 'None',
+        subHelpText: util.getWidgetBData(this).subHelpText
       };
       return _.extend({},this.toJSON(),extraData);
     },
