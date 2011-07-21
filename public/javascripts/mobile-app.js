@@ -306,20 +306,18 @@
       ;
       mapp.resize( Math.max(currentHeight,nextHeight) );
       (delta == 1) ? this.scrollPush() : this.scrollPop();
-      
+util.log('pageLevel',this.pageLevel,'->',this.pageLevel+delta);
       this.pageLevel += delta;
-
-      this.el.find('#canvas').animate({
-        left: deltaStr + g.width
-      }, 350, function () {
-        mapp.resize(nextHeight);
-        util.release('pageTransition');
-        
-        if (mapp.pageLevel == 0) {
-          delete mapp.currentWidget;
-          util.ensureActiveWidgetIsVisible();
-        }
-      });
+util.log('delta',deltaStr,g.width,'=',deltaStr+g.width);
+      this.el.find('#canvas').css('left', deltaStr + g.width);
+      mapp.resize(nextHeight);
+      util.release('pageTransition');
+      
+      if (mapp.pageLevel == 0 && window.bapp) {
+util.log('ensuring');
+        delete mapp.currentWidget;
+        util.ensureActiveWidgetIsVisible();
+      }
 
       return true;
     },

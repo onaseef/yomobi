@@ -380,8 +380,8 @@
       var catStack = this.widget.catStack
         , newSubpage = _.compact(catStack.pop() && catStack).join('/')
       ;
-      if (!newSubpage) mapp.transition('back')
-      mapp.viewWidget(this.widget,newSubpage);
+      if (!newSubpage) mapp.transition('back');
+      else mapp.viewWidget(this.widget,newSubpage);
 
       this.widget.getEditor().startEditing();
     },

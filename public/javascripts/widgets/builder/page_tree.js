@@ -223,7 +223,7 @@ util.log('itemIdx',itemIdx,item,level);
         , newSubpage = _.compact(catStack.pop() && catStack).join('/')
       ;
       if (!newSubpage) mapp.transition('back');
-      mapp.viewWidget(this.widget,newSubpage);
+      else mapp.viewWidget(this.widget,newSubpage);
 
       this.widget.getEditor().startEditing();
     },
