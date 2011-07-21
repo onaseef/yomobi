@@ -301,14 +301,19 @@
       var self = this
         , delta = (direction == 'forward') ? 1 : -1
         , deltaStr = (direction == 'forward') ? '-=' : '+='
-        , currentHeight = this.getActivePage().height()
-        , nextHeight = this.getNextPage(direction).height()
+
+        , activePage = this.getActivePage()
+        , nextPage = this.getNextPage(direction)
+
+        , currentHeight = activePage.height()
+        , nextHeight = nextPage.height()
       ;
       mapp.resize( Math.max(currentHeight,nextHeight) );
       (delta == 1) ? this.scrollPush() : this.scrollPop();
-util.log('pageLevel',this.pageLevel,'->',this.pageLevel+delta);
+
+      activePage.find('.ad-bar,.mobile-footer').appendTo(nextPage);
       this.pageLevel += delta;
-util.log('delta',deltaStr,g.width,'=',deltaStr+g.width);
+
       this.el.find('#canvas').css('left', deltaStr + g.width);
       mapp.resize(nextHeight);
       util.release('pageTransition');
