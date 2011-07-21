@@ -19,7 +19,7 @@ class Company < ActiveRecord::Base
   
   before_create :create_couch, :unless => Proc.new {|c| c.db_pass == 'n0n-_-exist@nt??' }
   
-  validates_attachment_size :logo, :less_than => 1.megabytes, :unless => Proc.new {|c| c.logo.nil? }
+  validates_attachment_size :logo, :less_than => 3.megabytes, :unless => Proc.new {|c| c.logo.nil? }
   
   def create_couch
     db = CouchRest.database(ApplicationController::couch_url self.db_name, :@admin)
