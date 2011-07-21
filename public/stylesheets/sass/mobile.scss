@@ -263,7 +263,7 @@ a img {
 .page .content.category {
   .name {
     float: left;
-    width: 75%;
+    width: 70%;
     padding-right: 12px;
     font-size: 16px;
     font-weight: bold; }
@@ -271,6 +271,7 @@ a img {
     width: 100%;
     padding: 0; }
   .price {
+    float: right;
     font-size: 16px; }
   .desc {
     width: 75%;
