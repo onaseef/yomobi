@@ -333,9 +333,12 @@
 #builder .edit-area.category, #builder .edit-area.page_tree {
   padding-top: 0; }
   #builder .edit-area.category select, #builder .edit-area.page_tree select {
-    width: 358px;
+    width: 331px;
     margin: 2px 0;
     height: 111px; }
+  #builder .edit-area.category .arrows, #builder .edit-area.page_tree .arrows {
+    float: right;
+    padding: 5px 2px 0 0; }
   #builder .edit-area.category #jeditor-wrapper, #builder .edit-area.page_tree #jeditor-wrapper {
     width: 324px; }
 

@@ -565,6 +565,14 @@
     b.blue {{ catCrumbs }}
     br
     br
+
+    | <%  if (cats.length >= 2) { %>
+    .arrows
+      input.up-arrow type="image" name="up_cat" data-mod="-1" src="/images/ui/category-up-arrow.png"
+      br
+      input.down-arrow type="image" name="down_cat" data-mod="1" src="/images/ui/category-down-arrow.png"
+    | <%  } %>
+
     select name="cats" multiple="multiple"
       | <% for (var i=0; i<cats.length;i++) { %>
       option {{ cats[i] }}
@@ -576,10 +584,7 @@
     input type="button" name="edit_cat" value="Edit"
     input type="button" name="rename_cat" value="Rename"
     input type="button" name="rem_cat" value="Delete"
-    | <%       } if (cats.length >= 2) { %>
-    input.rfloat type="button" name="down_cat" data-mod="1" value="Down"
-    input.rfloat type="button" name="up_cat" data-mod="-1" value="Up"
-    | <%       } %>
+    | <% } %>
     br
     br
     .divider style="margin-bottom: 15px"
@@ -589,6 +594,12 @@
     b.blue {{ catCrumbs }}
     br
     br
+    | <% if (items.length >= 2) { %>
+    .arrows
+      input.up-arrow type="image" name="up_item" data-mod="-1" src="/images/ui/category-up-arrow.png"
+      br
+      input.down-arrow type="image" name="down_item" data-mod="1" src="/images/ui/category-down-arrow.png"
+    | <% } %>
     select name="items" multiple="multiple"
       | <% for (var i=0;i<items.length;i++) { %>
       option {{ items[i].name }}
@@ -598,9 +609,6 @@
     | <%       if (areItemsEmpty == false) { %>
     input type="button" name="edit_item" value="Edit"
     input type="button" name="rem_item" value="Delete"
-    | <%       } if (items.length >= 2) { %>
-    input.rfloat type="button" name="down_item" data-mod="1" value="Down"
-    input.rfloat type="button" name="up_item" data-mod="-1" value="Up"
     | <%       } %>
 
     | <% } else { %>

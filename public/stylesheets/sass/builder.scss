@@ -353,9 +353,13 @@
 #builder .edit-area.category, #builder .edit-area.page_tree {
   padding-top: 0;
   select {
-    width: 358px;
+    width: 331px;
     margin: 2px 0;
     height: 111px; }
+  .arrows {
+    float: right;
+    padding: 5px 2px 0 0;
+  }
   #jeditor-wrapper {
     width: 324px; } }
 

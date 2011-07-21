@@ -241,9 +241,9 @@ a img {
     height: 29px;
     margin-top: -4px; }
   .page .content.category .subcat-arrow, .page .content.page_tree .subcat-arrow {
-    background: url(/images/ui/subcat-arrow.png); }
+    background: url(/images/ui/subcat-arrow.png) no-repeat; }
   .page .content.category .leaf-arrow, .page .content.page_tree .leaf-arrow {
-    background: url(/images/ui/leaf-arrow.png); }
+    background: url(/images/ui/leaf-arrow.png) no-repeat; }
   .page .content.category .divider, .page .content.page_tree .divider {
     height: 5px;
     border-top: 1px solid #b3b3b3;
