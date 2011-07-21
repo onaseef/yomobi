@@ -84,7 +84,7 @@
       if (!mapp.canTransition()) return;
       
       var level = this.widget.getCurrentLevel()
-        , itemIdx = $(e.target).index() - util.catNamesFromLevel(level).length - 1 // -1 for divider elem
+        , itemIdx = $(e.target).index() - (util.catNamesFromLevel(level).length || -1) - 1 // -1 for divider elem
         , item = level._items[itemIdx]
         , subpage = this.widget.catStack.join('/')
       ;
