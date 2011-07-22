@@ -225,10 +225,8 @@ a img {
 .page .content.category, .page .content.page_tree {
   padding: 0 0 20px 0 !important; }
   .page .content.category .item, .page .content.page_tree .item {
-    padding: 16px 12px;
+    padding: 16px 12% 16px 12px;
     font-size: 16px; }
-    .page .content.category .item .cat-name, .page .content.page_tree .item .cat-name {
-      width: 90%; }
     .page .content.category .item > div, .page .content.page_tree .item > div {
       padding-bottom: 2px; }
     .page .content.category .item img, .page .content.page_tree .item img {
