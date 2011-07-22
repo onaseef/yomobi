@@ -50,7 +50,7 @@ p.success {
   color: white;
   height: 31px; }
   #header.signed-in .content {
-    width: 960px;
+    width: 1000px;
     margin: 0 auto; }
   #header.signed-in #logo {
     float: left;
@@ -59,7 +59,7 @@ p.success {
     font-size: 2em; }
   #header.signed-in #nav {
     float: left;
-    width: 757px;
+    width: 797px;
     height: 30px;
     border: 1px solid #1d4088;
     border-bottom: none;
@@ -76,7 +76,7 @@ p.success {
       background-color: #6d86b7; }
 
 #page-container {
-  width: 960px;
+  width: 1000px;
   margin: 0 auto; }
 
 .center-box {

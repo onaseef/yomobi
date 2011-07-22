@@ -121,7 +121,7 @@
     
     resize: function (height) {
       var newHeight = superObj.resize.call(this,height);
-      var emulatorWidth = ($('#mobile-container').height() < 480) ? 320 : 320+util.scrollbarWidth();
+      var emulatorWidth = 320 + util.scrollbarWidth();
       $('#emulator').width(emulatorWidth);
     }
   });

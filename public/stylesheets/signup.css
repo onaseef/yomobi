@@ -6,7 +6,7 @@
   #header.signed-out .subtext, #header.signed-out .subtext:visited {
     color: #98a9ca; }
   #header.signed-out > .content {
-    width: 960px;
+    width: 1000px;
     margin: 0 auto; }
   #header.signed-out #logo {
     float: left;
@@ -57,7 +57,7 @@
 #content {
   float: left;
   border-top: none;
-  width: 960px; }
+  width: 1000px; }
   #content h1 {
     padding-left: 10px; }
 
