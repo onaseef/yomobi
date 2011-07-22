@@ -386,8 +386,7 @@
   
   script.category-cat(type="text/template")
     .category.item class="{{ cycle }} <%if(order==0) print('first');%>" data-cat="{{ catName }}|{{ order }}"
-      .subcat-arrow
-      | {{ catName }}
+      .cat-name {{ catName }}
 
   script.category-page(type="text/template")
     | <% for (var i=0; i<cats.length;i++) {
@@ -407,7 +406,6 @@
     .divider
     | <%    } for (var i=0;i<items.length;i++) { %>
     .leaf-name.item class="<% print(util.cycle('c0','c1')); %> <%if(i==0) print('first');%>"
-      .leaf-arrow
       | {{ items[i].name }}
     | <%    } 
     | } else { %>

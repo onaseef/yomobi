@@ -238,26 +238,24 @@ a img {
 .page .content.category, .page .content.page_tree {
   padding: 0 0 20px 0 !important;
   .item {
-    padding: 8px 12px;
+    padding: 16px 12px;
     font-size: 16px;
+    .cat-name { width: 90%; }
+    & > div { padding-bottom: 2px; }
     img {
       max-height: 290px;
-      max-width: 290px; } }
+      max-width: 290px; }
+  }
+  .item.category {
+    background: url(/images/ui/subcat-arrow.png) 97% 50% no-repeat; }
+  .item.leaf-name {
+    background: url(/images/ui/leaf-arrow.png) 97% 50% no-repeat; }
   .item.category, .item.leaf-name {
     cursor: pointer; }
   .c0, .c1 {
     border-top: 1px solid #d2d2d2; }
   .first {
     border-top: none; }
-  .subcat-arrow, .leaf-arrow {
-    float: right;
-    width: 29px;
-    height: 29px;
-    margin-top: -4px; }
-  .subcat-arrow {
-    background: url(/images/ui/subcat-arrow.png) no-repeat; }
-  .leaf-arrow {
-    background: url(/images/ui/leaf-arrow.png) no-repeat; }
   .divider {
     height: 5px;
     border-top: 1px solid #b3b3b3;
@@ -275,7 +273,7 @@ a img {
     font-weight: bold; }
   .name.long {
     width: 100%;
-    padding: 0; }
+    padding: 0 0 8px 0; }
   .price {
     float: right;
     font-size: 16px; }

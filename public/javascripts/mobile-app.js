@@ -325,9 +325,14 @@
 
         util.release('pageTransition');
         
-        if (mapp.pageLevel == 0 && window.bapp) {
-          delete mapp.currentWidget;
-          util.ensureActiveWidgetIsVisible();
+        if (window.bapp) {
+          if (mapp.pageLevel == 0) {
+            delete mapp.currentWidget;
+            util.ensureActiveWidgetIsVisible();
+          }
+          else {
+            mapp.currentWidget.pageView.setContentElem(self.getActivePage().content);
+          }
         }
       },m ? 200 : 0);
 

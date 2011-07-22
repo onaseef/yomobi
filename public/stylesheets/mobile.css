@@ -225,26 +225,25 @@ a img {
 .page .content.category, .page .content.page_tree {
   padding: 0 0 20px 0 !important; }
   .page .content.category .item, .page .content.page_tree .item {
-    padding: 8px 12px;
+    padding: 16px 12px;
     font-size: 16px; }
+    .page .content.category .item .cat-name, .page .content.page_tree .item .cat-name {
+      width: 90%; }
+    .page .content.category .item > div, .page .content.page_tree .item > div {
+      padding-bottom: 2px; }
     .page .content.category .item img, .page .content.page_tree .item img {
       max-height: 290px;
       max-width: 290px; }
+  .page .content.category .item.category, .page .content.page_tree .item.category {
+    background: url(/images/ui/subcat-arrow.png) 97% 50% no-repeat; }
+  .page .content.category .item.leaf-name, .page .content.page_tree .item.leaf-name {
+    background: url(/images/ui/leaf-arrow.png) 97% 50% no-repeat; }
   .page .content.category .item.category, .page .content.category .item.leaf-name, .page .content.page_tree .item.category, .page .content.page_tree .item.leaf-name {
     cursor: pointer; }
   .page .content.category .c0, .page .content.category .c1, .page .content.page_tree .c0, .page .content.page_tree .c1 {
     border-top: 1px solid #d2d2d2; }
   .page .content.category .first, .page .content.page_tree .first {
     border-top: none; }
-  .page .content.category .subcat-arrow, .page .content.category .leaf-arrow, .page .content.page_tree .subcat-arrow, .page .content.page_tree .leaf-arrow {
-    float: right;
-    width: 29px;
-    height: 29px;
-    margin-top: -4px; }
-  .page .content.category .subcat-arrow, .page .content.page_tree .subcat-arrow {
-    background: url(/images/ui/subcat-arrow.png) no-repeat; }
-  .page .content.category .leaf-arrow, .page .content.page_tree .leaf-arrow {
-    background: url(/images/ui/leaf-arrow.png) no-repeat; }
   .page .content.category .divider, .page .content.page_tree .divider {
     height: 5px;
     border-top: 1px solid #b3b3b3;
@@ -261,7 +260,7 @@ a img {
   font-weight: bold; }
 .page .content.category .name.long {
   width: 100%;
-  padding: 0; }
+  padding: 0 0 8px 0; }
 .page .content.category .price {
   float: right;
   font-size: 16px; }

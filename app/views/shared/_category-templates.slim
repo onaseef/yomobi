@@ -209,9 +209,11 @@ script.property-listings-item
     .clearfix
     div {{ item.price }}
     
-    a href="http://maps.google.com/maps?q={{ item.address }}" target="_blank" {{ item.address }}
+    div
+      a href="http://maps.google.com/maps?q={{ item.address }}" target="_blank" {{ item.address }}
     | <% if (item.photo_url) { %>
-    a href="{{ item.photo_url }}" View Property
+    div
+      a href="{{ item.photo_url }}" View Property
     | <% } %>
     .mls
       ' MLS #:
