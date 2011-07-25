@@ -190,6 +190,11 @@
         , targetName = targetOption.html()
         , targetCat = targetName + '|' + targetIdx
       ;
+      if (targetIdx <= 0 && mod == -1 ||
+          targetIdx >= $select.find('option').length-1 && mod == 1)
+      {
+        return;
+      }
       if (_.isEmpty(targetName))
         return alert('Please select an item to move ' + (mod==1 ? 'down.' : 'up.'));
       
@@ -299,7 +304,12 @@
         , swapIdx = targetIdx + mod
         , swapOption = $select.find('option:eq('+swapIdx+')')
       ;
-      if (swapIdx < 0 || swapIdx >= _items.length)
+      if (targetIdx <= 0 && mod == -1 ||
+          targetIdx >= _items.length-1 && mod == 1)
+      {
+        return;
+      }
+      if (swapIdx >= _items.length)
         return alert('Please select an item to move ' + (mod==1 ? 'down.' : 'up.'));
       
       // first swap internally
