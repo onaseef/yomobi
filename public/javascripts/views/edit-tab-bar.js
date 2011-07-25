@@ -32,7 +32,7 @@
       
       bapp.syncWorderDoc(function () {
         mapp.updateWtabs();
-        bapp.startEditingTabBar();
+        bapp.startEditingPanel('tabBar');
       });
     },
 

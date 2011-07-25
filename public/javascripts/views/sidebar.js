@@ -11,7 +11,8 @@
     events: {
       'click #preview-mobile-site': 'previewMobileSite',
       'click .edit-tab-bar': 'tellBappToEditTabBar',
-      'click .edit-settings': 'tellBappToEditSettings'
+      'click .edit-settings': 'tellBappToEditSettings',
+      'click .edit-keywords': 'tellBappToEditKeywords'
     },
     
     initialize: function (options) {
@@ -87,8 +88,9 @@
         'width=' + emulatorWidth + ',height=480,scrollbars=yes');
     },
 
-    tellBappToEditTabBar: function () { bapp.startEditingTabBar(); },
-    tellBappToEditSettings: function () { bapp.startEditingSettings(); }
+    tellBappToEditTabBar: function () { bapp.startEditingPanel('tabBar'); },
+    tellBappToEditSettings: function () { bapp.startEditingPanel('settings'); },
+    tellBappToEditKeywords: function () { bapp.startEditingPanel('keywords'); }
     
   });
 

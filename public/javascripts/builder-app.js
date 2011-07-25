@@ -102,7 +102,7 @@
     
     onWidgetTabClick: function (e) {
       e.preventDefault();
-      bapp.startEditingTabBar();
+      bapp.startEditingPanel('tabBar');
     },
     
     scrollTo: function (position,elem) {
