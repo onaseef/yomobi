@@ -1,6 +1,7 @@
 (function ($) {
 
   var pluckPrettyName = function (w) { return util.prettifyName(w.get('name')) };
+  var pluckName = function (w) { return w.get('name'); };
   var unsavedChangesText = "You have unsaved changes. Click Cancel to go back and save changes, or click OK if you wish to discard your changes.";
 
   // ----------------------------
@@ -8,24 +9,29 @@
     
     initialize: function () {
       _.bindAll(this,'addOrder','updateOverallOrder');
-      this.bind('add',this.addOrder);
+      this.bind('add',this.onAdd);
       this.bind('remove', _.bind(function () { this.lastMod = -1; },this));
       this.lastMod = 0;
     },
     
-    addOrder: function (widget) {
-      // this is -1 because the widget is already added
-      widget.order = this.models.length - 1;
+    onAdd: function (widget) {
+      // +1 on length to make sure order update catches the change
+      widget.setOrder( _.keys(mapp.worder).length+1 );
       this.sort({ silent:true });
       this.updateOverallOrder({ noUpdate:true });
 
       // util.reserveWidget(widget,true);
+      self = this;
+
       util.pushUIBlock('new-widget');
       widget.save(null,{
         success: function () {
           // util.releaseWidget(widget);
-          util.clearUIBlock('new-widget');
           bapp.homeViewWidgetClick(widget);
+          self.updateOverallOrder({
+            forceSync: true,
+            callback: function () { util.clearUIBlock('new-widget'); }
+          });
         }
       });
       this.lastMod = 1;
@@ -36,10 +42,10 @@
       this.each(function (widget) {
         if (!options.noUpdate) {
           var iconIdx = $(widget.homeView.el).index();
-          changed = changed || widget.order != iconIdx;
-          widget.order = iconIdx;
+          changed = changed || widget.getOrder() != iconIdx;
+          widget.setOrder(iconIdx);
         }
-        worder[widget.get('name')] = widget.order;
+        worder[widget.get('name')] = widget.getOrder();
       });
 
       // check if new worder is different than current worder
@@ -49,11 +55,10 @@
                   || newNames.length != oldNames.length
                   || newNames.length != _.intersect(newNames,oldNames).length
       ;
-
       if (!options.noSync && changed && (util.reserveUI() || options.forceSync)) {
         // tell server to update order
         bapp.worderDoc.worder = worder;
-        bapp.syncWorderDoc();
+        bapp.syncWorderDoc(options.callback);
       }
     }
     
@@ -217,7 +222,10 @@
         });
       });
       
-      this.sidebar = new SidebarView({ widgets:mapp.widgetsAvailable });
+      this.sidebar = new SidebarView({
+        widgets: mapp.widgetsAvailable,
+        comparator: pluckName
+      });
     },
     
     homeViewWidgetClick: function (widget) {
@@ -369,7 +377,6 @@
     
     rebindSortables: function () {
       g.homeDbx.initBoxes();
-      mapp.widgetsInUse.updateOverallOrder({ forceSync:true });
     },
     
     syncWorderDoc: function (callback) {
@@ -381,6 +388,7 @@
         mapp.worder = newWorderDoc.worder;
         mapp.wtabs  = newWorderDoc.wtabs;
         util.clearUIBlock('worder');
+util.log('WORDER SYNC CALLBACK',callback);
         callback && callback();
       });
     },

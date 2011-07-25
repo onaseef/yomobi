@@ -23,7 +23,6 @@
         var wdata = row.doc
           , widget = util.newWidget(wdata)
         ;
-        widget.order = parseInt(mapp.worder[widget.get('name')],10);
         return widget;
       });
     },
@@ -37,7 +36,7 @@
     },
     
     comparator: function (widget) {
-      return widget.order || 0;
+      return widget.getOrder();
     }
   });
   
@@ -99,7 +98,7 @@
     render: function () {
       var content = this.el.find('.content').empty(), self = this;
 
-      this.widgets.each(function (w) {
+      this.widgets.sort({ silent:true }).each(function (w) {
         if (!self.showInvalidWidgets && !w.validForShowing()) return;
         var view = new WidgetHomeView({ model:w });
         content.append(view.render().el);

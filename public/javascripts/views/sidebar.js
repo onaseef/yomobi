@@ -20,9 +20,10 @@
       _.bindAll(this,'render');
 
       this.widgets = options.widgets;
-      // this.widgets.bind('add',this.render);
-      // this.widgets.bind('remove',this.render);
       this.widgets.bind('refresh',this.render);
+
+      this.widgets.comparator = options.comparator;
+      this.widgets.sort({ silent:true });
       
       this.el.find('.widgets .home-icon').live('mouseover',makeDraggable);
       if (!options.skipRender) this.render();
@@ -52,6 +53,7 @@
       var w_area = $('#sidebar .widgets').empty()
         , self = this
       ;
+
       this.widgets.each(function (widget) {
         // if (widget.get('singletonInUse')) return;
         var icon = self.widgetTemplate(widget.getIconData());
@@ -64,6 +66,7 @@
           ;
         }
       });
+
       w_area.append('<div class="clearfix">');
     },
     

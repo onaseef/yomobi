@@ -29,6 +29,14 @@
       return this.toJSON();
     },
     
+    getOrder: function () {
+      return parseInt( mapp.worder[this.get('name')], 10 );
+    },
+
+    setOrder: function (idx) {
+      mapp.worder[this.get('name')] = idx;
+    },
+
     getIconData: function () {
       return {
         wtype: this.get('wtype'),

@@ -31,7 +31,7 @@
       util.showLoading(this.el.find('.action-bar'));
       
       var values = this.grabWidgetValues();
-      
+
       var self = this;
       this.widget.save(values, {
         error: function (model,res) {
