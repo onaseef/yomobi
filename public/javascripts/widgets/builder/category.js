@@ -280,8 +280,8 @@
       if (!util.isUIFree()) return;
 
       var level = this.widget.getCurrentLevel()
-        , name = $(this.el).find('select[name=items] option:selected:first').html()
-        , item = _.detect(level._items,function (i) { return i.name == name })
+        , targetIdx = $(this.el).find('select[name=items] option:selected:first').index()
+        , item = level._items[targetIdx]
       ;
       if (_.isEmpty(item)) return alert('Please select an item to edit.');;
       
@@ -598,7 +598,7 @@
   		  this.prompt({ error:'Name cannot be empty' },item,true);
   		  return false;
   		}
-      else if (this.mode == 'add' && _.include(this.level._items,name)) {
+      else if (this.mode == 'add' && _.include(_.pluck(this.level._items,'name'),name)) {
         this.prompt({ error:'Name is already in use' },item,true);
         return false;
       }
