@@ -12,7 +12,13 @@
     },
     
     onHomeViewClick: function () {
-      window.open(this.get('url'));
+      var url = this.get('url');
+      if (this.get('name') == 'full-website') {
+        if (url.indexOf('?') == -1) url += '?';
+        url += '&noredirect=1';
+      }
+util.log('URL',url);
+      window.open(url);
       return false;
     }
     
