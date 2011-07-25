@@ -61,15 +61,37 @@
   #content h1 {
     padding-left: 10px; }
 
+.divider {
+  border-top: 1px solid #b3b3b3;
+  margin: 10px 0; }
+
 #banner {
   float: left;
+  width: 536px;
   height: 400px;
   padding-top: 40px; }
+  #banner h2 {
+    margin-bottom: 5px; }
+  #banner p {
+    margin-top: 5px; }
+  #banner .images {
+    padding-top: 20px; }
+    #banner .images a {
+      margin: 104px 0 0 55px; }
 
 #signup-box {
-  float: right;
-  width: 400px;
+  float: left;
+  width: 346px;
   padding-top: 40px; }
+  #signup-box h2 {
+    margin-bottom: 5px; }
+  #signup-box p {
+    margin: 5px 0; }
+  #signup-box > div {
+    padding-left: 15px; }
+  #signup-box input[type=text], #signup-box input[type=password] {
+    width: 268px;
+    margin-bottom: 8px; }
 
 #signin-box {
   width: 600px;

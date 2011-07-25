@@ -1,30 +1,38 @@
 = form_for @user, :url => registration_path(:user) do |f|
 
-  = f.label :email
+  = f.label 'First name:'
+  br
+  = f.text_field :first_name
+  br
+
+  = f.label 'Last name:'
+  br
+  = f.text_field :last_name
+  br
+
+  = f.label 'Email:'
   br
   = f.text_field :email
   br
 
-  = f.label :password
+  = f.label 'Password:'
   br
   = f.password_field :password
   br
   
-  = f.label :password_confirmation
+  = f.label 'Password confirmation:'
   br
   = f.password_field :password_confirmation
   br
   
-  = f.label :business_type
+  = f.label 'Business type:'
   br
   = f.select :company_type_id, options_for_select(company_types)
   br
   
   - unless hide_captcha
-    p
-      | Enter both words below, separated by a space.
-      br
-      | Can't read the words below? Try different words or an audio captcha.
+    p Enter both words below, separated by a space:
     = recaptcha_tags
+    p Can't read the words above? Try different words or an audio captcha.
   
   = f.submit 'Sign Up'

@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :company_type_id
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :company_type_id,
+                  :first_name, :last_name
 
   before_save do
     self.email.downcase! if self.email

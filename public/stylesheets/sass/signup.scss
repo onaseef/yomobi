@@ -65,17 +65,37 @@
   h1 {
     padding-left: 10px; } }
 
+.divider {
+  border-top: 1px solid $light-border;
+  margin: 10px 0; }
+
 // content related
 
 #banner {
   float: left;
+  width: 536px;
   height: 400px;
-  padding-top: 40px; }
+  padding-top: 40px;
+  h2 { margin-bottom: 5px; }
+  p { margin-top: 5px; }
+  .images {
+    padding-top: 20px;
+    a { margin: 104px 0 0 55px; }
+  }
+}
 
 #signup-box {
-  float: right;
-  width: 400px;
-  padding-top: 40px; }
+  float: left;
+  width: 346px;
+  padding-top: 40px;
+  h2 { margin-bottom: 5px; }
+  p { margin: 5px 0; }
+  & > div { padding-left: 15px; }
+  input[type=text], input[type=password] {
+    width: 268px;
+    margin-bottom: 8px;
+  }
+}
 
 #signin-box {
   width: 600px;

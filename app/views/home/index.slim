@@ -1,8 +1,17 @@
 #banner
   h2 Mobilize Your Site!
-  p Connect to the trillions of mobile customers out there
-  img src="/images/ui/home-phone.png"
+  p style="font-size:14px" Connect to millions more consumer with a mobile optimized website.
+  .clearfix
+
+  .images
+    img.lfloat src="/images/home-phone.png"
+    a.lfloat href="#"
+      img src="/images/home-help-button.png"
 
 #signup-box
-  h2 Sign Up (It's free)
-  = render :partial => 'signup_form', :locals => {:hide_captcha => true}
+  div
+    h2 Sign Up
+    p style="font-size:14px" It's free.
+  .divider style="margin-top:6px"
+  div
+    = render :partial => 'signup_form', :locals => {:hide_captcha => false}

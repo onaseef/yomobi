@@ -1,9 +1,8 @@
 class RegistrationsController < Devise::RegistrationsController
   def create
     @hide_header_signin_form = true
-    # TODO (eventually): enable captcha & checkingness
-    @hide_captcha = true
-    if true || verify_recaptcha
+    @hide_captcha = false
+    if verify_recaptcha
       super
     else
       build_resource

@@ -157,7 +157,18 @@ p.success {
 #footer {
   border-top: 1px solid $light-border;
   margin: 20px auto;
-  padding: 10px 10px 0; }
+  padding: 10px 10px 0;
+  font-size: 12px;
+  .copyright {
+    float: left;
+    margin: 5px 60px 0 0;
+  }
+  .site-links {
+    float: left;
+    margin: 2px 0 0 50px;
+    a, a:visited { color: #000; }
+  }
+}
 
 .social-share {
   margin: 0;
