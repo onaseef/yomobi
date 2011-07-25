@@ -546,11 +546,10 @@
       // cache for later use
       this.level = level;
       
-      var buttons = {
-        "Done": function () {
-          $(this).dialog("close");
-          self.options.onClose && self.options.onClose();
-        }
+      var buttons = {};
+      var closeFunc = function () {
+        $(this).dialog("close");
+        self.options.onClose && self.options.onClose();
       };
 
       var saveItem = function () {
@@ -578,9 +577,13 @@
         }
       }
 
-      if (this.mode == 'edit') {
+      if (this.mode == 'add') {
+        var closeButtonLabel = this.addedItems.length == 0 ? "Cancel" : "Close";
+        buttons[closeButtonLabel] = closeFunc;
+      }
+      else if (this.mode == 'edit') {
         buttons["Save"] = saveItem;
-        buttons["Cancel"] = buttons["Done"]; delete buttons["Done"];
+        buttons["Cancel"] = closeFunc;
       }
 
       util.dialog(dialogContent, buttons)
