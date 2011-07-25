@@ -79,6 +79,11 @@ p.success {
   width: 1000px;
   margin: 0 auto; }
 
+#page-container-wrapper.home {
+  background: url(/images/bg-home.png) repeat-x;
+  padding-bottom: 15px;
+}
+
 .center-box {
   margin: 20px auto;
   border: 1px solid #cccccc;

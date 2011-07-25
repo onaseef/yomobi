@@ -6,6 +6,7 @@ class HomeController < ApplicationController
     prevent_caching
     redirect_to :controller => 'builder', :action => 'index' if user_signed_in?
     @user = User.new
+    @page_wrapper_class = 'home'
   end
   
   def confirm_account

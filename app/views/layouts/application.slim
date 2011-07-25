@@ -24,13 +24,15 @@ html lang="en-US"
             = render :partial => 'shared/header-signin-form'
           = render :partial => 'shared/nav'
           .clearfix
-      #page-container
-        #sidebar
-          = yield :sidebar
-        #content
-          = yield
+      #page-container-wrapper class=@page_wrapper_class
+        #page-container
+          #sidebar
+            = yield :sidebar
+          #content
+            = yield
+          .clearfix
         .clearfix
-        = render 'shared/footer'
+      = render 'shared/footer'
     
     = javascript_include_tag 'support/underscore'
     = javascript_include_tag 'support/jquery-1.6.2.min'
