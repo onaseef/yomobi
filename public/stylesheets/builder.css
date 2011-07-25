@@ -5,7 +5,7 @@
     list-style: none;
     padding-left: 0;
     margin: 54px 0 10px 0;
-    font-size: 12px; }
+    font-size: 100%; }
   #sidebar .spacer {
     border-top: 1px solid #dddddd;
     margin: 5px 0; }
@@ -42,14 +42,15 @@
       text-align: left;
       height: auto;
       font-weight: bold;
-      font-size: 12px; }
+      font-size: 110%;
+      color: #333; }
     #sidebar .home-icon .icon {
       margin: 0;
       float: left;
       width: 18px;
       height: 18px; }
   #sidebar .home-icon:hover {
-    background: yellow; }
+    background: url(/images/ui/yellowbg-small.png); }
   #sidebar .home-icon.singletonInUse {
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
     filter: alpha(opacity=50);
@@ -58,7 +59,7 @@
     opacity: 0.5; }
 
 #sidebar .widgets {
-  height: 414px;
+  height: 515px;
   padding-left: 20px;
   overflow: auto; }
 
@@ -77,7 +78,7 @@
 .home-icon.editing {
   background: url(/images/ui/highlight.png) no-repeat 0px 1px !important; }
   .home-icon.editing .title {
-    color: #000066;
+    color: #ffffff;
     font-weight: bold; }
 
 .home-icon.invalid .invalid-icon {
@@ -85,7 +86,7 @@
   width: 32px;
   height: 32px;
   top: -94px;
-  left: 40px;
+  left: 43px;
   background: url(/images/ui/invalid-for-showing.png) no-repeat; }
 
 #builder-container {
@@ -99,12 +100,12 @@
   color: #000066; }
 #builder .left > .title-subtext, #builder .right > .title-subtext {
   height: 30px;
-  padding: 0 10px 0 0; }
+  padding: 0 10px 5px 0; }
 #builder .left {
   width: 390px;
   height: 100%;
   border-right: 1px solid #b3b3b3;
-  padding: 0 0 27px 10px; }
+  padding: 0 0 10px 10px; }
 #builder .right {
   width: 396px;
   height: 100%; }
@@ -113,16 +114,16 @@
   #builder .right > .title-subtext {
     padding-left: 10px; }
   #builder .right .title {
-    padding-left: 10px; }
+    padding-left: 14px; }
 
 #builder .widget-editor {
   width: 360px;
-  padding: 0;
+  padding: 0px;
   margin: 0 auto; }
   #builder .widget-editor .header {
     height: 55px;
     margin: 0 auto;
-    padding-bottom: 4px; }
+    padding: 0px 0px 20px 0px; }
     #builder .widget-editor .header .icon {
       float: left;
       width: 64px;
@@ -139,19 +140,6 @@
   #builder .widget-editor .edit-area {
     padding: 20px 0;
     margin: 0 auto; }
-    #builder .widget-editor .edit-area label {
-      font-size: 14px; }
-    #builder .widget-editor .edit-area textarea {
-      width: 354px;
-      height: 6em;
-      margin-top: 0;
-      margin-bottom: 5px;
-      font-size: 1em; }
-    #builder .widget-editor .edit-area input[type=text] {
-      width: 354px;
-      margin-top: 1px;
-      margin-bottom: 5px;
-      font-size: 1em; }
   #builder .widget-editor .action-bar {
     padding: 12px 0 0;
     margin: 0 auto;
@@ -198,15 +186,14 @@
 
 #emulator-wrapper {
   float: left;
-  width: 363px;
+  width: 366px;
   margin-left: -5px;
-  padding: 101px 0 78px 27px;
-  background: url(/images/phone.png); }
+  padding: 79px 0 64px 26px;
+  background: no-repeat url(/images/phone.png); }
 
 #emulator {
   position: relative;
   height: 480px;
-  border: 4px solid #1d4088;
   background: #edeff4;
   overflow: hidden; }
 
@@ -258,9 +245,14 @@
   height: 480px;
   width: 335px; }
 
+.divider {
+  border-top: 1px solid #b3b3b3;
+  margin: 10px 0; }
+
 #builder .edit-area.edit-settings {
-  padding-top: 6px; }
+  padding-top: 8px; }
   #builder .edit-area.edit-settings .box {
+    margin: 10px 0px 0px 0px;
     border: 2px solid #d0d7e3;
     padding: 8px; }
     #builder .edit-area.edit-settings .box input[type=text] {
@@ -275,7 +267,7 @@
     border-top: 2px solid #d0d7e3;
     padding-right: 0;
     padding-top: 8px;
-    margin-top: 10px; }
+    margin-top: 30px; }
 
 #builder .edit-area.hours .day-checkbox {
   float: left;
@@ -287,9 +279,9 @@
   clear: left; }
   #builder .edit-area.hours .day-hours .day-name {
     float: left;
-    width: 75px;
+    width: 85px;
     margin-top: 4px;
-    font-size: 1.2em; }
+    font-size: 120%; }
   #builder .edit-area.hours .day-hours .day-enabled input[type=checkbox] {
     margin-top: 6px; }
   #builder .edit-area.hours .day-hours .times {
@@ -317,29 +309,27 @@
 #builder .edit-area.hours .day-hours.checked .times {
   visibility: visible; }
 #builder .edit-area.hours .day-hours.checked .all-day {
-  visibility: visible; }
+  visibility: hidden; }
 #builder .edit-area.hours .day-hours.all-day .times {
   visibility: hidden !important; }
 
 #builder .edit-area.calendar .url {
   padding: 5px 0 20px;
-  font-size: 1.5em;
+  font-size: 150%;
   word-wrap: break-word; }
 
-#builder .edit-area.category, #builder .edit-area.page_tree {
-  padding-top: 0; }
-  #builder .edit-area.category select, #builder .edit-area.page_tree select {
-    width: 331px;
-    margin: 2px 0;
-    height: 111px; }
-  #builder .edit-area.category .arrows, #builder .edit-area.page_tree .arrows {
-    float: right;
-    padding: 5px 2px 0 0; }
-  #builder .edit-area.category #jeditor-wrapper, #builder .edit-area.page_tree #jeditor-wrapper {
-    width: 324px; }
+#builder .edit-area.category select, #builder .edit-area.page_tree select {
+  width: 331px;
+  margin: 2px 0;
+  height: 111px; }
+#builder .edit-area.category .arrows, #builder .edit-area.page_tree .arrows {
+  float: right;
+  padding: 5px 2px 0 0; }
+#builder .edit-area.category #jeditor-wrapper, #builder .edit-area.page_tree #jeditor-wrapper {
+  width: 324px; }
 
 #builder .edit-area.link_fb .current_link_label {
-  font-size: 1.5em; }
+  font-size: 100%; }
 
 #builder .edit-area.gmap p.invalidForShowing {
   padding: 7px;

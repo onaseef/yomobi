@@ -14,22 +14,22 @@
   
   #actual-signin-box
     .group.clearfix
-      = f.label 'First Name:'
+      label First Name:
       = f.text_field :first_name
     .group.clearfix
-      = f.label 'Last Name:'
+      label Last Name:
       = f.text_field :last_name
     .group.clearfix
-      = f.label 'Email:'
+      label Email:
       = f.text_field :email
     .group.clearfix
-      = f.label 'Password:'
+      label Password:
       = f.password_field :password
     .group.clearfix
-      = f.label 'Password Confirmation:'
+      label Re-enter Password:
       = f.password_field :password_confirmation
     .group.clearfix
-      = f.label "Business Type:"
+      label Business Type:
       = f.select :company_type_id, options_for_select(company_types, @user.company_type_id)
     .group.clearfix
       - unless @hide_captcha

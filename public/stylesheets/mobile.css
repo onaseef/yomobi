@@ -64,7 +64,7 @@ a img {
 .company-info {
   width: 100%;
   padding-left: 0 1px 0 8px;
-  background: #3b5998;
+  background: #405b80;
   color: white; }
   .company-info td {
     vertical-align: center; }
@@ -106,8 +106,8 @@ a img {
 .ad-bar {
   display: none;
   padding: 0 0;
-  border-bottom: 2px solid #627aad;
-  background: #3b5998;
+  border-bottom: 2px solid #405b80;
+  background: #405b80;
   text-align: center; }
   .ad-bar.bottom {
     height: 48px; }
@@ -195,6 +195,7 @@ a img {
 
 .page .content.hours .day-name {
   width: 95px;
+  padding-right: 10px;
   font-weight: bold;
   float: left; }
 .page .content.hours .day-hours {

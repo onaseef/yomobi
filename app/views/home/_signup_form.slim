@@ -1,31 +1,31 @@
 = form_for @user, :url => registration_path(:user) do |f|
 
-  = f.label 'First Name:'
+  label First Name:
   br
   = f.text_field :first_name
   br
 
-  = f.label 'Last Name:'
+  label Last Name:
   br
   = f.text_field :last_name
   br
 
-  = f.label 'Email:'
+  label Email:
   br
   = f.text_field :email
   br
 
-  = f.label 'Password:'
+  label Password:
   br
   = f.password_field :password
   br
   
-  = f.label 'Password Confirmation:'
+  label Re-enter Password:
   br
   = f.password_field :password_confirmation
   br
   
-  = f.label 'Business Type:'
+  label Business Type:
   br
   = f.select :company_type_id, options_for_select(company_types)
   br

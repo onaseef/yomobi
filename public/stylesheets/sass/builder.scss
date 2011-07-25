@@ -9,7 +9,7 @@
     list-style: none;
     padding-left: 0;
     margin: 54px 0 10px 0;
-    font-size: 12px; }
+    font-size: $font-size-ul; }
   .spacer {
     border-top: 1px solid #dddddd;
     margin: 5px 0; }
@@ -46,14 +46,16 @@
       text-align: left;
       height: auto;
       font-weight: bold;
-      font-size: 12px; }
+      font-size: $font-size-title;
+      color: #333; }
     .icon {
       margin: 0;
       float: left;
       width: 18px;
       height: 18px; } }
   .home-icon:hover {
-    background: yellow; }
+    background: url(/images/ui/yellowbg-small.png);
+     }
   .home-icon.singletonInUse {
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
     filter: alpha(opacity = 50);
@@ -62,7 +64,7 @@
     opacity: 0.5; } }
 
 #sidebar .widgets {
-  height: 414px;
+  height: $sidebar-widgets-height;
   padding-left: 20px;
   overflow: auto; }
 
@@ -83,7 +85,7 @@
 .home-icon.editing {
   background: url(/images/ui/highlight.png) no-repeat 0px 1px !important;
   .title {
-    color: #000066;
+    color: #ffffff;
     font-weight: bold; } }
 
 .home-icon.invalid {
@@ -92,7 +94,7 @@
     width: 32px;
     height: 32px;
     top: -94px;
-    left: 40px;
+    left: 43px;
     background: url(/images/ui/invalid-for-showing.png) no-repeat; } }
 
 #builder-container {
@@ -108,12 +110,12 @@
       color: #000066; }
     & > .title-subtext {
       height: 30px;
-      padding: 0 10px 0 0; } }
+      padding: 0 10px 5px 0; } }
   .left {
     width: $content-width - $widget-editor-width;
     height: 100%;
     border-right: 1px solid #b3b3b3;
-    padding: 0 0 27px 10px; }
+    padding: 0 0 10px 10px; }
   .right {
     & > .title {
       padding: 10px 15px 10px; }
@@ -122,16 +124,16 @@
     width: $widget-editor-width - 10px - 1px - 3px;
     height: 100%;
     .title {
-      padding-left: 10px; } } }
+      padding-left: 14px; } } }
 
 #builder .widget-editor {
   width: $widget-editor-width - 25px - 25px;
-  padding: 0;
+  padding: 0px;
   margin: 0 auto;
   .header {
     height: 55px;
     margin: 0 auto;
-    padding-bottom: 4px;
+    padding: $widget-editor-header-padding;
     .icon {
       float: left;
       width: 64px;
@@ -148,20 +150,7 @@
     margin: 10px 0; }
   .edit-area {
     padding: 20px 0;
-    margin: 0 auto;
-    label {
-      font-size: 14px; }
-    textarea {
-      width: 354px;
-      height: 6em;
-      margin-top: 0;
-      margin-bottom: 5px;
-      font-size: 1em; }
-    input[type=text] {
-      width: 360px - 6px;
-      margin-top: 1px;
-      margin-bottom: 5px;
-      font-size: 1em; } }
+    margin: 0 auto; }
   .action-bar {
     padding: 12px 0 0;
     margin: 0 auto;
@@ -208,16 +197,15 @@
 
 #emulator-wrapper {
   float: left;
-  width: 390px - 27px; // this is the width of the phone image
+  width: 366px; // this is the width of the phone image
   margin-left: -5px;
-  padding: 101px 0 78px 27px;
-  background: url(/images/phone.png);
+  padding: 79px 0 64px 26px;
+  background: no-repeat url(/images/phone.png);
 }
 
 #emulator {
   position: relative;
   height: 480px;
-  border: 4px solid #1d4088;
   background: $light-bg-color;
   overflow: hidden;
 }
@@ -272,9 +260,14 @@
   height: 480px;
   width: 335px; }
 
+.divider {
+  border-top: 1px solid $light-border;
+  margin: 10px 0; }
+
 #builder .edit-area.edit-settings {
-  padding-top: 6px;
+  padding-top: 8px;
   .box {
+    margin: 10px 0px 0px 0px;
     border: 2px solid #d0d7e3;
     padding: 8px;
     input[type=text] { width: 274px; margin: 0; }
@@ -284,7 +277,9 @@
   form {
     .action-bar {
       border-top: 2px solid #d0d7e3;
-      padding-right: 0; padding-top:8px; margin-top:10px;
+      padding-right: 0; 
+      padding-top:8px; 
+      margin-top:30px;
     }
   }
 }
@@ -304,9 +299,9 @@
     clear: left;
     .day-name {
       float: left;
-      width: 75px;
+      width: 85px;
       margin-top: 4px;
-      font-size: 1.2em; }
+      font-size: $font-size-day-name; }
     .day-enabled input[type=checkbox] {
       margin-top: 6px; }
     .times {
@@ -337,7 +332,7 @@
     .times {
       visibility: visible; }
     .all-day {
-      visibility: visible; } }
+      visibility: hidden; } }
   .day-hours.all-day {
     .times {
       visibility: hidden !important; } } }
@@ -345,11 +340,10 @@
 #builder .edit-area.calendar {
   .url {
     padding: 5px 0 20px;
-    font-size: 1.5em;
+    font-size: $font-size-url;
     word-wrap: break-word; } }
 
 #builder .edit-area.category, #builder .edit-area.page_tree {
-  padding-top: 0;
   select {
     width: 331px;
     margin: 2px 0;
@@ -363,7 +357,7 @@
 
 #builder .edit-area.link_fb {
   .current_link_label {
-    font-size: 1.5em; } }
+    font-size: $font-size-label-current-link; } }
 
 #builder .edit-area.gmap {
   p.invalidForShowing {

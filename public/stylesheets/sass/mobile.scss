@@ -1,7 +1,9 @@
 @import "constants";
 
 $dynamic-width: 320px;
-$color-topbar: #3b5998;
+$color-topbar-original: #3b5998;
+$color-topbar: #405b80;
+
 
 body {
   margin: 0;
@@ -207,6 +209,7 @@ a img {
 .page .content.hours {
   .day-name {
     width: 95px;
+    padding-right: 10px;
     font-weight: bold;
     float: left; }
   .day-hours {

@@ -3,12 +3,51 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 11px; }
+  font-size: 12px;
+  color: #333; }
 
 input[type=file] {
   width: 250px;
   padding: 2px;
   background: #fff; }
+
+.explanation {
+  background: #e4edf8;
+  padding: 10px;
+  border: 1px solid #ccc; }
+
+label {
+  font-size: 120%;
+  padding: 0px 3px 0px 0px; }
+
+textarea {
+  width: 354px;
+  height: 6em;
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-size: 100%; }
+
+input[type=text], input[type=password] {
+  width: 354px;
+  margin-top: 1px;
+  margin-bottom: 5px;
+  margin-bottom: 5px;
+  font-size: 100%; }
+
+#jeditor-wrapper .wysiwyg {
+  width: 348px; }
+#jeditor-wrapper iframe {
+  max-width: 340px; }
+
+em {
+  font-size: 95%;
+  line-height: 75%; }
+
+p {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 4px 8px 0px;
+  line-height: 130%;
+  font-size: 110%; }
 
 a, a:visited {
   color: #3b5998;
@@ -46,7 +85,7 @@ p.success {
 
 #header.signed-in {
   padding-top: 10px;
-  background: #3b5998;
+  background: #002455;
   color: white;
   height: 31px; }
   #header.signed-in .content {
@@ -61,9 +100,9 @@ p.success {
     float: left;
     width: 797px;
     height: 30px;
-    border: 1px solid #1d4088;
+    border: 1px solid #00436c;
     border-bottom: none;
-    background: #627aad;
+    background: #405b80;
     text-align: right; }
     #header.signed-in #nav a, #header.signed-in #nav a:visited {
       float: right;
@@ -81,8 +120,7 @@ p.success {
 
 #page-container-wrapper.home {
   background: url(/images/bg-home.png) repeat-x;
-  padding-bottom: 15px;
-}
+  padding-bottom: 15px; }
 
 .center-box {
   margin: 20px auto;
@@ -146,15 +184,17 @@ p.success {
   padding: 4px;
   margin: 0;
   border: 1px solid #dd3c10;
-  background: #f8e6e0;
-  max-width: 175px;
-  font-size: 11px; }
+  background: #ffebe8;
+  max-width: 225px;
+  font-size: 100%;
+  color: #333333; }
 
 #simpleTooltip.help {
   background: #EDEFF4;
   border: 1px solid #1D4088; }
 
 #footer {
+  width: 1000px;
   border-top: 1px solid #b3b3b3;
   margin: 20px auto;
   padding: 10px 10px 0;

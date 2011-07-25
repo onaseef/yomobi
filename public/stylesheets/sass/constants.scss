@@ -1,5 +1,12 @@
-$main-color: #3b5998;
-$secondary-color: #627aad;
+$main-color-original: #3b5998;
+$main-color: #002455;
+
+$secondary-color-original: #627aad;
+$secondary-color: #405b80;
+
+$secondary-color-border-original: #1d4088;
+$secondary-color-border: #00436c;
+
 $light-bg-color: #edeff4;
 $highlight-color: #d8dfea;
 
@@ -13,3 +20,20 @@ $emulator-width: 380px;
 
 $content-width: $page-width - $sidebar-width;
 $widget-editor-width: $content-width - 2px - $emulator-width - 8px;
+
+$sidebar-widgets-height: 515px;
+
+$font-size-body: 12px;
+$font-size-em: 95%;
+$font-size-day-name: 120%;
+$font-size-input: 100%;
+$font-size-label: 120%;
+$font-size-label-current-link: 100%;
+$font-size-p: 110%;
+$font-size-title: 110%;
+$font-size-textarea: 100%;
+$font-size-tooltip: 100%;
+$font-size-ul: 100%;
+$font-size-url: 150%;
+
+$widget-editor-header-padding: 0px 0px 20px 0px;
