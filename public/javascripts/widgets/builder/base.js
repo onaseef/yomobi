@@ -62,6 +62,9 @@
         delete attributes._id;
       }
       delete attributes.helpText; delete attributes.subHelpText;
+      if (attributes.email === null) {
+        attributes.email = g.userEmail;
+      }
 
       return Backbone.Model.prototype.set.call(this, attributes, options);
     }

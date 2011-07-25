@@ -27,7 +27,7 @@ class Company < ActiveRecord::Base
     if result == true
       worder_doc = CouchDocs::worder_doc self.company_type_id
       
-      default_docs = CouchDocs::default_docs self.company_type_id
+      default_docs = CouchDocs::default_docs(self.company_type_id, self.user.email)
       default_docs.push worder_doc, CouchDocs::view_doc
 
       # compact to remove deadly nil-related errors. Better to discover later

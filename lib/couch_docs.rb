@@ -1,14 +1,14 @@
 class CouchDocs
   require 'digest/sha1'
 
-  def self.default_docs(company_type_id)
+  def self.default_docs(company_type_id,default_email)
     docs = []
     self.default_doc_map.each do |ids,doc_names|
       if ids.include?(company_type_id)
         docs.concat doc_names.map {|name| self.by_name(name)}
       end
     end
-    docs
+    docs.each {|doc| doc[:email] = default_email if doc.has_key? :email }
   end
 
   def self.security_doc(db_name)
@@ -203,7 +203,8 @@ class CouchDocs
         :name => "call-me-back",
         :wtype => 'call_back',
         :helpText => "Allow your mobile site visitors to request a call back from you.",
-        :singleton => true
+        :singleton => true,
+        :email => nil
       },
 
       {
@@ -262,7 +263,8 @@ class CouchDocs
         :name => "booking-request",
         :wtype => 'booking',
         :helpText => "Allow your mobile site visitors to email you a booking request.",
-        :singleton => true
+        :singleton => true,
+        :email => nil
       },
 
       {
@@ -276,7 +278,8 @@ class CouchDocs
         :name => "leave-a-message",
         :wtype => 'leave_msg',
         :helpText => "Allow your mobile website visitors to easily leave you an email message.",
-        :singleton => true
+        :singleton => true,
+        :email => nil
       },
 
       {
@@ -305,7 +308,10 @@ class CouchDocs
         :name => "keep-me-informed",
         :wtype => 'informed',
         :helpText => "Allow your mobile site visitors to follow you via email and text notifications.",
-        :singleton => true
+        :singleton => true,
+        :email => nil,
+        'optForEmails' => true,
+        'optForTexts' => true
       },
 
       {
