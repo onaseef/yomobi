@@ -299,8 +299,8 @@ class CouchDocs
       {
         :name => "photo-bucket",
         :wtype => 'link',
-        :helpText => "Add a link to your PhotoBucket album on your mobile site..",
-        :subHelpText => "Photobucket album custom URL",
+        :helpText => "Add a link to your PhotoBucket album on your mobile site.",
+        :subHelpText => "Photobucket album custom",
         :singleton => true
       },
 
@@ -422,8 +422,7 @@ class CouchDocs
       {
         :name => "about-us",
         :wtype => 'custom_page',
-        :helpText => "Tell your visitors who you are.",
-        :singleton => true
+        :helpText => "Tell your visitors who you are."
       },
 
       {

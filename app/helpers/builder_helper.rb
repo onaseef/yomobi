@@ -10,7 +10,7 @@ module BuilderHelper
   end
 
   def desktop_redirect_code(company)
-    %Q{<!-- Place this tag in the head tag of your website -->
+    %Q{<!-- Place this tag in the head tag of your website -->\
     <script type="text/javascript" src="http://detect.deviceatlas.com/redirect.js?m=#{company.mobile_url}"></script>}
   end
 end
