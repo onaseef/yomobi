@@ -422,7 +422,8 @@ class CouchDocs
       {
         :name => "about-us",
         :wtype => 'custom_page',
-        :helpText => "Tell your visitors who you are."
+        :helpText => "Tell your visitors who you are.",
+        :iconName => 'about-us'
       },
 
       {

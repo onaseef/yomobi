@@ -42,7 +42,8 @@
         wtype: this.get('wtype'),
         name: this.get('name'),
         prettyName: this.get('prettyName'),
-        iconName: this.get('singleton') ? this.get('name') : this.get('wtype'),
+        iconName: this.get('iconName') ||
+                  this.get('singleton') ? this.get('name') : this.get('wtype'),
         singletonClass: this.get('singleton') ? 'singleton' : ''
       };
     },

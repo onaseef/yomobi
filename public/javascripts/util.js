@@ -286,11 +286,10 @@ var util = {
   },
   
   getWidgetBData: function (widget) {
-    return _.select(window.bdata, function (w) {
+    return _.detect(window.bdata, function (w) {
       if (widget.get('singleton') === true) return w.name == widget.get('name');
       return w.wtype == widget.get('wtype') && !w.singleton;
-    })[0];
-
+    });
   },
 
   getInputElements: function (elem,selector) {
