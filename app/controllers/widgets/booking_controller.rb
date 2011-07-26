@@ -20,7 +20,7 @@ class Widgets::BookingController < ApplicationController
     date = "#{d[:m]}/#{d[:d]}/#{d[:y]}"
 
     UserMailer.booking_email({
-      :to => company.booking_email,
+      :to => company.booking_email || company.user.email,
       :subject => 'A customer has a booking request.',
       :from => 'booking@yomobi.com',
       :name => params[:name],

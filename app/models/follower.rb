@@ -51,7 +51,7 @@ class Follower < ActiveRecord::Base
       :short_url => short_url,
       :company_name => company.name,
       :to => email,
-      :from => company.informed_email,
+      :from => company.informed_email || company.user.email,
       :subject => subject,
       :content => content
     }).deliver

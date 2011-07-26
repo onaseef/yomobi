@@ -54,9 +54,6 @@ class Widgets::InformedController < ApplicationController
     if !params[:message].present? || params[:message].length == 0
       @errors[:message] = "Please enter a message."
       @old_message = params[:message]
-    elsif @company.informed_email.nil?
-      @errors[:message] = "Your 'Keep Me Informed' widget does not have a valid email"
-      @old_message = params[:message]
     elsif valid_text_message? params[:message]
       @company.text_followers.each {|f| f.send_text params[:message]}
       flash.now[:notice] = 'Texts successfully sent'
@@ -82,10 +79,6 @@ class Widgets::InformedController < ApplicationController
     if !params[:subject].present? || params[:subject].length == 0 ||
        !params[:content].present? || params[:content].length == 0
       @errors[:no_email] = "Please enter both a subject and message."
-      @old_subject = params[:subject]
-      @old_content = params[:content]
-    elsif @company.informed_email.nil?
-      @errors[:no_email] = "Your 'Keep Me Informed' widget does not have a valid email"
       @old_subject = params[:subject]
       @old_content = params[:content]
     else

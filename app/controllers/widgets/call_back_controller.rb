@@ -10,7 +10,7 @@ class Widgets::CallBackController < ApplicationController
     return error('bad phone') if !params[:phone].gsub(/[^0-9]+/,'').present?
 
     UserMailer.call_back({
-      :to => company.call_back_email,
+      :to => company.call_back_email || company.user.email,
       :subject => 'A customer has left a message.',
       :from => 'feedback@yomobi.com',
       :customer_phone => params[:phone],

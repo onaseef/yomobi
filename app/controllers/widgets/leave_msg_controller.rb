@@ -11,7 +11,7 @@ class Widgets::LeaveMsgController < ApplicationController
     return error('bad email') unless params[:email].match email_regex
 
     UserMailer.leave_msg({
-      :to => company.leave_msg_email,
+      :to => company.leave_msg_email || company.user.email,
       :subject => 'You received customer feedback!',
       :from => 'feedback@yomobi.com',
       :customer_subject => params[:subject],

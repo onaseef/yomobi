@@ -22,7 +22,7 @@ class UserMailer < ActionMailer::Base
     @short_url = follower.short_url
     mail({
       :to => "#{follower.phone}@#{follower.carrier.text_email}",
-      :from => params[:company].informed_email
+      :from => params[:company].informed_email || params[:company].user.email
     })
   end
 
