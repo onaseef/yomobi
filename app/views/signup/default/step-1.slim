@@ -6,17 +6,18 @@
     
     h3 Site Name:
     - if @errors['title']
-      p.error Invalid Title. Title must be at least 2 characters and at most 40 characters.
+      p.error Invalid Site Name. Site Name must be at least 2 characters and at most 40 characters.
     input type="text" name="step_data[title]" value="#{@data['title'] }" maxlength="40"
     
     hr
     h3 Choose a Mobile Site URL:
 
     - if @errors['site_url'] == 'illegal'
-      p.error Illegal database name. Only lowercase characters (a-z), digits (0-9), and any of the characters _, $, (, ), +, and - are allowed.
+      p.error Invalid Mobile Site URL.
+      p.error Your URL must be at least 3 characters long and contain only A-Z, a-z, 0-9, underscores (_), dashes (-) and periods (.).
       p.error Must begin with a letter. Must be at least 3 characters long.
     - elsif @errors['site_url'] == 'taken'
-      p.error Name is already taken.
+      p.error URL is already taken.
     - elsif @errors['site_url'] == 'taken?'
       p.error Name is already taken?
     
