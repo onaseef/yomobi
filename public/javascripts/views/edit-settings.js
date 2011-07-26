@@ -11,8 +11,8 @@
     
     events: {
       'click input[type=submit]': 'validateInput',
-      'click input[type=text], textarea': 'selectText',
-      'keyup input[type=text], textarea': 'preventChange'
+      'click .read-only, textarea': 'selectText',
+      'keyup .read-only, textarea': 'preventChange'
     },
     
     initialize: function () {
