@@ -8,7 +8,7 @@ window.g = {
   couchLocation: '<%=escape_javascript @company.couch_host %>',
   db_name: '<%=escape_javascript @company.db_name %>',
   company: "<%=escape_javascript @company.name %>",
-  userEmail: "<%=escape_javascript @user.email %>",
+  userEmail: "<%=escape_javascript @company.user.email %>",
   keywords: "<%=escape_javascript @company.keywords %>",
   MAX_CHARS: <%= @max_chars || -1 %>
 };
