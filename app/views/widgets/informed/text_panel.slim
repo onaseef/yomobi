@@ -17,7 +17,8 @@ h1 = @company.name
       h2 Text Message your Followers
       - if notice
         p.success = notice
-      p = "You have #{ @company.text_followers.size } text follower(s)."
+      erb:
+        <p>You have <b><%= @company.email_followers.size %></b> text follower(s).</p>
       p
         | Your FROM email address is: 
         = @company.informed_email || "NONE"

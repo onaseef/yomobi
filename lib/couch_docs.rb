@@ -353,13 +353,13 @@ class CouchDocs
         :helpText => "Let your mobile site visitors know when you are open for business.",
         "doubleTime" => false,
         "hours" => {
-          "mon" => ["9:00am|5:00pm","",false,true],
-          "tue" => ["9:00am|5:00pm","",false,true],
-          "wed" => ["9:00am|5:00pm","",false,true],
-          "thu" => ["9:00am|5:00pm","",false,true],
-          "fri" => ["9:00am|5:00pm","",false,true],
-          "sat" => ["9:00am|5:00pm","",false,true],
-          "sun" => ["9:00am|5:00pm","",false,true]
+          "mon" => ["8:00 am|5:00 pm","",false,true],
+          "tue" => ["8:00 am|5:00 pm","",false,true],
+          "wed" => ["8:00 am|5:00 pm","",false,true],
+          "thu" => ["8:00 am|5:00 pm","",false,true],
+          "fri" => ["8:00 am|5:00 pm","",false,true],
+          "sat" => ["8:00 am|5:00 pm","",false,true],
+          "sun" => ["8:00 am|5:00 pm","",false,true]
         }
       },
 

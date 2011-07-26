@@ -62,7 +62,7 @@
         delete attributes._id;
       }
       delete attributes.helpText; delete attributes.subHelpText;
-      if (attributes.email === null) {
+      if (attributes.email === null || attributes.email === '') {
         attributes.email = g.userEmail;
       }
 
