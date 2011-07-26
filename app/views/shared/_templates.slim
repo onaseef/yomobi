@@ -475,20 +475,22 @@
     label Provide your email address to receive opt-ins*:
     input name="email" type="text" value="{{ _maybe.email }}"
     br
-    p Please select at least one of the following*:
-    | <% if (_maybe.optForEmails) { %>
-    input name="optForEmails" type="checkbox" checked="checked"
-    | <% } else { %>
-    input name="optForEmails" type="checkbox"
-    | <% } %>
-    label Allow users to opt-in for emails.
-    br
-    | <% if (_maybe.optForTexts) { %>
-    input name="optForTexts" type="checkbox" checked="checked"
-    | <% } else { %>
-    input name="optForTexts" type="checkbox"
-    | <% } %>
-    label Allow users to opt-in for text messages.
+    .opt-in-select
+      label Please select at least one of the following*:
+      br
+      | <% if (_maybe.optForEmails) { %>
+      input name="optForEmails" type="checkbox" checked="checked"
+      | <% } else { %>
+      input name="optForEmails" type="checkbox"
+      | <% } %>
+      label Allow users to opt-in for emails.
+      br
+      | <% if (_maybe.optForTexts) { %>
+      input name="optForTexts" type="checkbox" checked="checked"
+      | <% } else { %>
+      input name="optForTexts" type="checkbox"
+      | <% } %>
+      label Allow users to opt-in for text messages.
   
   script.hours-edit-area(type="text/template")
     p Click to checkmark the days you are open:
