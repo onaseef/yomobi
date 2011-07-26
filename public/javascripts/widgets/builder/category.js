@@ -254,7 +254,6 @@
         }
         i += 1;
       });
-      util.log('LEVEL',level);
       this.setChanged('something',true);
 
       // select the lowest deleted index
@@ -552,44 +551,26 @@
         self.options.onClose && self.options.onClose();
       };
 
-      var saveItem = function () {
-        $(this).dialog("close");
-        var activeItemData = {};
-        $(self.el).find('.item-input').each(function (idx,elem) {
-          activeItemData[$(elem).attr('name')] = $(elem).val();
-        });
-        
-        if (!self.validateItem(activeItemData)) return;
-        
-        if (self.mode == 'add') {
-          level._items.push(activeItemData);
-          self.addedItems.push(activeItemData.name);
-          self.prompt({ success:'Item added successfully' },undefined,true);
-
-          bapp.currentEditor.setChanged('something',true);
-        }
-        else if (self.mode == 'edit') {
-          var oldItem = _.detect(level._items,function (i) { return i.name == item.name });
-          _.extend(oldItem,activeItemData);
-
-          bapp.currentEditor.setChanged('something',true);
-          self.options.onClose && self.options.onClose();
+      var makeSaveFunc = function (addAnother) {
+        return function () {
+          $(this).dialog("close");
+          self.saveItem(addAnother);
         }
       }
 
       if (this.mode == 'add') {
-        var closeButtonLabel = this.addedItems.length == 0 ? "Cancel" : "Close";
-        buttons[closeButtonLabel] = closeFunc;
+        buttons["Save"] = makeSaveFunc();
+        buttons["Cancel"] = closeFunc;
       }
       else if (this.mode == 'edit') {
-        buttons["Save"] = saveItem;
+        buttons["Save"] = makeSaveFunc();
         buttons["Cancel"] = closeFunc;
       }
 
       util.dialog(dialogContent, buttons)
         .find('p.error').show('pulsate',{times:3}).end()
         .find('p.success').show('pulsate',{times:1}).end()
-        .find('input[name=add]').click(saveItem).end()
+        .find('input[name=add]').click( makeSaveFunc(true) ).end()
       ;
     },
     
@@ -606,6 +587,36 @@
         return false;
       }
       return true;
+    },
+
+    saveItem: function (addAnother) {
+      var activeItemData = {};
+      $(this.el).find('.item-input').each(function (idx,elem) {
+        activeItemData[$(elem).attr('name')] = $(elem).val();
+      });
+      
+      var vals = _.compact(_.values(activeItemData));
+      if (vals.length === 0 && this.addedItems.length > 0)
+        return this.options.onClose && this.options.onClose();
+      if (!this.validateItem(activeItemData)) return;
+      
+      if (this.mode == 'add') {
+        this.level._items.push(activeItemData);
+        this.addedItems.push(activeItemData.name);
+        bapp.currentEditor.setChanged('something',true);
+
+        if (addAnother === true)
+          this.prompt({ success:'Item added successfully' },undefined,true);
+        else
+          this.options.onClose && this.options.onClose();
+      }
+      else if (this.mode == 'edit') {
+        var oldItem = _.detect(this.level._items,function (i) { return i.name == item.name });
+        _.extend(oldItem,activeItemData);
+
+        bapp.currentEditor.setChanged('something',true);
+        this.options.onClose && this.options.onClose();
+      }
     }
   });
 
