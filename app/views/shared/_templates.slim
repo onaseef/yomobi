@@ -177,12 +177,12 @@
         | <% } %>
         p.error
           b (Click "Add" or press Enter to add new <% print( util.pluralize(catTypeName) ); %>)
-        | <% if (cats.length > 0) { %>
+        | <% if (addedCats.length > 0) { %>
         .other-names
-    	    b Current <% print( util.pluralize(catTypeName) ); %>:
+    	    b Added <% print( util.pluralize(catTypeName) ); %>:
     	    ul
-      	    | <% for(var i=0; i < cats.length; i++) { %>
-      	    |    <li> {{ cats[i] }} </li>
+      	    | <% for(var i=0; i < addedCats.length; i++) { %>
+      	    |    <li> {{ addedCats[i] }} </li>
       	    |  <% } %>
         | <% } %>
   

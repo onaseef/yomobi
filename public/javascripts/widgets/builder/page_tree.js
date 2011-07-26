@@ -254,6 +254,7 @@ util.log('itemIdx',itemIdx,item,level);
     
     initialize: function () {
       _.bindAll(this,'validateItem');
+      this.addedLeaves = [];
     },
 
     enterMode: function (mode) {
@@ -268,7 +269,8 @@ util.log('itemIdx',itemIdx,item,level);
         error: error,
         cats: _.pluck(level._items,'name'),
         name: name,
-        catTypeName: this.model.get('itemTypeName')
+        catTypeName: this.model.get('itemTypeName'),
+        addedCats: this.addedLeaves
       });
 
       var self = this;
@@ -279,7 +281,9 @@ util.log('itemIdx',itemIdx,item,level);
       return this;
     },
     
-    prompt: function (error,origName) {
+    prompt: function (error,origName,keepAddedLeaves) {
+      if (!keepAddedLeaves) this.addedLeaves.length = 0;
+
       var self = this
         , level = this.model.getCurrentLevel()
         , dialogContent = this.render(error,level,origName).el
@@ -311,8 +315,10 @@ util.log('itemIdx',itemIdx,item,level);
         this.prompt('Name is already in use');
       else if (this.mode == 'add') {
         this.level._items.push({ name:name, content:defaultPageContent });
+        this.addedLeaves.push(name);
+
         bapp.currentEditor.setChanged('something',true);
-        this.prompt();
+        this.prompt(undefined,undefined,true);
       }
       else if (this.mode == 'edit' && name !== this.origName) {
         var origName = this.origName;

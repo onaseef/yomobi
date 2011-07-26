@@ -425,6 +425,7 @@
     
     initialize: function () {
       _.bindAll(this,'validateCategory');
+      this.addedCats = [];
     },
 
     enterMode: function (mode) {
@@ -439,7 +440,8 @@
         error: error,
         name: name,
         cats: util.sortedCatNamesFromLevel(level),
-        catTypeName: this.model.get('catTypeName')
+        catTypeName: this.model.get('catTypeName'),
+        addedCats: this.addedCats
       });
 
       var self = this;
@@ -450,7 +452,9 @@
       return this;
     },
     
-    prompt: function (error,origName,keepAddedItems) {
+    prompt: function (error,origName,keepAddedCats) {
+      if (!keepAddedCats) this.addedCats.length = 0;
+
       var self = this
         , level = this.model.getCurrentLevel()
         , dialogContent = this.render(error,level,origName).el
@@ -483,8 +487,10 @@
       else if (this.mode == 'add') {
         var keyCount = _.keys(this.level).length;
         this.level[name+'|'+(keyCount-1)] = {_items:[]};
+        this.addedCats.push(name);
+
         bapp.currentEditor.setChanged('something',true);
-        this.prompt();
+        this.prompt(undefined,undefined,true);
       }
       else if (this.mode == 'edit' && name !== this.origName) {
         var origCat = util.fullCatFromName(this.level,this.origName)
