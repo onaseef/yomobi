@@ -44,7 +44,12 @@ class ApplicationController < ActionController::Base
   end
 
   def ensure_user_has_already_setup
-    redirect_to(account_setup_path 1) if current_user.company.nil?
+    return redirect_to(confirm_account_path) if !current_user.confirmed_at?
+    return redirect_to(account_setup_path 1) if current_user.company.nil?
+  end
+
+  def redirect_unless_confirmed
+    return redirect_to confirm_account_path unless current_user.confirmed_at?
   end
 
 end

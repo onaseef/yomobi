@@ -1,0 +1,13 @@
+#account-setup-box.center-box
+  .content
+    h2 Confirm your Account
+    erb:
+      <p>A confirmation was sent to <%= @email %>. Please confirm your account to continue.</p>
+    br
+    p Didn't get a confirmation email? Check your spam folder or click the button below:
+    = form_tag resend_confirmation_path do
+      input type="submit" value="Resend Confirmation Email"
+      - if flash[:notice]
+        br
+        br
+        p.success = flash[:notice]

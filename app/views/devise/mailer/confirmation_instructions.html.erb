@@ -1,5 +1,14 @@
-<p>Welcome <%= @resource.email %>!</p>
+<p>Hello <%= @resource.first_name %>,</p>
 
-<p>You can confirm your account through the link below:</p>
+<p>Thank you for registering with YoMobi.</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+<p>
+Please confirm your email address to continue the registration: 
+<%= link_to 'Confirm Now', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>
+</p>
+
+<p>
+Sincerely,<br />
+YoMobi Team<br />
+<a href="mailto:support@yomobi.com">support@yomobi.com</a>
+</p>

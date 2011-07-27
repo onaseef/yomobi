@@ -1,6 +1,8 @@
 class SignupController < ApplicationController
   require 'couch_docs'
   
+  before_filter :redirect_unless_confirmed
+
   def account_setup
     @step_num = params[:step_num]
     return redirect_to account_setup_path(1) if current_user.company.nil? && @step_num.to_i >= 2
