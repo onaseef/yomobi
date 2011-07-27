@@ -41,16 +41,18 @@ Yomobi::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
-  # TODO: move off gmail test account
+  
+  # use sendgrid for real emailing
   config.action_mailer.delivery_method = :smtp
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_url_options = { :host => "yomobi.com" }
   ActionMailer::Base.smtp_settings = {
-    :address  => "smtp.gmail.com",
-    :port  => 587,
-    :user_name  => "yomobi.test",
-    :password  => "y0Yoy@filler",
-    :authentication  => :plain,
-    :enable_starttls_auto => true
+    :address => "smtp.sendgrid.net",
+    :port => '25',
+    :domain => "yomobi.com",
+    :authentication => :plain,
+    :user_name => "omar",
+    :password => "yoyom2000"
   }
 
   # Enable threaded mode

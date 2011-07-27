@@ -14,7 +14,8 @@ class Widgets::TellFriendController < ApplicationController
     UserMailer.tell_friend({
       :to => params[:email_to],
       :subject => "#{params[:name_from]} wants you to check out #{company.name}'s mobile website!",
-      :from => params[:email_from],
+      :from => 'message@yomobi.com',
+      :reply_to => params[:email_from],
       :name_from => params[:name_from],
       :email_from => params[:email_from],
       :company_mobile_url => company.mobile_url

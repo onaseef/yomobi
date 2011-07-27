@@ -12,7 +12,7 @@ class Widgets::CallBackController < ApplicationController
     UserMailer.call_back({
       :to => company.call_back_email || company.user.email,
       :subject => 'A customer has left a message.',
-      :from => 'feedback@yomobi.com',
+      :from => 'message@yomobi.com',
       :customer_phone => params[:phone],
       :customer_message => params[:message]
     }).deliver

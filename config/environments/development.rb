@@ -28,22 +28,37 @@ Yomobi::Application.configure do
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
   
-  # use gmail for test emailing
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { :host => "local.host:3000" }
-  ActionMailer::Base.smtp_settings = {
-    :address  => "smtp.gmail.com",
-    :port  => 587,
-    :user_name  => "yomobi.test",
-    :password  => "y0Yoy@filler",
-    :authentication  => :plain,
-    :enable_starttls_auto => true
-  }
   # use postfix on da local machine
   # ActionMailer::Base.smtp_settings = {
     # :host => "localhost"
   # }
+
+  # use gmail for test emailing
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.default_url_options = { :host => "local.host:3000" }
+  # ActionMailer::Base.smtp_settings = {
+  #   :address  => "smtp.gmail.com",
+  #   :port  => 587,
+  #   :user_name  => "yomobi.test",
+  #   :password  => "y0Yoy@filler",
+  #   :authentication  => :plain,
+  #   :enable_starttls_auto => true
+  # }
+
+  # use sendgrid for real emailing
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { :host => "local.host:3000" }
+  ActionMailer::Base.smtp_settings = {
+    :address => "smtp.sendgrid.net",
+    :port => '25',
+    :domain => "yomobi.com",
+    :authentication => :plain,
+    :user_name => "omar",
+    :password => "yoyom2000"
+  }
+
   Slim::Engine.set_default_options :pretty => true
 end
 

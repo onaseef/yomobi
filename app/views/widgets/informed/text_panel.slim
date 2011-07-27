@@ -20,12 +20,10 @@ h1 = @company.name
       erb:
         <p>You have <b><%= @company.text_followers.size %></b> text follower(s).</p>
       p
-        | Your FROM email address is: 
-        = @company.informed_email || "NONE"
-        - if @company.informed_email.nil?
-          | ALERT: In order to send emails or texts to followers, you must provide a FROM email address.
-        - if @errors[:message]
-          p.error = "Error: #{ @errors[:message] }"
+        | Your REPLY-TO email address is: 
+        = @company.informed_email || @company.user.email
+      - if @errors[:message]
+        p.error = "Error: #{ @errors[:message] }"
       = form_tag '', :method => :post do
         label
           span#chars-left = @max_chars

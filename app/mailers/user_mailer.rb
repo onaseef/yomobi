@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default :from => "feedback@yomobi.com"
+  default :from => "message@yomobi.com"
 
   def leave_msg(params)
     @params = params
@@ -22,7 +22,8 @@ class UserMailer < ActionMailer::Base
     @short_url = follower.short_url
     mail({
       :to => "#{follower.phone}@#{follower.carrier.text_email}",
-      :from => params[:company].informed_email || params[:company].user.email
+      :from => 'message@yomobi.com',
+      :reply_to => params[:company].informed_email || params[:company].user.email
     })
   end
 

@@ -18,12 +18,8 @@ h1 = @company.name
       erb:
         <p>You have <b><%= @company.email_followers.size %></b> email follower(s).</p>
       p
-        | Your FROM email address is: 
-        = @company.informed_email || "NONE"
-        - if @company.informed_email.nil?
-          p.error 
-            ' ALERT: In order to send emails or texts to followers, you must provide a FROM email address. Please enter an email address in the "Keep Me Informed" widget in your
-            a href=builder_main_path mobile website builder.
+        | Your REPLY-TO email address is: 
+        = @company.informed_email || @company.user.email
       - if @errors[:no_email]
         p.error = @errors[:no_email]
       = form_tag '', :method => :post do
