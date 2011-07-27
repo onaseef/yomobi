@@ -1,10 +1,4 @@
 GIT
-  remote: https://github.com/mindeavor/admob19.git
-  revision: 0774054ee5f64d9f6abcd6835f426eb77ab4a081
-  specs:
-    admob19 (1.1.5)
-
-GIT
   remote: https://github.com/mindeavor/aritcaptcha.git
   revision: f95ad8292012fa34bc0293e05de267553907a1d9
   specs:
@@ -153,7 +147,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  admob19!
   aritcaptcha!
   aws-s3
   couchrest

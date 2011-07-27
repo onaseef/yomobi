@@ -1,8 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :admob_set_cookie
-  
   def error(status = 400, reason)
     render :text => reason.to_json, :status => status
   end
@@ -49,8 +47,4 @@ class ApplicationController < ActionController::Base
     redirect_to(account_setup_path 1) if current_user.company.nil?
   end
 
-  # admob
-  def admob_set_cookie
-    AdMob::set_cookie(request, cookies)
-  end
 end
