@@ -76,12 +76,12 @@
       .box style="margin-bottom:10px"
         label Mobile Site URL:
         br
-        input.read-only type="text" value=@company.mobile_url data-orig-val=@company.mobile_url
+        input.read-only readonly="readonly" type="text" value=@company.mobile_url data-orig-val=@company.mobile_url
         .divider
 
         label class="help" Desktop Redirect Code:
         img class="help-bubble" src="/images/ui/help-bubble.png"
-        textarea.read-only data-orig-val=desktop_redirect_code(@company) = desktop_redirect_code @company
+        textarea.read-only readonly="readonly" data-orig-val=desktop_redirect_code(@company) = desktop_redirect_code @company
       
       = form_tag '/builder/settings', :multipart => true, :class => 'box' do
         label Site Name:
