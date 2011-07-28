@@ -12,11 +12,10 @@ class BuilderController < ApplicationController
     return error 'Not a new document' unless params[:id].nil?
     db = CouchRest.database(current_user.company.couch_db_url)
     
-    # TODO: scrub off rails related data
+    # scrub off rails related data
+    params.delete :action; params.delete :controller
     
-    puts "Params: #{params.inspect}"
     res = db.save_doc(params)
-    puts "Response: #{res.inspect}"
     success params
   end
   
@@ -24,15 +23,14 @@ class BuilderController < ApplicationController
     return error 'Invalid id' if params[:id].nil?
     db = CouchRest.database(current_user.company.couch_db_url)
 
-    # TODO: scrub off rails related data
+    # scrub off rails related data
     params[:_id] = params[:id]; params.delete(:id)
+    params.delete :action; params.delete :controller
 
     return error 'Bad data' unless handle_special_widget_cases(params)
     
-    puts "Params: #{params.inspect}"
     # couchrest adds _id and _rev to the hash on success
     res = db.save_doc(params)
-    puts "Response: #{res.inspect}"
     success params
   end
   
@@ -41,10 +39,8 @@ class BuilderController < ApplicationController
     return error 'Invalid rev' if params[:_rev].nil?
 
     db = CouchRest.database(current_user.company.couch_db_url)
-    puts "Params: #{params.inspect}"
-    # TODO: scrub off rails related data
+
     res = db.delete_doc(params)
-    puts "Response: #{res.inspect}"
     success params
   end
   
@@ -53,7 +49,10 @@ class BuilderController < ApplicationController
     return error 'Invalid rev' if params[:_rev].nil?
     
     db = CouchRest.database(current_user.company.couch_db_url)
-    # TODO: scrub off rails related data
+
+    # scrub off rails related data
+    params.delete :action; params.delete :controller
+
     db.save_doc(params)
     success params
   end
@@ -70,7 +69,6 @@ class BuilderController < ApplicationController
       attrs.delete :company_type if attrs[:company_type].nil?
 
       save_success = current_user.company.update_attributes(attrs)
-      puts "Updated settings? #{save_success.inspect}"
     end
 
     return redirect_to builder_main_path(:anchor => 'edit-settings')
