@@ -37,7 +37,7 @@ class Follower < ActiveRecord::Base
   def send_text(message)
     return if phone.nil? || carrier.nil?
     puts "Sending text to #{phone} (#{carrier})"
-    puts UserMailer.send_text({
+    UserMailer.send_text({
       :follower => self,
       :company => company,
       :content => message

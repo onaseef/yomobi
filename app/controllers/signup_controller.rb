@@ -47,6 +47,7 @@ class SignupController < ApplicationController
           @errors['site_url'] = 'taken?'
         else
           current_user.company.save_doc CouchDocs.about_us_doc(data['desc'])
+          puts UserMailer.send_welcome_email current_user.company
         end
       rescue ActiveRecord::RecordNotUnique
         @errors['site_url'] = 'taken'

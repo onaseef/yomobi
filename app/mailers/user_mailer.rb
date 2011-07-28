@@ -1,6 +1,15 @@
 class UserMailer < ActionMailer::Base
   default :from => "message@yomobi.com"
 
+  def send_welcome_email(company)
+    mail({
+      :subject => "Confirmation for YoMobi.com/#{company.db_name}",
+      :to => company.user.email,
+      :from => 'message@yomobi.com',
+      :reply_to => 'support@yomobi.com'
+    })
+  end
+
   def leave_msg(params)
     @params = params
     mail params
