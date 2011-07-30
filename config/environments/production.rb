@@ -49,8 +49,8 @@ Yomobi::Application.configure do
     :port => '25',
     :domain => "yomobi.com",
     :authentication => :plain,
-    :user_name => "omar",
-    :password => "yoyom2000"
+    :user_name => "fpasion",
+    :password => "yoyom2011"
   }
 
   # Enable threaded mode

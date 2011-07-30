@@ -5,8 +5,7 @@ class UserMailer < ActionMailer::Base
     mail({
       :subject => "Confirmation for YoMobi.com/#{company.db_name}",
       :to => company.user.email,
-      :from => 'message@yomobi.com',
-      :reply_to => 'support@yomobi.com'
+      :from => 'support@yomobi.com'
     })
   end
 
