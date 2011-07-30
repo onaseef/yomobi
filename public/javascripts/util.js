@@ -519,7 +519,7 @@ var util = {
       formHeight: 400,
       formWidth: 320,
       events: {
-        keyup: function () { bapp.currentEditor.trigger('wysiwyg-change'); },
+        save: function () { bapp.currentEditor.trigger('wysiwyg-change'); },
         paste: function (a,b,c) { util.log('PASTE',a,b,c); return false; }
       },
       controls: {
