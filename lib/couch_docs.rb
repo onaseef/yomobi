@@ -433,4 +433,11 @@ class CouchDocs
       }
     ].sort! {|a,b| b[:name] <=> a[:name]}
   end
+
+  def self.to_readable_list
+    CouchDocs.default_doc_map.map do |k,v|
+      [k.map {|i| CompanyType.find(i).name },v]
+    end.each {|types,widgets|
+      puts types; puts '----'; puts widgets; puts "\n\n"}
+  end
 end
