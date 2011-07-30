@@ -280,13 +280,13 @@
   #builder .edit-area.hours .day-hours .day-name {
     float: left;
     width: 85px;
-    margin-top: 4px;
+    margin-top: 2px;
     font-size: 120%; }
   #builder .edit-area.hours .day-hours .day-enabled input[type=checkbox] {
     margin-top: 6px; }
   #builder .edit-area.hours .day-hours .times {
-    visibility: hidden;
     float: left;
+    height: 28px;
     padding-left: 5px; }
     #builder .edit-area.hours .day-hours .times label {
       float: left;
@@ -296,22 +296,22 @@
       text-align: center; }
     #builder .edit-area.hours .day-hours .times .t1 {
       display: none; }
-  #builder .edit-area.hours .day-hours .all-day {
-    visibility: hidden; }
-    #builder .edit-area.hours .day-hours .all-day span {
-      float: left;
-      padding: 4px 2px 0 8px; }
-    #builder .edit-area.hours .day-hours .all-day input[type=checkbox] {
-      margin-top: 5px; }
+    #builder .edit-area.hours .day-hours .times .closed {
+      display: none;
+      padding-top: 4px;
+      font-weight: bold;
+      color: #3B5998; }
   #builder .edit-area.hours .day-hours input[type=text] {
     float: left;
     width: 65px; }
-#builder .edit-area.hours .day-hours.checked .times {
-  visibility: visible; }
-#builder .edit-area.hours .day-hours.checked .all-day {
-  visibility: hidden; }
-#builder .edit-area.hours .day-hours.all-day .times {
-  visibility: hidden !important; }
+#builder .edit-area.hours .day-hours.closed .t1, #builder .edit-area.hours .day-hours.closed .t0 {
+  display: none !important; }
+#builder .edit-area.hours .day-hours.closed .closed {
+  display: block; }
+#builder .edit-area.hours .input-area.double-time .t1 {
+  display: block; }
+#builder .edit-area.hours .input-area.double-time .times {
+  height: 54px; }
 
 #builder .edit-area.calendar .url {
   padding: 5px 0 20px;

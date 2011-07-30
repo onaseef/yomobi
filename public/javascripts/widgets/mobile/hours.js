@@ -9,10 +9,6 @@
   
   window.widgetClasses.hours = Widget.extend({
     
-    isDayAllDay: function (day) {
-      return this.get('hours')[day][2] === true;
-    },
-    
     isDayEnabled: function (day) {
       return this.get('hours')[day][3] === true;
     },
@@ -26,9 +22,6 @@
 
         if (!self.isDayEnabled(day)) {
           data[day+'Hours'] = '<span class="closed">Closed</span>';
-        }
-        else if (self.isDayAllDay(day)) {
-          data[day+'Hours'] = '<span class="all-day">Open All Day</span>';
         }
         else {
           data[day+'Hours'] = _(hours).chain().first(2).reject(isEmpty).map(function (h) {

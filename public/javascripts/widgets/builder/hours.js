@@ -25,14 +25,11 @@
       _.each(days, function (day) {
         var hours = self.get('hours')[day]
           , isEnabled = self.isDayEnabled(day) || undefined
-          , dayChecked = isEnabled && 'checked' || ''
+          , dayClosed =  isEnabled ?  undefined : 'closed'
           , dayDisplay = isEnabled ? 'block' : 'hidden'
-          , allDayChecked = self.isDayAllDay(day) && 'checked' || undefined
-          , dayChecked = dayChecked + (allDayChecked ? ' all-day' : '')
         ;
-        data[day+'Checked'] = dayChecked;
+        data[day+'Closed'] = dayClosed;
         data[day+'Display'] = dayDisplay;
-        data[day+'AllDayChecked'] = allDayChecked;
 
         var fromHours = data[day+'FromHours'] = [];
         var toHours   = data[day+'ToHours']   = [];
@@ -42,6 +39,9 @@
           fromHours.push(from);       toHours.push(to);
         });
       });
+
+      data.doubleTimeChecked = self.get('doubleTime') && 'double-time' || undefined;
+
       return _.extend(this.toJSON(),data);
     }
     
@@ -56,7 +56,6 @@
 
     events: {
       'click .day-enabled input':     'toggleDayCheckbox',
-      'click .all-day input':         'toggleAllDayCheckbox',
       'click input[name=doubleTime]': 'toggleDoubleTime'
     },
     
@@ -70,13 +69,11 @@
       this.el.find('.edit-area .day-hours').each(function (idx,elem) {
         var $elem = $(elem), day = $elem.attr('day')
           , isEnabled = self.widget.isDayEnabled(day)
-          , isAllDay  = self.widget.isDayAllDay(day)
         ;
         $elem.find('.day-enabled input').prop('checked',isEnabled);
-        $elem.find('.all-day input').prop('checked',isAllDay);
-        $elem.find('.t1').toggle(isDoubleTime);
       });
       this.el.find('.double-time input').prop('checked',isDoubleTime);
+      this.el.find('.input-area').toggleClass('double-time',isDoubleTime);
     },
     
     toggleDayCheckbox: function (e) {
@@ -84,27 +81,12 @@
         , day = $target.attr('day')
         , $hoursDiv = this.el.find('.day-hours[day='+day+']')
       ;
-      $hoursDiv.toggleClass('checked');
-      
-      if ( $target.prop('checked') )
-        $hoursDiv.find('.times, .all-day').css('visibility','visible');
-      else
-        $hoursDiv.find('.times, .all-day').css('visibility','hidden');
-    },
-    
-    toggleAllDayCheckbox: function (e) {
-      var target = $(e.target)
-        , allDay = target.parent()
-        , hours = allDay.parent()
-        , isChecked = target.is(':checked')
-      ;
-      hours.toggleClass('all-day',isChecked);
-      allDay.find('input').prop('checked',isChecked);
+      $hoursDiv.toggleClass('closed');
     },
     
     toggleDoubleTime: function () {
-      var isDoubleTime = this.el.find('.double-time input').is(':checked');
-      this.el.find('.t1').toggle(isDoubleTime);
+      var isDoubleTime = this.el.find('.double-time:first input').is(':checked');
+      this.el.find('.input-area').toggleClass('double-time',isDoubleTime);
     },
 
     grabWidgetValues: function () {
@@ -114,16 +96,15 @@
         var $this = $(this)
           , day = $this.attr('day')
           , isEnabled = $this.find('input[name='+day+'Enabled]').is(':checked')
-          , allDay = $this.find('.all-day input').is(':checked')
 
           , fromHours = $this.find('.hour.from').map(pluckVal)
           , toHours   = $this.find('.hour.to').map(pluckVal)
           , hours = _(fromHours).chain().zip(toHours).map(hourJoin).map(clearLonePipe).value()
         ;
-        weekHours[day] = hours.concat([allDay,isEnabled]);
+        weekHours[day] = hours.concat([false,isEnabled]);
       });
-      var isDoubleTime = this.el.find('.double-time input').is(':checked');
-util.log('DOUBLE TIME',isDoubleTime)
+      var isDoubleTime = this.el.find('.double-time:first input').is(':checked');
+
       return { hours:weekHours, doubleTime:isDoubleTime };
     }
   })

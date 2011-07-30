@@ -498,23 +498,21 @@
     .double-time
       input type="checkbox" name="doubleTime"
       b Specify two sets of hours for each day.
-    br
-    - %w(mon tue wed thu fri sat sun).each do |day|
-      .day-hours day=day class="{{ _maybe.#{day}Checked }}"
-        .day-name = long_day_name day
-        .day-enabled.lfloat
-          input type="checkbox" day=day name="#{day}Enabled"
-        div class=".all-day-{{ _maybe.#{day}AllDayChecked }}"
-        .times
-          - 2.times do |i|
-            div class="t#{i}"
-              input.hour.from type="text" value="{{ #{day}FromHours[#{i}] }}"
-              label to
-              input.hour.to type="text" value="{{ #{day}ToHours[#{i}] }}"
-        .all-day
-          span All Day
-          input type="checkbox" name="#{day}_allday"
-        .clearfix
+
+    .input-area class="{{ _maybe.doubleTimeChecked }}"
+      - %w(mon tue wed thu fri sat sun).each do |day|
+        .day-hours day=day class="{{ _maybe.#{day}Closed }}"
+          .day-name = long_day_name day
+          .day-enabled.lfloat
+            input type="checkbox" day=day name="#{day}Enabled"
+          .times
+            - 2.times do |i|
+              div class="t#{i}"
+                input.hour.from type="text" value="{{ #{day}FromHours[#{i}] }}"
+                label to
+                input.hour.to type="text" value="{{ #{day}ToHours[#{i}] }}"
+            div class="closed" Closed
+          .clearfix
     .clearfix
 
   script.gmap-edit-area(type="text/template")

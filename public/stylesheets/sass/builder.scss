@@ -300,14 +300,13 @@
     .day-name {
       float: left;
       width: 85px;
-      margin-top: 4px;
+      margin-top: 2px;
       font-size: $font-size-day-name; }
     .day-enabled input[type=checkbox] {
       margin-top: 6px; }
     .times {
-      // visible when day-hours has .checked class
-      visibility: hidden;
       float: left;
+      height: 28px;
       padding-left: 5px;
       label {
         float: left;
@@ -316,26 +315,27 @@
         color: #7e7e7e;
         text-align: center; }
       .t1 {
-        display: none; } }
-    .all-day {
-      // displays when day-hours has .checked class
-      visibility: hidden;
-      span {
-        float: left;
-        padding: 4px 2px 0 8px; }
-      input[type=checkbox] {
-        margin-top: 5px; } }
+        display: none; }
+      .closed {
+        display: none;
+        padding-top: 4px;
+        font-weight: bold;
+        color: #3B5998;
+      }
+    }
     input[type=text] {
       float: left;
-      width: 65px; } }
-  .day-hours.checked {
-    .times {
-      visibility: visible; }
-    .all-day {
-      visibility: hidden; } }
-  .day-hours.all-day {
-    .times {
-      visibility: hidden !important; } } }
+      width: 65px; }
+  }
+  .day-hours.closed {
+    .t1,.t0 { display: none !important; }
+    .closed { display: block; }
+  }
+  .input-area.double-time {
+    .t1 { display: block; }
+    .times { height: 54px;}
+  }
+}
 
 #builder .edit-area.calendar {
   .url {
