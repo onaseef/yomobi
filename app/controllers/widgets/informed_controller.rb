@@ -121,8 +121,9 @@ class Widgets::InformedController < ApplicationController
   end
 
   def find_or_build_follower(company,params)
-    puts "\nBUILDING: #{params.inspect}"
-    follower = Follower.where(params.reject {|k| k==:carrier}).first
+    conditions = params.merge :company_id => company[:id]
+    puts "\nBUILDING: #{conditions.inspect}"
+    follower = Follower.where(conditions.reject {|k| k==:carrier}).first
     if follower
       puts "PREVIOUSLY ACTIVE"
       follower.active = true
