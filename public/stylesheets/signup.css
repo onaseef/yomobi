@@ -170,10 +170,10 @@
     margin: 5px 0px 15px 0px; }
   #account-setup-box h3 {
     margin: 10px 0px 5px 0px; }
-  #account-setup-box textarea, #account-setup-box input[type=text] {
+  #account-setup-box textarea, #account-setup-box input[type=text], #account-setup-box input[type=password] {
     width: 450px;
     font-size: 1.2em; }
-  #account-setup-box input[type=text] {
+  #account-setup-box input[type=text], #account-setup-box input[type=password] {
     margin-bottom: 10px; }
   #account-setup-box textarea {
     height: 7em;

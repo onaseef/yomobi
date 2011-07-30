@@ -4,6 +4,9 @@ Yomobi::Application.routes.draw do
   get 'ad-test' => 'home#ad_test'
   get 'confirm' => 'home#confirm_account', :as => :confirm_account
   post 'confirm' => 'home#resend_confirmation', :as => :resend_confirmation
+
+  get "account/edit", :as => :account
+  post "account/update", :as => :update_account
   
   match 'account-setup/:step_num' => 'signup#account_setup', :as => :account_setup
 

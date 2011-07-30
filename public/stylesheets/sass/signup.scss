@@ -174,10 +174,10 @@
   h3 {
     margin: 10px 0px 5px 0px; }
   width: 500px;
-  textarea, input[type=text] {
+  textarea, input[type=text], input[type=password] {
     width: 450px;
     font-size: 1.2em; }
-  input[type=text] {
+  input[type=text], input[type=password] {
     margin-bottom: 10px; }
   textarea {
     height: 7em;

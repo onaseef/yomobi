@@ -1,0 +1,21 @@
+#account-setup-box.center-box
+  .content
+    h2 My Account
+    .divider
+    h3 Change Password:
+    br
+    = form_tag update_account_path do
+      label Current Password:
+      input type="password" name="current_password"
+
+      label New Password:
+      input type="password" name="password"
+
+      label Re-enter New Password:
+      input type="password" name="password_confirmation"
+
+      input type="submit" value="Change Password"
+      - if flash[:notice] || flash[:alert]
+        br
+        br
+        p class=(flash[:notice] ? 'success' : 'error') = flash[:notice] || flash[:alert]
