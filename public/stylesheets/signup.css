@@ -1,5 +1,5 @@
 #header.signed-out {
-  padding: 14px 0 20px 0;
+  padding: 14px 0 25px 0;
   background: #002455;
   color: white;
   height: 42px; }
@@ -11,17 +11,18 @@
   #header.signed-out #logo {
     float: left;
     width: 188px;
-    padding: 8px 0 0 12px;
+    padding: 8px 0 0 40px;
     font-size: 3em; }
   #header.signed-out form {
     float: right;
-    width: 415px; }
+    width: 415px;
+    padding-right: 32px; }
     #header.signed-out form .group {
       width: 160px; }
     #header.signed-out form input[type=text], #header.signed-out form input[type=password] {
       width: 142px; }
     #header.signed-out form .main-btn {
-      margin-top: 14px; }
+      margin-top: 18px; }
   #header.signed-out #nav {
     display: none; }
 
@@ -69,7 +70,7 @@
   float: left;
   width: 536px;
   height: 400px;
-  padding-top: 40px; }
+  padding: 20px 0px 0px 40px; }
   #banner h2 {
     margin-bottom: 5px; }
   #banner p {
@@ -82,7 +83,7 @@
 #signup-box {
   float: left;
   width: 346px;
-  padding-top: 40px; }
+  padding-top: 20px; }
   #signup-box h2 {
     margin-bottom: 5px; }
   #signup-box p {
@@ -118,16 +119,18 @@
   #actual-signin-box .group {
     padding: 5px 0; }
     #actual-signin-box .group label {
-      float: left;
       display: block;
       width: 100px;
       padding-top: 4px; }
-  #actual-signin-box input[type=text] {
-    float: left; }
+  #actual-signin-box input[type=text], #actual-signin-box input[type=password] {
+    width: 200px; }
   #actual-signin-box .meta-group {
-    padding-left: 102px; }
+    padding-left: 0; }
   #actual-signin-box .main-btn {
     margin-right: 4px; }
+
+#actual-signin-box.sign-in-form .sign-up-offer {
+  padding-top: 20px; }
 
 #step-arrows {
   background: #eceef4;

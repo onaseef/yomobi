@@ -3,7 +3,7 @@
 // layout related
 
 #header.signed-out {
-  padding: 14px 0 20px 0;
+  padding: 14px 0 25px 0;
   background: $main-color;
   color: $header-font-color;
   height: 42px;
@@ -15,17 +15,18 @@
   #logo {
     float: left;
     width: $sidebar-width - 12px;
-    padding: 8px 0 0 12px;
+    padding: 8px 0 0 40px;
     font-size: 3em; }
   form {
     float: right;
     width: 415px;
+    padding-right: 32px;
     .group {
       width: 160px; }
     input[type=text], input[type=password] {
       width: 142px; }
     .main-btn {
-      margin-top: 14px; } }
+      margin-top: 18px; } }
   #nav {
     display: none; } }
 
@@ -75,7 +76,7 @@
   float: left;
   width: 536px;
   height: 400px;
-  padding-top: 40px;
+  padding: 20px 0px 0px 40px;
   h2 { margin-bottom: 5px; }
   p { margin-top: 5px; }
   .images {
@@ -87,7 +88,7 @@
 #signup-box {
   float: left;
   width: 346px;
-  padding-top: 40px;
+  padding-top: 20px;
   h2 { margin-bottom: 5px; }
   p { margin: 5px 0; }
   & > div { padding-left: 15px; }
@@ -122,16 +123,25 @@
   .group {
     padding: 5px 0;
     label {
-      float: left;
       display: block;
       width: 100px;
       padding-top: 4px; } }
-  input[type=text] {
-    float: left; }
+  input[type=text], input[type=password] {
+    width: 200px;
+  }
   .meta-group {
-    padding-left: 102px; }
+    padding-left: 0; }
   .main-btn {
     margin-right: 4px; } }
+
+#actual-signin-box.sign-in-form {
+  .remember-me {}
+  .forgot-password {}
+  .sign-up-offer {
+    padding-top: 20px;
+  }
+  .pretty-button {}
+}
 
 #step-arrows {
   background: #eceef4;

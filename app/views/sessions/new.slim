@@ -9,23 +9,24 @@
         | Forgot your password? 
         a href=new_password_path(:user) Request a new one.
 
-  #actual-signin-box
-    .group.clearfix
-      = f.label 'Email:'
-      = f.text_field :email
-    .group.clearfix
-      = f.label 'Password:'
-      = f.password_field :password
-    .meta-group
-      - if devise_mapping.rememberable?
-        p
-          = f.check_box :remember_me
-          = f.label :remember_me
-      .main-btn.lfloat
-        input.content type="submit" value="Sign In"
-      p
-        | or 
-        a href=root_path style="font-weight:bold" Sign Up for YoMobi
-      br
+  #actual-signin-box.sign-in-form
+    = f.label 'Email:'
+    br
+    = f.text_field :email
+    br
+    - if devise_mapping.rememberable?
+      .remember-me
+        = f.check_box :remember_me
+        = f.label :remember_me
+
+    = f.label 'Password:'
+    br
+    = f.password_field :password
+    .forgot-password
       a href=new_password_path(:user) Forgot your password?
+
+    input.pretty-button.lfloat type="submit" value="Sign In"
+    .sign-up-offer
+      | or 
+      a href=root_path style="font-weight:bold" Sign Up for YoMobi
   .clearfix

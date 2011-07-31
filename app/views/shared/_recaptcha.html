@@ -1,0 +1,17 @@
+<div id="recaptcha_container">
+    <div id="recaptcha_image"></div>
+   <div id="recaptcha_label">
+       <label for="recaptcha_response_field">Type the two words:  </label>
+       <a href="javascript:Recaptcha.reload();">(Get New Words)</a>
+    </div>
+    <input type="text" id="recaptcha_response_field" name="recaptcha_response_field" class="text" />
+</div>
+
+<script type="text/javascript">
+var RecaptchaOptions = {
+  theme: 'custom',
+  custom_theme_widget: 'recaptcha_container'
+}
+</script>
+
+<script type="text/javascript" src="http://www.google.com/recaptcha/api/challenge?k=6LdLd8QSAAAAAE9J9A7Vm_bkwK01AdMo4bGInCVv&amp;error=expression"></script>

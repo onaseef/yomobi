@@ -31,8 +31,6 @@
   br
   
   - unless hide_captcha
-    p Enter both words below, separated by a space:
-    = recaptcha_tags
-    p Can't read the words above? Try different words or an audio captcha.
+    = render 'shared/recaptcha'
   
   = f.submit 'Sign Up'
