@@ -20,11 +20,18 @@
     #header.signed-out form .group {
       width: 160px; }
     #header.signed-out form input[type=text], #header.signed-out form input[type=password] {
-      width: 142px; }
+      width: 142px;
+      padding: 0px;
+      margin: 0px; }
+    #header.signed-out form input[type=checkbox] {
+      margin-left: -1px; }
     #header.signed-out form .main-btn {
-      margin-top: 18px; }
+      margin-top: 17px; }
   #header.signed-out #nav {
     display: none; }
+
+label {
+  padding-left: 0px; }
 
 #sidebar {
   float: left;
@@ -68,17 +75,19 @@
 
 #banner {
   float: left;
-  width: 536px;
+  width: 513px;
   height: 400px;
   padding: 20px 0px 0px 40px; }
   #banner h2 {
     margin-bottom: 5px; }
   #banner p {
     margin-top: 5px; }
-  #banner .images {
-    padding-top: 20px; }
-    #banner .images a {
-      margin: 104px 0 0 55px; }
+  #banner .easy-button {
+    color: white !important;
+    font-size: 18px;
+    line-height: 24px;
+    text-decoration: none;
+    margin: 80px 0px 0px 50px; }
 
 #signup-box {
   float: left;
@@ -93,6 +102,8 @@
   #signup-box input[type=text], #signup-box input[type=password] {
     width: 268px;
     margin-bottom: 8px; }
+  #signup-box input[type=submit] {
+    margin: 0px; }
 
 #signin-box {
   width: 600px;
