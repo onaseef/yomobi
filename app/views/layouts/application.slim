@@ -18,12 +18,17 @@ html lang="en-US"
         p.alert = alert
     
     #global-container
-      #header class=(current_user.nil? ? 'signed-out' : 'signed-in')
+      #header class=(user_signed_in? ? 'signed-in' : 'signed-out')
         .content
           #logo YoMobi
           - if current_user.nil? && @hide_header_signin_form != true
             = render :partial => 'shared/header-signin-form'
           = render :partial => 'shared/nav'
+          .clearfix
+      - unless user_signed_in? || @hide_signup_bar
+        .signup-bar
+          a.pretty-button href="/" Sign Up
+          .description YoMobi helps you connect to millions more consumer with a mobile optimized website.
           .clearfix
       #page-container-wrapper class=@page_wrapper_class
         #page-container

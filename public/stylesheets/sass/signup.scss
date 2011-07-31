@@ -2,6 +2,10 @@
 
 // layout related
 
+#header.signed-in {
+  .signup-bar { display: none; }
+}
+
 #header.signed-out {
   padding: 14px 0 25px 0;
   background: $main-color;
@@ -34,6 +38,8 @@
       margin-top: 17px; } }
   #nav {
     display: none; }
+  
+  .signup-bar {}
 }
 
 label {

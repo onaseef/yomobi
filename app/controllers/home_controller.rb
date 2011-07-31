@@ -9,6 +9,7 @@ class HomeController < ApplicationController
     redirect_to builder_main_path if user_signed_in?
     @user = User.new
     @page_wrapper_class = 'home'
+    @hide_signup_bar = true
   end
   
   def confirm_account
