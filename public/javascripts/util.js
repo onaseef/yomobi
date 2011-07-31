@@ -294,7 +294,9 @@ var util = {
 
   getInputElements: function (elem,selector) {
     selector = selector || '';
-    return elem.find(selector + ' input,textarea');
+    return elem.find(selector + ' input,' +
+                     selector + ' textarea,' + 
+                     selector + ' select');
   },
   
   newWidget: function (data) {
