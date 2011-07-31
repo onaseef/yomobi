@@ -420,7 +420,7 @@
     
     onKeyDown: function (e) {
       var code = e.keyCode || e.which;
-      if (code == 13) this.validateCategory();
+      if (code == 13) this.validateCategory(true);
     },
     
     initialize: function () {
@@ -464,45 +464,66 @@
       // cache for later use in validateCategory
       this.level = level;
       this.origName = origName;
-      
-      if (this.mode == 'add') buttons["Done"] = closeSelf;
-      else {
-        buttons["Save"] = this.validateCategory;
-        buttons["Cancel"] = closeSelf;
+
+      var makeSaveFunc = function (addAnother) {
+        return function () {
+          $(this).dialog("close");
+          self.validateCategory(addAnother);
+        }
       }
       
-      util.dialog(dialogContent,buttons).find('p.error').show('pulsate',{times:3});
+      buttons["Save"] = makeSaveFunc();
+      buttons["Cancel"] = closeSelf;
+      
+      util.dialog(dialogContent,buttons)
+        .find('p.error').show('pulsate',{times:3}).end()
+        .find('input[name=add]').click( makeSaveFunc(true) ).end()
+      ;
     },
     
-    validateCategory: function () {
+    validateCategory: function (addAnother) {
   		$(this.el).dialog("close");
 
       var name = $(this.el).find('input[name=cat]').val()
         , name = $.trim(name)
       ;
-  		if (_.isEmpty(name))
-  		  this.prompt('Name cannot be empty');
+      if (_.isEmpty(name) && this.addedCats.length > 0)
+        this.options.onClose && this.options.onClose();
+  		else if (_.isEmpty(name))
+  		  this.prompt('Name cannot be empty',undefined,true);
       else if ( name != this.origName && _.contains(util.catNamesFromLevel(this.level),name) )
-        this.prompt('Name is already in use');
+        this.prompt('Name is already in use',name,true);
       else if (this.mode == 'add') {
-        var keyCount = _.keys(this.level).length;
-        this.level[name+'|'+(keyCount-1)] = {_items:[]};
+        this.addCatToStruct(name);
         this.addedCats.push(name);
 
         bapp.currentEditor.setChanged('something',true);
-        this.prompt(undefined,undefined,true);
+        if (addAnother)
+          this.prompt(undefined,undefined,true);
+        else
+          this.options.onClose && this.options.onClose();
       }
       else if (this.mode == 'edit' && name !== this.origName) {
-        var origCat = util.fullCatFromName(this.level,this.origName)
-          , order = util.catOrder(origCat)
-        ;
-        this.level[name+'|'+order] = this.level[origCat];
-        delete this.level[origCat];
+        this.renameCatInStruct(name);
 
         bapp.currentEditor.setChanged('something',true);
         this.options.onClose && this.options.onClose();
       }
+    },
+
+    addCatToStruct: function (name) {
+      var keyCount = _.keys(this.level).length;
+      this.level[name+'|'+(keyCount-1)] = {_items:[]};
+    },
+
+    renameCatInStruct: function (newName) {
+      var origCat = util.fullCatFromName(this.level,this.origName)
+        , order = util.catOrder(origCat)
+      ;
+      this.level[newName+'|'+order] = this.level[origCat];
+      delete this.level[origCat];
     }
+
   });
   
   var close = function (dialogView) {
@@ -564,14 +585,8 @@
         }
       }
 
-      if (this.mode == 'add') {
-        buttons["Save"] = makeSaveFunc();
-        buttons["Cancel"] = closeFunc;
-      }
-      else if (this.mode == 'edit') {
-        buttons["Save"] = makeSaveFunc();
-        buttons["Cancel"] = closeFunc;
-      }
+      buttons["Save"] = makeSaveFunc();
+      buttons["Cancel"] = closeFunc;
 
       util.dialog(dialogContent, buttons)
         .find('p.error').show('pulsate',{times:3}).end()

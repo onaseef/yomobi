@@ -238,105 +238,18 @@ util.log('itemIdx',itemIdx,item,level);
   });
   
   // =================================
-  var addItemTemplate  = util.getTemplate('add-subcat-dialog')
-    , editItemTemplate = util.getTemplate('edit-subcat-dialog')
-  ;
-  var AddItemDialog = Backbone.View.extend({
+  var AddItemDialog = window.AddCatDialog.extend({
 
-    events: {
-      'keydown input[name="cat"]':      'onKeyDown'
+    // we're actually modifying leaf names instead of cats. Code reuse ftw!
+    addCatToStruct: function (name) {
+      this.level._items.push({ name:name, content:defaultPageContent });
     },
-    
-    onKeyDown: function (e) {
-      var code = e.keyCode || e.which;
-      if (code == 13) this.validateItem();
-    },
-    
-    initialize: function () {
-      _.bindAll(this,'validateItem');
-      this.addedLeaves = [];
-    },
-
-    enterMode: function (mode) {
-      this.mode = mode;
-      return this;
-    },
-    
-    render: function (error,level,name) {
-      var template = (this.mode == 'add') ? addItemTemplate : editItemTemplate;
-
-      var dialogHtml = template({
-        error: error,
-        cats: _.pluck(level._items,'name'),
-        name: name,
-        catTypeName: this.model.get('itemTypeName'),
-        addedCats: this.addedLeaves
-      });
-
-      var self = this;
-      $(this.el).html(dialogHtml)
-        .find('.add-btn').click(function () { self.validateItem(); }).end()
-        .attr('title', this.el.children[0].title)
-      ;
-      return this;
-    },
-    
-    prompt: function (error,origName,keepAddedLeaves) {
-      if (!keepAddedLeaves) this.addedLeaves.length = 0;
-
-      var self = this
-        , level = this.model.getCurrentLevel()
-        , dialogContent = this.render(error,level,origName).el
-        , closeSelf = close(this)
-        , buttons = {}
-      ;
-      // cache for later use in validateItem
-      this.level = level;
-      this.origName = origName;
-      
-      if (this.mode == 'add') buttons["Close"] = closeSelf;
-      else {
-        buttons["Save"] = this.validateItem;
-        buttons["Cancel"] = closeSelf;
-      }
-      
-      util.dialog(dialogContent,buttons).find('p.error').show('pulsate',{times:3});
-    },
-    
-    validateItem: function () {
-  		$(this.el).dialog("close");
-
-      var name = $(this.el).find('input[name=cat]').val()
-        , name = $.trim(name)
-      ;
-  		if (_.isEmpty(name))
-        this.prompt('Name cannot be empty');
-      else if ( name != this.origName && _.contains(_.pluck(this.level._items,'name'),name) )
-        this.prompt('Name is already in use');
-      else if (this.mode == 'add') {
-        this.level._items.push({ name:name, content:defaultPageContent });
-        this.addedLeaves.push(name);
-
-        bapp.currentEditor.setChanged('something',true);
-        this.prompt(undefined,undefined,true);
-      }
-      else if (this.mode == 'edit' && name !== this.origName) {
-        var origName = this.origName;
-        var targetItem = _.detect(this.level._items,function (i) { return i.name == origName });
-        targetItem.name = name;
-
-        bapp.currentEditor.setChanged('something',true);
-        this.options.onClose && this.options.onClose();
-      }
+    renameCatInStruct: function (newName) {
+      var origName = this.origName;
+      var targetItem = _.detect(this.level._items,function (i) { return i.name == origName });
+      targetItem.name = name;
     }
   });
-
-  var close = function (dialogView) {
-    return function () {
-      $(this).dialog("close");
-      dialogView.options.onClose && dialogView.options.onClose();
-    };
-  }
 
 })(jQuery);
 

@@ -175,8 +175,6 @@
         | <% if(_maybe.error) { %>
         p.error Error: {{ _maybe.error }}
         | <% } %>
-        p.error
-          b (Click "Add" or press Enter to add new <% print( util.pluralize(catTypeName) ); %>)
         | <% if (addedCats.length > 0) { %>
         .other-names
     	    b Added <% print( util.pluralize(catTypeName) ); %>:
