@@ -24,6 +24,12 @@ class HomeController < ApplicationController
     render :layout => 'mobile_basic'
   end
 
+  def privacy
+  end
+
+  def terms
+  end
+
   private
   
   def redirect_if_signed_in
