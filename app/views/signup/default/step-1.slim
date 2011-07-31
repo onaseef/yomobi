@@ -13,9 +13,7 @@
     h3 Choose a Mobile Site URL:
 
     - if @errors['site_url'] == 'illegal'
-      p.error Invalid Mobile Site URL.
-      p.error Your URL must be at least 3 characters long and contain only A-Z, a-z, 0-9, underscores (_), dashes (-) and periods (.).
-      p.error Must begin with a letter. Must be at least 3 characters long.
+      p.error Invalid URL: the URL must be at least 3 characters long and contain only A-Z, a-z, 0-9, underscores (_), dashes (-) and periods (.).
     - elsif @errors['site_url'] == 'taken'
       p.error URL is already taken.
     - elsif @errors['site_url'] == 'taken?'
