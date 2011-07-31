@@ -9,7 +9,7 @@
   
   window.widgetClasses.gmap = Widget.extend({
     validForShowing: function () {
-      return this.get('bname') || (this.get('addr1') && this.get('city') && this.get('state'));
+      return this.get('bname') || (this.get('addr1') && this.get('city'));
     },
 
     onHomeViewClick: function () {

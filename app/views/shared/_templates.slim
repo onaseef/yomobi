@@ -529,11 +529,17 @@
     label City*:
     input(name="city" type="text" value="{{ _maybe.city }}")
     br
-    label State*:
+    label State / Province / Territory:
     input(name="state" type="text" value="{{ _maybe.state }}")
     br
     label Zip / Postal Code:
     input(name="zip" type="text" value="{{ _maybe.zip }}")
+    br
+    label Country:
+    br
+    select name="country"
+      = render 'builder/country-options'
+    br
   
   script.coupon-edit-area(type="text/template")
     label Deal Name*:

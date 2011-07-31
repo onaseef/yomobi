@@ -25,5 +25,12 @@
     }
     
   });
+
+  window.widgetEditors.gmap = window.EditWidgetView.extend({
+    onEditStart: function () {
+      var c = this.widget.get('country');
+      this.el.find('select[name=country]').val(c);
+    }
+  });
   
 })(jQuery);

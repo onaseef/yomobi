@@ -20,6 +20,10 @@
     input name="step_data[address][state]" type="text"
     label Zip / Postal Code:
     input name="step_data[address][zip]" type="text"
+    label Country:
+    br
+    select name="step_data[address][country]"
+      = render 'builder/country-options'
   .action-bar
     .rfloat.main-btn
       input.content type="submit" value="Save & Continue"
