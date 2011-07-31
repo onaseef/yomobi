@@ -1,6 +1,46 @@
 @import "constants";
 @import "dbx.css";
 
+.pretty-button {
+  background: #4AA54A;
+  border: 1px solid #2E662E;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, .25), inset 0 1px 0 rgba(255, 255, 255, .3);
+  -moz-box-shadow: 0 2px 3px rgba(0, 0, 0, .25), inset 0 1px 0 rgba(255, 255, 255, .3);
+  -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, .25), inset 0 1px 0 rgba(255, 255, 255, .3);
+  color: white;
+  display: block;
+  float: left;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: bold;
+  margin: 10px 15px 0 10px;
+  padding: 3px 6px;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+}
+
+.easy-button {
+  font-size: 20px;
+  line-height:28px;
+}
+
+.arrow-button {
+  background: #a5b2c1;
+  border: 1px solid #707883;
+  color: #424252;
+  font-size: 24px;
+  padding: 10px 2px 9px 2px; 
+  margin: 0px 0px 8px 0px;
+}
+
+select {
+  font-size: $font-size-select;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -14,30 +54,44 @@ input[type=file] {
   background: #fff;
 }
 
+input[type=button] {
+  font-size:$font-size-input-button;
+  padding: 2px;
+}
+
+button[type=button] {
+  font-size:$font-size-button;
+  padding: 6px;
+}
+
+
+
 .explanation {
   background: #e4edf8; 
   padding: 8px 8px 0;
-  margin-bottom: 10px;
+  margin-bottom: 18px;
   border: 1px solid #ccc;
 }
 
 label {
+  display: inline-block;
   font-size: $font-size-label;
-  padding: 0px 3px 0px 0px;
+  padding: 0px 3px 2px 2px;
 }
+
 
 textarea {
   width: 354px;
   height: 6em;
   margin-top: 0;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   font-size: $font-size-textarea; }
 
 input[type=text], input[type=password] {
   width: 354px;
   margin-top: 1px;
   margin-bottom: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   font-size: $font-size-input; }
 
 #jeditor-wrapper { 
@@ -45,8 +99,7 @@ input[type=text], input[type=password] {
   iframe { max-width: 340px; }}
 
 em {
-  font-size: $font-size-em;
-  line-height: 75%; }
+  font-size: $font-size-em; }
 
 p {
   margin: 0px 0px 0px 0px;
@@ -230,11 +283,11 @@ p.success {
     margin-right: 4px !important; } }
 
 label.help { padding-bottom: 4px; }
-.help-bubble { cursor: help; }
+.help-bubble { cursor: pointer; }
 
 .hr {
   border-top: 1px solid $light-border;
-  padding-top: 14px; }
+  margin: 7px 0px 14px 0px; }
 
 .blue {
   color: #1030d0; }
