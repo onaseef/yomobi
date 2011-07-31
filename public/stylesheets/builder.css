@@ -116,6 +116,13 @@
   #builder .right .title {
     padding-left: 14px; }
 
+#builder-help ul {
+  padding: 0;
+  list-style: none; }
+#builder-help li {
+  margin: 8px 0;
+  padding: 0; }
+
 #builder .widget-editor {
   width: 360px;
   padding: 0px;

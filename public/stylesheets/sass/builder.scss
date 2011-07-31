@@ -126,6 +126,13 @@
     .title {
       padding-left: 14px; } } }
 
+#builder-help {
+  ul { padding: 0; list-style: none; }
+  li { margin: 8px 0; padding: 0; }
+  .spacer {}
+  .or {}
+}
+
 #builder .widget-editor {
   width: $widget-editor-width - 25px - 25px;
   padding: 0px;
