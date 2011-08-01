@@ -359,6 +359,7 @@ var util = {
   
   catOrder: function (cat) {
     cat || (cat = '');
+    if (cat.lastIndexOf('|') === -1) return NaN;
     return parseInt( cat.substring(cat.lastIndexOf('|')+1),10 );
   },
   

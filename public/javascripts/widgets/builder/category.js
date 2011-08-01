@@ -486,6 +486,7 @@
 
       var name = $(this.el).find('input[name=cat]').val()
         , name = $.trim(name)
+        , name = name.replace(/\|/g,'')
       ;
       if (_.isEmpty(name) && this.addedCats.length > 0)
         this.options.onClose && this.options.onClose();
