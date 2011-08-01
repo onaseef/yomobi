@@ -42,6 +42,14 @@ class Company < ActiveRecord::Base
     result
   end
   
+  def get_widget_doc(wname)
+    row = CouchRest.database(self.couch_db_url).view('widgets/by_name', {
+      :include_docs => true,
+      :key => [nil,wname]
+    })['rows'].first
+    row && row['doc']
+  end
+
   def save_doc(doc)
     CouchRest.database(couch_db_url).save_doc doc
   end

@@ -60,8 +60,21 @@ class SignupController < ApplicationController
   def validate_step_2(data)
     puts "Validating step 2: #{data.inspect}"
     company = current_user.company
-    company.save_doc CouchDocs.phone_doc(data['phone']) if data['phone'].present?
-    company.save_doc CouchDocs.gmap_doc(data['address']) if data['address'].map{|k,v| v.present?}.any?
+    if data['phone'].present?
+      phone_doc = company.get_widget_doc 'call-us'
+      if phone_doc
+        phone_doc['phone'] = data['phone']
+        company.save_doc phone_doc
+      end
+    end
+
+    if data['address'].reject {|k,v| k == 'country'}.map{|k,v| v.present?}.any?
+      address_doc = company.get_widget_doc 'find-us'
+      if address_doc
+        new_data = data['address'].select {|k,v| v.present?}
+        company.save_doc address_doc.merge( new_data )
+      end
+    end
   end
   
   def validate_step_3(data)
