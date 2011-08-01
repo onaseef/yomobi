@@ -3,7 +3,7 @@ class UserMailer < ActionMailer::Base
 
   def send_welcome_email(company)
     mail({
-      :subject => "Confirmation for YoMobi.com/#{company.db_name}",
+      :subject => "Welcome to YoMobi.com/#{company.db_name}",
       :to => company.user.email,
       :from => 'support@yomobi.com'
     })
