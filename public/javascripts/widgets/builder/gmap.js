@@ -22,6 +22,10 @@
         attrs.city = util.capitalize(attrs.city);
       if (attrs.state)
         attrs.state = (attrs.state.length == 2) ? attrs.state.toUpperCase() : util.capitalize(attrs.state);
+      if (attrs.addr2 && !attrs.addr1) {
+        attrs.addr1 = attrs.addr2;
+        delete attrs.addr2;
+      }
     }
     
   });

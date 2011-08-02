@@ -365,7 +365,7 @@
     h3 style="margin: 0 0 8px 0" <% print(_maybe.bname || "Address"); %>
     .addr-line {{ _maybe.addr1 }}
     .addr-line {{ _maybe.addr2 }}
-    .addr-line {{ _maybe.city }}, {{ _maybe.state }} {{ _maybe.zip }}
+    .addr-line {{ _maybe.city }}<% if (_maybe.city && _maybe.state) { print(','); } %> {{ _maybe.state }} {{ _maybe.zip }}
     .addr-line {{ _maybe.country }}
     .maps style="margin-top: 8px"
       a.map-link href="http://maps.google.com/maps?q={{ fullAddress }}"
