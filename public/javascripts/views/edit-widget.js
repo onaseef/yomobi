@@ -108,7 +108,7 @@
         .find('.widget-name-edit').hide()
           .find('input').val()
       ;
-      this.el.find('.widget-name').text(this.widget.get('prettyName'));
+      this.el.find('.widget-name span').text(this.widget.get('prettyName'));
     },
     
     changeName: function (e) {
