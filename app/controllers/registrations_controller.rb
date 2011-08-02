@@ -2,6 +2,7 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     @hide_header_signin_form = true
     @hide_captcha = false
+    @hide_signup_bar = true
     if verify_recaptcha
       super
     else
