@@ -392,7 +392,15 @@ var util = {
       return util.catName(cat) || cat;
     });
     crumbStack.unshift(topName);
-    return crumbStack.join(' > ');
+
+    var result = crumbStack.join(' > ');
+    var maxWidth = mapp.getActivePage().find('.back-bar .title').width();
+
+    if ( crumbStack.length > 2 && !util.isTextBounded(result,maxWidth) ) {
+      result = crumbStack[0] + ' > ... > ' + _.last(crumbStack);
+    }
+
+    return result;
   },
   
   dialog: function (html,buttons) {
@@ -597,6 +605,11 @@ var util = {
     });
     
     return false;
+  },
+
+  isTextBounded: function (text,width) {
+    var textWidth = $('#cat-crumbs-test').text(text).width();
+    return textWidth <= width;
   }
   
 }

@@ -15,6 +15,9 @@ $dynamic-width: 320px;
 $color-topbar-original: #3b5998;
 $color-topbar: #405b80;
 
+$back-bar-title-font-size: 12px;
+$back-bar-title-width: 250px;
+
 
 body {
   margin: 0;
@@ -73,11 +76,14 @@ a img {
   background: url(/images/ui/bg-back-bar.png) repeat-x;
   color: gray;
   .title {
+    float: left;
     padding-top: 3px;
+    width: $back-bar-title-width;
     height: 36px;
     h3 {
       font-weight: bold;
-      font-size: 12px; } } }
+      font-size: $back-bar-title-font-size;
+} } }
 
 .company-info {
   width: 100%;
@@ -299,3 +305,14 @@ a img {
   .desc.long {
     width: 100%; } }
 
+#cat-crumbs-test {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index:999999999;
+  background-color: #ff0000;
+//  visibility: hidden;
+  text-align: left;
+  font-weight: bold;
+  font-size: $back-bar-title-font-size;
+}
