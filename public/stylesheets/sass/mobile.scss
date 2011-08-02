@@ -77,10 +77,11 @@ a img {
   color: gray;
   .title {
     float: left;
-    padding-top: 3px;
+    padding-top: 12px;
     width: $back-bar-title-width;
-    height: 36px;
+    height: 27px;
     h3 {
+      margin: 0;
       font-weight: bold;
       font-size: $back-bar-title-font-size;
 } } }

@@ -56,10 +56,11 @@ a img {
   color: gray; }
   .back-bar .title {
     float: left;
-    padding-top: 3px;
+    padding-top: 12px;
     width: 250px;
-    height: 36px; }
+    height: 27px; }
     .back-bar .title h3 {
+      margin: 0;
       font-weight: bold;
       font-size: 12px; }
 

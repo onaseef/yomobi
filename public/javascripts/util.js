@@ -391,13 +391,18 @@ var util = {
     var crumbStack = _.map(catStack,function (cat) {
       return util.catName(cat) || cat;
     });
-    crumbStack.unshift(topName);
+    // crumbStack.unshift(topName);
 
-    var result = crumbStack.join(' > ');
-    var maxWidth = mapp.getActivePage().find('.back-bar .title').width();
+    var tnarr = [topName]
+      , result = tnarr.concat(crumbStack).join(' > ')
+      , maxWidth = mapp.getActivePage().find('.back-bar .title').width()
+    ;
+util.log('maxw',maxWidth);
+    while ( crumbStack.length > 1 && !util.isTextBounded(result,maxWidth) ) {
+      if (tnarr.length == 1) tnarr.push('...');
 
-    if ( crumbStack.length > 2 && !util.isTextBounded(result,maxWidth) ) {
-      result = crumbStack[0] + ' > ... > ' + _.last(crumbStack);
+      crumbStack.splice(0,1);
+      result = tnarr.concat(crumbStack).join(' > ');
     }
 
     return result;
