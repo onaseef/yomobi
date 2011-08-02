@@ -117,7 +117,7 @@ class Widgets::InformedController < ApplicationController
   end
 
   def max_message_length
-    140 - (" To Unsubscribe: ".length + SHORT_URL_RESERVED_COUNT)
+    140 - (" To Unsubscribe: ".length + SHORT_URL_RESERVED_COUNT) - current_user.company.name.length - 2
   end
 
   def find_or_build_follower(company,params)

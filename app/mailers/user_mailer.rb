@@ -28,6 +28,8 @@ class UserMailer < ActionMailer::Base
     follower = params[:follower]
     @content = params[:content]
     @short_url = follower.short_url
+    @company_name = params[:company].name
+    
     mail({
       :to => "#{follower.phone}@#{follower.carrier.text_email}",
       :from => 'message@yomobi.com',
