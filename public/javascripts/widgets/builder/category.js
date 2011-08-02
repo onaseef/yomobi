@@ -576,6 +576,7 @@
       ;
       // cache for later use
       this.level = level;
+      this.origItem = item;
       
       var buttons = {};
       var closeFunc = function () {
@@ -637,7 +638,10 @@
           this.options.onClose && this.options.onClose();
       }
       else if (this.mode == 'edit') {
-        var oldItem = _.detect(this.level._items,function (i) { return i.name == item.name });
+        var origItem = this.origItem;
+        var oldItem = _.detect(this.level._items, function (i) {
+          return i.name == origItem.name
+        });
         _.extend(oldItem,activeItemData);
 
         bapp.currentEditor.setChanged('something',true);
