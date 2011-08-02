@@ -440,7 +440,7 @@
         error: error,
         name: name,
         cats: util.sortedCatNamesFromLevel(level),
-        catTypeName: this.model.get('catTypeName'),
+        typeName: this.getTypeName(),
         addedCats: this.addedCats
       });
 
@@ -523,6 +523,10 @@
       ;
       this.level[newName+'|'+order] = this.level[origCat];
       delete this.level[origCat];
+    },
+
+    getTypeName: function () {
+      return this.model.get('catTypeName');
     }
 
   });

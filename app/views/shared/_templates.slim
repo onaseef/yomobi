@@ -166,9 +166,9 @@
     	    |  <% } %>
   
   script.add-subcat-dialog(type="text/template")
-    #dialog-confirm title="Add New {{ catTypeName }}"
+    #dialog-confirm title="Add New {{ typeName }}"
       p
-        | {{ catTypeName }} name:
+        | {{ typeName }} name:
         br
         input type="text" value="{{ _maybe.name }}" name="cat"
         input.add-btn type="button" value="Add"
@@ -177,7 +177,7 @@
         | <% } %>
         | <% if (addedCats.length > 0) { %>
         .other-names
-    	    b Added <% print( util.pluralize(catTypeName) ); %>:
+    	    b Added <% print( util.pluralize(typeName) ); %>:
     	    ul
       	    | <% for(var i=0; i < addedCats.length; i++) { %>
       	    |    <li> {{ addedCats[i] }} </li>
@@ -187,7 +187,7 @@
   script.edit-subcat-dialog(type="text/template")
     #dialog-confirm title="Rename"
       p
-        | New {{ catTypeName }} name:
+        | New {{ typeName }} name:
         br
         input type="text" value="{{ _maybe.name }}" name="cat"
         | <% if(_maybe.error) { %>

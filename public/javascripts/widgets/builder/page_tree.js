@@ -248,6 +248,9 @@ util.log('itemIdx',itemIdx,item,level);
       var origName = this.origName;
       var targetItem = _.detect(this.level._items,function (i) { return i.name == origName });
       targetItem.name = name;
+    },
+    getTypeName: function () {
+      return this.model.get('itemTypeName');
     }
   });
 
