@@ -12,7 +12,8 @@
       'click #preview-mobile-site': 'previewMobileSite',
       'click .edit-tab-bar': 'tellBappToEditTabBar',
       'click .edit-settings': 'tellBappToEditSettings',
-      'click .edit-keywords': 'tellBappToEditKeywords'
+      'click .edit-keywords': 'tellBappToEditKeywords',
+      'click img.add': 'onClickAddIcon'
     },
     
     initialize: function (options) {
@@ -69,7 +70,48 @@
 
       w_area.append('<div class="clearfix">');
     },
-    
+
+    onClickAddIcon: function (e) {
+      bapp.sidebar.addNewWidgetViaTargetedElem( $(e.target).parent() );
+    },
+
+    addNewWidgetViaTargetedElem: function (targetedElem) {
+      if (mapp.pageLevel != 0) {
+        $('#dialog-invalid-drag').dialog({
+          modal: true,
+          buttons: {
+            Ok: function () {
+              $(this).dialog('close');
+              $('#builder .drophover-overlay').hide();
+            }
+          }
+        });
+        return;
+      }
+      
+      var editor = bapp.currentEditor;
+      if (editor && editor.hasChanges()) {
+        if (!confirm(unsavedChangesText)) {
+          $('#builder .drophover-overlay').hide();
+          return false;
+        }
+        else {
+          editor.onDiscardByNavigation();
+          editor.stopEditing();
+        }
+      }
+      
+      var elem = $(targetedElem)
+        , name = elem.data('name')
+        , wtype = elem.data('wtype')
+        , singleton = elem.hasClass('singleton')
+      ;
+      if(!elem.hasClass('sidebar')) return;
+      
+      util.log('dropped',name,wtype,singleton);
+      bapp.addNewWidget(name,wtype,singleton);
+    },
+
     cloneWidget: function (wtype,name) {
       var found = this.widgets.find(function (w) {
         return w.get('wtype') == wtype && w.get('name') == name;

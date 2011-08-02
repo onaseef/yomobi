@@ -446,41 +446,7 @@ util.log('WORDER SYNC CALLBACK',callback);
       $('#builder .drophover-overlay').hide();
     },
     drop: function (e,ui) {
-      
-      if (mapp.pageLevel != 0) {
-        $('#dialog-invalid-drag').dialog({
-          modal: true,
-          buttons: {
-            Ok: function () {
-              $(this).dialog('close');
-              $('#builder .drophover-overlay').hide();
-            }
-          }
-        });
-        return;
-      }
-      
-      var editor = bapp.currentEditor;
-      if (editor && editor.hasChanges()) {
-        if (!confirm(unsavedChangesText)) {
-          $('#builder .drophover-overlay').hide();
-          return false;
-        }
-        else {
-          editor.onDiscardByNavigation();
-          editor.stopEditing();
-        }
-      }
-      
-      var elem = $(ui.draggable)
-        , name = elem.data('name')
-        , wtype = elem.data('wtype')
-        , singleton = elem.hasClass('singleton')
-      ;
-      if(!elem.hasClass('sidebar')) return;
-      
-      util.log('dropped',name,wtype,singleton);
-      bapp.addNewWidget(name,wtype,singleton);
+      bapp.sidebar.addNewWidgetViaTargetedElem(ui.draggable);
     }
   }).disableSelection();
   

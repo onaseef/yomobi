@@ -147,6 +147,8 @@
 
   script.sidebar-widget(type="text/template")
     .sidebar.home-icon class="{{ singletonClass }}" data-name="{{ name }}" data-wtype="{{ wtype }}"
+      img.add.right src="/images/ui/plus.png"
+      img.add.left src="/images/ui/plus.png"
       img.icon{ src="/images/widgets/{{ iconName }}.png" }
       .title
         | {{ prettyName }}
