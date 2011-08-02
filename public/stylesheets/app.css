@@ -65,7 +65,7 @@ button[type=button] {
 
 label {
   display: inline-block;
-  font-size: 14px;
+  font-size: 12px;
   padding: 0px 3px 2px 2px; }
 
 textarea {
@@ -266,10 +266,10 @@ p.success {
   font-size: 12px; }
   #footer .copyright {
     float: left;
-    margin: 5px 60px 0 0; }
+    margin: 5px 60px 0 30px; }
   #footer .site-links {
     float: right;
-    margin: 5px 0 0 0; }
+    margin: 5px 30px 0 0; }
     #footer .site-links a, #footer .site-links a:visited {
       color: #000; }
 

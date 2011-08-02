@@ -38,8 +38,6 @@
       margin-top: 17px; } }
   #nav {
     display: none; }
-  
-  .signup-bar {}
 }
 
 label {
@@ -101,7 +99,26 @@ label {
     line-height: 24px;
     text-decoration: none;
     margin: 80px 0px 0px 50px }
+  .images {
+    padding-top:20px;
+  }
 }
+
+.signup-bar {
+  background-color: #EDEFF4;
+  border-bottom: 1px solid #D8DFEA;
+  padding: 5px 0px 5px 30px;
+  a {
+    color: white !important;
+    text-decoration: none; }
+  .description {
+    color: #203360;
+    font-size: $font-size-signup-bar;
+    font-weight:bold;
+    padding: 19px;
+  }
+}
+
 
 #signup-box {
   float: left;
@@ -137,10 +154,19 @@ label {
     padding: 5px 0;
     label {
       display: block;
-      width: 100px;
-      padding-top: 4px; } }
+      padding-top: 0px; } }
   input[type=text], input[type=password] {
-    width: 200px;
+    width: 250px;
+    margin-bottom:0px;
+  }
+  input[type=submit] {
+    margin: 10px 10px 0px 0px; 
+  }
+  .remember-me {
+    margin: 2px 0px 10px -1px; 
+  }
+  .forgot-password {
+    margin: 2px 0px 10px 0px;
   }
   .meta-group {
     padding-left: 0; }
@@ -217,3 +243,7 @@ label {
     width: 125px;
     height: 100px;
     text-align: center; } }
+
+#privacy, #terms {
+  margin: 40px;
+}

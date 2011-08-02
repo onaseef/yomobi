@@ -78,7 +78,7 @@
 .home-icon.editing {
   background: url(/images/ui/highlight.png) no-repeat 0px 1px !important; }
   .home-icon.editing .title {
-    color: #ffffff;
+    color: #333333;
     font-weight: bold; }
 
 .home-icon.invalid .invalid-icon {
@@ -116,12 +116,23 @@
   #builder .right .title {
     padding-left: 14px; }
 
-#builder-help ul {
-  padding: 0;
-  list-style: none; }
-#builder-help li {
-  margin: 8px 0;
-  padding: 0; }
+#builder-help {
+  color: #203360; }
+  #builder-help label {
+    font-weight: bold;
+    font-size: 18px;
+    padding: 0px;
+    margin: 15px 0px 20px 0px; }
+  #builder-help .first {
+    margin-left: -2px; }
+  #builder-help .or {
+    border-top: 1px solid #203360;
+    border-bottom: 1px solid #203360;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 25px 0px 25px 0px;
+    padding: 10px 0px 10px 0px;
+    text-align: center; }
 
 #builder .widget-editor {
   width: 360px;
@@ -375,6 +386,9 @@
   padding: 0px;
   margin-top: 13px;
   font-size: 90%; }
+
+#builder input[name="back"] {
+  margin-right: 16px; }
 
 .wysiwyg input[type=text] {
   width: 97%; }

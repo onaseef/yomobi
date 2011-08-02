@@ -91,6 +91,21 @@ label {
     line-height: 24px;
     text-decoration: none;
     margin: 80px 0px 0px 50px; }
+  #banner .images {
+    padding-top: 20px; }
+
+.signup-bar {
+  background-color: #EDEFF4;
+  border-bottom: 1px solid #D8DFEA;
+  padding: 5px 0px 5px 30px; }
+  .signup-bar a {
+    color: white !important;
+    text-decoration: none; }
+  .signup-bar .description {
+    color: #203360;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 19px; }
 
 #signup-box {
   float: left;
@@ -125,10 +140,16 @@ label {
     padding: 5px 0; }
     #actual-signin-box .group label {
       display: block;
-      width: 100px;
-      padding-top: 4px; }
+      padding-top: 0px; }
   #actual-signin-box input[type=text], #actual-signin-box input[type=password] {
-    width: 200px; }
+    width: 250px;
+    margin-bottom: 0px; }
+  #actual-signin-box input[type=submit] {
+    margin: 10px 10px 0px 0px; }
+  #actual-signin-box .remember-me {
+    margin: 2px 0px 10px -1px; }
+  #actual-signin-box .forgot-password {
+    margin: 2px 0px 10px 0px; }
   #actual-signin-box .meta-group {
     padding-left: 0; }
   #actual-signin-box .main-btn {
@@ -196,3 +217,6 @@ label {
     width: 125px;
     height: 100px;
     text-align: center; }
+
+#privacy, #terms {
+  margin: 40px; }
