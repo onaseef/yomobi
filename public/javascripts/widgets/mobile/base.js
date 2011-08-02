@@ -43,7 +43,7 @@
         name: this.get('name'),
         prettyName: this.get('prettyName'),
         iconName: this.get('iconName') ||
-                  this.get('singleton') ? this.get('name') : this.get('wtype'),
+                  (this.get('singleton') ? this.get('name') : this.get('wtype')),
         singletonClass: this.get('singleton') ? 'singleton' : ''
       };
     },
