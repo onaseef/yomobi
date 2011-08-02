@@ -397,7 +397,6 @@ var util = {
       , result = tnarr.concat(crumbStack).join(' > ')
       , maxWidth = mapp.getActivePage().find('.back-bar .title').width()
     ;
-util.log('maxw',maxWidth);
     while ( crumbStack.length > 1 && !util.isTextBounded(result,maxWidth) ) {
       if (tnarr.length == 1) tnarr.push('...');
 
@@ -536,7 +535,7 @@ util.log('maxw',maxWidth);
       formWidth: 320,
       events: {
         save: function () { bapp.currentEditor.trigger('wysiwyg-change'); },
-        paste: function (a,b,c) { util.log('PASTE',a,b,c); return false; }
+        paste: function () { bapp.currentEditor.trigger('wysiwyg-paste'); return false; }
       },
       controls: {
         // createLink: { visible:false },
@@ -615,6 +614,26 @@ util.log('maxw',maxWidth);
   isTextBounded: function (text,width) {
     var textWidth = $('#cat-crumbs-test').text(text).width();
     return textWidth <= width;
+  },
+
+  toHtml: function (jqueryObject) {
+    return $('<div>').html( jqueryObject ).html();
+  },
+
+  stripAllStyles: function (html) {
+    var $html = $(html);
+    util._stripAllStyles( $html );
+    return util.toHtml( $html );
+  },
+
+  // expects a jquery object
+  _stripAllStyles: function ($group) {
+    $group.each(function (idx,elem) {
+      elem.removeAttribute('style');
+      // quick and easy non-perfect way of checking for children
+      if (elem.innerHTML)
+        util._stripAllStyles( $(elem).children() );
+    });
   }
   
 }

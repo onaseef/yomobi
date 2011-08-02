@@ -100,6 +100,20 @@ $(document).ready(function(){
     });
   });
 
+  test("Strip all styles from html", function () {
+    var io = [
+      { input:'<p style="color:#000">Hello</p>', output:'<p>Hello</p>' },
+      { input:'<div><p style="color:#000">Hello</p></div>', output:'<div><p>Hello</p></div>' },
+      { input:'<div style="color:#fff"><p style="color:#000">Hello</p></div>',
+        output:'<div><p>Hello</p></div>' },
+      { input:'<div style="color:#fff">Text<p style="color:#000">Hello</p></div>',
+        output:'<div>Text<p>Hello</p></div>' }
+    ];
+    _.each(io, function (kase) {
+      equals(util.stripAllStyles(kase.input), kase.output);
+    });
+  });
+
   // ad-hoc benchmark function
   (function($){
   $.benchmark = function(times, result_selector, func){
@@ -118,7 +132,7 @@ $(document).ready(function(){
   };
   })(jQuery);
 
-  $.benchmark(1000, '#benchmark-results', function () {
+  $.benchmark(50, '#benchmark-results', function () {
     util.isTextBounded('a relatively long title and stuff',250);
   });
 

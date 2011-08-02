@@ -96,8 +96,9 @@
       // this is needed for proper inheritance due to closures
       this.AddItemDialog = AddItemDialog;
 
-      _.bindAll(this,'queueActiveLeafUpdate','refreshViews');
+      _.bindAll(this,'queueActiveLeafUpdate','refreshViews','markStylesAsDirty');
       this.bind('wysiwyg-change',this.queueActiveLeafUpdate);
+      this.bind('wysiwyg-paste',this.markStylesAsDirty);
     },
 
     // the button that activates this should only be available on the home page
@@ -164,9 +165,18 @@
         , leaf = _.detect(level._items, function (i) { return i.name == leafName; })
       ;
       leaf.content = $('#jeditor').val();
+      if (this.areStylesDirty) {
+        leaf.content = util.stripAllStyles(leaf.content);
+        $('#jeditor').data('wysiwyg').setContent(leaf.content);
+        this.areStylesDirty = false;
+      }
       this.widget.pageView.refresh();
       mapp.resize();
       this.setChanged('leaf-content',true);
+    },
+
+    markStylesAsDirty: function () {
+      this.areStylesDirty = true;
     },
 
     discardActiveLeafChanges: function () {
