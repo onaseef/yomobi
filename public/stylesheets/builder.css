@@ -187,10 +187,12 @@
       padding-left: 8px;
       color: #ff530d;
       font-size: 0.6em; }
-    #builder .widget-editor .widget-name:hover {
+    #builder .widget-editor .widget-name .help-bubble {
+      float: right; }
+    #builder .widget-editor .widget-name.editable:hover {
       background: #d8dfea;
       cursor: pointer; }
-      #builder .widget-editor .widget-name:hover .change-label {
+      #builder .widget-editor .widget-name.editable:hover .change-label {
         display: inline; }
   #builder .widget-editor .widget-name-edit {
     display: none;

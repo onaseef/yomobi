@@ -167,6 +167,8 @@
 
       if (widget.get('singleton'))
         this.el.find('.change-label').remove();
+      else
+        this.el.find('.widget-name').addClass('editable');
       
       if (this.onEditStart) this.onEditStart(resetChanges);
     },

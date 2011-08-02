@@ -200,11 +200,15 @@
       padding-left: 8px;
       color: #ff530d;
       font-size: 0.6em; }
-    &:hover {
+    .help-bubble {
+      float: right; }
+    &.editable:hover {
       background: $highlight-color;
       cursor: pointer;
       .change-label {
-        display: inline; } } }
+        display: inline; } 
+    }
+  }
   .widget-name-edit {
     display: none;
     position: relative;
