@@ -8,7 +8,7 @@ Yomobi::Application.routes.draw do
   post 'confirm' => 'home#resend_confirmation', :as => :resend_confirmation
 
   get "account/edit", :as => :account
-  post "account/update", :as => :update_account
+  put "account/update", :as => :update_account
   
   match 'account-setup/:step_num' => 'signup#account_setup', :as => :account_setup
 

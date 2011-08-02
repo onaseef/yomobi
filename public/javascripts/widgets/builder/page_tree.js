@@ -28,11 +28,11 @@
       ;
       if (!showData.isLeaf) {
         if (showData.items.length === 0) {
-          showData.items = [{ name:'==None==' }];
+          showData.items = [{ name:'--None (Click the Add button below)--' }];
           areItemsEmpty = true;
         }
         if (showData.cats.length === 0) {
-          showData.cats = ['==None=='];
+          showData.cats = ['--None (Click the Add button below)--'];
           areCatsEmpty = true;
         }
       }

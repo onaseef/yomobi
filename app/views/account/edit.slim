@@ -1,20 +1,36 @@
 #account-setup-box.center-box
   .content
     h2 My Account
-    .divider
-    h3 Change Password:
-    br
-    = form_tag update_account_path do
-      label Current Password:
-      input type="password" name="current_password"
+    / .divider
+
+    = form_for @user, :url => update_account_path do |f|
+      h3 Current Password:
+      = f.password_field :current_password
+      .divider
+      
+      h3 Contact Information:
+      br
+
+      label Email:
+      = f.text_field :email
+
+      label First Name:
+      = f.text_field :first_name
+
+      label Last Name:
+      = f.text_field :last_name
+      .divider
+
+      h3 Change Password (optional):
+      br
 
       label New Password:
-      input type="password" name="password"
+      = f.password_field :password
 
       label Re-enter New Password:
-      input type="password" name="password_confirmation"
+      = f.password_field :password_confirmation
 
-      input type="submit" value="Change Password"
+      input type="submit" value="Save Changes"
       - if flash[:notice] || flash[:alert]
         br
         br

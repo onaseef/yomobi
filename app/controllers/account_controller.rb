@@ -8,13 +8,13 @@ class AccountController < ApplicationController
 
   def update
     @user = current_user
-    if params[:current_password].blank?
-      flash[:alert] = "Please enter your current password."
-    elsif params[:password].blank?
-      flash[:alert] = "Please enter a new password."
-    elsif @user.update_with_password(params)
+    u_params = params[:user]
+
+    if u_params[:current_password].blank?
+      flash[:alert] = "Please enter your current password to update your account."
+    elsif @user.update_with_password(u_params)
       sign_in(@user, :bypass => true)
-      flash[:notice] = "Password updated!"
+      flash[:notice] = "Account updated successfully."
     else
       error = @user.errors.first
       flash[:alert] = "Error: #{error[0].to_s.humanize} #{error[1]}"
