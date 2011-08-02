@@ -1,34 +1,37 @@
 = form_for @user, :url => registration_path(:user) do |f|
 
-  label First Name:
-  br
-  = f.text_field :first_name
-  br
-
-  label Last Name:
-  br
-  = f.text_field :last_name
-  br
-
-  label Email:
-  br
-  = f.text_field :email
-  br
-
-  label Password:
-  br
-  = f.password_field :password
-  br
-  
-  label Re-enter Password:
-  br
-  = f.password_field :password_confirmation
-  br
-  
-  label Business Type:
-  br
-  = f.select :company_type_id, options_for_select(company_types)
-  br
+  table
+    tbody
+      tr
+        td
+          label First Name:
+        td
+          = f.text_field :first_name
+      tr
+        td
+          label Last Name:
+        td
+          = f.text_field :last_name
+      tr
+        td
+          label Email:
+        td
+          = f.text_field :email
+      tr
+        td
+          label Password:
+        td
+          = f.password_field :password
+      tr
+        td
+          label Re-enter Password:
+        td
+          = f.password_field :password_confirmation
+      tr
+        td
+          label Site Type:
+        td
+          = f.select :company_type_id, options_for_select(company_types)
   
   - unless hide_captcha
     = render 'shared/recaptcha'
