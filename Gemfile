@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.8'
 gem 'sqlite3'
-gem 'couchrest'
+gem 'couchrest', "~> 1.1"
 
 gem 'paperclip', :git => 'https://github.com/thoughtbot/paperclip', :tag => "v2.3.14"
 gem 'aws-s3', :require => 'aws/s3'

@@ -149,7 +149,7 @@ PLATFORMS
 DEPENDENCIES
   aritcaptcha!
   aws-s3
-  couchrest
+  couchrest (~> 1.1)
   devise (~> 1.3)
   heroku
   json
