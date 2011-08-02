@@ -185,7 +185,15 @@ p.success {
 }
 
 .center-box {
+  width: 600px;
   margin: 20px auto;
+  padding: 10px 20px;
+  h2 {
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 4px;
+    margin: 5px 0 5px 0; }
+  h3 {
+    margin: 5px 0 5px 0; }
   .content {
     padding: 10px 20px; }
   border: 1px solid #cccccc;

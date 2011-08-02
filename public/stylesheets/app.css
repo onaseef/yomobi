@@ -170,9 +170,17 @@ p.success {
   padding-bottom: 15px; }
 
 .center-box {
+  width: 600px;
   margin: 20px auto;
+  padding: 10px 20px;
   border: 1px solid #cccccc;
   -webkit-border-radius: 4px; }
+  .center-box h2 {
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 4px;
+    margin: 5px 0 5px 0; }
+  .center-box h3 {
+    margin: 5px 0 5px 0; }
   .center-box .content {
     padding: 10px 20px; }
   .center-box .action-bar {
