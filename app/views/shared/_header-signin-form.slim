@@ -1,19 +1,22 @@
 = form_tag session_path(:user) do |f|
   
-  .group.lfloat
-    = label_tag :email
-    = text_field_tag 'user[email]', ''
-
-  .group.lfloat
-    = label_tag :password
-    = password_field_tag 'user[password]', ''
-
-  .main-btn.lfloat
-    input.content type="submit" value="Sign In"
-
-  .group.lfloat.lclear
-    = check_box_tag 'user[remember_me]'
-    span.subtext Keep me logged in
-  
-  .group.lfloat style="padding-top:3px"
-    = link_to "Forgot your password?", new_password_path(:user), :class => 'subtext'
+  table
+    tbody
+      tr
+        td
+          label Email
+        td
+          label Password
+      tr
+        td
+          = text_field_tag 'user[email]', ''
+        td
+          = password_field_tag 'user[password]', ''
+        td
+          input.content.main-btn type="submit" value="Sign In"
+      tr
+        td.login_form_label_field
+          = check_box_tag 'user[remember_me]'
+          label#label_persistent for="persistent" Keep me logged in
+        td
+          a.subtext href="/users/password/new" Forgot your password?
