@@ -10,23 +10,34 @@
         a href=new_password_path(:user) Request a new one.
 
   #actual-signin-box.sign-in-form
-    = f.label 'Email:'
-    br
-    = f.text_field :email
-    br
-    - if devise_mapping.rememberable?
-      .remember-me
-        = f.check_box :remember_me
-        = f.label :remember_me
-
-    = f.label 'Password:'
-    br
-    = f.password_field :password
-    .forgot-password
-      a href=new_password_path(:user) Forgot your password?
-
-    input.pretty-button.lfloat type="submit" value="Sign In"
-    .sign-up-offer
-      | or 
-      a href=root_path style="font-weight:bold" Sign Up for YoMobi
+    table
+      tbody
+        tr
+          td
+            = f.label 'Email:'
+          td
+            = f.text_field :email, :size => 30
+        tr
+          td
+          td
+            .remember-me
+              = f.check_box :remember_me
+              span.subtext Remember me
+        tr
+          td
+            = f.label 'Password:'
+          td
+            = f.password_field :password, :size => 30
+        tr
+          td
+          td
+            .forgot-password
+              a href=new_password_path(:user) Forgot your password?
+        tr
+          td
+          td
+            input.pretty-button.lfloat type="submit" value="Sign In"
+            .sign-up-offer
+              | or
+              a href=root_path style="font-weight:bold" Sign Up for YoMobi
   .clearfix
