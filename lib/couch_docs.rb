@@ -1,14 +1,19 @@
 class CouchDocs
   require 'digest/sha1'
 
-  def self.default_docs(company_type_id,default_email)
+  def self.default_docs(company_type_name,default_email)
     docs = []
-    self.default_doc_map.each do |ids,doc_names|
-      if ids.include?(company_type_id)
-        docs.concat doc_names.map {|name| self.by_name(name)}
+    wtabs = nil
+    WMAPS['docs'].each do |spec|
+      if spec['types'].include?(company_type_name)
+        docs.concat spec['widgets'].map {|name| self.by_name(name)}
+        wtabs = spec['tabs']
+        break
       end
     end
     docs.each {|doc| doc[:email] = default_email if doc.has_key? :email }
+    docs.push self.worder_doc(docs,wtabs)
+    docs.push self.view_doc
   end
 
   def self.security_doc(db_name)
@@ -52,20 +57,10 @@ class CouchDocs
     }
   end
   
-  def self.worder_doc(company_type_id)
+  def self.worder_doc(widget_docs,wtabs)
     worder = {}
-    self.default_doc_map.each do |ids,doc_names|
-      if ids.include?(company_type_id)
-        doc_names.each_index {|i| worder[doc_names[i]] = i}
-      end
-    end
+    widget_docs.each_index {|i| worder[ widget_docs[i][:name] ] = i}
 
-    wtabs = []
-    self.default_tab_map.each do |ids,tab_names|
-      if ids.include?(company_type_id)
-        wtabs = tab_names
-      end
-    end
     {
       "_id" => "worder",
       "worder" => worder,
@@ -94,63 +89,6 @@ class CouchDocs
 
   def self.by_name(doc_name)
     self.all.select {|doc| doc[:name] == doc_name}.first
-  end
-
-  def self.default_tab_map
-    {
-      [1, 4, 6, 12, 12, 14, 20, 25, 26] => %w{
-        services keep-me-informed photo-bucket
-      },
-      [2] => %w{
-        facebook leave-a-message photo-bucket
-      },
-      [5, 15, 17, 21, 27] => %w{
-        services keep-me-informed business-hours
-      },
-      [7, 8, 9, 24] => %w{
-        menu keep-me-informed business-hours
-      },
-      [10, 13, 16, 18, 19, 23] => %w{
-        business-hours keep-me-informed full-website
-      },
-      [22] => %w{
-        property-listings leave-a-message keep-me-informed
-      }
-    }
-  end
-
-  def self.default_doc_map
-    {
-      [1, 4, 6, 12, 12, 14, 20, 25, 26] => %w{
-        full-website business-hours services products
-        photo-bucket keep-me-informed leave-a-message
-        facebook coupon event-calendar news
-      },
-      [2] => %w{
-        full-website facebook custom-page services photo-bucket
-        leave-a-message blog twitter keep-me-informed
-      },
-      [5, 15, 17, 21, 27] => %w{
-        full-website business-hours services photo-bucket
-        keep-me-informed leave-a-message facebook coupon
-        event-calendar news
-      },
-      [7, 8, 9, 24] => %w{
-        full-website menu business-hours services coupon
-        photo-bucket keep-me-informed leave-a-message
-        facebook event-calendar news
-      },
-      [10, 13, 16, 18, 19, 23] => %w{
-        full-website business-hours services
-        photo-bucket keep-me-informed event-calendar
-        leave-a-message facebook news
-      },
-      [22] => %w{
-        full-website property-listings
-        photo-bucket keep-me-informed leave-a-message
-        facebook business-hours event-calendar news
-      }
-    }
   end
 
   def self.all
@@ -432,12 +370,5 @@ class CouchDocs
         :helpText => "Add a link to another website on your mobile site."
       }
     ].sort! {|a,b| b[:name] <=> a[:name]}
-  end
-
-  def self.to_readable_list
-    CouchDocs.default_doc_map.map do |k,v|
-      [k.map {|i| CompanyType.find(i).name },v]
-    end.each {|types,widgets|
-      puts types; puts '----'; puts widgets; puts "\n\n"}
   end
 end

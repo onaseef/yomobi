@@ -1,0 +1,153 @@
+docs:
+  -
+    types:
+      - Local Business
+      - Automotive Dealer / Vehicle
+      - Banking and Financial Service
+      - Education
+      - Education
+      - Grocery
+      - Pest
+      - Store
+      - Technology and Telecommunications Service
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - full-website
+      - business-hours
+      - services
+      - products
+      - photo-bucket
+      - keep-me-informed
+      - leave-a-message
+      - facebook
+      - coupon
+      - event-calendar
+      - news
+    tabs:
+      - services
+      - keep-me-informed
+      - photo-bucket
+
+
+  -
+    types:
+      - Personal
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - full-website
+      - facebook
+      - custom-page
+      - services
+      - photo-bucket
+      - leave-a-message
+      - blog
+      - twitter
+      - keep-me-informed
+    tabs:
+      - facebook
+      - leave-a-message
+      - photo-bucket
+
+
+  -
+    types:
+      - Service
+      - Health and Beauty
+      - Medical Service
+      - Profesional Service
+      - Travel Service
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - full-website
+      - business-hours
+      - services
+      - photo-bucket
+      - keep-me-informed
+      - leave-a-message
+      - facebook
+      - coupon
+      - event-calendar
+      - news
+    tabs:
+      - services
+      - keep-me-informed
+      - business-hours
+
+  -
+    types:
+      - Bar
+      - Cafe
+      - Club
+      - Restaurant
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - full-website
+      - menu
+      - business-hours
+      - services
+      - coupon
+      - photo-bucket
+      - keep-me-informed
+      - leave-a-message
+      - facebook
+      - event-calendar
+      - news
+    tabs:
+      - menu
+      - keep-me-informed
+      - business-hours
+
+  -
+    types:
+      - Convention Center and Sports
+      - Event Planning Service
+      - Library / Public Building
+      - Museum / Attraction
+      - Park
+      - Religious Center
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - full-website
+      - business-hours
+      - services
+      - photo-bucket
+      - keep-me-informed
+      - event-calendar
+      - leave-a-message
+      - facebook
+      - news
+    tabs:
+      - business-hours
+      - keep-me-informed
+      - full-website
+
+  -
+    types:
+      - Real Estate
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - full-website
+      - property-listings
+      - photo-bucket
+      - keep-me-informed
+      - leave-a-message
+      - facebook
+      - business-hours
+      - event-calendar
+      - news
+    tabs:
+      - property-listings
+      - leave-a-message
+      - keep-me-informed

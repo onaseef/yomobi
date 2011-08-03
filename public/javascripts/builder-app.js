@@ -48,6 +48,8 @@
         worder[widget.get('name')] = widget.getOrder();
       });
 
+      if (options.noSync) return;
+
       // check if new worder is different than current worder
       var newNames = _.keys(worder)
         , oldNames = _.keys(bapp.worderDoc.worder)
@@ -55,7 +57,7 @@
                   || newNames.length != oldNames.length
                   || newNames.length != _.intersect(newNames,oldNames).length
       ;
-      if (!options.noSync && changed && (util.reserveUI() || options.forceSync)) {
+      if (changed && (util.reserveUI() || options.forceSync)) {
         // tell server to update order
         bapp.worderDoc.worder = worder;
         bapp.syncWorderDoc(options.callback);
@@ -200,7 +202,8 @@
           success: function (widgets,res) {
             
             mapp.widgetsInUse.refresh(widgets.models);
-            mapp.widgetsInUse.updateOverallOrder({ noSync:true });
+            mapp.widgetsInUse.updateOverallOrder({ noSync:true, noUpdate:true });
+            mapp.homeView.render();
 
             // TODO: grab data from server (bdata)
             var widgetsAvailable =  _.map(bdata, function (data) {

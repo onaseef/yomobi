@@ -92,7 +92,6 @@
       _.bindAll(this,'render');
 
       this.widgets = widgets;
-      this.widgets.bind('refresh',this.render);
     },
     
     render: function () {

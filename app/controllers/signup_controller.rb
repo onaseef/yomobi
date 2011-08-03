@@ -46,8 +46,19 @@ class SignupController < ApplicationController
         if result[:id].nil?
           @errors['site_url'] = 'taken?'
         else
-          current_user.company.save_doc CouchDocs.about_us_doc(data['desc'])
-          puts UserMailer.send_welcome_email current_user.company
+          company = current_user.company
+
+          if data['desc'].present?
+            about_us_doc = company.get_widget_doc 'about-us'
+            if about_us_doc
+              about_us_doc['content'] = data['desc']
+              company.save_doc about_us_doc
+            else
+              company.save_doc(CouchDocs.about_us_doc data['desc'])
+            end
+          end
+
+          UserMailer.send_welcome_email current_user.company
         end
       rescue ActiveRecord::RecordNotUnique
         @errors['site_url'] = 'taken'
@@ -65,6 +76,8 @@ class SignupController < ApplicationController
       if phone_doc
         phone_doc['phone'] = data['phone']
         company.save_doc phone_doc
+      else
+        company.save_doc(CouchDocs.phone_doc data['phone'])
       end
     end
 
@@ -73,6 +86,8 @@ class SignupController < ApplicationController
       if address_doc
         new_data = data['address'].select {|k,v| v.present?}
         company.save_doc address_doc.merge( new_data )
+      else
+        company.save_doc(CouchDocs.gmap_doc data['address'])
       end
     end
   end

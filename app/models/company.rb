@@ -25,19 +25,11 @@ class Company < ActiveRecord::Base
     db = CouchRest.database(ApplicationController::couch_url self.db_name, :@admin)
     result = db.create!
     if result == true
-      worder_doc = CouchDocs::worder_doc self.company_type_id
-      
-      default_docs = CouchDocs::default_docs(self.company_type_id, self.user.email)
-      default_docs.push worder_doc, CouchDocs::view_doc
+      default_docs = CouchDocs::default_docs(self.company_type.name, self.user.email)
 
       # compact to remove deadly nil-related errors. Better to discover later
       # than to tell user "we just died, sorry about that"
       db.bulk_save default_docs.compact, false
-      
-      # create new admin user
-      user_doc = CouchDocs::admin_user_doc self.db_name, self.db_pass
-      users_url = (ApplicationController::couch_url '_users', :@admin)
-      CouchRest.database(users_url).save_doc user_doc
     end
     result
   end
