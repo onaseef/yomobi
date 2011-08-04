@@ -41,7 +41,7 @@
   });
   
   // ==================================
-  var invalidWidgetTooltip = "This widget will <b>NOT</b> show up in your mobile site!<br /><br />Please click me, fill out all required information, and click <b>Save Changes</b>.";
+  var invalidWidgetTooltip = "This widget will <b>NOT</b> appear on your mobile site because required information is missing.<br /><br />Please click on this widget to edit. Remember to <b>Save Changes</b> when you are done.";
   WidgetHomeView = Backbone.View.extend({
     tagName: 'div',
     className: 'home-icon dbx-box',
