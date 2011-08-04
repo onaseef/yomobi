@@ -286,8 +286,12 @@ var util = {
   },
   
   getWidgetBData: function (widget) {
+    // handle outlier about-us widget requirement
+    var isSingleton = (widget.get('name') == 'about-us') ? true :
+                       widget.get('singleton') === true
+    ;
     return _.detect(window.bdata, function (w) {
-      if (widget.get('singleton') === true) return w.name == widget.get('name');
+      if (isSingleton) return w.name == widget.get('name');
       return w.wtype == widget.get('wtype') && !w.singleton;
     });
   },

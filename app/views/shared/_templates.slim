@@ -420,16 +420,12 @@
   / =====================
   / = Widget Edit Pages =
   / =====================
-  script.full-website-edit-area.news-edit-area.photo-bucket-edit-area.blog-edit-area(type="text/template")
+  script.full-website-edit-area.news-edit-area.photo-bucket-edit-area.blog-edit-area.reviews-edit-area(type="text/template")
     label Your {{ subHelpText }} URL*:
     input(name="url" type="text" value="{{ _maybe.url }}")
   
   script.link-edit-area(type="text/template")
     label Website URL*:
-    input(name="url" type="text" value="{{ _maybe.url }}")
-  
-  script.reviews-edit-area(type="text/template")
-    label Enter the website's address [e.g. www.mysite.com]*:
     input(name="url" type="text" value="{{ _maybe.url }}")
   
   script.event-calendar-edit-area

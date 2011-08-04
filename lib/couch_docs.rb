@@ -133,7 +133,7 @@ class CouchDocs
         :name => "reviews",
         :wtype => 'link',
         :helpText => "Show visitors how great you are by adding a link to your online reviews page on your mobile site.",
-        :subHelpText => "reviews page URL",
+        :subHelpText => "reviews page",
         :singleton => true
       },
       
@@ -360,7 +360,7 @@ class CouchDocs
       {
         :name => "about-us",
         :wtype => 'custom_page',
-        :helpText => "Tell your visitors who you are.",
+        :helpText => "Tell your mobile site visitors about you.",
         :iconName => 'about-us'
       },
 
