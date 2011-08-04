@@ -47,11 +47,14 @@
   
   script.edit-tab-bar(type="text/template")
     .header.edit-tab-bar
+      .icon{ style="background-image: url(/images/edit-tab-bar.png)" }
       .widget-name
-        | Edit/Arrange Mobile Tab Bar
+        | Edit Mobile Tab Bar
       p.help-text
-        em Give your users access to key widgets from anywhere on your mobile site.
+        em Edit the navigation tab bar at the top of your mobile site.
     div class="edit-area"
+      .explanation
+        p Highlight the widgets you want your mobile site visitors to see first by adding them to the navigation tab bar which appears at the top of your mobile site.
       .wtab
         h3 = "Tab #1"
         h2 style="color:#696969" Home

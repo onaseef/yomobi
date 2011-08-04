@@ -1,3 +1,10 @@
+.ui-widget,
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea,
+.ui-widget button {
+  font-family: "lucida grande", tahoma, verdana, arial, sans-serif; }
+
 #sidebar {
   float: left;
   width: 200px; }
