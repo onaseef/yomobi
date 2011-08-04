@@ -144,13 +144,20 @@
   #builder-help .first {
     margin-left: -2px; }
   #builder-help .or {
-    border-top: 1px solid #203360;
-    border-bottom: 1px solid #203360;
     font-size: 18px;
     font-weight: bold;
     margin: 25px 0px 25px 0px;
     padding: 10px 0px 10px 0px;
     text-align: center; }
+    #builder-help .or table {
+      margin: auto; }
+    #builder-help .or #l, #builder-help .or #r {
+      height: 2px;
+      width: 150px;
+      margin: 1px 6px 0px 6px;
+      border-top: 2px solid #203360; }
+    #builder-help .or #l {
+      margin-left: 3px; }
 
 #builder .widget-editor {
   width: 360px;
