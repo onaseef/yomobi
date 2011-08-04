@@ -29,13 +29,33 @@
       width: 160px; }
     input[type=text], input[type=password] {
       width: 142px;
-      padding: 0px;
-      margin: 0px; }
+      padding: 2px;
+      margin: 0px; 
+      border: 1px solid #1D2A5B;}
     input[type=checkbox] {
       margin-left: -1px;
     }
     .main-btn {
-      margin-top: 17px; } }
+      background: #5B74A8;
+      padding: 1px 2px 2px 2px;
+      margin: 0;
+      border: 1px solid #5B74A8;
+      border-top-color: #8A9CC2;
+      color: white;
+      font-size:11px;
+      font-weight: bold;
+      cursor: pointer; }
+
+    table tr td {
+      padding: 0px 14px 0px 0px; }  
+    label {
+      position:relative;
+      top: -1px;
+    }
+    #label_persistent {
+      color: #98a9ca;
+    }
+  }
   #nav {
     display: none; }
 }
@@ -119,6 +139,38 @@ label {
   }
 }
 
+#signup-box, #actual-signin-box {
+  table {
+    border: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  td {
+    padding-bottom:5px;
+  }
+  
+  label {
+    float:right;
+    white-space: nowrap;
+    text-align:right; 
+    vertical-align:middle;
+    padding: 0px 4px 0px 0px; }
+  input[type=text], input[type=password] {
+    width: 180px !important;
+    border: 1px solid #BDC7D8;
+    margin-bottom:0px;
+    padding:2px;
+  }
+  select {
+    width: 186px !important;
+  }
+  
+  input[type=submit] {
+    position:relative;
+    left:232px;
+    margin: 5px 25px 0px 0px;
+  }   
+}
 
 #signup-box {
   float: left;
@@ -127,13 +179,6 @@ label {
   h2 { margin-bottom: 5px; }
   p { margin: 5px 0; }
   & > div { padding-left: 15px; }
-  input[type=text], input[type=password] {
-    width: 268px;
-    margin-bottom: 8px;
-  }
-  input[type=submit] {
-    margin: 0px;
-  }
 }
 
 #signin-box {
@@ -148,39 +193,29 @@ label {
       color: #dd3c10; } } }
 
 #actual-signin-box {
-  width: 295px;
-  margin: 0 auto;
-  .group {
-    padding: 5px 0;
-    label {
-      display: block;
-      padding-top: 0px; } }
-  input[type=text], input[type=password] {
-    width: 250px;
-    margin-bottom:0px;
-  }
-  input[type=submit] {
-    margin: 10px 10px 0px 0px; 
-  }
-  .remember-me {
-    margin: 2px 0px 10px -1px; 
-  }
-  .forgot-password {
-    margin: 2px 0px 10px 0px;
-  }
+  margin: 30px auto 10px;
   .meta-group {
     padding-left: 0; }
   .main-btn {
     margin-right: 4px; } 
+  .pretty-button {
+    float: left;
+    margin: 10px 10px 0px 0px;
+  }
 }
 
 #actual-signin-box.sign-in-form {
-  .remember-me {}
+  .remember-me {
+    margin-bottom:6px; }
   .forgot-password {}
   .sign-up-offer {
-    padding-top: 20px;
+    white-space:nowrap;
+    vertical-align:middle;
+    padding-top:14px;
+    a {
+      margin-left:4px; 
+    }
   }
-  .pretty-button {}
 }
 
 #step-arrows {

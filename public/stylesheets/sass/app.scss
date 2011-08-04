@@ -46,7 +46,7 @@ select {
 body {
   margin: 0;
   padding: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
   font-size: $font-size-body;
   color: #333; }
 
@@ -66,8 +66,6 @@ button[type=button] {
   padding: 6px;
 }
 
-
-
 .explanation {
   background: #e4edf8; 
   padding: 8px 8px 0;
@@ -81,20 +79,32 @@ label {
   padding: 0px 3px 2px 2px;
 }
 
+input[type=text], 
+input[type=password], 
+select, textarea {
+  border: 1px solid #BDC7D8;
+  padding: 3px;
+}
+
+input[type=file] {
+  background: none;
+}
 
 textarea {
   width: 354px;
   height: 6em;
   margin-top: 0;
   margin-bottom: 10px;
-  font-size: $font-size-textarea; }
+  font-size: $font-size-textarea; 
+  resize: none; }
 
 input[type=text], input[type=password] {
   width: 354px;
   margin-top: 1px;
   margin-bottom: 5px;
   margin-bottom: 10px;
-  font-size: $font-size-input; }
+  font-size: $font-size-input;
+ }
 
 #jeditor-wrapper { 
   .wysiwyg { width: 348px; }
@@ -265,19 +275,33 @@ p.success {
   border: 1px solid #1D4088;
 }
 
-#recaptcha_container {
-  border: 1px solid #b3b3b3;
-  padding: 10px 10px 2px 10px;
-  margin: 10px 0px 10px 0px;
-  #recaptcha_image {
+#recaptcha_image {
+  img {
+    width: 210px !important;
+    height: 40px !important;
     background:white;
     border: 1px solid #333;
-  }
+    margin-bottom:10px; }
+}
+
+#recaptcha_container {
+  position: relative;
+  left: 73px;
+  border: 1px solid #b3b3b3;
+  padding: 10px 2px 10px 10px;
+  margin: 10px 0px 10px 0px;
+  width: 220px !important;
+  
   #recaptcha_label {
-    label { margin-top:8px; }
+    white-space: nowrap;
   }
-  #recaptcha_response_field {
-    
+  a {
+    position:relative;
+    top:1px;
+    font-size:10px;
+  }
+  #recaptcha_response_field { 
+    width:207px !important;
   }
 }
 
