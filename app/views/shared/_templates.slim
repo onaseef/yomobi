@@ -89,24 +89,44 @@
         textarea.read-only readonly="readonly" data-orig-val=desktop_redirect_code(@company) = desktop_redirect_code @company
       
       = form_tag '/builder/settings', :multipart => true, :class => 'box' do
-        label Site Name:
-        input type="text" name="company_name" value=@company.name maxlength="40"
+        table.site-name
+          tbody
+            tr
+              td
+                label Site Name:
+              td
+                input type="text" name="company_name" value=@company.name maxlength="40"
         .divider
 
-        label Site Type:
-        br
-        = select_tag :company_type, options_for_select(company_types,@company.company_type_id)
+        table.site-type
+          tbody
+            tr
+              td
+                label Site Type:
+              td
+                = select_tag :company_type, options_for_select(company_types,@company.company_type_id)
         .divider
 
-        label Site Picture:
-        br
-        img.logo{src=@company.logo.url(:mobile) }
-        br
-        label Select a new picture (3MB max):
-        br.clearfix
-
-        input.rfloat type="submit" value="Upload"
-        input type="file" name="logo"
+        table
+          tbody
+            tr
+              td
+                label Site Picture:
+              td
+            tr
+              td
+                img.logo{src=@company.logo.url(:mobile) }
+              td
+            tr
+              td
+                label Select a new picture (3MB max):
+              td
+            tr
+              td
+                input type="file" name="logo"
+              td
+                input.rfloat type="submit" value="Upload"
+        
         .clearfix
 
         .action-bar
