@@ -43,6 +43,7 @@ html lang="en-US"
           mapp.widgets.fetch({
             success: function () {
               mapp.updateWtabs(true);
+              mapp.homeView.render();
               Backbone.history.start();
               if (window.showAds) mapp.showAds();
             }
