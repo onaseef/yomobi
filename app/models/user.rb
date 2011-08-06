@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
                   :first_name, :last_name
 
   before_save do
-    self.email.downcase! if self.email
+    self.email.downcase!.strip! if self.email
   end
 
   def self.find_for_authentication(conditions)
