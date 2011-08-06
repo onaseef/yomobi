@@ -245,7 +245,7 @@ class CouchDocs
       {
         :name => "keep-me-informed",
         :wtype => 'informed',
-        :helpText => "Allow your mobile site visitors to follow you via email and text notifications.",
+        :helpText => "Allow your mobile site visitors to request to receive email and text notifications from you.",
         :singleton => true,
         :email => nil,
         'optForEmails' => true,
