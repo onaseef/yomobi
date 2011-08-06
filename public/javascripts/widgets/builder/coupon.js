@@ -6,7 +6,11 @@
   window.widgetEditors.coupon = window.EditWidgetView.extend({
 
     onEditStart: function (widget) {
-      $(this.el).find('input[name=expire]').datepicker();
+      var self = this;
+      var dateInput = $(this.el).find('input[name=expire]');
+      dateInput.datepicker({
+        onSelect: function () { self.checkForChanges({ target:dateInput }); }
+      });
     },
   });
   
