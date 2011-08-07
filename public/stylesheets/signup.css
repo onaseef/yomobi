@@ -184,21 +184,24 @@ label {
     float: left;
     margin: 10px 10px 0px 0px; }
 
-#actual-signin-box.sign-in-form table {
-  margin: 0px auto; }
-  #actual-signin-box.sign-in-form table td {
-    padding-bottom: 2px; }
-  #actual-signin-box.sign-in-form table .pretty-button {
-    float: left;
-    margin-left: 0px; }
-#actual-signin-box.sign-in-form .remember-me, #actual-signin-box.sign-in-form .forgot-password {
-  margin-bottom: 6px; }
-#actual-signin-box.sign-in-form .sign-up-offer {
-  white-space: nowrap;
-  vertical-align: middle;
-  padding-top: 14px; }
-  #actual-signin-box.sign-in-form .sign-up-offer a {
-    margin-left: 4px; }
+#actual-signin-box.sign-in-form {
+  width: 330px;
+  margin: 0 auto; }
+  #actual-signin-box.sign-in-form table {
+    margin: 0px auto; }
+    #actual-signin-box.sign-in-form table td {
+      padding-bottom: 2px; }
+    #actual-signin-box.sign-in-form table .pretty-button {
+      float: left;
+      margin-left: 0px; }
+  #actual-signin-box.sign-in-form .remember-me, #actual-signin-box.sign-in-form .forgot-password {
+    margin-bottom: 6px; }
+  #actual-signin-box.sign-in-form .sign-up-offer {
+    white-space: nowrap;
+    vertical-align: middle;
+    padding-top: 14px; }
+    #actual-signin-box.sign-in-form .sign-up-offer a {
+      margin-left: 4px; }
 
 #actual-signin-box.signup-error {
   width: 330px;
