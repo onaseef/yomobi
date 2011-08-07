@@ -13,7 +13,8 @@
       'click .edit-tab-bar': 'tellBappToEditTabBar',
       'click .edit-settings': 'tellBappToEditSettings',
       'click .edit-keywords': 'tellBappToEditKeywords',
-      'click img.add': 'onClickAddIcon'
+      'click img.add': 'onClickAddIcon',
+      'dblclick .home-icon': 'onDoubleClick'
     },
     
     initialize: function (options) {
@@ -73,6 +74,14 @@
 
     onClickAddIcon: function (e) {
       bapp.sidebar.addNewWidgetViaTargetedElem( $(e.target).parent() );
+    },
+
+    onDoubleClick: function (e) {
+      var target = $(e.target);
+      if (!target.data('name')) target = target.parent();
+
+      if (target.hasClass('singleton')) return;
+      bapp.sidebar.addNewWidgetViaTargetedElem( target );
     },
 
     addNewWidgetViaTargetedElem: function (targetedElem) {
