@@ -1167,7 +1167,7 @@
 				this.editor.css({
 					minHeight: (newY - 6).toString() + "px",
 					// fix for issue 12 ( http://github.com/akzhan/jwysiwyg/issues/issue/12 )
-					width: (newX > 50) ? (newX - 8).toString() + "px" : ""
+					// width: (newX > 50) ? (newX - 8).toString() + "px" : ""
 				});
 				if ($.browser.msie && parseInt($.browser.version, 10) < 7) {
 					this.editor.css("height", newY.toString() + "px");
@@ -1182,7 +1182,7 @@
 
 			if (!this.options.iFrameClass) {
 				this.element.css({
-					width: (newX > 0) ? newX.toString() + "px" : "100%"
+					// width: (newX > 0) ? newX.toString() + "px" : "100%"
 				});
 			}
 
