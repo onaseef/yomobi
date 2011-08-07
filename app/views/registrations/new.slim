@@ -12,6 +12,7 @@
         | Already a Member? 
         a href=session_path(:user) Click here to sign in
   
-  #actual-signin-box
+  #actual-signin-box.signup-error
     = render :partial => 'home/signup_form', :locals => {:hide_captcha => false}
+    .clearfix
   .clearfix

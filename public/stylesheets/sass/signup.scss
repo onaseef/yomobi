@@ -232,6 +232,12 @@ label {
   }
 }
 
+#actual-signin-box.signup-error {
+  width: 330px;
+  margin: 0 auto;
+  .pretty-button { clear:both; }
+}
+
 #step-arrows {
   background: #eceef4;
   width: 500px;
