@@ -27,9 +27,10 @@ html lang="en-US"
           .clearfix
       - unless user_signed_in? || @hide_signup_bar
         .signup-bar
-          a.pretty-button href="/" Sign Up
-          .description YoMobi helps you connect to millions more consumer with a mobile optimized website.
-          .clearfix
+          .content
+            a.pretty-button href="/" Sign Up
+            .description YoMobi helps you connect to millions more consumer with a mobile optimized website.
+            .clearfix
       #page-container-wrapper class=@page_wrapper_class
         #page-container
           #sidebar

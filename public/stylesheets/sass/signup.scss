@@ -124,6 +124,10 @@ label {
   background-color: #EDEFF4;
   border-bottom: 1px solid #D8DFEA;
   padding: 5px 40px 5px 40px;
+  .content {
+    width: $page-width;
+    margin: 0 auto;
+  }
   a {
     color: white !important;
     text-decoration: none; }
