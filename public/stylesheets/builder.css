@@ -374,7 +374,8 @@ div.wysiwyg ul.toolbar {
       color: #7e7e7e;
       text-align: center; }
     #builder .edit-area.hours .day-hours .times .t1 {
-      display: none; }
+      display: none;
+      clear: left; }
     #builder .edit-area.hours .day-hours .times .closed {
       display: none;
       padding-top: 4px;
