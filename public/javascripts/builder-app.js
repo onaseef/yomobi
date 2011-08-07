@@ -21,7 +21,7 @@
       this.updateOverallOrder({ noUpdate:true });
 
       // util.reserveWidget(widget,true);
-      self = this;
+      var self = this;
 
       util.pushUIBlock('new-widget');
       widget.save(null,{
