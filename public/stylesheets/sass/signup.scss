@@ -10,7 +10,7 @@
   padding: 14px 0 25px 0;
   background: $main-color;
   color: $header-font-color;
-  height: 42px;
+  height: 55px;
   .subtext, .subtext:visited {
     color: #98a9ca; }
   & > .content {
@@ -27,17 +27,17 @@
     padding-right: 32px;
     .group {
       width: 160px; }
+    label {
+      padding: 0px;
+    }
     input[type=text], input[type=password] {
       width: 142px;
       padding: 2px;
       margin: 0px; 
-      border: 1px solid #1D2A5B;}
-    input[type=checkbox] {
-      margin-left: -1px;
-    }
+      border-color: #8A9CC2;}
     .main-btn {
       background: #5B74A8;
-      padding: 1px 2px 2px 2px;
+      padding: 3px 4px 3px 4px;
       margin: 0;
       border: 1px solid #5B74A8;
       border-top-color: #8A9CC2;
@@ -47,12 +47,8 @@
       cursor: pointer; }
 
     table tr td {
-      padding: 0px 14px 0px 0px; }  
-    label {
-      position:relative;
-      top: -1px;
-    }
-    #label_persistent {
+      padding: 0px 14px 4px 0px; }  
+   #label_persistent {
       color: #98a9ca;
     }
   }
@@ -127,7 +123,7 @@ label {
 .signup-bar {
   background-color: #EDEFF4;
   border-bottom: 1px solid #D8DFEA;
-  padding: 5px 0px 5px 30px;
+  padding: 5px 40px 5px 40px;
   a {
     color: white !important;
     text-decoration: none; }
@@ -139,11 +135,17 @@ label {
   }
 }
 
+.signup-bar .pretty-button {
+    margin: 12px 12px 12px 0px;
+  }
+
 #signup-box, #actual-signin-box {
   table {
+    float: right;
     border: 0;
     border-collapse: collapse;
     border-spacing: 0;
+    margin-right:10px;
   }
   td {
     padding-bottom:5px;
@@ -166,10 +168,15 @@ label {
   }
   
   input[type=submit] {
-    position:relative;
-    left:232px;
-    margin: 5px 25px 0px 0px;
-  }   
+    float: right;
+    margin: 5px 10px 0px 40px;
+  }
+  
+  #recaptcha_container {
+    float: right;
+    margin-right: 10px;
+    label { float: left; }
+  }
 }
 
 #signup-box {
@@ -205,9 +212,16 @@ label {
 }
 
 #actual-signin-box.sign-in-form {
-  .remember-me {
+  table {
+    td { padding-bottom: 2px; }
+    margin: 0px auto;
+    .pretty-button {
+      float: left;
+      margin-left: 0px;
+    }
+  }
+  .remember-me, .forgot-password {
     margin-bottom:6px; }
-  .forgot-password {}
   .sign-up-offer {
     white-space:nowrap;
     vertical-align:middle;
@@ -271,7 +285,7 @@ label {
     span {
       font-size: 1.5em; }
     input {
-      width: 256px; } }
+      width: 221px; } }
   a.skip-link {
     padding: 4px 10px 0 0; }
   td.logo-preview {

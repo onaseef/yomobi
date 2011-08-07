@@ -14,7 +14,6 @@
   font-size: 16px;
   line-height: 22px;
   font-weight: bold;
-  margin: 10px 15px 0 10px;
   padding: 3px 6px;
   text-align: center;
   text-decoration: none;
@@ -57,6 +56,9 @@ button[type=button] {
   font-size: 14px;
   padding: 6px; }
 
+input[type=checkbox] {
+  margin-left: 0px; }
+
 .explanation {
   background: #e4edf8;
   padding: 8px 8px 0;
@@ -65,8 +67,9 @@ button[type=button] {
 
 label {
   display: inline-block;
-  font-size: 12px;
-  padding: 0px 3px 2px 2px; }
+  font-size: 13px;
+  padding: 0px 3px 2px 2px;
+  white-space: nowrap; }
 
 input[type=text],
 input[type=password],
@@ -146,11 +149,11 @@ p.success {
   color: white;
   height: 31px; }
   #header.signed-in .content {
-    width: 1000px;
+    width: 1010px;
     margin: 0 auto; }
   #header.signed-in #logo {
     float: left;
-    width: 188px;
+    width: 198px;
     padding-left: 12px;
     font-size: 2em; }
   #header.signed-in #nav {
@@ -172,7 +175,7 @@ p.success {
       background-color: #6d86b7; }
 
 #page-container {
-  width: 1000px;
+  width: 1010px;
   margin: 0 auto; }
 
 #page-container-wrapper.home {
@@ -266,8 +269,6 @@ p.success {
   margin-bottom: 10px; }
 
 #recaptcha_container {
-  position: relative;
-  left: 73px;
   border: 1px solid #b3b3b3;
   padding: 10px 2px 10px 10px;
   margin: 10px 0px 10px 0px;
@@ -282,7 +283,7 @@ p.success {
     width: 207px !important; }
 
 #footer {
-  width: 1000px;
+  width: 1010px;
   border-top: 1px solid #b3b3b3;
   margin: 20px auto;
   padding: 10px 10px 0;

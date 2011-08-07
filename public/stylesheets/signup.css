@@ -5,15 +5,15 @@
   padding: 14px 0 25px 0;
   background: #002455;
   color: white;
-  height: 42px; }
+  height: 55px; }
   #header.signed-out .subtext, #header.signed-out .subtext:visited {
     color: #98a9ca; }
   #header.signed-out > .content {
-    width: 1000px;
+    width: 1010px;
     margin: 0 auto; }
   #header.signed-out #logo {
     float: left;
-    width: 188px;
+    width: 198px;
     padding: 8px 0 0 40px;
     font-size: 3em; }
   #header.signed-out form {
@@ -22,16 +22,16 @@
     padding-right: 32px; }
     #header.signed-out form .group {
       width: 160px; }
+    #header.signed-out form label {
+      padding: 0px; }
     #header.signed-out form input[type=text], #header.signed-out form input[type=password] {
       width: 142px;
       padding: 2px;
       margin: 0px;
-      border: 1px solid #1D2A5B; }
-    #header.signed-out form input[type=checkbox] {
-      margin-left: -1px; }
+      border-color: #8A9CC2; }
     #header.signed-out form .main-btn {
       background: #5B74A8;
-      padding: 1px 2px 2px 2px;
+      padding: 3px 4px 3px 4px;
       margin: 0;
       border: 1px solid #5B74A8;
       border-top-color: #8A9CC2;
@@ -40,10 +40,7 @@
       font-weight: bold;
       cursor: pointer; }
     #header.signed-out form table tr td {
-      padding: 0px 14px 0px 0px; }
-    #header.signed-out form label {
-      position: relative;
-      top: -1px; }
+      padding: 0px 14px 4px 0px; }
     #header.signed-out form #label_persistent {
       color: #98a9ca; }
   #header.signed-out #nav {
@@ -54,7 +51,7 @@ label {
 
 #sidebar {
   float: left;
-  width: 200px; }
+  width: 210px; }
   #sidebar ul {
     list-style: none;
     padding-left: 0;
@@ -84,7 +81,7 @@ label {
 #content {
   float: left;
   border-top: none;
-  width: 1000px; }
+  width: 1010px; }
   #content h1 {
     padding-left: 10px; }
 
@@ -113,7 +110,7 @@ label {
 .signup-bar {
   background-color: #EDEFF4;
   border-bottom: 1px solid #D8DFEA;
-  padding: 5px 0px 5px 30px; }
+  padding: 5px 40px 5px 40px; }
   .signup-bar a {
     color: white !important;
     text-decoration: none; }
@@ -123,10 +120,15 @@ label {
     font-weight: bold;
     padding: 19px; }
 
+.signup-bar .pretty-button {
+  margin: 12px 12px 12px 0px; }
+
 #signup-box table, #actual-signin-box table {
+  float: right;
   border: 0;
   border-collapse: collapse;
-  border-spacing: 0; }
+  border-spacing: 0;
+  margin-right: 10px; }
 #signup-box td, #actual-signin-box td {
   padding-bottom: 5px; }
 #signup-box label, #actual-signin-box label {
@@ -143,9 +145,13 @@ label {
 #signup-box select, #actual-signin-box select {
   width: 186px !important; }
 #signup-box input[type=submit], #actual-signin-box input[type=submit] {
-  position: relative;
-  left: 232px;
-  margin: 5px 25px 0px 0px; }
+  float: right;
+  margin: 5px 10px 0px 40px; }
+#signup-box #recaptcha_container, #actual-signin-box #recaptcha_container {
+  float: right;
+  margin-right: 10px; }
+  #signup-box #recaptcha_container label, #actual-signin-box #recaptcha_container label {
+    float: left; }
 
 #signup-box {
   float: left;
@@ -178,7 +184,14 @@ label {
     float: left;
     margin: 10px 10px 0px 0px; }
 
-#actual-signin-box.sign-in-form .remember-me {
+#actual-signin-box.sign-in-form table {
+  margin: 0px auto; }
+  #actual-signin-box.sign-in-form table td {
+    padding-bottom: 2px; }
+  #actual-signin-box.sign-in-form table .pretty-button {
+    float: left;
+    margin-left: 0px; }
+#actual-signin-box.sign-in-form .remember-me, #actual-signin-box.sign-in-form .forgot-password {
   margin-bottom: 6px; }
 #actual-signin-box.sign-in-form .sign-up-offer {
   white-space: nowrap;
@@ -239,7 +252,7 @@ label {
   #account-setup-box .site-url span {
     font-size: 1.5em; }
   #account-setup-box .site-url input {
-    width: 256px; }
+    width: 221px; }
   #account-setup-box a.skip-link {
     padding: 4px 10px 0 0; }
   #account-setup-box td.logo-preview {

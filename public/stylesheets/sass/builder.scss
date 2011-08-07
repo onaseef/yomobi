@@ -8,7 +8,18 @@
 .ui-widget button {  
   font-family: "lucida grande", tahoma, verdana, arial, sans-serif;  
 }  
-  
+
+#jeditor-wrapper .wysiwyg {
+  width: 343px; }
+
+#jeditor-wrapper iframe {
+  width: 335px; }
+
+div.wysiwyg ul.toolbar { 
+  border-bottom: 0px !important; 
+  width:100% !important; }
+
+
 #sidebar {
   float: left;
   width: $sidebar-width;
@@ -47,9 +58,13 @@
     padding: 1px 0 0px 5px;
     margin: 1px 0;
     cursor: pointer;
-    .add { visibility: hidden; }
+    .add { 
+      visibility: hidden;
+      margin-top: 2px;
+    }
     .add.left {
       float: left;
+      display:none;
     }
     .add.right {
       float: right;
@@ -351,13 +366,22 @@
       margin-top:15px;
     }
   }
+  .site-settings {
+    input[type=text] {
+      width: 240px;
+    }
+  }
+  select {
+    width: 245px;
+  }
+  .site-picture {
+    vertical-align: top;
+  }
+  .logo { margin: 3px 0px; }
 }
 
-/////////////////////////////
-// Widget-specific styling //
-/////////////////////////////
-
 #builder .edit-area.hours {
+  .double-time { margin-bottom: 10px; }
   .day-checkbox {
     float: left;
     width: 32px;
@@ -394,7 +418,10 @@
     }
     input[type=text] {
       float: left;
-      width: 65px; }
+      width: 65px;
+      padding-top: 1px;
+      padding-bottom: 1px;
+      margin-bottom: 2px; }
   }
   .day-hours.closed {
     .t1,.t0 { display: none !important; }
@@ -402,7 +429,7 @@
   }
   .input-area.double-time {
     .t1 { display: block; }
-    .times { height: 54px;}
+    .times { height: 55px; }
   }
 }
 

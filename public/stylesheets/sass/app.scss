@@ -16,7 +16,6 @@
   font-size: 16px;
   line-height: 22px;
   font-weight: bold;
-  margin: 10px 15px 0 10px;
   padding: 3px 6px;
   text-align: center;
   text-decoration: none;
@@ -66,6 +65,10 @@ button[type=button] {
   padding: 6px;
 }
 
+input[type=checkbox] {
+  margin-left: 0px;
+}
+
 .explanation {
   background: #e4edf8; 
   padding: 8px 8px 0;
@@ -77,6 +80,7 @@ label {
   display: inline-block;
   font-size: $font-size-label;
   padding: 0px 3px 2px 2px;
+  white-space: nowrap;
 }
 
 input[type=text], 
@@ -285,8 +289,6 @@ p.success {
 }
 
 #recaptcha_container {
-  position: relative;
-  left: 73px;
   border: 1px solid #b3b3b3;
   padding: 10px 2px 10px 10px;
   margin: 10px 0px 10px 0px;

@@ -5,9 +5,19 @@
 .ui-widget button {
   font-family: "lucida grande", tahoma, verdana, arial, sans-serif; }
 
+#jeditor-wrapper .wysiwyg {
+  width: 343px; }
+
+#jeditor-wrapper iframe {
+  width: 335px; }
+
+div.wysiwyg ul.toolbar {
+  border-bottom: 0px !important;
+  width: 100% !important; }
+
 #sidebar {
   float: left;
-  width: 200px; }
+  width: 210px; }
   #sidebar ul {
     list-style: none;
     padding-left: 0;
@@ -44,9 +54,11 @@
     margin: 1px 0;
     cursor: pointer; }
     #sidebar .home-icon .add {
-      visibility: hidden; }
+      visibility: hidden;
+      margin-top: 2px; }
     #sidebar .home-icon .add.left {
-      float: left; }
+      float: left;
+      display: none; }
     #sidebar .home-icon .add.right {
       float: right; }
     #sidebar .home-icon .title {
@@ -325,7 +337,17 @@
     padding-right: 0;
     padding-top: 8px;
     margin-top: 15px; }
+  #builder .edit-area.edit-settings .site-settings input[type=text] {
+    width: 240px; }
+  #builder .edit-area.edit-settings select {
+    width: 245px; }
+  #builder .edit-area.edit-settings .site-picture {
+    vertical-align: top; }
+  #builder .edit-area.edit-settings .logo {
+    margin: 3px 0px; }
 
+#builder .edit-area.hours .double-time {
+  margin-bottom: 10px; }
 #builder .edit-area.hours .day-checkbox {
   float: left;
   width: 32px;
@@ -360,7 +382,10 @@
       color: #3B5998; }
   #builder .edit-area.hours .day-hours input[type=text] {
     float: left;
-    width: 65px; }
+    width: 65px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    margin-bottom: 2px; }
 #builder .edit-area.hours .day-hours.closed .t1, #builder .edit-area.hours .day-hours.closed .t0 {
   display: none !important; }
 #builder .edit-area.hours .day-hours.closed .closed {
@@ -368,7 +393,7 @@
 #builder .edit-area.hours .input-area.double-time .t1 {
   display: block; }
 #builder .edit-area.hours .input-area.double-time .times {
-  height: 54px; }
+  height: 55px; }
 
 #builder .edit-area.calendar .url {
   padding: 5px 0 20px;
