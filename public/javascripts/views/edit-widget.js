@@ -86,6 +86,8 @@
     editName: function (e) {
       util.log('editName',e);
       if (this.widget.get('singleton')) return;
+      // ignore help-bubble clicks
+      if (e.target.tagName == 'A' || e.target.tagName == 'IMG') return;
       
       var self = this;
       this.el
