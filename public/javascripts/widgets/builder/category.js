@@ -79,6 +79,7 @@
       'click input[name=add_cat]':          'addCat',
       'click input[name=rename_cat]':       'renameCat',
       'click input[name=edit_cat]':         'editCat',
+      'dblclick select[name=cats]':         'editCat',
       'click input[name=rem_cat]':          'remCat',
       'click input[name=up_cat]':           'moveCat',
       'click input[name=down_cat]':         'moveCat',
@@ -86,6 +87,7 @@
       'click input[name=add_item]':         'addItem',
       'click input[name=rem_item]':         'remItem',
       'click input[name=edit_item]':        'editItem',
+      'dblclick select[name=items]':        'editItem',
       'click input[name=up_item]':          'moveItem',
       'click input[name=down_item]':        'moveItem'
     },
