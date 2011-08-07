@@ -405,6 +405,7 @@ util.log('WORDER SYNC CALLBACK',callback);
     startEditingPanel: function (panelType) {
       if (this.currentEditor) {
         this.currentEditor.stopEditing();
+        delete this.currentEditor;
         mapp.goHome();
       }
       this[panelType + 'Editor'].startEditing();
