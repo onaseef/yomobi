@@ -49,7 +49,8 @@
         catLabel: util.pluralize( this.get('catTypeName') ),
         itemLabel: util.pluralize( this.get('itemTypeName') ),
         subHelpText: util.getWidgetBData(this).subHelpText,
-        isWidgetPageTree: true
+        isWidgetPageTree: true,
+        itemIconName: 'leaf'
       };
       return _.extend({},showData,extraData);
     },

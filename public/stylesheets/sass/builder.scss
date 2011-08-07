@@ -413,6 +413,13 @@
     word-wrap: break-word; } }
 
 #builder .edit-area.category, #builder .edit-area.page_tree {
+  .icon-wrap {
+    padding: 0 5px 0 0;
+    img { width: 18px; height: 18px; }
+  }
+  .crumb-wrap {
+    padding: 1px 0 0 0;
+  }
   select {
     width: 331px;
     margin: 2px 0;

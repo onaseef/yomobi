@@ -589,11 +589,12 @@
 
     | <% } else if (!_maybe.isLeaf) { %>
     br
-    b Add or edit {{ catLabel }} in category:
-    br
-    b.blue {{ catCrumbs }}
-    br
-    br
+    .icon-wrap.lfloat
+      img src="/images/ui/subcat-arrow.png"
+    .crumb-wrap
+      b Add or edit {{ catLabel }} in category:
+      br
+      b.blue {{ catCrumbs }}
 
     | <%  if (cats.length >= 2) { %>
     .arrows
@@ -619,12 +620,13 @@
     br
     br
     .divider style="margin-bottom: 15px"
-    
-    b Add or edit {{ itemLabel }} in category:
-    br
-    b.blue {{ catCrumbs }}
-    br
-    br
+
+    .icon-wrap.lfloat
+      img src="/images/ui/{{ itemIconName }}-arrow.png"
+    .crumb-wrap    
+      b Add or edit {{ itemLabel }} in category:
+      br
+      b.blue {{ catCrumbs }}
     | <% if (items.length >= 2) { %>
     .arrows
       input.up-arrow type="image" name="up_item" data-mod="-1" src="/images/ui/category-up-arrow.png"
