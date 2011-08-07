@@ -26,7 +26,7 @@
         else {
           data[day+'Hours'] = _(hours).chain().first(2).reject(isEmpty).map(function (h) {
             var from = h.split('|')[0], to = h.split('|')[1];
-            return '<span class="open">' + from + ' to ' + to + '</span>';
+            return '<span class="open">' + from + ' - ' + to + '</span>';
           }).value().join('<br />');
         }
       });
