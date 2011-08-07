@@ -2,7 +2,7 @@
 
   var pluckPrettyName = function (w) { return util.prettifyName(w.get('name')) };
   var pluckName = function (w) { return w.get('name'); };
-  var unsavedChangesText = "You have unsaved changes. Click Cancel to go back and save changes, or click OK if you wish to discard your changes.";
+  var unsavedChangesText = "You have unsaved changes. Click OK to go back and save changes. Click Cancel to discard your changes.";
 
   // ----------------------------
   window.BuilderWidgets = Widgets.extend({
@@ -91,7 +91,7 @@
     goHome: function (e) {
       var editor = bapp.currentEditor;
       if (editor && editor.hasChanges()) {
-        if (confirm(unsavedChangesText)) {
+        if (!confirm(unsavedChangesText)) {
           editor.onDiscardByNavigation();
           editor.stopEditing();
         }
@@ -241,7 +241,7 @@
       if (editor && editor.widget) {
         editor.widget.homeView.highlight(false);
         if (editor.hasChanges()) {
-          if (confirm(unsavedChangesText)) {
+          if (!confirm(unsavedChangesText)) {
             editor.onDiscardByNavigation();
           }
           else {
