@@ -4,13 +4,15 @@
   .content
     h2 Website Information
     
-    h3 Site Name:
+    erb:
+      <h3>Site Name: <a class="help-bubble" href="#"><img src="/images/ui/help-bubble.png" /></a></h3>
     - if @errors['title']
       p.error Invalid Site Name. Site Name must be at least 2 characters and at most 40 characters.
     input type="text" name="step_data[title]" value="#{@data['title'] }" maxlength="40"
     
     hr
-    h3 Choose a Mobile Site URL:
+    erb:
+      <h3>Choose a Mobile Site URL: <a class="help-bubble" href="#"><img src="/images/ui/help-bubble.png" /></a></h3>
 
     - if @errors['site_url'] == 'illegal'
       p.error Invalid URL: the URL must be at least 3 characters long and contain only A-Z, a-z, 0-9, underscores (_), dashes (-) and periods (.).
@@ -21,7 +23,7 @@
     
     .site-url
       span http://www.yomobi.com/
-      input type="text" value="#{@data['site_url'] || 'my-name'}" name="step_data[site_url]"
+      input type="text" value="#{@data['site_url'] || 'my-site-name'}" name="step_data[site_url]"
     
     hr
     h3 Tell your visitors who you are (optional):

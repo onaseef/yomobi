@@ -103,6 +103,10 @@ input[type=text], input[type=password] {
 em {
   font-size: 12px; }
 
+h3 .help-bubble img {
+  position: relative;
+  top: 2px; }
+
 p {
   margin: 0px 0px 0px 0px;
   padding: 0px 4px 8px 0px;
