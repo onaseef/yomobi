@@ -370,11 +370,16 @@
         success: function (deadWidget,res) {
           util.log('Saved widget',deadWidget,res);
           // util.releaseUI();
-          util.clearUIBlock(widget.get('name'));
-          util.releaseWidget(deadWidget);
-          // TODO: use data from server
-          if (deadWidget.get('singleton'))
-            bapp.sidebar.setSingletonInUse(deadWidget,false);
+          mapp.widgetsInUse.updateOverallOrder({
+            forceSync: true,
+            callback: function () {
+              util.clearUIBlock(widget.get('name'));
+              util.releaseWidget(deadWidget);
+              // TODO: use data from server
+              if (deadWidget.get('singleton'))
+                bapp.sidebar.setSingletonInUse(deadWidget,false);
+            }
+          });
         }
       });
     },
