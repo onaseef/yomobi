@@ -261,12 +261,10 @@ div.wysiwyg ul.toolbar {
       font-size: 0.6em; }
     .help-bubble {
       float: right; }
-    &.editable:hover {
-      background: $highlight-color;
-      cursor: pointer;
-      .change-label {
-        display: inline; } 
-    }
+  }
+  p.help-text .dot, p.help-text .rename-link { display: none; }
+  p.help-text.editable {
+    .dot, .rename-link { display: inline; }
   }
   .widget-name-edit {
     display: none;

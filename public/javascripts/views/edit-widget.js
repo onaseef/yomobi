@@ -167,7 +167,7 @@
       widget.homeView.highlight(true);
 
       if (!widget.get('singleton'))
-        this.el.find('.widget-name').addClass('editable');
+        this.el.find('p.help-text').addClass('editable');
       
       if (this.onEditStart) this.onEditStart(resetChanges);
     },
