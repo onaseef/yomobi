@@ -526,7 +526,7 @@ var util = {
  
     if(!width) width = document.body.offsetWidth-document.body.clientWidth;
  
-    document.body.style.overflow = 'auto';
+    document.body.style.overflow = '';
     this._scrollbarWidth = width;
 
     return this._scrollbarWidth;
