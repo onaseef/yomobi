@@ -18,7 +18,7 @@
       img.help-bubble src="/images/ui/help-bubble.png" title=t('account_setup.help.site_url')
 
     - if @errors['site_url'] == 'illegal'
-      p.error Invalid URL: the URL must be at least 3 characters long and contain only A-Z, a-z, 0-9, underscores (_), dashes (-) and periods (.).
+      p.error Invalid URL: the URL must be at least 3 characters long and contain only A-Z, a-z, 0-9, underscores (_), and dashes (-).
     - elsif @errors['site_url'] == 'taken'
       p.error URL is already taken.
     - elsif @errors['site_url'] == 'taken?'
