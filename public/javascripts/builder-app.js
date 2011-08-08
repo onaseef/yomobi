@@ -94,10 +94,14 @@
         if (!confirm(unsavedChangesText)) {
           editor.onDiscardByNavigation();
           editor.stopEditing();
+          delete bapp.currentEditor;
         }
         else return;
       }
-      else if (editor) editor.stopEditing();
+      else if (editor) {
+        editor.stopEditing();
+        delete bapp.currentEditor;
+      }
 
       e && e.preventDefault();
       superObj.goHome.call(this);
