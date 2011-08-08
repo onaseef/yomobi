@@ -2,4 +2,7 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  account_setup:
+    help:
+      site_name: "Input your name or business name. This will appear at the top of your mobile site."
+      site_url: "Select a URL for your mobile site. It cannot contains spaces or special characters."

@@ -4,15 +4,18 @@
   .content
     h2 Website Information
     
-    erb:
-      <h3>Site Name: <a class="help-bubble" href="#"><img src="/images/ui/help-bubble.png" /></a></h3>
+    h3
+      ' Site Name:
+      img.help-bubble src="/images/ui/help-bubble.png" title=t('account_setup.help.site_name')
+    
     - if @errors['title']
       p.error Invalid Site Name. Site Name must be at least 2 characters and at most 40 characters.
     input type="text" name="step_data[title]" value="#{@data['title'] }" maxlength="40"
     
     hr
-    erb:
-      <h3>Choose a Mobile Site URL: <a class="help-bubble" href="#"><img src="/images/ui/help-bubble.png" /></a></h3>
+    h3
+      ' Choose a Mobile Site URL:
+      img.help-bubble src="/images/ui/help-bubble.png" title=t('account_setup.help.site_url')
 
     - if @errors['site_url'] == 'illegal'
       p.error Invalid URL: the URL must be at least 3 characters long and contain only A-Z, a-z, 0-9, underscores (_), dashes (-) and periods (.).
@@ -34,3 +37,9 @@
     .rfloat.main-btn
       input.content type="submit" value="Save & Continue"
     .clearfix
+
+- content_for :js do
+  javascript:
+    $(function () {
+      $('.help-bubble').simpletooltip(undefined,'help');
+    })
