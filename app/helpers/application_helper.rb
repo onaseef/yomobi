@@ -9,7 +9,13 @@ module ApplicationHelper
   end
   
   def company_types
-    CompanyType.all.map {|t| [t.name, t[:id]]}
+    types = CompanyType.all
+
+    # move stuff to the top of the list
+    local_idx = types.find_index {|t| t.name == 'Local / Small Business'}
+    types.insert 0, types.delete_at(local_idx)
+
+    types.map {|t| [t.name, t[:id]]}
   end
 
   def carrier_names
@@ -28,4 +34,5 @@ module ApplicationHelper
     config = Rails.application.config
     "#{config.s3_base_path}/#{config.logo_s3_bucket}"
   end
+
 end

@@ -31,7 +31,7 @@
         td
           label Site Type:
         td
-          = f.select :company_type_id, options_for_select(company_types, @user.company_type_id || 57)
+          = f.select :company_type_id, options_for_select(company_types, @user.company_type_id)
   
   - unless hide_captcha
     = render 'shared/recaptcha'
