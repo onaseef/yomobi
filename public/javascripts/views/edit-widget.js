@@ -10,7 +10,7 @@
       'click .accept-btn':          'accept',
       'click .remove-link':         'remove',
       'click .cancel-btn':          'cancel',
-      'click .widget-name':         'editName',
+      'click .rename-link':         'editName',
 
       'keyup input[type=text][name!=wname]': 'checkForChanges',
       'keyup textarea':                      'checkForChanges'
@@ -85,9 +85,8 @@
 
     editName: function (e) {
       util.log('editName',e);
+      e.preventDefault();
       if (this.widget.get('singleton')) return;
-      // ignore help-bubble clicks
-      if (e.target.tagName == 'A' || e.target.tagName == 'IMG') return;
       
       var self = this;
       this.el
@@ -167,9 +166,7 @@
 
       widget.homeView.highlight(true);
 
-      if (widget.get('singleton'))
-        this.el.find('.change-label').remove();
-      else
+      if (!widget.get('singleton'))
         this.el.find('.widget-name').addClass('editable');
       
       if (this.onEditStart) this.onEditStart(resetChanges);

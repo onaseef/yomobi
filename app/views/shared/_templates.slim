@@ -25,7 +25,10 @@
         span {{ prettyName }}
         a.help-bubble href="#"
           img src="/images/ui/help-bubble.png"
-        span.change-label  Click&nbsp;to&nbsp;Edit
+      p.help-text
+        a.help-link href="#" Help
+        '
+        a.rename-link href="#" Rename
     div class="edit-area {{ wtype }}"
       .explanation {{ helpText }}
       | {{ editAreaContent }}
