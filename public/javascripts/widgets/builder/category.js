@@ -448,7 +448,7 @@
 
       var self = this;
       $(this.el).html(dialogHtml).find('.add-btn')
-        .click(function () { self.validateCategory(); }).end()
+        .click(function () { self.validateCategory(true); }).end()
         .attr('title',this.el.children[0].title)
       ;
       return this;
@@ -465,7 +465,7 @@
       ;
       // cache for later use in validateCategory
       this.level = level;
-      this.origName = origName;
+      if (!error) this.origName = origName;
 
       var makeSaveFunc = function (addAnother) {
         return function () {
