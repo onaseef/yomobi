@@ -20,7 +20,7 @@ html lang="en-US"
     #global-container
       #header class=(user_signed_in? ? 'signed-in' : 'signed-out')
         .content
-          #logo YoMobi
+          a#logo href=root_path YoMobi
           - if current_user.nil? && @hide_header_signin_form != true
             = render :partial => 'shared/header-signin-form'
           = render :partial => 'shared/nav'
