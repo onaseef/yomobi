@@ -16,7 +16,8 @@
       var extraData = {
         hideSaveButton: !isLeaf,
         hideCancelButton: !isLeaf,
-        hideRemoveLink: mapp.pageLevel != 0
+        hideRemoveLink: mapp.pageLevel != 0,
+        hideHelpText: mapp.pageLevel !== 0
       };
       return _.extend({},editAreaData,extraData);
     },

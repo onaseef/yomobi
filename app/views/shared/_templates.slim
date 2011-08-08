@@ -30,7 +30,9 @@
         '
         a.rename-link href="#" Rename
     div class="edit-area {{ wtype }}"
+      | <% if (!_maybe.hideHelpText) { %>
       .explanation {{ helpText }}
+      | <% } %>
       | {{ editAreaContent }}
 
     .action-bar
