@@ -1,135 +1,809 @@
 docs:
   -
     types:
-      - Local Business
-      - Automotive Dealer / Vehicle
-      - Banking and Financial Service
-      - Education
-      - Education
-      - Grocery
-      - Pest
-      - Store
-      - Technology and Telecommunications Service
+      - Airport
     widgets:
       - about-us
       - call-us
       - find-us
-      - full-website
       - business-hours
       - services
-      - products
-      - photo-bucket
       - keep-me-informed
       - leave-a-message
-      - facebook
-      - coupon
+      - call-me-back
+      - tell-a-friend
       - event-calendar
-      - news
-    tabs:
-      - services
-      - keep-me-informed
-      - photo-bucket
-
-
-  -
-    types:
-      - Personal
-    widgets:
-      - about-us
-      - call-us
-      - find-us
-      - full-website
       - facebook
-      - custom-page
-      - services
-      - photo-bucket
-      - leave-a-message
-      - blog
       - twitter
-      - keep-me-informed
+      - full-website
     tabs:
-      - facebook
-      - leave-a-message
-      - photo-bucket
-
-
+      - call-us
+      - find-us
+      - keep-me-informed
   -
     types:
-      - Service
-      - Health and Beauty
-      - Medical Service
-      - Profesional Service
-      - Travel Service
+      - Arts / Entertainment / Nightlife
     widgets:
       - about-us
       - call-us
       - find-us
-      - full-website
       - business-hours
-      - services
-      - photo-bucket
+      - reviews
       - keep-me-informed
       - leave-a-message
-      - facebook
-      - coupon
+      - call-me-back
+      - tell-a-friend
       - event-calendar
-      - news
+      - facebook
+      - twitter
+      - full-website
     tabs:
-      - services
+      - call-us
+      - find-us
       - keep-me-informed
+  -
+    types:
+      - Automotive
+    widgets:
+      - about-us
+      - call-us
+      - find-us
       - business-hours
-
+      - services
+      - coupon
+      - reviews
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - call-us
+      - find-us
+      - keep-me-informed
+  -
+    types:
+      - Bank / Financial Services
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - services
+      - locations
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - call-us
+      - find-us
+      - keep-me-informed
   -
     types:
       - Bar
-      - Cafe
-      - Club
-      - Restaurant
     widgets:
       - about-us
       - call-us
       - find-us
+      - business-hours
+      - reviews
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - event-calendar
+      - facebook
+      - twitter
       - full-website
-      - menu
+    tabs:
+      - find-us
+      - event-calendar
+      - keep-me-informed
+  -
+    types:
+      - Book Store
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - coupon
+      - reviews
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - event-calendar
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - call-us
+      - find-us
+      - keep-me-informed
+  -
+    types:
+      - Business Services
+    widgets:
+      - about-us
+      - call-us
+      - find-us
       - business-hours
       - services
       - coupon
-      - photo-bucket
+      - reviews
       - keep-me-informed
       - leave-a-message
+      - call-me-back
+      - tell-a-friend
       - facebook
-      - event-calendar
-      - news
+      - twitter
+      - full-website
     tabs:
-      - menu
+      - call-us
+      - find-us
       - keep-me-informed
-      - business-hours
-
   -
     types:
-      - Convention Center and Sports
-      - Event Planning Service
-      - Library / Public Building
-      - Museum / Attraction
-      - Park
-      - Religious Center
+      - Church / Religious Organization
     widgets:
       - about-us
       - call-us
       - find-us
-      - full-website
       - business-hours
       - services
-      - photo-bucket
       - keep-me-informed
-      - event-calendar
       - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - event-calendar
       - facebook
-      - news
+      - twitter
+      - full-website
     tabs:
+      - call-us
+      - find-us
+      - keep-me-informed
+  -
+    types:
+      - Club
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - reviews
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - event-calendar
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - find-us
+      - event-calendar
+      - keep-me-informed
+  -
+    types:
+      - Community / Government
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - services
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - call-us
+      - find-us
+      - keep-me-informed
+  -
+    types:
+      - Computers / Technology
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - services
+      - reviews
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - call-us
+      - find-us
+      - keep-me-informed
+  -
+    types:
+      - Concert Venue
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - reviews
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - event-calendar
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - find-us
+      - event-calendar
+      - keep-me-informed
+  -
+    types:
+      - Consulting / Business Services
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - services
+      - reviews
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - call-us
+      - services
+      - keep-me-informed
+  -
+    types:
+      - Education
+    widgets:
+      - about-us
+      - call-us
+      - find-us
       - business-hours
       - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - event-calendar
+      - facebook
+      - twitter
       - full-website
+    tabs:
+      - call-us
+      - leave-a-message
+      - keep-me-informed
+  -
+    types:
+      - Energy / Utility
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - services
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - event-calendar
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - call-us
+      - services
+      - keep-me-informed
+  -
+    types:
+      - Engineering / Construction
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - services
+      - reviews
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - call-us
+      - services
+      - keep-me-informed
+  -
+    types:
+      - Event Planning / Event Services
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - services
+      - reviews
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - event-calendar
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - call-us
+      - services
+      - keep-me-informed
+  -
+    types:
+      - Food / Grocery
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - locations
+      - services
+      - coupon
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - find-us
+      - business-hours
+      - keep-me-informed
+  -
+    types:
+      - Government Organization
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - services
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - event-calendar
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - business-hours
+      - services
+      - keep-me-informed
+  -
+    types:
+      - Heath / Medical / Pharmacy
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - locations
+      - services
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - locations
+      - services
+      - keep-me-informed
+  -
+    types:
+      - Home Improvement
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - services
+      - reviews
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - call-us
+      - services
+      - keep-me-informed
+  -
+    types:
+      - Hospital / Clinic
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - locations
+      - services
+      - reviews
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - call-us
+      - services
+      - keep-me-informed
+  -
+    types:
+      - Hotel
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - booking-request
+      - locations
+      - services
+      - reviews
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - event-calendar
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - call-us
+      - booking-request
+      - keep-me-informed
+  -
+    types:
+      - Individual / Personal Site
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - facebook
+      - twitter
+    tabs:
+      - call-us
+      - facebook
+      - keep-me-informed
+  -
+    types:
+      - Insurance Company
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - products
+      - reviews
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - event-calendar
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - call-us
+      - products
+      - keep-me-informed
+  -
+    types:
+      - Internet / Software
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - services
+      - reviews
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - call-us
+      - services
+      - keep-me-informed
+  -
+    types:
+      - Legal / Law
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - services
+      - reviews
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - call-us
+      - services
+      - keep-me-informed
+  -
+    types:
+      - Library
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - locations
+      - services
+      - event-calendar
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - locations
+      - services
+      - keep-me-informed
+  -
+    types:
+      - Local / Small Business
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - locations
+      - services
+      - products
+      - coupon
+      - event-calendar
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - call-us
+      - find-us
+      - keep-me-informed
+  -
+    types:
+      - Media / News / Publishing
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - services
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - event-calendar
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - call-us
+      - find-us
+      - keep-me-informed
+  -
+    types:
+      - Movie Theater
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - locations
+      - coupon
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - event-calendar
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - call-us
+      - find-us
+      - keep-me-informed
+  -
+    types:
+      - Museum / Art Gallery
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - locations
+      - coupon
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - event-calendar
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - find-us
+      - business-hours
+      - keep-me-informed
+  -
+    types:
+      - Non-Governmental Organization (NGO)
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - locations
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - event-calendar
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - about-us
+      - business-hours
+      - keep-me-informed
+  -
+    types:
+      - Organization
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - services
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - event-calendar
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - call-us
+      - find-us
+      - keep-me-informed
+  -
+    types:
+      - Pet Services
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - services
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - call-us
+      - find-us
+      - keep-me-informed
+  -
+    types:
+      - Political Party / Organization
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - event-calendar
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - call-us
+      - event-calendar
+      - keep-me-informed
+  -
+    types:
+      - Professional Services
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - services
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - call-us
+      - services
+      - keep-me-informed
+  -
+    types:
+      - Public Places
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - services
+      - event-calendar
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - call-us
+      - services
+      - keep-me-informed
 
   -
     types:
@@ -138,16 +812,279 @@ docs:
       - about-us
       - call-us
       - find-us
-      - full-website
+      - business-hours
       - property-listings
-      - photo-bucket
+      - services
+      - event-calendar
       - keep-me-informed
       - leave-a-message
+      - call-me-back
+      - tell-a-friend
       - facebook
+      - twitter
+      - full-website
+    tabs:
+      - call-us
+      - property-listings
+      - keep-me-informed
+  -
+    types:
+      - Restaurant / Cafe
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - menu
+      - coupon
+      - booking-request
+      - reviews
+      - event-calendar
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - menu
+      - business-hours
+      - keep-me-informed
+  -
+    types:
+      - Retail and Consumer Merchandise
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - products
+      - coupon
+      - reviews
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - call-us
+      - products
+      - keep-me-informed
+  -
+    types:
+      - School
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - locations
+      - reviews
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - call-us
+      - products
+      - keep-me-informed
+  -
+    types:
+      - Shopping / Retail
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - locations
+      - products
+      - coupon
+      - reviews
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - find-us
+      - business-hours
+      - keep-me-informed
+  -
+    types:
+      - Spas / Beauty / Personal Care
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - services
+      - products
+      - coupon
+      - reviews
+      - locations
+      - booking-request
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - services
+      - booking-request
+      - keep-me-informed
+  -
+    types:
+      - Sports Venue
+    widgets:
+      - about-us
+      - call-us
+      - find-us
       - business-hours
       - event-calendar
-      - news
-    tabs:
-      - property-listings
+      - keep-me-informed
       - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - event-calendar
+      - find-us
+      - keep-me-informed
+  -
+    types:
+      - Sports / Recreation / Activities
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - event-calendar
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - call-us
+      - event-calendar
+      - keep-me-informed
+  -
+    types:
+      - Tours / Sightseeing
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - services
+      - coupon
+      - reviews
+      - event-calendar
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - about-us
+      - services
+      - keep-me-informed
+  -
+    types:
+      - Transit Stop
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - coupon
+      - reviews
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - call-us
+      - find-us
+      - keep-me-informed
+  -
+    types:
+      - Transportation
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - call-us
+      - find-us
+      - keep-me-informed
+  -
+    types:
+      - Travel / Leisure
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - services
+      - reviews
+      - event-calendar
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - call-us
+      - services
+      - keep-me-informed
+  -
+    types:
+      - University
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
+      - locations
+      - event-calendar
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - call-us
+      - find-us
       - keep-me-informed
