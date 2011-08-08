@@ -46,11 +46,14 @@
     },
     
     getEditAreaData: function () {
-      var data = {};
-      var templateId = this.get('singleton') ? this.get('name') : this.get('wtype');
-
-      var editAreaTemplate = util.getTemplate(templateId + '-edit-area');
-      data.editAreaContent = editAreaTemplate(this.getEditData());
+      var data = {}
+        , templateId = this.get('singleton') ? this.get('name') : this.get('wtype')
+        , editAreaTemplate = util.getTemplate(templateId + '-edit-area')
+        , editData = _.extend({
+            subHelpText: util.getWidgetBData(this).subHelp
+          }, this.getEditData())
+      ;
+      data.editAreaContent = editAreaTemplate(editData);
       data.iconName = templateId;
       
       return _.extend(data, this.toJSON());
@@ -61,7 +64,6 @@
         attributes.id = attributes._id;
         delete attributes._id;
       }
-      delete attributes.helpText; delete attributes.subHelpText;
       if (attributes.email === null || attributes.email === '') {
         attributes.email = g.userEmail;
       }

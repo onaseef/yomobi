@@ -14,4 +14,8 @@ module BuilderHelper
 <script type="text/javascript">var _RSITE = '#{escape_javascript company.mobile_url}';</script>
 <script type="text/javascript" src="http://yomobi.com/javascripts/mobile-redirect.js"></script>}
   end
+
+  def help_texts
+    WHELP.to_json
+  end
 end

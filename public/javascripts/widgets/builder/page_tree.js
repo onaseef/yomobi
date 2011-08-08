@@ -48,7 +48,6 @@
         areCatsEmpty: areCatsEmpty,
         catLabel: util.pluralize( this.get('catTypeName') ),
         itemLabel: util.pluralize( this.get('itemTypeName') ),
-        subHelpText: util.getWidgetBData(this).subHelpText,
         isWidgetPageTree: true,
         itemIconName: 'leaf'
       };

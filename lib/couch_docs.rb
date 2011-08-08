@@ -96,8 +96,6 @@ class CouchDocs
       {
         :name => "flickr",
         :wtype => 'link_fb',
-        :helpText => "Add a link to your Flickr album on your mobile site.",
-        :subHelpText => "Flickr alias or custom URL",
         :host => 'http://m.flickr.com/photos/',
         :basename => 'flickr',
         :singleton => true
@@ -106,8 +104,6 @@ class CouchDocs
       {
         :name => "picasa",
         :wtype => 'link_fb',
-        :helpText => "Add a link to your Picasa album on your mobile site.",
-        :subHelpText => "Picasa album URL",
         :host => 'http://picasaweb.google.com/',
         :basename => 'picasa',
         :singleton => true
@@ -116,31 +112,24 @@ class CouchDocs
       {
         :name => "blog",
         :wtype => 'link',
-        :helpText => "Add a link to your blog on your mobile site.",
-        :subHelpText => "Blog",
         :singleton => true
       },
 
       {
         :name => "news",
         :wtype => 'link',
-        :helpText => "Add a link to your online news site on your mobile site.",
-        :subHelpText => "online news site",
         :singleton => true
       },
 
       {
         :name => "reviews",
         :wtype => 'link',
-        :helpText => "Show visitors how great you are by adding a link to your online reviews page on your mobile site.",
-        :subHelpText => "reviews page",
         :singleton => true
       },
       
       {
         :name => "call-me-back",
         :wtype => 'call_back',
-        :helpText => "Allow your mobile site visitors to request a call back from you.",
         :singleton => true,
         :email => nil
       },
@@ -148,8 +137,6 @@ class CouchDocs
       {
         :name => "property-listings",
         :wtype => 'category',
-        :helpText => "Give your mobile site visitors easy access to your property listings.",
-        :subHelpText => "create a mobile optimized list of properties for lease or sale.",
         :catTypeName => "Area",
         :itemTypeName => "Listing",
         :singleton => true,
@@ -168,8 +155,6 @@ class CouchDocs
       {
         :name => "twitter",
         :wtype => 'link_fb',
-        :helpText => "Add a link to your twitter account on your mobile site to make it easy for visitors to follow you.",
-        :subHelpText => "Twitter ID",
         :host => 'http://twitter.com/',
         :basename => 'twitter',
         :singleton => true
@@ -178,8 +163,6 @@ class CouchDocs
       {
         :name => "facebook",
         :wtype => 'link_fb',
-        :helpText => "Add a link to your Facebook page on your mobile site to make it easy for visitors to friend you.",
-        :subHelpText => "Facebook username",
         :host => 'http://facebook.com/',
         :basename => 'facebook',
         :singleton => true
@@ -188,8 +171,6 @@ class CouchDocs
       {
         :name => "category",
         :wtype => 'page_tree',
-        :helpText => "Create and organize custom web pages for your mobile site.",
-        :subHelpText => "create and organize custom web pages for your mobile site.",
         :catTypeName => "Subcategory",
         :itemTypeName => "Page",
         "struct" => {
@@ -200,7 +181,6 @@ class CouchDocs
       {
         :name => "booking-request",
         :wtype => 'booking',
-        :helpText => "Allow your mobile site visitors to email you a booking request.",
         :singleton => true,
         :email => nil
       },
@@ -208,14 +188,12 @@ class CouchDocs
       {
         :name => "tell-a-friend",
         :wtype => 'tell_friend',
-        :helpText => "Let your mobile site visitors tell their friends about you.",
         :singleton => true
       },
 
       {
         :name => "leave-a-message",
         :wtype => 'leave_msg',
-        :helpText => "Allow your mobile website visitors to easily leave you an email message.",
         :singleton => true,
         :email => nil
       },
@@ -223,29 +201,23 @@ class CouchDocs
       {
         :name => "event-calendar",
         :wtype => 'link',
-        :helpText => "Add a link to your online calendar on your mobile site.",
-        :subHelpText => "online calendar",
         :singleton => true
       },
 
       {
         :name => "custom-page",
         :wtype => 'custom_page',
-        :helpText => "Add a custom web page for your mobile site."
       },
 
       {
         :name => "photo-bucket",
         :wtype => 'link',
-        :helpText => "Add a link to your PhotoBucket album on your mobile site.",
-        :subHelpText => "Photobucket album custom",
         :singleton => true
       },
 
       {
         :name => "keep-me-informed",
         :wtype => 'informed',
-        :helpText => "Allow your mobile site visitors to request to receive email and text notifications from you.",
         :singleton => true,
         :email => nil,
         'optForEmails' => true,
@@ -255,22 +227,17 @@ class CouchDocs
       {
         :name => "coupon",
         :wtype => 'coupon',
-        :helpText => "Add a coupon to your mobile site."
       },
 
       {
         :name => "full-website",
         :wtype => 'link',
-        :helpText => "Add a link to your full website on your mobile site.",
-        :subHelpText => "full website",
         :singleton => true
       },
 
       {
         :name => "locations",
         :wtype => 'category',
-        :helpText => "Give your mobile site visitors easy access to a directory of your business locations.",
-        :subHelpText => "create a directory of your business locations.",
         :catTypeName => "Region",
         :itemTypeName => "Location",
         :singleton => true,
@@ -288,7 +255,6 @@ class CouchDocs
       {
         :name => "business-hours",
         :wtype => 'hours',
-        :helpText => "Let your mobile site visitors know when you are open for business.",
         "doubleTime" => false,
         "hours" => {
           "mon" => ["8:00 am|5:00 pm","",false,true],
@@ -304,8 +270,6 @@ class CouchDocs
       {
         :name => "services",
         :wtype => 'category',
-        :helpText => "Give your mobile site visitors easy access to your catalog of services.",
-        :subHelpText => "create a mobile optimized catalog of your services.",
         :catTypeName => "Category",
         :itemTypeName => "Service",
         :singleton => true,
@@ -317,8 +281,6 @@ class CouchDocs
       {
         :name => "products",
         :wtype => 'category',
-        :helpText => "Give your mobile site visitors easy access to your catalog of products",
-        :subHelpText => "create a mobile optimized catalog of your products.",
         :catTypeName => "Category",
         :itemTypeName => "Product",
         :singleton => true,
@@ -330,8 +292,6 @@ class CouchDocs
       {
         :name => "menu",
         :wtype => 'category',
-        :helpText => "Give your mobile site visitors easy access to your menu.",
-        :subHelpText => "create a mobile optimized version of your menu.",
         :catTypeName => "Category",
         :itemTypeName => "Item",
         :singleton => true,
@@ -348,26 +308,22 @@ class CouchDocs
       {
         :name => "call-us",
         :wtype => 'phone',
-        :helpText => "Allow your mobile site visitors to call you with a single click."
       },
 
       {
         :name => "find-us",
         :wtype => 'gmap',
-        :helpText => "Allow your mobile site visitors to easily find you."
       },
 
       {
         :name => "about-us",
         :wtype => 'custom_page',
-        :helpText => "Tell your mobile site visitors about you.",
         :iconName => 'about-us'
       },
 
       {
         :name => "link",
         :wtype => 'link',
-        :helpText => "Add a link to another website on your mobile site."
       }
     ].sort! {|a,b| b[:name] <=> a[:name]}
   end

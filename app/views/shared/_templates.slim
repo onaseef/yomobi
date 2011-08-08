@@ -26,9 +26,9 @@
         a.help-bubble href="#"
           img src="/images/ui/help-bubble.png"
         span.change-label  Click&nbsp;to&nbsp;Edit
-      p.help-text
-        em {{ helpText }}
-    div class="edit-area {{ wtype }}" {{ editAreaContent }}
+    div class="edit-area {{ wtype }}"
+      .explanation {{ helpText }}
+      | {{ editAreaContent }}
 
     .action-bar
       | <% if (!_maybe.hideSaveButton) { %>
@@ -469,14 +469,10 @@
     input(name="phone" type="text" value="{{ _maybe.phone }}")
   
   script.leave-a-message-edit-area(type="text/template")
-    .explanation
-      p Messages will be sent to this email address, so check your mail often.
     label Your Email Address*:
     input(name="email" type="text" value="{{ _maybe.email }}")
   
   script.call-me-back-edit-area(type="text/template")
-    .explanation
-      p Call back requests will be sent to this email address, so check your mail often.
     label Your Email Address*:
     input(name="email" type="text" value="{{ _maybe.email }}")
   
@@ -484,15 +480,10 @@
     p This widget appears on your mobile site and makes it easy for your visitors to tell their friends about you.
   
   script.booking-request-edit-area(type="text/template")
-    .explanation
-      p Booking requests will be sent to this email address, so check your mail often.
     label Your Email Address*:
     input(name="email" type="text" value="{{ _maybe.email }}")
   
   script.keep-me-informed-edit-area(type="text/template")
-    .explanation
-      p This widget allows visitors to your mobile site to become fans and follow your latest news via email and text notifications.
-      p You can send email notifications and instant messages to your followers by clicking on the “Email your Followers” or "Send Text to Your Followers" link in the navigation column on the left.
     label Your Email Address*:
     input name="email" type="text" value="{{ _maybe.email }}"
     br
@@ -582,9 +573,6 @@
   
   script.page_tree-edit-area.menu-edit-area.services-edit-area.products-edit-area.property-listings-edit-area.locations-edit-area(type="text/template")
     | <% if (onHomePage === true) { %>
-
-    .explanation
-      p Use this widget to {{ subHelpText }}
     input type="button" name="beginEditing" value="Click Here to Start Editing"
 
     | <% } else if (!_maybe.isLeaf) { %>

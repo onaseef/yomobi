@@ -155,8 +155,8 @@
     startEditing: function (resetChanges) {
       util.log('Editing widget:',this.widget.get('name'),this.widget.isNew());
       var widget = this.widget
-        , helpText = util.getWidgetBData(widget).helpText
-        , editAreaData = _.extend(widget.getEditAreaData(),{ helpText:helpText })
+        , helpText = util.getWidgetBData(widget).help
+        , editAreaData = _.extend(widget.getEditAreaData(),{ helpText: helpText })
       ;
       this.validForShowingStatus = widget.validForShowing();
 
