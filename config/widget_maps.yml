@@ -689,7 +689,26 @@ docs:
       - call-us
       - find-us
       - business-hours
-      - locations
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - event-calendar
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - about-us
+      - business-hours
+      - keep-me-informed
+  -
+    types:
+      - Non-Profit Organization
+    widgets:
+      - about-us
+      - call-us
+      - find-us
+      - business-hours
       - keep-me-informed
       - leave-a-message
       - call-me-back
