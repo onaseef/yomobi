@@ -56,10 +56,9 @@
       .widget-name
         | Edit Mobile Tab Bar
       p.help-text
-        em Edit the navigation tab bar at the top of your mobile site.
+        a.help-link href="#" Help
     div class="edit-area"
-      .explanation
-        p Highlight the widgets you want your mobile site visitors to see first by adding them to the navigation tab bar which appears at the top of your mobile site.
+      .explanation == t 'builder.help.edit_tab_bar'
       .wtab
         h3 = "Tab #1"
         h2 style="color:#696969" Home
@@ -81,8 +80,10 @@
       .widget-name
         | General Settings
       p.help-text
-        em Edit General Settings
+        a.help-link href="#" Help
     div class="edit-area edit-settings"
+      .explanation == t 'builder.help.edit_settings'
+
       .box style="margin-bottom:10px"
         label Mobile Site URL:
         br
@@ -145,8 +146,10 @@
       .widget-name
         | Traffic Booster
       p.help-text
-        em Give your traffic... a boost!
+        a.help-link href="#" Help
     div class="edit-area"
+      .explanation == t 'builder.help.edit_keywords'
+
       label Enter keywords that describe your website, separated by commas:
       p.error.hide Something went wrong.
       textarea name="keywords" {{ keywords }}
