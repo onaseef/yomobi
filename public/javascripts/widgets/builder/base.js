@@ -47,10 +47,12 @@
     
     getEditAreaData: function () {
       var data = {}
-        , templateId = this.get('singleton') ? this.get('name') : this.get('wtype')
+        , wdata = util.getWidgetBData(this)
+        , templateId = wdata.singleton ? wdata.name :
+                        (wdata.wsubtype || wdata.wtype)
         , editAreaTemplate = util.getTemplate(templateId + '-edit-area')
         , editData = _.extend({
-            subHelpText: util.getWidgetBData(this).subHelp
+            subHelpText: wdata.subHelp
           }, this.getEditData())
       ;
       data.editAreaContent = editAreaTemplate(editData);

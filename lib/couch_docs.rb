@@ -318,13 +318,19 @@ class CouchDocs
       {
         :name => "about-us",
         :wtype => 'custom_page',
-        :iconName => 'about-us'
+        :wsubtype => 'about-us'
       },
 
       {
         :name => "link",
         :wtype => 'link',
-      }
+      },
+
+      {
+        :name => "video",
+        :wtype => 'link',
+        :wsubtype => 'video'
+      },
     ].sort! {|a,b| b[:name] <=> a[:name]}
   end
 end

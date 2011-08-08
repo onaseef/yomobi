@@ -92,4 +92,8 @@ helpText:
   twitter:
     help: <p>Add a link to your twitter account on your mobile site to make it easy for visitors to follow you.</p>
     subHelp: Twitter ID
+  
+  video:
+    help: <p>Add a link to a video on your mobile site.</p>
+    subHelp: video
 

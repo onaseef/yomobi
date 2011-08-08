@@ -288,13 +288,14 @@ var util = {
   getWidgetBData: function (widget) {
     if (widget._bdata) return widget._bdata;
 
-    // handle outlier about-us widget requirement
-    var isSingleton = (widget.get('name') == 'about-us') ? true :
-                       widget.get('singleton') === true
+    // handle non-singletons with custom icons
+    var hasSubtype = !!widget.get('wsubtype')
+      , isSingleton = widget.get('singleton') === true
     ;
     // cache
     widget._bdata = _.detect(window.bdata, function (w) {
-      if (isSingleton) return w.name == widget.get('name');
+      if (hasSubtype) return w.wsubtype === widget.get('wsubtype');
+      if (isSingleton) return w.name === widget.get('name');
       return w.wtype == widget.get('wtype') && !w.singleton;
     });
 

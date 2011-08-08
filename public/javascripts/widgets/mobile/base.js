@@ -38,13 +38,13 @@
     },
 
     getIconData: function () {
+      var wdata = this._bdata || util.getWidgetBData(this);
       return {
-        wtype: this.get('wtype'),
+        wtype: wdata.wtype,
         name: this.get('name'),
         prettyName: this.get('prettyName'),
-        iconName: this.get('iconName') ||
-                  (this.get('singleton') ? this.get('name') : this.get('wtype')),
-        singletonClass: this.get('singleton') ? 'singleton' : ''
+        iconName: wdata.singleton ? wdata.name : (wdata.wsubtype || wdata.wtype),
+        singletonClass: wdata.singleton ? 'singleton' : ''
       };
     },
     
