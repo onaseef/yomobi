@@ -11,6 +11,8 @@ bob = User.create! \
   :password => '123123',
   :password_confirmation => '123123',
   :company_type_id => 2
+
+bob.update_attribute(:confirmed_at, DateTime.new)
 puts "Created User: #{bob.inspect}"
 
 bob.create_company \
