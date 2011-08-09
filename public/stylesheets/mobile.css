@@ -69,6 +69,8 @@ a img {
   padding-left: 0 1px 0 8px;
   background: #405b80;
   color: white; }
+  .company-info table {
+    height: 36px; }
   .company-info td {
     vertical-align: center; }
   .company-info .logo {
