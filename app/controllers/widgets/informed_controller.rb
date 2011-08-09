@@ -34,9 +34,6 @@ class Widgets::InformedController < ApplicationController
 
     save_errors = text_follower.errors.merge email_follower.errors
     save_success ? success(nil) : error(save_errors)
-    puts "ERRORS: #{save_errors.inspect}"
-    puts "TEXT FOLLOWER: #{text_follower.inspect}"
-    puts "EMAIL FOLLOWER: #{email_follower.inspect}"
   end
 
   def text_panel
