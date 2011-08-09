@@ -80,7 +80,7 @@
       var target = $(e.target);
       if (!target.data('name')) target = target.parent();
 
-      if (target.hasClass('singleton')) return;
+      if (target.hasClass('singletonInUse')) return;
       bapp.sidebar.addNewWidgetViaTargetedElem( target );
     },
 
