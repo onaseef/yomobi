@@ -494,7 +494,7 @@
 
         , nameCompare = name.toLowerCase()
         , origNameCompare = (this.origName || '').toLowerCase()
-        , existingNames = _.map(util.catNamesFromLevel(this.level), downcase)
+        , existingNames = _.map(this.getCatNames(), downcase)
       ;
       if (_.isEmpty(name) && this.addedCats.length > 0)
         this.options.onClose && this.options.onClose();
@@ -518,6 +518,10 @@
         bapp.currentEditor.setChanged('something',true);
         this.options.onClose && this.options.onClose();
       }
+    },
+
+    getCatNames: function () {
+      return util.catNamesFromLevel(this.level);
     },
 
     addCatToStruct: function (name) {

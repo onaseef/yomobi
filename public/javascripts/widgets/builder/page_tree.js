@@ -254,6 +254,9 @@ util.log('itemIdx',itemIdx,item,level);
   var AddItemDialog = window.AddCatDialog.extend({
 
     // we're actually modifying leaf names instead of cats. Code reuse ftw!
+    getCatNames: function () {
+      return _.pluck(this.level._items,'name');
+    },
     addCatToStruct: function (name) {
       this.level._items.push({ name:name, content:defaultPageContent });
     },
