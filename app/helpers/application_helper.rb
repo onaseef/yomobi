@@ -13,15 +13,7 @@ module ApplicationHelper
   end
 
   def carrier_names
-    Carrier.all.map {|c| c.name}.sort! do |x,y|
-      if x.include?('Canadian') && !y.include?('Canadian')
-        1
-      elsif !x.include?('Canadian') && y.include?('Canadian')
-        -1
-      else
-        x <=> y
-      end
-    end
+    Carrier.all.map {|c| c.name}.sort!
   end
 
   def s3_base_path
