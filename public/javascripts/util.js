@@ -299,8 +299,10 @@ var util = {
       return w.wtype == widget.get('wtype') && !w.singleton;
     });
 
-    var help = window.bhelp['helpText'][widget._bdata.name];
-    widget._bdata.help = help.help; widget._bdata.subHelp = help.subHelp;
+    if (window.bhelp) {
+      var help = window.bhelp['helpText'][widget._bdata.name];
+      widget._bdata.help = help.help; widget._bdata.subHelp = help.subHelp;
+    }
 
     return widget._bdata;
   },
