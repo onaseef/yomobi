@@ -174,7 +174,13 @@ p.success {
     float: left;
     width: $sidebar-width - 12px;
     padding-left: 12px;
+    color: $header-font-color;
+    text-decoration: none;
     font-size: 2em; }
+  #logo:visited {
+    color: $header-font-color;
+    text-decoration: none;
+  }
   #nav {
     float: left;
     width: $content-width - 2 - 1;

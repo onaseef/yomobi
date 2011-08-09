@@ -17,7 +17,7 @@
 
 div.wysiwyg ul.toolbar { 
   border-bottom: 0px !important; 
-  width:100% !important; }
+  width:95% !important; }
 
 
 #sidebar {
@@ -206,12 +206,46 @@ div.wysiwyg ul.toolbar {
       height: 64px;
       background: no-repeat; }
     .help-text {
-      padding: 0 20px 0 64px;
-      margin-top: 3px; } }
+      position: relative;
+      top: 4px; } 
+  }
   .header.edit-tab-bar, .header.edit-settings {
-    .help-text, .widget-name {
+    .help-text {
       padding-left: 0;
-      cursor: auto; } }
+      cursor: auto; } 
+  }
+  .widget-name {
+    padding: 2px 0px 2px 0px;
+    font-size: 1.75em;
+    word-wrap: break-word;
+    .change-label {
+      display: none;
+      padding-left: 8px;
+      color: #ff530d;
+      font-size: 0.6em; }
+    .help-bubble {
+      float: right; }
+    &.editable:hover {
+      background: $highlight-color;
+      cursor: pointer;
+      .change-label {
+        display: inline; } 
+    }
+  }
+  .widget-name-edit {
+    display: none;
+    position: relative;
+    left: 4px;
+    input[type=text] {
+      font-size: 1.5em;
+      width: 250px; 
+      margin-bottom: 0px;
+      margin-left: -2px; 
+      padding-top: 2px;
+      padding-bottom: 2px; 
+    } 
+  }   
+  
   .wtab {
     h2 {
       font-size: 16px;
@@ -229,7 +263,7 @@ div.wysiwyg ul.toolbar {
   .logo {
     margin: 10px 0; }
   .edit-area {
-    padding: 20px 0;
+    padding: 6px 0;
     margin: 0 auto; }
   .action-bar {
     padding: 12px 0 0;
@@ -250,29 +284,11 @@ div.wysiwyg ul.toolbar {
     display: none;
     float: right;
     margin: 4px 6px 0 0; }
-  .widget-name {
-    padding: 0 0 0 64px;
-    font-size: 1.75em;
-    word-wrap: break-word;
-    .change-label {
-      display: none;
-      padding-left: 8px;
-      color: #ff530d;
-      font-size: 0.6em; }
-    .help-bubble {
-      float: right; }
-  }
   p.help-text .dot, p.help-text .rename-link { display: none; }
   p.help-text.editable {
     .dot, .rename-link { display: inline; }
   }
-  .widget-name-edit {
-    display: none;
-    position: relative;
-    left: 4px;
-    input[type=text] {
-      font-size: 1.5em;
-      width: 250px; } } }
+}
 
 #builder .panel {
   padding: 0 0 10px 10px; }
@@ -378,6 +394,14 @@ div.wysiwyg ul.toolbar {
   .logo { margin: 3px 0px; }
 }
 
+
+.widget-editor .edit-area {
+  label {
+    white-space: normal;
+  }
+}
+
+  
 #builder .edit-area.hours {
   .double-time { margin-bottom: 10px; }
   .day-checkbox {

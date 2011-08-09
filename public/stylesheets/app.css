@@ -159,7 +159,12 @@ p.success {
     float: left;
     width: 198px;
     padding-left: 12px;
+    color: white;
+    text-decoration: none;
     font-size: 2em; }
+  #header.signed-in #logo:visited {
+    color: white;
+    text-decoration: none; }
   #header.signed-in #nav {
     float: left;
     width: 797px;
