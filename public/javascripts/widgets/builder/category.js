@@ -496,7 +496,7 @@
         , origNameCompare = (this.origName || '').toLowerCase()
         , existingNames = _.map(this.getCatNames(), downcase)
       ;
-      if (_.isEmpty(name) && this.addedCats.length > 0)
+      if (_.isEmpty(name) && this.addedCats.length > 0 && addAnother !== true)
         this.options.onClose && this.options.onClose();
   		else if (_.isEmpty(name))
   		  this.prompt('Name cannot be empty',undefined,true);
@@ -639,7 +639,7 @@
       });
       
       var vals = _.compact(_.values(activeItemData));
-      if (vals.length === 0 && this.addedItems.length > 0)
+      if (vals.length === 0 && this.addedItems.length > 0 && addAnother !== true)
         return this.options.onClose && this.options.onClose();
       if (!this.validateItem(activeItemData)) return;
       
