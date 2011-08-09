@@ -5,6 +5,7 @@
 
   var tempCatStack = [];
   var $isSelected = function (idx,elem) { return $(elem).is(':selected'); };
+  var downcase = function (str) { return str.toLowerCase(); };
 
   var deleteConfirmText = "Are you sure you want to delete? (Data will be lost)";
 
@@ -490,12 +491,16 @@
       var name = $(this.el).find('input[name=cat]').val()
         , name = $.trim(name)
         , name = name.replace(/\|/g,'')
+
+        , nameCompare = name.toLowerCase()
+        , origNameCompare = (this.origName || '').toLowerCase()
+        , existingNames = _.map(util.catNamesFromLevel(this.level), downcase)
       ;
       if (_.isEmpty(name) && this.addedCats.length > 0)
         this.options.onClose && this.options.onClose();
   		else if (_.isEmpty(name))
   		  this.prompt('Name cannot be empty',undefined,true);
-      else if ( name != this.origName && _.contains(util.catNamesFromLevel(this.level),name) )
+      else if ( nameCompare !== origNameCompare && _.contains(existingNames,nameCompare) )
         this.prompt('Name is already in use',name,true);
       else if (this.mode == 'add') {
         this.addCatToStruct(name);
@@ -579,7 +584,7 @@
       ;
       // cache for later use
       this.level = level;
-      this.origItem = item;
+      if (!flash || !flash.error) this.origItem = item;
       
       var buttons = {};
       var closeFunc = function () {
@@ -607,12 +612,16 @@
     validateItem: function (item) {
   		$(this.el).dialog("close");
 
-      var name = $.trim(item.name);
+      var name = $.trim(item.name)
+        , nameCompare = name.toLowerCase()
+        , origNameCompare = (this.origItem || {name:''}).name.toLowerCase()
+        , existingNames = _.map(_.pluck(this.level._items,'name'), downcase)
+      ;
   		if (_.isEmpty(name)) {
   		  this.prompt({ error:'Name cannot be empty' },item,true);
   		  return false;
   		}
-      else if (this.mode == 'add' && _.include(_.pluck(this.level._items,'name'),name)) {
+      else if (nameCompare !== origNameCompare && _.include(existingNames,nameCompare)) {
         this.prompt({ error:'Name is already in use' },item,true);
         return false;
       }
