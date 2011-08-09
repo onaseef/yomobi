@@ -127,19 +127,34 @@ hr {
   color: #cccccc; }
 
 #topline-notice {
-  overflow: hidden; }
+  display: none;
+  position: fixed;
+  width: 100%;
+  padding-bottom: 10px;
+  overflow: hidden;
+  background: #d8dfea;
+  border-bottom: 1px solid #1d4088;
+  -webkit-box-shadow: #333 0 1px 15px;
+  -moz-box-shadow: 0 1px 15px #333;
+  text-align: center; }
+  #topline-notice .notice-icon {
+    position: relative;
+    top: 4px;
+    left: -6px; }
+  #topline-notice .x-icon {
+    width: 16px;
+    height: 16px;
+    padding: 4px;
+    margin: 11px 14px 0 0;
+    background: #445b7f url(/images/ui/x.png) 50% 50% no-repeat;
+    float: right;
+    cursor: pointer; }
   #topline-notice p.notice, #topline-notice p.alert, #topline-notice p.error {
-    background: #d8dfea;
-    text-align: center;
-    -webkit-box-shadow: #9c9c9c 0 1px 15px;
-    -moz-box-shadow: 0 1px 15px #9c9c9c;
-    border-bottom: 1px solid #1d4088;
-    margin: 0;
-    text-align: center;
+    margin: 3px 0 0 0;
     font-size: 20px;
     line-height: 20px;
     font-weight: bold;
-    padding: 10px 0; }
+    padding: 10px 0 5px 0; }
 
 p.error {
   color: #f03d25; }

@@ -20,4 +20,8 @@ module ApplicationHelper
     config = Rails.application.config
     "#{config.s3_base_path}/#{config.logo_s3_bucket}"
   end
+
+  def topline_notice
+    render :partial => 'shared/topline-notice', :locals => { :notice => notice, :alert => alert }
+  end
 end

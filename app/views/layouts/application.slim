@@ -11,11 +11,7 @@ html lang="en-US"
     = stylesheet_link_tag 'flick/jquery-ui-1.8.11.custom'
     = csrf_meta_tag
   body
-    #topline-notice
-      - if notice
-        p.notice = notice
-      - if alert
-        p.alert = alert
+    = topline_notice
     
     #global-container
       #header class=(user_signed_in? ? 'signed-in' : 'signed-out')

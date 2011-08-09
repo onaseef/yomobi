@@ -11,11 +11,7 @@ html lang="en-US"
     = stylesheet_link_tag 'jquery.wysiwyg'
     = csrf_meta_tag
   body
-    #topline-notice
-      - if notice
-        p.notice = notice
-      - if alert
-        p.alert = alert
+    = topline_notice
     
     #global-container
       #header.signed-in

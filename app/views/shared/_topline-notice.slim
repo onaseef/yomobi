@@ -1,0 +1,11 @@
+- if notice || alert
+  #topline-notice
+    - if notice
+      .x-icon
+      p.notice = notice
+
+    - if alert
+      p.alert
+        img.notice-icon src="/images/ui/invalid-for-showing.png"
+        = alert
+      a href="#close-topline-notice" Close this message.
