@@ -296,7 +296,7 @@ var util = {
     widget._bdata = _.detect(window.bdata, function (w) {
       if (hasSubtype) return w.wsubtype === widget.get('wsubtype');
       if (isSingleton) return w.name === widget.get('name');
-      return w.wtype == widget.get('wtype') && !w.singleton;
+      return w.wtype == widget.get('wtype') && !w.singleton && !w.wsubtype;
     });
 
     if (window.bhelp) {
