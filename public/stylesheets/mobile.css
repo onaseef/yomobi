@@ -244,10 +244,10 @@ a img {
     background: url(/images/ui/leaf-arrow.png) 97% 50% no-repeat; }
   .page .content.category .item.category, .page .content.category .item.leaf-name, .page .content.page_tree .item.category, .page .content.page_tree .item.leaf-name {
     cursor: pointer; }
+  .page .content.category .item:first-child, .page .content.category .category:first-child, .page .content.page_tree .item:first-child, .page .content.page_tree .category:first-child {
+    border-top: none; }
   .page .content.category .c0, .page .content.category .c1, .page .content.page_tree .c0, .page .content.page_tree .c1 {
     border-top: 1px solid #d2d2d2; }
-  .page .content.category .first, .page .content.page_tree .first {
-    border-top: none; }
   .page .content.category .divider, .page .content.page_tree .divider {
     height: 5px;
     border-top: 1px solid #b3b3b3;

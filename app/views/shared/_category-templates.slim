@@ -182,29 +182,29 @@ script.locations-item-dialog(type="text/template")
 / ===========================
 / = Specific Category Items =
 / ===========================
-script.menu-item
-  .item class="{{ cycle }} <%if(order==0){print('first');}%>"
+script.menu-item type="text/template"
+  .item class="{{ cycle }}"
     .name {{ item.name }}
     .price {{ item.price }}
     .clearfix
     .desc {{ item.desc }}
 
-script.services-item
-  .item class="{{ cycle }} <%if(order==0){print('first');}%>"
+script.services-item type="text/template"
+  .item class="{{ cycle }}"
     .name {{ item.name }}
     .price {{ item.price }}
     .clearfix
     .desc {{ item.desc }}
 
-script.products-item
-  .item class="{{ cycle }} <%if(order==0){print('first');}%>"
+script.products-item type="text/template"
+  .item class="{{ cycle }}"
     .name {{ item.name }}
     .price {{ item.price }}
     .clearfix
     .desc {{ item.desc }}
 
-script.property-listings-item
-  .item class="{{ cycle }} <%if(order==0){print('first');}%>"
+script.property-listings-item type="text/template"
+  .item class="{{ cycle }}"
     .name.long {{ item.name }}
     .clearfix
     div {{ item.price }}
@@ -225,8 +225,8 @@ script.property-listings-item
     
     .desc.long {{ item.desc }}
 
-script.locations-item
-  .item class="{{ cycle }} <%if(order==0){print('first');}%>"
+script.locations-item type="text/template"
+  .item class="{{ cycle }}"
     .name.long {{ item.name }}
     .clearfix
     div
