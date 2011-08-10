@@ -11,7 +11,7 @@
       dateInput.datepicker({
         onSelect: function () { self.checkForChanges({ target:dateInput }); }
       });
-    },
+    }
   });
   
 })(jQuery);
