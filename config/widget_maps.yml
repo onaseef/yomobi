@@ -403,7 +403,7 @@ docs:
       - keep-me-informed
   -
     types:
-      - Heath / Medical / Pharmacy
+      - Health / Medical / Pharmacy
     widgets:
       - about-us
       - call-us
