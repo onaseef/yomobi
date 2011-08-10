@@ -13,7 +13,7 @@
 
 div.wysiwyg ul.toolbar {
   border-bottom: 0px !important;
-  width: 100% !important; }
+  width: 95% !important; }
 
 #sidebar {
   float: left;
@@ -185,11 +185,38 @@ div.wysiwyg ul.toolbar {
       height: 64px;
       background: no-repeat; }
     #builder .widget-editor .header .help-text {
-      padding: 0 20px 0 64px;
-      margin-top: 3px; }
-  #builder .widget-editor .header.edit-tab-bar .help-text, #builder .widget-editor .header.edit-tab-bar .widget-name, #builder .widget-editor .header.edit-settings .help-text, #builder .widget-editor .header.edit-settings .widget-name {
+      position: relative;
+      top: 4px; }
+  #builder .widget-editor .header.edit-tab-bar .help-text, #builder .widget-editor .header.edit-settings .help-text {
     padding-left: 0;
     cursor: auto; }
+  #builder .widget-editor .widget-name {
+    padding: 2px 0px 2px 0px;
+    font-size: 1.75em;
+    word-wrap: break-word; }
+    #builder .widget-editor .widget-name .change-label {
+      display: none;
+      padding-left: 8px;
+      color: #ff530d;
+      font-size: 0.6em; }
+    #builder .widget-editor .widget-name .help-bubble {
+      float: right; }
+    #builder .widget-editor .widget-name.editable:hover {
+      background: #d8dfea;
+      cursor: pointer; }
+      #builder .widget-editor .widget-name.editable:hover .change-label {
+        display: inline; }
+  #builder .widget-editor .widget-name-edit {
+    display: none;
+    position: relative;
+    left: 4px; }
+    #builder .widget-editor .widget-name-edit input[type=text] {
+      font-size: 1.5em;
+      width: 250px;
+      margin-bottom: 0px;
+      margin-left: -2px;
+      padding-top: 2px;
+      padding-bottom: 2px; }
   #builder .widget-editor .wtab h2 {
     font-size: 16px;
     position: relative;
@@ -205,7 +232,7 @@ div.wysiwyg ul.toolbar {
   #builder .widget-editor .logo {
     margin: 10px 0; }
   #builder .widget-editor .edit-area {
-    padding: 20px 0;
+    padding: 6px 0;
     margin: 0 auto; }
   #builder .widget-editor .action-bar {
     padding: 12px 0 0;
@@ -226,30 +253,12 @@ div.wysiwyg ul.toolbar {
     display: none;
     float: right;
     margin: 4px 6px 0 0; }
-  #builder .widget-editor .widget-name {
-    padding: 0 0 0 64px;
-    font-size: 1.75em;
-    word-wrap: break-word; }
-    #builder .widget-editor .widget-name .change-label {
-      display: none;
-      padding-left: 8px;
-      color: #ff530d;
-      font-size: 0.6em; }
-    #builder .widget-editor .widget-name .help-bubble {
-      float: right; }
   #builder .widget-editor p.help-text .dot, #builder .widget-editor p.help-text .rename-link {
     display: none; }
   #builder .widget-editor p.help-text.editable .dot, #builder .widget-editor p.help-text.editable .rename-link {
     display: inline; }
-  #builder .widget-editor .widget-name-edit {
-    display: none;
-    position: relative;
-    left: 4px; }
-    #builder .widget-editor .widget-name-edit input[type=text] {
-      font-size: 1.5em;
-      width: 250px; }
 
-#builder .panel {
+#builder .follower-panel {
   padding: 0 0 10px 10px; }
 
 #emulator-wrapper {
@@ -344,6 +353,9 @@ div.wysiwyg ul.toolbar {
     vertical-align: top; }
   #builder .edit-area.edit-settings .logo {
     margin: 3px 0px; }
+
+.widget-editor .edit-area label {
+  white-space: normal; }
 
 #builder .edit-area.hours .double-time {
   margin-bottom: 10px; }
