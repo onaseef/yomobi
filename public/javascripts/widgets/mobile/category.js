@@ -75,6 +75,16 @@
       _.each(newStack, function (e) { catStack.push(e); });
       return direction;
     },
+
+    popPage: function () {
+      var catStack = this.widget.catStack;
+      if (catStack.length === 0)
+        mapp.goHome();
+      else {
+        catStack.pop();
+        mapp.goToPage( this.widget.get('name'), unescape(catStack.join('/')) );
+      }
+    },
     
     onGoHome: function () {
       // directly empty instead of setting to empty array for builder purposes

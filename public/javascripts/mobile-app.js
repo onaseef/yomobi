@@ -119,7 +119,7 @@
   MobileAppController = Backbone.Controller.extend({
 
     routes: {
-      '':                       'home',
+      '':                   'home',
       'page/:widget':           'viewWidgetByName',
       'page/:widget/*subpage':  'viewWidgetByName'
     },
@@ -180,6 +180,8 @@
       this.homeView.showInvalidWidgets = options.showInvalidWidgets || false;
 
       this.scrollElem = options.scrollElem || $(window);
+
+      this.isDesktop = window.location.href.match(/_d\=1/);
       
       _.bindAll(this, 'render');
       this.widgets.bind('refresh', this.render);
@@ -198,7 +200,15 @@
     },
     
     goBack: function () {
-      history.go(-1);
+      var widget = mapp.currentWidget;
+      if (widget.get('wtype') === 'category' ||
+          widget.get('wtype') === 'page_tree'
+      ) {
+        widget.pageView.popPage();
+      }
+      else {
+        mapp.goHome();
+      }
     },
     
     onWidgetTabClick: function (e) {
@@ -270,7 +280,9 @@
     
     goToPage: function (widgetName,subpage) {
       subpage = subpage ? '/' + subpage : '';
-      window.location.href = "#page/"+widgetName + subpage;
+      // window.location.href = "#page/"+widgetName + subpage;
+      router.saveLocation("#page/"+widgetName + subpage);
+      router.viewWidgetByName(widgetName, subpage);
     },
     
     goHome: function () {
@@ -285,6 +297,8 @@
         }
         this.pageLevel = 1;
         mapp.transition('back');
+        router.saveLocation('');
+
         this.currentWidget.pageView.onGoHome();
         delete this.currentWidget;
       }
@@ -320,6 +334,7 @@
 
         m && activePage.css('visibility','visible');
         // if (delta === -1) setTimeout(function () { self.scrollPop(); },m ? 500 : 0);
+        if (self.isDesktop) self.scrollElem.scrollTop(0);
 
         util.release('pageTransition');
         
