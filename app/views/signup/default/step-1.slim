@@ -25,8 +25,10 @@
       p.error Name is already taken?
     
     .site-url
-      span http://www.yomobi.com/
-      input type="text" value="#{@data['site_url'] || 'my-site-name'}" name="step_data[site_url]"
+      span.lfloat http://www.yomobi.com/
+      .site-url-input-wrap
+        input type="text" value="#{@data['site_url'] || 'my-site-name'}" name="step_data[site_url]"
+      .clearfix
     
     hr
     h3 Tell your visitors who you are (optional):

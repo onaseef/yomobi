@@ -264,7 +264,11 @@ label {
   #account-setup-box .site-url span {
     font-size: 1.5em; }
   #account-setup-box .site-url input {
-    width: 221px; }
+    width: 221px;
+    margin: 0; }
+  #account-setup-box .site-url .site-url-input-wrap {
+    padding: 0 0 0 2px;
+    float: left; }
   #account-setup-box a.skip-link {
     padding: 4px 10px 0 0; }
   #account-setup-box td.logo-preview {

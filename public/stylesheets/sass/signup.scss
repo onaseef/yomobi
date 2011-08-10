@@ -297,7 +297,14 @@ label {
     span {
       font-size: 1.5em; }
     input {
-      width: 221px; } }
+      width: 221px;
+      margin: 0;
+    }
+    .site-url-input-wrap {
+      padding: 0 0 0 2px;
+      float: left;
+    }
+  }
   a.skip-link {
     padding: 4px 10px 0 0; }
   td.logo-preview {
