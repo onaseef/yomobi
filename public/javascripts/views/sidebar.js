@@ -9,7 +9,6 @@
     widgetTemplate: util.getTemplate('sidebar-widget'),
 
     events: {
-      'click #preview-mobile-site': 'previewMobileSite',
       'click .edit-tab-bar': 'tellBappToEditTabBar',
       'click .edit-settings': 'tellBappToEditSettings',
       'click .edit-keywords': 'tellBappToEditKeywords',
@@ -131,15 +130,6 @@
         found = util.newWidget(found.attributes);
       }
       return found;
-    },
-
-    previewMobileSite: function (e) {
-      e.preventDefault();
-      if (this.winRef && !this.winRef.closed) { this.winRef.close() };
-
-      var emulatorWidth = ($('#mobile-container').height() < 480) ? 320 : 320+util.scrollbarWidth()+5;
-      this.winRef = window.open(e.target.href,'Your_Mobile_Website',
-        'width=' + emulatorWidth + ',height=480,scrollbars=yes');
     },
 
     tellBappToEditTabBar: function () { bapp.startEditingPanel('tabBar'); },
