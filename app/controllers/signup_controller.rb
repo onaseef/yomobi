@@ -6,7 +6,10 @@ class SignupController < ApplicationController
   def account_setup
     @step_num = params[:step_num]
     return redirect_to account_setup_path(1) if current_user.company.nil? && @step_num.to_i >= 2
-    return redirect_to builder_main_path if @step_num.to_i >= 4
+
+    if @step_num.to_i >= 4 || !current_user.company.nil? && @step_num.to_i == 1
+      return redirect_to builder_main_path
+    end
     
     @errors = {}; @data = {}; @company = current_user.company || Company.new
     return render "signup/default/step-#{@step_num}" if params[:step_data].nil?
