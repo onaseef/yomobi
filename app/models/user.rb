@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :company_type_id,
                   :first_name, :last_name
 
+  validates_presence_of :first_name, :last_name
+
   before_save do
     self.email.downcase! if self.email
     self.email.strip! if self.email

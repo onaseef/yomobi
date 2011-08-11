@@ -7,7 +7,7 @@
       h3 There was problem with your request:
       ul
         - @user.errors.each do |name,reason|
-          li = "#{name.capitalize} #{reason}"
+          li = "#{name.to_s.humanize.capitalize} #{reason}"
       p
         | Already a Member? 
         a href=session_path(:user) Click here to sign in
