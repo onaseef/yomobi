@@ -1,4 +1,4 @@
-= form_for @user, :url => registration_path(:user) do |f|
+= form_for @user, :url => registration_path(:user), :autocomplete => "off" do |f|
 
   table
     tbody
@@ -16,17 +16,17 @@
         td
           label Email:
         td
-          = f.text_field :email
+          = f.text_field :email, :autocomplete => "off"
       tr
         td
           label Password:
         td
-          = f.password_field :password
+          = f.password_field :password, :autocomplete => "off"
       tr
         td
           label Re-enter Password:
         td
-          = f.password_field :password_confirmation
+          = f.password_field :password_confirmation, :autocomplete => "off"
       tr
         td
           label Site Type:
