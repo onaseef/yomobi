@@ -8,7 +8,7 @@ class SignupController < ApplicationController
     return redirect_to account_setup_path(1) if current_user.company.nil? && @step_num.to_i >= 2
 
     if @step_num.to_i >= 4 || !current_user.company.nil? && @step_num.to_i == 1
-      return redirect_to builder_main_path
+      return redirect_to builder_main_path, :notice => 'Your account has already been setup.'
     end
     
     @errors = {}; @data = {}; @company = current_user.company || Company.new
