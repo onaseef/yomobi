@@ -150,7 +150,7 @@ DEPENDENCIES
   aritcaptcha!
   aws-s3
   couchrest (~> 1.1)
-  devise (~> 1.3)
+  devise (~> 1.4)
   heroku
   json
   paperclip!
