@@ -9,7 +9,7 @@ module ApplicationHelper
   end
   
   def company_types
-    CompanyType.all.map {|t| [t.name, t[:id]]}
+    CompanyType.all.map {|t| [t.name, t[:id]]}.sort!
   end
 
   def carrier_names
