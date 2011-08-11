@@ -18,6 +18,7 @@ class HomeController < ApplicationController
 
   def resend_confirmation
     Devise::Mailer.confirmation_instructions(current_user).deliver
+    flash[:notice] = 'The confirmation email was resent. Please check your mailbox.'
     return redirect_to confirm_account_path
   end
   
