@@ -72,7 +72,7 @@
         ;
         $elem.find('.day-enabled input').prop('checked',isEnabled);
       });
-      this.el.find('.double-time input').prop('checked',isDoubleTime);
+      this.el.find('.double-time-input input').prop('checked',isDoubleTime);
       this.el.find('.input-area').toggleClass('double-time',isDoubleTime);
     },
     
@@ -85,7 +85,7 @@
     },
     
     toggleDoubleTime: function () {
-      var isDoubleTime = this.el.find('.double-time:first input').is(':checked');
+      var isDoubleTime = this.el.find('.double-time-input input').is(':checked');
       this.el.find('.input-area').toggleClass('double-time',isDoubleTime);
     },
 
@@ -103,7 +103,7 @@
         ;
         weekHours[day] = hours.concat([false,isEnabled]);
       });
-      var isDoubleTime = this.el.find('.double-time:first input').is(':checked');
+      var isDoubleTime = this.el.find('.double-time-input input').is(':checked');
 
       return { hours:weekHours, doubleTime:isDoubleTime };
     }
