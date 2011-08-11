@@ -247,6 +247,10 @@
 "Zambia",
 "Zimbabwe"].each do |country| %>
 
-  <option value="<%= country %>"><%= country %></option>
+  <% if country == "United States of America" %>
+    <option value="<%= country %>" selected="selected"><%= country %></option>
+  <% else %>
+    <option value="<%= country %>"><%= country %></option>
+  <% end %>
 
 <% end %>
