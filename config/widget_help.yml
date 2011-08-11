@@ -97,3 +97,8 @@ helpText:
     help: <p>Add a link to a video on your mobile site.</p>
     subHelp: video
 
+hoverHelpText:
+  tabBar: "<p>Click here to edit the <b>tab bar</b>.</p>"
+
+  companyLogo: "<p>Click here to change your <b>site photo</b>.</p>"
+  companyName: "<p>Click here to change your <b>site title</b>.</p>"

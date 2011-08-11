@@ -2,6 +2,7 @@
 
   var pluckPrettyName = function (w) { return util.prettifyName(w.get('name')) };
   var pluckName = function (w) { return w.get('name'); };
+
   var unsavedChangesText = "You have unsaved changes. Click OK to go back and save changes. Click Cancel to discard your changes.";
 
   // ----------------------------
@@ -75,9 +76,12 @@
   window.MobileAppView = window.MobileAppView.extend({
     
     events: {
-      'click .back-btn':      'goBack',
-      'click .go-home':       'goHome',
-      'click .wtab':          'onWidgetTabClick'
+      'click .back-btn':            'goBack',
+      'click .go-home':             'goHome',
+      'click .wtab':                'onWidgetTabClick',
+      'click .tab-bar':             'editTabBar',
+      'click .company-info .name':  'editSettings',
+      'click .company-info .logo':  'editSettings'
     },
 
     goBack: function () {
@@ -134,7 +138,10 @@
       var newHeight = superObj.resize.call(this,height);
       var emulatorWidth = 320 + util.scrollbarWidth();
       $('#emulator').width(emulatorWidth);
-    }
+    },
+
+    editSettings: function () { bapp.startEditingPanel('settings'); },
+    editTabBar:   function () { bapp.startEditingPanel('tabBar'); }
   });
   
   // ----------------------------------
@@ -180,6 +187,8 @@
         showInvalidWidgets: true,
         scrollElem: $('#mobile-scroller')
       });
+
+      mapp.bind('render', this.bindHoverTooltips);
       
       mapp.widgetsInUse.bind('add',mapp.homeView.render);
       mapp.widgetsInUse.bind('remove',mapp.homeView.render);
@@ -200,6 +209,7 @@
         self.worderDoc = worderDoc;
         mapp.worder = worderDoc.worder;
         mapp.wtabs  = worderDoc.wtabs;
+        mapp.render();
         
         // now fetch the widgets themselves
         mapp.widgets.fetch({
@@ -413,6 +423,14 @@ util.log('WORDER SYNC CALLBACK',callback);
         mapp.goHome();
       }
       this[panelType + 'Editor'].startEditing();
+    },
+
+    bindHoverTooltips: function () {
+      $('#top-bar .company-info')
+        .find('.logo').simpletooltip(bhelp.hoverHelpText.companyLogo, 'help').end()
+        .find('.name').simpletooltip(bhelp.hoverHelpText.companyName, 'help').end()
+      ;
+      $('#top-bar .tab-bar').simpletooltip(bhelp.hoverHelpText.tabBar, 'help');
     }
     
   });

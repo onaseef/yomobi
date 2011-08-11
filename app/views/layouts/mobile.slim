@@ -38,6 +38,8 @@ html lang="en-US"
         mapp.fetchWorder(function (worderDoc) {
           mapp.worder = worderDoc.worder;
           mapp.wtabs  = worderDoc.wtabs;
+          mapp.render();
+
           mapp.widgets.fetch({
             success: function () {
               mapp.updateWtabs(true);

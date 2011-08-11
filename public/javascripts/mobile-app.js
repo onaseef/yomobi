@@ -184,19 +184,19 @@
       this.isDesktop = window.location.href.match(/_d\=1/);
       
       _.bindAll(this, 'render');
-      this.widgets.bind('refresh', this.render);
     },
     
     render: function () {
       util.log('app render');
       $('#top-bar .company-info').html(this.headerTemplate({
-        // TODO: use stored icon from couch instead
         name: g.db_name,
         prettyName: g.company
       }))
       .find('img').load(function (e,elem) {
         g.topBarHeight = Math.max(g.topBarHeight,$('#top-bar').height());
       });
+
+      this.trigger('render');
     },
     
     goBack: function () {

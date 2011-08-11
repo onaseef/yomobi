@@ -548,3 +548,10 @@ div.wysiwyg ul.toolbar {
   text-align: center;
   font-size: 14px;
   font-family: Arial, Helvetica, sans-serif; }
+
+// override mobile styling
+#mobile-container {
+  .company-info {
+    .name, .logo { cursor: pointer; }
+  }
+}
