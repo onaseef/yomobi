@@ -12,11 +12,8 @@
     events: {
       'click input[type=submit]': 'validateInput',
       'click .read-only, textarea': 'selectText',
-      'keyup .read-only, textarea': 'preventChange'
-    },
-    
-    initialize: function () {
-      
+      'keyup .read-only, textarea': 'preventChange',
+      'change input[type=file]':  'enableUploadButton'
     },
     
     validateInput: function () {
@@ -55,6 +52,10 @@
     
     stopEditing: function () {
       this.el.html(bapp.idleTemplate());
+    },
+
+    enableUploadButton: function () {
+      this.el.find('input[value=Upload]').prop('disabled',false);
     }
     
   });
