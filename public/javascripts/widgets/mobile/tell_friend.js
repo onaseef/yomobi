@@ -25,7 +25,7 @@
   function prettyErrorMsg (serverResponse) {
     var msg = '<ul>';
     if (serverResponse === "bad message")
-      msg += '<li>You must fill out all three fields</li>';
+      msg += '<li>Please complete all fields before sending.</li>';
     else if (serverResponse === "bad email to")
       msg += '<li>Invalid email. Please recheck your friend\'s email</li>';
     else if (serverResponse === "bad email from")
