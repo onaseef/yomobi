@@ -164,6 +164,11 @@
       this.el.html( this.template(editAreaData) );
       this.delegateEvents(this.extendedEvents);
 
+      // set tabbing order
+      this.el.find('input,textarea,select').each(function (idx,elem) {
+        elem.setAttribute('tabindex', idx+1);
+      });
+
       widget.homeView.highlight(true);
 
       if (!widget.get('singleton'))

@@ -35,7 +35,7 @@
 
     .action-bar
       | <% if (!_maybe.hideSaveButton) { %>
-      .accept-btn.main-btn
+      .accept-btn.main-btn tabindex="100"
         .content Save Changes
       | <% } %>
       .checkmark
@@ -538,23 +538,23 @@
 
   script.gmap-edit-area(type="text/template")
     label Business Name:
-    input(name="bname" type="text" value="{{ _maybe.bname }}")
+    input name="bname" type="text" value="{{ _maybe.bname }}"
     br
     .hr
     label Address 1*:
-    input(name="addr1" type="text" value="{{ _maybe.addr1 }}")
+    input name="addr1" type="text" value="{{ _maybe.addr1 }}"
     br
     label Address 2:
-    input(name="addr2" type="text" value="{{ _maybe.addr2 }}")
+    input name="addr2" type="text" value="{{ _maybe.addr2 }}"
     br
     label City*:
-    input(name="city" type="text" value="{{ _maybe.city }}")
+    input name="city" type="text" value="{{ _maybe.city }}"
     br
     label State / Province / Territory:
-    input(name="state" type="text" value="{{ _maybe.state }}")
+    input name="state" type="text" value="{{ _maybe.state }}"
     br
     label Zip / Postal Code:
-    input(name="zip" type="text" value="{{ _maybe.zip }}")
+    input name="zip" type="text" value="{{ _maybe.zip }}"
     br
     label Country:
     br
