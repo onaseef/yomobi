@@ -1,6 +1,7 @@
 (function ($) {
   
   var singletonInUseTooltip = "You may only use <b>one</b> of this type of widget at a time.<br /><br />This widget is already in your YoMobi mobile website.";
+  var unsavedChangesText = "You have unsaved changes. Click OK to go back and save changes. Click Cancel to discard your changes.";
 
   SidebarView = Backbone.View.extend({
     
@@ -99,7 +100,7 @@
       
       var editor = bapp.currentEditor;
       if (editor && editor.hasChanges()) {
-        if (!confirm(unsavedChangesText)) {
+        if (confirm(unsavedChangesText)) {
           $('#builder .drophover-overlay').hide();
           return false;
         }
