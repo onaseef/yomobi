@@ -20,6 +20,7 @@ class HomeController < ApplicationController
     if current_user.confirmed?
       flash.now[:notice] = 'Your account has already been confirmed'
       @already_confirmed = true
+      @email = current_user.email
       return render 'home/confirm_account'
     end
 
