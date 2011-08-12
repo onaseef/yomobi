@@ -4,31 +4,47 @@
     / .divider
 
     = form_for @user, :url => update_account_path do |f|
-      h3 Current Password:
+      h3 Current Password*:
       = f.password_field :current_password
       .divider
       
       h3 Contact Information:
       br
 
-      label Email:
-      = f.text_field :email
-
-      label First Name:
-      = f.text_field :first_name
-
-      label Last Name:
-      = f.text_field :last_name
-      .divider
+      table
+        tbody
+          tr
+            td
+              label First Name:
+            td
+              = f.text_field :first_name
+          tr
+            td
+              label Last Name:
+            td
+              = f.text_field :last_name
+          tr
+            td
+              label Email:
+            td
+              = f.text_field :email, :autocomplete => "off"
 
       h3 Change Password (optional):
       br
 
-      label New Password:
-      = f.password_field :password
-
-      label Re-enter New Password:
-      = f.password_field :password_confirmation
+      table
+        tbody
+          tr
+            td
+              label New Password:
+            td
+              = f.password_field :password
+          tr
+            td
+              label Re-enter New Password:
+            td
+              = f.password_field :password_confirmation
+      
 
       input type="submit" value="Save Changes"
       - if flash[:notice] || flash[:alert]
