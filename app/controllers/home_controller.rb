@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   
   before_filter :redirect_if_signed_in, :only => :index
   before_filter :redirect_if_signed_out, :only => [:confirm_account, :resend_confirmation]
-  before_filter :redirect_if_confirmed, :only => [:confirm_account, :resend_confirmation]
+  before_filter :redirect_if_confirmed, :only => [:confirm_account]
   
   def index
     prevent_caching
@@ -17,6 +17,12 @@ class HomeController < ApplicationController
   end
 
   def resend_confirmation
+    if current_user.confirmed?
+      flash.now[:notice] = 'Your account has already been confirmed'
+      @already_confirmed = true
+      return render 'home/confirm_account'
+    end
+
     Devise::Mailer.confirmation_instructions(current_user).deliver
     flash[:notice] = 'The confirmation email was resent. Please check your mailbox.'
     return redirect_to confirm_account_path

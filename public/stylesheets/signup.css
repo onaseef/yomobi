@@ -275,6 +275,8 @@ label {
     width: 125px;
     height: 100px;
     text-align: center; }
+  #account-setup-box .already-confirmed {
+    font-size: 1.5em; }
 
 #privacy, #terms {
   margin: 40px; }

@@ -310,7 +310,11 @@ label {
   td.logo-preview {
     width: 125px;
     height: 100px;
-    text-align: center; } }
+    text-align: center; }
+  
+  .already-confirmed {
+    font-size: 1.5em; }
+}
 
 #privacy, #terms {
   margin: 40px;

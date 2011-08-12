@@ -1,6 +1,7 @@
 class SignupController < ApplicationController
   require 'couch_docs'
   
+  before_filter :authenticate_user!
   before_filter :redirect_unless_confirmed
 
   def account_setup

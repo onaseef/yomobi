@@ -11,3 +11,7 @@
         br
         br
         p.success = flash[:notice]
+      - if @already_confirmed
+        .divider
+        erb:
+          <p class="already-confirmed">Please <a href="/builder/main">click here</a> to begin building your site.</p>
