@@ -2,6 +2,7 @@ Yomobi::Application.routes.draw do
 
   get 'privacy' => 'home#privacy', :as => :privacy
   get 'terms' => 'home#terms', :as => :terms
+  get 'about' => 'home#about', :as => :about
 
   get 'home/index', :as => :account_signup
   get 'confirm' => 'home#confirm_account', :as => :confirm_account
