@@ -278,9 +278,9 @@
   
   script.call_back-page(type="text/template")
     .input-wrap
-      p Leave us a message:
+      p Enter your call back information:
       = form_tag "/#{@company.db_name}/call_back/submit", :method => 'post' do
-        label Your Mobile Number:
+        label Your Phone Number:
         br
         input type="text" name="phone"
         br
