@@ -28,7 +28,7 @@
           - else
             = image_tag 'no-logo.png'
         td
-          = file_field :step_data, :logo
+          = file_field :step_data, :logo, :accept => "image/*"
           input type="submit" value="Upload" disabled="disabled"
           .load-box.rfloat.hide
             span.success Working...
