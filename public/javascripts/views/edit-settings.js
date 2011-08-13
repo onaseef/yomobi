@@ -13,7 +13,8 @@
       'click input[type=submit]': 'validateInput',
       'click .read-only, textarea': 'selectText',
       'keyup .read-only, textarea': 'preventChange',
-      'change input[type=file]':  'enableUploadButton'
+      'change input[type=file]':  'enableUploadButton',
+      'click input[type=file]':  'enableUploadButton'
     },
     
     validateInput: function () {
@@ -55,7 +56,15 @@
     },
 
     enableUploadButton: function () {
-      this.el.find('input[value=Upload]').prop('disabled',false);
+      if ($.browser.msie) {
+        var self = this;
+        setTimeout(function () {
+          self.el.find('input[value=Upload]').prop('disabled',false);
+        }, 0);
+      }
+      else {
+        this.el.find('input[value=Upload]').prop('disabled',false);
+      }
     }
     
   });

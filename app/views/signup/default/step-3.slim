@@ -2,6 +2,18 @@
 
 - content_for :js do
   = javascript_include_tag 'send_panel'
+  javascript:
+    var enableUploadButton = function () {
+      $('input[value=Upload]').prop('disabled',false);
+    };
+    if ($.browser.msie) {
+      $('input[type=file]').click(function () {
+        setTimeout(enableUploadButton,0);
+      });
+    }
+    else {
+      $('input[type=file]').change(enableUploadButton);
+    }
 
 = form_tag account_setup_path(3), :multipart => true, :id => 'account-setup-box', :class => 'center-box' do
   .content
@@ -16,7 +28,7 @@
             = image_tag 'no-logo.png'
         td
           = file_field :step_data, :logo
-          input type="submit" value="Upload"
+          input type="submit" value="Upload" disabled="disabled"
           .load-box.rfloat.hide
             span.success Working...
             div.loader.rfloat style="margin:2px 4px 0 5px"
