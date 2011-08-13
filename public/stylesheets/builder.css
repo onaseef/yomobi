@@ -217,18 +217,20 @@ div.wysiwyg ul.toolbar {
       margin-left: -2px;
       padding-top: 2px;
       padding-bottom: 2px; }
-  #builder .widget-editor .wtab h2 {
-    font-size: 16px;
-    position: relative;
-    top: -17px;
-    left: 62px;
-    margin: 0px 0px 0px 0px; }
-  #builder .widget-editor .wtab h3 {
-    margin: 0px 0px 0px 0px; }
-  #builder .widget-editor .wtab select {
-    position: relative;
-    top: -20px;
-    left: 60px; }
+  #builder .widget-editor .wtab {
+    height: 35px; }
+    #builder .widget-editor .wtab h2 {
+      font-size: 16px;
+      float: left;
+      margin: 0px 0px 0px 0px; }
+    #builder .widget-editor .wtab h3 {
+      float: left;
+      clear: left;
+      margin: 0px 10px 0px 0px; }
+    #builder .widget-editor .wtab select {
+      float: left;
+      position: relative;
+      top: -3px; }
   #builder .widget-editor .logo {
     margin: 10px 0; }
   #builder .widget-editor .edit-area {
