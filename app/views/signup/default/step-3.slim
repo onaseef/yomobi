@@ -3,17 +3,14 @@
 - content_for :js do
   = javascript_include_tag 'send_panel'
   javascript:
-    var enableUploadButton = function () {
-      $('input[value=Upload]').prop('disabled',false);
-    };
     if ($.browser.msie) {
       $('input[type=file]').click(function () {
-        setTimeout(enableUploadButton,0);
+        setTimeout(util.enableFileUploadButton, 0);
       });
       $('input:file').keypress(function () { return false; });
     }
     else {
-      $('input[type=file]').change(enableUploadButton);
+      $('input[type=file]').change(util.enableFileUploadButton);
     }
 
 = form_tag account_setup_path(3), :multipart => true, :id => 'account-setup-box', :class => 'center-box' do

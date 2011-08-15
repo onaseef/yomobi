@@ -650,6 +650,23 @@ var util = {
       if (elem.innerHTML)
         util._stripAllStyles( $(elem).children() );
     });
+  },
+
+  enableFileUploadButton: function () {
+    if ($.browser.msie) {
+      setTimeout(util.enableFileUploadButton, 0);
+    }
+    else {
+      util._enableFileUploadButton();
+    }
+  },
+  _enableFileUploadButton: function () {
+    var fileInput = $('input[type=file]')
+      , file = fileInput.val()
+    ;
+    if (file && file.length > 0) {
+      $('input[value=Upload]').prop('disabled',false);
+    }
   }
   
 }

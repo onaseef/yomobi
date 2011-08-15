@@ -57,17 +57,7 @@
       this.el.html(bapp.idleTemplate());
     },
 
-    enableUploadButton: function () {
-      if ($.browser.msie) {
-        var self = this;
-        setTimeout(function () {
-          self.el.find('input[value=Upload]').prop('disabled',false);
-        }, 0);
-      }
-      else {
-        this.el.find('input[value=Upload]').prop('disabled',false);
-      }
-    }
+    enableUploadButton: util.enableFileUploadButton
     
   });
   
