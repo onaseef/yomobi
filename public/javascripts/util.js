@@ -615,6 +615,7 @@ var util = {
         .find('.input-wrap').hide().end()
         .find('.thanks-wrap').show().end()
       ;
+      $(window).scrollTop(0);
     })
     .error(function (e,textStatus,errorThrown) {
       var msg = self.prettyErrorMsg($.parseJSON(e.responseText))

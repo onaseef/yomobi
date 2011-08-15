@@ -24,38 +24,8 @@
       _.bindAll(this,'submit');
     },
     
-    submit: function () {
-      var self = this
-        , form = this.el.find('form')
-        , url  = form.attr('action')
-        , params = form.serialize()
-        , method = form.attr('method')
-      ;
-
-      $.post(url,params,function (data) {
-        util.log('data',data);
-        self.el
-          .find('.input-wrap').hide().end()
-          .find('.thanks-wrap').show().end()
-        ;
-      })
-      .error(function (e,textStatus,errorThrown) {
-        var msg = prettyErrorMsg($.parseJSON(e.responseText))
-        self.el.find('.response').html('ERROR: '+msg);
-        mapp.resize();
-      });
-      
-      return false;
-    },
-
-    showError: function (name,reason) {
-      // this.el.find('form .error').remove();
-      // var elem = this.el.find('form [name='+name+']');
-      // elem.before( $('<p>').addClass('error').text(reason) );
-      var msg = prettyErrorMsg($.parseJSON(e.responseText))
-      self.el.find('.response').html('ERROR: '+msg);
-      mapp.resize();
-    },
+    prettyErrorMsg: prettyErrorMsg,
+    submit: util.widgetPageViewSubmit,
 
     validateParams: function (params) {
       params.phone = params.phone.replace(/[^0-9]+/g,'');
