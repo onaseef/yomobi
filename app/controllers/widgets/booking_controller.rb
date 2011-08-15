@@ -3,7 +3,7 @@ class Widgets::BookingController < ApplicationController
   def mobile_submit
     unless params[:name].present? && params[:phone].present? &&
            params[:time].present? && params[:time].length == 8 &&
-           params[:date][:m].present? && params[:date][:d] && params[:data][:y]
+           params[:date_m].present? && params[:date_d].present? && params[:date_y].present?
       return error('bad message')
     end
 
@@ -13,11 +13,7 @@ class Widgets::BookingController < ApplicationController
     phone = params[:phone]
     return error('bad phone') unless phone_valid? phone
 
-    t = params[:time]
-    time = "#{t[:h]}:#{t[:m]}#{t[:p]}"
-
-    d = params[:date]
-    date = "#{d[:m]}/#{d[:d]}/#{d[:y]}"
+    date = "#{params[:date_m]}/#{params[:date_d]}/#{params[:date_y]}"
 
     UserMailer.booking_email({
       :to => company.booking_email || company.user.email,
@@ -26,7 +22,7 @@ class Widgets::BookingController < ApplicationController
       :name => params[:name],
       :phone => params[:phone],
       :party_size => params[:party_size],
-      :time => time,
+      :time => params[:time],
       :date => date,
       :company_name => company.name,
       :company_mobile_url => company.mobile_url

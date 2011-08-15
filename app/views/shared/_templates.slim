@@ -339,11 +339,11 @@
         br
         label Date: 
         br
-        = select_tag 'date[m]', options_for_select(1..12,Date.today.month)
+        = select_tag 'date_m', options_for_select(1..12,Date.today.month)
         | &nbsp;&frasl;&nbsp;
-        = select_tag 'date[d]', options_for_select(1..31,Date.today.day)
+        = select_tag 'date_d', options_for_select(1..31,Date.today.day)
         | &nbsp;&frasl;&nbsp;
-        = select_tag 'date[y]', options_for_select(2011..2012,Date.today.year)
+        = select_tag 'date_y', options_for_select(2011..2012,Date.today.year)
         br
         p.error.response
         input(type="submit" value="Send")
