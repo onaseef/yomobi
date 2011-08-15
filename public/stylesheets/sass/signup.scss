@@ -17,8 +17,6 @@
     width: $page-width;
     margin: 0 auto; }
   #logo {
-    float: left;
-    width: $sidebar-width - 12px;
     padding: 8px 0 0 40px;
     font-size: 3em; }
   form {
@@ -286,10 +284,21 @@ label {
     margin: 10px 0px 5px 0px; }
   width: 500px;
   textarea, input[type=text], input[type=password] {
-    width: 450px;
     font-size: 1.2em; }
+  #user_current_password {
+    width: 450px;
+  }
+  #user_email, #user_first_name, #user_last_name {
+    width: 375px;
+  }
+  #user_password, #user_password_confirmation {
+    width: 292px;
+  }
   input[type=text], input[type=password] {
     margin-bottom: 10px; }
+  input[type=submit] {
+    margin-top: 16px;
+  }
   textarea {
     height: 7em;
     line-height: 110%; }
@@ -316,6 +325,6 @@ label {
     font-size: 1.5em; }
 }
 
-#privacy, #terms, #about {
+#privacy, #terms {
   margin: 40px;
 }

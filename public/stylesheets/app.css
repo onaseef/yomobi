@@ -162,6 +162,11 @@ p.error {
 p.success {
   color: #008800; }
 
+#logo, #logo:visited {
+  float: left;
+  color: white;
+  text-decoration: none; }
+
 #header.signed-in {
   padding-top: 10px;
   background: #002455;
@@ -170,16 +175,10 @@ p.success {
   #header.signed-in .content {
     width: 1010px;
     margin: 0 auto; }
-  #header.signed-in #logo {
-    float: left;
-    width: 198px;
+  #header.signed-in #logo, #header.signed-in #logo:visited {
+    font-size: 2em;
     padding-left: 12px;
-    color: white;
-    text-decoration: none;
-    font-size: 2em; }
-  #header.signed-in #logo:visited {
-    color: white;
-    text-decoration: none; }
+    width: 198px; }
   #header.signed-in #nav {
     float: left;
     width: 797px;
@@ -273,9 +272,12 @@ p.success {
   border: 1px dashed black; }
 
 #simpleTooltip {
-  padding: 4px;
+  padding: 4px 4px 4px 8px;
   margin: 0;
   border: 1px solid #dd3c10;
+  -o-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
   background: #ffebe8;
   max-width: 225px;
   font-size: 100%;

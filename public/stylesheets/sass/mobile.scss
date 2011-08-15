@@ -72,7 +72,7 @@ a img {
 .back-bar {
   width: 100%;
   padding: 0;
-  margin: 12px 0 0 0;
+  margin: 12px 0 12px 0;
   background: url(/images/ui/bg-back-bar.png) repeat-x;
   color: gray;
   .title {
@@ -288,7 +288,7 @@ a img {
 .page .content.category {
   .name {
     float: left;
-    width: 70%;
+    width: 97%;
     padding-right: 12px;
     font-size: 16px;
     font-weight: bold; }
@@ -296,8 +296,8 @@ a img {
     width: 100%;
     padding: 0 0 8px 0; }
   .price {
-    float: right;
-    width:25%;
+    float: left;
+    width:97%;
     font-size: 16px; }
   .desc {
     width: 97%;

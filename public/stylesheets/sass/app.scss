@@ -184,6 +184,12 @@ p.error {
 p.success {
   color: #008800; }
 
+#logo, #logo:visited {
+  float: left;
+  color: $header-font-color;
+  text-decoration: none;
+}
+
 #header.signed-in {
   padding-top: 10px;
   background: $main-color;
@@ -192,17 +198,10 @@ p.success {
   .content {
     width: $page-width;
     margin: 0 auto; }
-  #logo {
-    float: left;
-    width: $sidebar-width - 12px;
+  #logo, #logo:visited {
+    font-size: 2em;
     padding-left: 12px;
-    color: $header-font-color;
-    text-decoration: none;
-    font-size: 2em; }
-  #logo:visited {
-    color: $header-font-color;
-    text-decoration: none;
-  }
+    width: $sidebar-width - 12; }
   #nav {
     float: left;
     width: $content-width - 2 - 1;
@@ -298,9 +297,12 @@ p.success {
   border: 1px dashed black; }
 
 #simpleTooltip {
-  padding: 4px;
+  padding: 4px 4px 4px 8px;
   margin: 0;
   border: 1px solid #dd3c10;
+  -o-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
   background: #ffebe8;
   max-width: 225px;
   font-size: $font-size-tooltip;
