@@ -1,10 +1,11 @@
 class UserMailer < ActionMailer::Base
   default :from => "\"YoMobi\" <message@yomobi.com>"
 
-  def send_welcome_email(company)
+  def send_welcome_email(user)
+    @mobile_url = user.company.mobile_url
     mail({
-      :subject => "Welcome to YoMobi.com/#{company.db_name}",
-      :to => company.user.email,
+      :subject => "Welcome to YoMobi",
+      :to => user.email,
       :from => 'support@yomobi.com'
     })
   end

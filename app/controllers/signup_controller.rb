@@ -63,7 +63,7 @@ class SignupController < ApplicationController
             end
           end
 
-          UserMailer.send_welcome_email current_user.company
+          UserMailer.send_welcome_email(current_user).deliver
         end
       rescue ActiveRecord::RecordNotUnique
         @errors['site_url'] = 'taken'
