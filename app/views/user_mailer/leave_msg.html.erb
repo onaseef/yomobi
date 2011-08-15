@@ -1,11 +1,18 @@
-Thanks for using YoMobi. A customer has given you feedback using your mobile YoMobi website! Here's what he/she said:
+A visitor to <a href="<%= @params[:company_mobile_url] %>">your YoMobi site</a> has sent you a message:
 <br />
 <br />
 
-| Subject: <%= @params[:customer_subject] %>
+Name: <%= @params[:customer_name] %>
 <br />
-| <%= @params[:customer_feedback] %>
+Subject: <%= @params[:customer_subject] %>
 <br />
 <br />
 
-You can respond to this customer via the email address he/she provided: <%= @params[:customer_email] %>
+Message: <%= @params[:customer_feedback] %>
+<br />
+<br />
+
+Thank You,
+<br />
+<a href="http://yomobi.com">YoMobi</a>
+<br />

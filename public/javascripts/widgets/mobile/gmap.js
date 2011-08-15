@@ -21,9 +21,17 @@
     },
 
     getFullAddress: function () {
-      return [this.get('bname'), this.get('addr1'), this.get('addr2'),
-              this.get('city') + ', ' + this.get('state'),
-              this.get('zip'),   this.get('country')].join(' ');
+      var city_state = _.compact([this.get('city'), this.get('state')]).join(', ');
+
+      var addr = _.compact( [this.get('addr1'), this.get('addr2'),
+                             city_state, this.get('zip')] );
+      if (addr.length === 0)
+        return this.get('bname');
+      else {
+        addr.unshift(this.get('bname'));
+        addr.push(this.get('country'));
+        return addr.join(' ');
+      }
     },
 
     getMapUrl: function (zoomLevel) {

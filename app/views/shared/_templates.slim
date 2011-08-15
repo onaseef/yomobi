@@ -258,8 +258,12 @@
   
   script.leave_msg-page(type="text/template")
     .input-wrap
-      p Leave us a message:
+      p Leave a message:
       = form_tag "/#{@company.db_name}/leave_msg/submit", :method => 'post' do
+        label Your Name:
+        br
+        input type="text" name="name"
+        br
         label Your Email Address:
         br
         input type="text" name="email"
