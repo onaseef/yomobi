@@ -37,6 +37,10 @@ class ApplicationController < ActionController::Base
     ValidatesAsEmailAddress::RFC822::EmailAddress
   end
 
+  def phone_valid?(phone)
+    phone.gsub(/[^0-9]+/,'').length == 10
+  end
+
   # devise
   def after_sign_in_path_for(resource)
     return account_setup_path(1) if resource.company.nil?

@@ -7,7 +7,7 @@ class Widgets::CallBackController < ApplicationController
     company = Company.find_by_db_name params[:company]
 
     return error('bad company') if company.nil?
-    return error('bad phone') if !params[:phone].gsub(/[^0-9]+/,'').present?
+    return error('bad phone') unless phone_valid? params[:phone]
 
     UserMailer.call_back({
       :to => company.call_back_email || company.user.email,

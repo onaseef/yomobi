@@ -30,8 +30,4 @@ class Widgets::BookingController < ApplicationController
     return success :msg => params[:details]
   end
 
-  def phone_valid?(phone)
-    phone.gsub(/[^0-9]+/,'').length == 10
-  end
-
 end
