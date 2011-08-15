@@ -11,11 +11,12 @@ class Widgets::CallBackController < ApplicationController
 
     UserMailer.call_back({
       :to => company.call_back_email || company.user.email,
-      :subject => 'A visitor to your mobile site left you a call back request.',
+      :subject => 'You have a call back request.',
       :from => "\"YoMobi\" <message@yomobi.com>",
       :customer_name => params[:name],
       :customer_phone => params[:phone],
-      :customer_message => params[:message]
+      :customer_message => params[:message],
+      :company_mobile_url => company.mobile_url
     }).deliver
     return success :msg => params[:feedback]
   end
