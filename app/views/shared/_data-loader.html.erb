@@ -10,7 +10,8 @@ window.g = {
   company: "<%=escape_javascript @company.name %>",
   userEmail: "<%=escape_javascript @company.user.email %>",
   keywords: "<%=escape_javascript @company.keywords %>",
-  MAX_CHARS: <%= @max_chars || -1 %>
+  MAX_CHARS: <%= @max_chars || -1 %>,
+  MAX_COMPANY_NAME_LENGTH: <%= MAX_COMPANY_NAME_LENGTH %>
 };
 window.widgetClasses = {};
 window.widgetPages = {};

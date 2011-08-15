@@ -30,9 +30,10 @@ class SignupController < ApplicationController
     
     return unless current_user.company.nil?
 
-    @errors['title'] = true unless data['title'].length >= 2 && data['title'].length < 40
+    @errors['title'] = true unless data['title'].length >= 2 &&
+                                   data['title'].length < MAX_COMPANY_NAME_LENGTH
 
-    if data['site_url'].match(/^[a-z0-9][a-z0-9_\-]{2,40}$/i).nil?
+    if data['site_url'].match(/^[a-z0-9][a-z0-9_\-]{2,#{MAX_COMPANY_NAME_LENGTH}}$/i).nil?
       @errors['site_url'] = 'illegal'
     elsif couchdb_exists? data['site_url'].downcase
       @errors['site_url'] = 'taken'

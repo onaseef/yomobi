@@ -63,7 +63,7 @@ class BuilderController < ApplicationController
 
       attrs = {}
       attrs[:logo] = params[:logo] if params[:logo].present?
-      attrs[:name] = cname if cname.length > 2 && cname.length <= 40
+      attrs[:name] = cname if cname.length > 2 && cname.length <= MAX_COMPANY_NAME_LENGTH
       attrs[:company_type] = CompanyType.find params[:company_type]
 
       attrs.delete :company_type if attrs[:company_type].nil?

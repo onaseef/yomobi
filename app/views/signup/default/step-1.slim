@@ -9,8 +9,11 @@
       img.help-bubble src="/images/ui/help-bubble.png" title=t('account_setup.help.site_name')
     
     - if @errors['title']
-      p.error Invalid Site Name. Site Name must be at least 2 characters and at most 40 characters.
-    input type="text" name="step_data[title]" value="#{@data['title'] }" maxlength="40"
+      p.error
+        ' Invalid Site Name. Site Name must be at least 2 characters and at most
+        = MAX_COMPANY_NAME_LENGTH
+        | characters.
+    input type="text" name="step_data[title]" value="#{@data['title'] }" maxlength=MAX_COMPANY_NAME_LENGTH
     
     hr
     h3

@@ -1,6 +1,7 @@
 (function ($) {
   
-  var companyNameErrorText = 'Company name must be at least 2 characters and at least 40 characters';
+  var companyNameErrorText = 'Company name must be at least 2 characters and at least ' +
+                              g.MAX_COMPANY_NAME_LENGTH+' characters';
   var desktopRedirectTooltip = '[tooltip help]';
 
   window.EditSettingsView = Backbone.View.extend({
@@ -19,7 +20,7 @@
     
     validateInput: function () {
       var name = this.el.find('input[name=company_name]').val();
-      if (name.length < 2 || name.length > 40) {
+      if (name.length < 2 || name.length > g.MAX_COMPANY_NAME_LENGTH) {
         this.el.find('p.error').text(companyNameErrorText).show('pulsate',{ times:3 });
         return false;
       }
