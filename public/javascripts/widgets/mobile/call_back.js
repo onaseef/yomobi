@@ -44,7 +44,7 @@
   function prettyErrorMsg (serverResponse) {
     var msg = '<ul>';
     if (serverResponse === "bad message")
-      msg += '<li>You must provide a phone number and message</li>';
+      msg += '<li>You must fill in all fields.</li>';
     else if (serverResponse === "bad phone")
       msg += '<li>Invalid mobile number</li>';
     util.log('SERVER RESPONSE',serverResponse);

@@ -1,9 +1,17 @@
-Thanks for using YoMobi. A customer has left a message and requested that you call back at (<%=@params[:customer_phone] %>). Here's what he/she said:
+You have a call back request.
 <br />
 <br />
 
-| <%= @params[:customer_message] %>
+Name: <%=@params[:customer_name] %>
+<br />
+<br />
+Phone: <%=@params[:customer_phone] %>
+<br />
+<br />
+Message: <%= @params[:customer_message] %>
 <br />
 <br />
 
-You can respond to this customer via the phone number he/she provided: <%= @params[:customer_phone] %>
+Thank You,
+<br />
+YoMobi
