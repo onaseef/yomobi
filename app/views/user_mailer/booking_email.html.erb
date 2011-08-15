@@ -1,11 +1,20 @@
-A potential customer has sent you a booking request for <%= @params[:company_name] %>:
+A visitor to <a href="<%= @params[:company_mobile_url] %>">your YoMobi site</a> has sent you a booking request:
 <br />
 <br />
 
-Hi, my name is <%= @params[:name] %>. I need to reserve <%= @params[:party_size] %> people on <%= @params[:date] %> at <%= @params[:time] %>. You can reach me at <%= @params[:phone] %>.
+Name: <%= @params[:name] %>
+<br />
+Phone: <%= @params[:phone] %>
+<br />
+Number of People: <%= @params[:party_size] %>
+<br />
+Time: <%= @params[:time] %>
+<br />
+Date: <%= @params[:date] %>
 <br />
 <br />
 
-You may call this customer to confirm the booking at the number they provided: <%= @params[:phone] %>
-
-Sent from <a href="<%= @params[:company_mobile_url] %>">your YoMobi site.</a>
+Thank You,
+<br />
+<a href="http://yomobi.com">YoMobi</a>
+<br />
