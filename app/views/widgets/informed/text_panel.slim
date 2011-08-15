@@ -26,8 +26,8 @@ h1 = @company.name
         p.error = "Error: #{ @errors[:message] }"
       = form_tag '', :method => :post do
         label
-          span#chars-left = @max_chars
-          = "/#{@max_chars} characters remaining."
+          span#chars-left = @max_text_chars
+          = "/#{@max_text_chars} characters remaining."
         br
         textarea rows=5 cols=40 name="message" = @old_message
         br

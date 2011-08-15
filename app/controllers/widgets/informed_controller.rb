@@ -39,14 +39,14 @@ class Widgets::InformedController < ApplicationController
   def text_panel
     @user = current_user
     @company = @user.company
-    @max_chars = max_message_length
+    @max_text_chars = max_message_length
     @errors = {}
   end
 
   def send_text
     @company = current_user.company
     @errors = {}
-    @max_chars = max_message_length
+    @max_text_chars = max_message_length
 
     if !params[:message].present? || params[:message].length == 0
       @errors[:message] = "Please enter a message."
@@ -65,7 +65,7 @@ class Widgets::InformedController < ApplicationController
   def email_panel
     @user = current_user
     @company = @user.company
-    @max_chars = max_message_length
+    @max_text_chars = max_message_length
     @errors = {}
   end
 
