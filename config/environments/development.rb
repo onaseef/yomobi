@@ -55,8 +55,16 @@ Yomobi::Application.configure do
     :port => '25',
     :domain => "yomobi.com",
     :authentication => :plain,
-    :user_name => "fpasion",
-    :password => "yoyom2011"
+    :user_name => "yomobi",
+    :password => "yoMob1SendGrId"
+  }
+  config.text_smtp_settings = {
+    :address => "smtp.sendgrid.net",
+    :port => '25',
+    :domain => "yomobi.com",
+    :authentication => :plain,
+    :user_name => "yomobi_text",
+    :password => "ymT3xtsenDgr!d"
   }
 
   Slim::Engine.set_default_options :pretty => true

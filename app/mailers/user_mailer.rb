@@ -31,12 +31,17 @@ class UserMailer < ActionMailer::Base
     @short_url = follower.short_url
     @company_name = params[:company].name
     
-    mail({
+    old_settings = ActionMailer::Base.smtp_settings
+    ActionMailer::Base.smtp_settings = Rails.application.config.text_smtp_settings
+
+    mail(
       :subject => "From #{params[:company].name}",
       :to => "#{follower.phone}@#{follower.carrier.text_email}",
       :from => "\"YoMobi\" <message@yomobi.com>",
       :reply_to => params[:company].informed_email || params[:company].user.email
-    })
+    )
+
+    ActionMailer::Base.smtp_settings = old_settings
   end
 
   def email_follower(params)
