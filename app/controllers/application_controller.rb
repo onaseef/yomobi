@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
   end
 
   def phone_valid?(phone)
-    phone.gsub(/[^0-9]+/,'').length == 10
+    phone.length < 50
   end
 
   # devise
