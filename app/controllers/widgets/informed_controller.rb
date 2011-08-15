@@ -110,7 +110,7 @@ class Widgets::InformedController < ApplicationController
   end
 
   def valid_text_message?(msg)
-    msg.size < max_message_length
+    msg.size <= max_message_length
   end
 
   def max_message_length
