@@ -31,6 +31,7 @@ class UserMailer < ActionMailer::Base
     @company_name = params[:company].name
     
     mail({
+      :subject => "From #{params[:company].name}",
       :to => "#{follower.phone}@#{follower.carrier.text_email}",
       :from => "\"YoMobi\" <message@yomobi.com>",
       :reply_to => params[:company].informed_email || params[:company].user.email
