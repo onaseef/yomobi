@@ -18,7 +18,7 @@ class Widgets::BookingController < ApplicationController
     UserMailer.booking_email({
       :to => company.booking_email || company.user.email,
       :subject => 'A customer has a booking request.',
-      :from => 'message@yomobi.com',
+      :from => "\"YoMobi\" <message@yomobi.com>",
       :name => params[:name],
       :phone => params[:phone],
       :party_size => params[:party_size],

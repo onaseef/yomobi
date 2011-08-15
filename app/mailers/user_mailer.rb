@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default :from => "message@yomobi.com"
+  default :from => "\"YoMobi\" <message@yomobi.com>"
 
   def send_welcome_email(company)
     mail({
@@ -32,7 +32,7 @@ class UserMailer < ActionMailer::Base
     
     mail({
       :to => "#{follower.phone}@#{follower.carrier.text_email}",
-      :from => 'message@yomobi.com',
+      :from => "\"YoMobi\" <message@yomobi.com>",
       :reply_to => params[:company].informed_email || params[:company].user.email
     })
   end

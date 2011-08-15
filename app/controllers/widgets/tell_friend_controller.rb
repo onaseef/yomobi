@@ -13,7 +13,7 @@ class Widgets::TellFriendController < ApplicationController
     UserMailer.tell_friend({
       :to => params[:email_to],
       :subject => "#{params[:name_from]} wants to share #{company.name} with you.",
-      :from => 'message@yomobi.com',
+      :from => "\"YoMobi\" <message@yomobi.com>",
       :name_from => params[:name_from],
       :company_mobile_url => company.mobile_url
     }).deliver

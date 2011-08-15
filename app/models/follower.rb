@@ -51,7 +51,7 @@ class Follower < ActiveRecord::Base
       :short_url => short_url,
       :company_name => company.name,
       :to => email,
-      :from => 'message@yomobi.com',
+      :from => "\"YoMobi\" <message@yomobi.com>",
       :reply_to => company.informed_email || company.user.email,
       :subject => subject,
       :content => content
