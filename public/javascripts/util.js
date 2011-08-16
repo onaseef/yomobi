@@ -667,7 +667,15 @@ var util = {
     if (file && file.length > 0) {
       $('input[value=Upload]').prop('disabled',false);
     }
-  }
+  },
+
+  // used in mobile captcha pages. Assumes `this` is binded to the widget page.
+  spawnCaptcha: function () {
+    var myWidget = this.widget;
+    setTimeout(function () {
+      if (mapp.currentWidget === myWidget) util.spawnAritcaptcha();
+    },1000);
+  },
   
 }
 

@@ -295,6 +295,8 @@
         label Message:
         br
         textarea name="message" rows=5 cols=30
+        br
+        #aritcaptcha-container
         p.error.response
         br
         input(type="submit" value="Send")
@@ -353,6 +355,7 @@
         | &nbsp;&frasl;&nbsp;
         = select_tag 'date_y', options_for_select(2011..2012,Date.today.year)
         br
+        #aritcaptcha-container
         p.error.response
         input(type="submit" value="Send")
     .thanks-wrap style="display:none"

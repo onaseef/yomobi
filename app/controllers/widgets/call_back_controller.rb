@@ -4,6 +4,9 @@ class Widgets::CallBackController < ApplicationController
       return error('bad message')
     end
 
+    return error('captcha') unless verify_aritcaptcha params
+    
+
     company = Company.find_by_db_name params[:company]
 
     return error('bad company') if company.nil?

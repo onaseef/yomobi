@@ -18,12 +18,7 @@
       _.bindAll(this,'submit');
     },
     
-    spawnCaptcha: function () {
-      var myWidget = this.widget;
-      setTimeout(function () {
-        if (mapp.currentWidget === myWidget) util.spawnAritcaptcha();
-      },1000);
-    },
+    spawnCaptcha: util.spawnCaptcha,
 
     prettyErrorMsg: prettyErrorMsg,
     submit: util.widgetPageViewSubmit
