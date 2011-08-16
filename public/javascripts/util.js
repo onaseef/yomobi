@@ -675,7 +675,7 @@ var util = {
     setTimeout(function () {
       if (mapp.currentWidget === myWidget) util.spawnAritcaptcha();
     },1000);
-  },
+  }
   
 }
 
