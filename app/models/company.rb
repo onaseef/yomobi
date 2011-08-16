@@ -6,7 +6,8 @@ class Company < ActiveRecord::Base
   has_many :followers
   has_attached_file :logo,
     :styles => {
-      :mobile => "100x75>"
+      :mobile => "100x75>",
+      :original => "1x1#"
     },
     :default_url => '/images/default-logo_:style.png',
     :storage => :s3,
