@@ -260,8 +260,8 @@ div.wysiwyg ul.toolbar {
   #builder .widget-editor p.help-text.editable .dot, #builder .widget-editor p.help-text.editable .rename-link {
     display: inline; }
 
-#builder .follower-panel {
-  padding: 0 0 10px 10px; }
+#builder .follower-section {
+  margin: 0 0 10px 10px; }
 
 #emulator-wrapper {
   float: left;

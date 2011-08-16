@@ -1,6 +1,5 @@
 - content_for :sidebar do
   = render :partial => 'shared/sidebar', :locals => {:active => 'text'}
-  .widgets
 
 - content_for :js do
   = javascript_include_tag 'send_panel.js'
@@ -13,7 +12,7 @@
 h1 = @company.name
 #builder-container
   #builder
-    .follower-panel
+    .follower-section
       h2 Text Message your Followers
       - if notice
         p.success = notice
