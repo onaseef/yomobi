@@ -98,24 +98,27 @@
             tr
               td
                 label Site Name:
-              td
+              td colspan="2"
                 input type="text" name="company_name" value=@company.name maxlength=MAX_COMPANY_NAME_LENGTH
             tr
-              td colspan="2"
+              td colspan="3"
                 .divider
             tr
               td
                 label Site Type:
-              td
+              td colspan="2"
                 = select_tag :company_type, options_for_select(company_types,@company.company_type_id)
             tr
-              td colspan="2"
+              td colspan="3"
                 .divider
             tr
               td.site-picture
                 label Site Picture:
               td
                 img.logo{src=@company.logo.url(:mobile) }
+              td
+                a.remove-logo href="#" Remove Picture
+                input type="hidden" name="destroy_logo" value="0"
 
         table
           tbody

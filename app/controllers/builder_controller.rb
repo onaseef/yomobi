@@ -62,13 +62,17 @@ class BuilderController < ApplicationController
       cname = params[:company_name]
 
       attrs = {}
-      attrs[:logo] = params[:logo] if params[:logo].present?
+      attrs[:logo] = params[:logo] if params[:logo].present? && params[:destroy_logo] != "1"
       attrs[:name] = cname if cname.length > 2 && cname.length <= MAX_COMPANY_NAME_LENGTH
       attrs[:company_type] = CompanyType.find params[:company_type]
 
       attrs.delete :company_type if attrs[:company_type].nil?
 
       save_success = current_user.company.update_attributes(attrs)
+    end
+
+    if params[:destroy_logo] == "1"
+      current_user.company.update_attribute :logo, nil
     end
 
     return redirect_to builder_main_path(:anchor => 'edit-settings')

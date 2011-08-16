@@ -11,11 +11,12 @@
     template: util.getTemplate('edit-settings'),
     
     events: {
-      'click input[type=submit]': 'validateInput',
-      'click .read-only, textarea': 'selectText',
-      'keyup .read-only, textarea': 'preventChange',
-      'change input[type=file]':  'enableUploadButton',
-      'click input[type=file]':  'enableUploadButton'
+      'click input[type=submit]':     'validateInput',
+      'click .read-only, textarea':   'selectText',
+      'keyup .read-only, textarea':   'preventChange',
+      'change input[type=file]':      'enableUploadButton',
+      'click input[type=file]':       'enableUploadButton',
+      'click .remove-logo':           'onRemoveLogoClick'
     },
     
     validateInput: function () {
@@ -57,7 +58,13 @@
       this.el.html(bapp.idleTemplate());
     },
 
-    enableUploadButton: util.enableFileUploadButton
+    enableUploadButton: util.enableFileUploadButton,
+
+    onRemoveLogoClick: function (e) {
+      e.preventDefault();
+      $(e.target).siblings('input[type=hidden]').val(1);
+      this.el.find('form').submit();
+    }
     
   });
   
