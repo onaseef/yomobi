@@ -6,6 +6,7 @@ class BuilderController < ApplicationController
   def index
     @user = current_user
     @company = @user.company
+    @open_edit_settings = true if flash[:edit_settings] == true
   end
   
   def new_widget
@@ -75,6 +76,7 @@ class BuilderController < ApplicationController
       current_user.company.update_attribute :logo, nil
     end
 
+    flash[:edit_settings] = true
     return redirect_to builder_main_path(:anchor => 'edit-settings')
   end
 

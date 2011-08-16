@@ -235,6 +235,11 @@
 
             mapp.updateWtabs();
             Backbone.history.start();
+
+            // this workaround is required for IE
+            if (g.openEditSettings) {
+              bapp.startEditingPanel('settings');
+            }
           }
         });
       });
