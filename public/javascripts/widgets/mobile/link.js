@@ -14,8 +14,8 @@
     onHomeViewClick: function () {
       var url = this.get('url');
       if (this.get('name') == 'full-website') {
-        if (url.indexOf('?') == -1) url += '?';
-        url += '&noredirect=1';
+        if (url.indexOf('?') == -1) url += '?noredirect=1';
+        else url += '&noredirect=1';
       }
 util.log('URL',url);
       window.open(url);
