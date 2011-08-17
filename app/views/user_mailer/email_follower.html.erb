@@ -2,8 +2,12 @@
 <br />
 <br />
 
-You are receiving this email because you opted to receive emails from <%= @params[:company_name] %> through their mobile site.
+<%= @params[:company_name] %>
+<br />
+<a href="<%= @params[:company_mobile_url] %>"><%= @params[:company_mobile_url] %></a>
 <br />
 <br />
 
-To opt out of further emails from this company, <a href="<%= @params[:short_url] %>">click here.</a>
+<hr /> <br />
+You are receiving this email because you opted to follow the YoMobi site of <%= @params[:company_name] %>.
+<a href="<%= @params[:short_url] %>">Click here to opt out</a> of further emails from this site.
