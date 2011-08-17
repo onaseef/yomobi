@@ -154,11 +154,11 @@
     addCat: function (e) {
       if (!util.isUIFree()) return;
 
-      var dialog =  new AddCatDialog({
-        model: this.widget,
-        onClose: this.refreshViews
-      });
-      dialog.enterMode('add').prompt();
+      this.catDialog = this.catDialog || new AddCatDialog();
+      this.catDialog.model = this.widget;
+      this.catDialog.options.onClose = this.refreshViews;
+
+      this.catDialog.enterMode('add').prompt();
     },
     
     editCat: function (e) {
@@ -272,11 +272,11 @@
     addItem: function (e) {
       if (!util.isUIFree()) return;
 
-      var dialog =  new this.AddItemDialog({
-        model: this.widget,
-        onClose: this.refreshViews
-      });
-      dialog.enterMode('add').prompt();
+      this.itemDialog = this.itemDialog || new AddCatDialog();
+      this.itemDialog.model = this.widget;
+      this.itemDialog.options.onClose = this.refreshViews;
+
+      this.itemDialog.enterMode('add').prompt();
     },
     
     editItem: function (e) {
@@ -479,10 +479,12 @@
       buttons["Save"] = makeSaveFunc();
       buttons["Cancel"] = closeSelf;
       
-      util.dialog(dialogContent,buttons)
+      var dialog = util.dialog(dialogContent,buttons)
         .find('p.error').show('pulsate',{times:3}).end()
         .find('input[name=add]').click( makeSaveFunc(true) ).end()
       ;
+      // required for ie7
+      setTimeout(function () { dialog.find('input[type=text]').focus()[0].focus(); },10);
     },
     
     validateCategory: function (addAnother) {
@@ -606,11 +608,13 @@
       buttons["Save"] = makeSaveFunc();
       buttons["Cancel"] = closeFunc;
 
-      util.dialog(dialogContent, buttons)
+      var dialog = util.dialog(dialogContent, buttons)
         .find('p.error').show('pulsate',{times:3}).end()
         .find('p.success').show('pulsate',{times:1}).end()
         .find('input[name=add]').click( makeSaveFunc(true) ).end()
       ;
+      // required for ie7
+      setTimeout(function () { dialog.find('input[type=text]')[0].focus()[0].focus(); },10);
     },
     
     validateItem: function (item) {
