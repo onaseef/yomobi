@@ -8,33 +8,20 @@
   ;
   
   window.widgetClasses.gmap = Widget.extend({
-    validForShowing: function () {
-      return this.get('bname') || (this.get('addr1') && this.get('city'));
-    },
+    requiredAttrs: ['addr1','city','state'],
 
     onHomeViewClick: function () {
-      if (!this.get('addr1') && this.validForShowing() && false) {
+      if (!this.get('addr1') && this.validForShowing()) {
         window.open(externalMapUrlBase + 'q=' + this.get('bname'));
         return false;
       }
       return true;
     },
 
-    getAddress: function () {
+    getFullAddress: function () {
       var city_state = _.compact([this.get('city'), this.get('state')]).join(', ');
       return _.compact( [this.get('addr1'), this.get('addr2'),
                          city_state, this.get('zip')] );
-    },
-
-    getFullAddress: function () {
-      var addr = this.getAddress();
-      if (addr.length === 0)
-        return this.get('bname');
-      else {
-        addr.unshift(this.get('bname') + ',');
-        addr.push(this.get('country'));
-        return addr.join(' ');
-      }
     },
 
     getMapUrl: function (zoomLevel) {
@@ -50,8 +37,7 @@
       var extraData = {
         fullAddress: this.getFullAddress(),
         mapUrl: this.getMapUrl(),
-        mapUrl2: this.getMapUrl(14),
-        isAddressPresent: this.getAddress().length > 0
+        mapUrl2: this.getMapUrl(14)
       };
       return _.extend({},this.toJSON(),extraData);
     }

@@ -399,14 +399,10 @@
     .clearfix
 
   script.gmap-page(type="text/template")
-    h3 style="margin: 0 0 8px 0" <% print(_maybe.bname || "Address"); %>
-
-    | <% if (isAddressPresent) { %>
     .addr-line {{ _maybe.addr1 }}
     .addr-line {{ _maybe.addr2 }}
     .addr-line {{ _maybe.city }}<% if (_maybe.city && _maybe.state) { print(','); } %> {{ _maybe.state }} {{ _maybe.zip }}
     .addr-line {{ _maybe.country }}
-    | <% } %>
 
     .maps style="margin-top: 8px"
       a.map-link href="http://maps.google.com/maps?q={{ fullAddress }}"
@@ -551,10 +547,6 @@
     .clearfix
 
   script.gmap-edit-area(type="text/template")
-    label Business Name:
-    input name="bname" type="text" value="{{ _maybe.bname }}"
-    br
-    .hr
     label Address 1*:
     input name="addr1" type="text" value="{{ _maybe.addr1 }}"
     br
@@ -564,13 +556,13 @@
     label City*:
     input name="city" type="text" value="{{ _maybe.city }}"
     br
-    label State / Province / Territory:
+    label State / Province / Territory*:
     input name="state" type="text" value="{{ _maybe.state }}"
     br
     label Zip / Postal Code:
     input name="zip" type="text" value="{{ _maybe.zip }}"
     br
-    label Country:
+    label Country*:
     br
     select name="country"
       = render 'builder/country-options'
