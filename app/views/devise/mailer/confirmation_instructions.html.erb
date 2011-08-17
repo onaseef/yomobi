@@ -4,7 +4,7 @@
 
 <p>
 Please confirm your email address to continue the registration: 
-<%= link_to 'Confirm Now', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>
+<%= link_to 'Confirm Now', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token,:uid => @resource[:id]) %>
 </p>
 
 <p>

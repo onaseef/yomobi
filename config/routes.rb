@@ -15,6 +15,7 @@ Yomobi::Application.routes.draw do
 
   devise_for :users, :controllers => {
     :registrations => 'registrations',
+    :confirmations => 'confirmations',
     :sessions => 'sessions'
   }
 
