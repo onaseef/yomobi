@@ -654,7 +654,7 @@ var util = {
 
   enableFileUploadButton: function () {
     if ($.browser.msie) {
-      setTimeout(util.enableFileUploadButton, 0);
+      setTimeout(util._enableFileUploadButton, 0);
     }
     else {
       util._enableFileUploadButton();
