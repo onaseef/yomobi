@@ -252,7 +252,8 @@ label {
   #account-setup-box h3 {
     margin: 10px 0px 5px 0px; }
   #account-setup-box textarea, #account-setup-box input[type=text], #account-setup-box input[type=password] {
-    font-size: 1.2em; }
+    font-size: 1.2em;
+    width: 450px; }
   #account-setup-box #user_current_password {
     width: 450px; }
   #account-setup-box #user_email, #account-setup-box #user_first_name, #account-setup-box #user_last_name {
@@ -261,8 +262,6 @@ label {
     width: 292px; }
   #account-setup-box input[type=text], #account-setup-box input[type=password] {
     margin-bottom: 10px; }
-  #account-setup-box input[type=submit] {
-    margin-top: 16px; }
   #account-setup-box textarea {
     height: 7em;
     line-height: 110%; }
@@ -283,5 +282,5 @@ label {
   #account-setup-box .already-confirmed {
     font-size: 1.5em; }
 
-#privacy, #terms, #about {
+#privacy, #terms {
   margin: 40px; }

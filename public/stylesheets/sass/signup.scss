@@ -284,7 +284,9 @@ label {
     margin: 10px 0px 5px 0px; }
   width: 500px;
   textarea, input[type=text], input[type=password] {
-    font-size: 1.2em; }
+    font-size: 1.2em;
+    width:450px;
+  }
   #user_current_password {
     width: 450px;
   }
@@ -296,9 +298,6 @@ label {
   }
   input[type=text], input[type=password] {
     margin-bottom: 10px; }
-  input[type=submit] {
-    margin-top: 16px;
-  }
   textarea {
     height: 7em;
     line-height: 110%; }
@@ -325,6 +324,6 @@ label {
     font-size: 1.5em; }
 }
 
-#privacy, #terms, #about {
+#privacy, #terms {
   margin: 40px;
 }
