@@ -20,6 +20,7 @@ class Company < ActiveRecord::Base
   
   before_create :create_couch, :unless => Proc.new {|c| c.db_pass == 'n0n-_-exist@nt??' }
   
+  before_post_process :check_file_size
   validates_attachment_size :logo, :less_than => 3.megabytes, :unless => Proc.new {|c| c.logo.nil? }
   
   def create_couch
@@ -65,5 +66,12 @@ class Company < ActiveRecord::Base
 
   def couch_db_url
     ApplicationController::couch_url self.db_name, :@admin
+  end
+
+  private
+
+  def check_file_size
+    valid?
+    errors[:image_file_size].blank?
   end
 end

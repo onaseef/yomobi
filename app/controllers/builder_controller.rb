@@ -70,6 +70,13 @@ class BuilderController < ApplicationController
       attrs.delete :company_type if attrs[:company_type].nil?
 
       save_success = current_user.company.update_attributes(attrs)
+
+      if save_success == false && current_user.company.errors[:logo_file_size]
+        attrs.delete :logo
+        flash[:alert] = 'The picture you have selected is too large. The maximum allowed size is 3MB.'
+        # resave to prevent losing other changes
+        current_user.company.update_attributes(attrs)
+      end
     end
 
     if params[:destroy_logo] == "1"
