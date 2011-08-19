@@ -57,7 +57,7 @@ class Company < ActiveRecord::Base
   end
   
   def mobile_url
-    "http://yomobi.com/#{db_name}"
+    "http://www.yomobi.com/#{db_name}"
   end
 
   def couch_host
