@@ -48,7 +48,7 @@
         wnames: _.keys(mapp.worder),
         wtabs: mapp.wtabs
       }) )
-        .find('.help-bubble').simpletooltip(desktopRedirectTooltip,'help').end()
+        .find('.help-bubble').simpletooltip(undefined,'help').end()
         .find('input:file').keypress(function () { return false; }).end()
       ;
       this.delegateEvents();

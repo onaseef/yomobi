@@ -89,7 +89,7 @@
         .divider
 
         label class="help" Desktop Redirect Code:
-        img class="help-bubble" src="/images/ui/help-bubble.png"
+        img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.settings.help.redirect')
         textarea.read-only readonly="readonly" data-orig-val=desktop_redirect_code(@company) = desktop_redirect_code @company
       
       = form_tag '/builder/settings', :multipart => true, :class => 'box' do
@@ -124,7 +124,9 @@
           tbody
             tr
               td
-                label Select a new picture (3MB max):
+                label
+                  ' Select a new picture:
+                  img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.settings.help.site_pic')
               td
             tr
               td

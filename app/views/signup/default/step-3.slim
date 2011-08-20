@@ -15,7 +15,9 @@
 
 = form_tag account_setup_path(3), :multipart => true, :id => 'account-setup-box', :class => 'center-box' do
   .content
-    h2 Upload a Picture
+    h2
+      ' Select a new picture
+      img.help-bubble src="/images/ui/help-bubble.png" title=t('account_setup.help.site_pic')
     
     table
       tr
@@ -39,3 +41,9 @@
       input.content type="submit" value="Save & Continue"
     a.skip-link.rfloat href=builder_main_path Skip this step
     .clearfix
+
+- content_for :js do
+  javascript:
+    $(function () {
+      $('.help-bubble').simpletooltip(undefined,'help');
+    })
