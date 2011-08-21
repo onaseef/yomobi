@@ -11,7 +11,7 @@ class Company < ActiveRecord::Base
     },
     :default_url => '/images/default-logo_:style.png',
     :storage => :s3,
-    :bucket => 'yomobi',
+    :bucket => Rails.application.config.logo_s3_bucket,
     :path => 'logos/:company_:style',
     :s3_credentials => {
       :access_key_id => ENV['S3_KEY'],

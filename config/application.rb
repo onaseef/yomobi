@@ -40,8 +40,8 @@ module Yomobi
     config.filter_parameters += [:password]
 
     # Amazon S3
-    config.aritcaptcha_s3_bucket = 'yomobi'
-    config.logo_s3_bucket = 'yomobi'
+    config.aritcaptcha_s3_bucket = 'yomobi-logos'
+    config.logo_s3_bucket = 'yomobi-logos'
     config.s3_base_path = "http://s3.amazonaws.com"
   end
 end
