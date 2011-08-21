@@ -17,9 +17,12 @@ html lang="en-US"
     = topline_notice
     
     #global-container
+
       #header class=(user_signed_in? ? 'signed-in' : 'signed-out')
         .content
-          a#logo href=root_path YoMobi
+          a#logo href=root_path
+            img src="/images/yomobi-logo-#{user_signed_in? ? 20 : 32}.png"
+          
           - if current_user.nil? && @hide_header_signin_form != true
             = render :partial => 'shared/header-signin-form'
           = render :partial => 'shared/nav'
