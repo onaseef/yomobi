@@ -2,6 +2,8 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  signup_bar: "YoMobi helps you reach more people with a mobile optimized website."
+
   home_page:
     banner:
       title: "Get Mobilized!"
