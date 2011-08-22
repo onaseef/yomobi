@@ -4,12 +4,18 @@
   .content
     h2 Contact Information
 
-    h3 Phone
+    h3
+      ' Phone
+      img.help-bubble src="/images/ui/help-bubble.png" title=t('account_setup.help.phone')
+    
     label Format: (XXX) XXX-XXXX
     input type="text" name="step_data[phone]"
     
     hr
-    h3 Address
+    h3
+      ' Address
+      img.help-bubble src="/images/ui/help-bubble.png" title=t('account_setup.help.address')
+    
     label Address 1:
     input name="step_data[address][addr1]" type="text"
     label Address 2:
@@ -29,3 +35,9 @@
       input.content type="submit" value="Save & Continue"
     a.skip-link.rfloat href=account_setup_path(3) Skip this step
     .clearfix
+
+- content_for :js do
+  javascript:
+    $(function () {
+      $('.help-bubble').simpletooltip(undefined,'help');
+    })

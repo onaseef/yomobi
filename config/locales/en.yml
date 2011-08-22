@@ -15,6 +15,10 @@ en:
       site_name: "Input your name or business name. This will appear at the top of your mobile site."
       site_url: "Select a URL for your mobile site. It cannot contains spaces or special characters."
       site_pic: "Note: Large size pictures may take up to 1 minute to load."
+
+      phone: "Enter a number you would like your mobile site visitors to use to call you."
+      address: "Enter an address you would like your mobile site visitors to use to locate you."
+
   builder:
     help:
       edit_settings: "<p>Edit general settings.</p>"
