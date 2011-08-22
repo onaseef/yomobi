@@ -289,11 +289,11 @@
     .input-wrap
       p Enter your call back information:
       = form_tag "/#{@company.db_name}/call_back/submit", :method => 'post' do
-        label Your Name:
+        label Name::
         br
         input type="text" name="name"
         br
-        label Your Phone Number:
+        label Phone Number:
         br
         input type="text" name="phone"
         br
