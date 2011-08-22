@@ -116,6 +116,12 @@ class CouchDocs
       },
 
       {
+        :name => "donate",
+        :wtype => 'link',
+        :singleton => true
+      },
+
+      {
         :name => "news",
         :wtype => 'link',
         :singleton => true

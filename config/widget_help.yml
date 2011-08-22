@@ -27,6 +27,10 @@ helpText:
   custom-page:
     help: <p>Add a custom web page for your mobile site.</p>
   
+  donate:
+    help: <p>Use this widget to direct visitors to the online site that allows them to donate to your cause.</p>
+    subHelp: online donation site
+
   event-calendar:
     help: <p>Add a link to your online calendar on your mobile site.</p>
     subHelp: online calendar
