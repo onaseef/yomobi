@@ -15,9 +15,11 @@ Yomobi::Application.routes.draw do
 
   devise_for :users, :controllers => {
     :registrations => 'registrations',
-    :confirmations => 'confirmations',
     :sessions => 'sessions'
   }
+  devise_scope :user do
+    get 'confirmation/new' => 'confirmations#show'
+  end
 
   get 'builder/main'      => 'builder#index', :as => :builder_main
   post 'builder/settings' => 'builder#change_settings'
