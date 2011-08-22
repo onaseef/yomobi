@@ -1,6 +1,6 @@
 #banner
-  h2 Mobilize Your Site!
-  p style="font-size:14px" Connect to millions more consumer with a mobile optimized website.
+  h2 = t 'home_page.banner.title'
+  p style="font-size:14px" = t 'home_page.banner.subtitle'
   .clearfix
 
   .images
@@ -9,8 +9,8 @@
 
 #signup-box
   div
-    h2 Sign Up
-    p style="font-size:14px" It's free.
+    h2 = t 'home_page.form.title'
+    p style="font-size:14px" = t 'home_page.form.subtitle'
   .divider style="margin-top:6px"
   div
     = render :partial => 'signup_form', :locals => {:hide_captcha => false}
