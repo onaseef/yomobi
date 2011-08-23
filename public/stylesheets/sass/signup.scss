@@ -324,6 +324,10 @@ label {
     font-size: 1.5em; }
 }
 
+#account-settings-box {
+  @extend #account-setup-box;
+}
+
 #privacy, #terms {
   margin: 40px;
 }
