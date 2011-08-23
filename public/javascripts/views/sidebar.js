@@ -111,26 +111,15 @@
       }
       
       var elem = $(targetedElem)
-        , name = elem.data('name')
         , wtype = elem.data('wtype')
+        , wsubtype = elem.data('wsubtype')
+        , name = wsubtype
         , singleton = elem.hasClass('singleton')
       ;
       if(!elem.hasClass('sidebar')) return;
       
-      util.log('dropped',name,wtype,singleton);
-      bapp.addNewWidget(name,wtype,singleton);
-    },
-
-    cloneWidget: function (wtype,name) {
-      var found = this.widgets.find(function (w) {
-        return w.get('wtype') == wtype && w.get('name') == name;
-      });
-      // this.widgets.remove(found);
-      util.log('cloneWidgetByType',wtype,name,found);
-      if (found) {
-        found = util.newWidget(found.attributes);
-      }
-      return found;
+      util.log('dropped',name,wtype,wsubtype,singleton);
+      bapp.addNewWidget(name,wtype,wsubtype,singleton);
     },
 
     tellBappToEditTabBar: function () { bapp.startEditingPanel('tabBar'); },

@@ -12,22 +12,6 @@
     },
     sync: util.deleteSync,
     
-    initialize: function () {
-      this.pageView = new (widgetPages[this.get('wtype')] || WidgetPageView)({
-        widget: this
-      });
-      this.bind('change:name',this.updatePrettyName);
-      
-      this.updatePrettyName(this,this.get('name'));
-      
-      this.init && this.init();
-    },
-    
-    updatePrettyName: function (model,newName) {
-      model.set({ prettyName:util.prettifyName(newName) });
-      if (this.homeView) this.homeView.render();
-    },
-
     isAvailable: function () {
       return this.get('available_') === true;
     },
@@ -48,8 +32,7 @@
     getEditAreaData: function () {
       var data = {}
         , wdata = util.getWidgetBData(this)
-        , templateId = wdata.singleton ? wdata.name :
-                        (wdata.wsubtype || wdata.wtype)
+        , templateId = wdata.wsubtype
         , editAreaTemplate = util.getTemplate(templateId + '-edit-area')
         , editData = _.extend({
             subHelpText: wdata.subHelp

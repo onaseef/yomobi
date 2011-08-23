@@ -94,55 +94,55 @@ class CouchDocs
   def self.all
     @all_docs ||= [
       {
-        :name => "flickr",
         :wtype => 'link_fb',
+        :wsubtype => 'flickr',
         :host => 'http://m.flickr.com/photos/',
         :basename => 'flickr',
         :singleton => true
       },
       
       {
-        :name => "picasa",
         :wtype => 'link_fb',
+        :wsubtype => "picasa",
         :host => 'http://picasaweb.google.com/',
         :basename => 'picasa',
         :singleton => true
       },
 
       {
-        :name => "blog",
         :wtype => 'link',
+        :wsubtype => "blog",
         :singleton => true
       },
 
       {
-        :name => "donate",
         :wtype => 'link',
+        :wsubtype => "donate",
         :singleton => true
       },
 
       {
-        :name => "news",
         :wtype => 'link',
+        :wsubtype => "news",
         :singleton => true
       },
 
       {
-        :name => "reviews",
         :wtype => 'link',
+        :wsubtype => "reviews",
         :singleton => true
       },
       
       {
-        :name => "call-me-back",
         :wtype => 'call_back',
+        :wsubtype => "call-me-back",
         :singleton => true,
         :email => nil
       },
 
       {
-        :name => "property-listings",
         :wtype => 'category',
+        :wsubtype => "property-listings",
         :catTypeName => "Area",
         :itemTypeName => "Listing",
         :singleton => true,
@@ -159,24 +159,24 @@ class CouchDocs
       },
       
       {
-        :name => "twitter",
         :wtype => 'link_fb',
+        :wsubtype => "twitter",
         :host => 'http://twitter.com/',
         :basename => 'twitter',
         :singleton => true
       },
 
       {
-        :name => "facebook",
         :wtype => 'link_fb',
+        :wsubtype => "facebook",
         :host => 'http://facebook.com/',
         :basename => 'facebook',
         :singleton => true
       },
 
       {
-        :name => "category",
         :wtype => 'page_tree',
+        :wsubtype => "category",
         :catTypeName => "Subcategory",
         :itemTypeName => "Page",
         "struct" => {
@@ -185,45 +185,45 @@ class CouchDocs
       },
 
       {
-        :name => "booking-request",
         :wtype => 'booking',
+        :wsubtype => "booking-request",
         :singleton => true,
         :email => nil
       },
 
       {
-        :name => "tell-a-friend",
         :wtype => 'tell_friend',
+        :wsubtype => "tell-a-friend",
         :singleton => true
       },
 
       {
-        :name => "leave-a-message",
         :wtype => 'leave_msg',
+        :wsubtype => "leave-a-message",
         :singleton => true,
         :email => nil
       },
 
       {
-        :name => "event-calendar",
         :wtype => 'link',
+        :wsubtype => "event-calendar",
         :singleton => true
       },
 
       {
-        :name => "custom-page",
         :wtype => 'custom_page',
+        :wsubtype => "custom-page",
       },
 
       {
-        :name => "photo-bucket",
         :wtype => 'link',
+        :wsubtype => "photo-bucket",
         :singleton => true
       },
 
       {
-        :name => "keep-me-informed",
         :wtype => 'informed',
+        :wsubtype => "keep-me-informed",
         :singleton => true,
         :email => nil,
         'optForEmails' => true,
@@ -231,19 +231,19 @@ class CouchDocs
       },
 
       {
-        :name => "coupon",
         :wtype => 'coupon',
+        :wsubtype => "coupon",
       },
 
       {
-        :name => "full-website",
         :wtype => 'link',
+        :wsubtype => "full-website",
         :singleton => true
       },
 
       {
-        :name => "locations",
         :wtype => 'category',
+        :wsubtype => "locations",
         :catTypeName => "Region",
         :itemTypeName => "Location",
         :singleton => true,
@@ -259,8 +259,8 @@ class CouchDocs
       },
 
       {
-        :name => "business-hours",
         :wtype => 'hours',
+        :wsubtype => "business-hours",
         "doubleTime" => false,
         "hours" => {
           "mon" => ["8:00 am|5:00 pm","",false,true],
@@ -274,8 +274,8 @@ class CouchDocs
       },
 
       {
-        :name => "services",
         :wtype => 'category',
+        :wsubtype => "services",
         :catTypeName => "Category",
         :itemTypeName => "Service",
         :singleton => true,
@@ -285,8 +285,8 @@ class CouchDocs
       },
 
       {
-        :name => "products",
         :wtype => 'category',
+        :wsubtype => "products",
         :catTypeName => "Category",
         :itemTypeName => "Product",
         :singleton => true,
@@ -296,8 +296,8 @@ class CouchDocs
       },
 
       {
-        :name => "menu",
         :wtype => 'category',
+        :wsubtype => "menu",
         :catTypeName => "Category",
         :itemTypeName => "Item",
         :singleton => true,
@@ -312,31 +312,29 @@ class CouchDocs
       },
 
       {
-        :name => "call-us",
         :wtype => 'phone',
+        :wsubtype => "call-us",
       },
 
       {
-        :name => "find-us",
         :wtype => 'gmap',
+        :wsubtype => "find-us",
       },
 
       {
-        :name => "about-us",
         :wtype => 'custom_page',
         :wsubtype => 'about-us'
       },
 
       {
-        :name => "link",
         :wtype => 'link',
+        :wsubtype => "link",
       },
 
       {
-        :name => "video",
         :wtype => 'link',
-        :wsubtype => 'video'
+        :wsubtype => "video"
       },
-    ].sort! {|a,b| b[:name] <=> a[:name]}
+    ].sort! {|a,b| b[:wsubtype] <=> a[:wsubtype]}
   end
 end

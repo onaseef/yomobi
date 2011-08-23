@@ -288,19 +288,14 @@ var util = {
   getWidgetBData: function (widget) {
     if (widget._bdata) return widget._bdata;
 
-    // handle non-singletons with custom icons
-    var hasSubtype = !!widget.get('wsubtype')
-      , isSingleton = widget.get('singleton') === true
-    ;
     // cache
     widget._bdata = _.detect(window.bdata, function (w) {
-      if (hasSubtype) return w.wsubtype === widget.get('wsubtype');
-      if (isSingleton) return w.name === widget.get('name');
-      return w.wtype == widget.get('wtype') && !w.singleton && !w.wsubtype;
+      return w.wtype == widget.get('wtype') &&
+             w.wsubtype == widget.get('wsubtype');
     });
 
     if (window.bhelp) {
-      var help = window.bhelp['helpText'][widget._bdata.name];
+      var help = window.bhelp['helpText'][widget._bdata.wsubtype];
       widget._bdata.help = help.help; widget._bdata.subHelp = help.subHelp;
     }
 
@@ -316,6 +311,16 @@ var util = {
   
   newWidget: function (data) {
     return new window.widgetClasses[data.wtype](data);
+  },
+
+  newWidgetByType: function (wtype,wsubtype) {
+
+    var wdata = _.detect(window.bdata, function (w) {
+      return w.wtype == widget.get('wtype') &&
+             w.wsubtype == widget.get('wsubtype');
+    });
+
+    return util.newWidget(wdata);
   },
   
   newEditor: function (widget) {

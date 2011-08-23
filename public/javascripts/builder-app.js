@@ -275,18 +275,18 @@
       return false;
     },
     
-    addNewWidget: function (name,wtype,singleton) {
-      util.log('adding new widget',name,wtype);
+    addNewWidget: function (name,wtype,wsubtype,singleton) {
+      util.log('adding new widget',name,wtype,wsubtype);
       if (!util.reserveUI()) return;
       var self = this;
       
       this.validateWidgetName(name,wtype,singleton, {
         isNewWidget: true,
         onValid: function (validName) {
-          var newWidget = self.sidebar.cloneWidget(wtype,name);
+          var newWidget = util.newWidgetByType(wtype,wsubtype);
       
           if (newWidget) {
-            newWidget.set({ name:validName });
+            newWidget.set({ prettyName:validName });
             mapp.widgetsInUse.add(newWidget);
 
             if (newWidget.get('singleton'))

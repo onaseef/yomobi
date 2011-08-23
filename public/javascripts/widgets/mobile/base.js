@@ -41,9 +41,10 @@
       var wdata = this._bdata || util.getWidgetBData(this);
       return {
         wtype: wdata.wtype,
+        wsubtype: wdata.wsubtype,
         name: this.get('name'),
         prettyName: this.get('prettyName'),
-        iconName: wdata.singleton ? wdata.name : (wdata.wsubtype || wdata.wtype),
+        iconName: wdata.wsubtype,
         singletonClass: wdata.singleton ? 'singleton' : ''
       };
     },
@@ -52,8 +53,13 @@
       this.pageView = new (widgetPages[this.get('wtype')] || WidgetPageView)({
         widget: this
       });
-      var prettyName = util.prettifyName(this.get('name'));
-      this.set({ prettyName:prettyName });
+
+      if (this.homeView) this.bind('change:prettyName',this.homeView.render);
+
+      if ( !this.get('prettyName') ) {
+        var prettyName = util.prettifyName(this.get('wsubtype'));
+        this.set({ prettyName:prettyName });
+      }
 
       this.init && this.init();
     },
