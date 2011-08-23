@@ -3,7 +3,7 @@
 
 #header.signed-out {
   padding: 14px 0 25px 0;
-  background: #002455;
+  background: url(/images/bg-header.png);
   color: white;
   height: 55px; }
   #header.signed-out .subtext, #header.signed-out .subtext:visited {
@@ -281,6 +281,9 @@ label {
     text-align: center; }
   #account-setup-box .already-confirmed, #account-settings-box .already-confirmed {
     font-size: 1.5em; }
+  #account-setup-box .edit_user input[type=submit], #account-settings-box .edit_user input[type=submit] {
+    font-size: 1.5em;
+    margin-top: 20px; }
 
 #privacy, #terms {
   margin: 40px; }

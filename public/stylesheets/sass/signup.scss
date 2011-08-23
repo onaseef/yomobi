@@ -8,7 +8,7 @@
 
 #header.signed-out {
   padding: 14px 0 25px 0;
-  background: $main-color;
+  background: url(/images/bg-header.png);
   color: $header-font-color;
   height: 55px;
   .subtext, .subtext:visited {
@@ -322,6 +322,13 @@ label {
   
   .already-confirmed {
     font-size: 1.5em; }
+  
+  .edit_user {
+    input[type=submit] { 
+      font-size: 1.5em;
+      margin-top: 20px;
+    }
+  }
 }
 
 #account-settings-box {
