@@ -59,3 +59,6 @@ html lang="en-US" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com
       });
     
     = javascript_include_tag 'support/bezen.domwrite.js'
+
+    - if Rails.env.production?
+      = javascript_include_tag 'google-analytics'
