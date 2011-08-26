@@ -74,6 +74,7 @@
     events: {
       'click input[name=beginEditing]':     'enterEditMode',
       'click input[name=back]':             'transitionBack',
+      'click .back-btn':                    'transitionBack',
 
       'click input[name=add_cat]':          'addCat',
       'click input[name=edit_cat]':         'editCat',
@@ -117,6 +118,25 @@
       if (this.widget.hasLeafOnTop()) util.spawnJEditor();
     },
     
+    transitionBack: function (e) {
+      // transition to the previous page by emulating a click
+      mapp.getActivePage().find('.back-btn').click();
+    },
+
+    onBackBtnClick: function (e) {
+      if ( !this.hasChanges() ) {
+        return true;
+      }
+      else if ( !confirm(unsavedChangesText) ) {
+        this.discardActiveLeafChanges();
+        return true;
+      }
+      else {
+        // user decided not to discard their page changes
+        return false;
+      }
+    },
+
     addItem: function (e,error) {
       if (!util.isUIFree()) return;
 

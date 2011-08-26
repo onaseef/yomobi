@@ -3,7 +3,7 @@
   var pluckPrettyName = function (w) { return util.prettifyName(w.get('name')) };
   var pluckName = function (w) { return w.get('name'); };
 
-  var unsavedChangesText = "You have unsaved changes. Click OK to go back and save changes. Click Cancel to discard your changes.";
+  window.unsavedChangesText = "You have unsaved changes. Click OK to go back and save changes. Click Cancel to discard your changes.";
 
   // ----------------------------
   window.BuilderWidgets = Widgets.extend({
@@ -85,10 +85,16 @@
     },
 
     goBack: function () {
-      // a widget is guarenteed to be being edited,
+      // a widget is guarenteed to be being edited (bapp.currentEditor),
       // since back buttons only live in widget pages.
+
+      if (bapp.currentEditor.onBackBtnClick) {
+        if (bapp.currentEditor.onBackBtnClick() === false) return;
+      }
+
       if (bapp.currentEditor.widget.pageView.onBackBtnClick)
         return bapp.currentEditor.widget.pageView.onBackBtnClick();
+      
       this.transition('back');
     },
     
