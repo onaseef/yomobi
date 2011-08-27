@@ -29,5 +29,5 @@ en:
     
     settings:
       help:
-        redirect: "[desktop redirect help]"
+        redirect: "Copy this code snippet and paste it into your desktop site’s home page, just before the closing tag."
         site_pic: "Note: Large size pictures may take up to 1 minute to load."
