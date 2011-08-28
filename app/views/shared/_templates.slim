@@ -67,11 +67,11 @@
             option = "==None=="
             | <%
             = "var tabIdx = #{ n };"
-            | for (var i=0; i<wnames.length; i++) {
-            |   if ( wtabNames[tabIdx] == wnames[i] ) {
-            |     print('<option selected="selected">'+wnames[i]+'</option>');
+            | for (var i=0; i<widgetVals.length; i++) {
+            |   if ( wtabNames[tabIdx] == widgetVals[i].name ) {
+            |     print('<option selected="selected" value="'+widgetVals[i].id+'">'+widgetVals[i].name+'</option>');
             |   } else {
-            |     print('<option>'+wnames[i]+'</option>');
+            |     print('<option value="'+widgetVals[i].id+'">'+widgetVals[i].name+'</option>');
             |   }
             | } %>
   

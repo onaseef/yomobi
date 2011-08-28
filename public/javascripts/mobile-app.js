@@ -1,11 +1,11 @@
 (function ($) {
 
-  var isValidForShowing = function (widget) {
-    return widget.validForShowing();
+  var isValidForShowing = function (w) {
+    return w && w.validForShowing();
   };
 
   var isTrueTrue = function () { return true; };
-  var pluckName = function (w) { return w.get('name'); };
+  var pluckName = function (w) { return w && w.get('name'); };
 
   // =================================
   window.Widgets = Backbone.Collection.extend({
@@ -175,11 +175,8 @@
       var self = this;
 
       this.widgets = options.widgets || new Widgets();
-      this.widgetsInUse = options.widgetsInUse || new Widgets();
-      this.widgetsAvailable = options.widgetsAvailable || new Widgets();
       
-      var widgetsToUse = options.homeViewWidgets || 'widgets';
-      this.homeView = new HomeView(this[widgetsToUse]);
+      this.homeView = new HomeView(this.widgets);
       this.homeView.showInvalidWidgets = options.showInvalidWidgets || false;
 
       this.scrollElem = options.scrollElem || $(window);

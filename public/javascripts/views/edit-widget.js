@@ -136,8 +136,7 @@
             success: function () {
               util.clearUIBlock(validName);
               self.stopEditingName();
-              bapp.tabBarEditor.replaceTabIfExists(oldName,newName);
-              mapp.widgetsInUse.updateOverallOrder({ forceChange:true, forceSync:true });
+              mapp.widgets.updateOverallOrder({ forceChange:true, forceSync:true });
             }
           });
         },

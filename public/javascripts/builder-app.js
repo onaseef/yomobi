@@ -172,6 +172,8 @@
     tabBarEditor: new window.EditTabBarView(),
     settingsEditor: new window.EditSettingsView(),
     keywordsEditor: new window.EditKeywordsView(),
+
+    widgetsAvailable: new Widgets(),
     
     initialize: function () {
       _.bindAll(this,'rebindSortables');
@@ -182,21 +184,20 @@
          '/_design/widgets/_view/by_name?include_docs=true',
       
       window.mapp = new MobileAppView({
-        widgetsInUse: new BuilderWidgets(),
-        homeViewWidgets: 'widgetsInUse',
+        widgets: new BuilderWidgets(),
         showInvalidWidgets: true,
         scrollElem: $('#mobile-scroller')
       });
 
       mapp.bind('render', this.bindHoverTooltips);
       
-      mapp.widgetsInUse.bind('add',mapp.homeView.render);
-      mapp.widgetsInUse.bind('remove',mapp.homeView.render);
+      mapp.widgets.bind('add',mapp.homeView.render);
+      mapp.widgets.bind('remove',mapp.homeView.render);
 
       mapp.homeView.bind('render',this.rebindSortables);
       mapp.homeView.bind('render',function () {
 
-        if (mapp.widgetsInUse.lastMod == 1) {
+        if (mapp.widgets.lastMod == 1) {
           var height = mapp.homeView.el.height();
           $('#mobile-scroller').animate({ scrollTop:height },3000);
         }
@@ -215,8 +216,8 @@
         mapp.widgets.fetch({
           success: function (widgets,res) {
             
-            mapp.widgetsInUse.refresh(widgets.models);
-            mapp.widgetsInUse.updateOverallOrder({ noSync:true, noUpdate:true });
+            mapp.widgets.refresh(widgets.models);
+            mapp.widgets.updateOverallOrder({ noSync:true, noUpdate:true });
             mapp.homeView.render();
 
             var widgetsAvailable =  _.map(bdata, function (data) {
@@ -224,13 +225,13 @@
               delete wdata.editAreaTemplate;
               
               if (wdata.singleton)
-                wdata.singletonInUse = !!mapp.widgetsInUse.findByType(wdata.wtype,wdata.wsubtype);
+                wdata.singletonInUse = !!mapp.widgets.findByType(wdata.wtype,wdata.wsubtype);
               return wdata;
             });
-            mapp.widgetsAvailable.refresh( _.compact(widgetsAvailable) );
+            self.widgetsAvailable.refresh( _.compact(widgetsAvailable) );
           
             util.toggleLoaderOverlay(false);
-            util.log('fetch',widgets,mapp.widgetsAvailable,mapp.widgetsInUse);
+            util.log('fetch',widgets,self.widgetsAvailable,mapp.widgets);
 
             mapp.updateWtabs();
             Backbone.history.start();
@@ -244,7 +245,7 @@
       });
       
       this.sidebar = new SidebarView({
-        widgets: mapp.widgetsAvailable,
+        widgets: this.widgetsAvailable,
         comparator: pluckName
       });
     },
@@ -286,7 +287,7 @@
       
           if (newWidget) {
             newWidget.set({ name:validName });
-            mapp.widgetsInUse.add(newWidget);
+            mapp.widgets.add(newWidget);
 
             if (newWidget.get('singleton'))
               bapp.sidebar.setSingletonInUse(newWidget,true);
@@ -313,13 +314,13 @@
 
         , exception = options.exception || '_'
         , isSameName = function (w) { var n=w.cname; return n == cname && n != exception; }
-        , isValid = error || !mapp.widgetsInUse.find(isSameName) || (error = 'Name already in use.')
+        , isValid = error || !mapp.widgets.find(isSameName) || (error = 'Name already in use.')
         , isValid = error || name.length >= 2 || (error = 'Name is too short (minimum 2 characters).')
         , isValid = error || name.length <= 22 || (error = 'Name is too long (22 characters max).')
         , singletonNames = error || (isSingleton && []) || bapp.sidebar.getSingletons()
         , isValid = error || !_.include(singletonNames,name) || (error = 'Sorry, that name is reserved.')
       ;
-util.log('Comparing',cname,mapp.widgetsInUse.map(function(w){ return w.cname; }));
+util.log('Comparing',cname,mapp.widgets.map(function(w){ return w.cname; }));
       if (isValid === true) return options.onValid(name);
 
       if (options.isNewWidget) {
@@ -365,8 +366,8 @@ util.log('Comparing',cname,mapp.widgetsInUse.map(function(w){ return w.cname; })
     },
     
     removeWidget: function (widget) {
-      this.tabBarEditor.removeTabIfExists(widget.get('name'));
-      mapp.widgetsInUse.remove(widget);
+      this.tabBarEditor.removeTabIfExists(widget.id);
+      mapp.widgets.remove(widget);
 
       util.pushUIBlock(widget.get('name'));
       widget.destroy({
@@ -380,7 +381,7 @@ util.log('Comparing',cname,mapp.widgetsInUse.map(function(w){ return w.cname; })
         success: function (deadWidget,res) {
           util.log('Saved widget',deadWidget,res);
           // util.releaseUI();
-          mapp.widgetsInUse.updateOverallOrder({
+          mapp.widgets.updateOverallOrder({
             forceSync: true,
             callback: function () {
               util.clearUIBlock(widget.get('name'));
@@ -484,7 +485,7 @@ util.log('Comparing',cname,mapp.widgetsInUse.map(function(w){ return w.cname; })
     return util.isUIFree();
   };
   
-  g.rearrangeManager.onstatechange = mapp.widgetsInUse.updateOverallOrder;
+  g.rearrangeManager.onstatechange = mapp.widgets.updateOverallOrder;
   
   g.rearrangeManager.onboxdrag = function () {
     return util.isUIFree();

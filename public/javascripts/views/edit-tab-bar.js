@@ -1,6 +1,6 @@
 (function ($) {
 
-  var pluckName = function (w) { return w.get('name'); };
+  var pluckName = function (w) { return w && w.get('name'); };
     
   window.EditTabBarView = Backbone.View.extend({
     
@@ -20,15 +20,14 @@
       var self = this
         , $elem = $(e.target)
         , idx = $elem.attr('data-idx')
-        , wname = $elem.val()
-        , wname = (wname == '==none==') ? '' : wname
+        , wid = ($elem.val() == '==none==') ? '' : $elem.val()
       ;
       if (!util.reserveUI()) {
         $elem.val( util.prettifyName(mapp.wtabs[idx]) );
         return;
       }
-      util.log('Updating wtabs',idx,wname);
-      mapp.wtabs.splice(idx,1,wname);
+      util.log('Updating wtabs',idx,wid);
+      mapp.wtabs.splice(idx,1,wid);
       
       this.leftJustifyWtabs();
       
@@ -46,17 +45,13 @@
       _.each(leftJustified, function (t) { mapp.wtabs.push(t); });
     },
 
-    removeTabIfExists: function (name) {
-      this.replaceTabIfExists(name,'');
-    },
-
-    replaceTabIfExists: function (name,newName) {
+    removeTabIfExists: function (wid) {
       var isChanged = false;
 
       for (var i=0; i < mapp.wtabs.length; i++) {
-        if (mapp.wtabs[i] == name) {
+        if (mapp.wtabs[i] == wid) {
           isChanged = true;
-          mapp.wtabs[i] = newName;
+          mapp.wtabs[i] = '';
         }
       }
       if (isChanged) {
@@ -69,9 +64,12 @@
       util.log('Editing Tab Bar');
       
       var wtabNames = _(mapp.wtabs).chain().map(util.widgetById).map(pluckName).value();
+      var widgetVals = _(mapp.worder).chain().keys().map(util.widgetById).compact().map(function (w) {
+        return { id:w.get('id'), name:w.get('name') };
+      }).value();
 
       this.el.html( this.template({
-        wnames: _(mapp.worder).chain().keys().map(util.widgetById).map(pluckName).value(),
+        widgetVals: widgetVals,
         wtabs: mapp.wtabs,
         wtabNames: wtabNames
       }) );
