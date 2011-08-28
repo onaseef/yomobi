@@ -2,7 +2,9 @@
 // MOBILE
 //
 (function ($) {
-  
+
+  var Backbone_set = Backbone.Model.prototype.set;
+
   window.Widget = Backbone.Model.extend({
     
     requiredAttrs: [],
@@ -76,6 +78,14 @@
       return _.all(_.map(this.requiredAttrs, pluckAttr));
     },
 
+    set: function(attributes, options) {
+      if (attributes._id) {
+        attributes.id = attributes._id;
+        delete attributes._id;
+      }
+      return Backbone_set.call(this, attributes, options);
+    },
+
     onHomeViewClick: function () {
       // returning false will cause the view not
       // to transition into the widget's page
@@ -109,7 +119,7 @@
       // the default direction is 'forward'
       return 'forward';
     },
-    
+
     onGoHome: function () {}
   });
   

@@ -3,6 +3,8 @@
 // 
 (function ($) {
   
+  var Backbone_set = Backbone.Model.prototype.set;
+
   window.Widget = window.Widget.extend({
     
     url: function () {
@@ -53,7 +55,7 @@
         attributes.email = g.userEmail;
       }
 
-      return Backbone.Model.prototype.set.call(this, attributes, options);
+      return Backbone_set.call(this, attributes, options);
     }
   });
   

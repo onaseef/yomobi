@@ -215,9 +215,8 @@
     },
     
     onWidgetTabClick: function (e) {
-      var prettyName = $(e.target).text()
-        , wname = util.uglifyName(prettyName)
-        , widget = mapp.widgets.findByName(wname)
+      var $target = e.target.tagName == 'TD' ? $(e.target) : $(e.target).parent()
+        , widget = mapp.widgets.get( $target.data('wid') )
       ;
       if(widget.onHomeViewClick()) {
         mapp.goToPage(widget.get('name'));
@@ -401,7 +400,7 @@
     
     updateWtabs: function (requireValid) {
       var isValid = requireValid ? isValidForShowing : isTrueTrue;
-      
+
       var names = _(this.wtabs).chain().map(util.widgetById).select(isValid).map(pluckName).value();
 
       this.el.find('#top-bar .tab-bar').html(this.tabBarTemplate({
