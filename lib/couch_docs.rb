@@ -12,7 +12,7 @@ class CouchDocs
       end
     end
     docs.each {|doc| doc[:email] = default_email if doc.has_key? :email }
-    docs.push self.worder_doc(docs,wtabs)
+    docs.push self.meta_doc(docs,wtabs)
     docs.push self.view_doc
   end
 
@@ -57,13 +57,13 @@ class CouchDocs
     }
   end
   
-  def self.worder_doc(widget_docs,wtabs)
+  def self.meta_doc(widget_docs,wtabs)
     worder = {}
     widget_docs.each_index {|i| worder[ widget_docs[i][:name] ] = i}
 
     {
       "_id" => "worder",
-      "worder" => worder,
+      "worderInit" => worder,
       "wtabs" => wtabs
     }
   end

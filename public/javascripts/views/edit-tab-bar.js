@@ -1,5 +1,7 @@
 (function ($) {
-  
+
+  var pluckName = function (w) { return w.get('name'); };
+    
   window.EditTabBarView = Backbone.View.extend({
     
     el: $('#builder .widget-editor'),
@@ -18,7 +20,7 @@
       var self = this
         , $elem = $(e.target)
         , idx = $elem.attr('data-idx')
-        , wname = util.uglifyName($elem.val())
+        , wname = $elem.val()
         , wname = (wname == '==none==') ? '' : wname
       ;
       if (!util.reserveUI()) {
@@ -30,7 +32,7 @@
       
       this.leftJustifyWtabs();
       
-      bapp.syncWorderDoc(function () {
+      bapp.syncMetaDoc(function () {
         mapp.updateWtabs();
         bapp.startEditingPanel('tabBar');
       });
@@ -66,9 +68,12 @@
     startEditing: function () {
       util.log('Editing Tab Bar');
       
+      var wtabNames = _(mapp.wtabs).chain().map(util.widgetById).map(pluckName).value();
+
       this.el.html( this.template({
-        wnames: _.keys(mapp.worder),
-        wtabs: mapp.wtabs
+        wnames: _(mapp.worder).chain().keys().map(util.widgetById).map(pluckName).value(),
+        wtabs: mapp.wtabs,
+        wtabNames: wtabNames
       }) );
       this.delegateEvents();
     },

@@ -46,22 +46,22 @@
           changed = changed || widget.getOrder() != iconIdx;
           widget.setOrder(iconIdx);
         }
-        worder[widget.get('name')] = widget.getOrder();
+        worder[widget.id] = widget.getOrder();
       });
 
       if (options.noSync) return;
 
       // check if new worder is different than current worder
       var newNames = _.keys(worder)
-        , oldNames = _.keys(bapp.worderDoc.worder)
+        , oldNames = _.keys(bapp.metaDoc.worder)
         , changed  = changed
                   || newNames.length != oldNames.length
                   || newNames.length != _.intersect(newNames,oldNames).length
       ;
       if (changed && (util.reserveUI() || options.forceSync)) {
         // tell server to update order
-        bapp.worderDoc.worder = worder;
-        bapp.syncWorderDoc(options.callback);
+        bapp.metaDoc.worder = worder;
+        bapp.syncMetaDoc(options.callback);
       }
     }
     
@@ -204,11 +204,11 @@
       
       // first fetch overall widget order
       var self = this;
-      mapp.fetchWorder(function (worderDoc) {
+      mapp.fetchMetaDoc(function (metaDoc) {
 
-        self.worderDoc = worderDoc;
-        mapp.worder = worderDoc.worder;
-        mapp.wtabs  = worderDoc.wtabs;
+        self.metaDoc = metaDoc;
+        mapp.worder = metaDoc.worder;
+        mapp.wtabs  = metaDoc.wtabs;
         mapp.render();
         
         // now fetch the widgets themselves
@@ -398,15 +398,15 @@
       g.homeDbx.initBoxes();
     },
     
-    syncWorderDoc: function (callback) {
-      util.log('Syncing worder...',bapp.worderDoc);
-      util.pushUIBlock('worder');
+    syncMetaDoc: function (callback) {
+      util.log('Syncing meta...',bapp.metaDoc);
+      util.pushUIBlock('meta');
 
-      $.post('/order',bapp.worderDoc,function (newWorderDoc) {
-        bapp.worderDoc = newWorderDoc;
-        mapp.worder = newWorderDoc.worder;
-        mapp.wtabs  = newWorderDoc.wtabs;
-        util.clearUIBlock('worder');
+      $.post('/order',bapp.metaDoc,function (newMetaDoc) {
+        bapp.metaDoc = newMetaDoc;
+        mapp.worder = newMetaDoc.worder;
+        mapp.wtabs  = newMetaDoc.wtabs;
+        util.clearUIBlock('meta');
         callback && callback();
       });
     },

@@ -68,8 +68,11 @@
             | <%
             = "var tabIdx = #{ n };"
             | for (var i=0; i<wnames.length; i++) {
-            | var selected = (wtabs[tabIdx] == wnames[i]) ? ' selected="selected"' : '';
-            | print('<option'+selected+'>'+util.prettifyName(wnames[i])+'</option>');
+            |   if ( wtabNames[tabIdx] == wnames[i] ) {
+            |     print('<option selected="selected">'+wnames[i]+'</option>');
+            |   } else {
+            |     print('<option>'+wnames[i]+'</option>');
+            |   }
             | } %>
   
   script.edit-settings(type="text/template")
@@ -170,12 +173,12 @@
       tr
         td.go-home
           a href="#" Home
-        td.wtab
-          div {{ prettyTabs[0] }}
-        td.wtab
-          div {{ prettyTabs[1] }}
-        td.wtab
-          div {{ prettyTabs[2] }}
+        td.wtab data-wid="{{ wids[0] }}"
+          div {{ wtabNames[0] }}
+        td.wtab data-wid="{{ wids[1] }}"
+          div {{ wtabNames[1] }}
+        td.wtab data-wid="{{ wids[2] }}"
+          div {{ wtabNames[2] }}
 
   / data taken from mobile/base.js : getIconData()
   script.sidebar-widget(type="text/template")

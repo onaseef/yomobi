@@ -1,11 +1,11 @@
 (function ($) {
 
-  var isValidForShowing = function (wtype,wsubtype) {
-    var w = mapp.widgets.findByType(wtype,wsubtype);
-    return w && w.validForShowing();
+  var isValidForShowing = function (widget) {
+    return widget.validForShowing();
   };
 
   var isTrueTrue = function () { return true; };
+  var pluckName = function (w) { return w.get('name'); };
 
   // =================================
   window.Widgets = Backbone.Collection.extend({
@@ -376,27 +376,37 @@
       }
     },
 
-    fetchWorder: function (callback) {
+    fetchMetaDoc: function (callback) {
       $.ajax({
-        url: 'http://'+g.couchLocation+'/m_' + g.db_name + '/worder',
+        url: 'http://'+g.couchLocation+'/m_' + g.db_name + '/meta',
         type: 'get',
         dataType: 'jsonp',
-        success: function(data) {
-          if(!data) statusbar.append('not defined data '+JSON.stringify(data));
-          util.log('Got worder!',data);
-          callback(data);
+        success: function(metaDoc) {
+          if(!metaDoc) statusbar.append('not defined metaDoc '+JSON.stringify(metaDoc));
+          util.log('Got meta!',metaDoc);
+
+          if (metaDoc.worderInit) mapp.initializeWorder(metaDoc)
+          callback(metaDoc);
         },
         error: function(jqXHR,textStatus,errorThrown) {
           util.log(jqXHR,textStatus,errorThrown);
         }
       });
     },
+
+    initializeWorder: function (metaDoc) {
+      util.log('Initializing worder...');
+      // TODO: remove worderInit and translate into proper worder
+    },
     
     updateWtabs: function (requireValid) {
       var isValid = requireValid ? isValidForShowing : isTrueTrue;
       
+      var names = _(this.wtabs).chain().map(util.widgetById).select(isValid).map(pluckName).value();
+
       this.el.find('#top-bar .tab-bar').html(this.tabBarTemplate({
-        prettyTabs: _(this.wtabs).chain().select(isValid).map(util.prettifyName).value()
+        wids: this.wtabs,
+        wtabNames: names
       }));
       g.topBarHeight = Math.max(g.topBarHeight, this.el.find('#top-bar').height());
     },

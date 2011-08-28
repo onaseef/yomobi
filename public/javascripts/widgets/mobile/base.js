@@ -30,11 +30,11 @@
     },
     
     getOrder: function () {
-      return parseInt( mapp.worder[this.get('name')], 10 );
+      return parseInt( mapp.worder[this.id], 10 );
     },
 
     setOrder: function (idx) {
-      mapp.worder[this.get('name')] = idx;
+      mapp.worder[this.id] = idx;
     },
 
     getIconData: function () {

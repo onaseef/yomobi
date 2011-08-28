@@ -205,6 +205,9 @@ var util = {
     return result;
   },
   
+  widgetById: function (id) {
+    return mapp.widgets.get(id);
+  },
   
   // Example inputs/outputs:
   // "08:00" -> "08:00am"
