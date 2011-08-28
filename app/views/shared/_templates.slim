@@ -368,7 +368,10 @@
   
   script.informed-page(type="text/template")
     .input-wrap
-      p Enter your information to follow the latest news from this site. You can opt out at any time and your information will remain private.
+      p
+        | Enter your information to follow the latest news from
+        = " #{@company.name}. "
+        | You can opt out at any time and your information will remain private.
       = form_tag "/#{@company.db_name}/informed/submit", :method => 'post' do
         | <% if (_maybe.optForEmails) { %>
         label Email Address:
