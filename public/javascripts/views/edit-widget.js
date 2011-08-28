@@ -127,7 +127,7 @@
       }
       
       bapp.validateWidgetName(newName,this.widget.get('wtype'),this.widget.get('singleton'), {
-        exception: oldName,
+        exception: util.toComparableName(oldName),
         mode: 'rename',
         onValid: function (validName) {
           util.pushUIBlock(validName);

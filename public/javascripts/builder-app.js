@@ -351,7 +351,7 @@
         ;
         $(this).dialog("close");
 
-        self.validateWidgetName(newName,wtype,singleton,options);
+        self.validateWidgetName(newName,wtype,isSingleton,options);
       };
 
       buttons['Cancel'] = function() {
