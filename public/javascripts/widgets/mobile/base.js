@@ -60,8 +60,11 @@
         var name = util.prettifyName(this.get('wsubtype'));
         this.set({ name:name });
       }
-      // cname = comparable name
+      // cname means comparable name
       this.cname = util.toComparableName( this.get('name') );
+      this.bind('change:name', function () {
+        this.cname = util.toComparableName( this.get('name') );
+      }, this);
 
       this.init && this.init();
     },

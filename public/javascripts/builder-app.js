@@ -319,7 +319,7 @@
         , singletonNames = error || (isSingleton && []) || bapp.sidebar.getSingletons()
         , isValid = error || !_.include(singletonNames,name) || (error = 'Sorry, that name is reserved.')
       ;
-      
+util.log('Comparing',cname,mapp.widgetsInUse.map(function(w){ return w.cname; }));
       if (isValid === true) return options.onValid(name);
 
       if (options.isNewWidget) {
