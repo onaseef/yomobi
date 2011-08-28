@@ -57,6 +57,7 @@
     initialize: function () {
       _.bindAll(this,'render','onClick');
       this.model.homeView = this;
+      this.model.bind('change:name',this.render);
     },
     
     render: function () {

@@ -54,8 +54,6 @@
         widget: this
       });
 
-      if (this.homeView) this.bind('change:name',this.homeView.render);
-
       if ( !this.get('name') ) {
         var name = util.prettifyName(this.get('wsubtype'));
         this.set({ name:name });
