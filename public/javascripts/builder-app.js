@@ -195,7 +195,7 @@
 
       mapp.homeView.bind('render',this.rebindSortables);
       mapp.homeView.bind('render',function () {
-        util.log('CHECKING',mapp.widgetsInUse,mapp.widgetsInUse.lastMod);
+
         if (mapp.widgetsInUse.lastMod == 1) {
           var height = mapp.homeView.el.height();
           $('#mobile-scroller').animate({ scrollTop:height },3000);
@@ -416,7 +416,6 @@
         mapp.worder = newWorderDoc.worder;
         mapp.wtabs  = newWorderDoc.wtabs;
         util.clearUIBlock('worder');
-util.log('WORDER SYNC CALLBACK',callback);
         callback && callback();
       });
     },

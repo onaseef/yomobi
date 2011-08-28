@@ -16,10 +16,11 @@
       if (!userId) return null;
       
       var urlRegex = new RegExp('^(https?:\\/\\/)?([^.]+\\.)?' + this.get('basename') + '\\.com');
-      util.log('REGEX',urlRegex);
+
       if (userId.match(urlRegex))
         return userId;
-      return this.get('host') + userId;
+      else
+        return this.get('host') + userId;
     },
     
     onHomeViewClick: function () {

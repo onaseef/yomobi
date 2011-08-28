@@ -139,7 +139,7 @@
 
     highlightTab: function (name) {
       var prettyName = util.prettifyName(name);
-      util.log('NAME',name,prettyName);
+
       $('#top-bar .tab-bar td')
         .removeClass('active')
         .filter(function () { return this.innerHTML == prettyName; })

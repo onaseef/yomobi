@@ -88,7 +88,6 @@
         , item = level._items[itemIdx]
         , subpage = this.widget.catStack.join('/')
       ;
-util.log('AEAAAA',item,itemIdx,level)
       subpage && (subpage += '/');
       
       mapp.goToPage(this.widget.get('name'), subpage + item.name);

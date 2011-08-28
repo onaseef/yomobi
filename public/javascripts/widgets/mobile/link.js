@@ -17,7 +17,6 @@
         if (url.indexOf('?') == -1) url += '?noredirect=1';
         else url += '&noredirect=1';
       }
-util.log('URL',url);
       window.open(url);
       return false;
     }
