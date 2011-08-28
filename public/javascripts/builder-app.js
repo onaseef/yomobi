@@ -219,13 +219,12 @@
             mapp.widgetsInUse.updateOverallOrder({ noSync:true, noUpdate:true });
             mapp.homeView.render();
 
-            // TODO: grab data from server (bdata)
             var widgetsAvailable =  _.map(bdata, function (data) {
               var wdata = _.extend({},data);
               delete wdata.editAreaTemplate;
               
               if (wdata.singleton)
-                wdata.singletonInUse = !!mapp.widgetsInUse.findByName(wdata.name);
+                wdata.singletonInUse = !!mapp.widgetsInUse.findByType(wdata.wtype,wdata.wsubtype);
               return wdata;
             });
             mapp.widgetsAvailable.refresh( _.compact(widgetsAvailable) );
@@ -275,18 +274,18 @@
       return false;
     },
     
-    addNewWidget: function (name,wtype,wsubtype,singleton) {
+    addNewWidget: function (name,wtype,wsubtype,isSingleton) {
       util.log('adding new widget',name,wtype,wsubtype);
       if (!util.reserveUI()) return;
       var self = this;
       
-      this.validateWidgetName(name,wtype,singleton, {
+      this.validateWidgetName(name,wtype,isSingleton, {
         isNewWidget: true,
         onValid: function (validName) {
           var newWidget = util.newWidgetByType(wtype,wsubtype);
       
           if (newWidget) {
-            newWidget.set({ prettyName:validName });
+            newWidget.set({ name:validName });
             mapp.widgetsInUse.add(newWidget);
 
             if (newWidget.get('singleton'))
@@ -303,22 +302,22 @@
     // validateWidget
     //  If widget name is not valid, returns false and opens a dialog box
     //  else returns true
-    // NOTE: name is in uglified form
+    // NOTE: `name` is already in prettified form
     // 
-    validateWidgetName: function (name,wtype,singleton,options) {
+    validateWidgetName: function (name,wtype,isSingleton,options) {
       var error = null
         , self = this
         , options = options || {}
-        , prettyName = util.prettifyName(name)
-        , isValid = !!name.match(/^[a-z0-9\-]*$/) || (error = 'Invalid name')
+
+        , cname = util.toComparableName(name)
 
         , exception = options.exception || '_'
-        , isSameName = function (w) { var n=w.get('name'); return n == name && n != exception; }
+        , isSameName = function (w) { var n=w.cname; return n == cname && n != exception; }
         , isValid = error || !mapp.widgetsInUse.find(isSameName) || (error = 'Name already in use.')
-        , isValid = error || prettyName.length >= 2 || (error = 'Name is too short (minimum 2 characters).')
-        , isValid = error || prettyName.length <= 22 || (error = 'Name is too long (22 characters max).')
-        , singletonNamesInUse = error || (singleton && []) || _.map(bapp.sidebar.singletonsInUse(), pluckPrettyName)
-        , isValid = error || !_.include(singletonNamesInUse,prettyName) || (error = 'Sorry, that name is reserved.')
+        , isValid = error || name.length >= 2 || (error = 'Name is too short (minimum 2 characters).')
+        , isValid = error || name.length <= 22 || (error = 'Name is too long (22 characters max).')
+        , singletonNames = error || (isSingleton && []) || bapp.sidebar.getSingletons()
+        , isValid = error || !_.include(singletonNames,name) || (error = 'Sorry, that name is reserved.')
       ;
       
       if (isValid === true) return options.onValid(name);
@@ -334,18 +333,12 @@
         }
         else { var newName = name + '2'; }
 
-        this.validateWidgetName(newName,wtype,singleton,options);
+        this.validateWidgetName(newName,wtype,isSingleton,options);
         return false;
       }
       
-      // find ALL widgets of this wtype
-      var isSameWtype = function (w) { return w.get('wtype') == wtype }
-        , existingNames = _.map(mapp.widgetsInUse.select(isSameWtype), pluckPrettyName)
-      ;
       var dialogHtml = util.getTemplate('add-widget-dialog')({
-        wtype: wtype.toUpperCase(),
-        defaultName: util.prettifyName(name),
-        names: existingNames,
+        defaultName: name,
         error: error
       });
 
@@ -355,8 +348,6 @@
       buttons[actionName] = function () {
         var newName = $(this).find('input[name=wname]').val()
           , newName = $.trim(newName)
-          , newName = util.uglifyName(newName)
-            newName = util.scrubUglyName(newName)
         ;
         $(this).dialog("close");
 

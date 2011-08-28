@@ -91,7 +91,7 @@
       this.el
         .find('.widget-name').hide().end()
         .find('.widget-name-edit')
-          .find('input').val(this.widget.get('prettyName')).end()
+          .find('input').val(this.widget.get('name')).end()
           .show()
           .find('input[type=text]')
             .focus()
@@ -108,7 +108,7 @@
         .find('.widget-name-edit').hide()
           .find('input').val()
       ;
-      this.el.find('.widget-name span').text(this.widget.get('prettyName'));
+      this.el.find('.widget-name span').text(this.widget.get('name'));
     },
     
     changeName: function (e) {
@@ -117,8 +117,7 @@
         return;
       }
       var self = this
-        , prettyName = $(e.target).unbind('blur').unbind('keydown').val()
-        , newName = util.scrubUglyName( util.uglifyName(prettyName) )
+        , newName = $(e.target).unbind('blur').unbind('keydown').val()
         , oldName = this.widget.get('name')
       ;
       if (newName === oldName) {

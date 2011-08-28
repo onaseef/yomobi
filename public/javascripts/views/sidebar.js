@@ -47,7 +47,7 @@
       return w && w.get('singletonInUse');
     },
     
-    singletonsInUse: function () {
+    getSingletons: function () {
       return this.widgets.select(function (w) { return !!w.get('singleton'); });
     },
 
@@ -113,13 +113,13 @@
       var elem = $(targetedElem)
         , wtype = elem.data('wtype')
         , wsubtype = elem.data('wsubtype')
-        , name = wsubtype
-        , singleton = elem.hasClass('singleton')
+        , name = util.prettifyName(wsubtype)
+        , isSingleton = elem.hasClass('singleton')
       ;
       if(!elem.hasClass('sidebar')) return;
       
-      util.log('dropped',name,wtype,wsubtype,singleton);
-      bapp.addNewWidget(name,wtype,wsubtype,singleton);
+      util.log('dropped',name,wtype,wsubtype,isSingleton);
+      bapp.addNewWidget(name,wtype,wsubtype,isSingleton);
     },
 
     tellBappToEditTabBar: function () { bapp.startEditingPanel('tabBar'); },

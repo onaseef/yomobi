@@ -20,9 +20,9 @@
     .header
       .icon{ style="background-image: url(/images/widgets/{{ iconName }}.png)" }
       .widget-name-edit
-        input type="text" name="wname" value="{{ prettyName }}" maxlength="22"
+        input type="text" name="wname" value="{{ name }}" maxlength="22"
       .widget-name
-        span {{ prettyName }}
+        span {{ name }}
       p.help-text
         a.help-link href="#" Help
         span.dot &nbsp;&middot;&nbsp;
@@ -195,12 +195,6 @@
         | <% if(_maybe.error) { %>
         p.error Error: {{ _maybe.error }}
         | <% } %>
-	    .other-names
-  	    b Other names in use by this widget type:
-  	    ul
-    	    | <% for(var i=0; i < names.length; i++) { %>
-    	    |    <li> {{ names[i] }} </li>
-    	    |  <% } %>
   
   script.add-subcat-dialog(type="text/template")
     #dialog-confirm title="Add New {{ typeName }}"
@@ -484,7 +478,7 @@
     label Your {{ subHelpText }}*:
     input(name="userId" type="text" value="{{ _maybe.userId }}")
   
-  script.custom_page-edit-area.about-us-edit-area(type="text/template")
+  script.custom-page-edit-area.about-us-edit-area(type="text/template")
     #jeditor-wrapper
       textarea#jeditor rows=8 cols=8 {{ _maybe.content }}
 

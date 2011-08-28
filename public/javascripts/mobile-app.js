@@ -1,7 +1,7 @@
 (function ($) {
 
-  var isValidForShowing = function (wname) {
-    var w = mapp.widgets.findByName(wname);
+  var isValidForShowing = function (wtype,wsubtype) {
+    var w = mapp.widgets.findByType(wtype,wsubtype);
     return w && w.validForShowing();
   };
 
@@ -31,8 +31,10 @@
       return this.select(function (w) { return w.validForShowing(); }).length;
     },
 
-    findByName: function (widgetName) {
-      return this.find(function (w) { return w.get('name') == widgetName; });
+    findByType: function (wtype,wsubtype) {
+      return this.find(function (w) {
+        return w.get('wtype') == wtype && w.get('wsubtype') == wsubtype;
+      });
     },
     
     comparator: function (widget) {

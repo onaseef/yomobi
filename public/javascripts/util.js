@@ -316,8 +316,7 @@ var util = {
   newWidgetByType: function (wtype,wsubtype) {
 
     var wdata = _.detect(window.bdata, function (w) {
-      return w.wtype == widget.get('wtype') &&
-             w.wsubtype == widget.get('wsubtype');
+      return w.wtype == wtype && w.wsubtype == wsubtype;
     });
 
     return util.newWidget(wdata);
@@ -680,6 +679,10 @@ var util = {
     setTimeout(function () {
       if (mapp.currentWidget === myWidget) util.spawnAritcaptcha();
     },1000);
+  },
+
+  toComparableName: function (name) {
+    return name.toLowerCase();
   }
   
 }

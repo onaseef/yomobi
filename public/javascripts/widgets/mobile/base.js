@@ -43,7 +43,7 @@
         wtype: wdata.wtype,
         wsubtype: wdata.wsubtype,
         name: this.get('name'),
-        prettyName: this.get('prettyName'),
+        prettyName: this.get('name'),
         iconName: wdata.wsubtype,
         singletonClass: wdata.singleton ? 'singleton' : ''
       };
@@ -54,12 +54,14 @@
         widget: this
       });
 
-      if (this.homeView) this.bind('change:prettyName',this.homeView.render);
+      if (this.homeView) this.bind('change:name',this.homeView.render);
 
-      if ( !this.get('prettyName') ) {
-        var prettyName = util.prettifyName(this.get('wsubtype'));
-        this.set({ prettyName:prettyName });
+      if ( !this.get('name') ) {
+        var name = util.prettifyName(this.get('wsubtype'));
+        this.set({ name:name });
       }
+      // cname = comparable name
+      this.cname = util.toComparableName( this.get('name') );
 
       this.init && this.init();
     },
