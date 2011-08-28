@@ -335,6 +335,11 @@ label {
   @extend #account-setup-box;
 }
 
-#privacy, #terms {
+#privacy, #terms, #about {
   margin: 40px;
+}
+
+#easy {
+  margin: 40px 0;
+  text-align: center;
 }
