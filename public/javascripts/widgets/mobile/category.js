@@ -14,7 +14,7 @@
     
     getShowData: function () {
       var level = this.getCurrentLevel();
-      if (!this.itemTemplate) this.itemTemplate = util.getTemplate(this.get('name')+'-item');
+      if (!this.itemTemplate) this.itemTemplate = util.getTemplate(this.get('wsubtype')+'-item');
       
       var extraData = {
         items: level._items || [],
