@@ -1,7 +1,8 @@
 (function ($) {
 
   var isValidForShowing = function (w) {
-    return w && w.validForShowing();
+    if (w && w.validForShowing()) return w;
+    return null;
   };
 
   var isTrueTrue = function () { return true; };
@@ -418,11 +419,18 @@
     updateWtabs: function (requireValid) {
       var isValid = requireValid ? isValidForShowing : isTrueTrue;
 
-      var names = _(this.metaDoc.wtabs).chain().map(util.widgetById).select(isValid).map(pluckName).value();
+      var names = _(this.metaDoc.wtabs).chain().map(util.widgetById).map(isValid).map(pluckName).value();
+      var wtabs = this.metaDoc.wtabs.concat([]);
+
+      for (var i=0; i < names.length; i++) {
+        if (!names[i]) {
+          wtabs.splice(0,1);
+        }
+      }
 
       this.el.find('#top-bar .tab-bar').html(this.tabBarTemplate({
-        wids: this.metaDoc.wtabs,
-        wtabNames: names
+        wids: wtabs,
+        wtabNames: _.compact(names)
       }));
       g.topBarHeight = Math.max(g.topBarHeight, this.el.find('#top-bar').height());
     },
