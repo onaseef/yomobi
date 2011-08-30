@@ -13,7 +13,7 @@
     
     onHomeViewClick: function () {
       var url = this.get('url');
-      if (this.get('name') == 'full-website') {
+      if (this.get('wsubtype') == 'full-website') {
         if (url.indexOf('?') == -1) url += '?noredirect=1';
         else url += '&noredirect=1';
       }
