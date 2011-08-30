@@ -4,6 +4,12 @@ require File.expand_path('../application', __FILE__)
 # used in follower.rb
 DUPLICATE_ERROR_MESSAGES = ["Duplicate entry", "duplicate key", "not unique"]
 
+# used in signup_controller.rb
+RESERVED_SITE_URLS = %w{
+  about account-setup admin builder confirm confirmation easy
+  home mobile opt-out order terms users widgets yomobi
+}
+
 # used in informed_controller.rb
 SHORT_URL_RESERVED_COUNT = 23
 

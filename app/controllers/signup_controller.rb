@@ -35,6 +35,8 @@ class SignupController < ApplicationController
 
     if data['site_url'].match(/^[a-z0-9][a-z0-9_\-]{2,#{MAX_COMPANY_NAME_LENGTH}}$/i).nil?
       @errors['site_url'] = 'illegal'
+    elsif reserved_site_url? data['site_url']
+      @errors['site_url'] = 'reserved'
     elsif couchdb_exists? data['site_url'].downcase
       @errors['site_url'] = 'taken'
     end
@@ -106,6 +108,10 @@ class SignupController < ApplicationController
 
   private
   
+  def reserved_site_url?(site_url)
+    RESERVED_SITE_URLS.include? site_url
+  end
+
   def couchdb_exists?(db_name)
     db = CouchRest.database "http://#{Rails.application.config.couch_host}/m_#{db_name}"
     begin
