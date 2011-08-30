@@ -33,18 +33,12 @@
     
     setSingletonInUse: function (widget,inUse) {
       var w = this.widgets.find(function (w) {
-        return w.get('name') == widget.get('name') &&
-               w.get('wtype') == widget.get('wtype');
+        return w.get('wtype') == widget.get('wtype') &&
+               w.get('wsubtype') == widget.get('wsubtype')
+        ;
       });
       w.set({ singletonInUse:inUse });
       this.render();
-    },
-
-    isSingletonInUse: function (name,wtype) {
-      var w = this.widgets.find(function (w) {
-        return w.get('name') == name && w.get('wtype') == wtype;
-      });
-      return w && w.get('singletonInUse');
     },
     
     getSingletons: function () {
