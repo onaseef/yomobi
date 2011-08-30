@@ -8,7 +8,13 @@ window.g = {
   couchLocation: '<%=escape_javascript @company.couch_host %>',
   db_name: '<%=escape_javascript @company.db_name %>',
   company: "<%=escape_javascript @company.name %>",
-  userEmail: "<%=escape_javascript @company.user.email %>",
+  userEmails: {
+    yomobi: "<%=escape_javascript @company.user.email %>",
+    informed: "<%=escape_javascript @company.informed_email %>",
+    leave_msg: "<%=escape_javascript @company.leave_msg_email %>",
+    call_back: "<%=escape_javascript @company.call_back_email %>",
+    booking: "<%=escape_javascript @company.booking_email %>"
+  },
   keywords: "<%=escape_javascript @company.keywords %>",
   MAX_TEXT_CHARS: <%= @max_text_chars || -1 %>,
   MAX_COMPANY_NAME_LENGTH: <%= MAX_COMPANY_NAME_LENGTH %>,

@@ -53,7 +53,7 @@
         delete attributes._id;
       }
       if (attributes.email === null || attributes.email === '') {
-        attributes.email = g.userEmail;
+        attributes.email = g.userEmails[attributes.wtype] || g.userEmails.yomobi;
       }
 
       return Backbone_set.call(this, attributes, options);

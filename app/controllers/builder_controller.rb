@@ -25,14 +25,16 @@ class BuilderController < ApplicationController
     db = CouchRest.database(current_user.company.couch_db_url)
 
     # scrub off rails related data
-    params[:_id] = params[:id]; params.delete(:id)
-    params.delete :action; params.delete :controller
+    wdata = params.clone
+    wdata[:_id] = wdata[:id]; wdata.delete(:id)
+    wdata.delete :action; wdata.delete :controller
 
-    return error 'Bad data' unless handle_special_widget_cases(params)
+    return error 'Bad data' unless handle_special_widget_cases(wdata)
     
     # couchrest adds _id and _rev to the hash on success
-    res = db.save_doc(params)
-    success params
+    res = db.save_doc(wdata)
+    wdata[:email] = params[:email] if params[:email]
+    success wdata
   end
   
   def delete_widget
@@ -98,18 +100,20 @@ class BuilderController < ApplicationController
   private
 
   def handle_special_widget_cases(widget)
+    email = widget[:email]
+
     case widget[:wtype]
     when 'informed'
-      current_user.company.informed_email = widget[:email]
+      current_user.company.informed_email = email
       current_user.company.save
     when 'leave_msg'
-      current_user.company.leave_msg_email = widget[:email]
+      current_user.company.leave_msg_email = email
       current_user.company.save
     when 'call_back'
-      current_user.company.call_back_email = widget[:email]
+      current_user.company.call_back_email = email
       current_user.company.save
     when 'booking'
-      current_user.company.booking_email = widget[:email]
+      current_user.company.booking_email = email
       current_user.company.save
     else
       true

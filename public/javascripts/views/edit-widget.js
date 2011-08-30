@@ -43,8 +43,14 @@
           util.showSuccess(self.el.find('.action-bar'));
           util.releaseWidget(model);
           model.onSave && model.onSave();
+
+          if (model.get('email')) {
+            g.userEmails[model.get('wtype')] = model.get('email');
+          }
+          
           if (self.validForShowingStatus != model.validForShowing())
             mapp.homeView.render();
+          
           self.startEditing(true);
           callback && callback();
         }
