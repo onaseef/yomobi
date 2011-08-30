@@ -381,7 +381,6 @@
           if(!metaDoc) statusbar.append('not defined metaDoc '+JSON.stringify(metaDoc));
           util.log('Got meta!',metaDoc);
 
-          if (metaDoc.worderInit) mapp.initializeWorder(metaDoc)
           callback(metaDoc);
         },
         error: function(jqXHR,textStatus,errorThrown) {
@@ -390,18 +389,39 @@
       });
     },
 
-    initializeWorder: function (metaDoc) {
-      util.log('Initializing worder...');
-      // TODO: remove worderInit and translate into proper worder
+    initializeWorder: function () {
+      util.log('Initializing worder...',mapp.widgets.length);
+      var metaDoc = this.metaDoc;
+
+      // remove worderInit and translate into proper worder
+      var worder = {}, worderInit = metaDoc.worderInit;
+      for (var wsubtype in worderInit) {
+        var widget = mapp.widgets.detect(function (w) {
+          return w.get('wsubtype') == wsubtype;
+        });
+        worder[widget.id] = worderInit[wsubtype];
+      }
+
+      // remove wtabsInit and translate into proper wtabs
+      var wtabs = [], wtabsInit = metaDoc.wtabsInit;
+      _.each(wtabsInit, function (wsubtype) {
+        var widget = mapp.widgets.detect(function (w) {
+          return w.get('wsubtype') == wsubtype;
+        });
+        wtabs.push(widget.id);
+      });
+
+      delete metaDoc.worderInit; delete metaDoc.wtabsInit;
+      metaDoc.worder = worder;   metaDoc.wtabs = wtabs;
     },
     
     updateWtabs: function (requireValid) {
       var isValid = requireValid ? isValidForShowing : isTrueTrue;
 
-      var names = _(this.wtabs).chain().map(util.widgetById).select(isValid).map(pluckName).value();
+      var names = _(this.metaDoc.wtabs).chain().map(util.widgetById).select(isValid).map(pluckName).value();
 
       this.el.find('#top-bar .tab-bar').html(this.tabBarTemplate({
-        wids: this.wtabs,
+        wids: this.metaDoc.wtabs,
         wtabNames: names
       }));
       g.topBarHeight = Math.max(g.topBarHeight, this.el.find('#top-bar').height());

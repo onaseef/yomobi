@@ -32,11 +32,11 @@
     },
     
     getOrder: function () {
-      return parseInt( mapp.worder[this.id], 10 );
+      return parseInt( mapp.metaDoc.worder[this.id] || 0, 10 );
     },
 
     setOrder: function (idx) {
-      mapp.worder[this.id] = idx;
+      mapp.metaDoc.worder[this.id] = idx;
     },
 
     getIconData: function () {

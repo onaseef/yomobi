@@ -6,7 +6,7 @@ class CouchDocs
     wtabs = nil
     WMAPS['docs'].each do |spec|
       if spec['types'].include?(company_type_name)
-        docs.concat spec['widgets'].map {|name| self.by_name(name)}
+        docs.concat spec['widgets'].map {|wsubtype| self.by_wsubtype(wsubtype)}
         wtabs = spec['tabs']
         break
       end
@@ -24,18 +24,6 @@ class CouchDocs
     }
   end
   
-  def self.admin_user_doc(name,pass)
-    salt = self.gen_salt
-    {
-      "_id" => "org.couchdb.user:admin_#{name}",
-      "name" => "admin_#{name}",
-      "type" => "user",
-      "salt" => salt,
-      "password_sha" => Digest::SHA1.hexdigest(pass + salt),
-      "roles" => []
-    }
-  end
-  
   def self.view_doc
     {
       "_id" => "_design/widgets",
@@ -44,13 +32,13 @@ class CouchDocs
         "by_name" => {
           "map" => "function(doc) {
             if(doc.wtype)
-              emit([doc.disabled_,doc.name],null);
+              emit([doc.disabled_,doc.wsubtype],null);
           }"
         },
         "in_use_by_name" => {
           "map" => "function(doc) {
             if(doc.wtype)
-              emit(doc.name,null);
+              emit(doc.wsubtype,null);
           }"
         }
       }
@@ -59,25 +47,27 @@ class CouchDocs
   
   def self.meta_doc(widget_docs,wtabs)
     worder = {}
-    widget_docs.each_index {|i| worder[ widget_docs[i][:name] ] = i}
+    widget_docs.each_index {|i| worder[ widget_docs[i][:wsubtype] ] = i}
 
     {
-      "_id" => "worder",
+      "_id" => "meta",
+      "worder" => {},
       "worderInit" => worder,
-      "wtabs" => wtabs
+      "wtabs" => [],
+      "wtabsInit" => wtabs
     }
   end
   
   def self.about_us_doc(desc)
-    self.by_name('about-us').merge :content => desc
+    self.by_wsubtype('about-us').merge :content => desc
   end
   
   def self.phone_doc(phone)
-    self.by_name('call-us').merge :phone => phone
+    self.by_wsubtype('call-us').merge :phone => phone
   end
   
   def self.gmap_doc(address)
-    self.by_name('find-us').merge!(address)
+    self.by_wsubtype('find-us').merge!(address)
   end
   
   def self.gen_salt
@@ -87,8 +77,8 @@ class CouchDocs
     result
   end
 
-  def self.by_name(doc_name)
-    self.all.select {|doc| doc[:name] == doc_name}.first
+  def self.by_wsubtype(wsubtype)
+    self.all.select {|doc| doc[:wsubtype] == wsubtype}.first
   end
 
   def self.all

@@ -17,7 +17,7 @@
     
     onAdd: function (widget) {
       // +1 on length to make sure order update catches the change
-      widget.setOrder( _.keys(mapp.worder).length+1 );
+      widget.setOrder( _.keys(mapp.metaDoc.worder).length+1 );
       this.sort({ silent:true });
       this.updateOverallOrder({ noUpdate:true });
 
@@ -30,7 +30,7 @@
           // util.releaseWidget(widget);
           bapp.homeViewWidgetClick(widget);
           self.updateOverallOrder({
-            forceSync: true,
+            bypassUIReserve: true,
             callback: function () { util.clearUIBlock('new-widget'); }
           });
         }
@@ -53,14 +53,16 @@
 
       // check if new worder is different than current worder
       var newNames = _.keys(worder)
-        , oldNames = _.keys(bapp.metaDoc.worder)
+        , oldNames = _.keys(mapp.metaDoc.worder)
         , changed  = changed
                   || newNames.length != oldNames.length
                   || newNames.length != _.intersect(newNames,oldNames).length
       ;
-      if (changed && (util.reserveUI() || options.forceSync)) {
-        // tell server to update order
-        bapp.metaDoc.worder = worder;
+      if (changed && (util.reserveUI() || options.bypassUIReserve) || options.forceSync) {
+
+        if (options.forceSync) util.reserveUI();
+        // tell server to save updated order
+        mapp.metaDoc.worder = worder;
         bapp.syncMetaDoc(options.callback);
       }
     }
@@ -207,18 +209,22 @@
       var self = this;
       mapp.fetchMetaDoc(function (metaDoc) {
 
-        self.metaDoc = metaDoc;
-        mapp.worder = metaDoc.worder;
-        mapp.wtabs  = metaDoc.wtabs;
+        mapp.metaDoc = metaDoc;
         mapp.render();
         
         // now fetch the widgets themselves
         mapp.widgets.fetch({
           success: function (widgets,res) {
-            
+
             mapp.widgets.refresh(widgets.models);
             mapp.widgets.updateOverallOrder({ noSync:true, noUpdate:true });
             mapp.homeView.render();
+
+            if (mapp.metaDoc.worderInit) {
+              mapp.initializeWorder();
+              mapp.widgets.updateOverallOrder({ noUpdate:true, forceSync:true });
+              mapp.homeView.render();
+            }
 
             var widgetsAvailable =  _.map(bdata, function (data) {
               var wdata = _.extend({},data);
@@ -382,7 +388,7 @@ util.log('Comparing',cname,mapp.widgets.map(function(w){ return w.cname; }));
           util.log('Saved widget',deadWidget,res);
           // util.releaseUI();
           mapp.widgets.updateOverallOrder({
-            forceSync: true,
+            bypassUIReserve: true,
             callback: function () {
               util.clearUIBlock(widget.get('name'));
               util.releaseWidget(deadWidget);
@@ -400,13 +406,11 @@ util.log('Comparing',cname,mapp.widgets.map(function(w){ return w.cname; }));
     },
     
     syncMetaDoc: function (callback) {
-      util.log('Syncing meta...',bapp.metaDoc);
+      util.log('Syncing meta...',mapp.metaDoc);
       util.pushUIBlock('meta');
 
-      $.post('/order',bapp.metaDoc,function (newMetaDoc) {
-        bapp.metaDoc = newMetaDoc;
-        mapp.worder = newMetaDoc.worder;
-        mapp.wtabs  = newMetaDoc.wtabs;
+      $.post('/order',mapp.metaDoc,function (newMetaDoc) {
+        mapp.metaDoc = newMetaDoc;
         util.clearUIBlock('meta');
         callback && callback();
       });

@@ -136,7 +136,7 @@
             success: function () {
               util.clearUIBlock(validName);
               self.stopEditingName();
-              mapp.widgets.updateOverallOrder({ forceChange:true, forceSync:true });
+              mapp.widgets.updateOverallOrder({ forceChange:true, bypassUIReserve:true });
             }
           });
         },

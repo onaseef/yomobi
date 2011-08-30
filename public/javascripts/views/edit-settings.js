@@ -45,8 +45,8 @@
       util.log('Editing Settings');
       
       this.el.html( this.template({
-        wnames: _.keys(mapp.worder),
-        wtabs: mapp.wtabs
+        wnames: _.keys(mapp.metaDoc.worder),
+        wtabs: mapp.metaDoc.wtabs
       }) )
         .find('.help-bubble').simpletooltip(undefined,'help').end()
         .find('input:file').keypress(function () { return false; }).end()

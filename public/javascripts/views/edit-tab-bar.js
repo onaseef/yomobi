@@ -23,11 +23,11 @@
         , wid = ($elem.val() == '==none==') ? '' : $elem.val()
       ;
       if (!util.reserveUI()) {
-        $elem.val( util.prettifyName(mapp.wtabs[idx]) );
+        $elem.val( util.prettifyName(mapp.metaDoc.wtabs[idx]) );
         return;
       }
       util.log('Updating wtabs',idx,wid);
-      mapp.wtabs.splice(idx,1,wid);
+      mapp.metaDoc.wtabs.splice(idx,1,wid);
       
       this.leftJustifyWtabs();
       
@@ -38,20 +38,23 @@
     },
 
     leftJustifyWtabs: function () {
-      leftJustified = _.compact(mapp.wtabs);
+      var wtabs = mapp.metaDoc.wtabs
+        , leftJustified = _.compact(wtabs)
+      ;
       while (leftJustified.length < 3) leftJustified.push('');
-      // mapp.wtabs points to a special array; can't just reassign a new one
-      mapp.wtabs.length = 0;
-      _.each(leftJustified, function (t) { mapp.wtabs.push(t); });
+      // mapp.metaDoc.wtabs points to a special array; can't just reassign a new one
+      wtabs.length = 0;
+      _.each(leftJustified, function (t) { wtabs.push(t); });
     },
 
     removeTabIfExists: function (wid) {
-      var isChanged = false;
-
-      for (var i=0; i < mapp.wtabs.length; i++) {
-        if (mapp.wtabs[i] == wid) {
+      var isChanged = false
+        , wtabs = mapp.metaDoc.wtabs
+      ;
+      for (var i=0; i < wtabs.length; i++) {
+        if (wtabs[i] == wid) {
           isChanged = true;
-          mapp.wtabs[i] = '';
+          wtabs[i] = '';
         }
       }
       if (isChanged) {
@@ -62,15 +65,21 @@
     
     startEditing: function () {
       util.log('Editing Tab Bar');
-      
-      var wtabNames = _(mapp.wtabs).chain().map(util.widgetById).map(pluckName).value();
-      var widgetVals = _(mapp.worder).chain().keys().map(util.widgetById).compact().map(function (w) {
-        return { id:w.get('id'), name:w.get('name') };
-      }).value();
+
+      var wtabNames = _(mapp.metaDoc.wtabs).chain().map(util.widgetById).map(pluckName).value();
+
+      var widgetVals = _(mapp.metaDoc.worder).chain()
+        .keys()
+        .map(util.widgetById)
+        .compact()
+        .map(function (w) {
+          return { id:w.get('id'), name:w.get('name') };
+        }).value()
+      ;
 
       this.el.html( this.template({
         widgetVals: widgetVals,
-        wtabs: mapp.wtabs,
+        wtabs: mapp.metaDoc.wtabs,
         wtabNames: wtabNames
       }) );
       this.delegateEvents();

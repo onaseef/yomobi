@@ -39,8 +39,7 @@ html lang="en-US" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com
         window.router = new MobileAppController();
 
         mapp.fetchMetaDoc(function (metaDoc) {
-          mapp.worder = metaDoc.worder;
-          mapp.wtabs  = metaDoc.wtabs;
+          mapp.metaDoc = metaDoc;
           mapp.render();
 
           mapp.widgets.fetch({
