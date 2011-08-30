@@ -196,7 +196,6 @@
         , dataName = elem.attr('name')
         , newData = elem.val()
         , isChanged = (this.widget.get(dataName) || '') != newData
-util.log('changed?',isChanged,this.widget.get(dataName) || '',newData);
       this.setChanged(dataName,isChanged);
     },
 
