@@ -1,6 +1,5 @@
 (function ($) {
 
-  var pluckPrettyName = function (w) { return util.prettifyName(w.get('name')) };
   var pluckName = function (w) { return w.get('name'); };
 
   var unsavedChangesText = "You have unsaved changes. Click OK to go back and save changes. Click Cancel to discard your changes.";
@@ -326,7 +325,7 @@
         , singletonNames = error || (isSingleton && []) || bapp.sidebar.getSingletons()
         , isValid = error || !_.include(singletonNames,name) || (error = 'Sorry, that name is reserved.')
       ;
-util.log('Comparing',cname,mapp.widgets.map(function(w){ return w.cname; }));
+
       if (isValid === true) return options.onValid(name);
 
       if (options.isNewWidget) {

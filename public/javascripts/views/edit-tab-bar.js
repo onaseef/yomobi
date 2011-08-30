@@ -23,7 +23,7 @@
         , wid = ($elem.val() == '==none==') ? '' : $elem.val()
       ;
       if (!util.reserveUI()) {
-        $elem.val( util.prettifyName(mapp.metaDoc.wtabs[idx]) );
+        mapp.updateWtabs();
         return;
       }
       util.log('Updating wtabs',idx,wid);

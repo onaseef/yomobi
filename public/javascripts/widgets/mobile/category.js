@@ -26,7 +26,7 @@
     },
     
     getTitleContent: function () {
-      return '<h3>' + util.catStackCrumbs(this.get('prettyName'),this.catStack) + '</h3>';
+      return '<h3>' + util.catStackCrumbs(this.get('name'),this.catStack) + '</h3>';
     },
     
     getCurrentLevel: function () {

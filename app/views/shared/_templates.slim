@@ -3,7 +3,7 @@
   script.home-icon(type="text/template")
     .inner
       .icon.dbx-handle{ style="background-image: url(/images/widgets/{{ iconName }}.png)" }
-      .title {{ prettyName }}
+      .title {{ name }}
       .invalid-icon
   
   script.mapp-header(type="text/template")
@@ -11,7 +11,7 @@
       tr
         td
           img.logo src=@company.logo.url(:mobile)
-        td.name {{ prettyName }}
+        td.name {{ name }}
   
   script.edit-widget-idle(type="text/template")
     = render 'builder/builder-help'
@@ -187,7 +187,7 @@
       img.add.left src="/images/ui/plus.png"
       img.icon{ src="/images/widgets/{{ iconName }}.png" }
       .title
-        | {{ prettyName }}
+        | {{ name }}
   
   script.add-widget-dialog(type="text/template")
     #dialog-confirm title="Please Rename your Widget"

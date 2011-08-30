@@ -2,11 +2,10 @@
 
   var isValidForShowing = function (w) {
     if (w && w.validForShowing()) return w;
-    return null;
+    return undefined;
   };
 
-  var isTrueTrue = function () { return true; };
-  var pluckName = function (w) { return w && w.get('name'); };
+  var pluckName = function (w) { console.log(w); return w && w.get('name'); };
 
   // =================================
   window.Widgets = Backbone.Collection.extend({
@@ -142,11 +141,9 @@
     },
 
     highlightTab: function (name) {
-      var prettyName = util.prettifyName(name);
-
       $('#top-bar .tab-bar td')
         .removeClass('active')
-        .filter(function () { return this.innerHTML == prettyName; })
+        .filter(function () { return this.innerHTML == name; })
         .addClass('active')
       ;
     }
@@ -191,7 +188,7 @@
       util.log('app render');
       $('#top-bar .company-info').html(this.headerTemplate({
         name: g.db_name,
-        prettyName: g.company
+        name: g.company
       }))
       .find('img').load(function (e,elem) {
         g.topBarHeight = Math.max(g.topBarHeight,$('#top-bar').height());
@@ -417,7 +414,7 @@
     },
     
     updateWtabs: function (requireValid) {
-      var isValid = requireValid ? isValidForShowing : isTrueTrue;
+      var isValid = requireValid ? isValidForShowing : _.identity;
 
       var names = _(this.metaDoc.wtabs).chain().map(util.widgetById).map(isValid).map(pluckName).value();
       var wtabs = this.metaDoc.wtabs.concat([]);

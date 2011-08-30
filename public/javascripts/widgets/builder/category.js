@@ -45,8 +45,8 @@
       }
       
       var extraData = {
-        currentCat: util.catName(_.last(this.catStack)) || this.get('prettyName'),
-        catCrumbs: util.catStackCrumbs(this.get('prettyName'),this.catStack),
+        currentCat: util.catName(_.last(this.catStack)) || this.get('name'),
+        catCrumbs: util.catStackCrumbs(this.get('name'),this.catStack),
         onHomePage: mapp.pageLevel === 0,
         areItemsEmpty: areItemsEmpty,
         areCatsEmpty: areCatsEmpty,

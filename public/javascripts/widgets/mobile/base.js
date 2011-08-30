@@ -24,7 +24,7 @@
     },
     
     getTitleContent: function () {
-      return '<h3>' + this.get('prettyName') + '</h3>';
+      return '<h3>' + this.get('name') + '</h3>';
     },
     
     getShowData: function () {
@@ -45,7 +45,6 @@
         wtype: wdata.wtype,
         wsubtype: wdata.wsubtype,
         name: this.get('name'),
-        prettyName: this.get('name'),
         iconName: wdata.wsubtype,
         singletonClass: wdata.singleton ? 'singleton' : ''
       };
