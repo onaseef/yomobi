@@ -555,7 +555,7 @@
   var AddItemDialog = Backbone.View.extend({
     
     initialize: function () {
-      this.template = util.getTemplate(this.model.get('name')+'-item-dialog');
+      this.template = util.getTemplate(this.model.get('wsubtype')+'-item-dialog');
       this.addedItems = [];
     },
     
