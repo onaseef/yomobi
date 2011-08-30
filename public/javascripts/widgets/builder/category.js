@@ -272,8 +272,7 @@
     addItem: function (e) {
       if (!util.isUIFree()) return;
 
-      this.itemDialog = this.itemDialog || new AddCatDialog();
-      this.itemDialog.model = this.widget;
+      this.itemDialog = this.itemDialog || new AddItemDialog({ model:this.widget });
       this.itemDialog.options.onClose = this.refreshViews;
 
       this.itemDialog.enterMode('add').prompt();

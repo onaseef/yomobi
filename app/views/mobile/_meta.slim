@@ -1,4 +1,4 @@
-meta property="og:title" content=@company.name
+meta property="og:title" content="#{@company.name} - #{u @company.mobile_url}"
 meta property="og:type" content="yomobi:#{@company.company_type.og_type_name}"
 meta property="og:url" content==@company.mobile_url
 meta property="og:image" content==@company.logo.url(:mobile)

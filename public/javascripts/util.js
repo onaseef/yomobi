@@ -171,6 +171,13 @@ var util = {
     ;
     return uglyName;
   },
+
+  helpifyName: function (name) {
+    // temporary edge-case hack
+    if (name == 'photo-bucket') name = 'photobucket';
+
+    return util.prettifyName(name).replace(/ /g, '');
+  },
   
   scrubUglyName: function (name) {
     var scrubbed = _(name.split('-')).chain()

@@ -24,7 +24,7 @@
       .widget-name
         span {{ name }}
       p.help-text
-        a.help-link href="#" Help
+        a.help-link href="{{ helpUrl }}" target="_blank" Help
         span.dot &nbsp;&middot;&nbsp;
         a.rename-link href="#" Rename
     div class="edit-area {{ wtype }}"
@@ -81,7 +81,7 @@
       .widget-name
         | General Settings
       p.help-text
-        a.help-link href="#" Help
+        a.help-link href="http://help.yomobi.com/Account/GeneralSettings" target="_blank" Help
     div class="edit-area edit-settings"
       .explanation == t 'builder.help.edit_settings'
 
@@ -152,7 +152,7 @@
       .widget-name
         | Traffic Booster
       p.help-text
-        a.help-link href="#" Help
+        a.help-link href="http://help.yomobi.com/Account/TrafficBooster" target="_blank" Help
     div class="edit-area"
       .explanation == t 'builder.help.edit_keywords'
 
@@ -308,7 +308,7 @@
   
   script.tell_friend-page(type="text/template")
     .input-wrap
-      p Tell a friend about this website:
+      p Share this site with your friend. A short email will be sent to your friend with a link to this mobile site.
       = form_tag "/#{@company.db_name}/tell_friend/submit", :method => 'post' do
         label Your Friend's Email:
         br
@@ -366,7 +366,10 @@
   
   script.informed-page(type="text/template")
     .input-wrap
-      p Enter your information to follow the latest news from this site. You can opt out at any time and your information will remain private.
+      p
+        | Enter your information to follow the latest news from
+        = " #{@company.name}. "
+        | You can opt out at any time and your information will remain private.
       = form_tag "/#{@company.db_name}/informed/submit", :method => 'post' do
         | <% if (_maybe.optForEmails) { %>
         label Email Address:

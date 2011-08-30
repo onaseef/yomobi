@@ -42,6 +42,9 @@ class HomeController < ApplicationController
   def about
   end
 
+  def easy
+  end
+
   private
   
   def redirect_if_signed_in

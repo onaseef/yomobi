@@ -42,6 +42,7 @@
       ;
       data.editAreaContent = editAreaTemplate(editData);
       data.iconName = templateId;
+      data.helpUrl = 'http://help.yomobi.com/Widgets/' + util.helpifyName(wdata.name);
       
       return _.extend(data, this.toJSON());
     },

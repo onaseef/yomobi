@@ -169,7 +169,7 @@ p.success {
 
 #header.signed-in {
   padding-top: 10px;
-  background: #002455;
+  background: url(/images/bg-header.png);
   color: white;
   height: 31px; }
   #header.signed-in .content {
@@ -183,9 +183,9 @@ p.success {
     float: left;
     width: 797px;
     height: 30px;
-    border: 1px solid #00436c;
+    border: 1px solid #566986;
     border-bottom: none;
-    background: #405b80;
+    background: #52678c;
     text-align: right; }
     #header.signed-in #nav a, #header.signed-in #nav a:visited {
       float: right;
