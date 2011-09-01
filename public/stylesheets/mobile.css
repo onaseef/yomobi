@@ -53,7 +53,7 @@ a img {
   padding: 0;
   margin: 12px 0 12px 0;
   background: url(/images/ui/bg-back-bar.png) repeat-x;
-  color: gray; }
+  color: #333333; }
   .back-bar .title {
     float: left;
     padding-top: 12px;
@@ -67,7 +67,7 @@ a img {
 .company-info {
   width: 100%;
   padding-left: 0 1px 0 8px;
-  background: #405b80 url(/images/bg-header.png);
+  background: #405b80 url(/images/bg-mobile-header.png);
   color: white; }
   .company-info table {
     height: 36px; }
@@ -112,7 +112,7 @@ a img {
   display: none;
   padding: 0 0;
   border-bottom: 2px solid #627aad;
-  background: #405b80 url(/images/bg-header.png);
+  background: #405b80 url(/images/bg-mobile-header.png);
   text-align: center; }
   .ad-bar.bottom {
     height: 48px; }
@@ -149,7 +149,7 @@ a img {
     .home-icon .icon:hover {
       cursor: pointer; }
   .home-icon .title {
-    width: 100%;
+    width: 102%;
     line-height: 1.2em;
     height: 2.4em;
     overflow: hidden;
@@ -268,7 +268,7 @@ a img {
 .page .content.category .price {
   float: left;
   width: 97%;
-  font-size: 16px; }
+  font-size: 14px; }
 .page .content.category .desc {
   width: 97%;
   margin-top: 0;

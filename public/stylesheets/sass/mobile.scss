@@ -12,8 +12,10 @@ $light-border: #b3b3b3;
 $page-width: 960px;
 
 $dynamic-width: 320px;
-$color-topbar: #405b80 url(/images/bg-header.png);
+$color-topbar: #405b80 url(/images/bg-mobile-header.png);
 
+
+$back-bar-color: #333;
 $back-bar-title-font-size: 12px;
 $back-bar-title-width: 250px;
 
@@ -73,7 +75,7 @@ a img {
   padding: 0;
   margin: 12px 0 12px 0;
   background: url(/images/ui/bg-back-bar.png) repeat-x;
-  color: gray;
+  color: $back-bar-color;
   .title {
     float: left;
     padding-top: 12px;
@@ -170,7 +172,7 @@ a img {
     &:hover {
       cursor: pointer; } }
   .title {
-    width: 100%;
+    width: 102%;
     line-height: 1.2em;
     height: 2.4em;
     overflow: hidden;
@@ -297,7 +299,7 @@ a img {
   .price {
     float: left;
     width:97%;
-    font-size: 16px; }
+    font-size: 14px; }
   .desc {
     width: 97%;
     margin-top: 0;
