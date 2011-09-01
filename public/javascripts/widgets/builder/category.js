@@ -117,8 +117,10 @@
     accept: function () {
       // grab all selected indicies and make sure they're selected after save
       var catIdxs = this.el.find('select[name=cats] option').map($isSelected)
+        , catScrollTop = this.el.find('select[name=cats]').scrollTop()
         , itemIdxs = this.el.find('select[name=items] option').map($isSelected)
-        , callback = _.bind(this.selectCatsAndItems,this,catIdxs,itemIdxs)
+        , itemScrollTop = this.el.find('select[name=items]').scrollTop()
+        , callback = _.bind(this.selectCatsAndItems,this,catIdxs,catScrollTop,itemIdxs,itemScrollTop)
       ;
       // first argument is an event object
       super_accept.call(this,null,callback);
@@ -358,15 +360,21 @@
       else if (options && options.forceEditAreaRefresh) this.startEditing();
     },
 
-    selectCatsAndItems: function (catIdxs,itemIdxs) {
-      if (catIdxs)
-        this.el.find('select[name=cats] option').each(function (idx,elem) {
-          if (catIdxs[idx] === true) elem.selected = 'selected';
-        });
-      if (itemIdxs)
-        this.el.find('select[name=items] option').each(function (idx,elem) {
-          if (itemIdxs[idx] === true) elem.selected = 'selected';
-        });
+    selectCatsAndItems: function (catIdxs,catScrollTop,itemIdxs,itemScrollTop) {
+      var workload = [];
+      if (catIdxs) workload.push('cats',catIdxs,catScrollTop);
+      if (itemIdxs) workload.push('items',itemIdxs,itemScrollTop);
+
+      for (var i = 0; i < workload.length; i += 3) {
+        this.el.find('select[name=' + workload[i] + ']')
+          .find('option')
+            .each(function (idx,elem) {
+              if (workload[i+1][idx] === true) elem.selected = 'selected';
+            })
+            .end()
+          .scrollTop(workload[i+2])
+        ;
+      }
     }
     
   });
