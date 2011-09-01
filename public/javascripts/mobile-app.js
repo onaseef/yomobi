@@ -406,7 +406,8 @@
         var widget = mapp.widgets.detect(function (w) {
           return w.get('wsubtype') == wsubtype;
         });
-        wtabs.push(widget.id);
+
+        if (widget) wtabs.push(widget.id);
       });
 
       delete metaDoc.worderInit; delete metaDoc.wtabsInit;

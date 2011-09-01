@@ -8,6 +8,7 @@ DUPLICATE_ERROR_MESSAGES = ["Duplicate entry", "duplicate key", "not unique"]
 RESERVED_SITE_URLS = %w{
   about account-setup admin builder confirm confirmation easy
   home mobile opt-out order terms users widgets
+  how-to-make-mobile-website
 }
 
 # used in informed_controller.rb
