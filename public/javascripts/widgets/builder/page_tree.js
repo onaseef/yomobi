@@ -190,7 +190,10 @@
       leaf.content = $('#jeditor').val();
       if (this.areStylesDirty) {
         leaf.content = util.stripAllStyles(leaf.content);
+
+        $('#jeditor').val(leaf.content);
         $('#jeditor').data('wysiwyg').setContent(leaf.content);
+        
         this.areStylesDirty = false;
       }
       this.widget.pageView.refresh();

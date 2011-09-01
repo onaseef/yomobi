@@ -34,6 +34,7 @@
 
     stripStyles: function () {
       var strippedContent = util.stripAllStyles( $('#jeditor').val() );
+      $('#jeditor').val(strippedContent);
       $('#jeditor').data('wysiwyg').setContent(strippedContent);
     }
 
