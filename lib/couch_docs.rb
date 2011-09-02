@@ -14,13 +14,41 @@ class CouchDocs
     docs.each {|doc| doc[:email] = default_email if doc.has_key? :email }
     docs.push self.meta_doc(docs,wtabs)
     docs.push self.view_doc
+    docs.push self.auth_doc, self.security_doc
   end
 
   def self.security_doc(db_name)
     {
       "_id" => "_security",
-      "admins" => {"names" => [db_name], "roles" => []},
+      "admins" => {"names" => ["yadmin"], "roles" => []},
       "readers" => {"names" => [], "roles" => []}
+    }
+  end
+
+  def self.security_doc
+    {
+      "admins" => {
+        "names" => ["yadmin"],
+        "roles" => []
+      },
+      "readers" => {
+        "names" => [],
+        "roles" => []
+      }
+    }
+  end
+
+  def self.auth_doc
+    {
+      "_id" => "_design/_auth",
+      "language" => "javascript",
+      "validate_doc_update" => "function(newDoc, oldDoc, userCtx) {
+        if (userCtx.roles.indexOf('_admin') !== -1) {
+          return;
+        } else {
+          throw({forbidden: 'Only admins may edit and delete docs.'});
+        }
+      }"
     }
   end
   
