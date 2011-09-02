@@ -11,14 +11,14 @@
         td.wtab
   - if @is_mobile
     .ad-bar
-      = render 'mobile/adsense'
+      = render 'mobile/adsense' if Rails.env == 'production'
 #canvas
   #home.page
     #home-widgets.content.dbx-group
     - if @is_mobile
       .ad-bar.bottom
         div align="center"
-        = render 'mobile/adsense'
+        = render 'mobile/adsense' if Rails.env == 'production'
     - if @is_mobile
       .mobile-footer
         = render 'mobile/social-share'
