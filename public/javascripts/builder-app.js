@@ -78,8 +78,6 @@
     
     events: {
       'click .back-btn':            'goBack',
-      'click .go-home':             'goHome',
-      'click .wtab':                'onWidgetTabClick',
       'click .tab-bar':             'editTabBar',
       'click .company-info .name':  'editSettings',
       'click .company-info .logo':  'editSettings'
@@ -99,32 +97,8 @@
       this.transition('back');
     },
     
-    goHome: function (e) {
-      var editor = bapp.currentEditor;
-      if (editor && editor.hasChanges()) {
-        if (!confirm(unsavedChangesText)) {
-          editor.onDiscardByNavigation();
-          editor.stopEditing();
-          delete bapp.currentEditor;
-        }
-        else return;
-      }
-      else if (editor) {
-        editor.stopEditing();
-        delete bapp.currentEditor;
-      }
-
-      e && e.preventDefault();
-      superObj.goHome.call(this);
-    },
-    
     goToPage: function (widgetName) {
       mapp.transition('forward');
-    },
-    
-    onWidgetTabClick: function (e) {
-      e.preventDefault();
-      bapp.startEditingPanel('tabBar');
     },
     
     scrollTo: function (position,elem) {
@@ -148,7 +122,14 @@
     },
 
     editSettings: function () { bapp.startEditingPanel('settings'); },
-    editTabBar:   function () { bapp.startEditingPanel('tabBar'); }
+    editTabBar:   function (e) {
+      e && e.preventDefault();
+      if (window.location.href.indexOf('#edit-tab-bar') === -1) {
+        window.location.href = '#edit-tab-bar';
+      } else {
+        bapp.startEditingPanel('tabBar');
+      }
+    }
   });
   
   // ----------------------------------
@@ -422,11 +403,22 @@
     },
     
     startEditingPanel: function (panelType) {
-      if (this.currentEditor) {
-        this.currentEditor.stopEditing();
-        delete this.currentEditor;
-        mapp.goHome();
+      var editor = this.currentEditor;
+      if (editor && editor.hasChanges()) {
+        if (!confirm(unsavedChangesText)) {
+          editor.onDiscardByNavigation();
+          editor.stopEditing();
+          delete bapp.currentEditor;
+        }
+        else {
+          return false;
+        }
       }
+      else if (editor) {
+        editor.stopEditing();
+        delete bapp.currentEditor;
+      }
+      mapp.goHome();
       this[panelType + 'Editor'].startEditing();
     },
 

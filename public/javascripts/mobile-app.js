@@ -294,7 +294,7 @@
         }
         this.pageLevel = 1;
         mapp.transition('back');
-        router.saveLocation('');
+        window.router && router.saveLocation('');
 
         this.currentWidget.pageView.onGoHome();
         delete this.currentWidget;

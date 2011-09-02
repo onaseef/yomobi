@@ -105,6 +105,10 @@
       this.bind('wysiwyg-paste',this.markStylesAsDirty);
     },
 
+    onStopEditing: function () {
+      delete this.updateTimeoutId;
+    },
+
     // the button that activates this should only be available on the home page
     enterEditMode: function () {
       mapp.viewWidget(this.widget);

@@ -184,6 +184,7 @@
       this.el.html(bapp.idleTemplate());
       this.changes = {};
       this.widget && this.widget.homeView.highlight(false);
+      this.onStopEditing && this.onStopEditing();
     },
     
     grabWidgetValues: function () {
