@@ -426,7 +426,7 @@
     | <% if (_maybe.expire) { %>
     p Expires: {{ _maybe.expire }}
     | <% } %>
-    p {{ _maybe.description }}
+    pre.desc {{ _maybe.description }}
   
   script.category-cat(type="text/template")
     .category.item class="{{ cycle }} <%if(order==0) print('first');%>" data-cat="{{ catName }}|{{ order }}"

@@ -287,3 +287,11 @@ a img {
   text-align: left;
   font-weight: bold;
   font-size: 12px; }
+
+pre {
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+  font-family: Arial, Helvetica, sans-serif; }
