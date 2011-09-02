@@ -2,6 +2,11 @@
 // MOBILE
 // 
 (function ($) {
+
+  var isSpecialKey = function (key) { return key.charAt(0) === '_' };
+  var toItemData = function (level) {
+    return function (key) { return level[key]._data }
+  };
   
   window.widgetClasses.category = Widget.extend({
     
@@ -9,7 +14,10 @@
     
     init: function () {
       _.bindAll(this,'onHomeViewClick');
-      this.catStack = [];
+      this.catStack = [ this.get('struct') ];
+
+      this.paths = { struct:['struct'] };
+      this.setPaths( ['struct'], this.catStack[0] );
     },
     
     getShowData: function () {
@@ -17,8 +25,7 @@
       if (!this.itemTemplate) this.itemTemplate = util.getTemplate(this.get('wsubtype')+'-item');
       
       var extraData = {
-        items: level._items || [],
-        cats: util.sortedCatNamesFromLevel(level) || [],
+        stuff: level._items || [],
         itemTemplate: this.itemTemplate,
         catTemplate: this.catTemplate
       };
@@ -30,17 +37,42 @@
     },
     
     getCurrentLevel: function () {
-      var level = this.get('struct');
-      _.each(this.catStack, function (cat) { level = level[cat]; });
-      return level;
+      var top = _.last(this.catStack) || {}
+        , items = _(top).chain().keys().reject(isSpecialKey).map( toItemData(top) ).value()
+      ;
+      return _.extend({ _items:items }, top._data);
     },
-    
-    getLevelDepth: function (clearCache) {
-      if (this.levelDepth === undefined || clearCache) {
-        this.levelDepth = util.calcLevelDepth(this.get('struct'));
+
+    setPaths: function (currentPath, currentNode) {
+
+      for (child_id in currentNode) {
+        if (child_id.charAt(0) === '_') continue;
+
+        var child = currentNode[child_id];
+        this.paths[child_id] = currentPath.concat([child_id]);
+        this.setPaths( this.paths[child_id], child );
       }
-      return this.levelDepth;
+    },
+
+    setCatStackById: function (id) {
+      id || (id = 'struct');
+      var targetPath = this.paths[id]
+        , newStack = [ this.get('struct') ]
+      ;
+      // ignore first 'struct' path name
+      _.each(targetPath, function (child_id) {
+        if (child_id === 'struct') return;
+        newStack.push( _.last(newStack)[child_id] );
+      });
+      this.catStack = newStack;
+// util.log('SET STACK',id,this.paths[id],this.catStack);
+      return this;
+    },
+
+    resetCatStack: function () {
+      return this.setCatStackById('struct');
     }
+
   });
   
   window.widgetPages.category = WidgetPageView.extend({
@@ -52,43 +84,38 @@
     onCategoryClick: function (e) {
       if (!mapp.canTransition()) return;
 
-      var cat = $(e.target).attr('data-cat');
-      var subpage = this.widget.catStack.join('/');
-      subpage && (subpage += '/');
-      
-      mapp.goToPage(this.widget.get('name'), subpage + cat);
+      var cat_id = $(e.target).data('cat-id');
+      mapp.goToPage(this.widget.get('name'), cat_id);
     },
     
     onPageView: function (subpage) {
       if (!mapp.canTransition()) return;
       
-      util.log('subpage: ' + subpage);
-      if (!subpage && this.widget.catStack.length === 0) return 'forward';
+      util.log('onPageView subpage: ' + subpage);
+      if (!subpage && this.widget.catStack.length === 1) return 'forward';
       
-      var subpage = subpage || ''
-        , catStack = this.widget.catStack
-        , newStack = _.compact(subpage.split('/'))
-        , direction = newStack.length > catStack.length ? 'forward' : 'backward'
+      var subpage = subpage || 'struct'
+        , stackSize = this.widget.catStack.length
+        , newStackSize = this.widget.setCatStackById(subpage).catStack.length
+        , direction = stackSize > newStackSize ? 'forward' : 'backward'
       ;
-      // manually push each element for builder purposes
-      catStack.length = 0;
-      _.each(newStack, function (e) { catStack.push(e); });
+
       return direction;
     },
 
     popPage: function () {
       var catStack = this.widget.catStack;
-      if (catStack.length === 0)
+      if (catStack.length === 1)
         mapp.goHome();
       else {
         catStack.pop();
-        mapp.goToPage( this.widget.get('name'), unescape(catStack.join('/')) );
+        var subpage = (catStack.length === 1) ? null : _.last(catStack)._data._id;
+        mapp.goToPage( this.widget.get('name'), subpage);
       }
     },
     
     onGoHome: function () {
-      // directly empty instead of setting to empty array for builder purposes
-      this.widget.catStack.length = 0;
+      this.widget.resetCatStack();
     }
     
   });

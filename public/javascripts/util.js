@@ -371,21 +371,6 @@ var util = {
     return arguments[(util.cycleIdx++) % arguments.length];
   },
   
-  // Only works with plain objects, and
-  // only error checks for Arrays
-  calcLevelDepth: function (obj) {
-    if (typeof obj !== "object") return 0;
-    
-    var depths = [1];
-    for (var k in obj) {
-      var child = obj[k];
-      if (child instanceof Array) continue;
-      if (typeof child === "object")
-        depths.push(1 + this.calcLevelDepth(child));
-    }
-    return _.max(depths);
-  },
-  
   catOrder: function (cat) {
     cat || (cat = '');
     if (cat.lastIndexOf('|') === -1) return NaN;
@@ -418,9 +403,9 @@ var util = {
   
   catStackCrumbs: function (topName,catStack) {
     var crumbStack = _.map(catStack,function (cat) {
-      return util.catName(cat) || cat;
+      return cat._data && cat._data.name;
     });
-    // crumbStack.unshift(topName);
+    crumbStack = _.compact(crumbStack);
 
     var tnarr = [topName]
       , result = tnarr.concat(crumbStack).join(' > ')

@@ -429,18 +429,17 @@
     pre.desc {{ _maybe.description }}
   
   script.category-cat(type="text/template")
-    .category.item class="{{ cycle }} <%if(order==0) print('first');%>" data-cat="{{ catName }}|{{ order }}"
-      | {{ catName }}
+    .category.item class="{{ cycle }}" data-cat-id="{{ cat._id }}"
+      | {{ cat.name }}
 
   script.category-page(type="text/template")
-    | <% for (var i=0; i<cats.length;i++) {
-              print( catTemplate({ catName:cats[i], cycle:util.cycle('c0','c1'), order:i }) );
-    | } if (cats.length > 0 && items.length > 0) { %>
-    .divider
-    .items-wrap
-      | <% } for (var i=0;i<items.length;i++) {
-      |         print( itemTemplate({ item:items[i], cycle:util.cycle('c0','c1'), order:i }) );
-      | } %>
+    | <% for (var i=0; i<stuff.length;i++) {
+              if (stuff[i].type === "cat") {
+                print( catTemplate({ cat:stuff[i], cycle:util.cycle('c0','c1') }) );
+              } else {
+                print( itemTemplate({ item:stuff[i], cycle:util.cycle('c0','c1') }) );
+              }
+    | } %>
   
   script.page_tree-page(type="text/template")
     | <% if (!_maybe.isLeaf) {
