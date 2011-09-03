@@ -234,3 +234,8 @@ script.locations-item type="text/template"
     div
       a href="http://maps.google.com/maps?q={{ item.address }}" target="_blank" {{ item.address }}
     pre.desc.long {{ item.desc }}
+
+/ this represents a page in the page_tree list view
+script.category-item type="text/template"
+  .leaf-name.item class="{{ cycle }}" data-cat-id="{{ item._id }}"
+    | {{ item.name }}

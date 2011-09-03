@@ -18,8 +18,8 @@
     
     getPageContent: function () {
       util.resetCycle();
-      this._template = this._template ||
-                       util.getTemplate(this.get('wtype') + '-page');
+      this._template || ( this._template =
+                          util.getTemplate(this.get('wtype') + '-page') );
       return this._template(this.getShowData());
     },
     

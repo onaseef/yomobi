@@ -442,24 +442,8 @@
     | } %>
   
   script.page_tree-page(type="text/template")
-    | <% if (!_maybe.isLeaf) {
-    
-    |       for (var i=0; i<cats.length;i++) {
-    |         print( catTemplate({ catName:cats[i], cycle:util.cycle('c0','c1'), order:i }) );
-    |       } 
-    |       if (cats.length > 0 && items.length > 0) { %>
-    .divider
-    | <% } %>
-    .leaves-wrap
-      | <%  for (var i=0;i<items.length;i++) { %>
-      .leaf-name.item class="<% print(util.cycle('c0','c1')); %> <%if(i==0) print('first');%>"
-        | {{ items[i].name }}
-      | <%  } %>
-    
-    | <% } else { %>
     h3 {{ title }}
     .leaf-content {{ content }}
-    | <% } %>
 
   / =====================
   / = Widget Edit Pages =

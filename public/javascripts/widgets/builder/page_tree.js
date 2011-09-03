@@ -6,9 +6,14 @@
   var defaultPageContent = '<p>[Change Me]</p>';
   var tempCatStack = [];
 
-  var super_getEditAreaData = window.Widget.prototype.getEditAreaData;
+  var super_getEditAreaData = window.Widget.prototype.getEditAreaData
+      // at this point, category_init is actually taken from builder/category.js
+    , category_init = window.widgetClasses.category.prototype.init
+  ;
   window.widgetClasses.page_tree = window.widgetClasses.page_tree.extend({
     
+    init: category_init,
+
     getEditAreaData: function () {
       var editAreaData = super_getEditAreaData.call(this)
         , isLeaf = this.hasLeafOnTop()
