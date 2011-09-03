@@ -23,6 +23,8 @@ Yomobi::Application.routes.draw do
   end
 
   get 'builder/main'      => 'builder#index', :as => :builder_main
+
+  post 'builder/gen-id'   => 'builder#inc_id_counter'
   post 'builder/settings' => 'builder#change_settings'
 
   get 'builder/text'      => 'widgets/informed#text_panel', :as => :builder_text
