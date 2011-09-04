@@ -5,7 +5,7 @@
     return undefined;
   };
 
-  var pluckName = function (w) { console.log(w); return w && w.get('name'); };
+  var pluckName = function (w) { return w && w.get('name'); };
 
   // =================================
   window.Widgets = Backbone.Collection.extend({
@@ -132,7 +132,7 @@
     },
     
     viewWidgetByName: function (name,subpage) {
-      util.log('viewing widget:',name);
+      util.log('viewing widget:',name,'with subpage:',subpage);
       var widget = mapp.widgets.find(function (w) {
         return w.get('name') == name;
       });
@@ -276,9 +276,9 @@
     },
     
     goToPage: function (widgetName,subpage) {
-      subpage = subpage ? '/' + subpage : '';
+      subpagePath = subpage ? '/' + subpage : '';
       // window.location.href = "#page/"+widgetName + subpage;
-      router.saveLocation("#page/"+widgetName + subpage);
+      router.saveLocation("#page/"+widgetName + subpagePath);
       router.viewWidgetByName(widgetName, subpage);
     },
     

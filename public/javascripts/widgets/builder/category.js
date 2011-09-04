@@ -32,33 +32,28 @@
 
     getEditData: function () {
       var showData = this.getShowData()
-        , areItemsEmpty = false
-        , areCatsEmpty = false
+        , isThereStuff = true
       ;
-      if (showData.items.length === 0) {
-        showData.items = [{ name:'--None (Click the Add button below)--' }];
-        areItemsEmpty = true;
+      if (showData.stuff.length === 0) {
+        showData.stuff = [{ name:'--None (Click the Add button below)--' }];
+        isThereStuff = false;
       }
-      if (showData.cats.length === 0) {
-        showData.cats = ['--None (Click the Add button below)--'];
-        areCatsEmpty = true;
-      }
-      
+
       var extraData = {
-        currentCat: util.catName(_.last(this.catStack)) || this.get('name'),
+        currentCat: util.topCatName(this.catStack) || this.get('name'),
+        currentNodeType: _.last(this.catStack)._data.type,
         catCrumbs: util.catStackCrumbs(this.get('name'),this.catStack),
         onHomePage: mapp.pageLevel === 0,
-        areItemsEmpty: areItemsEmpty,
-        areCatsEmpty: areCatsEmpty,
-        catLabel: util.pluralize( this.get('catTypeName') ),
-        itemLabel: util.pluralize( this.get('itemTypeName') ),
+        isThereStuff: isThereStuff,
+        catLabel: this.get('catTypeName'),
+        itemLabel: this.get('itemTypeName'),
         itemIconName: 'leaf'
       };
       return _.extend({},showData,extraData);
     },
     
     onHomeViewClick: function () {
-      tempCatStack = [];
+      tempCatStack = [ this.get('struct') ];
       
       bapp.homeViewWidgetClick(this);
       return false;
@@ -73,24 +68,21 @@
   var super_accept = window.EditWidgetView.prototype.accept;
   window.widgetEditors.category = window.EditWidgetView.extend({
 
+    treeTypes: ['cat'],
+
     events: {
       'click input[name=beginEditing]':     'enterEditMode',
       'click input[name=back]':             'transitionBack',
 
       'click input[name=add_cat]':          'addCat',
-      'click input[name=rename_cat]':       'renameCat',
-      'click input[name=edit_cat]':         'editCat',
-      'dblclick select[name=cats]':         'editCat',
-      'click input[name=rem_cat]':          'remCat',
-      'click input[name=up_cat]':           'moveCat',
-      'click input[name=down_cat]':         'moveCat',
+      'click input[name=rename]':           'rename',
+      'click input[name=edit]':             'edit',
+      'dblclick select[name=stuff]':        'edit',
+      'click input[name=delete]':           'deleteNode',
+      'click input[name=move_up]':          'move',
+      'click input[name=move_down]':        'move',
 
-      'click input[name=add_item]':         'addItem',
-      'click input[name=rem_item]':         'remItem',
-      'click input[name=edit_item]':        'editItem',
-      'dblclick select[name=items]':        'editItem',
-      'click input[name=up_item]':          'moveItem',
-      'click input[name=down_item]':        'moveItem'
+      'click input[name=add_item]':         'addItem'
     },
     
     init: function (widget) {
@@ -105,9 +97,14 @@
       this.startEditing();
     },
 
-    onEditStart: function (resetChanges) {
+    onEditStart: function (resetChanges, firstEdit) {
       if (resetChanges) this.discardChanges();
       this.widget.catStack = tempCatStack;
+
+      if (firstEdit) {
+        this.widget.catStack.length = 0;
+        this.widget.catStack.push( this.widget.get('struct') );
+      }
     },
     
     grabWidgetValues: function () {
@@ -116,11 +113,10 @@
     
     accept: function () {
       // grab all selected indicies and make sure they're selected after save
-      var catIdxs = this.el.find('select[name=cats] option').map($isSelected)
-        , catScrollTop = this.el.find('select[name=cats]').scrollTop()
-        , itemIdxs = this.el.find('select[name=items] option').map($isSelected)
-        , itemScrollTop = this.el.find('select[name=items]').scrollTop()
-        , callback = _.bind(this.selectCatsAndItems,this,catIdxs,catScrollTop,itemIdxs,itemScrollTop)
+      var select = this.el.find('select[name=stuff]')
+        , selectedIdxs = select.find('option').map($isSelected)
+        , scrollTop = select.scrollTop()
+        , callback = _.bind(this.selectStuff,this,selectedIdxs,scrollTop)
       ;
       // first argument is an event object
       super_accept.call(this,null,callback);
@@ -158,77 +154,92 @@
 
       this.catDialog = this.catDialog || new AddCatDialog();
       this.catDialog.model = this.widget;
-      this.catDialog.options.onClose = this.refreshViews;
+      this.catDialog.options = {
+        onClose: this.refreshViews
+      };
 
       this.catDialog.enterMode('add').prompt();
     },
     
-    editCat: function (e) {
+    edit: function (e) {
       // transition into subcat by emulating a click
-      var idx = $(this.el).find('select[name=cats] option:selected:first').index();
-      $(this.widget.pageView.el).find('.category:eq('+idx+')').click();
-      if (idx == -1) alert('Please select an item to edit.');
+      var target = $(this.el).find('select[name=stuff] option:selected:first')
+        , idx = target.index()
+        , type = target.data('type')
+        , id = target.val()
+      ;
+      if (idx === -1) return alert('Please select an item to edit.');
+
+      if (_.include(this.treeTypes, type)) {
+        util.log('clicking');
+        $(this.widget.pageView.el).find('> div:eq('+idx+')').click();
+      }
+      else {
+        this.editItem(id);
+      }
     },
 
-    renameCat: function (e) {
+    rename: function (e) {
       if (!util.isUIFree()) return;
 
-      var level = this.widget.getCurrentLevel()
-        , name = $(this.el).find('select[name=cats] option:selected:first').html()
+      var level = this.widget.getCurrentLevel(true)
+        , target_id = $(this.el).find('select[name=stuff] option:selected:first').val()
+        , node = level[target_id]._data
       ;
-      if (_.isEmpty(name)) return alert('Please select an item to rename.');
+      if (!node) return alert('Please select an item to rename.');
       
-      var dialog =  new AddCatDialog({
-        model: this.widget,
-        onClose: this.refreshViews
-      });
-      dialog.enterMode('edit').prompt(null,name);
+      this.catDialog = this.catDialog || new AddCatDialog();
+      this.catDialog.model = this.widget;
+      this.catDialog.options = {
+        onClose: this.refreshViews,
+        node_id: node._id
+      };
+
+      this.catDialog.enterMode('edit').prompt(null,node.name);
     },
     
-    moveCat: function (e) {
+    move: function (e) {
       if (!util.isUIFree()) return;
 
       var mod = parseInt( $(e.target).attr('data-mod'),10 )
-        , $select = $(this.el).find('select[name=cats]')
-        
+        , $select = $(this.el).find('select[name=stuff]')
         , targetOption = $select.find('option:selected:first')
         , targetIdx = targetOption.index()
-        , targetName = targetOption.html()
-        , targetCat = targetName + '|' + targetIdx
+        , target_id = targetOption.val()
       ;
+      util.log('mod',mod,targetIdx,target_id);
       if (targetIdx <= 0 && mod == -1 ||
           targetIdx >= $select.find('option').length-1 && mod == 1)
       {
         return;
       }
-      if (_.isEmpty(targetName))
+      if (!target_id)
         return alert('Please select an item to move ' + (mod==1 ? 'down.' : 'up.'));
       
       var swapIdx = targetIdx + mod
         , swapOption = $select.find('option:eq('+swapIdx+')')
-        , swapName = swapOption.html()
-        , swapCat = swapName + '|' + swapIdx
-        , level = this.widget.getCurrentLevel()
+        , swap_id = swapOption.val()
+        , level = this.widget.getCurrentLevel(true)
+        , order = level._data._order
       ;
-      if (!swapName) return;
+      if (!swap_id) return;
       
       // swap the categories internally
-      level[targetName + '|' + swapIdx] = level[swapCat];
-      level[swapName + '|' + targetIdx] = level[targetCat];
-      delete level[swapCat];
-      delete level[targetCat];
+      var tmp = order[targetIdx];
+      order[targetIdx] = order[swapIdx];
+      order[swapIdx] = tmp;
       
-      // now swap in the editor
+      // now swap graphically in the editor
       (mod==1) ? targetOption.before(swapOption) : targetOption.after(swapOption);
       this.setChanged('something',true);
       this.refreshViews();
     },
     
-    remCat: function (e) {
+    deleteNode: function (e) {
       if (!util.isUIFree()) return;
 
-      var level = this.widget.getCurrentLevel()
-        , select = this.el.find('select[name=cats]')
+      var level = this.widget.getCurrentLevel(true)
+        , select = this.el.find('select[name=stuff]')
         , selectedItems = select.find('option:selected')
         , hasSomeSelected = selectedItems.length > 0
         , lowestDeletedIdx = 99999
@@ -237,29 +248,16 @@
       else if (!hasSomeSelected) return alert('Please select an item to delete.');
 
       selectedItems.map(function (idx,elem) {
-        var catName = elem.innerHTML
-          , cat = catName + '|' + $(elem).index()
-        ;
-        if (level[cat]) {
-          delete level[cat];
+        var node_id = $(elem).val();
+
+        if (level[node_id]) {
+          delete level[node_id];
+          var orderIdx = _indexOf(level._data._order, node_id);
+          level._data._order.splice(orderIdx,1);
           lowestDeletedIdx = Math.min($(elem).index(), lowestDeletedIdx);
         }
       });
 
-      // reassign selected indicies
-      var i = 0;
-      _.each(level, function (val,cat) {
-
-        if (cat == '_items') return;
-        var orderIdx = util.catOrder(cat)
-          , catName = util.catName(cat)
-        ;
-        if (i != orderIdx) {
-          level[catName + '|' + i] = val; // shift down
-          delete level[cat];
-        }
-        i += 1;
-      });
       this.setChanged('something',true);
 
       // select the lowest deleted index
@@ -274,20 +272,22 @@
     addItem: function (e) {
       if (!util.isUIFree()) return;
 
-      this.itemDialog = this.itemDialog || new AddItemDialog({ model:this.widget });
-      this.itemDialog.options.onClose = this.refreshViews;
+      this.itemDialog = this.itemDialog || new this.AddItemDialog({ model:this.widget });
+      this.itemDialog.options = {
+        onClose: this.refreshViews
+      };
 
       this.itemDialog.enterMode('add').prompt();
     },
     
-    editItem: function (e) {
+    editItem: function (item_id) {
       if (!util.isUIFree()) return;
+      util.log('Editing item');
 
-      var level = this.widget.getCurrentLevel()
-        , targetIdx = $(this.el).find('select[name=items] option:selected:first').index()
-        , item = level._items[targetIdx]
+      var level = this.widget.getCurrentLevel(true)
+        , item = level[item_id]._data
       ;
-      if (_.isEmpty(item)) return alert('Please select an item to edit.');;
+      if (_.isEmpty(item)) return alert('Please select an item to edit.');
       
       var dialog =  new this.AddItemDialog({
         model: this.widget,
@@ -360,21 +360,16 @@
       else if (options && options.forceEditAreaRefresh) this.startEditing();
     },
 
-    selectCatsAndItems: function (catIdxs,catScrollTop,itemIdxs,itemScrollTop) {
-      var workload = [];
-      if (catIdxs) workload.push('cats',catIdxs,catScrollTop);
-      if (itemIdxs) workload.push('items',itemIdxs,itemScrollTop);
-
-      for (var i = 0; i < workload.length; i += 3) {
-        this.el.find('select[name=' + workload[i] + ']')
-          .find('option')
-            .each(function (idx,elem) {
-              if (workload[i+1][idx] === true) elem.selected = 'selected';
-            })
-            .end()
-          .scrollTop(workload[i+2])
-        ;
-      }
+    selectStuff: function (selectedIdxs,scrollTop) {
+      this.el.find('select[name=stuff]')
+        .find('option')
+          .each(function (idx,elem) {
+            if (selectedIdxs[idx] === true) elem.selected = 'selected';
+          })
+      ;
+      // not sure why, but this seems to work while chaining does not.
+      // no time to investigate
+      this.el.find('select[name=stuff]').scrollTop(scrollTop);
     }
     
   });
@@ -384,11 +379,9 @@
     onCategoryClick: function (e) {
       if (!mapp.canTransition()) return;
 
-      var cat = $(e.target).attr('data-cat');
-      var subpage = this.widget.catStack.join('/');
-      subpage && (subpage += '/');
+      var cat_id = $(e.target).data('id');
       
-      mapp.viewWidget(this.widget, subpage + cat);
+      mapp.viewWidget(this.widget, cat_id);
       this.widget.getEditor().startEditing();
     },
     
@@ -398,13 +391,16 @@
     onBackBtnClick: function () {
       if (!mapp.canTransition()) return;
 
-      var catStack = this.widget.catStack
-        , newSubpage = _.compact(catStack.pop() && catStack).join('/')
-      ;
-      if (!newSubpage) {
-        mapp.transition('back');
+      var catStack = this.widget.catStack;
+
+      if (catStack.length === 1) {
+        mapp.goHome();
       }
-      else mapp.viewWidget(this.widget,newSubpage);
+      else {
+        catStack.pop();
+        var subpage = (catStack.length === 1) ? null : _.last(catStack)._data._id;
+        mapp.viewWidget(this.widget, subpage);
+      }
 
       this.widget.getEditor().startEditing();
     },
@@ -416,7 +412,12 @@
     }
     
   });
-  
+
+
+
+
+
+
   ////////////////////////////
   // private helper classes //
   ////////////////////////////
@@ -424,6 +425,8 @@
     , editCatTemplate = util.getTemplate('edit-subcat-dialog')
   ;
   window.AddCatDialog = Backbone.View.extend({
+
+    type: 'cat',
 
     events: {
       'keydown input[name="cat"]':      'onKeyDown'
@@ -450,7 +453,6 @@
       var dialogHtml = template({
         error: error,
         name: name,
-        cats: util.sortedCatNamesFromLevel(level),
         typeName: this.getTypeName(),
         addedCats: this.addedCats
       });
@@ -486,12 +488,12 @@
       buttons["Save"] = makeSaveFunc();
       buttons["Cancel"] = closeSelf;
       
-      var dialog = util.dialog(dialogContent,buttons)
+      var dialog = util.dialog(dialogContent, buttons, dialogContent.title)
         .find('p.error').show('pulsate',{times:3}).end()
         .find('input[name=add]').click( makeSaveFunc(true) ).end()
       ;
       // required for ie7
-      setTimeout(function () { dialog.find('input[type=text]').focus()[0].focus(); },10);
+      // setTimeout(function () { dialog.find('input[type=text]').focus()[0].focus(); },10);
     },
     
     validateCategory: function (addAnother) {
@@ -512,7 +514,7 @@
       else if ( nameCompare !== origNameCompare && _.contains(existingNames,nameCompare) )
         this.prompt('Name is already in use',name,true);
       else if (this.mode == 'add') {
-        this.addCatToStruct(name);
+        this.addNodeToStruct({ type:this.type, name:name });
         this.addedCats.push(name);
 
         bapp.currentEditor.setChanged('something',true);
@@ -522,7 +524,7 @@
           this.options.onClose && this.options.onClose();
       }
       else if (this.mode == 'edit' && name !== this.origName) {
-        this.renameCatInStruct(name);
+        this.renameNode(name);
 
         bapp.currentEditor.setChanged('something',true);
         this.options.onClose && this.options.onClose();
@@ -530,20 +532,28 @@
     },
 
     getCatNames: function () {
-      return util.catNamesFromLevel(this.level);
+      return _.pluck(this.level._items, 'name');
     },
 
-    addCatToStruct: function (name) {
-      var keyCount = _.keys(this.level).length;
-      this.level[name+'|'+(keyCount-1)] = {_items:[]};
-    },
-
-    renameCatInStruct: function (newName) {
-      var origCat = util.fullCatFromName(this.level,this.origName)
-        , order = util.catOrder(origCat)
+    addNodeToStruct: function (data) {
+      var level = this.level._ref
+        , level_id = level._data._id
+        , cat_id = util.generateId()
+        , newPath = this.model.paths[ level_id ].concat([cat_id])
+        , newCat = {
+          _data: _.extend({ _id:cat_id, _order:[] }, data)
+        }
       ;
-      this.level[newName+'|'+order] = this.level[origCat];
-      delete this.level[origCat];
+      level[cat_id] = newCat;
+      this.model.paths[cat_id] = newPath;
+      level._data._order.push(cat_id);
+    },
+
+    renameNode: function (newName) {
+      if (!this.options.node_id) return;
+
+      var node = this.level._ref[this.options.node_id];
+      node._data.name = newName;
     },
 
     getTypeName: function () {
@@ -615,13 +625,13 @@
       buttons["Save"] = makeSaveFunc();
       buttons["Cancel"] = closeFunc;
 
-      var dialog = util.dialog(dialogContent, buttons)
+      var dialog = util.dialog(dialogContent, buttons, dialogContent.title)
         .find('p.error').show('pulsate',{times:3}).end()
         .find('p.success').show('pulsate',{times:1}).end()
         .find('input[name=add]').click( makeSaveFunc(true) ).end()
       ;
       // required for ie7
-      setTimeout(function () { dialog.find('input[type=text]')[0].focus()[0].focus(); },10);
+      // setTimeout(function () { dialog.find('input[type=text]')[0].focus()[0].focus(); },10);
     },
     
     validateItem: function (item) {
@@ -649,13 +659,15 @@
         activeItemData[$(elem).attr('name')] = $(elem).val();
       });
       
-      var vals = _.compact(_.values(activeItemData));
-      if (vals.length === 0 && this.addedItems.length > 0 && addAnother !== true)
+      var inputs = _(activeItemData).chain().reject(util.keq('type'))
+                                    .values().compact().value();
+      if (inputs.length === 0 && this.addedItems.length > 0 && addAnother !== true)
         return this.options.onClose && this.options.onClose();
       if (!this.validateItem(activeItemData)) return;
       
       if (this.mode == 'add') {
-        this.level._items.push(activeItemData);
+        AddCatDialog.prototype.addNodeToStruct.call(this,activeItemData);
+
         this.addedItems.push(activeItemData.name);
         bapp.currentEditor.setChanged('something',true);
 
@@ -665,9 +677,9 @@
           this.options.onClose && this.options.onClose();
       }
       else if (this.mode == 'edit') {
-        var origItem = this.origItem;
+        var origItem_id = this.origItem._id;
         var oldItem = _.detect(this.level._items, function (i) {
-          return i.name == origItem.name
+          return i._id == origItem_id
         });
         _.extend(oldItem,activeItemData);
 

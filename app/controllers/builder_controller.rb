@@ -8,6 +8,12 @@ class BuilderController < ApplicationController
     @company = @user.company
     @open_edit_settings = true if flash[:edit_settings] == true
   end
+
+  def inc_id_counter
+    @company = current_user.company
+    @company.increment! :id_counter
+    success :id => @company.id_counter
+  end
   
   def new_widget
     return error 'Not a new document' unless params[:id].nil?

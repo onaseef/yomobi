@@ -8,6 +8,7 @@ window.g = {
   couchLocation: '<%=escape_javascript @company.couch_host %>',
   db_name: '<%=escape_javascript @company.db_name %>',
   company: "<%=escape_javascript @company.name %>",
+  id_counter: "<%=@company.id_counter %>",
   userEmails: {
     yomobi: "<%=escape_javascript @company.user.email %>",
     informed: "<%=escape_javascript @company.informed_email %>",

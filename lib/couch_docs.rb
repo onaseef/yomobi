@@ -166,13 +166,26 @@ class CouchDocs
         :singleton => true,
         # default categories
         "struct" => {
-          "_items" => [],
-          "North|0"    => { "_items" => [] },
-          "South|1"    => { "_items" => [] },
-          "East|2"     => { "_items" => [] },
-          "West|3"     => { "_items" => [] },
-          "Central|4"  => { "_items" => [] },
-          "Downtown|5" => { "_items" => [] }
+          :_data => { :_id => "struct", :name => "Property Listings", :_order => [] },
+
+          "c0" => {
+            :_data => { :type => "cat", :_id => "c0", :name => "North", :_order => [] }
+          },
+          "c1" => {
+            :_data => { :type => "cat", :_id => "c1", :name => "South", :_order => [] }
+          },
+          "c2" => {
+            :_data => { :type => "cat", :_id => "c2", :name => "East", :_order => [] }
+          },
+          "c3" => {
+            :_data => { :type => "cat", :_id => "c3", :name => "West", :_order => [] }
+          },
+          "c4" => {
+            :_data => { :type => "cat", :_id => "c4", :name => "Central", :_order => [] }
+          },
+          "c5" => {
+            :_data => { :type => "cat", :_id => "c5", :name => "Downtown", :_order => [] }
+          }
         }
       },
       
@@ -198,7 +211,7 @@ class CouchDocs
         :catTypeName => "Subcategory",
         :itemTypeName => "Page",
         "struct" => {
-          "_items" => []
+          :_data => { :_id => "struct", :name => "Category", :_order => [] },
         }
       },
 
@@ -266,13 +279,26 @@ class CouchDocs
         :itemTypeName => "Location",
         :singleton => true,
         "struct" => {
-          "_items" => [],
-          "North|0"    => { "_items" => [] },
-          "South|1"    => { "_items" => [] },
-          "East|2"     => { "_items" => [] },
-          "West|3"     => { "_items" => [] },
-          "Central|4"  => { "_items" => [] },
-          "Downtown|5" => { "_items" => [] }
+          :_data => { :_id => "struct", :name => "Locations", :_order => [] },
+
+          "c1" => {
+            :_data => { :type => "cat", :_id => "c1", :name => "North", :_order => [] }
+          },
+          "c2" => {
+            :_data => { :type => "cat", :_id => "c2", :name => "South", :_order => [] }
+          },
+          "c3" => {
+            :_data => { :type => "cat", :_id => "c3", :name => "East", :_order => [] }
+          },
+          "c4" => {
+            :_data => { :type => "cat", :_id => "c4", :name => "West", :_order => [] }
+          },
+          "c5" => {
+            :_data => { :type => "cat", :_id => "c5", :name => "Central", :_order => [] }
+          },
+          "c6" => {
+            :_data => { :type => "cat", :_id => "c6", :name => "Downtown", :_order => [] }
+          }
         }
       },
 
@@ -298,7 +324,7 @@ class CouchDocs
         :itemTypeName => "Service",
         :singleton => true,
         "struct" => {
-          "_items" => []
+          :_data => { :_id => "struct", :name => "Services", :_order => [] },
         }
       },
 
@@ -309,7 +335,7 @@ class CouchDocs
         :itemTypeName => "Product",
         :singleton => true,
         "struct" => {
-          "_items" => []
+          :_data => { :_id => "struct", :name => "Products", :_order => [] },
         }
       },
 
@@ -320,12 +346,23 @@ class CouchDocs
         :itemTypeName => "Item",
         :singleton => true,
         "struct" => {
-          "_items" => [],
-          "Appetizers|0" => { "_items" => [] },
-          "Breakfast|1"  => { "_items" => [] },
-          "Lunch|2"      => { "_items" => [] },
-          "Dinner|3"     => { "_items" => [] },
-          "Drinks|4"      => { "_items" => [] }
+          :_data => { :_id => "struct", :name => "Menu", :_order => [] },
+
+          "c1" => {
+            :_data => { :type => "cat", :_id => "c1", :name => "Appetizers", :_order => [] }
+          },
+          "c2" => {
+            :_data => { :type => "cat", :_id => "c2", :name => "Breakfast", :_order => [] }
+          },
+          "c3" => {
+            :_data => { :type => "cat", :_id => "c3", :name => "Lunch", :_order => [] }
+          },
+          "c4" => {
+            :_data => { :type => "cat", :_id => "c4", :name => "Dinner", :_order => [] }
+          },
+          "c5" => {
+            :_data => { :type => "cat", :_id => "c5", :name => "Drinks", :_order => [] }
+          }
         }
       },
 

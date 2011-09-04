@@ -76,22 +76,6 @@ $(document).ready(function(){
     equals(time.toString12(),"&nbsp;1:01 pm");
   });
   
-  test("Calculate Object Level Depth", function () {
-    var io = [
-      { input:{}, output:1 },
-      { input:{a:1,b:[3,4]}, output:1 },
-      { input:{a:{},b:2}, output:2 },
-      { input:{a:{aa:1},b:2}, output:2 },
-      { input:{a:{aa:{}},b:2}, output:3 },
-      { input:{a:{aa:{aaa:1}},b:2}, output:3 },
-      { input:{a:{aa:{aaa:1,aab:[3,4]}},b:2}, output:3 }
-    ];
-    _.each(io, function (kase) {
-      equals(util.calcLevelDepth(kase.input),kase.output,
-             JSON.stringify(kase.input)+' should have level depth of '+kase.output);
-    });
-  });
-  
   test("Full cat from name", function () {
     var io = [
       { level:{"One|0":0,"Two|1":0,_items:0}, catName:'Two', output:'Two|1' },

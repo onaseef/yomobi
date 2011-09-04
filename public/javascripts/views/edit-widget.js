@@ -154,7 +154,7 @@
       util.log('changeName',newName);
     },
     
-    startEditing: function (resetChanges) {
+    startEditing: function (resetChanges,firstEdit) {
       util.log('Editing widget:',this.widget.get('name'),this.widget.isNew());
       var widget = this.widget
         , helpText = util.getWidgetBData(widget).help
@@ -177,7 +177,7 @@
       if (!widget.get('singleton'))
         this.el.find('p.help-text').addClass('editable');
       
-      if (this.onEditStart) this.onEditStart(resetChanges);
+      if (this.onEditStart) this.onEditStart(resetChanges,firstEdit);
     },
     
     stopEditing: function () {

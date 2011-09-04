@@ -422,7 +422,7 @@ div.wysiwyg ul.toolbar {
 #builder .edit-area.category .crumb-wrap, #builder .edit-area.page_tree .crumb-wrap {
   padding: 1px 0 0 0; }
 #builder .edit-area.category select, #builder .edit-area.page_tree select {
-  width: 331px;
+  width: 360px;
   margin: 2px 0;
   height: 111px; }
 #builder .edit-area.category .arrows, #builder .edit-area.page_tree .arrows {

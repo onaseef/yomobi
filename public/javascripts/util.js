@@ -362,6 +362,10 @@ var util = {
   eq: function (value) {
     return function (x) { return x === value; };
   },
+
+  keq: function (value) {
+    return function (v,k) { return k === value; };
+  },
   
   resetCycle: function () {
     util.cycleIdx = 0;
@@ -371,41 +375,15 @@ var util = {
     return arguments[(util.cycleIdx++) % arguments.length];
   },
   
-  // Only works with plain objects, and
-  // only error checks for Arrays
-  calcLevelDepth: function (obj) {
-    if (typeof obj !== "object") return 0;
-    
-    var depths = [1];
-    for (var k in obj) {
-      var child = obj[k];
-      if (child instanceof Array) continue;
-      if (typeof child === "object")
-        depths.push(1 + this.calcLevelDepth(child));
-    }
-    return _.max(depths);
-  },
-  
   catOrder: function (cat) {
     cat || (cat = '');
     if (cat.lastIndexOf('|') === -1) return NaN;
     return parseInt( cat.substring(cat.lastIndexOf('|')+1),10 );
   },
   
-  catName: function (cat) {
-    cat || (cat = '');
-    return cat.substring(0,cat.lastIndexOf('|'));
-  },
-  
-  sortedCatNamesFromLevel: function (level) {
-    return _(level).chain().keys().reject(util.eq('_items'))
-      .sortBy(function (c) { return util.catOrder(c); })
-      .map(function (c) { return util.catName(c); }).value();
-  },
-
-  catNamesFromLevel: function (level) {
-    return _(level).chain().keys().reject(util.eq('_items'))
-      .map(function (c) { return util.catName(c); }).value();
+  topCatName: function (stack) {
+    var cat = _.last(stack);
+    return cat._data && cat._data.name;
   },
   
   fullCatFromName: function (level,catName) {
@@ -418,9 +396,9 @@ var util = {
   
   catStackCrumbs: function (topName,catStack) {
     var crumbStack = _.map(catStack,function (cat) {
-      return util.catName(cat) || cat;
+      return cat._data.name;
     });
-    // crumbStack.unshift(topName);
+    crumbStack.shift();
 
     var tnarr = [topName]
       , result = tnarr.concat(crumbStack).join(' > ')
@@ -436,13 +414,14 @@ var util = {
     return result;
   },
   
-  dialog: function (html,buttons) {
+  dialog: function (html,buttons,title) {
     return $(html).dialog({
       resizable: false,
       modal: true,
       draggable: false,
       closeOnEscape: false,
-      buttons: buttons
+      buttons: buttons,
+      title: title
     });
   },
   
@@ -693,8 +672,16 @@ var util = {
 
   toComparableName: function (name) {
     return name.toLowerCase();
+  },
+
+  generateId: function () {
+    var id = 'i' + g.id_counter;
+    // since this is currently only used in category widget,
+    // the ids only need to be semi-unique.
+    $.post('/builder/gen-id',{});
+    g.id_counter += 1;
+    return id;
   }
-  
 }
 
 // useful extensions
