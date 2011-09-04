@@ -78,11 +78,11 @@
       'click input[name=rename]':           'rename',
       'click input[name=edit]':             'edit',
       'dblclick select[name=stuff]':        'edit',
-      'click input[name=delete]':           'delete',
+      'click input[name=delete]':           'deleteNode',
       'click input[name=move_up]':          'move',
       'click input[name=move_down]':        'move',
 
-      'click input[name=add_item]':         'addItem',
+      'click input[name=add_item]':         'addItem'
     },
     
     init: function (widget) {
@@ -235,7 +235,7 @@
       this.refreshViews();
     },
     
-    delete: function (e) {
+    deleteNode: function (e) {
       if (!util.isUIFree()) return;
 
       var level = this.widget.getCurrentLevel(true)
