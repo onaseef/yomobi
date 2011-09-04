@@ -586,7 +586,7 @@
 
     select name="stuff" multiple="multiple"
       | <% for (var i=0;i<stuff.length;i++) { %>
-      option value="{{ stuff[i]._id }}" {{ stuff[i].name }}
+      option data-type="{{ stuff[i].type }}" value="{{ stuff[i]._id }}" {{ stuff[i].name }}
       | <% } %>
     br
     
@@ -597,7 +597,7 @@
 
     | <%       if (isThereStuff == true) { %>
     input type="button" name="rename_item" value="Rename"
-    input type="button" name="edit_item" value="Edit"
+    input type="button" name="edit" value="Edit"
     input type="button" name="rem_item" value="Delete"
     | <%       } %>
 

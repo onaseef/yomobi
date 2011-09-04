@@ -73,8 +73,8 @@
 
       'click input[name=add_cat]':          'addCat',
       'click input[name=rename_cat]':       'renameCat',
-      'click input[name=edit_cat]':         'editCat',
-      'dblclick select[name=cats]':         'editCat',
+      'click input[name=edit]':             'edit',
+      'dblclick select[name=stuff]':        'edit',
       'click input[name=rem_cat]':          'remCat',
       'click input[name=up_cat]':           'moveCat',
       'click input[name=down_cat]':         'moveCat',
@@ -156,17 +156,27 @@
       this.catDialog.enterMode('add').prompt();
     },
     
-    editCat: function (e) {
+    edit: function (e) {
       // transition into subcat by emulating a click
-      var idx = $(this.el).find('select[name=cats] option:selected:first').index();
-      $(this.widget.pageView.el).find('.category:eq('+idx+')').click();
-      if (idx == -1) alert('Please select an item to edit.');
+      var target = $(this.el).find('select[name=stuff] option:selected:first')
+        , idx = target.index()
+        , type = target.data('type')
+        , id = target.val()
+      ;
+      if (idx === -1) return alert('Please select an item to edit.');
+
+      if (type === 'cat') {
+        $(this.widget.pageView.el).find('.category:eq('+idx+')').click();
+      }
+      else {
+        this.editItem(id);
+      }
     },
 
     renameCat: function (e) {
       if (!util.isUIFree()) return;
 
-      var level = this.widget.getCurrentLevel()
+      var level = this.widget.getCurrentLevel(true)
         , name = $(this.el).find('select[name=cats] option:selected:first').html()
       ;
       if (_.isEmpty(name)) return alert('Please select an item to rename.');
@@ -271,14 +281,14 @@
       this.itemDialog.enterMode('add').prompt();
     },
     
-    editItem: function (e) {
+    editItem: function (item_id) {
       if (!util.isUIFree()) return;
+      util.log('Editing item');
 
-      var level = this.widget.getCurrentLevel()
-        , targetIdx = $(this.el).find('select[name=items] option:selected:first').index()
-        , item = level._items[targetIdx]
+      var level = this.widget.getCurrentLevel(true)
+        , item = level[item_id]._data
       ;
-      if (_.isEmpty(item)) return alert('Please select an item to edit.');;
+      if (_.isEmpty(item)) return alert('Please select an item to edit.');
       
       var dialog =  new this.AddItemDialog({
         model: this.widget,
@@ -659,9 +669,9 @@
           this.options.onClose && this.options.onClose();
       }
       else if (this.mode == 'edit') {
-        var origItem = this.origItem;
+        var origItem_id = this.origItem._id;
         var oldItem = _.detect(this.level._items, function (i) {
-          return i.name == origItem.name
+          return i._id == origItem_id
         });
         _.extend(oldItem,activeItemData);
 
