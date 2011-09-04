@@ -371,9 +371,10 @@
           .each(function (idx,elem) {
             if (selectedIdxs[idx] === true) elem.selected = 'selected';
           })
-          .end()
-        .scrollTop(scrollTop)
       ;
+      // not sure why, but this seems to work while chaining does not.
+      // no time to investigate
+      this.el.find('select[name=stuff]').scrollTop(scrollTop);
     }
     
   });
