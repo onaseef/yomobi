@@ -38,9 +38,10 @@
         showData.stuff = [{ name:'--None (Click the Add button below)--' }];
         isThereStuff = false;
       }
-      
+
       var extraData = {
         currentCat: util.topCatName(this.catStack) || this.get('name'),
+        currentNodeType: _.last(this.catStack)._data.type,
         catCrumbs: util.catStackCrumbs(this.get('name'),this.catStack),
         onHomePage: mapp.pageLevel === 0,
         isThereStuff: isThereStuff,
@@ -94,9 +95,14 @@
       this.startEditing();
     },
 
-    onEditStart: function (resetChanges) {
+    onEditStart: function (resetChanges, firstEdit) {
       if (resetChanges) this.discardChanges();
       this.widget.catStack = tempCatStack;
+
+      if (firstEdit) {
+        this.widget.catStack.length = 0;
+        this.widget.catStack.push( this.widget.get('struct') );
+      }
     },
     
     grabWidgetValues: function () {
@@ -264,7 +270,7 @@
     addItem: function (e) {
       if (!util.isUIFree()) return;
 
-      this.itemDialog = this.itemDialog || new AddItemDialog({ model:this.widget });
+      this.itemDialog = this.itemDialog || new this.AddItemDialog({ model:this.widget });
       this.itemDialog.options = {
         onClose: this.refreshViews
       };
@@ -404,7 +410,12 @@
     }
     
   });
-  
+
+
+
+
+
+
   ////////////////////////////
   // private helper classes //
   ////////////////////////////
@@ -412,6 +423,8 @@
     , editCatTemplate = util.getTemplate('edit-subcat-dialog')
   ;
   window.AddCatDialog = Backbone.View.extend({
+
+    type: 'cat',
 
     events: {
       'keydown input[name="cat"]':      'onKeyDown'
@@ -499,7 +512,7 @@
       else if ( nameCompare !== origNameCompare && _.contains(existingNames,nameCompare) )
         this.prompt('Name is already in use',name,true);
       else if (this.mode == 'add') {
-        this.addNodeToStruct({ type:'cat', name:name });
+        this.addNodeToStruct({ type:this.type, name:name });
         this.addedCats.push(name);
 
         bapp.currentEditor.setChanged('something',true);

@@ -577,7 +577,7 @@
     | <% if (onHomePage === true) { %>
     input type="button" name="beginEditing" value="Click Here to Start Editing"
 
-    | <% } else if (!_maybe.isLeaf) { %>
+    | <% } else if (currentNodeType !== 'page') { %>
     br
     .crumb-wrap
       b Editing:

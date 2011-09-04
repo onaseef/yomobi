@@ -28,7 +28,8 @@
         var extraData = {
           isLeaf: true,
           title: leaf._data.name,
-          content: leaf._data.content
+          content: leaf._data.content,
+          stuff: []
         };
         return _.extend({},this.toJSON(),extraData);
       }
@@ -39,7 +40,7 @@
     
     hasLeafOnTop: function () {
       var top = _.last(this.catStack);
-      return top._data && top._data.type === 'page';
+      return top._data.type === 'page';
     }
     
   });

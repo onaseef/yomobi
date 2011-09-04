@@ -36,10 +36,20 @@
       return '<h3>' + util.catStackCrumbs(this.get('name'),this.catStack) + '</h3>';
     },
     
-    getCurrentLevel: function (refOnly) {
-      if (refOnly) return _.last(this.catStack);
+    getCurrentLevel: function (refOnly, context) {
+      var stack = this.catStack;
+      if (context) {
+        stack = [context];
+        for (var i = 1; i < this.catStack.length; i++) {
+          var node_id = this.catStack[i]._data._id;
+          stack.push(context[node_id]);
+          context = context[node_id];
+        }
+      }
 
-      var top = _.last(this.catStack) || {}
+      if (refOnly) return _.last(stack);
+
+      var top = _.last(stack) || {}
         , order = top._data._order
         , items = _(top).chain().keys().reject(isSpecialKey).map( toItemData(top) )
                   .sortBy(function (item) { return order.indexOf(item._id); })
@@ -73,7 +83,6 @@
       var stack = this.catStack; stack.length = 0;
       _.each(newStack, function (x) { stack.push(x); })
       this.catStack = newStack;
-// util.log('SET STACK',id,this.paths[id],this.catStack);
       return this;
     },
 

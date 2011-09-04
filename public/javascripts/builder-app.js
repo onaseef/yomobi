@@ -262,7 +262,7 @@
         }
       }
       this.currentEditor = widget.getEditor();
-      this.currentEditor.startEditing(true);
+      this.currentEditor.startEditing(true,true);
       // returning false will cause the mobile emulator to ignore the click
       return false;
     },
