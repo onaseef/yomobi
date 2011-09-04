@@ -72,7 +72,7 @@
       'click input[name=back]':             'transitionBack',
 
       'click input[name=add_cat]':          'addCat',
-      'click input[name=rename_cat]':       'renameCat',
+      'click input[name=rename]':           'rename',
       'click input[name=edit]':             'edit',
       'dblclick select[name=stuff]':        'edit',
       'click input[name=rem_cat]':          'remCat',
@@ -80,11 +80,6 @@
       'click input[name=down_cat]':         'moveCat',
 
       'click input[name=add_item]':         'addItem',
-      'click input[name=rem_item]':         'remItem',
-      'click input[name=edit_item]':        'editItem',
-      'dblclick select[name=items]':        'editItem',
-      'click input[name=up_item]':          'moveItem',
-      'click input[name=down_item]':        'moveItem'
     },
     
     init: function (widget) {
@@ -151,7 +146,9 @@
 
       this.catDialog = this.catDialog || new AddCatDialog();
       this.catDialog.model = this.widget;
-      this.catDialog.options.onClose = this.refreshViews;
+      this.catDialog.options = {
+        onClose: this.refreshViews
+      };
 
       this.catDialog.enterMode('add').prompt();
     },
@@ -173,19 +170,23 @@
       }
     },
 
-    renameCat: function (e) {
+    rename: function (e) {
       if (!util.isUIFree()) return;
 
       var level = this.widget.getCurrentLevel(true)
-        , name = $(this.el).find('select[name=cats] option:selected:first').html()
+        , target_id = $(this.el).find('select[name=stuff] option:selected:first').val()
+        , node = level[target_id]._data
       ;
-      if (_.isEmpty(name)) return alert('Please select an item to rename.');
+      if (!node) return alert('Please select an item to rename.');
       
       this.catDialog = this.catDialog || new AddCatDialog();
       this.catDialog.model = this.widget;
-      this.catDialog.options.onClose = this.refreshViews;
+      this.catDialog.options = {
+        onClose: this.refreshViews,
+        node_id: node._id
+      };
 
-      this.catDialog.enterMode('edit').prompt(null,name);
+      this.catDialog.enterMode('edit').prompt(null,node.name);
     },
     
     moveCat: function (e) {
@@ -276,7 +277,9 @@
       if (!util.isUIFree()) return;
 
       this.itemDialog = this.itemDialog || new AddItemDialog({ model:this.widget });
-      this.itemDialog.options.onClose = this.refreshViews;
+      this.itemDialog.options = {
+        onClose: this.refreshViews
+      };
 
       this.itemDialog.enterMode('add').prompt();
     },
@@ -517,7 +520,7 @@
           this.options.onClose && this.options.onClose();
       }
       else if (this.mode == 'edit' && name !== this.origName) {
-        this.renameCatInStruct(name);
+        this.renameNode(name);
 
         bapp.currentEditor.setChanged('something',true);
         this.options.onClose && this.options.onClose();
@@ -542,12 +545,11 @@
       level._data._order.push(cat_id);
     },
 
-    renameCatInStruct: function (newName) {
-      var origCat = util.fullCatFromName(this.level,this.origName)
-        , order = util.catOrder(origCat)
-      ;
-      this.level[newName+'|'+order] = this.level[origCat];
-      delete this.level[origCat];
+    renameNode: function (newName) {
+      if (!this.options.node_id) return;
+
+      var node = this.level._ref[this.options.node_id];
+      node._data.name = newName;
     },
 
     getTypeName: function () {
