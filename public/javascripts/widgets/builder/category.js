@@ -252,7 +252,7 @@
 
         if (level[node_id]) {
           delete level[node_id];
-          var orderIdx = level._data._order.indexOf(node_id);
+          var orderIdx = _indexOf(level._data._order, node_id);
           level._data._order.splice(orderIdx,1);
           lowestDeletedIdx = Math.min($(elem).index(), lowestDeletedIdx);
         }
@@ -493,7 +493,7 @@
         .find('input[name=add]').click( makeSaveFunc(true) ).end()
       ;
       // required for ie7
-      setTimeout(function () { dialog.find('input[type=text]').focus()[0].focus(); },10);
+      // setTimeout(function () { dialog.find('input[type=text]').focus()[0].focus(); },10);
     },
     
     validateCategory: function (addAnother) {
@@ -631,7 +631,7 @@
         .find('input[name=add]').click( makeSaveFunc(true) ).end()
       ;
       // required for ie7
-      setTimeout(function () { dialog.find('input[type=text]')[0].focus()[0].focus(); },10);
+      // setTimeout(function () { dialog.find('input[type=text]')[0].focus()[0].focus(); },10);
     },
     
     validateItem: function (item) {

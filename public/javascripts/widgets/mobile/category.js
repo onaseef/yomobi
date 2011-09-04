@@ -52,7 +52,7 @@
       var top = _.last(stack) || {}
         , order = top._data._order
         , items = _(top).chain().keys().reject(isSpecialKey).map( toItemData(top) )
-                  .sortBy(function (item) { return order.indexOf(item._id); })
+                  .sortBy(function (item) { return _.indexOf(order, item._id) })
                   .value()
       ;
       return _.extend({ _items:items, _ref:top }, top._data);
