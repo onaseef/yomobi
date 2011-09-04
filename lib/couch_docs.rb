@@ -166,6 +166,8 @@ class CouchDocs
         :singleton => true,
         # default categories
         "struct" => {
+          :_data => { :_id => "struct", :name => "Property Listings", :_order => [] },
+
           "c0" => {
             :_data => { :type => "cat", :_id => "c0", :name => "North", :_order => [] }
           },
@@ -208,7 +210,9 @@ class CouchDocs
         :wsubtype => "category",
         :catTypeName => "Subcategory",
         :itemTypeName => "Page",
-        "struct" => {}
+        "struct" => {
+          :_data => { :_id => "struct", :name => "Category", :_order => [] },
+        }
       },
 
       {
@@ -275,6 +279,8 @@ class CouchDocs
         :itemTypeName => "Location",
         :singleton => true,
         "struct" => {
+          :_data => { :_id => "struct", :name => "Locations", :_order => [] },
+
           "c1" => {
             :_data => { :type => "cat", :_id => "c1", :name => "North", :_order => [] }
           },
@@ -317,7 +323,9 @@ class CouchDocs
         :catTypeName => "Category",
         :itemTypeName => "Service",
         :singleton => true,
-        "struct" => {}
+        "struct" => {
+          :_data => { :_id => "struct", :name => "Services", :_order => [] },
+        }
       },
 
       {
@@ -326,7 +334,9 @@ class CouchDocs
         :catTypeName => "Category",
         :itemTypeName => "Product",
         :singleton => true,
-        "struct" => {}
+        "struct" => {
+          :_data => { :_id => "struct", :name => "Products", :_order => [] },
+        }
       },
 
       {
@@ -336,6 +346,8 @@ class CouchDocs
         :itemTypeName => "Item",
         :singleton => true,
         "struct" => {
+          :_data => { :_id => "struct", :name => "Menu", :_order => [] },
+
           "c1" => {
             :_data => { :type => "cat", :_id => "c1", :name => "Appetizers", :_order => [] }
           },
