@@ -76,8 +76,8 @@
       'click input[name=edit]':             'edit',
       'dblclick select[name=stuff]':        'edit',
       'click input[name=rem_cat]':          'remCat',
-      'click input[name=up_cat]':           'moveCat',
-      'click input[name=down_cat]':         'moveCat',
+      'click input[name=move_up]':          'move',
+      'click input[name=move_down]':        'move',
 
       'click input[name=add_item]':         'addItem',
     },
@@ -189,7 +189,7 @@
       this.catDialog.enterMode('edit').prompt(null,node.name);
     },
     
-    moveCat: function (e) {
+    move: function (e) {
       if (!util.isUIFree()) return;
 
       var mod = parseInt( $(e.target).attr('data-mod'),10 )
