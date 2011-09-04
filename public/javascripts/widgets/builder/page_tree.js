@@ -40,6 +40,8 @@
 
   window.widgetEditors.page_tree = window.widgetEditors.category.extend({
 
+    treeTypes: ['cat','page'],
+
     events: _.extend(categoryEditor.events, {
       'click .wysiwyg':             'queueActiveLeafUpdate',
       'click .cancel-btn':          'discardActiveLeafChanges'

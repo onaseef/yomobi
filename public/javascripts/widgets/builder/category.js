@@ -68,6 +68,8 @@
   var super_accept = window.EditWidgetView.prototype.accept;
   window.widgetEditors.category = window.EditWidgetView.extend({
 
+    treeTypes: ['cat'],
+
     events: {
       'click input[name=beginEditing]':     'enterEditMode',
       'click input[name=back]':             'transitionBack',
@@ -168,7 +170,7 @@
       ;
       if (idx === -1) return alert('Please select an item to edit.');
 
-      if (type === 'cat') {
+      if (_.include(this.treeTypes, type)) {
         util.log('clicking');
         $(this.widget.pageView.el).find('> div:eq('+idx+')').click();
       }
