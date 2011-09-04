@@ -659,8 +659,9 @@
         activeItemData[$(elem).attr('name')] = $(elem).val();
       });
       
-      var vals = _.compact(_.values(activeItemData));
-      if (vals.length === 0 && this.addedItems.length > 0 && addAnother !== true)
+      var inputs = _(activeItemData).chain().reject(util.keq('type'))
+                                    .values().compact().value();
+      if (inputs.length === 0 && this.addedItems.length > 0 && addAnother !== true)
         return this.options.onClose && this.options.onClose();
       if (!this.validateItem(activeItemData)) return;
       

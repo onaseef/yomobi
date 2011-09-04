@@ -362,6 +362,10 @@ var util = {
   eq: function (value) {
     return function (x) { return x === value; };
   },
+
+  keq: function (value) {
+    return function (v,k) { return k === value; };
+  },
   
   resetCycle: function () {
     util.cycleIdx = 0;
