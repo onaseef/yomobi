@@ -511,7 +511,7 @@
       else if ( nameCompare !== origNameCompare && _.contains(existingNames,nameCompare) )
         this.prompt('Name is already in use',name,true);
       else if (this.mode == 'add') {
-        this.addCatToStruct(name);
+        this.addNodeToStruct({ type:'cat', name:name });
         this.addedCats.push(name);
 
         bapp.currentEditor.setChanged('something',true);
@@ -532,13 +532,13 @@
       return _.pluck(this.level._items, 'name');
     },
 
-    addCatToStruct: function (name) {
+    addNodeToStruct: function (data) {
       var level = this.level._ref
         , level_id = level._data._id
         , cat_id = util.generateId()
         , newPath = this.model.paths[ level_id ].concat([cat_id])
         , newCat = {
-          _data: { _id:cat_id, type:'cat', name:name, _order:[] }
+          _data: _.extend({ _id:cat_id, _order:[] }, data)
         }
       ;
       level[cat_id] = newCat;
@@ -662,7 +662,8 @@
       if (!this.validateItem(activeItemData)) return;
       
       if (this.mode == 'add') {
-        this.level._items.push(activeItemData);
+        AddCatDialog.prototype.addNodeToStruct.call(this,activeItemData);
+
         this.addedItems.push(activeItemData.name);
         bapp.currentEditor.setChanged('something',true);
 
