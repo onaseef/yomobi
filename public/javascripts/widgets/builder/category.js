@@ -163,7 +163,8 @@
       if (idx === -1) return alert('Please select an item to edit.');
 
       if (type === 'cat') {
-        $(this.widget.pageView.el).find('.category:eq('+idx+')').click();
+        util.log('clicking');
+        $(this.widget.pageView.el).find('> div:eq('+idx+')').click();
       }
       else {
         this.editItem(id);
