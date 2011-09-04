@@ -5,7 +5,7 @@
     return undefined;
   };
 
-  var pluckName = function (w) { console.log(w); return w && w.get('name'); };
+  var pluckName = function (w) { return w && w.get('name'); };
 
   // =================================
   window.Widgets = Backbone.Collection.extend({
