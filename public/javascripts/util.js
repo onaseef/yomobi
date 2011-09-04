@@ -410,13 +410,14 @@ var util = {
     return result;
   },
   
-  dialog: function (html,buttons) {
+  dialog: function (html,buttons,title) {
     return $(html).dialog({
       resizable: false,
       modal: true,
       draggable: false,
       closeOnEscape: false,
-      buttons: buttons
+      buttons: buttons,
+      title: title
     });
   },
   

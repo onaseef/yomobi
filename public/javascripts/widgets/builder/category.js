@@ -486,7 +486,7 @@
       buttons["Save"] = makeSaveFunc();
       buttons["Cancel"] = closeSelf;
       
-      var dialog = util.dialog(dialogContent,buttons)
+      var dialog = util.dialog(dialogContent, buttons, dialogContent.title)
         .find('p.error').show('pulsate',{times:3}).end()
         .find('input[name=add]').click( makeSaveFunc(true) ).end()
       ;
@@ -623,7 +623,7 @@
       buttons["Save"] = makeSaveFunc();
       buttons["Cancel"] = closeFunc;
 
-      var dialog = util.dialog(dialogContent, buttons)
+      var dialog = util.dialog(dialogContent, buttons, dialogContent.title)
         .find('p.error').show('pulsate',{times:3}).end()
         .find('p.success').show('pulsate',{times:1}).end()
         .find('input[name=add]').click( makeSaveFunc(true) ).end()
