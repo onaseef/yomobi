@@ -75,7 +75,7 @@
       'click input[name=rename]':           'rename',
       'click input[name=edit]':             'edit',
       'dblclick select[name=stuff]':        'edit',
-      'click input[name=rem_cat]':          'remCat',
+      'click input[name=delete]':           'delete',
       'click input[name=move_up]':          'move',
       'click input[name=move_down]':        'move',
 
@@ -227,11 +227,11 @@
       this.refreshViews();
     },
     
-    remCat: function (e) {
+    delete: function (e) {
       if (!util.isUIFree()) return;
 
-      var level = this.widget.getCurrentLevel()
-        , select = this.el.find('select[name=cats]')
+      var level = this.widget.getCurrentLevel(true)
+        , select = this.el.find('select[name=stuff]')
         , selectedItems = select.find('option:selected')
         , hasSomeSelected = selectedItems.length > 0
         , lowestDeletedIdx = 99999
@@ -240,29 +240,16 @@
       else if (!hasSomeSelected) return alert('Please select an item to delete.');
 
       selectedItems.map(function (idx,elem) {
-        var catName = elem.innerHTML
-          , cat = catName + '|' + $(elem).index()
-        ;
-        if (level[cat]) {
-          delete level[cat];
+        var node_id = $(elem).val();
+
+        if (level[node_id]) {
+          delete level[node_id];
+          var orderIdx = level._data._order.indexOf(node_id);
+          level._data._order.splice(orderIdx,1);
           lowestDeletedIdx = Math.min($(elem).index(), lowestDeletedIdx);
         }
       });
 
-      // reassign selected indicies
-      var i = 0;
-      _.each(level, function (val,cat) {
-
-        if (cat == '_items') return;
-        var orderIdx = util.catOrder(cat)
-          , catName = util.catName(cat)
-        ;
-        if (i != orderIdx) {
-          level[catName + '|' + i] = val; // shift down
-          delete level[cat];
-        }
-        i += 1;
-      });
       this.setChanged('something',true);
 
       // select the lowest deleted index
