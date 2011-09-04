@@ -36,7 +36,9 @@
       return '<h3>' + util.catStackCrumbs(this.get('name'),this.catStack) + '</h3>';
     },
     
-    getCurrentLevel: function () {
+    getCurrentLevel: function (refOnly) {
+      if (refOnly) return _.last(this.catStack);
+
       var top = _.last(this.catStack) || {}
         , order = top._data._order
         , items = _(top).chain().keys().reject(isSpecialKey).map( toItemData(top) )
@@ -90,7 +92,7 @@
     onCategoryClick: function (e) {
       if (!mapp.canTransition()) return;
 
-      var cat_id = $(e.target).data('cat-id');
+      var cat_id = $(e.target).data('id');
       mapp.goToPage(this.widget.get('name'), cat_id);
     },
     

@@ -110,11 +110,10 @@
     
     accept: function () {
       // grab all selected indicies and make sure they're selected after save
-      var catIdxs = this.el.find('select[name=cats] option').map($isSelected)
-        , catScrollTop = this.el.find('select[name=cats]').scrollTop()
-        , itemIdxs = this.el.find('select[name=items] option').map($isSelected)
-        , itemScrollTop = this.el.find('select[name=items]').scrollTop()
-        , callback = _.bind(this.selectCatsAndItems,this,catIdxs,catScrollTop,itemIdxs,itemScrollTop)
+      var select = this.el.find('select[name=stuff]')
+        , selectedIdxs = select.find('option').map($isSelected)
+        , scrollTop = select.scrollTop()
+        , callback = _.bind(this.selectStuff,this,selectedIdxs,scrollTop)
       ;
       // first argument is an event object
       super_accept.call(this,null,callback);
@@ -183,36 +182,34 @@
       if (!util.isUIFree()) return;
 
       var mod = parseInt( $(e.target).attr('data-mod'),10 )
-        , $select = $(this.el).find('select[name=cats]')
-        
+        , $select = $(this.el).find('select[name=stuff]')
         , targetOption = $select.find('option:selected:first')
         , targetIdx = targetOption.index()
-        , targetName = targetOption.html()
-        , targetCat = targetName + '|' + targetIdx
+        , target_id = targetOption.val()
       ;
+      util.log('mod',mod,targetIdx,target_id);
       if (targetIdx <= 0 && mod == -1 ||
           targetIdx >= $select.find('option').length-1 && mod == 1)
       {
         return;
       }
-      if (_.isEmpty(targetName))
+      if (!target_id)
         return alert('Please select an item to move ' + (mod==1 ? 'down.' : 'up.'));
       
       var swapIdx = targetIdx + mod
         , swapOption = $select.find('option:eq('+swapIdx+')')
-        , swapName = swapOption.html()
-        , swapCat = swapName + '|' + swapIdx
-        , level = this.widget.getCurrentLevel()
+        , swap_id = swapOption.val()
+        , level = this.widget.getCurrentLevel(true)
+        , order = level._data._order
       ;
-      if (!swapName) return;
+      if (!swap_id) return;
       
       // swap the categories internally
-      level[targetName + '|' + swapIdx] = level[swapCat];
-      level[swapName + '|' + targetIdx] = level[targetCat];
-      delete level[swapCat];
-      delete level[targetCat];
+      var tmp = order[targetIdx];
+      order[targetIdx] = order[swapIdx];
+      order[swapIdx] = tmp;
       
-      // now swap in the editor
+      // now swap graphically in the editor
       (mod==1) ? targetOption.before(swapOption) : targetOption.after(swapOption);
       this.setChanged('something',true);
       this.refreshViews();
@@ -354,21 +351,15 @@
       else if (options && options.forceEditAreaRefresh) this.startEditing();
     },
 
-    selectCatsAndItems: function (catIdxs,catScrollTop,itemIdxs,itemScrollTop) {
-      var workload = [];
-      if (catIdxs) workload.push('cats',catIdxs,catScrollTop);
-      if (itemIdxs) workload.push('items',itemIdxs,itemScrollTop);
-
-      for (var i = 0; i < workload.length; i += 3) {
-        this.el.find('select[name=' + workload[i] + ']')
-          .find('option')
-            .each(function (idx,elem) {
-              if (workload[i+1][idx] === true) elem.selected = 'selected';
-            })
-            .end()
-          .scrollTop(workload[i+2])
-        ;
-      }
+    selectStuff: function (selectedIdxs,scrollTop) {
+      this.el.find('select[name=stuff]')
+        .find('option')
+          .each(function (idx,elem) {
+            if (selectedIdxs[idx] === true) elem.selected = 'selected';
+          })
+          .end()
+        .scrollTop(scrollTop)
+      ;
     }
     
   });
@@ -378,7 +369,7 @@
     onCategoryClick: function (e) {
       if (!mapp.canTransition()) return;
 
-      var cat_id = $(e.target).data('cat-id');
+      var cat_id = $(e.target).data('id');
       
       mapp.viewWidget(this.widget, cat_id);
       this.widget.getEditor().startEditing();
