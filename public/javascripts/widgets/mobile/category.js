@@ -38,9 +38,12 @@
     
     getCurrentLevel: function () {
       var top = _.last(this.catStack) || {}
-        , items = _(top).chain().keys().reject(isSpecialKey).map( toItemData(top) ).value()
+        , order = top._data._order
+        , items = _(top).chain().keys().reject(isSpecialKey).map( toItemData(top) )
+                  .sortBy(function (item) { return order.indexOf(item._id); })
+                  .value()
       ;
-      return _.extend({ _items:items }, top._data);
+      return _.extend({ _items:items, _ref:top }, top._data);
     },
 
     setPaths: function (currentPath, currentNode) {
@@ -64,6 +67,9 @@
         if (child_id === 'struct') return;
         newStack.push( _.last(newStack)[child_id] );
       });
+      // manually push for builder purposes
+      var stack = this.catStack; stack.length = 0;
+      _.each(newStack, function (x) { stack.push(x); })
       this.catStack = newStack;
 // util.log('SET STACK',id,this.paths[id],this.catStack);
       return this;
@@ -97,7 +103,7 @@
       var subpage = subpage || 'struct'
         , stackSize = this.widget.catStack.length
         , newStackSize = this.widget.setCatStackById(subpage).catStack.length
-        , direction = stackSize > newStackSize ? 'forward' : 'backward'
+        , direction = newStackSize > stackSize ? 'forward' : 'backward'
       ;
 
       return direction;

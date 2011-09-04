@@ -47,7 +47,7 @@
       }
       
       var extraData = {
-        currentCat: util.catName(_.last(this.catStack)) || this.get('name'),
+        currentCat: util.topCatName(this.catStack) || this.get('name'),
         catCrumbs: util.catStackCrumbs(this.get('name'),this.catStack),
         onHomePage: mapp.pageLevel === 0,
         areItemsEmpty: areItemsEmpty,
@@ -288,9 +288,6 @@ util.log('itemIdx',itemIdx,item,level);
     // we're actually modifying leaf names instead of cats. Code reuse ftw!
     getCatNames: function () {
       return _.pluck(this.level._items,'name');
-    },
-    addCatToStruct: function (name) {
-      this.level._items.push({ name:name, content:defaultPageContent });
     },
     renameCatInStruct: function (newName) {
       var origName = this.origName;

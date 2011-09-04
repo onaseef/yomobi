@@ -579,63 +579,35 @@
 
     | <% } else if (!_maybe.isLeaf) { %>
     br
-    .icon-wrap.lfloat
-      img src="/images/ui/subcat-arrow.png"
     .crumb-wrap
-      b Add or edit {{ catLabel }} in category:
+      b Editing:
       br
       b.blue {{ catCrumbs }}
 
-    | <%  if (cats.length >= 2) { %>
-    .arrows
-      input.up-arrow type="image" name="up_cat" data-mod="-1" src="/images/ui/category-up-arrow.png"
-      br
-      input.down-arrow type="image" name="down_cat" data-mod="1" src="/images/ui/category-down-arrow.png"
+    select name="stuff" multiple="multiple"
+      | <% for (var i=0;i<stuff.length;i++) { %>
+      option value="{{ stuff[i]._id }}" {{ stuff[i].name }}
+      | <% } %>
+    br
+    
+    | <%  if (stuff.length >= 2) { %>
+    input.rfloat.down-arrow type="button" name="down_cat" data-mod="1" value="&#9660;"
+    input.rfloat.up-arrow type="button" name="up_cat" data-mod="-1" value="&#9650;"
     | <%  } %>
 
-    select name="cats" multiple="multiple"
-      | <% for (var i=0; i<cats.length;i++) { %>
-      option {{ cats[i] }}
-      | <% } %>
-    br
-    input type="button" name="back" value="< Back"
-    .button-divider.lfloat
-
-    input type="button" name="add_cat" value="Add"
-    | <%       if (areCatsEmpty == false) { %>
-    input type="button" name="rename_cat" value="Rename"
-    input type="button" name="edit_cat" value="Edit"
-    input type="button" name="rem_cat" value="Delete"
-    | <% } %>
-    br
-    br
-    .divider style="margin-bottom: 15px"
-
-    .icon-wrap.lfloat
-      img src="/images/ui/{{ itemIconName }}-arrow.png"
-    .crumb-wrap    
-      b Add or edit {{ itemLabel }} in category:
-      br
-      b.blue {{ catCrumbs }}
-    | <% if (items.length >= 2) { %>
-    .arrows
-      input.up-arrow type="image" name="up_item" data-mod="-1" src="/images/ui/category-up-arrow.png"
-      br
-      input.down-arrow type="image" name="down_item" data-mod="1" src="/images/ui/category-down-arrow.png"
-    | <% } %>
-    select name="items" multiple="multiple"
-      | <% for (var i=0;i<items.length;i++) { %>
-      option {{ items[i].name }}
-      | <% } %>
-    br
-    input type="button" name="add_item" value="Add"
-    | <%       if (areItemsEmpty == false) { %>
-    | <%            if (_maybe.isWidgetPageTree == true) { %>
+    | <%       if (isThereStuff == true) { %>
     input type="button" name="rename_item" value="Rename"
-    | <%            } %>
     input type="button" name="edit_item" value="Edit"
     input type="button" name="rem_item" value="Delete"
     | <%       } %>
+
+    br
+    .divider
+
+    input type="button" name="back" value="< Back"
+    .button-divider.lfloat
+    input type="button" name="add_cat" value="Add {{ catLabel }}"
+    input type="button" name="add_item" value="Add {{ itemLabel }}"
 
     | <% } else { %>
     br

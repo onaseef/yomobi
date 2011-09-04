@@ -32,33 +32,27 @@
 
     getEditData: function () {
       var showData = this.getShowData()
-        , areItemsEmpty = false
-        , areCatsEmpty = false
+        , isThereStuff = true
       ;
-      if (showData.items.length === 0) {
-        showData.items = [{ name:'--None (Click the Add button below)--' }];
-        areItemsEmpty = true;
-      }
-      if (showData.cats.length === 0) {
-        showData.cats = ['--None (Click the Add button below)--'];
-        areCatsEmpty = true;
+      if (showData.stuff.length === 0) {
+        showData.stuff = [{ name:'--None (Click the Add button below)--' }];
+        isThereStuff = false;
       }
       
       var extraData = {
-        currentCat: util.catName(_.last(this.catStack)) || this.get('name'),
+        currentCat: util.topCatName(this.catStack) || this.get('name'),
         catCrumbs: util.catStackCrumbs(this.get('name'),this.catStack),
         onHomePage: mapp.pageLevel === 0,
-        areItemsEmpty: areItemsEmpty,
-        areCatsEmpty: areCatsEmpty,
-        catLabel: util.pluralize( this.get('catTypeName') ),
-        itemLabel: util.pluralize( this.get('itemTypeName') ),
+        isThereStuff: isThereStuff,
+        catLabel: this.get('catTypeName'),
+        itemLabel: this.get('itemTypeName'),
         itemIconName: 'leaf'
       };
       return _.extend({},showData,extraData);
     },
     
     onHomeViewClick: function () {
-      tempCatStack = [];
+      tempCatStack = [ this.get('struct') ];
       
       bapp.homeViewWidgetClick(this);
       return false;
@@ -178,11 +172,11 @@
       ;
       if (_.isEmpty(name)) return alert('Please select an item to rename.');
       
-      var dialog =  new AddCatDialog({
-        model: this.widget,
-        onClose: this.refreshViews
-      });
-      dialog.enterMode('edit').prompt(null,name);
+      this.catDialog = this.catDialog || new AddCatDialog();
+      this.catDialog.model = this.widget;
+      this.catDialog.options.onClose = this.refreshViews;
+
+      this.catDialog.enterMode('edit').prompt(null,name);
     },
     
     moveCat: function (e) {
@@ -384,11 +378,9 @@
     onCategoryClick: function (e) {
       if (!mapp.canTransition()) return;
 
-      var cat = $(e.target).attr('data-cat');
-      var subpage = this.widget.catStack.join('/');
-      subpage && (subpage += '/');
+      var cat_id = $(e.target).data('cat-id');
       
-      mapp.viewWidget(this.widget, subpage + cat);
+      mapp.viewWidget(this.widget, cat_id);
       this.widget.getEditor().startEditing();
     },
     
@@ -398,13 +390,16 @@
     onBackBtnClick: function () {
       if (!mapp.canTransition()) return;
 
-      var catStack = this.widget.catStack
-        , newSubpage = _.compact(catStack.pop() && catStack).join('/')
-      ;
-      if (!newSubpage) {
-        mapp.transition('back');
+      var catStack = this.widget.catStack;
+
+      if (catStack.length === 1) {
+        mapp.goHome();
       }
-      else mapp.viewWidget(this.widget,newSubpage);
+      else {
+        catStack.pop();
+        var subpage = (catStack.length === 1) ? null : _.last(catStack)._data._id;
+        mapp.viewWidget(this.widget, subpage);
+      }
 
       this.widget.getEditor().startEditing();
     },
@@ -450,7 +445,6 @@
       var dialogHtml = template({
         error: error,
         name: name,
-        cats: util.sortedCatNamesFromLevel(level),
         typeName: this.getTypeName(),
         addedCats: this.addedCats
       });
@@ -530,12 +524,21 @@
     },
 
     getCatNames: function () {
-      return util.catNamesFromLevel(this.level);
+      return _.pluck(this.level._items, 'name');
     },
 
     addCatToStruct: function (name) {
-      var keyCount = _.keys(this.level).length;
-      this.level[name+'|'+(keyCount-1)] = {_items:[]};
+      var level = this.level._ref
+        , level_id = level._data._id
+        , cat_id = util.generateId()
+        , newPath = this.model.paths[ level_id ].concat([cat_id])
+        , newCat = {
+          _data: { _id:cat_id, type:'cat', name:name, _order:[] }
+        }
+      ;
+      level[cat_id] = newCat;
+      this.model.paths[cat_id] = newPath;
+      level._data._order.push(cat_id);
     },
 
     renameCatInStruct: function (newName) {

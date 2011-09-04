@@ -377,20 +377,9 @@ var util = {
     return parseInt( cat.substring(cat.lastIndexOf('|')+1),10 );
   },
   
-  catName: function (cat) {
-    cat || (cat = '');
-    return cat.substring(0,cat.lastIndexOf('|'));
-  },
-  
-  sortedCatNamesFromLevel: function (level) {
-    return _(level).chain().keys().reject(util.eq('_items'))
-      .sortBy(function (c) { return util.catOrder(c); })
-      .map(function (c) { return util.catName(c); }).value();
-  },
-
-  catNamesFromLevel: function (level) {
-    return _(level).chain().keys().reject(util.eq('_items'))
-      .map(function (c) { return util.catName(c); }).value();
+  topCatName: function (stack) {
+    var cat = _.last(stack);
+    return cat._data && cat._data.name;
   },
   
   fullCatFromName: function (level,catName) {
@@ -403,9 +392,9 @@ var util = {
   
   catStackCrumbs: function (topName,catStack) {
     var crumbStack = _.map(catStack,function (cat) {
-      return cat._data && cat._data.name;
+      return cat._data.name;
     });
-    crumbStack = _.compact(crumbStack);
+    crumbStack.shift();
 
     var tnarr = [topName]
       , result = tnarr.concat(crumbStack).join(' > ')
@@ -678,8 +667,16 @@ var util = {
 
   toComparableName: function (name) {
     return name.toLowerCase();
+  },
+
+  generateId: function () {
+    var id = 'i' + g.id_counter;
+    // since this is currently only used in category widget,
+    // the ids only need to be semi-unique.
+    $.post('/builder/gen-id',{});
+    g.id_counter += 1;
+    return id;
   }
-  
 }
 
 // useful extensions
