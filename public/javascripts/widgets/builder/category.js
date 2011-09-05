@@ -252,7 +252,7 @@
 
         if (level[node_id]) {
           delete level[node_id];
-          var orderIdx = _indexOf(level._data._order, node_id);
+          var orderIdx = _.indexOf(level._data._order, node_id);
           level._data._order.splice(orderIdx,1);
           lowestDeletedIdx = Math.min($(elem).index(), lowestDeletedIdx);
         }
