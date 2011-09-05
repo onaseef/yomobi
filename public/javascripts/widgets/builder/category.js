@@ -324,35 +324,7 @@
       this.setChanged('something',true);
       this.refreshViews();
     },
-    
-    remItem: function (e) {
-      var level = this.widget.getCurrentLevel()
-        , select = this.el.find('select[name=items]')
-        , selectedItems = select.find('option:selected')
-        , hasSomeSelected = selectedItems.length > 0
-        , lowestDeletedIdx = 99999
-      ;
-      if (hasSomeSelected && !confirm(deleteConfirmText)) return;
-      else if (!hasSomeSelected) return alert('Please select an item to delete.');
 
-      selectedItems.map(function (idx,elem) {
-        var itemName = elem.innerHTML
-          , itemIdx = _.indexOf(_.pluck(level._items,'name'),itemName)
-        ;
-        if (itemIdx != -1) {
-          level._items.splice(itemIdx,1);
-          bapp.currentEditor.setChanged('something',true);
-          lowestDeletedIdx = Math.min($(elem).index(), lowestDeletedIdx);
-        }
-      });
-      // reassign selected indicies
-      select
-        .find('option:selected').prop('selected',false).end()
-        .find('option:eq('+lowestDeletedIdx+')').prop('selected',true).end()
-      ;
-      this.refreshViews();
-    },
-    
     refreshViews: function (options) {
       this.widget.pageView.refresh();
       mapp.resize();
