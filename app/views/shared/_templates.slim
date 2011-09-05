@@ -33,6 +33,7 @@
       | <% } %>
       | {{ editAreaContent }}
 
+    | <% if ( !(_maybe.hideSaveButton && _maybe.hideCancelButton && _maybe.hideRemoveLink) ) { %>
     .action-bar
       | <% if (!_maybe.hideSaveButton) { %>
       .accept-btn.main-btn tabindex="100"
@@ -47,6 +48,7 @@
       a.remove-link(href="#") Remove Widget
       | <% } %>
       .clearfix style="padding-bottom: 10px"
+    | <% } %>
   
   script.edit-tab-bar(type="text/template")
     .header.edit-tab-bar
