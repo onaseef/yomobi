@@ -1,4 +1,10 @@
 class RegistrationsController < Devise::RegistrationsController
+
+  def new
+    @hide_signup_bar = true
+    super
+  end
+
   def create
     @hide_header_signin_form = true
     @hide_captcha = false

@@ -102,17 +102,20 @@ label {
 
 #banner {
   float: left;
-  width: 513px;
+  width: 450px;
   height: 400px;
   padding: 20px 0px 0px 40px;
   h2 { margin-bottom: 5px; }
   p { margin-top: 5px; }
+  .marketing-copy {
+    margin-left: 36px;
+  }
   .easy-button {
     color: white !important;
     font-size: 18px;
     line-height: 24px;
     text-decoration: none;
-    margin: 80px 0px 0px 50px }
+    margin: 20px 0px 0px 00px }
   .images {
     padding-top:20px;
   }
@@ -184,7 +187,7 @@ label {
 #signup-box {
   float: left;
   width: 346px;
-  padding-top: 20px;
+  padding-top: 80px;
   h2 { margin-bottom: 5px; }
   p { margin: 5px 0; }
   & > div { padding-left: 15px; }

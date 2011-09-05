@@ -8,13 +8,25 @@ script type="text/javascript" src="http://yomobi.com/javascripts/mobile-redirect
 
   .images
     img.lfloat src="/images/home-phone.png"
-    a.pretty-button.easy-button href=easy_path See&nbsp;How&nbsp;Easy&nbsp;It&nbsp;Is
+    .marketing-copy.lfloat
+      p YoMobi makes building a mobile site easy.
+      p Go from signing up to online in 4 minutes.
+      p Features include:
+      ul
+        li No signup costs
+        li Free hosting
+        li One-click calling
+        li Interactive maps
+        li Social media integration
+        li Easily customizable content
+        li Instant messaging
+      a.pretty-button.easy-button href=new_user_registration_path Sign&nbsp;Up
 
 #signup-box
-  div
-    h2 = t 'home_page.form.title'
-    p style="font-size:14px" = t 'home_page.form.subtitle'
-  .divider style="margin-top:6px"
-  div
-    = render :partial => 'signup_form', :locals => {:hide_captcha => false}
+  erb:
+    <iframe width="480" height="320"
+          src="http://www.youtube.com/embed/N-I5yx6KpRQ?hl=en&fs=1&hd=1"
+          frameborder="0"
+          allowfullscreen
+    ></iframe>
 .clearfix

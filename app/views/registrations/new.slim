@@ -2,7 +2,7 @@
   
   h2 YoMobi Signup
 
-  - if @user.errors
+  - if @user.errors.present?
     .login-error
       h3 There was problem with your request:
       ul
