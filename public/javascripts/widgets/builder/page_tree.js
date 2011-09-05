@@ -42,7 +42,7 @@
 
     treeTypes: ['cat','page'],
 
-    events: _.extend(categoryEditor.events, {
+    events: _.extend({}, categoryEditor.events, {
       'click .wysiwyg':             'queueActiveLeafUpdate',
       'click .cancel-btn':          'discardActiveLeafChanges'
     }),

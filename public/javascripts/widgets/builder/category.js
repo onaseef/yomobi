@@ -3,9 +3,42 @@
 //
 (function ($) {
 
-  var tempCatStack = [];
-  var $isSelected = function (idx,elem) { return $(elem).is(':selected'); };
-  var downcase = function (str) { return str.toLowerCase(); };
+  var tempCatStack = []
+    , $isSelected = function (idx,elem) { return $(elem).is(':selected') }
+    , downcase = function (str) { return str.toLowerCase() }
+    , isSpecialKey = function (key) { return key.charAt(0) === '_' }
+  ;
+
+  var traverseStruct = function (currentNode,f) {
+    if (!currentNode) return;
+
+    f(currentNode._data._id, currentNode);
+
+    for (child_id in currentNode) {
+      if (child_id.charAt(0) === '_') continue;
+      traverseStruct(currentNode[child_id], f);
+    }
+  }
+
+  var validateOrder = function (node_id, node) {
+    var children_ids = _(node).chain().keys().reject(isSpecialKey).value()
+      , order = _.compact(node._data._order)
+      , intersection = _.intersect(children_ids, order)
+      , isValid = children_ids.length === intersection.length
+    ;
+    if (!isValid) {
+      _.each(children_ids, function (id) {
+        if (_.indexOf(order,id) === -1) order.unshift(id);
+      });
+      node._data._order = order;
+    }
+
+    var hasExtras = order.length > children_ids.length;
+    if (hasExtras) {
+      var extras = _.without.apply(null, [order].concat(children_ids))
+      node._data._order = _.without.apply(null, [order].concat(extras))
+    }
+  };
 
   var deleteConfirmText = "Are you sure you want to delete? (Data will be lost)";
 
@@ -58,8 +91,13 @@
       bapp.homeViewWidgetClick(this);
       return false;
     },
-    
+
+    validate: function (attrs) {
+      traverseStruct(attrs.struct, validateOrder);
+    },
+
     onSave: function () {
+util.log('onSave',this.get('struct')._data._order.join(', '));
       this.origStruct = util.clone(this.get('struct'));
     }
   });
