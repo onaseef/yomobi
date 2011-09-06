@@ -638,7 +638,7 @@ var util = {
   // expects a jquery object
   _stripAllStyles: function ($group) {
     $group.each(function (idx,elem) {
-      elem.removeAttribute('style');
+      elem.removeAttribute && elem.removeAttribute('style');
       // quick and easy non-perfect way of checking for children
       if (elem.innerHTML)
         util._stripAllStyles( $(elem).children() );
