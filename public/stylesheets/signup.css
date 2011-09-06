@@ -89,13 +89,13 @@ label {
 
 #banner {
   float: left;
-  width: 450px;
+  width: 470px;
   height: 400px;
   padding: 20px 0px 0px 40px; }
   #banner h2 {
     margin-bottom: 5px; }
   #banner p {
-    margin-top: 5px; }
+    margin-top: 0px; }
   #banner .marketing-copy {
     margin-left: 36px; }
   #banner .easy-button {
@@ -103,9 +103,11 @@ label {
     font-size: 18px;
     line-height: 24px;
     text-decoration: none;
-    margin: 20px 0px 0px 00px; }
+    margin: 10px 0px 0px 40px; }
   #banner .images {
     padding-top: 20px; }
+    #banner .images img {
+      padding-top: 10px; }
 
 .signup-bar {
   background-color: #EDEFF4;
@@ -159,7 +161,7 @@ label {
 #signup-box {
   float: left;
   width: 346px;
-  padding-top: 80px; }
+  padding-top: 65px; }
   #signup-box h2 {
     margin-bottom: 5px; }
   #signup-box p {
@@ -293,3 +295,13 @@ label {
 #easy {
   margin: 40px 0;
   text-align: center; }
+
+.marketing-copy p {
+  font-size: 14px; }
+.marketing-copy ul {
+  font-size: 14px;
+  margin-top: -1px;
+  list-style-image: url(/images/checkmark-2.png); }
+.marketing-copy li {
+  padding-top: 3px;
+  margin-top: 0px; }

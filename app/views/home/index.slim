@@ -3,17 +3,17 @@ script type="text/javascript" src="http://yomobi.com/javascripts/mobile-redirect
 
 #banner
   h2 = t 'home_page.banner.title'
-  p style="font-size:14px" = t 'home_page.banner.subtitle'
+  p.subtitle style="font-size:14px" = t 'home_page.banner.subtitle'
   .clearfix
 
   .images
     img.lfloat src="/images/home-phone.png"
     .marketing-copy.lfloat
-      p YoMobi makes building a mobile site easy.
-      p Go from signing up to online in 4 minutes.
-      p Features include:
+      p.line-1 YoMobi makes building a mobile site easy.
+      p.line-2 Go from signing up to online in 4 minutes.
+      p.line-3 Features include:
       ul
-        li No signup costs
+        li No sign up costs
         li Free hosting
         li One-click calling
         li Interactive maps
@@ -24,7 +24,7 @@ script type="text/javascript" src="http://yomobi.com/javascripts/mobile-redirect
 
 #signup-box
   erb:
-    <iframe width="480" height="320"
+    <iframe width="500" height="333"
           src="http://www.youtube.com/embed/N-I5yx6KpRQ?hl=en&fs=1&hd=1"
           frameborder="0"
           allowfullscreen

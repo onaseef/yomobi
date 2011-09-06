@@ -102,11 +102,11 @@ label {
 
 #banner {
   float: left;
-  width: 450px;
+  width: 470px;
   height: 400px;
   padding: 20px 0px 0px 40px;
   h2 { margin-bottom: 5px; }
-  p { margin-top: 5px; }
+  p { margin-top: 0px; }
   .marketing-copy {
     margin-left: 36px;
   }
@@ -115,9 +115,10 @@ label {
     font-size: 18px;
     line-height: 24px;
     text-decoration: none;
-    margin: 20px 0px 0px 00px }
+    margin: 10px 0px 0px 40px }
   .images {
     padding-top:20px;
+    img { padding-top: 10px; }
   }
 }
 
@@ -187,7 +188,7 @@ label {
 #signup-box {
   float: left;
   width: 346px;
-  padding-top: 80px;
+  padding-top: 65px;
   h2 { margin-bottom: 5px; }
   p { margin: 5px 0; }
   & > div { padding-left: 15px; }
@@ -345,4 +346,19 @@ label {
 #easy {
   margin: 40px 0;
   text-align: center;
+}
+
+.marketing-copy {
+  p {
+    font-size:14px;
+  }
+  ul {
+    font-size:14px;
+    margin-top: -1px;
+    list-style-image: url(/images/checkmark-2.png);
+  }
+  li {
+    padding-top: 3px;
+    margin-top:0px;
+  }
 }
