@@ -12,9 +12,11 @@ class RegistrationsController < Devise::RegistrationsController
     if verify_recaptcha
       super
     else
+      flash.now[:alert] = "There was an error with the recaptcha code below. Please re-enter the code and click submit."
+      flash.discard :recaptcha_error
+
       build_resource
       clean_up_passwords(resource)
-      flash[:alert] = "There was an error with the recaptcha code below. Please re-enter the code and click submit."
       render_with_scope :new
     end
   end
