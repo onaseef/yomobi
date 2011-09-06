@@ -635,10 +635,19 @@ var util = {
     return util.toHtml( $html );
   },
 
+  attributesToStrip: [
+    'style', 'width', 'height',
+    'border', 'cellpadding', 'frame'
+  ],
+
   // expects a jquery object
   _stripAllStyles: function ($group) {
     $group.each(function (idx,elem) {
-      elem.removeAttribute && elem.removeAttribute('style');
+      if (elem.removeAttribute) {
+        for (var i = util.attributesToStrip.length - 1; i >= 0; i--) {
+          elem.removeAttribute(util.attributesToStrip[i]);
+        }
+      }
       // quick and easy non-perfect way of checking for children
       if (elem.innerHTML)
         util._stripAllStyles( $(elem).children() );
