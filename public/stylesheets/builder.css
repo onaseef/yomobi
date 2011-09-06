@@ -495,3 +495,6 @@ div.wysiwyg ul.toolbar {
 
 #mobile-container .company-info .name, #mobile-container .company-info .logo {
   cursor: pointer; }
+#mobile-container .page .content.category .item:hover, #mobile-container .page .content.page_tree .item:hover {
+  background-color: #d8dfea;
+  cursor: pointer; }

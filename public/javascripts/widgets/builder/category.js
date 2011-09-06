@@ -386,6 +386,24 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
   
   window.widgetPages.category = window.widgetPages.category.extend({
 
+    onItemClick: function (e) {
+      var target = $(e.target), failSafe = 0;
+      while (!target.hasClass('item') && failSafe < 5) {
+        target = target.parent();
+        failSafe += 1;
+      }
+      if (!target.hasClass('item')) return;
+
+      var idx = target.index();
+      this.widget.getEditor()
+        .el.find('select[name=stuff]').find('option')
+        .prop('selected',false)
+        .eq(idx)
+          .prop('selected',true)
+          .dblclick()
+      ;
+    },
+
     onCategoryClick: function (e) {
       if (!mapp.canTransition()) return;
 

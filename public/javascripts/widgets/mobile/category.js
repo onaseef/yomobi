@@ -95,7 +95,8 @@
   window.widgetPages.category = WidgetPageView.extend({
     
     events: {
-      'click .item.category':       'onCategoryClick'
+      'click .item.category':                 'onCategoryClick',
+      'click .item:not([class*=category])':   'onItemClick'
     },
     
     onCategoryClick: function (e) {
@@ -105,6 +106,8 @@
       mapp.goToPage(this.widget.get('name'), cat_id);
     },
     
+    onItemClick: _.identity,
+
     onPageView: function (subpage) {
       if (!mapp.canTransition()) return;
       

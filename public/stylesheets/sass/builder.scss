@@ -557,4 +557,10 @@ div.wysiwyg ul.toolbar {
   .company-info {
     .name, .logo { cursor: pointer; }
   }
+  .page .content.category, .page .content.page_tree {
+    .item:hover {
+      background-color: $highlight-color;
+      cursor: pointer;
+    }
+  }
 }
