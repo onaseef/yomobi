@@ -637,7 +637,7 @@ var util = {
 
   attributesToStrip: [
     'style', 'width', 'height',
-    'border', 'cellpadding', 'frame'
+    'border', 'cellpadding', 'frame', 'bgcolor'
   ],
 
   // expects a jquery object
