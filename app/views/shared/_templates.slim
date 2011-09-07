@@ -310,7 +310,11 @@
   
   script.tell_friend-page(type="text/template")
     .input-wrap
-      p Share this site with your friend. A short email will be sent to your friend with a link to this mobile site.
+      p
+        ' Share
+        = @company.name + " "
+        | with your friend. A short email will be sent to your friend with a link to this mobile site.
+      
       = form_tag "/#{@company.db_name}/tell_friend/submit", :method => 'post' do
         label Your Friend's Email:
         br
