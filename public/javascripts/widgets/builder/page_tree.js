@@ -97,12 +97,11 @@
       var level = this.widget.getCurrentLevel(true)
         , leaf = level._data
       ;
-      leaf.content = $('#jeditor').val();
+      leaf.content = $('#jeditor').wysiwyg('getContent');
       if (this.areStylesDirty) {
         leaf.content = util.stripAllStyles(leaf.content);
 
-        $('#jeditor').val(leaf.content);
-        $('#jeditor').data('wysiwyg').setContent(leaf.content);
+        $('#jeditor').wysiwyg('setContent', leaf.content);
         
         this.areStylesDirty = false;
       }

@@ -1,6 +1,6 @@
 /**
- * WYSIWYG - jQuery plugin 0.96
- * (Pretty girl)
+ * WYSIWYG - jQuery plugin 0.97
+ * (0.97.2 - From infinity)
  *
  * Copyright (c) 2008-2009 Juan M Martinez, 2010-2011 Akzhan Abdulin and all contributors
  * https://github.com/akzhan/jwysiwyg
@@ -14,6 +14,7 @@
 /*jslint browser: true, forin: true */
 
 (function ($) {
+	"use strict";
 	/* Wysiwyg namespace: private properties and methods */
 
 	var console = window.console ? window.console : {
@@ -22,23 +23,8 @@
 			$.error(msg);
 		}
 	};
+	var supportsProp = (('prop' in $.fn) && ('removeProp' in $.fn));
 
-	function dec2hex(i, leading_zeros) {
-		var result = "0";
-		if (leading_zeros) {
-			result = "0000";
-		}
-
-		if (i < 0) { console.log("dec2hex: Below zero"); }
-		else if (i < 16)    { result = ((leading_zeros) ? "000" : "") + i.toString(16); }
-		else if (i < 256)   { result = ((leading_zeros) ? "00" : "")  + i.toString(16); }
-		else if (i < 4096)  { result = ((leading_zeros) ? "0" : "")   + i.toString(16); }
-		else if (i < 65536) { result =                                  i.toString(16); }
-		else { console.log("dec2hex: Oops"); }
-
-		return result;
-	}
-	
 	function Wysiwyg() {
 		this.controls = {
 			bold: {
@@ -85,7 +71,7 @@
 
 			decreaseFontSize: {
 				groupIndex: 9,
-				visible: false && !($.browser.msie),
+				visible: false,
 				tags: ["small"],
 				tooltip: "Decrease font size",
 				exec: function () {
@@ -176,7 +162,8 @@
 					}
 
 					if (this.viewHTML) {
-						this.setContent($(this.original).val());
+						this.setContent(this.original.value);
+
 						$(this.original).hide();
 						this.editor.show();
 
@@ -197,11 +184,12 @@
 							if (li.hasClass("html")) {
 								li.removeClass("active");
 							} else {
-								li.attr("disabled", "false");
+								li.removeClass('disabled');
 							}
 						});
 					} else {
 						this.saveContent();
+
 						$(this.original).css({
 							width:	this.element.outerWidth() - 6,
 							height: this.element.height() - this.ui.toolbar.height() - 6,
@@ -225,8 +213,7 @@
 								li.addClass("active");
 							} else {
 								if (false === li.hasClass("fullscreen")) {
-									li.removeClass("active");
-									li.attr("disabled", "true");
+									li.removeClass("active").addClass('disabled');
 								}
 							}
 						});
@@ -239,7 +226,7 @@
 
 			increaseFontSize: {
 				groupIndex: 9,
-				visible: false && !($.browser.msie),
+				visible: false,
 				tags: ["big"],
 				tooltip: "Increase font size",
 				exec: function () {
@@ -366,14 +353,14 @@
 				groupIndex: 10,
 				visible: false,
 				exec: function () {
-					var range = this.getInternalRange(),
-						p = this.dom.getElement("p");
+					var p = this.dom.getElement("p");
 
 					if (!p) {
 						return false;
 					}
 
 					$(p).attr("dir", "ltr");
+					return true;
 				},
 				tooltip : "Left to Right"
 			},
@@ -419,14 +406,14 @@
 				groupIndex: 10,
 				visible: false,
 				exec: function () {
-					var range = this.getInternalRange(),
-						p = this.dom.getElement("p");
+					var p = this.dom.getElement("p");
 
 					if (!p) {
 						return false;
 					}
 
 					$(p).attr("dir", "rtl");
+					return true;
 				},
 				tooltip : "Right to Left"
 			},
@@ -470,11 +457,39 @@
 				groupIndex: 4,
 				visible: true,
 				tooltip: "Undo"
+			},
+
+			code: {
+				visible : true,
+				groupIndex: 6,
+				tooltip: "Code snippet",
+				exec: function () {
+					var range	= this.getInternalRange(),
+						common	= $(range.commonAncestorContainer),
+						$nodeName = range.commonAncestorContainer.nodeName.toLowerCase();
+					if (common.parent("code").length) {
+						common.unwrap();
+					} else {
+						if ($nodeName !== "body") {
+							common.wrap("<code/>");
+						}
+					}
+				}
+			},
+			
+			cssWrap: {
+				visible : false,
+				groupIndex: 6,
+				tooltip: "CSS Wrapper",
+				exec: function () { 
+					$.wysiwyg.controls.cssWrap.init(this);
+				}
 			}
+			
 		};
 
 		this.defaults = {
-			html: '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body style="margin: 0px;">INITIAL_CONTENT</body></html>',
+html: '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" style="margin:0"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body style="margin:0;">INITIAL_CONTENT</body></html>',
 			debug: false,
 			controls: {},
 			css: {},
@@ -514,7 +529,9 @@
 				rmFormat: {
 					rmMsWordMarkup: false
 				}
-			}
+			},
+			
+			dialog : "default"
 		};
 
 		this.availableControlProperties = [
@@ -563,13 +580,25 @@
 
 		this.dom.getAncestor = function (element, filterTagName) {
 			filterTagName = filterTagName.toLowerCase();
-
-			while (element && "body" !== element.tagName.toLowerCase()) {
+			
+			while (element && typeof element.tagName != "undefined" && "body" !== element.tagName.toLowerCase()) {
 				if (filterTagName === element.tagName.toLowerCase()) {
 					return element;
 				}
 
 				element = element.parentNode;
+			}
+			if(!element.tagName && (element.previousSibling || element.nextSibling)) {
+				if(element.previousSibling) {
+					if(element.previousSibling.tagName.toLowerCase() == filterTagName) {
+						return element.previousSibling;
+					}
+				}	
+				if(element.nextSibling) {
+					if(element.nextSibling.tagName.toLowerCase() == filterTagName) {
+						return element.nextSibling;
+					}
+				}	
 			}
 
 			return null;
@@ -577,6 +606,8 @@
 
 		this.dom.getElement = function (filterTagName) {
 			var dom = this;
+			
+			filterTagName = filterTagName.toLowerCase();			
 
 			if (window.getSelection) {
 				return dom.w3c.getElement(filterTagName);
@@ -610,7 +641,7 @@
 			var dom		= this.parent,
 				range	= dom.parent.getInternalRange(),
 				element;
-
+				
 			if (!range) {
 				return null;
 			}
@@ -626,6 +657,19 @@
 			// startContainer and the boundary point of the Range
 			if (element === range.startContainer) {
 				element = element.childNodes[range.startOffset];
+			}
+			
+			if(!element.tagName && (element.previousSibiling || element.nextSibling)) {
+				if(element.previousSibiling) {
+					if(element.previousSibiling.tagName.toLowerCase() == filterTagName) {
+						return element.previousSibiling;
+					}
+				}	
+				if(element.nextSibling) {
+					if(element.nextSibling.tagName.toLowerCase() == filterTagName) {
+						return element.nextSibling;
+					}
+				}	
 			}
 
 			return dom.getAncestor(element, filterTagName);
@@ -688,8 +732,8 @@
 				if ("number" === typeof (a) && typeof (a) === typeof (b)) {
 					return (a - b);
 				} else {
-					a = "" + a;
-					b = "" + b;
+					a = a.toString();
+					b = b.toString();
 
 					if (a > b) {
 						return 1;
@@ -723,7 +767,7 @@
 				.attr("title", tooltip)
 				.hover(this.addHoverClass, this.removeHoverClass)
 				.click(function () {
-					if ("true" === $(this).attr("disabled")) {
+					if ($(this).hasClass("disabled")) {
 						return false;
 					}
 
@@ -732,6 +776,7 @@
 					this.blur();
 					self.ui.returnRange();
 					self.ui.focus();
+					return true;
 				})
 				.appendTo(self.ui.toolbar);
 		};
@@ -748,10 +793,10 @@
 				.addClass("custom-command-" + name)
 				.addClass("wysiwyg-custom-command")
 				.addClass(name)
-				.attr("title", control.tooltip)
+				.attr("title", tooltip)
 				.hover(this.addHoverClass, this.removeHoverClass)
 				.click(function () {
-					if ("true" === $(this).attr("disabled")) {
+					if ($(this).hasClass("disabled")) {
 						return false;
 					}
 
@@ -762,6 +807,7 @@
 					self.ui.focus();
 
 					self.triggerControlCallback(name);
+					return true;
 				})
 				.appendTo(self.ui.toolbar);
 		};
@@ -839,6 +885,7 @@
 		this.ui.designMode = function () {
 			var attempts = 3,
 				self = this.self,
+				runner;
 				runner = function (attempts) {
 					if ("on" === self.editorDoc.designMode) {
 						if (self.timers.designMode) {
@@ -962,10 +1009,28 @@
 
 		this.increaseFontSize = function () {
 			if ($.browser.mozilla || $.browser.opera) {
-				this.editorDoc.execCommand('increaseFontSize', false, null);
-			} else if ($.browser.safari) {
-				var newNode = this.editorDoc.createElement('big');
-				this.getInternalRange().surroundContents(newNode);
+				this.editorDoc.execCommand("increaseFontSize", false, null);
+			} else if ($.browser.safari) {				
+				var Range = this.getInternalRange(),
+					Selection = this.getInternalSelection(),
+					newNode = this.editorDoc.createElement("big");
+
+				// If cursor placed on text node
+				if (true === Range.collapsed && 3 === Range.commonAncestorContainer.nodeType) {
+					var text = Range.commonAncestorContainer.nodeValue.toString(),
+						start = text.lastIndexOf(" ", Range.startOffset) + 1,
+						end = (-1 === text.indexOf(" ", Range.startOffset)) ? text : text.indexOf(" ", Range.startOffset);
+
+					Range.setStart(Range.commonAncestorContainer, start);
+					Range.setEnd(Range.commonAncestorContainer, end);
+
+					Range.surroundContents(newNode);
+					Selection.addRange(Range);
+				} else {
+					Range.surroundContents(newNode);
+					Selection.removeAllRanges();
+					Selection.addRange(Range);
+				}
 			} else {
 				console.error("Internet Explorer?");
 			}
@@ -973,16 +1038,37 @@
 
 		this.decreaseFontSize = function () {
 			if ($.browser.mozilla || $.browser.opera) {
-				this.editorDoc.execCommand('decreaseFontSize', false, null);
+				this.editorDoc.execCommand("decreaseFontSize", false, null);
 			} else if ($.browser.safari) {
-				var newNode = this.editorDoc.createElement('small');
-				this.getInternalRange().surroundContents(newNode);
+				var Range = this.getInternalRange(),
+					Selection = this.getInternalSelection(),
+					newNode = this.editorDoc.createElement("small");
+
+				// If cursor placed on text node
+				if (true === Range.collapsed && 3 === Range.commonAncestorContainer.nodeType) {
+					var text = Range.commonAncestorContainer.nodeValue.toString(),
+						start = text.lastIndexOf(" ", Range.startOffset) + 1,
+						end = (-1 === text.indexOf(" ", Range.startOffset)) ? text : text.indexOf(" ", Range.startOffset);
+	
+					Range.setStart(Range.commonAncestorContainer, start);
+					Range.setEnd(Range.commonAncestorContainer, end);
+	
+					Range.surroundContents(newNode);
+					Selection.addRange(Range);
+				} else {
+					Range.surroundContents(newNode);
+					Selection.removeAllRanges();
+					Selection.addRange(Range);
+				}
 			} else {
 				console.error("Internet Explorer?");
 			}
 		};
 
 		this.getContent = function () {
+			if (this.viewHTML) {
+				this.setContent(this.original.value);
+			}
 			return this.events.filter('getContent', this.editorDoc.body.innerHTML);
 		};
 		
@@ -1004,7 +1090,7 @@
 			 * Similar to jQuery's bind, but for jWysiwyg only.
 			 */
 			bind : function (eventName, callback) {
-				if(typeof(this._events.eventName) != "object") {
+				if (typeof (this._events.eventName) !== "object") {
 					this._events[eventName] = [];
 				}
 				this._events[eventName].push(callback);
@@ -1013,11 +1099,11 @@
 			/**
 			 * Similar to jQuery's trigger, but for jWysiwyg only.
 			 */
-			trigger : function(eventName, args) {
-				if(typeof(this._events.eventName) == "object") {
+			trigger : function (eventName, args) {
+				if (typeof (this._events.eventName) === "object") {
 					var editor = this.editor;
-					$.each(this._events[eventName], function (k,v) {
-						if(typeof(v) == "function") {
+					$.each(this._events[eventName], function (k, v) {
+						if (typeof (v) === "function") {
 							v.apply(editor, args);
 						}
 					});
@@ -1031,11 +1117,12 @@
 			 * This function returns the result after all the callbacks have been applied to `originalText`.
 			 */
 			filter : function (eventName, originalText) {
-				if(typeof(this._events[eventName]) == "object") {
-					var editor = this.editor;
-					var args = Array.prototype.slice.call(arguments, 1);
-					$.each(this._events[eventName], function (k,v) {
-						if(typeof(v) == "function") {
+				if (typeof (this._events[eventName]) === "object") {
+					var editor = this.editor,
+						args = Array.prototype.slice.call(arguments, 1);
+
+					$.each(this._events[eventName], function (k, v) {
+						if (typeof (v) === "function") {
 							originalText = v.apply(editor, args);
 						}
 					});
@@ -1141,8 +1228,8 @@
 			var self = this,
 				$form = $(element).closest("form"),
 				newX = element.width || element.clientWidth || 0,
-				newY = element.height || element.clientHeight || 0,
-				i;
+				newY = element.height || element.clientHeight || 0
+				;
 
 			this.options	= this.extendOptions(options);
 			this.original	= element;
@@ -1252,7 +1339,7 @@
 			 * @link http://code.google.com/p/jwysiwyg/issues/detail?id=20
 			 */
 			$(self.original).focus(function () {
-				if ($(this).filter(":visible")) {
+				if ($(this).filter(":visible").length === 0) {
 					return;
 				}
 				self.ui.focus();
@@ -1381,7 +1468,7 @@
 
 			if (self.options.maxLength > 0) {
 				$(self.editorDoc).keydown(function (event) {
-					if ($(self.editorDoc).text().length >= self.options.maxLength && $.inArray(event.which, self.validKeyCodes) == -1) {
+					if ($(self.editorDoc).text().length >= self.options.maxLength && $.inArray(event.which, self.validKeyCodes) === -1) {
 						event.preventDefault();
 					}
 				});
@@ -1428,11 +1515,10 @@
 			/**
 			 * XHTML5 {@link https://github.com/akzhan/jwysiwyg/issues/152}
 			 */
-			if (self.options.xhtml5) {
-				var replacements = {ne:8800,le:8804,para:182,xi:958,darr:8595,nu:957,oacute:243,Uacute:218,omega:969,prime:8242,pound:163,igrave:236,thorn:254,forall:8704,emsp:8195,lowast:8727,brvbar:166,alefsym:8501,nbsp:160,delta:948,clubs:9827,lArr:8656,Omega:937,Auml:196,cedil:184,and:8743,plusmn:177,ge:8805,raquo:187,uml:168,equiv:8801,laquo:171,rdquo:8221,Epsilon:917,divide:247,fnof:402,chi:967,Dagger:8225,iacute:237,rceil:8969,sigma:963,Oslash:216,acute:180,frac34:190,lrm:8206,upsih:978,Scaron:352,part:8706,exist:8707,nabla:8711,image:8465,prop:8733,zwj:8205,omicron:959,aacute:225,Yuml:376,Yacute:221,weierp:8472,rsquo:8217,otimes:8855,kappa:954,thetasym:977,harr:8596,Ouml:214,Iota:921,ograve:242,sdot:8901,copy:169,oplus:8853,acirc:226,sup:8835,zeta:950,Iacute:205,Oacute:211,crarr:8629,Nu:925,bdquo:8222,lsquo:8216,apos:39,Beta:914,eacute:233,egrave:232,lceil:8968,Kappa:922,piv:982,Ccedil:199,ldquo:8220,Xi:926,cent:162,uarr:8593,hellip:8230,Aacute:193,ensp:8194,sect:167,Ugrave:217,aelig:230,ordf:170,curren:164,sbquo:8218,macr:175,Phi:934,Eta:919,rho:961,Omicron:927,sup2:178,euro:8364,aring:229,Theta:920,mdash:8212,uuml:252,otilde:245,eta:951,uacute:250,rArr:8658,nsub:8836,agrave:224,notin:8713,ndash:8211,Psi:936,Ocirc:212,sube:8838,szlig:223,micro:181,not:172,sup1:185,middot:183,iota:953,ecirc:234,lsaquo:8249,thinsp:8201,sum:8721,ntilde:241,scaron:353,cap:8745,atilde:227,lang:10216,__replacement:65533,isin:8712,gamma:947,Euml:203,ang:8736,upsilon:965,Ntilde:209,hearts:9829,Alpha:913,Tau:932,spades:9824,dagger:8224,THORN:222,int:8747,lambda:955,Eacute:201,Uuml:220,infin:8734,rlm:8207,Aring:197,ugrave:249,Egrave:200,Acirc:194,rsaquo:8250,ETH:208,oslash:248,alpha:945,Ograve:210,Prime:8243,mu:956,ni:8715,real:8476,bull:8226,beta:946,icirc:238,eth:240,prod:8719,larr:8592,ordm:186,perp:8869,Gamma:915,reg:174,ucirc:251,Pi:928,psi:968,tilde:732,asymp:8776,zwnj:8204,Agrave:192,deg:176,AElig:198,times:215,Delta:916,sim:8764,Otilde:213,Mu:924,uArr:8657,circ:710,theta:952,Rho:929,sup3:179,diams:9830,tau:964,Chi:935,frac14:188,oelig:339,shy:173,or:8744,dArr:8659,phi:966,iuml:239,Lambda:923,rfloor:8971,iexcl:161,cong:8773,ccedil:231,Icirc:206,frac12:189,loz:9674,rarr:8594,cup:8746,radic:8730,frasl:8260,euml:235,OElig:338,hArr:8660,Atilde:195,Upsilon:933,there4:8756,ouml:246,oline:8254,Ecirc:202,yacute:253,auml:228,permil:8240,sigmaf:962,iquest:191,empty:8709,pi:960,Ucirc:219,supe:8839,Igrave:204,yen:165,rang:10217,trade:8482,lfloor:8970,minus:8722,Zeta:918,sub:8834,epsilon:949,yuml:255,Sigma:931,Iuml:207,ocirc:244};
+			if (self.options.xhtml5 && self.options.unicode) {
+				var replacements = {ne:8800,le:8804,para:182,xi:958,darr:8595,nu:957,oacute:243,Uacute:218,omega:969,prime:8242,pound:163,igrave:236,thorn:254,forall:8704,emsp:8195,lowast:8727,brvbar:166,alefsym:8501,nbsp:160,delta:948,clubs:9827,lArr:8656,Omega:937,Auml:196,cedil:184,and:8743,plusmn:177,ge:8805,raquo:187,uml:168,equiv:8801,laquo:171,rdquo:8221,Epsilon:917,divide:247,fnof:402,chi:967,Dagger:8225,iacute:237,rceil:8969,sigma:963,Oslash:216,acute:180,frac34:190,lrm:8206,upsih:978,Scaron:352,part:8706,exist:8707,nabla:8711,image:8465,prop:8733,zwj:8205,omicron:959,aacute:225,Yuml:376,Yacute:221,weierp:8472,rsquo:8217,otimes:8855,kappa:954,thetasym:977,harr:8596,Ouml:214,Iota:921,ograve:242,sdot:8901,copy:169,oplus:8853,acirc:226,sup:8835,zeta:950,Iacute:205,Oacute:211,crarr:8629,Nu:925,bdquo:8222,lsquo:8216,apos:39,Beta:914,eacute:233,egrave:232,lceil:8968,Kappa:922,piv:982,Ccedil:199,ldquo:8220,Xi:926,cent:162,uarr:8593,hellip:8230,Aacute:193,ensp:8194,sect:167,Ugrave:217,aelig:230,ordf:170,curren:164,sbquo:8218,macr:175,Phi:934,Eta:919,rho:961,Omicron:927,sup2:178,euro:8364,aring:229,Theta:920,mdash:8212,uuml:252,otilde:245,eta:951,uacute:250,rArr:8658,nsub:8836,agrave:224,notin:8713,ndash:8211,Psi:936,Ocirc:212,sube:8838,szlig:223,micro:181,not:172,sup1:185,middot:183,iota:953,ecirc:234,lsaquo:8249,thinsp:8201,sum:8721,ntilde:241,scaron:353,cap:8745,atilde:227,lang:10216,__replacement:65533,isin:8712,gamma:947,Euml:203,ang:8736,upsilon:965,Ntilde:209,hearts:9829,Alpha:913,Tau:932,spades:9824,dagger:8224,THORN:222,"int":8747,lambda:955,Eacute:201,Uuml:220,infin:8734,rlm:8207,Aring:197,ugrave:249,Egrave:200,Acirc:194,rsaquo:8250,ETH:208,oslash:248,alpha:945,Ograve:210,Prime:8243,mu:956,ni:8715,real:8476,bull:8226,beta:946,icirc:238,eth:240,prod:8719,larr:8592,ordm:186,perp:8869,Gamma:915,reg:174,ucirc:251,Pi:928,psi:968,tilde:732,asymp:8776,zwnj:8204,Agrave:192,deg:176,AElig:198,times:215,Delta:916,sim:8764,Otilde:213,Mu:924,uArr:8657,circ:710,theta:952,Rho:929,sup3:179,diams:9830,tau:964,Chi:935,frac14:188,oelig:339,shy:173,or:8744,dArr:8659,phi:966,iuml:239,Lambda:923,rfloor:8971,iexcl:161,cong:8773,ccedil:231,Icirc:206,frac12:189,loz:9674,rarr:8594,cup:8746,radic:8730,frasl:8260,euml:235,OElig:338,hArr:8660,Atilde:195,Upsilon:933,there4:8756,ouml:246,oline:8254,Ecirc:202,yacute:253,auml:228,permil:8240,sigmaf:962,iquest:191,empty:8709,pi:960,Ucirc:219,supe:8839,Igrave:204,yen:165,rang:10217,trade:8482,lfloor:8970,minus:8722,Zeta:918,sub:8834,epsilon:949,yuml:255,Sigma:931,Iuml:207,ocirc:244};
 				self.events.bind("getContent", function (text) {
 					return text.replace(/&(?:amp;)?(?!amp|lt|gt|quot)([a-z][a-z0-9]*);/gi, function (str, p1) {
-//console.log("1: str", str, "p1", p1);
 						if (!replacements[p1]) {
 							p1 = p1.toLowerCase();
 							if (!replacements[p1]) {
@@ -1440,17 +1526,13 @@
 							}
 						}
 						
-						var num = replacements[p1],
-							leading_zeros = self.options.unicode;
+						var num = replacements[p1];
 						/* Numeric return if ever wanted: return replacements[p1] ? "&#"+num+";" : ""; */
-//console.log("2: str", str, "p1", p1, "&#" + dec2hex(num, leading_zeros) + ";");
-						return self.options.unicode
-							? eval('"\\u' + dec2hex(num, leading_zeros) + '"')
-							: "&#" + dec2hex(num, leading_zeros) + ";"
-						;
+						return String.fromCharCode(num);
 					});
 				});
 			}
+			$(self.original).trigger('ready.jwysiwyg', [self.editorDoc, self]);
 		};
 
 		this.innerDocument = function () {
@@ -1493,12 +1575,15 @@
 				if (img) {
 					$(img).replaceWith(szHTML);
 				}
-			} else {	
-				if ($.browser.mozilla) {
-					range = this.getInternalRange();
-
-					range.deleteContents();
-					range.insertNode($(szHTML).get(0));
+			} else {
+				if ($.browser.mozilla) { // @link https://github.com/akzhan/jwysiwyg/issues/50
+					if (1 === $(szHTML).length) {
+						range = this.getInternalRange();
+						range.deleteContents();
+						range.insertNode($(szHTML).get(0));
+					} else {
+						this.editorDoc.execCommand("insertHTML", false, szHTML);
+					}
 				} else {
 					if (!this.editorDoc.execCommand("insertHTML", false, szHTML)) {
 						this.editor.focus();
@@ -1513,6 +1598,8 @@
 				}
 			}
 
+			this.saveContent();
+			
 			return this;
 		};
 
@@ -1547,7 +1634,11 @@
 			this.editorDoc.execCommand("unlink", false, null);
 
 			if ($.wysiwyg.rmFormat && $.wysiwyg.rmFormat.enabled) {
-				$.wysiwyg.rmFormat.run(this);
+				if ("object" === typeof (this.options.plugins.rmFormat.rmMsWordMarkup)) {
+					$.wysiwyg.rmFormat.run(this, {rules: { msWordMarkup: this.options.plugins.rmFormat.rmMsWordMarkup }});
+				} else {
+					$.wysiwyg.rmFormat.run(this, {rules: { msWordMarkup: { enabled: true }}});
+				}
 			}
 
 			return this;
@@ -1559,16 +1650,15 @@
 
 		this.resetFunction = function () {
 			this.setContent(this.initialContent);
-			this.saveContent();
 		};
 
 		this.saveContent = function () {
+			if (this.viewHTML)
+			{
+				return; // no need
+			}
 			if (this.original) {
 				var content, newContent;
-
-				if (this.viewHTML) {
-					this.setContent($(this.original).val());
-				}
 
 				content = this.getContent();
 
@@ -1612,6 +1702,8 @@
 
 		this.setContent = function (newContent) {
 			this.editorDoc.body.innerHTML = newContent;
+			this.saveContent();
+
 			return this;
 		};
 
@@ -1714,7 +1806,6 @@
 				}
 
 				oWysiwyg.setContent("");
-				oWysiwyg.saveContent();
 			});
 		},
 
@@ -1924,7 +2015,6 @@
 				}
 
 				oWysiwyg.setContent(newContent);
-				oWysiwyg.saveContent();
 			});
 		},
 
@@ -1944,6 +2034,10 @@
 			});
 		},
 
+		support: {
+			prop: supportsProp
+		},
+
 		utils: {
 			extraSafeEntities: [["<", ">", "'", '"', " "], [32]],
 
@@ -1952,12 +2046,12 @@
 
 				if (this.extraSafeEntities[1].length === 0) {
 					$.each(this.extraSafeEntities[0], function (i, ch) {
-						self.extraSafeEntities[1].push(ch.charCodeAt());
+						self.extraSafeEntities[1].push(ch.charCodeAt(0));
 					});
 				}
 				aStr = str.split("");
 				$.each(aStr, function (i) {
-					var iC = aStr[i].charCodeAt();
+					var iC = aStr[i].charCodeAt(0);
 					if ($.inArray(iC, self.extraSafeEntities[1]) && (iC < 65 || iC > 127 || (iC > 90 && iC < 97))) {
 						aRet.push('&#' + iC + ';');
 					} else {
@@ -1969,6 +2063,294 @@
 			}
 		}
 	};
+
+	/**
+	 * Unifies dialog methods to allow custom implementations
+	 * 
+	 * Events:
+	 *     * afterOpen
+	 *     * beforeShow
+	 *     * afterShow
+	 *     * beforeHide
+	 *     * afterHide
+	 *     * beforeClose
+	 *     * afterClose
+	 * 
+	 * Example:
+	 * var dialog = new ($.wysiwyg.dialog)($('#idToTextArea').data('wysiwyg'), {"title": "Test", "content": "form data, etc."});
+	 * 
+	 * dialog.bind("afterOpen", function () { alert('you should see a dialog behind this one!'); });
+	 * 
+	 * dialog.open();
+	 * 
+	 * 
+	 */
+	$.wysiwyg.dialog = function (jWysiwyg, opts) {
+		
+		var theme	= (jWysiwyg && jWysiwyg.options && jWysiwyg.options.dialog) ? jWysiwyg.options.dialog : (opts.theme ? opts.theme : "default"),
+			obj		= new $.wysiwyg.dialog.createDialog(theme),
+			that	= this,
+			$that	= $(that);
+				
+		this.options = {
+			"modal": true,
+			"draggable": true,
+			"title": "Title",
+			"content": "Content",
+			"width":"auto",
+			"height":"auto",
+			"open": false,
+			"close": false
+		};
+
+		this.isOpen = false;
+
+		$.extend(this.options, opts);
+
+		this.object = obj;
+
+		// Opens a dialog with the specified content
+		this.open = function () {
+			this.isOpen = true;
+
+			obj.init.apply(that, []);
+			var $dialog = obj.show.apply(that, []);
+
+			$that.trigger("afterOpen", [$dialog]);
+			
+		};
+
+		this.show = function () {
+			this.isOpen = true;
+			
+			$that.trigger("beforeShow");
+			
+			var $dialog = obj.show.apply(that, []);
+			
+			$that.trigger("afterShow");
+		};
+
+		this.hide = function () {
+			this.isOpen = false;
+			
+			$that.trigger("beforeHide");
+			
+			var $dialog = obj.hide.apply(that, []);
+			
+			$that.trigger("afterHide", [$dialog]);
+		};
+
+		// Closes the dialog window.
+		this.close = function () {
+			this.isOpen = false;
+						
+			var $dialog = obj.hide.apply(that, []);
+			
+			$that.trigger("beforeClose", [$dialog]);
+			
+			obj.destroy.apply(that, []);
+			
+			$that.trigger("afterClose", [$dialog]);
+			
+		};
+
+		if (this.options.open) {
+			$that.bind("afterOpen", this.options.open);
+		}
+		if (this.options.close) {
+			$that.bind("afterClose", this.options.close);
+		}
+
+		return this;
+	};
+
+	// "Static" Dialog methods.
+	$.extend(true, $.wysiwyg.dialog, {
+		_themes : {}, // sample {"Theme Name": object}
+		_theme : "", // the current theme
+
+		register : function(name, obj) {
+			$.wysiwyg.dialog._themes[name] = obj;
+		},
+
+		deregister : function (name) {
+			delete $.wysiwyg.dialog._themes[name];
+		},
+
+		createDialog : function (name) {
+			return new ($.wysiwyg.dialog._themes[name]);
+		}
+	});
+
+	$(function () { // need access to jQuery UI stuff.
+		if (jQuery.ui) {
+			$.wysiwyg.dialog.register("jqueryui", function () {
+				var that = this;
+
+				this._$dialog = null;
+
+				this.init = function() {
+					var abstractDialog	= this,
+						content 		= this.options.content;
+
+					if (typeof content === 'object') {
+						if (typeof content.html === 'function') {
+							content = content.html();
+						} else if(typeof content.toString === 'function') {
+							content = content.toString();
+						}
+					}
+
+					that._$dialog = $('<div></div>').attr('title', this.options.title).html(content);
+
+					var dialogHeight = this.options.height == 'auto' ? 300 : this.options.height,
+						dialogWidth = this.options.width == 'auto' ? 450 : this.options.width;
+
+					// console.log(that._$dialog);
+					
+					that._$dialog.dialog({
+						modal: this.options.modal,
+						draggable: this.options.draggable,
+						height: dialogHeight,
+						width: dialogWidth
+					});
+
+					return that._$dialog;
+				};
+
+				this.show = function () {
+					that._$dialog.dialog("open");
+					return that._$dialog;
+				};
+
+				this.hide = function () {
+					that._$dialog.dialog("close");
+					return that._$dialog;
+				};
+
+				this.destroy = function() {
+					that._$dialog.dialog("destroy");
+					return that._$dialog;
+				};
+			});
+		}
+
+		$.wysiwyg.dialog.register("default", function () {
+			var that = this;
+
+			this._$dialog = null;
+
+			this.init = function() {
+				var abstractDialog	= this,
+					content 		= this.options.content;
+
+				if (typeof content === 'object') {
+					if(typeof content.html === 'function') {
+						content = content.html();
+					}
+					else if(typeof content.toString === 'function') {
+						content = content.toString();
+					}
+				}
+
+				that._$dialog = $('<div class="wysiwyg-dialog"></div>');
+
+				var $topbar = $('<div class="wysiwyg-dialog-topbar"><div class="wysiwyg-dialog-close-wrapper"></div><div class="wysiwyg-dialog-title">'+this.options.title+'</div></div>');
+				var $link = $('<a href="#" class="wysiwyg-dialog-close-button">X</a>');
+
+				$link.click(function () {
+					abstractDialog.close(); // this is important it makes sure that is close from the abstract $.wysiwyg.dialog instace, not just locally 
+				});
+				
+				$topbar.find('.wysiwyg-dialog-close-wrapper').prepend($link);
+
+				var $dcontent = $('<div class="wysiwyg-dialog-content">'+content+'</div>');
+
+				that._$dialog.append($topbar).append($dcontent);
+				
+				// Set dialog's height & width, and position it correctly:
+				var dialogHeight = this.options.height == 'auto' ? 300 : this.options.height,
+					dialogWidth = this.options.width == 'auto' ? 450 : this.options.width;
+				that._$dialog.hide().css({
+					"width": dialogWidth,
+					"height": dialogHeight,
+					"left": (($(window).width() - dialogWidth) / 2),
+					"top": (($(window).height() - dialogHeight) / 3)
+				});
+
+				$("body").append(that._$dialog);
+
+				return that._$dialog;
+			};
+
+			this.show = function () {
+
+				// Modal feature:
+				if (this.options.modal) {
+					that._$dialog.wrap('<div class="wysiwyg-dialog-modal-div"></div>');
+				}
+				
+				// Draggable feature:
+				if (this.options.draggable) { 
+					
+					var mouseDown = false;
+					
+					that._$dialog.find("div.wysiwyg-dialog-topbar").bind("mousedown", function (e) {
+						e.preventDefault();
+						$(this).css({ "cursor": "move" });
+						var $topbar = $(this),
+							_dialog = $(this).parents(".wysiwyg-dialog"),
+							offsetX = (e.pageX - parseInt(_dialog.css("left"), 10)),
+							offsetY = (e.pageY - parseInt(_dialog.css("top"), 10));
+						mouseDown = true;
+						$(this).css({ "cursor": "move" });
+						
+						$(document).bind("mousemove", function (e) {
+							e.preventDefault();
+							if (mouseDown) {
+								_dialog.css({
+									"top": (e.pageY - offsetY),
+									"left": (e.pageX - offsetX)
+								});
+							}
+						}).bind("mouseup", function (e) {
+							e.preventDefault();
+							mouseDown = false;
+							$topbar.css({ "cursor": "auto" });
+							$(document).unbind("mousemove").unbind("mouseup");
+						});
+					
+					});
+				}
+				
+				that._$dialog.show();
+				return that._$dialog;
+
+			};
+
+			this.hide = function () {
+				that._$dialog.hide();
+				return that._$dialog;
+			};
+
+			this.destroy = function() {
+			
+				// Modal feature:
+				if (this.options.modal) { 
+					that._$dialog.unwrap();
+				}
+				
+				// Draggable feature:
+				if (this.options.draggable) { 
+					that._$dialog.find("div.wysiwyg-dialog-topbar").unbind("mousedown");
+				}
+				
+				that._$dialog.remove();
+				return that._$dialog;
+			};
+		});
+	});
+	// end Dialog
 
 	$.fn.wysiwyg = function (method) {
 		var args = arguments, plugin;

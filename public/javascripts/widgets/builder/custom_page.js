@@ -15,7 +15,7 @@
     },
 
     grabWidgetValues: function () {
-      return { content:$('#jeditor').val() };
+      return { content:$('#jeditor').wysiwyg('getContent') };
     },
 
     setDirty: function () {
@@ -33,9 +33,8 @@
     },
 
     stripStyles: function () {
-      var strippedContent = util.stripAllStyles( $('#jeditor').val() );
-      $('#jeditor').val(strippedContent);
-      $('#jeditor').data('wysiwyg').setContent(strippedContent);
+      var strippedContent = util.stripAllStyles( $('#jeditor').wysiwyg('getContent') );
+      $('#jeditor').wysiwyg('setContent', strippedContent);
     }
 
   });
