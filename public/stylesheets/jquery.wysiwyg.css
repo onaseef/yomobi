@@ -18,8 +18,7 @@ div.wysiwyg ul.toolbar li {
 }
 
 div.wysiwyg ul.toolbar li.separator { width: 1px; height: 16px; margin: 0 4px; border-left: 1px solid #ccc; }
-div.wysiwyg ul.toolbar li.wysiwyg-button-hover, div.wysiwyg ul.toolbar li.active { opacity: 1.00; filter:alpha(opacity=100); border: 1px outset rgb(224, 224, 224); }
-div.wysiwyg ul.toolbar li.active { background-color: rgb(255, 255, 64); border: 1px solid rgb(208, 208, 208); border-left-color: #aaa; border-top-color: #aaa; margin: 0; }
+div.wysiwyg ul.toolbar li.wysiwyg-button-hover { opacity: 1.00; filter:alpha(opacity=100); border: 1px outset rgb(224, 224, 224); }
 
 div.wysiwyg ul.toolbar li.bold { background-position: 0 -20px; }
 div.wysiwyg ul.toolbar li.italic { background-position: -20px -20px; }
