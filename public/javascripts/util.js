@@ -539,6 +539,7 @@ var util = {
   spawnJEditor: function () {
     $('#jeditor').wysiwyg({
       css: '/stylesheets/jwysiwyg.css?_=' + Math.random(),
+      removeHeadings: true,
       formHeight: 400,
       formWidth: 320,
       events: {
