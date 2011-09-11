@@ -516,8 +516,30 @@ div.wysiwyg ul.toolbar {
     font-size: 90%;} }
 
 #builder input[name="back"] {
-  margin-right:16px
+  margin-right:16px;
+  padding:4px;
+  background: none;
 }
+
+//
+// Add icons to the category-like widgets buttons
+//
+
+#builder input[name="add_cat"], 
+#builder input[name="add_item"] {
+  padding: 4px 4px 4px 25px; 
+  width: auto;
+  overflow: visible;
+}
+
+#builder input[name="add_cat"] {
+  background: no-repeat 2% 50% url(/images/ui/new-folder-20.png);
+}
+
+#builder input[name="add_item"] {
+  background: no-repeat 2% 50% url(/images/ui/new-item-20.png);
+}
+
 
 .wysiwyg {
   input[type=text] {
