@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110903223313) do
+ActiveRecord::Schema.define(:version => 20110911172858) do
 
   create_table "carriers", :force => true do |t|
     t.string   "name"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(:version => 20110903223313) do
     t.string   "keywords"
     t.string   "call_back_email"
     t.integer  "company_type_id"
-    t.integer  "id_counter",        :default => 1
+    t.integer  "id_counter",        :default => 1, :null => false
   end
 
   add_index "companies", ["db_name"], :name => "index_companies_on_db_name", :unique => true
