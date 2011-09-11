@@ -5,7 +5,6 @@ Yomobi::Application.routes.draw do
   get 'about' => 'home#about', :as => :about
   get 'how-to-make-a-mobile-website' => 'home#easy', :as => :easy
 
-  get 'home/index', :as => :account_signup
   get 'confirm' => 'home#confirm_account', :as => :confirm_account
   post 'confirm' => 'home#resend_confirmation', :as => :resend_confirmation
 

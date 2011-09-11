@@ -55,7 +55,7 @@ class HomeController < ApplicationController
   end
 
   def redirect_if_signed_out
-    return redirect_to account_signup_path unless user_signed_in?
+    return redirect_to new_user_registration_path unless user_signed_in?
   end
 
   def redirect_if_confirmed
