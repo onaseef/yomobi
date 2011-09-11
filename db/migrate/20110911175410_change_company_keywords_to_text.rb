@@ -1,6 +1,6 @@
 class ChangeCompanyKeywordsToText < ActiveRecord::Migration
   def self.up
-    change_column :companies, :keywords, :text, :limit => 65536
+    change_column :companies, :keywords, :text
   end
 
   def self.down
