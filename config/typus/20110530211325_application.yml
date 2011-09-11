@@ -14,8 +14,8 @@ Carrier:
 
 Company:
   fields:
-    default: user, name, db_name, db_pass, informed_email, leave_msg_email, logo_file_name
-    form: user, name, db_name, db_pass, informed_email, leave_msg_email, logo_file_name
+    default: user, name, db_name, id_counter, logo_file_name
+    form: user, name, db_name, id_counter, informed_email, leave_msg_email, booking_email, call_back_email
   order_by: 
   relationships: followers, user
   filters: created_at
