@@ -43,7 +43,7 @@ helpText:
     help: <p>Allow your mobile site visitors to easily find you.</p>
   
   flickr:
-    help: <p>Add a link to your Flickr album on your mobile site.</p><p><a href="http://www.flickr.com/profile_url.gne">Click here</a> to find your flickr url.</p>
+    help: <p>Add a link to your Flickr album on your mobile site.</p><p><a href="http://www.flickr.com/profile_url.gne">Click here</a> to find your flickr URL.</p>
     subHelp: Flickr alias or custom URL
   
   full-website:
@@ -70,11 +70,11 @@ helpText:
     subHelp: online news site
   
   photo-bucket:
-    help: <p>Add a link to your PhotoBucket album on your mobile site.</p>
+    help: <p>Add a link to your PhotoBucket album on your mobile site.</p><p><a href="http://support.photobucket.com/app/answers/detail/a_id/184/kw/custom%20url">Click here</a> to find your photobucket URL.</p>
     subHelp: Photobucket album custom
   
   picasa:
-    help: <p>Add a link to your Picasa album on your mobile site.</p>
+    help: <p>Add a link to your Picasa album on your mobile site.</p><p><a href="http://picasa.google.com/support/bin/answer.py?answer=39510">Click here</a> to find your Picasa album URL.</p>
     subHelp: Picasa album URL
   
   products:
@@ -94,8 +94,8 @@ helpText:
     help: <p>Let your mobile site visitors tell their friends about you.</p>
   
   twitter:
-    help: <p>Add a link to your twitter account on your mobile site to make it easy for visitors to follow you.</p>
-    subHelp: Twitter ID
+    help: <p>Add a link to your twitter account on your mobile site to make it easy for visitors to follow you.</p><p><a href="http://support.twitter.com/articles/14609-how-to-change-your-username">Click here</a> to find your twitter uername.</p>
+    subHelp: Twitter username
   
   video:
     help: <p>Add a link to a video on your mobile site.</p>
