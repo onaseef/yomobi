@@ -36,14 +36,14 @@ helpText:
     subHelp: online calendar
   
   facebook:
-    help: <p>Add a link to your Facebook page on your mobile site to make it easy for visitors to friend you.</p>
+    help: <p>Add a link to your Facebook page on your mobile site to make it easy for visitors to friend you.</p><p><a href="http://www.facebook.com/username">Click here</a> to find your facebook username.</p>
     subHelp: Facebook username
   
   find-us:
     help: <p>Allow your mobile site visitors to easily find you.</p>
   
   flickr:
-    help: <p>Add a link to your Flickr album on your mobile site.</p>
+    help: <p>Add a link to your Flickr album on your mobile site.</p><p><a href="http://www.flickr.com/profile_url.gne">Click here</a> to find your flickr url.</p>
     subHelp: Flickr alias or custom URL
   
   full-website:
