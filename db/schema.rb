@@ -35,10 +35,10 @@ ActiveRecord::Schema.define(:version => 20110911175410) do
     t.string   "informed_email"
     t.string   "leave_msg_email"
     t.string   "booking_email"
-    t.text     "keywords",          :limit => 65536
+    t.text     "keywords",          :limit => 255
     t.string   "call_back_email"
     t.integer  "company_type_id"
-    t.integer  "id_counter",                         :default => 1, :null => false
+    t.integer  "id_counter",                       :default => 1, :null => false
   end
 
   add_index "companies", ["db_name"], :name => "index_companies_on_db_name", :unique => true
