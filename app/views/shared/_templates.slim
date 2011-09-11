@@ -592,7 +592,8 @@
 
     select name="stuff" multiple="multiple"
       | <% for (var i=0;i<stuff.length;i++) { %>
-      option data-type="{{ stuff[i].type }}" value="{{ stuff[i]._id }}" {{ stuff[i].name }}
+      option data-type="{{ stuff[i].type }}" value="{{ stuff[i]._id }}"
+        | {{ bulletTypes[ stuff[i].type ] }} {{ stuff[i].name }}
       | <% } %>
     br
     

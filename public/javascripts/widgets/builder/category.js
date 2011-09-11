@@ -7,6 +7,10 @@
     , $isSelected = function (idx,elem) { return $(elem).is(':selected') }
     , downcase = function (str) { return str.toLowerCase() }
     , isSpecialKey = function (key) { return key.charAt(0) === '_' }
+    , bulletTypes = {
+      'cat': '&#x271a;',
+      'item': '&#x25c6;'
+    }
   ;
 
   var traverseStruct = function (currentNode,f) {
@@ -67,6 +71,7 @@
       var showData = this.getShowData()
         , isThereStuff = true
       ;
+
       if (showData.stuff.length === 0) {
         showData.stuff = [{ name:'--None (Click the Add button below)--' }];
         isThereStuff = false;
@@ -80,7 +85,8 @@
         isThereStuff: isThereStuff,
         catLabel: this.get('catTypeName'),
         itemLabel: this.get('itemTypeName'),
-        itemIconName: 'leaf'
+        itemIconName: 'leaf',
+        bulletTypes: bulletTypes
       };
       return _.extend({},showData,extraData);
     },
