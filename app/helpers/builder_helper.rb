@@ -16,6 +16,6 @@ module BuilderHelper
   end
 
   def help_texts
-    WHELP.to_json
+    I18n.t('widgets').to_json
   end
 end
