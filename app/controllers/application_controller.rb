@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  before_filter :ensure_domain
+
   def error(status = 400, reason)
     render :text => reason.to_json, :status => status
   end
@@ -54,6 +56,15 @@ class ApplicationController < ActionController::Base
 
   def redirect_unless_confirmed
     return redirect_to confirm_account_path unless current_user.confirmed_at?
+  end
+
+  def ensure_domain
+    return unless Rails.env.production?
+    puts request.env.inspect
+    if request.env['HTTP_HOST'] != 'www.yomobi.com'
+      # HTTP 301 is a "permanent" redirect
+      redirect_to "http://www.yomobi.com#{ request.env['PATH_INFO'] }", :status => 301
+    end
   end
 
 end
