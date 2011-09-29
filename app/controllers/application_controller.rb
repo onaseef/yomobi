@@ -60,10 +60,11 @@ class ApplicationController < ActionController::Base
 
   def ensure_domain
     return unless Rails.env.production?
-    puts request.env.inspect
     if request.env['HTTP_HOST'] != 'www.yomobi.com'
       # HTTP 301 is a "permanent" redirect
-      redirect_to "http://www.yomobi.com#{ request.env['PATH_INFO'] }", :status => 301
+      url = "http://www.yomobi.com#{ request.env['PATH_INFO'] }"
+      url += '?' + request.env['QUERY_STRING'] if request.env['QUERY_STRING'].length > 0
+      redirect_to url, :status => 301
     end
   end
 
