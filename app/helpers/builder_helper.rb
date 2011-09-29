@@ -12,7 +12,7 @@ module BuilderHelper
   def desktop_redirect_code(company)
     %Q{<!-- Place these tags in the head tag of your website -->
 <script type="text/javascript">var _RSITE = '#{escape_javascript company.mobile_url}';</script>
-<script type="text/javascript" src="http://yomobi.com/javascripts/mobile-redirect.js"></script>}
+<script type="text/javascript" src="http://www.yomobi.com/javascripts/mobile-redirect.js"></script>}
   end
 
   def help_texts

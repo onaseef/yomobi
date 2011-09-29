@@ -1,7 +1,7 @@
 Yomobi::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
-  config.opt_out_url_host = 'http://yomobi.com'
+  config.opt_out_url_host = 'http://www.yomobi.com'
 
   config.couch_host = 'yomobi.couchone.com'
   config.couch_cred = ['yadmin', 'C0uch!tUp']
