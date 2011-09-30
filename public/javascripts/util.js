@@ -575,7 +575,9 @@ var util = {
 
   spawnAritcaptcha: function () {
     $.get('/mobile/aritcaptcha', function (captchaHtml) {
-      $('#aritcaptcha-container').html(captchaHtml);
+      mapp.currentWidget.pageView.el
+        .find('.aritcaptcha-container').html(captchaHtml)
+      ;
       mapp.resize();
     });
   },
