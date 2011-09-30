@@ -5,6 +5,15 @@ body {
 a img {
   border: none; }
 
+p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em; }
+
+.input-wrap p {
+  margin-bottom: 1em; }
+
 #mobile-container {
   position: relative;
   width: 320px;
@@ -178,7 +187,8 @@ a img {
   display: none; }
 
 #aritcaptcha-container {
-  height: 60px; }
+  height: 60px;
+  margin-bottom: 4px; }
   #aritcaptcha-container input[type=text] {
     width: 100px !important;
     margin: 5px 0 0 0 !important; }
