@@ -34,6 +34,10 @@ p {
   -webkit-margin-after: 0em;
 }
 
+.input-wrap p {
+    margin-bottom: 1em;
+}
+
 #mobile-container {
   position: relative;
   width: $dynamic-width;

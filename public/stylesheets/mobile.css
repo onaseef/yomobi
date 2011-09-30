@@ -11,6 +11,9 @@ p {
   -webkit-margin-before: 0em;
   -webkit-margin-after: 0em; }
 
+.input-wrap p {
+  margin-bottom: 1em; }
+
 #mobile-container {
   position: relative;
   width: 320px;
