@@ -111,9 +111,7 @@ p {
   margin: 0px 0px 0px 0px;
   padding: 0px 4px 8px 0px;
   line-height: 130%;
-  font-size: 110%;
-  -webkit-margin-before: 0em;
-  -webkit-margin-after: 0em; }
+  font-size: 110%; }
 
 a, a:visited {
   color: #3b5998;
