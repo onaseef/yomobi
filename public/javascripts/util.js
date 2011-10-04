@@ -442,8 +442,7 @@ var util = {
     if(!this.debug) return;
     if(!window.console || !window.console.log) return;
     
-    var args = _.map(arguments, function (a) { return JSON.stringify(a); }).join('::');
-    console.log.apply(console,[args]);
+    console.log.apply(console, arguments);
   },
   
   couchSync: function (method,model,success,error) {
@@ -576,7 +575,9 @@ var util = {
 
   spawnAritcaptcha: function () {
     $.get('/mobile/aritcaptcha', function (captchaHtml) {
-      $('#aritcaptcha-container').html(captchaHtml);
+      mapp.currentWidget.pageView.el
+        .find('.aritcaptcha-container').html(captchaHtml)
+      ;
       mapp.resize();
     });
   },

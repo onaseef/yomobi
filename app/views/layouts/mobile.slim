@@ -30,7 +30,7 @@ html lang="en-US" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com
       = javascript_include_tag "widgets/mobile/#{File.basename widget}"
     
     = javascript_include_tag 'mobile-app'
-    - if @is_mobile && (!@logged_in || @logged_in && @company[:id] != current_user.company[:id])
+    - if @is_mobile && (!@logged_in || @logged_in && @company && @company[:id] != current_user.company[:id])
       javascript:
         showAds = true
     javascript:

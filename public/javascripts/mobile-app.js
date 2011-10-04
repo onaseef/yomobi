@@ -133,7 +133,7 @@
     
     viewWidgetByName: function (name,subpage) {
       name = unescape(name);
-      util.log('viewing widget:',name,'with subpage:',subpage);
+      util.log('viewing widget: ' + name + ' with subpage: ' + subpage);
       var widget = mapp.widgets.find(function (w) {
         return w.get('name') == name;
       });
@@ -229,6 +229,7 @@
       widget.pageView.setContentElem(wpage.content);
       mapp.transition(direction);
       this.currentWidget = widget;
+      this.hasRendered = true;
     },
     
     getActivePage: function () {
@@ -278,9 +279,15 @@
     
     goToPage: function (widgetName,subpage) {
       subpagePath = subpage ? '/' + subpage : '';
-      // window.location.href = "#page/"+widgetName + subpage;
-      router.saveLocation("#page/"+widgetName + subpagePath);
-      router.viewWidgetByName(widgetName, subpage);
+
+      mapp.hasRendered = false;
+      router.saveLocation("#page/" + escape(widgetName + subpagePath));
+      
+      setTimeout(function () {
+        util.log('Has rendered? ' + mapp.hasRendered);
+        if (mapp.hasRendered === false)
+          router.viewWidgetByName(widgetName, subpage);
+      }, 10);
     },
     
     goHome: function () {
