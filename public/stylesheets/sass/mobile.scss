@@ -273,7 +273,7 @@ p {
 .page .content.category, .page .content.page_tree {
   padding: 0 0 20px 0 !important;
   .item {
-    padding: 16px 12px 16px 12px;
+    padding: 16px 45px 16px 12px;
     font-size: 16px;
     & > div { padding-bottom: 2px; }
     img {
@@ -283,7 +283,7 @@ p {
   .item.category {
     background: url(/images/ui/subcat-arrow.png) 97% 50% no-repeat; }
   .item.leaf-name {
-    background: url(/images/ui/leaf-arrow.png) 97% 50% no-repeat; }
+    background: url(/images/ui/subcat-arrow.png) 97% 50% no-repeat; }
   .item.category, .item.leaf-name {
     cursor: pointer; }
   .item:first-child, .category:first-child {
