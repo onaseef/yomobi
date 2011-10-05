@@ -15,7 +15,7 @@ html lang="en-US" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com
       = yield
     
     = render 'shared/templates'
-    script src="https://raw.github.com/douglascrockford/JSON-js/master/json2.js" type="text/javascript"
+    = javascript_include_tag 'support/json2.min'
     = javascript_include_tag 'support/jquery-1.6.2.min'
     / = javascript_include_tag 'support/jquery.animate-enhanced.min'
     = javascript_include_tag 'support/underscore'
@@ -30,7 +30,7 @@ html lang="en-US" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com
       = javascript_include_tag "widgets/mobile/#{File.basename widget}"
     
     = javascript_include_tag 'mobile-app'
-    - if @is_mobile && (!@logged_in || @logged_in && @company && @company[:id] != current_user.company[:id])
+    - unless @is_preview_mode
       javascript:
         showAds = true
     javascript:

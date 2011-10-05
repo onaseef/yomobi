@@ -1,7 +1,7 @@
 ul
   li.option.basic class=active?('mobile',active)
     .icon
-    a#preview-mobile-site href="/#{@company.db_name}" View Mobile Site
+    a#preview-mobile-site href=mobile_preview_path(@company.db_name) View Mobile Site
   li.spacer
   li.option.text class=active?('email',active)
     .icon

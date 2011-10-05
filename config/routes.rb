@@ -45,6 +45,8 @@ Yomobi::Application.routes.draw do
   
   get 'mobile/aritcaptcha' => 'mobile#aritcaptcha'
 
+  get 'preview/:company' => 'mobile#index', :as => :mobile_preview, :defaults => { :preview => true }
+
   ##########################
   # Widget-specific routes #
   ##########################

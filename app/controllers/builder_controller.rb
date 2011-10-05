@@ -7,6 +7,7 @@ class BuilderController < ApplicationController
     @user = current_user
     @company = @user.company
     @open_edit_settings = true if flash[:edit_settings] == true
+    @is_preview_mode = true
   end
 
   def inc_id_counter
