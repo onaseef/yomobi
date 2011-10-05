@@ -32,7 +32,9 @@
 
     onHomeViewClick: categoryBuilder.onHomeViewClick,
     
-    onSave: categoryBuilder.onSave
+    onSave: categoryBuilder.onSave,
+
+    validate: categoryBuilder.validate
   });
 
 

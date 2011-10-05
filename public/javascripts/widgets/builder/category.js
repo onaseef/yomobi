@@ -25,20 +25,23 @@
   }
 
   var validateOrder = function (node_id, node) {
-    var children_ids = _(node).chain().keys().reject(isSpecialKey).value()
-      , order = _.compact(node._data._order)
+    var children_ids = _(node).chain().keys().reject(isSpecialKey).value() // 9
+      , order = _.compact(node._data._order) // 13
       , intersection = _.intersect(children_ids, order)
-      , isValid = children_ids.length === intersection.length
+      , doesOrderContainAllChildren = children_ids.length === intersection.length
     ;
-    if (!isValid) {
+    if (!doesOrderContainAllChildren) {
       _.each(children_ids, function (id) {
         if (_.indexOf(order,id) === -1) order.unshift(id);
       });
       node._data._order = order;
     }
 
-    var hasExtras = order.length > children_ids.length;
-    if (hasExtras) {
+    // remove duplicates
+    order = _.uniq(order);
+
+    var orderHasExtras = order.length > children_ids.length;
+    if (orderHasExtras) {
       var extras = _.without.apply(null, [order].concat(children_ids))
       node._data._order = _.without.apply(null, [order].concat(extras))
     }
@@ -251,7 +254,7 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
         , targetIdx = targetOption.index()
         , target_id = targetOption.val()
       ;
-      util.log('mod',mod,targetIdx,target_id);
+      util.log('mod',mod,'targetIdx',targetIdx,target_id);
       if (targetIdx <= 0 && mod == -1 ||
           targetIdx >= $select.find('option').length-1 && mod == 1)
       {
