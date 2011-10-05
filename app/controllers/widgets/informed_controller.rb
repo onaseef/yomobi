@@ -124,6 +124,7 @@ class Widgets::InformedController < ApplicationController
     if follower
       puts "PREVIOUSLY ACTIVE"
       follower.active = true
+      follower.carrier = params[:carrier]
       return [follower,false]
     end
 
