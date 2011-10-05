@@ -15,8 +15,9 @@ class AddAdditionalCarriers < ActiveRecord::Migration
   def self.carriers
     {
       'Cricket' => 'sms.mycricket.com',
+      'C Spire' => 'cspire1.com',
       'Metro PCS' => 'mymetropcs.com',
-      'QWest' => 'qwestmp.com',
+      'Qwest' => 'qwestmp.com',
       'Telus (Canadian)' => 'msg.telus.com',
       'Bell Canada (Canadian)' => 'txt.bellmobility.ca',
       'Rogers (Canadian)' => 'pcs.rogers.com'
