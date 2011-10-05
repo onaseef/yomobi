@@ -241,7 +241,7 @@ p {
 .page .content.category, .page .content.page_tree {
   padding: 0 0 20px 0 !important; }
   .page .content.category .item, .page .content.page_tree .item {
-    padding: 16px 12px 16px 12px;
+    padding: 16px 45px 16px 12px;
     font-size: 16px; }
     .page .content.category .item > div, .page .content.page_tree .item > div {
       padding-bottom: 2px; }
@@ -251,7 +251,7 @@ p {
   .page .content.category .item.category, .page .content.page_tree .item.category {
     background: url(/images/ui/subcat-arrow.png) 97% 50% no-repeat; }
   .page .content.category .item.leaf-name, .page .content.page_tree .item.leaf-name {
-    background: url(/images/ui/leaf-arrow.png) 97% 50% no-repeat; }
+    background: url(/images/ui/subcat-arrow.png) 97% 50% no-repeat; }
   .page .content.category .item.category, .page .content.category .item.leaf-name, .page .content.page_tree .item.category, .page .content.page_tree .item.leaf-name {
     cursor: pointer; }
   .page .content.category .item:first-child, .page .content.category .category:first-child, .page .content.page_tree .item:first-child, .page .content.page_tree .category:first-child {
