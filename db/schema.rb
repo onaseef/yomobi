@@ -10,57 +10,57 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110911175410) do
+ActiveRecord::Schema.define(:version => 20111005190906) do
 
   create_table "carriers", :force => true do |t|
-    t.string   "name"
-    t.string   "text_email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string    "name"
+    t.string    "text_email"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   add_index "carriers", ["name"], :name => "index_carriers_on_name", :unique => true
 
   create_table "companies", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "name"
-    t.string   "db_name"
-    t.string   "db_pass"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "logo_file_name"
-    t.string   "logo_content_type"
-    t.integer  "logo_file_size"
-    t.datetime "logo_updated_at"
-    t.string   "informed_email"
-    t.string   "leave_msg_email"
-    t.string   "booking_email"
-    t.text     "keywords",          :limit => 255
-    t.string   "call_back_email"
-    t.integer  "company_type_id"
-    t.integer  "id_counter",                       :default => 1, :null => false
+    t.integer   "user_id"
+    t.string    "name"
+    t.string    "db_name"
+    t.string    "db_pass"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.string    "logo_file_name"
+    t.string    "logo_content_type"
+    t.integer   "logo_file_size"
+    t.timestamp "logo_updated_at"
+    t.string    "informed_email"
+    t.string    "leave_msg_email"
+    t.string    "booking_email"
+    t.text      "keywords"
+    t.string    "call_back_email"
+    t.integer   "company_type_id"
+    t.integer   "id_counter",        :default => 1, :null => false
   end
 
   add_index "companies", ["db_name"], :name => "index_companies_on_db_name", :unique => true
 
   create_table "company_types", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string    "name"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   add_index "company_types", ["name"], :name => "index_company_types_on_name", :unique => true
 
   create_table "followers", :force => true do |t|
-    t.integer  "company_id"
-    t.integer  "carrier_id"
-    t.string   "email"
-    t.string   "phone"
-    t.string   "opt_out_key"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "short_url"
-    t.boolean  "active",      :default => true
+    t.integer   "company_id"
+    t.integer   "carrier_id"
+    t.string    "email"
+    t.string    "phone"
+    t.string    "opt_out_key"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.string    "short_url"
+    t.boolean   "active",      :default => true
   end
 
   add_index "followers", ["email", "company_id"], :name => "index_followers_on_email_and_company_id", :unique => true
@@ -68,33 +68,33 @@ ActiveRecord::Schema.define(:version => 20110911175410) do
   add_index "followers", ["phone", "company_id"], :name => "index_followers_on_phone_and_company_id", :unique => true
 
   create_table "sigs", :force => true do |t|
-    t.string   "email"
-    t.integer  "type"
-    t.string   "delete_hash"
-    t.text     "custom"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string    "email"
+    t.integer   "type"
+    t.string    "delete_hash"
+    t.text      "custom"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                               :default => "", :null => false
-    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
-    t.string   "reset_password_token"
-    t.string   "remember_token"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                       :default => 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "company_type_id"
-    t.string   "first_name"
-    t.string   "last_name"
+    t.string    "email",                               :default => "", :null => false
+    t.string    "encrypted_password",   :limit => 128, :default => "", :null => false
+    t.string    "reset_password_token"
+    t.string    "remember_token"
+    t.timestamp "remember_created_at"
+    t.integer   "sign_in_count",                       :default => 0
+    t.timestamp "current_sign_in_at"
+    t.timestamp "last_sign_in_at"
+    t.string    "current_sign_in_ip"
+    t.string    "last_sign_in_ip"
+    t.string    "confirmation_token"
+    t.timestamp "confirmed_at"
+    t.timestamp "confirmation_sent_at"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.integer   "company_type_id"
+    t.string    "first_name"
+    t.string    "last_name"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
