@@ -239,7 +239,7 @@ p {
     font-weight: bold; }
 
 .page .content.category, .page .content.page_tree {
-  padding: 0 0 20px 0 !important; }
+  padding: 0 15px 20px 5px !important; }
   .page .content.category .item, .page .content.page_tree .item {
     padding: 16px 45px 16px 12px;
     font-size: 16px; }
@@ -263,8 +263,6 @@ p {
     border-top: 1px solid #b3b3b3;
     background: #dddddd;
     margin: 0; }
-  .page .content.category .leaf-content, .page .content.category h3, .page .content.page_tree .leaf-content, .page .content.page_tree h3 {
-    padding: 0 10px; }
 
 .page .content.category .name {
   float: left;
