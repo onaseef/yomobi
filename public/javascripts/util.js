@@ -686,8 +686,12 @@ var util = {
     return name.toLowerCase();
   },
 
+  ran: function (n) { return Math.round(Math.random() * n); },
+  ranChr: function () { return String.fromCharCode(97 + util.ran(25)); },
+
   generateId: function () {
-    var id = 'i' + g.id_counter;
+    var rstring = _.map(_.range(8), util.ranChr).join('');
+    var id = 'i' + g.id_counter + '-' + rstring;
     // since this is currently only used in category widget,
     // the ids only need to be semi-unique.
     $.post('/builder/gen-id',{});
