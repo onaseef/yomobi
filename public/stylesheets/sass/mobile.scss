@@ -276,6 +276,7 @@ p {
     padding: 16px 0px 16px 8px;
     font-size: 16px;
     & > div { padding-bottom: 2px; }
+    & > :empty { padding: 0; }
     img {
       max-height: 290px;
       max-width: 290px; }
@@ -289,6 +290,7 @@ p {
     cursor: pointer; }
   .item:first-child, .category:first-child {
     border-top: none; }
+
   .c0, .c1 {
     border-top: 1px solid #d2d2d2; }
   .divider {
