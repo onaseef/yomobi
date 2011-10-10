@@ -257,9 +257,11 @@ div.wysiwyg ul.toolbar {
     display: none;
     float: right;
     margin: 4px 6px 0 0; }
-  #builder .widget-editor p.help-text .dot, #builder .widget-editor p.help-text .rename-link {
+  #builder .widget-editor p.help-text .rename-link, #builder .widget-editor p.help-text .edit-icon-link {
     display: none; }
-  #builder .widget-editor p.help-text.editable .dot, #builder .widget-editor p.help-text.editable .rename-link {
+  #builder .widget-editor p.help-text.can-rename .rename-link {
+    display: inline; }
+  #builder .widget-editor p.help-text.can-edit-icon .edit-icon-link {
     display: inline; }
 
 #builder .follower-section {
@@ -459,6 +461,24 @@ div.wysiwyg ul.toolbar {
   padding: 0px;
   margin-top: 13px;
   font-size: 90%; }
+
+#dialog-confirm.edit-icon .icons {
+  max-height: 200px;
+  margin: 0 0 4px 0;
+  padding: 10px 0 6px 0;
+  border-bottom: 1px solid #ccc;
+  overflow: auto; }
+  #dialog-confirm.edit-icon .icons img {
+    border: 2px solid #fff;
+    cursor: pointer;
+    width: 28.5px;
+    height: 28.5px; }
+  #dialog-confirm.edit-icon .icons img:hover {
+    border: 2px solid #d8dfea; }
+  #dialog-confirm.edit-icon .icons img.selected {
+    border: 2px dashed black; }
+#dialog-confirm.edit-icon .selected-display {
+  display: none; }
 
 #builder input[name="back"] {
   margin-right: 16px;

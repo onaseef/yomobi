@@ -10,7 +10,8 @@
       'click .accept-btn':          'accept',
       'click .remove-link':         'remove',
       'click .cancel-btn':          'cancel',
-      'click .rename-link':         'editName',
+      'click a.rename-link':        'editName',
+      'click a.edit-icon-link':     'editIcon',
 
       'keyup input[type=text][name!=wname]': 'checkForChanges',
       'keyup textarea':                      'checkForChanges'
@@ -18,6 +19,7 @@
     
     initialize: function (widget) {
       _.bindAll(this,'changeName');
+      _.bindAll(this,'refreshViews');
       this.widget = widget;
       this.extendedEvents = _.extend({},this.defaultEvents,this.events);
       this.changes = {};
@@ -48,9 +50,12 @@
             g.userEmails[model.get('wtype')] = model.get('email');
           }
           
-          if (self.validForShowingStatus != model.validForShowing())
+          if (self.validForShowingStatus != model.validForShowing()
+           || self.changes.icon
+          ){
             mapp.homeView.render();
-          
+          }
+
           self.startEditing(true);
           callback && callback();
         }
@@ -91,7 +96,7 @@
     editName: function (e) {
       util.log('editName',e);
       e.preventDefault();
-      if (this.widget.get('singleton')) return;
+      if (!this.widget._bdata.canRename) return;
       
       var self = this;
       this.el
@@ -106,6 +111,28 @@
           .end()
         .end()
       ;
+    },
+
+    editIcon: function (e) {
+      util.log('editIcon');
+      e.preventDefault();
+      if (!this.widget._bdata.canEditIcon) return;
+
+      this.editIconDialog = this.editIconDialog || new EditIconDialog();
+      this.editIconDialog.model = this.widget;
+      this.editIconDialog.options = {
+        onClose: this.refreshViews
+      };
+
+      this.editIconDialog.prompt();
+    },
+
+    refreshViews: function () {
+      util.log('refreshing', this.changes);
+      this.widget.pageView.refresh && this.widget.pageView.refresh();
+      mapp.resize();
+      if (this.hasChanges()) this.accept();
+      else if (options && options.forceEditAreaRefresh) this.startEditing();
     },
 
     stopEditingName: function () {
@@ -174,8 +201,10 @@
 
       widget.homeView.highlight(true);
 
-      if (!widget.get('singleton'))
-        this.el.find('p.help-text').addClass('editable');
+      this.el.find('p.help-text')
+        .toggleClass('can-rename', widget._bdata.canRename)
+        .toggleClass('can-edit-icon', widget._bdata.canEditIcon)
+      ;
       
       if (this.onEditStart) this.onEditStart(resetChanges,firstEdit);
     },
@@ -216,5 +245,59 @@
     }
     
   });
-  
+
+
+  var editIconTemplate  = util.getTemplate('edit-icon-dialog')
+    , closeFunc = function () { $(this).dialog('close'); }
+  ;
+  window.EditIconDialog = Backbone.View.extend({
+
+    events: {
+      'click .icons img':      'selectIcon'
+    },
+
+    selectIcon: function (e) {
+      this.selectedIcon && this.selectedIcon.removeClass('selected');
+      this.selectedIcon = $(e.target).addClass('selected');
+      $(this.el).find('.selected-display')
+        .find('img').attr('src', this.selectedIcon.attr('src')).end()
+        .find('label').text(this.selectedIcon.data('pname')).end()
+        .show()
+      ;
+    },
+
+    render: function () {
+      var dialogHtml = editIconTemplate({
+        icons: window.bicons
+      });
+
+      var self = this;
+      $(this.el).html(dialogHtml)
+        .attr('title',this.el.children[0].title)
+      ;
+      return this;
+    },
+
+    prompt: function () {
+      var dialogContent = this.render().el
+        , self = this
+      ;
+      var buttons = {
+        cancel: closeFunc,
+        save: function () { $(this).dialog('close'); self.saveIcon(); }
+      };
+      util.dialog(dialogContent, buttons)
+        .dialog('option','width', 354)
+      ;
+    },
+
+    saveIcon: function () {
+      util.log('saving icon', this.selectedIcon.data('name'));
+      this.model.set({'iconName': this.selectedIcon.data('name')});
+      bapp.currentEditor.setChanged('icon',true);
+      this.options.onClose && this.options.onClose();
+    }
+
+  });
+
 })(jQuery);

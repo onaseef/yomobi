@@ -135,7 +135,6 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
     init: function (widget) {
       // this is needed for proper inheritance due to closures
       this.AddItemDialog = AddItemDialog;
-      _.bindAll(this,'refreshViews');
     },
     
     // the button that activates this should only be available on the home page
@@ -370,13 +369,6 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       (mod==1) ? targetOption.before(swapOption) : targetOption.after(swapOption);
       this.setChanged('something',true);
       this.refreshViews();
-    },
-
-    refreshViews: function (options) {
-      this.widget.pageView.refresh();
-      mapp.resize();
-      if (this.hasChanges()) this.accept();
-      else if (options && options.forceEditAreaRefresh) this.startEditing();
     },
 
     selectStuff: function (selectedIdxs,scrollTop) {

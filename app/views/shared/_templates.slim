@@ -1,5 +1,8 @@
 #templates
 
+  - if @is_builder
+    = render :partial => 'builder/templates'
+
   script.home-icon(type="text/template")
     .inner
       .icon.dbx-handle{ style="background-image: url(/images/widgets/{{ iconName }}.png)" }
@@ -15,40 +18,6 @@
   
   script.edit-widget-idle(type="text/template")
     = render 'builder/builder-help'
-  
-  script.edit-widget(type="text/template")
-    .header
-      .icon{ style="background-image: url(/images/widgets/{{ iconName }}.png)" }
-      .widget-name-edit
-        input type="text" name="wname" value="{{ name }}" maxlength="22"
-      .widget-name
-        span {{ name }}
-      p.help-text
-        a.help-link href="{{ helpUrl }}" target="_blank" Help
-        span.dot &nbsp;&middot;&nbsp;
-        a.rename-link href="#" Rename
-    div class="edit-area {{ wtype }}"
-      | <% if (!_maybe.hideHelpText) { %>
-      .explanation {{ helpText }}
-      | <% } %>
-      | {{ editAreaContent }}
-
-    | <% if ( !(_maybe.hideSaveButton && _maybe.hideCancelButton && _maybe.hideRemoveLink) ) { %>
-    .action-bar
-      | <% if (!_maybe.hideSaveButton) { %>
-      .accept-btn.main-btn tabindex="100"
-        .content Save Changes
-      | <% } %>
-      .checkmark
-      .loader
-      | <% if (!_maybe.hideCancelButton) { %>
-      .cancel-btn.alt-btn
-        .content Discard Changes
-      | <% } if (!_maybe.hideRemoveLink) { %>
-      a.remove-link(href="#") Remove Widget
-      | <% } %>
-      .clearfix style="padding-bottom: 10px"
-    | <% } %>
   
   script.edit-tab-bar(type="text/template")
     .header.edit-tab-bar

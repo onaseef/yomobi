@@ -18,4 +18,12 @@ module BuilderHelper
   def help_texts
     I18n.t('widgets').to_json
   end
+
+  def widget_meta
+    WMETA.to_json
+  end
+
+  def widget_icons
+    WICONS.to_json
+  end
 end

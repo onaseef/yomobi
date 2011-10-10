@@ -308,6 +308,10 @@ var util = {
       var help = window.bhelp['helpText'][widget._bdata.wsubtype];
       widget._bdata.help = help.help; widget._bdata.subHelp = help.subHelp;
     }
+    if (window.bmeta) {
+      var meta = window.bmeta[widget.get('wtype') + '::' + widget.get('wsubtype')];
+      _.extend(widget._bdata, meta);
+    }
 
     return widget._bdata;
   },

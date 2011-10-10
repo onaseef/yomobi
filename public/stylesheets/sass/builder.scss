@@ -287,10 +287,9 @@ div.wysiwyg ul.toolbar {
     display: none;
     float: right;
     margin: 4px 6px 0 0; }
-  p.help-text .dot, p.help-text .rename-link { display: none; }
-  p.help-text.editable {
-    .dot, .rename-link { display: inline; }
-  }
+  p.help-text .rename-link, p.help-text .edit-icon-link { display: none; }
+  p.help-text.can-rename .rename-link { display: inline; }
+  p.help-text.can-edit-icon .edit-icon-link { display: inline; }
 }
 
 #builder .follower-section {
@@ -515,6 +514,29 @@ div.wysiwyg ul.toolbar {
     padding: 0px;
     margin-top: 13px;
     font-size: 90%;} }
+
+#dialog-confirm.edit-icon {
+  .icons {
+    max-height: 200px;
+    margin: 0 0 4px 0;
+    padding: 10px 0 6px 0;
+    border-bottom: 1px solid #ccc;
+    overflow: auto;
+
+    img {
+      border: 2px solid #fff;
+      cursor: pointer;
+      width: 28.5px; height: 28.5px;
+    }
+    img:hover { border: 2px solid $highlight-color; }
+    img.selected {
+      border: 2px dashed black;
+    }
+  }
+  .selected-display {
+    display: none;
+  }
+}
 
 #builder input[name="back"] {
   margin-right:16px;

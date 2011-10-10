@@ -45,7 +45,7 @@
         wtype: wdata.wtype,
         wsubtype: wdata.wsubtype,
         name: this.get('name'),
-        iconName: wdata.wsubtype,
+        iconName: this.get('iconName') || wdata.wsubtype,
         singletonClass: wdata.singleton ? 'singleton' : ''
       };
     },
