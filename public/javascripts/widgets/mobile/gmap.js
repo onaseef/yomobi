@@ -8,7 +8,7 @@
   ;
   
   window.widgetClasses.gmap = Widget.extend({
-    requiredAttrs: ['addr1','city','state'],
+    requiredAttrs: ['addr1','city'],
 
     onHomeViewClick: function () {
       if (!this.get('addr1') && this.validForShowing()) {
