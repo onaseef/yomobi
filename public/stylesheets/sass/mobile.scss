@@ -271,9 +271,9 @@ p {
       font-weight: bold; } } }
 
 .page .content.category, .page .content.page_tree {
-  padding: 0 15px 20px 5px !important;
+  padding: 0 10px 20px 0px !important;
   .item {
-    padding: 16px 0px 16px 12px;
+    padding: 16px 0px 16px 8px;
     font-size: 16px;
     & > div { padding-bottom: 2px; }
     img {
@@ -281,11 +281,11 @@ p {
       max-width: 290px; }
   }
   .item.category {
-    background: url(/images/ui/subcat-arrow.png) 99% 50% no-repeat; }
+    background: url(/images/ui/subcat-arrow.png) 100% 50% no-repeat; }
   .item.leaf-name {
-    background: url(/images/ui/subcat-arrow.png) 99% 50% no-repeat; }
+    background: url(/images/ui/subcat-arrow.png) 100% 50% no-repeat; }
   .item.category, .item.leaf-name {
-    padding: 16px 45px 16px 12px;
+    padding: 16px 20px 16px 8px;
     cursor: pointer; }
   .item:first-child, .category:first-child {
     border-top: none; }
