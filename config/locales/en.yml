@@ -25,7 +25,7 @@ en:
     help:
       edit_settings: "<p>Edit general settings.</p>"
       edit_keywords: "<p>Give your traffic... a boost!</p>"
-      edit_tab_bar: "<p>Edit the navigation tab bar at the top of your mobile site.</p><p>Highlight the widgets you want your mobile site visitors to see first by adding them to the navigation tab bar which appears at the top of your mobile site.</p>"
+      edit_tab_bar: "<p>Edit the navigation tab bar at the top of your mobile site.</p><br><p>Highlight the widgets you want your mobile site visitors to see first by adding them to the navigation tab bar which appears at the top of your mobile site.</p>"
     
     settings:
       help:
@@ -42,19 +42,19 @@ en:
         subHelp: Blog
 
       booking-request:
-        help: <p>Allow your mobile site visitors to email you a booking request.</p><p>Booking requests will be sent to this email address, so check your mail often.</p>
+        help: <p>Allow your mobile site visitors to email you a booking request.</p><br><p>Booking requests will be sent to this email address, so check your mail often.</p>
 
       business-hours:
         help: <p>Let your mobile site visitors know when you are open for business.</p>
 
       call-me-back:
-        help: <p>Allow your mobile site visitors to request a call back from you.</p><p>Call back requests will be sent to this email address, so check your mail often.</p>
+        help: <p>Allow your mobile site visitors to request a call back from you.</p><br><p>Call back requests will be sent to this email address, so check your mail often.</p>
 
       call-us:
         help: <p>Allow your mobile site visitors to call you with a single click.</p>
 
       category:
-        help: <p>Create and organize custom web pages for your mobile site.</p><p>Use this widget to create and organize custom web pages for your mobile site.</p>
+        help: <p>Create and organize custom web pages for your mobile site.</p><br><p>Use this widget to create and organize custom web pages for your mobile site.</p>
 
       coupon:
         help: <p>Add a coupon to your mobile site.</p>
@@ -71,14 +71,14 @@ en:
         subHelp: online calendar
 
       facebook:
-        help: <p>Add a link to your Facebook page on your mobile site to make it easy for visitors to friend you.</p><p><a target="ymhelp" href="http://www.facebook.com/username">Click here</a> to find your facebook username.</p>
+        help: <p>Add a link to your Facebook page on your mobile site to make it easy for visitors to friend you.</p><br><p><a target="ymhelp" href="http://www.facebook.com/username">Click here</a> to find your facebook username.</p>
         subHelp: Facebook username
 
       find-us:
         help: <p>Allow your mobile site visitors to easily find you.</p>
 
       flickr:
-        help: <p>Add a link to your Flickr album on your mobile site.</p><p><a target="ymhelp" href="http://www.flickr.com/profile_url.gne">Click here</a> to find your flickr URL.</p>
+        help: <p>Add a link to your Flickr album on your mobile site.</p><br><p><a target="ymhelp" href="http://www.flickr.com/profile_url.gne">Click here</a> to find your flickr URL.</p>
         subHelp: Flickr alias or custom URL
 
       full-website:
@@ -86,50 +86,50 @@ en:
         subHelp: full website
 
       keep-me-informed:
-        help: <p>Allow your mobile site visitors to request to receive email and text notifications from you.</p><p>This widget allows visitors to your mobile site to become fans and follow your latest news via email and text notifications.</p><p>You can send email notifications and instant messages to your followers by clicking on the “Email your Followers” or "Send Text to Your Followers" link in the navigation column on the left.</p>
+        help: <p>Allow your mobile site visitors to request to receive email and text notifications from you.</p><br><p>This widget allows visitors to your mobile site to become fans and follow your latest news via email and text notifications.</p><br><p>You can send email notifications and instant messages to your followers by clicking on the “Email your Followers” or "Send Text to Your Followers" link in the navigation column on the left.</p>
 
       leave-a-message:
-        help: <p>Allow your mobile website visitors to easily leave you an email message.</p><p>Messages will be sent to this email address, so check your mail often.</p>
+        help: <p>Allow your mobile website visitors to easily leave you an email message.</p><br><p>Messages will be sent to this email address, so check your mail often.</p>
 
       link:
         help: <p>Add a link to another website on your mobile site.</p>
 
       locations:
-        help: <p>Give your mobile site visitors easy access to a directory of your business locations.</p><p>Use this widget to create a directory of your business locations.</p>
+        help: <p>Give your mobile site visitors easy access to a directory of your business locations.</p><br><p>Use this widget to create a directory of your business locations.</p>
 
       menu:
-        help: <p>Give your mobile site visitors easy access to your menu.</p><p>Use this widget to create a mobile optimized version of your menu.</p>
+        help: <p>Give your mobile site visitors easy access to your menu.</p><br><p>Use this widget to create a mobile optimized version of your menu.</p>
 
       news:
         help: <p>Add a link to your online news site on your mobile site.</p>
         subHelp: online news site
 
       photo-bucket:
-        help: <p>Add a link to your PhotoBucket album on your mobile site.</p><p><a target="ymhelp" href="http://support.photobucket.com/app/answers/detail/a_id/184/kw/custom%20url">Click here</a> to find your photobucket URL.</p>
+        help: <p>Add a link to your PhotoBucket album on your mobile site.</p><br><p><a target="ymhelp" href="http://support.photobucket.com/app/answers/detail/a_id/184/kw/custom%20url">Click here</a> to find your photobucket URL.</p>
         subHelp: Photobucket album custom
 
       picasa:
-        help: <p>Add a link to your Picasa album on your mobile site.</p><p><a target="ymhelp" href="http://picasa.google.com/support/bin/answer.py?answer=39510">Click here</a> to find your Picasa album URL.</p>
+        help: <p>Add a link to your Picasa album on your mobile site.</p><br><p><a target="ymhelp" href="http://picasa.google.com/support/bin/answer.py?answer=39510">Click here</a> to find your Picasa album URL.</p>
         subHelp: Picasa album URL
 
       products:
-        help: <p>Give your mobile site visitors easy access to your catalog of products</p><p>Use this widget to create a mobile optimized catalog of your products.</p>
+        help: <p>Give your mobile site visitors easy access to your catalog of products</p><br><p>Use this widget to create a mobile optimized catalog of your products.</p>
 
       property-listings:
-        help: <p>Give your mobile site visitors easy access to your property listings.<p>Use this widget to create a mobile optimized list of properties for lease or sale.</p></p>
+        help: <p>Give your mobile site visitors easy access to your property listings.</p><br></p>Use this widget to create a mobile optimized list of properties for lease or sale.</p>
 
       reviews:
         help: <p>Show visitors how great you are by adding a link to your online reviews page on your mobile site.</p>
         subHelp: reviews page
 
       services:
-        help: <p>Give your mobile site visitors easy access to your catalog of services.</p><p>Use this widget to create a mobile optimized catalog of your services.</p>
+        help: <p>Give your mobile site visitors easy access to your catalog of services.</p><br><p>Use this widget to create a mobile optimized catalog of your services.</p>
 
       tell-a-friend:
         help: <p>Let your mobile site visitors tell their friends about you.</p>
 
       twitter:
-        help: <p>Add a link to your twitter account on your mobile site to make it easy for visitors to follow you.</p><p><a target="ymhelp" href="http://support.twitter.com/articles/14609-how-to-change-your-username">Click here</a> to find your twitter uername.</p>
+        help: <p>Add a link to your twitter account on your mobile site to make it easy for visitors to follow you.</p><br><p><a target="ymhelp" href="http://support.twitter.com/articles/14609-how-to-change-your-username">Click here</a> to find your twitter uername.</p>
         subHelp: Twitter username
 
       video:
