@@ -252,7 +252,10 @@
         p.response.error
         input(type="submit" value="Send")
     .thanks-wrap style="display:none"
-      h3 Your message has been sent. Thank you for your input.
+      h3
+        'Your message has been sent to 
+        = @company.name. + ". " 
+        | Thank you.
   
   script.call_back-page(type="text/template")
     .input-wrap
