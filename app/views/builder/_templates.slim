@@ -36,8 +36,8 @@ script.edit-widget(type="text/template")
 
 
 script.edit-icon-dialog(type="text/template")
-  #dialog-confirm.edit-icon title="Please Select an Icon"
-    p Please select a new icon:
+  #dialog-confirm.edit-icon title="Change Icon"
+    p Click on icon to select:
     .icons
       | <% for (var i=0; i < icons.length; i++) { %>
       img src="/images/widgets/{{ icons[i].name }}.png" data-pname="{{ icons[i].pname }}" data-name="{{ icons[i].name }}"
