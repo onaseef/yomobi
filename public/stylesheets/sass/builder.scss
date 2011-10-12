@@ -518,24 +518,36 @@ div.wysiwyg ul.toolbar {
 #dialog-confirm.edit-icon {
   .icons {
     max-height: 200px;
-    margin: 0 0 4px 0;
-    padding: 10px 0 6px 0;
+    margin: 0 2px 8px -3px;
+    padding: 10px 0 10px 0;
     border-bottom: 1px solid #ccc;
     overflow: auto;
-
+        
     img {
       border: 2px solid #fff;
+      padding: 1px;
       cursor: pointer;
-      width: 28.5px; height: 28.5px;
+      width: 30px; height: 30px;
     }
     img:hover { border: 2px solid $highlight-color; }
     img.selected {
       border: 2px dashed black;
     }
   }
+
   .selected-display {
     display: none;
   }
+    
+  label {
+    font-size: 120%;
+    position: relative;
+    top: -20px;
+    left: 10px;
+  }
+
+  p { padding: 4px 0px 0px 0px; }
+
 }
 
 #builder input[name="back"] {
