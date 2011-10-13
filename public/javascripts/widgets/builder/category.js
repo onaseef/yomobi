@@ -22,7 +22,15 @@
       if (child_id.charAt(0) === '_') continue;
       traverseStruct(currentNode[child_id], f);
     }
-  }
+  };
+
+  var makeCatSaveFunc = function (selfObj, addAnother) {
+    return function () {
+      if (util.isBusy('uploadify')) return;
+      $(this).dialog("close");
+      selfObj.validateCategory(addAnother);
+    }
+  };
 
   var validateOrder = function (node_id, node) {
     var children_ids = _(node).chain().keys().reject(isSpecialKey).value() // 9
@@ -45,6 +53,20 @@
       var extras = _.without.apply(null, [order].concat(children_ids))
       node._data._order = _.without.apply(null, [order].concat(extras))
     }
+  };
+
+  var uploadifyCallback = function(event, queueID, fileObj, response, data) {
+    var res = $.parseJSON(response);
+    console.log('RESPONSE',res,this.node);
+    if (res.status === 'fail') {
+      alert('Photo upload failed.');
+      return;
+    }
+    tempPhotoPath = res.path;
+    this.node._data.wphotoUrl = res.wphotoUrl;
+    // accept() needs the UI to be free
+    util.releaseUI();
+    this.editor.accept();
   };
 
   var deleteConfirmText = "Are you sure you want to delete? (Data will be lost)";
@@ -85,11 +107,13 @@
         currentNodeType: _.last(this.catStack)._data.type,
         catCrumbs: util.catStackCrumbs(this.get('name'),this.catStack),
         onHomePage: mapp.pageLevel === 0,
+        onRootPage: this.catStack.length === 1,
         isThereStuff: isThereStuff,
         catLabel: this.get('catTypeName'),
         itemLabel: this.get('itemTypeName'),
         itemIconName: 'leaf',
-        bulletTypes: bulletTypes
+        bulletTypes: bulletTypes,
+        wphotoPath: this.getCurrentLevel(true)._data.wphotoUrl || '/images/no-wphoto.png'
       };
       return _.extend({},showData,extraData);
     },
@@ -151,6 +175,15 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
         this.widget.catStack.length = 0;
         this.widget.catStack.push( this.widget.get('struct') );
       }
+      var callback = _.bind(uploadifyCallback, {
+        node: this.widget.getCurrentLevel(true),
+        editor: this
+      });
+
+      this.uploadifyInstance = $(this.el).find('input[type=file]')
+        .click(util.preventDefault)
+        .uploadify(util.uploadifyData(callback, { wid:this.widget.id }))
+      ;
     },
     
     grabWidgetValues: function () {
@@ -388,12 +421,8 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
   window.widgetPages.category = window.widgetPages.category.extend({
 
     onItemClick: function (e) {
-      var target = $(e.target), failSafe = 0;
-      while (!target.hasClass('item') && failSafe < 5) {
-        target = target.parent();
-        failSafe += 1;
-      }
-      if (!target.hasClass('item')) return;
+      var target = util.ensureClassAncestor($(e.target), 'item');
+      if (!target) return;
 
       var idx = target.index();
       this.widget.getEditor()
@@ -408,7 +437,10 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
     onCategoryClick: function (e) {
       if (!mapp.canTransition()) return;
 
-      var cat_id = $(e.target).data('id');
+      var target = util.ensureClassAncestor($(e.target), 'item');
+      if (!target) return;
+
+      var cat_id = target.data('id');
       
       mapp.viewWidget(this.widget, cat_id);
       this.widget.getEditor().startEditing();
@@ -488,7 +520,7 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
 
       var self = this;
       $(this.el).html(dialogHtml).find('.add-btn')
-        .click(function () { self.validateCategory(true); }).end()
+        .click( makeCatSaveFunc(this,true) ).end()
         .attr('title',this.el.children[0].title)
       ;
       return this;
@@ -506,20 +538,13 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       // cache for later use in validateCategory
       this.level = level;
       if (!error) this.origName = origName;
-
-      var makeSaveFunc = function (addAnother) {
-        return function () {
-          $(this).dialog("close");
-          self.validateCategory(addAnother);
-        }
-      }
       
-      buttons["Save"] = makeSaveFunc();
+      buttons["Save"] = makeCatSaveFunc(this);
       buttons["Cancel"] = closeSelf;
       
       var dialog = util.dialog(dialogContent, buttons, dialogContent.title)
         .find('p.error').show('pulsate',{times:3}).end()
-        .find('input[name=add]').click( makeSaveFunc(true) ).end()
+        .find('input[name=add]').click( makeCatSaveFunc(this,true) ).end()
       ;
       // required for ie7
       // setTimeout(function () { dialog.find('input[type=text]').focus()[0].focus(); },10);
@@ -593,6 +618,7 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
   
   var close = function (dialogView) {
     return function () {
+      if (util.isBusy('uploadify')) return;
       $(this).dialog("close");
       dialogView.options.onClose && dialogView.options.onClose();
     };

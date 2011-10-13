@@ -4,6 +4,8 @@ class Company < ActiveRecord::Base
   belongs_to :user
   belongs_to :company_type
   has_many :followers
+  has_many :wphotos
+  
   has_attached_file :logo,
     :styles => {
       :mobile => "100x75>",

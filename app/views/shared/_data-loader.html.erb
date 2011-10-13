@@ -19,7 +19,20 @@ window.g = {
   keywords: "<%=escape_javascript @company.keywords %>",
   MAX_TEXT_CHARS: <%= @max_text_chars || -1 %>,
   MAX_COMPANY_NAME_LENGTH: <%= MAX_COMPANY_NAME_LENGTH %>,
-  openEditSettings: <%= @open_edit_settings || false %>
+  openEditSettings: <%= @open_edit_settings || false %>,
+
+  wphotoUploadPath: "<%= wphoto_upload_path %>",
+
+  <% arr = [] %>
+  <% form_authenticity_token.each_char{|c| arr.push(c[0].to_s)} %>
+  <% authenticity_token = arr.join("x") %>
+  uploadifyScriptData: {
+    '_http_accept': 'application/javascript',
+    'format' : 'json',
+    '_method': 'post',
+    'authenticity_token': encodeURIComponent('<%= authenticity_token %>'),
+    'auth_token': '<%= @user.authentication_token %>'
+  }
 };
 window.widgetClasses = {};
 window.widgetPages = {};

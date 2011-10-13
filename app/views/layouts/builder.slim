@@ -69,5 +69,9 @@ html lang="en-US"
 
     = javascript_include_tag 'notice'
 
+    / ajax file uploading
+    = javascript_include_tag 'support/swfobject'
+    = javascript_include_tag 'support/jquery.uploadify.v2.1.0'
+
     - if Rails.env.production?
       = javascript_include_tag 'google-analytics'

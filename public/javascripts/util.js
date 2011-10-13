@@ -35,6 +35,10 @@ var util = {
   release: function (key) {
     this.busy[key] = false;
   },
+
+  isBusy: function (key) {
+    return this.busy[key] === true;
+  },
   
   /**
    *  pushBlock
@@ -95,13 +99,13 @@ var util = {
   
   reserveUI: function () {
     util.toggleLoaderOverlay(true);
-    var reservations = _.map(this.busy, function (isReserved) { return isReserved; });
-    return !_.any(reservations) && this.reserve('ui');
+    var reservations = _.values(util.busy);
+    return !_.any(reservations) && util.reserve('ui');
   },
   
   isUIFree: function () {
-    var reservations = _.map(this.busy, function (isReserved) { return isReserved; });
-    return !_.any(reservations) && this.reserve('ui',false);
+    var reservations = _.values(util.busy);
+    return !_.any(reservations) && util.reserve('ui',false);
   },
   
   pushUIBlock: function (block_key) {
@@ -114,7 +118,7 @@ var util = {
   
   releaseUI: function () {
     util.toggleLoaderOverlay(false);
-    this.release('ui');
+    util.release('ui');
   },
   
   resizeOverlays: function () {
@@ -701,6 +705,41 @@ var util = {
     $.post('/builder/gen-id',{});
     g.id_counter += 1;
     return id;
+  },
+
+  preventDefault: function (e) { e.preventDefault(); },
+
+  _releaseUploadify: function () { util.release('uploadify'); },
+  uploadifyData: function (onComplete, extraData) {
+    return {
+      uploader: '/uploadify/uploadify.swf',
+      cancelImg: '/uploadify/cancel.png',
+      multi: false,
+      auto: true,
+      queueSizeLimit: 1,
+
+      buttonText: 'Change',
+
+      script: g.wphotoUploadPath,
+      onComplete: onComplete,
+      scriptData: _.extend(g.uploadifyScriptData, extraData),
+      onOpen: util.reserveUI,
+      onCancel: util.releaseUI,
+
+      onError: function (event, ID, fileObj, errorObj) {
+        util.log(errorObj.type + ' Error: ' + errorObj.info, event, ID, fileObj, errorObj);
+      }
+    };
+  },
+
+  // expects and returns a jquery object
+  ensureClassAncestor: function ($elem, className) {
+    var failSafe = 8;
+    while ($elem && !$elem.hasClass(className) && failSafe > 0) {
+      $elem = $elem.parent();
+      failSafe -= 1;
+    }
+    return ($elem && $elem.hasClass(className)) ? $elem : null;
   }
 }
 

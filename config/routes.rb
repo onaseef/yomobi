@@ -23,6 +23,7 @@ Yomobi::Application.routes.draw do
 
   get 'builder/main'      => 'builder#index', :as => :builder_main
 
+  post 'builder/wphoto/upload' => 'builder#upload_wphoto', :as => :wphoto_upload
   post 'builder/gen-id'   => 'builder#inc_id_counter'
   post 'builder/settings' => 'builder#change_settings'
 

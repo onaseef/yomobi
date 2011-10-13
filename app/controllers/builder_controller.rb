@@ -5,6 +5,7 @@ class BuilderController < ApplicationController
   
   def index
     @user = current_user
+    @user.reset_authentication_token!
     @company = @user.company
     @open_edit_settings = true if flash[:edit_settings] == true
     @is_preview_mode = true
@@ -16,7 +17,7 @@ class BuilderController < ApplicationController
     @company.increment! :id_counter
     success :id => @company.id_counter
   end
-  
+
   def new_widget
     return error 'Not a new document' unless params[:id].nil?
     db = CouchRest.database(current_user.company.couch_db_url)
@@ -103,6 +104,22 @@ class BuilderController < ApplicationController
     return error 'bad keywords' if !params[:keywords].present?
     @company.keywords = params[:keywords]
     @company.save ? success(true) : error('server error')
+  end
+
+  def upload_wphoto
+    params[:Filedata].content_type = MIME::Types.type_for(params[:Filedata].original_filename).to_s
+
+    @company = current_user.company
+    @photo = @company.wphotos.build \
+      :photo => params[:Filedata],
+      :wid => params[:wid]
+
+    if @photo.save
+      puts "wphoto upload success #{@photo.inspect}"
+      render :json => { :result => 'success', :wphotoUrl => @photo.photo.url(:thumb) }
+    else
+      render :json => { :result => 'fail' }
+    end
   end
 
   private

@@ -102,7 +102,10 @@
     onCategoryClick: function (e) {
       if (!mapp.canTransition()) return;
 
-      var cat_id = $(e.target).data('id');
+      util.ensureClassAncestor($(e.target), 'item');
+      if (!target) return;
+
+      var cat_id = target.data('id');
       mapp.goToPage(this.widget.get('name'), cat_id);
     },
     

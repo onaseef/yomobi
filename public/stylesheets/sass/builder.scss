@@ -470,6 +470,14 @@ div.wysiwyg ul.toolbar {
     padding: 0 5px 0 0;
     img { width: 18px; height: 18px; }
   }
+
+  .wphoto-wrap {
+    & > * { float: left; margin-left: 5px; }
+  }
+  #wphoto_uploadUploader {
+    
+  }
+
   .crumb-wrap {
     padding: 1px 0 0 0;
   }
@@ -620,4 +628,29 @@ div.wysiwyg ul.toolbar {
       cursor: pointer;
     }
   }
+}
+
+
+.uploadifyQueueItem {
+    border: 1px solid #ccc;
+    background: #e4edf8;
+    padding: 10px;
+}
+.uploadifyError {
+    border: 1px solid #dd3c10 !important;
+    background: #ffebe8 !important;
+}
+.uploadifyQueueItem .cancel {
+    float: right;
+}
+.uploadifyProgress {
+    background-color: #333;
+    border: 1px inset #818181;
+    margin-top: 8px;
+    width: 100%;
+}
+.uploadifyProgressBar {
+    background-color: $highlight-color;
+    width: 1px;
+    height: 3px;
 }
