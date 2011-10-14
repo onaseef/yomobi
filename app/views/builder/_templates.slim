@@ -24,6 +24,9 @@ script.add-subcat-dialog(type="text/template")
       br
       input type="text" value="{{ _maybe.name }}" name="cat"
 
+      input#new_node_upload type="file" name="new_node_upload"
+      input type="hidden" value="" name="wphotoUrl"
+
       input.add-btn type="button" value="Add"
 
       | <% if(_maybe.error) { %>

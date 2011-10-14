@@ -26,9 +26,32 @@
 
   var makeCatSaveFunc = function (selfObj, addAnother) {
     return function () {
-      if (util.isBusy('uploadify')) return;
-      $(this).dialog("close");
-      selfObj.validateCategory(addAnother);
+      if (!util.reserveUI()) return;
+      // wrap in function for code reuse
+      var dialogElem = this;
+      var cb = function (event, queueID, fileObj, response, data) {
+        response = unescape(response);
+        util.log('wut', response);
+        if (response) {
+          var res = $.parseJSON(response);
+          util.log('json',res);
+          $(selfObj.el).find('input[name=wphotoUrl]').val(res.wphotoUrl);
+        }
+        util.releaseUI();
+        $(dialogElem).dialog("close");
+        selfObj.validateCategory(addAnother);
+      };
+      // check for queued upload
+      var items = $(selfObj.el).find('.uploadifyQueueItem');
+      if (items.length > 0) {
+        util.log('has stuff!');
+        $('#new_node_upload').bind("uploadifyComplete", cb);
+        $('#new_node_upload').uploadifyUpload();
+      }
+      else {
+        util.log('empty');
+        cb();
+      }
     }
   };
 
@@ -62,7 +85,6 @@
       alert('Photo upload failed.');
       return;
     }
-    tempPhotoPath = res.path;
     this.node._data.wphotoUrl = res.wphotoUrl;
     // accept() needs the UI to be free
     util.releaseUI();
@@ -541,10 +563,16 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       
       buttons["Save"] = makeCatSaveFunc(this);
       buttons["Cancel"] = closeSelf;
+
+      // config uploadify; callback will be configured later in makeCatSaveFunc()
+      var uploadifyData = util.uploadifyData(_.identity, { wid:this.model.id });
+      uploadifyData.auto = false;
+      uploadifyData.buttonText = 'Add Photo';
       
       var dialog = util.dialog(dialogContent, buttons, dialogContent.title)
         .find('p.error').show('pulsate',{times:3}).end()
         .find('input[name=add]').click( makeCatSaveFunc(this,true) ).end()
+        .find('input[type=file]').click(util.preventDefault).uploadify(uploadifyData)
       ;
       // required for ie7
       // setTimeout(function () { dialog.find('input[type=text]').focus()[0].focus(); },10);
@@ -552,7 +580,6 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
     
     validateCategory: function (addAnother) {
   		$(this.el).dialog("close");
-
       var name = $(this.el).find('input[name=cat]').val()
         , name = $.trim(name)
         , name = name.replace(/\|/g,'')
@@ -568,7 +595,11 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       else if ( nameCompare !== origNameCompare && _.contains(existingNames,nameCompare) )
         this.prompt('Name is already in use',name,true);
       else if (this.mode == 'add') {
-        this.addNodeToStruct({ type:this.type, name:name });
+        this.addNodeToStruct({
+          type: this.type,
+          name: name,
+          wphotoUrl: $(this.el).find('input[name=wphotoUrl]').val()
+        });
         this.addedCats.push(name);
 
         bapp.currentEditor.setChanged('something',true);
