@@ -56,7 +56,6 @@
 - { name: guidelines, pname: Guidelines }
 - { name: person-male-1, pname: Person }
 - { name: person-male-2, pname: Person }
-- { name: person-male-3, pname: Person }
 - { name: person-female-1, pname: Person }
 - { name: person-female-2, pname: Person }
 - { name: person-group-1, pname: Group }
