@@ -40,7 +40,7 @@ script.edit-icon-dialog(type="text/template")
     p Click on icon to select:
     .icons
       | <% for (var i=0; i < icons.length; i++) { %>
-      img src="/images/widgets/{{ icons[i].name }}.png" data-pname="{{ icons[i].pname }}" data-name="{{ icons[i].name }}"
+      img src="/images/widgets/{{ icons[i].name }}.png" data-pname="{{ icons[i].pname }}" title="{{ icons[i].pname }}" data-name="{{ icons[i].name }}"
       | <% } %>
     .selected-display
       img src=""
