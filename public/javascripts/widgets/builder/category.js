@@ -78,14 +78,13 @@
     }
   };
 
-  var uploadifyCallback = function(event, queueID, fileObj, response, data) {
-    var res = $.parseJSON(response);
-    console.log('RESPONSE',res,this.node);
-    if (res.status === 'fail') {
+  var uploaderCallback = function(data) {
+    if (data.status === 'fail') {
       alert('Photo upload failed.');
+      util.releaseUI();
       return;
     }
-    this.node._data.wphotoUrl = res.wphotoUrl;
+    this.node._data.wphotoUrl = data.wphotoUrl;
     // accept() needs the UI to be free
     util.releaseUI();
     this.editor.accept();
@@ -197,15 +196,16 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
         this.widget.catStack.length = 0;
         this.widget.catStack.push( this.widget.get('struct') );
       }
-      var callback = _.bind(uploadifyCallback, {
+      var callback = _.bind(uploaderCallback, {
         node: this.widget.getCurrentLevel(true),
         editor: this
       });
 
-      this.uploadifyInstance = $(this.el).find('input[type=file]')
-        .click(util.preventDefault)
-        .uploadify(util.uploadifyData(callback, { wid:this.widget.id }))
-      ;
+      if (this.widget.catStack.length > 1) {
+        util.initUploader( $(this.el).find('.wphoto-wrap'), callback, {
+          wid: this.widget.id
+        });
+      }
     },
     
     grabWidgetValues: function () {

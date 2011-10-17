@@ -709,27 +709,97 @@ var util = {
 
   preventDefault: function (e) { e.preventDefault(); },
 
-  _releaseUploadify: function () { util.release('uploadify'); },
-  uploadifyData: function (onComplete, extraData) {
-    return {
-      uploader: '/uploadify/uploadify.swf',
-      cancelImg: '/uploadify/cancel.png',
-      multi: false,
-      auto: true,
-      queueSizeLimit: 1,
+  uploaderContext: null,
+  getUploader: function (extraData, extraParams) {
+    if (this._uploader && this._uploader.runtime === 'flash') {
+      this._uploader.destroy();
+    }
+    else if (this._uploader) {
+      _.extend(this._uploader.settings, extraData);
+      _.extend(this._uploader.settings.multipart_params, extraParams);
+      return this._uploader;
+    }
 
-      buttonText: 'Change',
+    this._uploader = new plupload.Uploader(_.extend({
+      runtimes: 'html5,flash,html4',
+      url: g.wphotoUploadPath,
+      max_file_size: '10mb',
+      multiple_queues: false,
+      multi_selection: false,
 
-      script: g.wphotoUploadPath,
-      onComplete: onComplete,
-      scriptData: _.extend(g.uploadifyScriptData, extraData),
-      onOpen: util.reserveUI,
-      onCancel: util.releaseUI,
+      flash_swf_url: '/javascripts/plupload/plupload.flash.swf',
+      multipart: true,
+      multipart_params: _.extend(g.uploadifyScriptData, extraParams),
+      headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') }
+    }, extraData));
 
-      onError: function (event, ID, fileObj, errorObj) {
-        util.log(errorObj.type + ' Error: ' + errorObj.info, event, ID, fileObj, errorObj);
+    return this._uploader;
+  },
+
+  initUploader: function (context, callback, extraParams) {
+    var pickerId = util.generateId()
+      , uploader = util.getUploader({ browse_button:pickerId }, extraParams)
+    ;
+    util.uploaderContext = context;
+
+    uploader.unbindAll();
+
+    uploader.bind('Init', function (up, params) {
+      util.log('INIT', up, params);
+      util.uploaderContext.find('.debug')
+        .append("<div>Current runtime: " + params.runtime + "</div>");
+    });
+
+    context.find('[name=pick_files]').attr('id', pickerId);
+
+    uploader.init();
+
+    uploader.bind('FilesAdded', function (up, files) {
+
+      while (uploader.files.length > 1) {
+        uploader.removeFile(uploader.files[0]);
       }
-    };
+      if (!util.reserveUI()) {
+        return;
+      }
+
+      $.each(files, function(i, file) {
+        util.uploaderContext.find('.debug').append(
+          '<div id="' + file.id + '">' +
+          file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' +
+        '</div>');
+      });
+
+      $('#'+pickerId).prop('disabled', true);
+      
+      util.log('starting uploader');
+      uploader.start();
+
+      up.refresh(); // Reposition Flash/Silverlight
+    });
+
+    uploader.bind('UploadProgress', function (up, file) {
+      $('#' + file.id + " b").html(file.percent + "%");
+    });
+
+    uploader.bind('Error', function (up, err) {
+      util.uploaderContext.find('.debug').append("<div>Error: " + err.code +
+        ", Message: " + err.message +
+        (err.file ? ", File: " + err.file.name : "") +
+        "</div>"
+      );
+
+      up.refresh(); // Reposition Flash/Silverlight
+    });
+
+    uploader.bind('FileUploaded', function (up, file, response) {
+      $('#' + file.id + " b").html("100%");
+      $('#'+pickerId).prop('disabled', false);
+
+      var resData = $.parseJSON(response.response);
+      util.log('Upload, complete.', up, file, response, resData);
+      callback(resData);
+    });
   },
 
   // expects and returns a jquery object

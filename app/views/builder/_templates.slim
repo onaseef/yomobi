@@ -117,7 +117,8 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
       img src="{{ wphotoPath }}"
       a.remove-wphoto-link Remove
       br
-      input#wphoto_upload type="file"
+      div.uploader-browse-button.pretty-button name="pick_files" Pick files
+      .debug
     | <% } %>
 
     select name="stuff" multiple="multiple"
