@@ -709,18 +709,30 @@ var util = {
 
   preventDefault: function (e) { e.preventDefault(); },
 
-  uploaderContext: null,
-  getUploader: function (extraData, extraParams) {
-    if (this._uploader && this._uploader.runtime === 'flash') {
-      this._uploader.destroy();
+  _uploaders: {},
+  uploaderOptions: {},
+  getUploader: function (extraData, options) {
+    var defaults = {
+      uploaderId: 'default',
+      extraParams: {},
+      onDone: _.identity
     }
-    else if (this._uploader) {
-      _.extend(this._uploader.settings, extraData);
-      _.extend(this._uploader.settings.multipart_params, extraParams);
-      return this._uploader;
+    options = _.extend(defaults, options);
+    this.uploaderOptions[options.uploaderId] = options;
+
+    var uploader = this._uploaders[options.uploaderId];
+
+    if (uploader && uploader.runtime === 'flash') {
+      uploader.destroy();
+      delete this._uploaders[options.uploaderId];
+    }
+    else if (uploader) {
+      _.extend(uploader.settings, extraData);
+      _.extend(uploader.settings.multipart_params, options.extraParams);
+      return uploader;
     }
 
-    this._uploader = new plupload.Uploader(_.extend({
+    uploader = this._uploaders[options.uploaderId] = new plupload.Uploader(_.extend({
       runtimes: 'html5,flash,html4',
       url: g.wphotoUploadPath,
       max_file_size: '10mb',
@@ -729,16 +741,21 @@ var util = {
 
       flash_swf_url: '/javascripts/plupload/plupload.flash.swf',
       multipart: true,
-      multipart_params: _.extend(g.uploadifyScriptData, extraParams),
+      multipart_params: _.extend(g.uploadifyScriptData, options.extraParams),
       headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') }
     }, extraData));
 
-    return this._uploader;
+    uploader.uploaderId = options.uploaderId;
+
+    return uploader;
   },
 
-  initUploader: function (context, callback, extraParams) {
+  initUploader: function (context, options) {
+    options || (options = {});
+    options.context = context;
+
     var pickerId = util.generateId()
-      , uploader = util.getUploader({ browse_button:pickerId }, extraParams)
+      , uploader = util.getUploader({ browse_button:pickerId }, options)
     ;
     util.uploaderContext = context;
 
@@ -746,7 +763,7 @@ var util = {
 
     uploader.bind('Init', function (up, params) {
       util.log('INIT', up, params);
-      util.uploaderContext.find('.debug')
+      context.find('.debug')
         .append("<div>Current runtime: " + params.runtime + "</div>");
     });
 
@@ -764,7 +781,7 @@ var util = {
       }
 
       $.each(files, function(i, file) {
-        util.uploaderContext.find('.debug').append(
+        context.find('.debug').append(
           '<div id="' + file.id + '">' +
           file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' +
         '</div>');
@@ -783,7 +800,7 @@ var util = {
     });
 
     uploader.bind('Error', function (up, err) {
-      util.uploaderContext.find('.debug').append("<div>Error: " + err.code +
+      context.find('.debug').append("<div>Error: " + err.code +
         ", Message: " + err.message +
         (err.file ? ", File: " + err.file.name : "") +
         "</div>"
@@ -798,6 +815,8 @@ var util = {
 
       var resData = $.parseJSON(response.response);
       util.log('Upload, complete.', up, file, response, resData);
+util.log('eh?',uploader,uploader.uploaderId,util.uploaderOptions);
+      callback = util.uploaderOptions[uploader.uploaderId].onDone;
       callback(resData);
     });
   },

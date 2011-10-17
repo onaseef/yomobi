@@ -202,7 +202,8 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       });
 
       if (this.widget.catStack.length > 1) {
-        util.initUploader( $(this.el).find('.wphoto-wrap'), callback, {
+        util.initUploader( $(this.el).find('.wphoto-wrap'), {
+          onDone: callback,
           wid: this.widget.id
         });
       }
