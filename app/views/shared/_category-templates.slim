@@ -4,6 +4,8 @@
 
 script.menu-item type="text/template"
   .item class="{{ cycle }}"
+    .wphoto
+      img src="{{ item.wphotoUrl }}"
     .name {{ item.name }}
     .price {{ item.price }}
     .clearfix = ""
@@ -67,3 +69,6 @@ script.locations-item type="text/template"
 script.category-item type="text/template"
   .leaf-name.item class="{{ cycle }}" data-id="{{ item._id }}"
     | {{ item.name }}
+
+/ this template is used when a photo is being displayed
+/ TODO (if needed)

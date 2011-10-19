@@ -24,7 +24,7 @@
     }
   };
 
-  var makeCatSaveFunc = function (dialogView, addAnother) {
+  var makeSaveFunc = function (dialogView, onSuccess, addAnother) {
     return function () {
       if (!util.reserveUI()) return;
       // wrap in function for code reuse
@@ -43,12 +43,12 @@
         if (data.wphotoUrl) {
           $(dialogView.el).find('input[name=wphotoUrl]').val(data.wphotoUrl);
         }
-        dialogView.validateCategory(addAnother);
+        onSuccess(addAnother);
       };
       // check for queued upload
       var uploader = util._uploaders['dialog'];
 
-      if (uploader.files.length > 0) {
+      if (uploader.files.length > 0 && uploader.files[0].status !== plupload.DONE) {
         util.log('has stuff!');
         uploader.yomobiOptions.onDone = cb;
         uploader.start();
@@ -59,6 +59,19 @@
       }
     }
   };
+
+  var initDialogUploader = function (dialogView, dialog) {
+    // configure uploader; callback will be configured later in makeSaveFunc()
+    util.initUploader( dialog.find('.wphoto-wrap'), {
+      instanceId: 'dialog',
+      auto: false,
+      alwaysOnTop: true,
+      wid: dialogView.model.id
+    });
+    // because we're in a dialog, we need to set the uploader to be
+    // on top of everything else
+    util._uploaders['dialog'].bringToFront();
+  }
 
   var validateOrder = function (node_id, node) {
     var children_ids = _(node).chain().keys().reject(isSpecialKey).value() // 9
@@ -139,7 +152,7 @@
         itemLabel: this.get('itemTypeName'),
         itemIconName: 'leaf',
         bulletTypes: bulletTypes,
-        wphotoPath: this.getCurrentLevel(true)._data.wphotoUrl || '/images/no-wphoto.png'
+        wphotoPreviewPath: this.getCurrentLevel(true)._data.wphotoUrl || '/images/no-wphoto.png'
       };
       return _.extend({},showData,extraData);
     },
@@ -544,12 +557,12 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
         name: name,
         typeName: this.getTypeName(),
         addedCats: this.addedCats,
-        wphotoPath: this.model.getCurrentLevel(true)._data.wphotoUrl || '/images/no-wphoto.png'
+        wphotoPreviewPath: this.model.getCurrentLevel(true)._data.wphotoUrl || '/images/no-wphoto.png'
       });
 
       var self = this;
       $(this.el).html(dialogHtml).find('.add-btn')
-        .click( makeCatSaveFunc(this,true) ).end()
+        .click( makeSaveFunc(this,this.validateCategory,true) ).end()
         .attr('title',this.el.children[0].title)
       ;
       return this;
@@ -568,24 +581,15 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       this.level = level;
       if (!error) this.origName = origName;
       
-      buttons["Save"] = makeCatSaveFunc(this);
+      buttons["Save"] = makeSaveFunc(this,this.validateCategory);
       buttons["Cancel"] = closeSelf;
       
       var dialog = util.dialog(dialogContent, buttons, dialogContent.title)
         .find('p.error').show('pulsate',{times:3}).end()
-        .find('input[name=add]').click( makeCatSaveFunc(this,true) ).end()
+        .find('input[name=add]').click( makeSaveFunc(this,this.validateCategory,true) ).end()
       ;
 
-      // configure uploader; callback will be configured later in makeCatSaveFunc()
-      util.initUploader( dialog.find('.wphoto-wrap'), {
-        instanceId: 'dialog',
-        auto: false,
-        alwaysOnTop: true,
-        wid: this.model.id
-      });
-      // because we're in a dialog, we need to set the uploader to be
-      // on top of everything else
-      util._uploaders['dialog'].bringToFront();
+      initDialogUploader(this, dialog);
     },
     
     validateCategory: function (addAnother) {
@@ -671,6 +675,7 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
     initialize: function () {
       this.template = util.getTemplate(this.model.get('wsubtype')+'-item-dialog');
       this.addedItems = [];
+      _.bindAll(this,'saveItem');
     },
     
     enterMode: function (mode) {
@@ -687,7 +692,8 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
         _items: level._items,
         itemTypeName: this.model.get('itemTypeName'),
         addedItems: this.addedItems,
-        mode: this.mode
+        mode: this.mode,
+        wphotoPreviewPath: item.wphotoUrl || '/images/no-wphoto.png'
       }) );
 
       $(this.el).html(dialogHtml).attr('title',title);
@@ -711,21 +717,16 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
         self.options.onClose && self.options.onClose();
       };
 
-      var makeSaveFunc = function (addAnother) {
-        return function () {
-          $(this).dialog("close");
-          self.saveItem(addAnother);
-        }
-      }
-
-      buttons["Save"] = makeSaveFunc();
+      buttons["Save"] = makeSaveFunc(this, this.saveItem);
       buttons["Cancel"] = closeFunc;
 
       var dialog = util.dialog(dialogContent, buttons, dialogContent.title)
         .find('p.error').show('pulsate',{times:3}).end()
         .find('p.success').show('pulsate',{times:1}).end()
-        .find('input[name=add]').click( makeSaveFunc(true) ).end()
+        .find('input[name=add]').click( makeSaveFunc(this,this.saveItem,true) ).end()
       ;
+
+      initDialogUploader(this, dialog);
     },
     
     validateItem: function (item) {

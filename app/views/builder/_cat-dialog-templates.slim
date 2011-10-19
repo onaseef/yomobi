@@ -20,6 +20,13 @@ script.menu-item-dialog(type="text/template")
     br
     textarea.item-input name="desc" {{ _maybe.desc }}
     br
+    .wphoto-wrap
+      img src="{{ wphotoPreviewPath }}"
+      a.remove-wphoto-link Remove
+      br
+      .uploader-browse-button.pretty-button name="pick_files" Pick files
+      .debug
+    input.item-input type="hidden" value="{{ _maybe.wphotoUrl }}" name="wphotoUrl"
     | <% if (mode == 'add') { %>
     input.lfloat type="button" value="Add" name="add" style="margin:10px 15px 0 2px"
     | <% } %>

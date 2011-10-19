@@ -25,7 +25,7 @@ script.add-subcat-dialog(type="text/template")
       input type="text" value="{{ _maybe.name }}" name="cat"
 
       .wphoto-wrap
-        img src="{{ wphotoPath }}"
+        img src="{{ wphotoPreviewPath }}"
         a.remove-wphoto-link Remove
         br
         .uploader-browse-button.pretty-button name="pick_files" Pick files
@@ -119,7 +119,7 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
 
     | <% if (onRootPage !== true) { %>
     .wphoto-wrap
-      img src="{{ wphotoPath }}"
+      img src="{{ wphotoPreviewPath }}"
       a.remove-wphoto-link Remove
       br
       .uploader-browse-button.pretty-button name="pick_files" Pick files
