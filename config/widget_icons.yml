@@ -16,8 +16,8 @@
 - { name: donate, pname: Donate }
 - { name: volunteer, pname: Volunteer }
 - { name: event-calendar, pname: Calendar }
-- { name: event-calendar-2, pname: Calendar }
-- { name: event-calendar-3, pname: Calendar }
+- { name: calendar-event-1, pname: Calendar }
+- { name: calendar-event-2, pname: Calendar }
 - { name: facebook, pname: facebook }
 - { name: twitter, pname: twitter }
 - { name: share, pname: Share }
@@ -40,12 +40,15 @@
 - { name: photo-bucket, pname: photobucket }
 - { name: picasa, pname: picasa }
 - { name: reviews, pname: Reviews }
+- { name: reviews-2, pname: Reviews }
 - { name: video, pname: Video }
 - { name: video-2, pname: Video }
 - { name: address-book-1, pname: Address Book }
 - { name: articles, pname: Articles }
 - { name: building-1, pname: Building }
 - { name: building-2, pname: Building }
+- { name: building-3, pname: Building }
+- { name: building-4, pname: Building }
 - { name: business-job-1, pname: Job / Employment }
 - { name: business-job-2, pname: Job / Employment }
 - { name: business-partners, pname: Business Partners }
@@ -54,6 +57,8 @@
 - { name: fitness-1, pname: Fitness }
 - { name: fitness-2, pname: Fitness }
 - { name: guidelines, pname: Guidelines }
+- { name: history-1, pname: History }
+- { name: history-2, pname: History }
 - { name: person-male-1, pname: Person }
 - { name: person-male-2, pname: Person }
 - { name: person-female-1, pname: Person }
@@ -64,6 +69,11 @@
 - { name: person-group-4, pname: Group }
 - { name: person-group-5, pname: Group }
 - { name: person-group-6, pname: Group }
-- { name: professional-1, pname: Professional }
+- { name: profession-doctor-1, pname: Professional }
+- { name: profession-medical-1, pname: Medical }
+- { name: profession-legal-1, pname: Legal }
 - { name: therapy-1, pname: Therapy }
 - { name: therapy-2, pname: Therapy }
+- { name: travel-1, pname: Travel }
+- { name: travel-2, pname: Travel }
+- { name: weather-1, pname: Weather }
