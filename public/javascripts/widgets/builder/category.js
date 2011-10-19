@@ -25,6 +25,7 @@
   };
 
   var makeSaveFunc = function (dialogView, onSuccess, addAnother) {
+
     return function () {
       if (!util.reserveUI()) return;
       // wrap in function for code reuse
@@ -39,7 +40,6 @@
           alert('Photo upload failed.');
           return;
         }
-        
         if (data.wphotoUrl) {
           $(dialogView.el).find('input[name=wphotoUrl]').val(data.wphotoUrl);
         }
@@ -59,6 +59,14 @@
       }
     }
   };
+
+  var makeCloseFunc = function (dialogView) {
+    return function () {
+      if (!util.isUIFree()) return;
+      $(this).dialog("close");
+      dialogView.options.onClose && dialogView.options.onClose();
+    };
+  }
 
   var initDialogUploader = function (dialogView, dialog) {
     // configure uploader; callback will be configured later in makeSaveFunc()
@@ -574,7 +582,6 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       var self = this
         , level = this.model.getCurrentLevel()
         , dialogContent = this.render(error,level,origName).el
-        , closeSelf = close(this)
         , buttons = {}
       ;
       // cache for later use in validateCategory
@@ -582,7 +589,7 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       if (!error) this.origName = origName;
       
       buttons["Save"] = makeSaveFunc(this,this.validateCategory);
-      buttons["Cancel"] = closeSelf;
+      buttons["Cancel"] = makeCloseFunc(this);
       
       var dialog = util.dialog(dialogContent, buttons, dialogContent.title)
         .find('p.error').show('pulsate',{times:3}).end()
@@ -661,14 +668,6 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
 
   });
   
-  var close = function (dialogView) {
-    return function () {
-      if (util.isBusy('uploadify')) return;
-      $(this).dialog("close");
-      dialogView.options.onClose && dialogView.options.onClose();
-    };
-	}
-  
   // =================================
   var AddItemDialog = Backbone.View.extend({
     
@@ -712,13 +711,9 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       if (!flash || !flash.error) this.origItem = item;
       
       var buttons = {};
-      var closeFunc = function () {
-        $(this).dialog("close");
-        self.options.onClose && self.options.onClose();
-      };
 
       buttons["Save"] = makeSaveFunc(this, this.saveItem);
-      buttons["Cancel"] = closeFunc;
+      buttons["Cancel"] = makeCloseFunc(this);
 
       var dialog = util.dialog(dialogContent, buttons, dialogContent.title)
         .find('p.error').show('pulsate',{times:3}).end()
