@@ -768,6 +768,13 @@ var util = {
       util.log('INIT', up, params);
       context.find('.debug')
         .append("<div>Current runtime: " + params.runtime + "</div>");
+
+      $.each(uploader.files, function (i, file) {
+        context.find('.debug').empty().append(
+          '<div id="' + file.id + '">' +
+          file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' +
+        '</div>');
+      });
     });
 
     context.find('[name=pick_files]').attr('id', pickerId);

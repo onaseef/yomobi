@@ -24,7 +24,7 @@
     }
   };
 
-  var makeSaveFunc = function (dialogView, onSuccess, addAnother) {
+  var makeSaveFunc = function (dialogView, options) {
 
     return function () {
       if (!util.reserveUI()) return;
@@ -43,12 +43,17 @@
         if (data.wphotoUrl) {
           $(dialogView.el).find('input[name=wphotoUrl]').val(data.wphotoUrl);
         }
-        onSuccess(addAnother);
+        options.onUpload(options.addAnother);
       };
       // check for queued upload
       var uploader = util._uploaders['dialog'];
 
-      if (uploader.files.length > 0 && uploader.files[0].status !== plupload.DONE) {
+      if (options.validator && options.validator(options.addAnother) !== true) {
+        // skip upload until validator returns true
+        util.releaseUI();
+        options.onUpload(options.addAnother);
+      }
+      else if (uploader.files.length > 0 && uploader.files[0].status !== plupload.DONE) {
         util.log('has stuff!');
         uploader.yomobiOptions.onDone = cb;
         uploader.start();
@@ -552,7 +557,7 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
     },
     
     initialize: function () {
-      _.bindAll(this,'validateCategory');
+      _.bindAll(this,'validateCategory', 'isCategoryValid');
       this.addedCats = [];
     },
 
@@ -574,7 +579,12 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
 
       var self = this;
       $(this.el).html(dialogHtml).find('.add-btn')
-        .click( makeSaveFunc(this,this.validateCategory,true) ).end()
+        .click( makeSaveFunc(this, {
+            addAnother: true,
+            onUpload: this.validateCategory,
+            validator: this.isCategoryValid
+          })
+        ).end()
         .attr('title',this.el.children[0].title)
       ;
       return this;
@@ -592,22 +602,56 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       this.level = level;
       if (!error) this.origName = origName;
       
-      buttons["Save"] = makeSaveFunc(this,this.validateCategory);
+      buttons["Save"] = makeSaveFunc(this,{
+        onUpload: this.validateCategory,
+        validator: this.isCategoryValid
+      });
       buttons["Cancel"] = makeCloseFunc(this);
       
       var dialog = util.dialog(dialogContent, buttons, dialogContent.title)
         .find('p.error').show('pulsate',{times:3}).end()
-        .find('input[name=add]').click( makeSaveFunc(this,this.validateCategory,true) ).end()
+        .find('input[name=add]').click( makeSaveFunc(this,this.validateCategory, {
+            addAnother: true,
+            onUpload: this.validateCategory,
+            validator: this.isCategoryValid
+          })
+        ).end()
       ;
 
       initDialogUploader(this, dialog);
     },
     
+    isCategoryValid: function (addAnother) {
+      // TODO: redundant code. Make validateCategory() use
+      //       this code somehow.
+      var name = $(this.el).find('input[name=cat]').val()
+        , name = $.trim(name)
+
+        , nameCompare = name.toLowerCase()
+        , origNameCompare = (this.origName || '').toLowerCase()
+        , existingNames = _.map(this.getCatNames(), downcase)
+      ;
+      if (_.isEmpty(name) && this.addedCats.length > 0 && addAnother !== true) {
+        return true;
+      }
+      if (_.isEmpty(name) ||
+          nameCompare !== origNameCompare &&
+          _.contains(existingNames,nameCompare)
+      ){
+        return false;
+      }
+      if (this.mode === 'add' ||
+          this.mode == 'edit' && name !== this.origName
+      ){
+        return true;
+      }
+      return false;
+    },
+
     validateCategory: function (addAnother) {
   		$(this.el).dialog("close");
       var name = $(this.el).find('input[name=cat]').val()
         , name = $.trim(name)
-        , name = name.replace(/\|/g,'')
 
         , nameCompare = name.toLowerCase()
         , origNameCompare = (this.origName || '').toLowerCase()
@@ -678,7 +722,7 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
     initialize: function () {
       this.template = util.getTemplate(this.model.get('wsubtype')+'-item-dialog');
       this.addedItems = [];
-      _.bindAll(this,'saveItem');
+      _.bindAll(this, 'saveItem', 'isItemValid');
     },
     
     enterMode: function (mode) {
@@ -716,13 +760,18 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       
       var buttons = {};
 
-      buttons["Save"] = makeSaveFunc(this, this.saveItem);
+      buttons["Save"] = makeSaveFunc(this, { onUpload:this.saveItem, validator:this.isItemValid });
       buttons["Cancel"] = makeCloseFunc(this);
 
       var dialog = util.dialog(dialogContent, buttons, dialogContent.title)
         .find('p.error').show('pulsate',{times:3}).end()
         .find('p.success').show('pulsate',{times:1}).end()
-        .find('input[name=add]').click( makeSaveFunc(this,this.saveItem,true) ).end()
+        .find('input[name=add]').click( makeSaveFunc(this, {
+          onUpload: this.saveItem,
+          validator: this.isItemValid,
+          addAnother: true
+          })
+        ).end()
       ;
 
       initDialogUploader(this, dialog);
@@ -745,6 +794,28 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
         return false;
       }
       return true;
+    },
+
+    isItemValid: function (addAnother) {
+      // TODO: redundant code. Make saveItem() use
+      //       this code somehow.
+      var activeItemData = {};
+      $(this.el).find('.item-input').each(function (idx,elem) {
+        activeItemData[$(elem).attr('name')] = $(elem).val();
+      });
+
+      var inputs = _(activeItemData).chain().reject(util.keq('type'))
+                                    .values().compact().value();
+      if (inputs.length === 0 && this.addedItems.length > 0 && addAnother !== true) {
+        return true;
+      }
+      if (!this.validateItem(activeItemData)) {
+        return false;
+      }
+      if (this.mode == 'add' || this.mode == 'edit') {
+        return true;
+      }
+      return false;
     },
 
     saveItem: function (addAnother) {
