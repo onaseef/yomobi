@@ -127,7 +127,7 @@
       this.editIconDialog.prompt();
     },
 
-    refreshViews: function () {
+    refreshViews: function (options) {
       util.log('refreshing', this.changes);
       this.widget.pageView.refresh && this.widget.pageView.refresh();
       mapp.resize();
