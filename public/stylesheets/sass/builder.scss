@@ -474,11 +474,9 @@ div.wysiwyg ul.toolbar {
   .wphoto-wrap {
     & > * { float: left; margin-left: 5px; }
   }
-  #wphoto_uploadUploader {
-    
-  }
 
   .crumb-wrap {
+    .rename-link { float: right; font-weight: bold;}
     padding: 1px 0 0 0;
   }
   select {

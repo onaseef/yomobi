@@ -193,14 +193,14 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       'click input[name=back]':             'transitionBack',
 
       'click input[name=add_cat]':          'addCat',
-      'click input[name=rename]':           'rename',
       'click input[name=edit]':             'edit',
       'dblclick select[name=stuff]':        'edit',
       'click input[name=delete]':           'deleteNode',
       'click input[name=move_up]':          'move',
       'click input[name=move_down]':        'move',
 
-      'click input[name=add_item]':         'addItem'
+      'click input[name=add_item]':         'addItem',
+      'click .rename-link':                 'rename'
     },
     
     init: function (widget) {
@@ -308,11 +308,11 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
     },
 
     rename: function (e) {
+      e.preventDefault();
       if (!util.isUIFree()) return;
 
       var level = this.widget.getCurrentLevel(true)
-        , target_id = $(this.el).find('select[name=stuff] option:selected:first').val()
-        , node = level[target_id]._data
+        , node = level._data
       ;
       if (!node) return alert('Please select an item to rename.');
       
@@ -516,9 +516,13 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
     },
     
     refresh: function () {
-      var pcontent = this.widget.getPageContent();
-      var wpage = mapp.getActivePage().content.html(pcontent);
-      this.widget.pageView.setContentElem(wpage);
+      var newContent = this.widget.getPageContent()
+        , newTitle = this.widget.getTitleContent()
+        , activePage = mapp.getActivePage()
+      ;
+      activePage.content.html(newContent);
+      activePage.topBar.find('.title').html(newTitle);
+      this.widget.pageView.setContentElem(activePage.content);
     }
     
   });
@@ -658,8 +662,8 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
     renameNode: function (newName) {
       if (!this.options.node_id) return;
 
-      var node = this.level._ref[this.options.node_id];
-      node._data.name = newName;
+      // the user can only rename the current subcategory
+      this.level._ref._data.name = newName;
     },
 
     getTypeName: function () {
