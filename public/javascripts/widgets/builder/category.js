@@ -73,12 +73,14 @@
     };
   }
 
-  var initDialogUploader = function (dialogView, dialog) {
+  var initDialogUploader = function (dialogView, dialog, shouldEmptyQueue) {
     // configure uploader; callback will be configured later in makeSaveFunc()
+
     util.initUploader( dialog.find('.wphoto-wrap'), {
       instanceId: 'dialog',
       auto: false,
       alwaysOnTop: true,
+      emptyQueue: shouldEmptyQueue,
       wid: dialogView.model.id
     });
     // because we're in a dialog, we need to set the uploader to be
@@ -235,6 +237,7 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       if (this.widget.catStack.length > 1) {
         util.initUploader( $(this.el).find('.wphoto-wrap'), {
           onDone: callback,
+          emptyQueue: true,
           wid: this.widget.id
         });
       }
@@ -597,6 +600,7 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
         , level = this.model.getCurrentLevel()
         , dialogContent = this.render(error,level,origName).el
         , buttons = {}
+        , shouldEmptyUploadQueue = !error
       ;
       // cache for later use in validateCategory
       this.level = level;
@@ -618,7 +622,7 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
         ).end()
       ;
 
-      initDialogUploader(this, dialog);
+      initDialogUploader(this, dialog, shouldEmptyUploadQueue);
     },
     
     isCategoryValid: function (addAnother) {
@@ -753,6 +757,7 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       var self = this
         , level = this.model.getCurrentLevel()
         , dialogContent = this.render(flash,level,item).el
+        , shouldEmptyUploadQueue = !flash || !flash.error
       ;
       // cache for later use
       this.level = level;
@@ -774,7 +779,7 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
         ).end()
       ;
 
-      initDialogUploader(this, dialog);
+      initDialogUploader(this, dialog, shouldEmptyUploadQueue);
     },
     
     validateItem: function (item) {

@@ -720,6 +720,12 @@ var util = {
 
     var uploader = this._uploaders[options.instanceId];
 
+    if (uploader && options.emptyQueue && uploader.files.length > 0) {
+      while (uploader.files.length > 0) {
+        uploader.removeFile(uploader.files[0]);
+      }
+    }
+
     if (uploader && uploader.runtime === 'flash') {
       this.destroyUploader(options.instanceId);
     }
@@ -769,12 +775,16 @@ var util = {
       context.find('.debug')
         .append("<div>Current runtime: " + params.runtime + "</div>");
 
-      $.each(uploader.files, function (i, file) {
+      if (uploader.files.length > 0 && uploader.files[0].status === plupload.DONE) {
+        uploader.removeFile(uploader.files[0]);
+      }
+      else if (uploader.files.length > 0) {
+        file = uploader.files[0];
         context.find('.debug').empty().append(
           '<div id="' + file.id + '">' +
           file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' +
         '</div>');
-      });
+      }
     });
 
     context.find('[name=pick_files]').attr('id', pickerId);
