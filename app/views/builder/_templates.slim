@@ -24,7 +24,12 @@ script.add-subcat-dialog(type="text/template")
       br
       input type="text" value="{{ _maybe.name }}" name="cat"
 
-      input#new_node_upload type="file" name="new_node_upload"
+      .wphoto-wrap
+        img src="{{ wphotoPath }}"
+        a.remove-wphoto-link Remove
+        br
+        .uploader-browse-button.pretty-button name="pick_files" Pick files
+        .debug
       input type="hidden" value="" name="wphotoUrl"
 
       input.add-btn type="button" value="Add"
@@ -117,7 +122,7 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
       img src="{{ wphotoPath }}"
       a.remove-wphoto-link Remove
       br
-      div.uploader-browse-button.pretty-button name="pick_files" Pick files
+      .uploader-browse-button.pretty-button name="pick_files" Pick files
       .debug
     | <% } %>
 

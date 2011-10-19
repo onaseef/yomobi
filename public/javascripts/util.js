@@ -710,21 +710,18 @@ var util = {
   preventDefault: function (e) { e.preventDefault(); },
 
   _uploaders: {},
-  uploaderOptions: {},
-  getUploader: function (extraData, options) {
+  getOrCreateUploader: function (extraData, options) {
     var defaults = {
-      uploaderId: 'default',
+      instanceId: 'default',
       extraParams: {},
       onDone: _.identity
     }
     options = _.extend(defaults, options);
-    this.uploaderOptions[options.uploaderId] = options;
 
-    var uploader = this._uploaders[options.uploaderId];
+    var uploader = this._uploaders[options.instanceId];
 
     if (uploader && uploader.runtime === 'flash') {
-      uploader.destroy();
-      delete this._uploaders[options.uploaderId];
+      this.destroyUploader(options.instanceId);
     }
     else if (uploader) {
       _.extend(uploader.settings, extraData);
@@ -732,7 +729,7 @@ var util = {
       return uploader;
     }
 
-    uploader = this._uploaders[options.uploaderId] = new plupload.Uploader(_.extend({
+    uploader = this._uploaders[options.instanceId] = new plupload.Uploader(_.extend({
       runtimes: 'html5,flash,html4',
       url: g.wphotoUploadPath,
       max_file_size: '10mb',
@@ -745,9 +742,15 @@ var util = {
       headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') }
     }, extraData));
 
-    uploader.uploaderId = options.uploaderId;
+    uploader.instanceId = options.instanceId;
+    uploader.yomobiOptions = options;
 
     return uploader;
+  },
+
+  destroyUploader: function (instanceId) {
+    this._uploaders[instanceId].destroy();
+    delete this._uploaders[instanceId];
   },
 
   initUploader: function (context, options) {
@@ -755,7 +758,7 @@ var util = {
     options.context = context;
 
     var pickerId = util.generateId()
-      , uploader = util.getUploader({ browse_button:pickerId }, options)
+      , uploader = util.getOrCreateUploader({ browse_button:pickerId }, options)
     ;
     util.uploaderContext = context;
 
@@ -770,18 +773,29 @@ var util = {
     context.find('[name=pick_files]').attr('id', pickerId);
 
     uploader.init();
+    // because we're in a dialog, sometimes we need to set the uploader to be
+    // on top of everything else
+    uploader.layover = $('#' + uploader.id + '_' + uploader.runtime + '_container');
+    uploader.bringToFront = function () { this.layover.css('z-index', 10000); };
+
+    if (uploader.yomobiOptions.alwaysOnTop === true) {
+      util.log('setting to bring to front');
+      uploader.bind('Refresh', function () { uploader.bringToFront(); });
+    }
 
     uploader.bind('FilesAdded', function (up, files) {
+
+      var isAutoEnabled = uploader.yomobiOptions.auto !== false;
 
       while (uploader.files.length > 1) {
         uploader.removeFile(uploader.files[0]);
       }
-      if (!util.reserveUI()) {
+      if (isAutoEnabled && !util.reserveUI()) {
         return;
       }
 
-      $.each(files, function(i, file) {
-        context.find('.debug').append(
+      $.each(files, function (i, file) {
+        context.find('.debug').empty().append(
           '<div id="' + file.id + '">' +
           file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' +
         '</div>');
@@ -789,8 +803,10 @@ var util = {
 
       $('#'+pickerId).prop('disabled', true);
       
-      util.log('starting uploader');
-      uploader.start();
+      if (isAutoEnabled) {
+        util.log('starting uploader');
+        uploader.start();
+      }
 
       up.refresh(); // Reposition Flash/Silverlight
     });
@@ -815,8 +831,8 @@ var util = {
 
       var resData = $.parseJSON(response.response);
       util.log('Upload, complete.', up, file, response, resData);
-util.log('eh?',uploader,uploader.uploaderId,util.uploaderOptions);
-      callback = util.uploaderOptions[uploader.uploaderId].onDone;
+
+      callback = uploader.yomobiOptions.onDone;
       callback(resData);
     });
   },

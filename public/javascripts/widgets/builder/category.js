@@ -24,33 +24,38 @@
     }
   };
 
-  var makeCatSaveFunc = function (selfObj, addAnother) {
+  var makeCatSaveFunc = function (dialogView, addAnother) {
     return function () {
       if (!util.reserveUI()) return;
       // wrap in function for code reuse
       var dialogElem = this;
-      var cb = function (event, queueID, fileObj, response, data) {
-        response = unescape(response);
-        util.log('wut', response);
-        if (response) {
-          var res = $.parseJSON(response);
-          util.log('json',res);
-          $(selfObj.el).find('input[name=wphotoUrl]').val(res.wphotoUrl);
-        }
-        util.releaseUI();
+      var cb = function (data) {
+        util.log('wut', data);
+
         $(dialogElem).dialog("close");
-        selfObj.validateCategory(addAnother);
+        util.releaseUI();
+
+        if (data.result === 'fail') {
+          alert('Photo upload failed.');
+          return;
+        }
+        
+        if (data.wphotoUrl) {
+          $(dialogView.el).find('input[name=wphotoUrl]').val(data.wphotoUrl);
+        }
+        dialogView.validateCategory(addAnother);
       };
       // check for queued upload
-      var items = $(selfObj.el).find('.uploadifyQueueItem');
-      if (items.length > 0) {
+      var uploader = util._uploaders['dialog'];
+
+      if (uploader.files.length > 0) {
         util.log('has stuff!');
-        $('#new_node_upload').bind("uploadifyComplete", cb);
-        $('#new_node_upload').uploadifyUpload();
+        uploader.yomobiOptions.onDone = cb;
+        uploader.start();
       }
       else {
         util.log('empty');
-        cb();
+        cb({ result:'noUpload' });
       }
     }
   };
@@ -538,7 +543,8 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
         error: error,
         name: name,
         typeName: this.getTypeName(),
-        addedCats: this.addedCats
+        addedCats: this.addedCats,
+        wphotoPath: this.model.getCurrentLevel(true)._data.wphotoUrl || '/images/no-wphoto.png'
       });
 
       var self = this;
@@ -564,19 +570,22 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       
       buttons["Save"] = makeCatSaveFunc(this);
       buttons["Cancel"] = closeSelf;
-
-      // config uploadify; callback will be configured later in makeCatSaveFunc()
-      var uploadifyData = util.uploadifyData(_.identity, { wid:this.model.id });
-      uploadifyData.auto = false;
-      uploadifyData.buttonText = 'Add Photo';
       
       var dialog = util.dialog(dialogContent, buttons, dialogContent.title)
         .find('p.error').show('pulsate',{times:3}).end()
         .find('input[name=add]').click( makeCatSaveFunc(this,true) ).end()
-        .find('input[type=file]').click(util.preventDefault).uploadify(uploadifyData)
       ;
-      // required for ie7
-      // setTimeout(function () { dialog.find('input[type=text]').focus()[0].focus(); },10);
+
+      // configure uploader; callback will be configured later in makeCatSaveFunc()
+      util.initUploader( dialog.find('.wphoto-wrap'), {
+        instanceId: 'dialog',
+        auto: false,
+        alwaysOnTop: true,
+        wid: this.model.id
+      });
+      // because we're in a dialog, we need to set the uploader to be
+      // on top of everything else
+      util._uploaders['dialog'].bringToFront();
     },
     
     validateCategory: function (addAnother) {
@@ -717,8 +726,6 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
         .find('p.success').show('pulsate',{times:1}).end()
         .find('input[name=add]').click( makeSaveFunc(true) ).end()
       ;
-      // required for ie7
-      // setTimeout(function () { dialog.find('input[type=text]')[0].focus()[0].focus(); },10);
     },
     
     validateItem: function (item) {
