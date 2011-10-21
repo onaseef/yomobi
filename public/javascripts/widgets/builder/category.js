@@ -207,7 +207,8 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       'click input[name=move_down]':        'move',
 
       'click input[name=add_item]':         'addItem',
-      'click .rename-link':                 'rename'
+      'click .rename-link':                 'rename',
+      'click .remove-wphoto-link':          'removeWPhoto'
     },
     
     init: function (widget) {
@@ -459,6 +460,16 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       (mod==1) ? targetOption.before(swapOption) : targetOption.after(swapOption);
       this.setChanged('something',true);
       this.refreshViews();
+    },
+
+    removeWPhoto: function (e) {
+      var currentNode = this.widget.getCurrentLevel(true);
+      this.removeWPhotoFromNode(currentNode);
+      this.accept();
+    },
+
+    removeWPhotoFromNode: function (node) {
+      node._data.wphotoUrl = '';
     },
 
     selectStuff: function (selectedIdxs,scrollTop) {

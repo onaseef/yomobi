@@ -26,8 +26,6 @@ script.add-subcat-dialog(type="text/template")
 
       .wphoto-wrap
         img src="{{ wphotoPreviewPath }}"
-        a.remove-wphoto-link Remove
-        br
         .uploader-browse-button.pretty-button name="pick_files" Pick files
         .debug
       input type="hidden" value="" name="wphotoUrl"
@@ -123,7 +121,9 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
     | <% if (onRootPage !== true) { %>
     .wphoto-wrap
       img src="{{ wphotoPreviewPath }}"
+      | <% if (wphotoPreviewPath !== '/images/no-wphoto.png') { %>
       a.remove-wphoto-link Remove
+      | <% } %>
       br
       .uploader-browse-button.pretty-button name="pick_files" Pick files
       .debug
