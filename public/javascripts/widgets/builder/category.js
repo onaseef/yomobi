@@ -732,10 +732,11 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
   });
   
   // =================================
+  var itemDialogTemplate = util.getTemplate('item-dialog');
   var AddItemDialog = Backbone.View.extend({
     
     initialize: function () {
-      this.template = util.getTemplate(this.model.get('wsubtype')+'-item-dialog');
+      this.template = util.getTemplate(this.model.get('wsubtype')+'-item-dialog-content');
       this.addedItems = [];
       _.bindAll(this, 'saveItem', 'isItemValid');
     },
@@ -749,14 +750,17 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       flash || (flash = {});
       item || (item = {});
       var title = (this.mode == 'add' ? "Add New " : "Edit ") + this.model.get('itemTypeName');
-      var dialogHtml = this.template(_.extend({},item, {
+
+      var templateData = _.extend({}, item, {
         flash: flash,
         _items: level._items,
         itemTypeName: this.model.get('itemTypeName'),
         addedItems: this.addedItems,
         mode: this.mode,
         wphotoPreviewPath: item.wphotoUrl || '/images/no-wphoto.png'
-      }) );
+      });
+      templateData.innerContent = this.template(templateData);
+      var dialogHtml = itemDialogTemplate(templateData);
 
       $(this.el).html(dialogHtml).attr('title',title);
       return this;
