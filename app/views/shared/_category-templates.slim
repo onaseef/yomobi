@@ -4,7 +4,7 @@
 
 script.menu-item type="text/template"
   .item class="{{ cycle }}"
-    .wphoto
+    .wphoto class="<% print(item.wphotoUrl ? '' : 'hide'); %>"
       img src="{{ item.wphotoUrl }}"
     .name {{ item.name }}
     .price {{ item.price }}

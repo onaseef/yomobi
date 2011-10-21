@@ -8,6 +8,9 @@ script.item-dialog(type="text/template")
     | {{ innerContent }}
     .wphoto-wrap
       img src="{{ wphotoPreviewPath }}"
+      | <% if (wphotoPreviewPath !== '/images/no-wphoto.png') { %>
+      a.remove-wphoto-link Remove
+      | <% } %>
       br
       .uploader-browse-button.pretty-button name="pick_files" Pick files
       .debug

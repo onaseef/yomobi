@@ -167,7 +167,7 @@
         itemLabel: this.get('itemTypeName'),
         itemIconName: 'leaf',
         bulletTypes: bulletTypes,
-        wphotoPreviewPath: this.getCurrentLevel(true)._data.wphotoUrl || '/images/no-wphoto.png'
+        wphotoPreviewPath: this.getCurrentLevel(true)._data.wphotoUrl || g.noPhotoPath
       };
       return _.extend({},showData,extraData);
     },
@@ -588,7 +588,7 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
         name: name,
         typeName: this.getTypeName(),
         addedCats: this.addedCats,
-        wphotoPreviewPath: this.model.getCurrentLevel(true)._data.wphotoUrl || '/images/no-wphoto.png'
+        wphotoPreviewPath: this.model.getCurrentLevel(true)._data.wphotoUrl || g.noPhotoPath
       });
 
       var self = this;
@@ -757,7 +757,7 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
         itemTypeName: this.model.get('itemTypeName'),
         addedItems: this.addedItems,
         mode: this.mode,
-        wphotoPreviewPath: item.wphotoUrl || '/images/no-wphoto.png'
+        wphotoPreviewPath: item.wphotoUrl || g.noPhotoPath
       });
       templateData.innerContent = this.template(templateData);
       var dialogHtml = itemDialogTemplate(templateData);
@@ -787,11 +787,15 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
         .find('p.error').show('pulsate',{times:3}).end()
         .find('p.success').show('pulsate',{times:1}).end()
         .find('input[name=add]').click( makeSaveFunc(this, {
-          onUpload: this.saveItem,
-          validator: this.isItemValid,
-          addAnother: true
-          })
-        ).end()
+            onUpload: this.saveItem,
+            validator: this.isItemValid,
+            addAnother: true
+            })
+          ).end()
+        .find('.remove-wphoto-link').click(function () {
+          $(self.el).find('[name=wphotoUrl]').val('').end()
+                    .find('.wphoto-wrap img').attr('src', g.noPhotoPath);
+        })
       ;
 
       initDialogUploader(this, dialog, shouldEmptyUploadQueue);
