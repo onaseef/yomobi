@@ -161,8 +161,8 @@ class CouchDocs
       {
         :wtype => 'category',
         :wsubtype => "property-listings",
-        :catTypeName => "Area",
-        :itemTypeName => "Listing",
+        :catTypeName => "Folder",
+        :itemTypeName => "Item",
         :singleton => true,
         # default categories
         "struct" => {
@@ -210,8 +210,8 @@ class CouchDocs
       {
         :wtype => 'page_tree',
         :wsubtype => "category",
-        :catTypeName => "Subcategory",
-        :itemTypeName => "Page",
+        :catTypeName => "Folder",
+        :itemTypeName => "Item",
         "struct" => {
           :_data => { :_id => "struct", :name => "Category", :_order => [] },
         }
@@ -277,8 +277,8 @@ class CouchDocs
       {
         :wtype => 'category',
         :wsubtype => "locations",
-        :catTypeName => "Region",
-        :itemTypeName => "Location",
+        :catTypeName => "Folder",
+        :itemTypeName => "Item",
         :singleton => true,
         "struct" => {
           :_data => { :_id => "struct", :name => "Locations", :_order => [
@@ -324,8 +324,8 @@ class CouchDocs
       {
         :wtype => 'category',
         :wsubtype => "services",
-        :catTypeName => "Category",
-        :itemTypeName => "Service",
+        :catTypeName => "Folder",
+        :itemTypeName => "Item",
         :singleton => true,
         "struct" => {
           :_data => { :_id => "struct", :name => "Services", :_order => [] },
@@ -335,8 +335,8 @@ class CouchDocs
       {
         :wtype => 'category',
         :wsubtype => "products",
-        :catTypeName => "Category",
-        :itemTypeName => "Product",
+        :catTypeName => "Folder",
+        :itemTypeName => "Item",
         :singleton => true,
         "struct" => {
           :_data => { :_id => "struct", :name => "Products", :_order => [] },
@@ -346,7 +346,7 @@ class CouchDocs
       {
         :wtype => 'category',
         :wsubtype => "menu",
-        :catTypeName => "Category",
+        :catTypeName => "Folder",
         :itemTypeName => "Item",
         :singleton => true,
         "struct" => {
