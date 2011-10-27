@@ -24,36 +24,69 @@
     }
   };
 
-  var makeCatSaveFunc = function (selfObj, addAnother) {
+  var makeSaveFunc = function (dialogView, options) {
+
     return function () {
       if (!util.reserveUI()) return;
       // wrap in function for code reuse
       var dialogElem = this;
-      var cb = function (event, queueID, fileObj, response, data) {
-        response = unescape(response);
-        util.log('wut', response);
-        if (response) {
-          var res = $.parseJSON(response);
-          util.log('json',res);
-          $(selfObj.el).find('input[name=wphotoUrl]').val(res.wphotoUrl);
-        }
-        util.releaseUI();
+      var cb = function (data) {
+        util.log('wut', data);
+
         $(dialogElem).dialog("close");
-        selfObj.validateCategory(addAnother);
+        util.releaseUI();
+
+        if (data.result === 'fail') {
+          alert('Photo upload failed.');
+          return;
+        }
+        if (data.wphotoUrl) {
+          $(dialogView.el).find('input[name=wphotoUrl]').val(data.wphotoUrl);
+        }
+        options.onUpload(options.addAnother);
       };
       // check for queued upload
-      var items = $(selfObj.el).find('.uploadifyQueueItem');
-      if (items.length > 0) {
+      var uploader = util._uploaders['dialog'];
+
+      if (options.validator && options.validator(options.addAnother) !== true) {
+        // skip upload until validator returns true
+        util.releaseUI();
+        options.onUpload(options.addAnother);
+      }
+      else if (uploader.files.length > 0 && uploader.files[0].status !== plupload.DONE) {
         util.log('has stuff!');
-        $('#new_node_upload').bind("uploadifyComplete", cb);
-        $('#new_node_upload').uploadifyUpload();
+        uploader.yomobiOptions.onDone = cb;
+        uploader.start();
       }
       else {
         util.log('empty');
-        cb();
+        cb({ result:'noUpload' });
       }
     }
   };
+
+  var makeCloseFunc = function (dialogView) {
+    return function () {
+      if (!util.isUIFree()) return;
+      $(this).dialog("close");
+      dialogView.options.onClose && dialogView.options.onClose();
+    };
+  }
+
+  var initDialogUploader = function (dialogView, dialog, shouldEmptyQueue) {
+    // configure uploader; callback will be configured later in makeSaveFunc()
+
+    util.initUploader( dialog.find('.wphoto-wrap'), {
+      instanceId: 'dialog',
+      auto: false,
+      alwaysOnTop: true,
+      emptyQueue: shouldEmptyQueue,
+      wid: dialogView.model.id
+    });
+    // because we're in a dialog, we need to set the uploader to be
+    // on top of everything else
+    util._uploaders['dialog'].bringToFront();
+  }
 
   var validateOrder = function (node_id, node) {
     var children_ids = _(node).chain().keys().reject(isSpecialKey).value() // 9
@@ -78,14 +111,13 @@
     }
   };
 
-  var uploadifyCallback = function(event, queueID, fileObj, response, data) {
-    var res = $.parseJSON(response);
-    console.log('RESPONSE',res,this.node);
-    if (res.status === 'fail') {
+  var uploaderCallback = function(data) {
+    if (data.status === 'fail') {
       alert('Photo upload failed.');
+      util.releaseUI();
       return;
     }
-    this.node._data.wphotoUrl = res.wphotoUrl;
+    this.node._data.wphotoUrl = data.wphotoUrl;
     // accept() needs the UI to be free
     util.releaseUI();
     this.editor.accept();
@@ -135,7 +167,7 @@
         itemLabel: this.get('itemTypeName'),
         itemIconName: 'leaf',
         bulletTypes: bulletTypes,
-        wphotoPath: this.getCurrentLevel(true)._data.wphotoUrl || '/images/no-wphoto.png'
+        wphotoPreviewPath: this.getCurrentLevel(true)._data.wphotoUrl || g.noPhotoPath
       };
       return _.extend({},showData,extraData);
     },
@@ -168,14 +200,15 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       'click input[name=back]':             'transitionBack',
 
       'click input[name=add_cat]':          'addCat',
-      'click input[name=rename]':           'rename',
       'click input[name=edit]':             'edit',
       'dblclick select[name=stuff]':        'edit',
       'click input[name=delete]':           'deleteNode',
       'click input[name=move_up]':          'move',
       'click input[name=move_down]':        'move',
 
-      'click input[name=add_item]':         'addItem'
+      'click input[name=add_item]':         'addItem',
+      'click .rename-link':                 'rename',
+      'click .remove-wphoto-link':          'removeWPhoto'
     },
     
     init: function (widget) {
@@ -197,15 +230,18 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
         this.widget.catStack.length = 0;
         this.widget.catStack.push( this.widget.get('struct') );
       }
-      var callback = _.bind(uploadifyCallback, {
+      var callback = _.bind(uploaderCallback, {
         node: this.widget.getCurrentLevel(true),
         editor: this
       });
 
-      this.uploadifyInstance = $(this.el).find('input[type=file]')
-        .click(util.preventDefault)
-        .uploadify(util.uploadifyData(callback, { wid:this.widget.id }))
-      ;
+      if (this.widget.catStack.length > 1) {
+        util.initUploader( $(this.el).find('.wphoto-wrap'), {
+          onDone: callback,
+          emptyQueue: true,
+          wid: this.widget.id
+        });
+      }
     },
     
     grabWidgetValues: function () {
@@ -281,11 +317,11 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
     },
 
     rename: function (e) {
+      e.preventDefault();
       if (!util.isUIFree()) return;
 
       var level = this.widget.getCurrentLevel(true)
-        , target_id = $(this.el).find('select[name=stuff] option:selected:first').val()
-        , node = level[target_id]._data
+        , node = level._data
       ;
       if (!node) return alert('Please select an item to rename.');
       
@@ -426,6 +462,16 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       this.refreshViews();
     },
 
+    removeWPhoto: function (e) {
+      var currentNode = this.widget.getCurrentLevel(true);
+      this.removeWPhotoFromNode(currentNode);
+      this.accept();
+    },
+
+    removeWPhotoFromNode: function (node) {
+      node._data.wphotoUrl = '';
+    },
+
     selectStuff: function (selectedIdxs,scrollTop) {
       this.el.find('select[name=stuff]')
         .find('option')
@@ -489,9 +535,13 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
     },
     
     refresh: function () {
-      var pcontent = this.widget.getPageContent();
-      var wpage = mapp.getActivePage().content.html(pcontent);
-      this.widget.pageView.setContentElem(wpage);
+      var newContent = this.widget.getPageContent()
+        , newTitle = this.widget.getTitleContent()
+        , activePage = mapp.getActivePage()
+      ;
+      activePage.content.html(newContent);
+      activePage.topBar.find('.title').html(newTitle);
+      this.widget.pageView.setContentElem(activePage.content);
     }
     
   });
@@ -521,7 +571,7 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
     },
     
     initialize: function () {
-      _.bindAll(this,'validateCategory');
+      _.bindAll(this,'validateCategory', 'isCategoryValid');
       this.addedCats = [];
     },
 
@@ -537,12 +587,18 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
         error: error,
         name: name,
         typeName: this.getTypeName(),
-        addedCats: this.addedCats
+        addedCats: this.addedCats,
+        wphotoPreviewPath: this.model.getCurrentLevel(true)._data.wphotoUrl || g.noPhotoPath
       });
 
       var self = this;
       $(this.el).html(dialogHtml).find('.add-btn')
-        .click( makeCatSaveFunc(this,true) ).end()
+        .click( makeSaveFunc(this, {
+            addAnother: true,
+            onUpload: this.validateCategory,
+            validator: this.isCategoryValid
+          })
+        ).end()
         .attr('title',this.el.children[0].title)
       ;
       return this;
@@ -554,35 +610,63 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       var self = this
         , level = this.model.getCurrentLevel()
         , dialogContent = this.render(error,level,origName).el
-        , closeSelf = close(this)
         , buttons = {}
+        , shouldEmptyUploadQueue = !error
       ;
       // cache for later use in validateCategory
       this.level = level;
       if (!error) this.origName = origName;
       
-      buttons["Save"] = makeCatSaveFunc(this);
-      buttons["Cancel"] = closeSelf;
-
-      // config uploadify; callback will be configured later in makeCatSaveFunc()
-      var uploadifyData = util.uploadifyData(_.identity, { wid:this.model.id });
-      uploadifyData.auto = false;
-      uploadifyData.buttonText = 'Add Photo';
+      buttons["Save"] = makeSaveFunc(this,{
+        onUpload: this.validateCategory,
+        validator: this.isCategoryValid
+      });
+      buttons["Cancel"] = makeCloseFunc(this);
       
       var dialog = util.dialog(dialogContent, buttons, dialogContent.title)
         .find('p.error').show('pulsate',{times:3}).end()
-        .find('input[name=add]').click( makeCatSaveFunc(this,true) ).end()
-        .find('input[type=file]').click(util.preventDefault).uploadify(uploadifyData)
+        .find('input[name=add]').click( makeSaveFunc(this,this.validateCategory, {
+            addAnother: true,
+            onUpload: this.validateCategory,
+            validator: this.isCategoryValid
+          })
+        ).end()
       ;
-      // required for ie7
-      // setTimeout(function () { dialog.find('input[type=text]').focus()[0].focus(); },10);
+
+      initDialogUploader(this, dialog, shouldEmptyUploadQueue);
     },
     
+    isCategoryValid: function (addAnother) {
+      // TODO: redundant code. Make validateCategory() use
+      //       this code somehow.
+      var name = $(this.el).find('input[name=cat]').val()
+        , name = $.trim(name)
+
+        , nameCompare = name.toLowerCase()
+        , origNameCompare = (this.origName || '').toLowerCase()
+        , existingNames = _.map(this.getCatNames(), downcase)
+      ;
+      if (_.isEmpty(name) && this.addedCats.length > 0 && addAnother !== true) {
+        return true;
+      }
+      if (_.isEmpty(name) ||
+          nameCompare !== origNameCompare &&
+          _.contains(existingNames,nameCompare)
+      ){
+        return false;
+      }
+      if (this.mode === 'add' ||
+          this.mode == 'edit' && name !== this.origName
+      ){
+        return true;
+      }
+      return false;
+    },
+
     validateCategory: function (addAnother) {
   		$(this.el).dialog("close");
       var name = $(this.el).find('input[name=cat]').val()
         , name = $.trim(name)
-        , name = name.replace(/\|/g,'')
 
         , nameCompare = name.toLowerCase()
         , origNameCompare = (this.origName || '').toLowerCase()
@@ -637,8 +721,8 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
     renameNode: function (newName) {
       if (!this.options.node_id) return;
 
-      var node = this.level._ref[this.options.node_id];
-      node._data.name = newName;
+      // the user can only rename the current subcategory
+      this.level._ref._data.name = newName;
     },
 
     getTypeName: function () {
@@ -647,20 +731,14 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
 
   });
   
-  var close = function (dialogView) {
-    return function () {
-      if (util.isBusy('uploadify')) return;
-      $(this).dialog("close");
-      dialogView.options.onClose && dialogView.options.onClose();
-    };
-	}
-  
   // =================================
+  var itemDialogTemplate = util.getTemplate('item-dialog');
   var AddItemDialog = Backbone.View.extend({
     
     initialize: function () {
-      this.template = util.getTemplate(this.model.get('wsubtype')+'-item-dialog');
+      this.template = util.getTemplate(this.model.get('wsubtype')+'-item-dialog-content');
       this.addedItems = [];
+      _.bindAll(this, 'saveItem', 'isItemValid');
     },
     
     enterMode: function (mode) {
@@ -672,13 +750,17 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       flash || (flash = {});
       item || (item = {});
       var title = (this.mode == 'add' ? "Add New " : "Edit ") + this.model.get('itemTypeName');
-      var dialogHtml = this.template(_.extend({},item, {
+
+      var templateData = _.extend({}, item, {
         flash: flash,
         _items: level._items,
         itemTypeName: this.model.get('itemTypeName'),
         addedItems: this.addedItems,
-        mode: this.mode
-      }) );
+        mode: this.mode,
+        wphotoPreviewPath: item.wphotoUrl || g.noPhotoPath
+      });
+      templateData.innerContent = this.template(templateData);
+      var dialogHtml = itemDialogTemplate(templateData);
 
       $(this.el).html(dialogHtml).attr('title',title);
       return this;
@@ -690,34 +772,33 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       var self = this
         , level = this.model.getCurrentLevel()
         , dialogContent = this.render(flash,level,item).el
+        , shouldEmptyUploadQueue = !flash || !flash.error
       ;
       // cache for later use
       this.level = level;
       if (!flash || !flash.error) this.origItem = item;
       
       var buttons = {};
-      var closeFunc = function () {
-        $(this).dialog("close");
-        self.options.onClose && self.options.onClose();
-      };
 
-      var makeSaveFunc = function (addAnother) {
-        return function () {
-          $(this).dialog("close");
-          self.saveItem(addAnother);
-        }
-      }
-
-      buttons["Save"] = makeSaveFunc();
-      buttons["Cancel"] = closeFunc;
+      buttons["Save"] = makeSaveFunc(this, { onUpload:this.saveItem, validator:this.isItemValid });
+      buttons["Cancel"] = makeCloseFunc(this);
 
       var dialog = util.dialog(dialogContent, buttons, dialogContent.title)
         .find('p.error').show('pulsate',{times:3}).end()
         .find('p.success').show('pulsate',{times:1}).end()
-        .find('input[name=add]').click( makeSaveFunc(true) ).end()
+        .find('input[name=add]').click( makeSaveFunc(this, {
+            onUpload: this.saveItem,
+            validator: this.isItemValid,
+            addAnother: true
+            })
+          ).end()
+        .find('.remove-wphoto-link').click(function () {
+          $(self.el).find('[name=wphotoUrl]').val('').end()
+                    .find('.wphoto-wrap img').attr('src', g.noPhotoPath);
+        })
       ;
-      // required for ie7
-      // setTimeout(function () { dialog.find('input[type=text]')[0].focus()[0].focus(); },10);
+
+      initDialogUploader(this, dialog, shouldEmptyUploadQueue);
     },
     
     validateItem: function (item) {
@@ -737,6 +818,28 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
         return false;
       }
       return true;
+    },
+
+    isItemValid: function (addAnother) {
+      // TODO: redundant code. Make saveItem() use
+      //       this code somehow.
+      var activeItemData = {};
+      $(this.el).find('.item-input').each(function (idx,elem) {
+        activeItemData[$(elem).attr('name')] = $(elem).val();
+      });
+
+      var inputs = _(activeItemData).chain().reject(util.keq('type'))
+                                    .values().compact().value();
+      if (inputs.length === 0 && this.addedItems.length > 0 && addAnother !== true) {
+        return true;
+      }
+      if (!this.validateItem(activeItemData)) {
+        return false;
+      }
+      if (this.mode == 'add' || this.mode == 'edit') {
+        return true;
+      }
+      return false;
     },
 
     saveItem: function (addAnother) {

@@ -107,11 +107,11 @@ class BuilderController < ApplicationController
   end
 
   def upload_wphoto
-    params[:Filedata].content_type = MIME::Types.type_for(params[:Filedata].original_filename).to_s
+    params[:file].content_type = MIME::Types.type_for(params[:file].original_filename).to_s
 
     @company = current_user.company
     @photo = @company.wphotos.build \
-      :photo => params[:Filedata],
+      :photo => params[:file],
       :wid => params[:wid]
 
     if @photo.save

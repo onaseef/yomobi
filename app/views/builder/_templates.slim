@@ -24,7 +24,10 @@ script.add-subcat-dialog(type="text/template")
       br
       input type="text" value="{{ _maybe.name }}" name="cat"
 
-      input#new_node_upload type="file" name="new_node_upload"
+      .wphoto-wrap
+        img src="{{ wphotoPreviewPath }}"
+        .uploader-browse-button.pretty-button name="pick_files" Pick files
+        .debug
       input type="hidden" value="" name="wphotoUrl"
 
       input.add-btn type="button" value="Add"
@@ -108,16 +111,22 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
     br
 
     .crumb-wrap
+      | <% if (onRootPage !== true) { %>
+      a.rename-link href="#" Rename
+      | <% } %>
       b Editing:
       br
       b.blue {{ catCrumbs }}
 
     | <% if (onRootPage !== true) { %>
     .wphoto-wrap
-      img src="{{ wphotoPath }}"
+      img src="{{ wphotoPreviewPath }}"
+      | <% if (wphotoPreviewPath !== '/images/no-wphoto.png') { %>
       a.remove-wphoto-link Remove
+      | <% } %>
       br
-      input#wphoto_upload type="file"
+      .uploader-browse-button.pretty-button name="pick_files" Pick files
+      .debug
     | <% } %>
 
     select name="stuff" multiple="multiple"
@@ -133,7 +142,6 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
     | <%  } %>
 
     | <%       if (isThereStuff == true) { %>
-    input type="button" name="rename" value="Rename"
     input type="button" name="edit" value="Edit"
     input type="button" name="delete" value="Delete"
     | <%       } %>
@@ -148,10 +156,11 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
 
     | <% } else { %>
     br
-    b Editing page:
-    br
-    b.blue {{ catCrumbs }}
-    br
+    .crumb-wrap
+      a.rename-link href="#" Rename
+      b Editing Page:
+      br
+      b.blue {{ catCrumbs }}
     br
     #jeditor-wrapper
       textarea#jeditor {{ content }}

@@ -133,6 +133,12 @@
       mapp.resize();
       if (this.hasChanges()) this.accept();
       else if (options && options.forceEditAreaRefresh) this.startEditing();
+
+      // if this is not done, the "choose file" button might
+      // intercept some clicks and open the file dialog
+      if (util._uploaders['dialog']) {
+        util._uploaders['dialog'].sendToBack();
+      }
     },
 
     stopEditingName: function () {

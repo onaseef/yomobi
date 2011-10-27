@@ -709,27 +709,150 @@ var util = {
 
   preventDefault: function (e) { e.preventDefault(); },
 
-  _releaseUploadify: function () { util.release('uploadify'); },
-  uploadifyData: function (onComplete, extraData) {
-    return {
-      uploader: '/uploadify/uploadify.swf',
-      cancelImg: '/uploadify/cancel.png',
-      multi: false,
-      auto: true,
-      queueSizeLimit: 1,
+  _uploaders: {},
+  getOrCreateUploader: function (extraData, options) {
+    var defaults = {
+      instanceId: 'default',
+      extraParams: {},
+      onDone: _.identity
+    }
+    options = _.extend(defaults, options);
 
-      buttonText: 'Change',
+    var uploader = this._uploaders[options.instanceId];
 
-      script: g.wphotoUploadPath,
-      onComplete: onComplete,
-      scriptData: _.extend(g.uploadifyScriptData, extraData),
-      onOpen: util.reserveUI,
-      onCancel: util.releaseUI,
-
-      onError: function (event, ID, fileObj, errorObj) {
-        util.log(errorObj.type + ' Error: ' + errorObj.info, event, ID, fileObj, errorObj);
+    if (uploader && options.emptyQueue && uploader.files.length > 0) {
+      while (uploader.files.length > 0) {
+        uploader.removeFile(uploader.files[0]);
       }
-    };
+    }
+
+    if (uploader && uploader.runtime === 'flash') {
+      this.destroyUploader(options.instanceId);
+    }
+    else if (uploader) {
+      _.extend(uploader.settings, extraData);
+      _.extend(uploader.settings.multipart_params, options.extraParams);
+      return uploader;
+    }
+
+    uploader = this._uploaders[options.instanceId] = new plupload.Uploader(_.extend({
+      runtimes: 'html5,flash,html4',
+      url: g.wphotoUploadPath,
+      max_file_size: '10mb',
+      multiple_queues: false,
+      multi_selection: false,
+
+      flash_swf_url: '/javascripts/plupload/plupload.flash.swf',
+      multipart: true,
+      multipart_params: _.extend(g.uploadifyScriptData, options.extraParams),
+      headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') }
+    }, extraData));
+
+    uploader.instanceId = options.instanceId;
+    uploader.yomobiOptions = options;
+
+    return uploader;
+  },
+
+  destroyUploader: function (instanceId) {
+    this._uploaders[instanceId].destroy();
+    delete this._uploaders[instanceId];
+  },
+
+  initUploader: function (context, options) {
+    options || (options = {});
+    options.context = context;
+
+    var pickerId = util.generateId()
+      , uploader = util.getOrCreateUploader({ browse_button:pickerId }, options)
+    ;
+    util.uploaderContext = context;
+
+    uploader.unbindAll();
+
+    uploader.bind('Init', function (up, params) {
+      util.log('INIT', up, params);
+      context.find('.debug')
+        .append("<div>Current runtime: " + params.runtime + "</div>");
+
+      if (uploader.files.length > 0 && uploader.files[0].status === plupload.DONE) {
+        uploader.removeFile(uploader.files[0]);
+      }
+      else if (uploader.files.length > 0) {
+        file = uploader.files[0];
+        context.find('.debug').empty().append(
+          '<div id="' + file.id + '">' +
+          file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' +
+        '</div>');
+      }
+    });
+
+    context.find('[name=pick_files]').attr('id', pickerId);
+
+    uploader.init();
+    // because we're in a dialog, sometimes we need to set the uploader to be
+    // on top of everything else, as well as send it back
+    uploader.layover = $('#' + uploader.id + '_' + uploader.runtime + '_container');
+    uploader.bringToFront = function () { this.layover.css('z-index', 10000); };
+    uploader.sendToBack   = function () { this.layover.css('z-index', -1); };
+
+    if (uploader.yomobiOptions.alwaysOnTop === true) {
+      util.log('setting to bring to front');
+      uploader.bind('Refresh', function () { uploader.bringToFront(); });
+    }
+
+    uploader.bind('FilesAdded', function (up, files) {
+
+      var isAutoEnabled = uploader.yomobiOptions.auto !== false;
+
+      while (uploader.files.length > 1) {
+        uploader.removeFile(uploader.files[0]);
+      }
+      if (isAutoEnabled && !util.reserveUI()) {
+        return;
+      }
+
+      $.each(files, function (i, file) {
+        context.find('.debug').empty().append(
+          '<div id="' + file.id + '">' +
+          file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' +
+        '</div>');
+      });
+
+      $('#'+pickerId).prop('disabled', true);
+      
+      if (isAutoEnabled) {
+        util.log('starting uploader');
+        uploader.start();
+      }
+
+      up.refresh(); // Reposition Flash/Silverlight
+    });
+
+    uploader.bind('UploadProgress', function (up, file) {
+      $('#' + file.id + " b").html(file.percent + "%");
+    });
+
+    uploader.bind('Error', function (up, err) {
+      context.find('.debug').append("<div>Error: " + err.code +
+        ", Message: " + err.message +
+        (err.file ? ", File: " + err.file.name : "") +
+        "</div>"
+      );
+
+      up.refresh(); // Reposition Flash/Silverlight
+    });
+
+    uploader.bind('FileUploaded', function (up, file, response) {
+      $('#' + file.id + " b").html("100%");
+      $('#'+pickerId).prop('disabled', false);
+
+      var resData = $.parseJSON(response.response);
+      util.log('Upload, complete.', up, file, response, resData);
+
+      callback = uploader.yomobiOptions.onDone;
+      callback(resData);
+    });
   },
 
   // expects and returns a jquery object
