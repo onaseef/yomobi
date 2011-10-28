@@ -30,7 +30,7 @@ script.add-subcat-dialog(type="text/template")
         .debug
       input type="hidden" value="" name="wphotoUrl"
 
-      input.add-btn type="button" value="Add"
+      input name="add" type="button" value="Add"
 
       | <% if(_maybe.error) { %>
       p.error Error: {{ _maybe.error }}
