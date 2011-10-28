@@ -211,7 +211,7 @@ class CouchDocs
         :wtype => 'page_tree',
         :wsubtype => "category",
         :catTypeName => "Folder",
-        :itemTypeName => "Item",
+        :itemTypeName => "Page",
         "struct" => {
           :_data => { :_id => "struct", :name => "Category", :_order => [] },
         }
