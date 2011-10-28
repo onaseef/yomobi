@@ -792,7 +792,7 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
         .find('.remove-wphoto-link').click(function () {
           $(self.el).find('[name=wphotoUrl]').val('').end()
                     .find('.wphoto-wrap img').attr('src', g.noPhotoPath);
-        })
+        }).end()
       ;
 
       initDialogUploader(this, dialog, shouldEmptyUploadQueue);
