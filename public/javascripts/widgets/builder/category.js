@@ -32,14 +32,14 @@
       var dialogElem = this;
       var cb = function (data) {
         util.log('wut', data);
-
-        $(dialogElem).dialog("close");
         util.releaseUI();
 
-        if (data.result === 'fail') {
-          alert('Photo upload failed.');
+        if (data.result !== 'success' && data.result !== 'noupload') {
+          alert('Photo upload failed ('+ data.result +')');
           return;
         }
+        $(dialogElem).dialog("close");
+
         if (data.wphotoUrl) {
           $(dialogView.el).find('input[name=wphotoUrl]').val(data.wphotoUrl);
         }
@@ -60,7 +60,7 @@
       }
       else {
         util.log('empty');
-        cb({ result:'noUpload' });
+        cb({ result:'noupload' });
       }
     }
   };
@@ -112,8 +112,9 @@
   };
 
   var uploaderCallback = function(data) {
-    if (data.status === 'fail') {
-      alert('Photo upload failed.');
+    util.log('wutt',data, 'node', this.node,this.node._data.wphotoUrl);
+    if (data.result !== 'success' && data.result !== 'noupload') {
+      alert('Photo upload failed ('+ data.result +')');
       util.releaseUI();
       return;
     }
@@ -567,7 +568,7 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
     
     onKeyDown: function (e) {
       var code = e.keyCode || e.which;
-      if (code == 13) this.validateCategory(true);
+      if (code == 13) this.addAnotherSaveFunc();
     },
     
     initialize: function () {
@@ -592,13 +593,7 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       });
 
       var self = this;
-      $(this.el).html(dialogHtml).find('.add-btn')
-        .click( makeSaveFunc(this, {
-            addAnother: true,
-            onUpload: this.validateCategory,
-            validator: this.isCategoryValid
-          })
-        ).end()
+      $(this.el).html(dialogHtml)
         .attr('title',this.el.children[0].title)
       ;
       return this;
@@ -617,20 +612,22 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       this.level = level;
       if (!error) this.origName = origName;
       
-      buttons["Save"] = makeSaveFunc(this,{
+      buttons["Save"] = makeSaveFunc(this, {
         onUpload: this.validateCategory,
         validator: this.isCategoryValid
       });
       buttons["Cancel"] = makeCloseFunc(this);
+
+      // cache for use when user hits enter key
+      this.addAnotherSaveFunc = makeSaveFunc(this, {
+        addAnother: true,
+        onUpload: this.validateCategory,
+        validator: this.isCategoryValid
+      });
       
       var dialog = util.dialog(dialogContent, buttons, dialogContent.title)
         .find('p.error').show('pulsate',{times:3}).end()
-        .find('input[name=add]').click( makeSaveFunc(this,this.validateCategory, {
-            addAnother: true,
-            onUpload: this.validateCategory,
-            validator: this.isCategoryValid
-          })
-        ).end()
+        .find('[name=add]').click(this.addAnotherSaveFunc).end()
       ;
 
       initDialogUploader(this, dialog, shouldEmptyUploadQueue);
