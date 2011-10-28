@@ -58,6 +58,10 @@
       return _.extend({ _items:items, _ref:top }, top._data);
     },
 
+    getCurrentNode: function () {
+      return this.getCurrentLevel(true);
+    },
+
     setPaths: function (currentPath, currentNode) {
 
       for (child_id in currentNode) {
@@ -67,6 +71,17 @@
         this.paths[child_id] = currentPath.concat([child_id]);
         this.setPaths( this.paths[child_id], child );
       }
+    },
+
+    getNodeById: function (id) {
+      var targetPath = this.paths[id]
+        , node = this.get('struct')
+      ;
+      _.each(targetPath, function (child_id) {
+        if (child_id === 'struct') return;
+        node = node[child_id];
+      });
+      return node;
     },
 
     setCatStackById: function (id) {

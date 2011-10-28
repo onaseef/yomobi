@@ -112,13 +112,14 @@
   };
 
   var uploaderCallback = function(data) {
-    util.log('wutt',data, 'node', this.node,this.node._data.wphotoUrl);
+    util.log('wutt',data, 'node_id', this.node_id);
     if (data.result !== 'success' && data.result !== 'noupload') {
       alert('Photo upload failed ('+ data.result +')');
       util.releaseUI();
       return;
     }
-    this.node._data.wphotoUrl = data.wphotoUrl;
+    var node = this.editor.widget.getNodeById(this.node_id);
+    node._data.wphotoUrl = data.wphotoUrl;
     // accept() needs the UI to be free
     util.releaseUI();
     this.editor.accept();
@@ -232,7 +233,7 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
         this.widget.catStack.push( this.widget.get('struct') );
       }
       var callback = _.bind(uploaderCallback, {
-        node: this.widget.getCurrentLevel(true),
+        node_id: this.widget.getCurrentNode()._data._id,
         editor: this
       });
 
@@ -588,8 +589,7 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
         error: error,
         name: name,
         typeName: this.getTypeName(),
-        addedCats: this.addedCats,
-        wphotoPreviewPath: this.model.getCurrentLevel(true)._data.wphotoUrl || g.noPhotoPath
+        addedCats: this.addedCats
       });
 
       var self = this;
