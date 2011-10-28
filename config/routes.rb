@@ -43,6 +43,7 @@ Yomobi::Application.routes.draw do
 
   root :to => 'home#index'
   
+  get '/javascripts/mobile-redirect.js' => 'mobile#mobile_redirect'
   get 'mobile/aritcaptcha' => 'mobile#aritcaptcha'
 
   get 'preview/:company' => 'mobile#index', :as => :mobile_preview, :defaults => { :preview => true }

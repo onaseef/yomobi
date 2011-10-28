@@ -9,4 +9,9 @@ class MobileController < ApplicationController
   def aritcaptcha
     render :layout => false
   end
+
+  def mobile_redirect
+    @exceptions = cookies.keys.map {|name| name[/^noredirect::(.*)/,1]}.compact
+    render :layout => false
+  end
 end

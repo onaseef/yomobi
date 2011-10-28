@@ -678,6 +678,13 @@ var util = {
     }
   },
 
+  createNoRedirectCookie: function (domain, minutes) {
+    var date = new Date();
+    date.setTime(date.getTime()+(minutes*60*1000));
+    var expires = "; expires=" + date.toGMTString();
+    document.cookie = 'noredirect::' + domain + "=1" + expires + "; path=/";
+  },
+
   // used in mobile captcha pages. Assumes `this` is binded to the widget page.
   spawnCaptcha: function () {
     var myWidget = this.widget;

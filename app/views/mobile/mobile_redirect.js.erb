@@ -1,0 +1,13 @@
+var exceptions = <%=raw @exceptions.to_json %>;
+var shouldRedirect = true;
+
+for (var i=exceptions.length-1; i >=0; i--) {
+  if (exceptions[i] === document.domain) {
+    shouldRedirect = false;
+    break;
+  }
+}
+
+if (window._RSITE && shouldRedirect) {
+  document.write('<script type="text/javascript" src="http://detect.deviceatlas.com/redirect.js?m='+window._RSITE+'"></script>');
+}
