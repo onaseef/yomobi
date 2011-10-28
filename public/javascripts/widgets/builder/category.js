@@ -588,8 +588,7 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
         error: error,
         name: name,
         typeName: this.getTypeName(),
-        addedCats: this.addedCats,
-        wphotoPreviewPath: this.model.getCurrentLevel(true)._data.wphotoUrl || g.noPhotoPath
+        addedCats: this.addedCats
       });
 
       var self = this;
