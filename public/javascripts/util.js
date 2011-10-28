@@ -732,6 +732,7 @@ var util = {
     else if (uploader) {
       _.extend(uploader.settings, extraData);
       _.extend(uploader.settings.multipart_params, options.extraParams);
+      uploader.yomobiOptions = options;
       return uploader;
     }
 
