@@ -283,10 +283,10 @@
         , self = this
       ;
       var buttons = {
-        cancel: closeFunc,
-        save: function () { $(this).dialog('close'); self.saveIcon(); }
+        Save: function () { $(this).dialog('close'); self.saveIcon(); },
+        Cancel: closeFunc
       };
-      util.dialog(dialogContent, buttons)
+      util.dialog(dialogContent, buttons, dialogContent.title)
         .dialog('option','width', 354)
       ;
     },
