@@ -18,8 +18,7 @@
     },
     
     initialize: function (widget) {
-      _.bindAll(this,'changeName');
-      _.bindAll(this,'refreshViews');
+      _.bindAll(this,'changeName','refreshViews');
       this.widget = widget;
       this.extendedEvents = _.extend({},this.defaultEvents,this.events);
       this.changes = {};

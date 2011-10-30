@@ -126,6 +126,12 @@
     
     onItemClick: _.identity,
 
+    beforePageRender: function ($pageContent) {
+      $pageContent.find('img').unbind('load.yo').bind('load.yo', function () {
+        mapp.resize();
+      });
+    },
+
     onPageView: function (subpage) {
       if (!mapp.canTransition()) return;
       

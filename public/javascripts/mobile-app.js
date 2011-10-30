@@ -222,8 +222,10 @@
     viewWidget: function (widget,subpage) {
       var direction = widget.pageView.onPageView(subpage)
         , wpage = this.getNextPage(direction,true)
+        , wpageContent = $(widget.getPageContent())
       ;
-      wpage.content.html(widget.getPageContent());
+      widget.pageView.beforePageRender(wpageContent);
+      wpage.content.empty().append(wpageContent);
       wpage.topBar.find('.title').html(widget.getTitleContent());
       
       widget.pageView.setContentElem(wpage.content);

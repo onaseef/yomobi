@@ -537,11 +537,12 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
     },
     
     refresh: function () {
-      var newContent = this.widget.getPageContent()
+      var newContent = $(this.widget.getPageContent())
         , newTitle = this.widget.getTitleContent()
         , activePage = mapp.getActivePage()
       ;
-      activePage.content.html(newContent);
+      this.beforePageRender(newContent);
+      activePage.content.empty().append(newContent);
       activePage.topBar.find('.title').html(newTitle);
       this.widget.pageView.setContentElem(activePage.content);
     }

@@ -99,7 +99,6 @@
     
     initialize: function (options) {
       this.widget = options.widget;
-
       if (this.init) this.init();
     },
     
@@ -122,7 +121,11 @@
       return 'forward';
     },
 
-    onGoHome: function () {}
+    onGoHome: function () {},
+
+    // this callback is triggered after the page content is generated,
+    // but before the page is added to the dom
+    beforePageRender: function ($pageContent) {}
   });
   
 })(jQuery);
