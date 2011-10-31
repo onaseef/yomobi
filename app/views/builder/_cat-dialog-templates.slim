@@ -6,14 +6,23 @@ script.item-dialog(type="text/template")
   #dialog-confirm class="addItem"
     input.item-input type="hidden" name="type" value="item"
     | {{ innerContent }}
-    .wphoto-wrap
-      img src="{{ wphotoPreviewPath }}"
-      | <% if (wphotoPreviewPath !== '/images/no-wphoto.png') { %>
-      a.remove-wphoto-link Remove
-      | <% } %>
-      br
-      .uploader-browse-button.pretty-button name="pick_files" Pick files
-      .debug
+    table.wphoto-wrap
+      tbody
+        tr
+          td
+            img src="{{ wphotoPreviewPath }}"
+          td
+            label Select a Picture...
+            br
+            .selected-file.lfloat &nbsp;
+            button name="pick_files" Browse...
+            .error
+        | <% if (wphotoPreviewPath !== '/images/no-wphoto.png') { %>
+        tr
+          td
+            a.remove-wphoto-link href="#" Remove Picture
+          td
+        | <% } %>
     input.item-input type="hidden" value="{{ _maybe.wphotoUrl }}" name="wphotoUrl"
     | <% if (mode == 'add') { %>
     input.lfloat type="button" value="Add" name="add" style="margin:10px 15px 0 2px"
