@@ -111,9 +111,6 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
     br
 
     .crumb-wrap
-      | <% if (onRootPage !== true) { %>
-      a.rename-link href="#" Rename
-      | <% } %>
       b Editing:
       br
       b.blue {{ catCrumbs }}
@@ -151,6 +148,7 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
     | <%  } %>
 
     | <%       if (isThereStuff == true) { %>
+    input type="button" name="rename" value="Rename"
     input type="button" name="edit" value="Edit"
     input type="button" name="delete" value="Delete"
     | <%       } %>
@@ -165,11 +163,10 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
 
     | <% } else { %>
     br
-    .crumb-wrap
-      a.rename-link href="#" Rename
-      b Editing Page:
-      br
-      b.blue {{ catCrumbs }}
+    b Editing page:
+    br
+    b.blue {{ catCrumbs }}
+    br
     br
     #jeditor-wrapper
       textarea#jeditor {{ content }}
