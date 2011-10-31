@@ -249,13 +249,16 @@ p {
     .page .content.category .item > :empty, .page .content.page_tree .item > :empty {
       padding: 0; }
     .page .content.category .item img, .page .content.page_tree .item img {
-      max-height: 290px;
-      max-width: 290px; }
-    .page .content.category .item > .wphoto, .page .content.page_tree .item > .wphoto {
+      /* Optional rounded corners for browsers that support it */
+      -moz-border-radius: 3px;
+      -khtml-border-radius: 3px;
+      -webkit-border-radius: 3px;
+      border-radius: 3px; }
+    .page .content.category .item .wphoto, .page .content.page_tree .item .wphoto {
       text-align: center;
       width: 70px;
       float: left; }
-    .page .content.category .item > .wphoto + div, .page .content.page_tree .item > .wphoto + div {
+    .page .content.category .item .wphoto + div, .page .content.page_tree .item .wphoto + div {
       width: 200px;
       padding-left: 10px;
       float: left; }
