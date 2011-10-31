@@ -111,9 +111,8 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
     br
 
     .crumb-wrap
-      b Editing:
-      br
-      b.blue {{ catCrumbs }}
+      erb:
+        <b>Editing: <span class="blue">{{ catCrumbs }}</span></b>
 
     | <% if (onRootPage !== true) { %>
     table.wphoto-wrap
