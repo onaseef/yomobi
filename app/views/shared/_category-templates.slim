@@ -3,67 +3,60 @@
 / =========================== \
 
 script.menu-item type="text/template"
-  .item class="{{ cycle }}"
-    .wphoto class="<% print(item.wphotoUrl ? '' : 'hide'); %>"
-      img src="{{ item.wphotoUrl }}"
-    .name {{ item.name }}
-    .price {{ item.price }}
-    .clearfix = ""
-    pre.desc {{ item.desc }}
+  .name {{ item.name }}
+  .price {{ item.price }}
+  .clearfix = ""
+  pre.desc {{ item.desc }}
 
 script.services-item type="text/template"
-  .item class="{{ cycle }}"
-    .name {{ item.name }}
-    .price {{ item.price }}
-    .clearfix = ""
-    pre.desc {{ item.desc }}
+  .name {{ item.name }}
+  .price {{ item.price }}
+  .clearfix = ""
+  pre.desc {{ item.desc }}
 
 script.products-item type="text/template"
-  .item class="{{ cycle }}"
-    .name {{ item.name }}
-    .price {{ item.price }}
-    .clearfix = ""
-    pre.desc {{ item.desc }}
+  .name {{ item.name }}
+  .price {{ item.price }}
+  .clearfix = ""
+  pre.desc {{ item.desc }}
 
 script.property-listings-item type="text/template"
-  .item class="{{ cycle }}"
-    .name.long {{ item.name }}
-    .clearfix = ""
-    div {{ item.price }}
-    
-    | <% if (item.address) { %>
-    div
-      a href="http://maps.google.com/maps?q={{ item.address }}" target="_blank" {{ item.address }}
-    | <% } %>
+  .name.long {{ item.name }}
+  .clearfix = ""
+  div {{ item.price }}
+  
+  | <% if (item.address) { %>
+  div
+    a href="http://maps.google.com/maps?q={{ item.address }}" target="_blank" {{ item.address }}
+  | <% } %>
 
-    | <% if (item.photo_url) { %>
-    div
-      a href="{{ item.photo_url }}" View Property
-    | <% } %>
+  | <% if (item.photo_url) { %>
+  div
+    a href="{{ item.photo_url }}" View Property
+  | <% } %>
 
-    | <% if (_maybe.mls) { %>
-    .mls
-      ' MLS #:
-      a href="http://www.realtor.com/search/searchresults.aspx?mlslid={{ item.mls }}" {{ item.mls }}
-    | <% } %>
-    
-    pre.desc.long {{ item.desc }}
+  | <% if (_maybe.mls) { %>
+  .mls
+    ' MLS #:
+    a href="http://www.realtor.com/search/searchresults.aspx?mlslid={{ item.mls }}" {{ item.mls }}
+  | <% } %>
+  
+  pre.desc.long {{ item.desc }}
 
 script.locations-item type="text/template"
-  .item class="{{ cycle }}"
-    .name.long {{ item.name }}
-    .clearfix = ""
-    | <% if (item.phone) { %>
-    div
-      a href="tel:{{ item.phone }}" {{ item.phone }}
-    | <% } %>
+  .name.long {{ item.name }}
+  .clearfix = ""
+  | <% if (item.phone) { %>
+  div
+    a href="tel:{{ item.phone }}" {{ item.phone }}
+  | <% } %>
 
-    | <% if (item.address) { %>
-    div
-      a href="http://maps.google.com/maps?q={{ item.address }}" target="_blank" {{ item.address }}
-    | <% } %>
+  | <% if (item.address) { %>
+  div
+    a href="http://maps.google.com/maps?q={{ item.address }}" target="_blank" {{ item.address }}
+  | <% } %>
 
-    pre.desc.long {{ item.desc }}
+  pre.desc.long {{ item.desc }}
 
 / this represents a page in the page_tree list view
 script.category-item type="text/template"
@@ -71,4 +64,13 @@ script.category-item type="text/template"
     | {{ item.name }}
 
 / this template is used when a photo is being displayed
-/ TODO (if needed)
+script.item-wrap type="text/template"
+  .item class="{{ cycle }}"
+    | <% if (item.wphotoUrl) { %>
+    .wphoto
+      img src="{{ item.wphotoUrl }}"
+    div
+      | <% print( itemTemplate({ item:item }) ); %>
+    | <% } else {
+            print( itemTemplate(item) );
+    | } %>
