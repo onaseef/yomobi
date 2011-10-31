@@ -202,6 +202,7 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       'click input[name=back]':             'transitionBack',
 
       'click input[name=add_cat]':          'addCat',
+      'click input[name=rename]':           'rename',
       'click input[name=edit]':             'edit',
       'dblclick select[name=stuff]':        'edit',
       'click input[name=delete]':           'deleteNode',
@@ -319,11 +320,11 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
     },
 
     rename: function (e) {
-      e.preventDefault();
       if (!util.isUIFree()) return;
 
       var level = this.widget.getCurrentLevel(true)
-        , node = level._data
+        , target_id = $(this.el).find('select[name=stuff] option:selected:first').val()
+        , node = level[target_id]._data
       ;
       if (!node) return alert('Please select an item to rename.');
       
@@ -719,8 +720,8 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
     renameNode: function (newName) {
       if (!this.options.node_id) return;
 
-      // the user can only rename the current subcategory
-      this.level._ref._data.name = newName;
+      var node = this.level._ref[this.options.node_id];
+      node._data.name = newName;
     },
 
     getTypeName: function () {

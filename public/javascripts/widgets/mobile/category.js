@@ -11,6 +11,7 @@
   window.widgetClasses.category = Widget.extend({
     
     catTemplate: util.getTemplate('category-cat'),
+    itemWrapTemplate: util.getTemplate('item-wrap'),
     
     init: function () {
       _.bindAll(this,'onHomeViewClick');
@@ -26,6 +27,7 @@
       
       var extraData = {
         stuff: level._items || [],
+        itemWrapTemplate: this.itemWrapTemplate,
         itemTemplate: this.itemTemplate,
         catTemplate: this.catTemplate
       };

@@ -772,16 +772,12 @@ var util = {
     uploader.unbindAll();
 
     uploader.bind('Init', function (up, params) {
-      util.log('INIT', up, params);
-      context.find('.debug')
-        .append("<div>Current runtime: " + params.runtime + "</div>");
-
       if (uploader.files.length > 0 && uploader.files[0].status === plupload.DONE) {
         uploader.removeFile(uploader.files[0]);
       }
       else if (uploader.files.length > 0) {
         file = uploader.files[0];
-        context.find('.debug').empty().append(
+        context.find('.selected-file').empty().append(
           '<div id="' + file.id + '">' +
           file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' +
         '</div>');
@@ -814,13 +810,15 @@ var util = {
       }
 
       $.each(files, function (i, file) {
-        context.find('.debug').empty().append(
+        context.find('.selected-file').empty().append(
           '<div id="' + file.id + '">' +
           file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' +
         '</div>');
       });
 
-      $('#'+pickerId).prop('disabled', true);
+      if (uploader.yomobiOptions.auto === true) {
+        $('#'+pickerId).prop('disabled', true);
+      }
       
       if (isAutoEnabled) {
         util.log('starting uploader');
@@ -835,7 +833,7 @@ var util = {
     });
 
     uploader.bind('Error', function (up, err) {
-      context.find('.debug').append("<div>Error: " + err.code +
+      context.find('.error').append("<div>Error: " + err.code +
         ", Message: " + err.message +
         (err.file ? ", File: " + err.file.name : "") +
         "</div>"

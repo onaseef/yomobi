@@ -375,7 +375,11 @@
               if (stuff[i].type === "cat") {
                 print( catTemplate({ cat:stuff[i], cycle:util.cycle('c0','c1') }) );
               } else {
-                print( itemTemplate({ item:stuff[i], cycle:util.cycle('c0','c1') }) );
+                print( itemWrapTemplate({
+                  item: stuff[i],
+                  itemTemplate: itemTemplate,
+                  cycle: util.cycle('c0','c1')
+                }) );
               }
     | } %>
   

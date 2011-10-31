@@ -25,8 +25,9 @@ script.add-subcat-dialog(type="text/template")
       input type="text" value="{{ _maybe.name }}" name="cat"
 
       .wphoto-wrap
-        .uploader-browse-button.pretty-button name="pick_files" Pick files
-        .debug
+        .selected-file.lfloat &nbsp;
+        button name="pick_files" Add Picture
+        .error
       input type="hidden" value="" name="wphotoUrl"
 
       input name="add" type="button" value="Add"
@@ -110,22 +111,27 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
     br
 
     .crumb-wrap
-      | <% if (onRootPage !== true) { %>
-      a.rename-link href="#" Rename
-      | <% } %>
-      b Editing:
-      br
-      b.blue {{ catCrumbs }}
+      erb:
+        <b>Editing: <span class="blue">{{ catCrumbs }}</span></b>
 
     | <% if (onRootPage !== true) { %>
-    .wphoto-wrap
-      img src="{{ wphotoPreviewPath }}"
-      | <% if (wphotoPreviewPath !== '/images/no-wphoto.png') { %>
-      a.remove-wphoto-link Remove
-      | <% } %>
-      br
-      .uploader-browse-button.pretty-button name="pick_files" Pick files
-      .debug
+    table.wphoto-wrap
+      tbody
+        tr
+          td
+            img src="{{ wphotoPreviewPath }}"
+          td
+            label Select a Picture...
+            br
+            .selected-file.lfloat &nbsp;
+            button name="pick_files" Browse...
+            .error
+        | <% if (wphotoPreviewPath !== '/images/no-wphoto.png') { %>
+        tr
+          td
+            a.remove-wphoto-link href="#" Remove Picture
+          td
+        | <% } %>
     | <% } %>
 
     select name="stuff" multiple="multiple"
@@ -141,6 +147,7 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
     | <%  } %>
 
     | <%       if (isThereStuff == true) { %>
+    input type="button" name="rename" value="Rename"
     input type="button" name="edit" value="Edit"
     input type="button" name="delete" value="Delete"
     | <%       } %>
@@ -155,11 +162,10 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
 
     | <% } else { %>
     br
-    .crumb-wrap
-      a.rename-link href="#" Rename
-      b Editing Page:
-      br
-      b.blue {{ catCrumbs }}
+    b Editing page:
+    br
+    b.blue {{ catCrumbs }}
+    br
     br
     #jeditor-wrapper
       textarea#jeditor {{ content }}

@@ -275,12 +275,28 @@ p {
   .item {
     padding: 16px 0px 16px 0px;
     font-size: 16px;
+    overflow: auto;
+
     & > div { padding-bottom: 2px; }
     & > :empty { padding: 0; }
+
     img {
-      max-height: 290px;
-      max-width: 290px; }
+      /* Optional rounded corners for browsers that support it */
+      -moz-border-radius: 3px;
+      -khtml-border-radius: 3px;
+      -webkit-border-radius: 3px;
+      border-radius: 3px;
+    }
+    .wphoto {
+      text-align: center;
+      width: 70px;
+      float: left; }
+    .wphoto + div {
+      width: 200px;
+      padding-left: 10px;
+      float: left; }
   }
+
   .item.category {
     background: url(/images/ui/subcat-arrow.png) 100% 50% no-repeat; }
   .item.leaf-name {
