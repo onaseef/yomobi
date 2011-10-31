@@ -25,8 +25,9 @@ script.add-subcat-dialog(type="text/template")
       input type="text" value="{{ _maybe.name }}" name="cat"
 
       .wphoto-wrap
-        .uploader-browse-button.pretty-button name="pick_files" Pick files
-        .debug
+        .selected-file.lfloat &nbsp;
+        button name="pick_files" Add Picture
+        .error
       input type="hidden" value="" name="wphotoUrl"
 
       input name="add" type="button" value="Add"
@@ -118,14 +119,23 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
       b.blue {{ catCrumbs }}
 
     | <% if (onRootPage !== true) { %>
-    .wphoto-wrap
-      img src="{{ wphotoPreviewPath }}"
-      | <% if (wphotoPreviewPath !== '/images/no-wphoto.png') { %>
-      a.remove-wphoto-link Remove
-      | <% } %>
-      br
-      .uploader-browse-button.pretty-button name="pick_files" Pick files
-      .debug
+    table.wphoto-wrap
+      tbody
+        tr
+          td
+            img src="{{ wphotoPreviewPath }}"
+          td
+            label Select a Picture...
+            br
+            .selected-file.lfloat &nbsp;
+            button name="pick_files" Browse...
+            .error
+        | <% if (wphotoPreviewPath !== '/images/no-wphoto.png') { %>
+        tr
+          td
+            a.remove-wphoto-link Remove Picture
+          td
+        | <% } %>
     | <% } %>
 
     select name="stuff" multiple="multiple"

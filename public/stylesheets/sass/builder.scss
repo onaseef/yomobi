@@ -403,6 +403,19 @@ div.wysiwyg ul.toolbar {
   }
 }
 
+.wphoto-wrap .selected-file {
+  width: 120px;
+  height: 1.25em;
+  padding: 4px;
+  background: #fff;
+  border: 1px solid #DFDFDF;
+  border-top: 1px solid #DDDDDD;
+  border-bottom: 1px solid #E2E2E2;
+  font-size: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  clear: left;
+}
   
 #builder .edit-area.hours {
   .double-time { margin-bottom: 10px; }
@@ -472,7 +485,14 @@ div.wysiwyg ul.toolbar {
   }
 
   .wphoto-wrap {
-    & > * { float: left; margin-left: 5px; }
+    width: 100%;
+    border: 1px dashed #515053;
+    margin: 10px 0;
+    padding: 5px;
+    label {
+      font-weight: bold;
+      font-size: 0.8em;
+    }
   }
 
   .crumb-wrap {

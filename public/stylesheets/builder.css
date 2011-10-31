@@ -363,6 +363,19 @@ div.wysiwyg ul.toolbar {
 .widget-editor .edit-area label {
   white-space: normal; }
 
+.wphoto-wrap .selected-file {
+  width: 120px;
+  height: 1.25em;
+  padding: 4px;
+  background: #fff;
+  border: 1px solid #DFDFDF;
+  border-top: 1px solid #DDDDDD;
+  border-bottom: 1px solid #E2E2E2;
+  font-size: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  clear: left; }
+
 #builder .edit-area.hours .double-time {
   margin-bottom: 10px; }
 #builder .edit-area.hours .day-checkbox {
@@ -423,9 +436,14 @@ div.wysiwyg ul.toolbar {
   #builder .edit-area.category .icon-wrap img, #builder .edit-area.page_tree .icon-wrap img {
     width: 18px;
     height: 18px; }
-#builder .edit-area.category .wphoto-wrap > *, #builder .edit-area.page_tree .wphoto-wrap > * {
-  float: left;
-  margin-left: 5px; }
+#builder .edit-area.category .wphoto-wrap, #builder .edit-area.page_tree .wphoto-wrap {
+  width: 100%;
+  border: 1px dashed #515053;
+  margin: 10px 0;
+  padding: 5px; }
+  #builder .edit-area.category .wphoto-wrap label, #builder .edit-area.page_tree .wphoto-wrap label {
+    font-weight: bold;
+    font-size: 0.8em; }
 #builder .edit-area.category .crumb-wrap, #builder .edit-area.page_tree .crumb-wrap {
   padding: 1px 0 0 0; }
   #builder .edit-area.category .crumb-wrap .rename-link, #builder .edit-area.page_tree .crumb-wrap .rename-link {
