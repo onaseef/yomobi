@@ -1,33 +1,70 @@
-- { name: about-us, pname: about-us }
-- { name: blog, pname: blog }
-- { name: booking-request, pname: booking-request }
-- { name: business-hours, pname: business-hours }
-- { name: call-me-back, pname: call-me-back }
-- { name: call-us, pname: call-us }
-- { name: category, pname: category }
-- { name: coupon, pname: coupon }
-- { name: custom-page, pname: custom-page }
-- { name: donate, pname: donate }
-- { name: event-calendar, pname: event-calendar }
+- { name: about-us, pname: Information }
+- { name: faq, pname: F.A.Q. }
+- { name: book, pname: Information }
+- { name: blog, pname: Blog }
+- { name: booking-request, pname: Booking Request }
+- { name: business-hours, pname: Business Hours }
+- { name: call-me-back, pname: Call Me Back }
+- { name: call-us, pname: Call }
+- { name: category, pname: Category }
+- { name: products, pname: Product Listing }
+- { name: property-listings, pname: Property Listings }
+- { name: services, pname: Services Listing }
+- { name: menu, pname: Food Menu }
+- { name: coupon, pname: Coupon }
+- { name: custom-page, pname: Page }
+- { name: donate, pname: Donate }
+- { name: volunteer, pname: Volunteer }
+- { name: weather-1, pname: Weather }
+- { name: event-calendar, pname: Calendar }
+- { name: event-calendar-2, pname: Calendar }
+- { name: event-calendar-3, pname: Calendar }
 - { name: facebook, pname: facebook }
-- { name: find-us, pname: find-us }
-- { name: flickr, pname: flickr }
-- { name: full-website, pname: full-website }
-- { name: keep-me-informed, pname: keep-me-informed }
-- { name: leave-a-message, pname: leave-a-message }
-- { name: link, pname: link }
-- { name: listings, pname: listings }
-- { name: locations, pname: locations }
-- { name: menu, pname: menu }
-- { name: news, pname: news }
-- { name: photo-bucket, pname: photo-bucket }
-- { name: photos, pname: photos }
-- { name: picasa, pname: picasa }
-- { name: products, pname: products }
-- { name: property-listings, pname: property-listings }
-- { name: reviews, pname: reviews }
-- { name: services, pname: services }
-- { name: share, pname: share }
-- { name: tell-a-friend, pname: tell-a-friend }
 - { name: twitter, pname: twitter }
-- { name: video, pname: video }
+- { name: share, pname: Share }
+- { name: tell-a-friend, pname: Tell A Friend }
+- { name: find-us, pname: Map }
+- { name: locations, pname: Map }
+- { name: full-website, pname: Full Site }
+- { name: keep-me-informed, pname: Keep Me Informed }
+- { name: leave-a-message, pname: Message }
+- { name: feedback-1, pname: Message }
+- { name: feedback-2, pname: Message }
+- { name: feedback-3, pname: Message }
+- { name: link, pname: Link }
+- { name: news, pname: News }
+- { name: news-2, pname: News }
+- { name: photos, pname: Photos }
+- { name: photo-gallary-1, pname: Photos }
+- { name: photo-gallary-2, pname: Photos }
+- { name: flickr, pname: flickr }
+- { name: photo-bucket, pname: photobucket }
+- { name: picasa, pname: picasa }
+- { name: reviews, pname: Reviews }
+- { name: video, pname: Video }
+- { name: video-2, pname: Video }
+- { name: address-book-1, pname: Address Book }
+- { name: articles, pname: Articles }
+- { name: building-1, pname: Building }
+- { name: building-2, pname: Building }
+- { name: business-job-1, pname: Job / Employment }
+- { name: business-job-2, pname: Job / Employment }
+- { name: business-partners, pname: Business Partners }
+- { name: class-1, pname: Class }
+- { name: class-2, pname: Class }
+- { name: fitness-1, pname: Fitness }
+- { name: fitness-2, pname: Fitness }
+- { name: guidelines, pname: Guidelines }
+- { name: person-male-1, pname: Person }
+- { name: person-male-2, pname: Person }
+- { name: person-female-1, pname: Person }
+- { name: person-female-2, pname: Person }
+- { name: person-group-1, pname: Group }
+- { name: person-group-2, pname: Group }
+- { name: person-group-3, pname: Group }
+- { name: person-group-4, pname: Group }
+- { name: person-group-5, pname: Group }
+- { name: person-group-6, pname: Group }
+- { name: professional-1, pname: Professional }
+- { name: therapy-1, pname: Therapy }
+- { name: therapy-2, pname: Therapy }
