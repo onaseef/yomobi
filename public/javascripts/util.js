@@ -829,7 +829,9 @@ var util = {
     });
 
     uploader.bind('UploadProgress', function (up, file) {
-      $('#' + file.id + " b").html(file.percent + "%");
+      var width = context.find('.selected-file').outerWidth();
+      var offset = parseInt(-500 + file.percent * width / 100) + 'px 0';
+      context.find('.selected-file').css('background-position', offset);
     });
 
     uploader.bind('Error', function (up, err) {
