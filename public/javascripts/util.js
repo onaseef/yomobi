@@ -828,6 +828,10 @@ var util = {
       up.refresh(); // Reposition Flash/Silverlight
     });
 
+    uploader.bind('BeforeUpload', function () {
+      context.find('.selected-file').text('Uploading...');
+    });
+
     uploader.bind('UploadProgress', function (up, file) {
       var width = context.find('.selected-file').outerWidth();
       var offset = parseInt(-500 + file.percent * width / 100) + 'px 0';
@@ -845,7 +849,7 @@ var util = {
     });
 
     uploader.bind('FileUploaded', function (up, file, response) {
-      $('#' + file.id + " b").html("100%");
+      context.find('.selected-file').text('Upload Complete!');
       $('#'+pickerId).prop('disabled', false);
 
       var resData = $.parseJSON(response.response);
