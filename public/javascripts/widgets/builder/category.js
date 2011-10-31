@@ -755,8 +755,7 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
         _items: level._items,
         itemTypeName: this.model.get('itemTypeName'),
         addedItems: this.addedItems,
-        mode: this.mode,
-        wphotoPreviewPath: item.wphotoUrl || g.noPhotoPath
+        mode: this.mode
       });
       templateData.innerContent = this.template(templateData);
       var dialogHtml = itemDialogTemplate(templateData);

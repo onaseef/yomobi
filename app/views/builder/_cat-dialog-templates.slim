@@ -9,15 +9,17 @@ script.item-dialog(type="text/template")
     table.wphoto-wrap
       tbody
         tr
+          | <% if (_maybe.wphotoUrl) { %>
           td
-            img src="{{ wphotoPreviewPath }}"
+            img src="{{ wphotoUrl }}"
+          | <% } %>
           td
             label Select a Picture...
             br
             .selected-file.lfloat &nbsp;
             button name="pick_files" Browse...
             .error
-        | <% if (wphotoPreviewPath !== '/images/no-wphoto.png') { %>
+        | <% if (_maybe.wphotoUrl) { %>
         tr
           td
             a.remove-wphoto-link href="#" Remove Picture
