@@ -282,7 +282,6 @@ p {
 .page .content.category .name {
   float: left;
   width: 97%;
-  padding-right: 12px;
   font-size: 16px;
   font-weight: bold; }
 .page .content.category .name.long {

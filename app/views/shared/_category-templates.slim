@@ -72,5 +72,5 @@ script.item-wrap type="text/template"
     div
       | <% print( itemTemplate({ item:item }) ); %>
     | <% } else {
-            print( itemTemplate(item) );
+            print( itemTemplate({ item:item }) );
     | } %>
