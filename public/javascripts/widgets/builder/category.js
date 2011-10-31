@@ -800,7 +800,6 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
     },
     
     validateItem: function (item) {
-  		$(this.el).dialog("close");
 
       var name = $.trim(item.name)
         , nameCompare = name.toLowerCase()
