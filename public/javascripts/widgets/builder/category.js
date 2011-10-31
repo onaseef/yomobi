@@ -466,6 +466,7 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
     },
 
     removeWPhoto: function (e) {
+      e.preventDefault();
       var currentNode = this.widget.getCurrentLevel(true);
       this.removeWPhotoFromNode(currentNode);
       this.accept();
@@ -790,9 +791,11 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
             addAnother: true
             })
           ).end()
-        .find('.remove-wphoto-link').click(function () {
+        .find('.remove-wphoto-link').click(function (e) {
+          e.preventDefault();
+          $(this).hide();
           $(self.el).find('[name=wphotoUrl]').val('').end()
-                    .find('.wphoto-wrap img').attr('src', g.noPhotoPath);
+                    .find('.wphoto-wrap img').hide();
         }).end()
       ;
 
