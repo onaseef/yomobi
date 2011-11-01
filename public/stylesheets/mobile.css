@@ -33,27 +33,27 @@ p {
       margin-bottom: 0;
       color: #880000; }
 
-#canvas .page .content {
+#canvas .page > .content {
   min-height: 120px;
   padding: 20px 10px;
   font-size: 16px; }
-  #canvas .page .content label {
+  #canvas .page > .content label {
     margin-bottom: 2px; }
-  #canvas .page .content input[type=text] {
+  #canvas .page > .content input[type=text] {
     width: 70%;
     margin: 0px 0px 10px 0px;
     font-size: 1em; }
-  #canvas .page .content textarea {
+  #canvas .page > .content textarea {
     width: 90%;
     font-size: 1em;
     height: 4em; }
-  #canvas .page .content input[type=submit] {
+  #canvas .page > .content input[type=submit] {
     margin: 10px 0;
     font-size: 1em; }
-  #canvas .page .content select {
+  #canvas .page > .content select {
     font-size: 1em;
     margin: 0 0 10px 0; }
-  #canvas .page .content .divider {
+  #canvas .page > .content .divider {
     border-top: 1px solid #dddddd;
     margin: 8px 0; }
 
@@ -254,12 +254,15 @@ p {
       -khtml-border-radius: 3px;
       -webkit-border-radius: 3px;
       border-radius: 3px; }
+    .page .content.category .item .content, .page .content.page_tree .item .content {
+      width: 97%;
+      float: none; }
     .page .content.category .item .wphoto, .page .content.page_tree .item .wphoto {
       text-align: center;
-      width: 70px;
+      width: 27%;
       float: left; }
-    .page .content.category .item .wphoto + div, .page .content.page_tree .item .wphoto + div {
-      width: 200px;
+    .page .content.category .item .wphoto + .content, .page .content.page_tree .item .wphoto + .content {
+      width: 64%;
       padding-left: 10px;
       float: left; }
   .page .content.category .item.category, .page .content.page_tree .item.category {

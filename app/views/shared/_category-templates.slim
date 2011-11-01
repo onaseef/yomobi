@@ -69,8 +69,6 @@ script.item-wrap type="text/template"
     | <% if (item.wphotoUrl) { %>
     .wphoto
       img src="{{ item.wphotoUrl }}"
-    div
+    | <% } %>
+    .content
       | <% print( itemTemplate({ item:item }) ); %>
-    | <% } else {
-            print( itemTemplate({ item:item }) );
-    | } %>

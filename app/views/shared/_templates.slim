@@ -361,11 +361,10 @@
       | <% if (cat.wphotoUrl) { %>
       .wphoto
         img src="{{ cat.wphotoUrl }}"
-      div
-        | {{ cat.name }}
-      | <% } else { %>
-      | {{ cat.name }}
       | <% } %>
+      .content
+        | {{ cat.name }}
+      
 
   script.category-page(type="text/template")
     | <% for (var i=0; i<stuff.length;i++) {
