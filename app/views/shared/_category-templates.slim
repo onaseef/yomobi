@@ -35,7 +35,7 @@ script.property-listings-item type="text/template"
     a href="{{ item.photo_url }}" View Property
   | <% } %>
 
-  | <% if (_maybe.mls) { %>
+  | <% if (item.mls) { %>
   .mls
     ' MLS #:
     a href="http://www.realtor.com/search/searchresults.aspx?mlslid={{ item.mls }}" {{ item.mls }}
@@ -72,3 +72,4 @@ script.item-wrap type="text/template"
     | <% } %>
     .content
       | <% print( itemTemplate({ item:item }) ); %>
+    .clearfix= ""
