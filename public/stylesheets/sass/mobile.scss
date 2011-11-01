@@ -234,11 +234,11 @@ p {
 // Widget Specific Styling //
 /////////////////////////////
 
-.page .content.leave_msg {
+.page > .content.leave_msg {
   textarea[name="feedback"] {
     width: 95%; } }
 
-.page .content.hours {
+.page > .content.hours {
   .day-name {
     width: 95px;
     padding-right: 10px;
@@ -253,7 +253,7 @@ p {
   .all-day {
     color: #000099; } }
 
-.page .content.gmap {
+.page > .content.gmap {
   h1, p {
     padding-left: 4px; }
   .maps {
@@ -270,12 +270,11 @@ p {
       color: #3c59a0;
       font-weight: bold; } } }
 
-.page .content.category, .page .content.page_tree {
+.page > .content.category, .page > .content.page_tree {
   padding: 0 10px 20px 8px !important;
   .item {
     padding: 16px 0px 16px 0px;
     font-size: 16px;
-    overflow: auto;
 
     & > div { padding-bottom: 2px; }
     & > :empty { padding: 0; }
@@ -320,7 +319,7 @@ p {
     margin: 0; }
   }
 
-.page .content.category {
+.page > .content.category {
   .name {
     float: left;
     width: 97%;

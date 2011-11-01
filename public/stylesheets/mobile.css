@@ -205,101 +205,100 @@ p {
 .clearfix {
   clear: both; }
 
-.page .content.leave_msg textarea[name="feedback"] {
+.page > .content.leave_msg textarea[name="feedback"] {
   width: 95%; }
 
-.page .content.hours .day-name {
+.page > .content.hours .day-name {
   width: 95px;
   padding-right: 10px;
   font-weight: bold;
   float: left; }
-.page .content.hours .day-hours {
+.page > .content.hours .day-hours {
   float: left; }
-.page .content.hours .closed {
+.page > .content.hours .closed {
   color: #aa0000; }
-.page .content.hours .open {
+.page > .content.hours .open {
   color: #007700; }
-.page .content.hours .all-day {
+.page > .content.hours .all-day {
   color: #000099; }
 
-.page .content.gmap h1, .page .content.gmap p {
+.page > .content.gmap h1, .page > .content.gmap p {
   padding-left: 4px; }
-.page .content.gmap .maps {
+.page > .content.gmap .maps {
   height: 305px;
   text-align: center; }
-  .page .content.gmap .maps .map-link {
+  .page > .content.gmap .maps .map-link {
     margin: 10px 0; }
-.page .content.gmap .directions {
+.page > .content.gmap .directions {
   margin-top: 15px; }
-  .page .content.gmap .directions .banner {
+  .page > .content.gmap .directions .banner {
     padding: 2px 0;
     margin-bottom: 4px;
     background: #c4cde0;
     color: #3c59a0;
     font-weight: bold; }
 
-.page .content.category, .page .content.page_tree {
+.page > .content.category, .page > .content.page_tree {
   padding: 0 10px 20px 8px !important; }
-  .page .content.category .item, .page .content.page_tree .item {
+  .page > .content.category .item, .page > .content.page_tree .item {
     padding: 16px 0px 16px 0px;
-    font-size: 16px;
-    overflow: auto; }
-    .page .content.category .item > div, .page .content.page_tree .item > div {
+    font-size: 16px; }
+    .page > .content.category .item > div, .page > .content.page_tree .item > div {
       padding-bottom: 2px; }
-    .page .content.category .item > :empty, .page .content.page_tree .item > :empty {
+    .page > .content.category .item > :empty, .page > .content.page_tree .item > :empty {
       padding: 0; }
-    .page .content.category .item img, .page .content.page_tree .item img {
+    .page > .content.category .item img, .page > .content.page_tree .item img {
       /* Optional rounded corners for browsers that support it */
       -moz-border-radius: 3px;
       -khtml-border-radius: 3px;
       -webkit-border-radius: 3px;
       border-radius: 3px; }
-    .page .content.category .item .content, .page .content.page_tree .item .content {
+    .page > .content.category .item .content, .page > .content.page_tree .item .content {
       width: 97%;
       float: none; }
-    .page .content.category .item .wphoto, .page .content.page_tree .item .wphoto {
+    .page > .content.category .item .wphoto, .page > .content.page_tree .item .wphoto {
       text-align: center;
       width: 27%;
       float: left; }
-    .page .content.category .item .wphoto + .content, .page .content.page_tree .item .wphoto + .content {
+    .page > .content.category .item .wphoto + .content, .page > .content.page_tree .item .wphoto + .content {
       width: 64%;
       padding-left: 10px;
       float: left; }
-  .page .content.category .item.category, .page .content.page_tree .item.category {
+  .page > .content.category .item.category, .page > .content.page_tree .item.category {
     background: url(/images/ui/subcat-arrow.png) 100% 50% no-repeat; }
-  .page .content.category .item.leaf-name, .page .content.page_tree .item.leaf-name {
+  .page > .content.category .item.leaf-name, .page > .content.page_tree .item.leaf-name {
     background: url(/images/ui/subcat-arrow.png) 100% 50% no-repeat; }
-  .page .content.category .item.category, .page .content.category .item.leaf-name, .page .content.page_tree .item.category, .page .content.page_tree .item.leaf-name {
+  .page > .content.category .item.category, .page > .content.category .item.leaf-name, .page > .content.page_tree .item.category, .page > .content.page_tree .item.leaf-name {
     padding: 16px 20px 16px 0px;
     cursor: pointer; }
-  .page .content.category .item:first-child, .page .content.category .category:first-child, .page .content.page_tree .item:first-child, .page .content.page_tree .category:first-child {
+  .page > .content.category .item:first-child, .page > .content.category .category:first-child, .page > .content.page_tree .item:first-child, .page > .content.page_tree .category:first-child {
     border-top: none; }
-  .page .content.category .c0, .page .content.category .c1, .page .content.page_tree .c0, .page .content.page_tree .c1 {
+  .page > .content.category .c0, .page > .content.category .c1, .page > .content.page_tree .c0, .page > .content.page_tree .c1 {
     border-top: 1px solid #d2d2d2; }
-  .page .content.category .divider, .page .content.page_tree .divider {
+  .page > .content.category .divider, .page > .content.page_tree .divider {
     height: 5px;
     border-top: 1px solid #b3b3b3;
     background: #dddddd;
     margin: 0; }
 
-.page .content.category .name {
+.page > .content.category .name {
   float: left;
   width: 97%;
   font-size: 16px;
   font-weight: bold; }
-.page .content.category .name.long {
+.page > .content.category .name.long {
   width: 100%;
   padding: 0 0 8px 0; }
-.page .content.category .price {
+.page > .content.category .price {
   float: left;
   width: 97%;
   font-size: 14px; }
-.page .content.category .desc {
+.page > .content.category .desc {
   width: 97%;
   margin-top: 0;
   padding-top: 4px;
   font-size: 15px; }
-.page .content.category .desc.long {
+.page > .content.category .desc.long {
   width: 100%; }
 
 #cat-crumbs-test {
