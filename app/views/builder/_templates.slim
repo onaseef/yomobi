@@ -36,6 +36,7 @@ script.add-subcat-dialog(type="text/template")
       p.error Error: {{ _maybe.error }}
       | <% } %>
       | <% if (addedCats.length > 0) { %>
+      .divider
       .other-names
         b Added <% print( util.pluralize(typeName) ); %>:
         ul
