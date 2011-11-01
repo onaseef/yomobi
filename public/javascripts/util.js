@@ -790,7 +790,11 @@ var util = {
     // because we're in a dialog, sometimes we need to set the uploader to be
     // on top of everything else, as well as send it back
     uploader.layover = $('#' + uploader.id + '_' + uploader.runtime + '_container');
-    uploader.bringToFront = function () { this.layover.css('z-index', 10000); };
+    uploader.bringToFront = function () {
+      if ($.browser.mozilla && $.browser.version.slice(0,3) !== "1.9")
+        return;
+      this.layover.css('z-index', 10000);
+    };
     uploader.sendToBack   = function () { this.layover.css('z-index', -1); };
 
     if (uploader.yomobiOptions.alwaysOnTop === true) {
