@@ -58,11 +58,6 @@ script.locations-item type="text/template"
 
   pre.desc.long {{ item.desc }}
 
-/ this represents a page in the page_tree list view
-script.category-item type="text/template"
-  .leaf-name.item data-id="{{ item._id }}"
-    | {{ item.name }}
-
 / this template is used when a photo is being displayed
 script.item-wrap type="text/template"
   .item class="{{ cycle }}"

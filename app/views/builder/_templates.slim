@@ -163,11 +163,28 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
 
     | <% } else { %>
     br
-    b Editing page:
-    br
-    b.blue {{ catCrumbs }}
-    br
-    br
+    .crumb-wrap
+      erb:
+        <b>Editing: <span class="blue">{{ catCrumbs }}</span></b>
+
+    table.wphoto-wrap
+      tbody
+        tr
+          td
+            img src="{{ wphotoPreviewPath }}"
+          td
+            label Select a Picture...
+            br
+            .selected-file.lfloat &nbsp;
+            button name="pick_files" Browse...
+            .error
+        | <% if (wphotoPreviewPath !== '/images/no-wphoto.png') { %>
+        tr
+          td
+            a.remove-wphoto-link href="#" Remove Picture
+          td
+        | <% } %>
+
     #jeditor-wrapper
       textarea#jeditor {{ content }}
     br

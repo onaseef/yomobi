@@ -359,8 +359,8 @@
     | <% } %>
     pre.desc {{ _maybe.description }}
   
-  script.category-cat(type="text/template")
-    .category.item class="{{ cycle }}" data-id="{{ cat._id }}"
+  script.category-cat.category-item(type="text/template")
+    .category.item class="{{ cat._type }}" data-id="{{ cat._id }}"
       | <% if (cat.wphotoUrl) { %>
       table
         tbody
@@ -375,7 +375,7 @@
 
   script.category-page(type="text/template")
     | <% for (var i=0; i<stuff.length;i++) {
-              if (stuff[i].type === "cat") {
+              if (stuff[i].type === "cat" || stuff[i].type === "page") {
                 print( catTemplate({ cat:stuff[i], cycle:util.cycle('c0','c1') }) );
               } else {
                 print( itemWrapTemplate({
