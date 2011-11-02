@@ -388,6 +388,9 @@
   
   script.page_tree-page(type="text/template")
     h3 {{ title }}
+    | <% if (_maybe.wphotoUrl) { %>
+    img src="{{ wphotoUrl }}"
+    | <% } %>
     .leaf-content {{ content }}
 
   / =====================
