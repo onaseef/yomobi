@@ -576,6 +576,8 @@ div.wysiwyg ul.toolbar {
 
 div.plupload {
   cursor: pointer; }
+  div.plupload input {
+    cursor: pointer; }
 
 button[name=pick_files] {
   cursor: pointer; }
