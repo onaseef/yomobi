@@ -10,8 +10,10 @@
       this.bind('wysiwyg-paste',this.queueStripStyles);
     },
 
-    onEditStart: function () {
+    onEditStart: function (resetChanges,isFirstEdit) {
+      this.originalContent = this.widget.get('content');
       util.spawnJEditor();
+      if (resetChanges || isFirstEdit) this.changes = {};
     },
 
     grabWidgetValues: function () {
@@ -19,7 +21,11 @@
     },
 
     setDirty: function () {
-      this.setChanged('content',true);
+      if (!this.hasChanges() &&
+          this.originalContent !== $('#jeditor').wysiwyg('getContent'))
+      {
+        this.setChanged('content',true);
+      }
     },
 
     queueStripStyles: function () {

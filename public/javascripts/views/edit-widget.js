@@ -186,7 +186,7 @@
       util.log('changeName',newName);
     },
     
-    startEditing: function (resetChanges,firstEdit) {
+    startEditing: function (resetChanges,isFirstEdit) {
       util.log('Editing widget:',this.widget.get('name'),this.widget.isNew());
       var widget = this.widget
         , helpText = util.getWidgetBData(widget).help
@@ -211,7 +211,7 @@
         .toggleClass('can-edit-icon', widget._bdata.canEditIcon)
       ;
       
-      if (this.onEditStart) this.onEditStart(resetChanges,firstEdit);
+      if (this.onEditStart) this.onEditStart(resetChanges,isFirstEdit);
     },
     
     stopEditing: function () {
