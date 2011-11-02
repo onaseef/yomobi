@@ -872,6 +872,11 @@ var util = {
       failSafe -= 1;
     }
     return ($elem && $elem.hasClass(className)) ? $elem : null;
+  },
+
+  largerWphoto: function (wphotoUrl) {
+    if (!wphotoUrl) return null;
+    return wphotoUrl.replace('-thumb?', '-original?');
   }
 }
 

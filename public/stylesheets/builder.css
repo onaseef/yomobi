@@ -363,11 +363,19 @@ div.wysiwyg ul.toolbar {
 .widget-editor .edit-area label {
   white-space: normal; }
 
-.wphoto-wrap img {
-  -moz-border-radius: 3px;
-  -khtml-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px; }
+.wphoto-wrap {
+  width: 100%;
+  border: 1px dashed #515053;
+  margin: 10px 0;
+  padding: 5px; }
+  .wphoto-wrap label {
+    font-weight: bold;
+    font-size: 0.8em; }
+  .wphoto-wrap img {
+    -moz-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px; }
 
 .wphoto-wrap .selected-file {
   width: 120px;
@@ -385,6 +393,9 @@ div.wysiwyg ul.toolbar {
   overflow: hidden;
   white-space: nowrap;
   clear: left; }
+
+#dialog-confirm .wphoto-wrap {
+  border: none; }
 
 #builder .edit-area.hours .double-time {
   margin-bottom: 10px; }
@@ -446,14 +457,6 @@ div.wysiwyg ul.toolbar {
   #builder .edit-area.category .icon-wrap img, #builder .edit-area.page_tree .icon-wrap img {
     width: 18px;
     height: 18px; }
-#builder .edit-area.category .wphoto-wrap, #builder .edit-area.page_tree .wphoto-wrap {
-  width: 100%;
-  border: 1px dashed #515053;
-  margin: 10px 0;
-  padding: 5px; }
-  #builder .edit-area.category .wphoto-wrap label, #builder .edit-area.page_tree .wphoto-wrap label {
-    font-weight: bold;
-    font-size: 0.8em; }
 #builder .edit-area.category .crumb-wrap, #builder .edit-area.page_tree .crumb-wrap {
   padding: 1px 0 0 0; }
 #builder .edit-area.category select, #builder .edit-area.page_tree select {

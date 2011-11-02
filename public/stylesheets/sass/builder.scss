@@ -403,11 +403,21 @@ div.wysiwyg ul.toolbar {
   }
 }
 
-.wphoto-wrap img {
-  -moz-border-radius: 3px;
-  -khtml-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
+.wphoto-wrap {
+  width: 100%;
+  border: 1px dashed #515053;
+  margin: 10px 0;
+  padding: 5px;
+  label {
+    font-weight: bold;
+    font-size: 0.8em;
+  }
+  img {
+    -moz-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+  }
 }
 .wphoto-wrap .selected-file {
   width: 120px;
@@ -427,6 +437,9 @@ div.wysiwyg ul.toolbar {
   overflow: hidden;
   white-space: nowrap;
   clear: left;
+}
+#dialog-confirm .wphoto-wrap {
+  border: none;
 }
   
 #builder .edit-area.hours {
@@ -494,17 +507,6 @@ div.wysiwyg ul.toolbar {
   .icon-wrap {
     padding: 0 5px 0 0;
     img { width: 18px; height: 18px; }
-  }
-
-  .wphoto-wrap {
-    width: 100%;
-    border: 1px dashed #515053;
-    margin: 10px 0;
-    padding: 5px;
-    label {
-      font-weight: bold;
-      font-size: 0.8em;
-    }
   }
 
   .crumb-wrap {
