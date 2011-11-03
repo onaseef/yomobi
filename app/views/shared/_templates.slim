@@ -178,7 +178,7 @@
   script.custom_page-page(type="text/template")
     | <% if (_maybe.wphotoUrl) { %>
     .wphoto-large
-      img src="{{ wphotoUrl }}"
+      img src="{{ wphotoUrlLarge }}"
     | <% } %>
     | {{ _maybe.content }}
     .clearfix
@@ -391,7 +391,7 @@
     h3 {{ title }}
     | <% if (_maybe.wphotoUrl) { %>
     .wphoto-large
-      img src="{{ wphotoUrl }}"
+      img src="{{ wphotoUrlLarge }}"
     | <% } %>
     .leaf-content {{ content }}
 

@@ -8,7 +8,7 @@
 
     getShowData: function () {
       var extraData = {
-        wphotoUrl: util.largerWphoto( this.get('wphotoUrl') )
+        wphotoUrlLarge: util.largerWphoto( this.get('wphotoUrl') )
       };
       return _.extend({}, this.toJSON(), extraData);
     }
