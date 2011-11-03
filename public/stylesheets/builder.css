@@ -381,6 +381,7 @@ div.wysiwyg ul.toolbar {
   width: 120px;
   height: 1.25em;
   padding: 4px;
+  margin-right: 4px;
   background: white url(/images/ui/blue-bar.png) no-repeat -500px 0;
   transition: background-position 2s;
   -moz-transition: background-position 2s;
