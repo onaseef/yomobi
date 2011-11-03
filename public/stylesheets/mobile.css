@@ -320,3 +320,8 @@ pre {
   white-space: -o-pre-wrap;
   word-wrap: break-word;
   font-family: Arial, Helvetica, sans-serif; }
+
+.wphoto-large {
+  float: left; }
+  .wphoto-large img {
+    max-width: 100%; }

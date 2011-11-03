@@ -297,7 +297,8 @@ p {
     .wphoto + .content {
       width: 64%;
       padding-left: 10px;
-      float: left; }
+      float: left;
+    }
   }
 
   .item.category {
@@ -360,4 +361,10 @@ pre {
   white-space: -o-pre-wrap;
   word-wrap: break-word;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+// used in custom_page, about-us, and category-like widgets
+.wphoto-large {
+  float: left;
+  img { max-width: 100%; }
 }
