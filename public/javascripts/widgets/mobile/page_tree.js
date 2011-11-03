@@ -30,7 +30,7 @@
           title: leaf._data.name,
           content: leaf._data.content,
           stuff: [],
-          wphotoUrl: util.largerWphoto(leaf._data.wphotoUrl)
+          wphotoUrlLarge: util.largerWphoto(leaf._data.wphotoUrl)
         };
         return _.extend({},this.toJSON(),extraData);
       }
