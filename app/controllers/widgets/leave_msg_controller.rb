@@ -15,6 +15,7 @@ class Widgets::LeaveMsgController < ApplicationController
       :subject => 'You have a message',
       :from => "\"YoMobi\" <message@yomobi.com>",
       :reply_to => params[:email],
+      :replyto => params[:email],
       :customer_name => params[:name],
       :customer_subject => params[:subject],
       :customer_feedback => params[:feedback],
