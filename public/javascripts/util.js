@@ -742,6 +742,9 @@ var util = {
       max_file_size: '10mb',
       multiple_queues: false,
       multi_selection: false,
+      filters: [
+        { title:'Image Files', extensions:'jpg,jpeg,gif,png' }
+      ],
 
       flash_swf_url: '/javascripts/plupload/plupload.flash.swf',
       multipart: true,
