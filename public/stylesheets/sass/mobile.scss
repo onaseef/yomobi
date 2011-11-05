@@ -279,24 +279,17 @@ p {
     & > div { padding-bottom: 2px; }
     & > :empty { padding: 0; }
 
-    img {
-      /* Optional rounded corners for browsers that support it */
-      -moz-border-radius: 3px;
-      -khtml-border-radius: 3px;
-      -webkit-border-radius: 3px;
-      border-radius: 3px;
-    }
     .content {
       width: 97%;
       float: none;
     }
     .wphoto {
-      text-align: center;
+      text-align: left;
       width: 27%;
       float: left; }
     .wphoto + .content {
       width: 64%;
-      padding-left: 10px;
+      padding-left: 0px;
       float: left;
     }
   }
@@ -364,7 +357,27 @@ pre {
 }
 
 // used in custom_page, about-us, and category-like widgets
-.wphoto-large {
+.wphoto-large, .wphoto{
   float: left;
-  img { max-width: 100%; }
+  text-align:left;
+  img { 
+    max-width: 100%; 
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -khtml-border-radius: 8px;
+    border-radius: 8px;
+    margin: 0px 15px 15px 0px;
+  }
+}
+
+.img-col {
+  width: 80px;
+
+  img {
+    /* Optional rounded corners for browsers that support it */
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -khtml-border-radius: 8px;
+    border-radius: 8px;
+  }
 }
