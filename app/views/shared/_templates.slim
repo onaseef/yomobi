@@ -361,21 +361,21 @@
     pre.desc {{ _maybe.description }}
   
   script.category-cat.category-item(type="text/template")
-    .category.item class="{{ cat._type }}" data-id="{{ cat._id }}"
+    tr.category.item class="{{ cat._type }}" data-id="{{ cat._id }}"
       | <% if (cat.wphotoUrl) { %>
-      table
-        tbody
-          tr
-            td.img-col
-              img src="{{ cat.wphotoUrl }}"
-            td.txt-col
-              | {{ cat.name }}
+      td.img-col
+        img src="{{ cat.wphotoUrl }}"
+      td.txt-col
+        | {{ cat.name }}
       | <% } else { %>
-      | {{ cat.name }}
+      td colspan="2"
+        | {{ cat.name }}
       | <% } %>
 
   script.category-page(type="text/template")
-    | <% for (var i=0; i<stuff.length;i++) {
+    table.node-list
+      tbody
+        | <% for (var i=0; i<stuff.length;i++) {
               if (stuff[i].type === "cat" || stuff[i].type === "page") {
                 print( catTemplate({ cat:stuff[i], cycle:util.cycle('c0','c1') }) );
               } else {
@@ -385,7 +385,7 @@
                   cycle: util.cycle('c0','c1')
                 }) );
               }
-    | } %>
+        | } %>
   
   script.page_tree-page(type="text/template")
     h3 {{ title }}

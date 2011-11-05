@@ -240,33 +240,35 @@ p {
 
 .page > .content.category, .page > .content.page_tree {
   padding: 0 10px 20px 8px !important; }
-  .page > .content.category .item, .page > .content.page_tree .item {
+  .page > .content.category table.node-list, .page > .content.page_tree table.node-list {
+    width: 100%; }
+  .page > .content.category .item td, .page > .content.page_tree .item td {
     padding: 16px 0px 16px 0px;
     font-size: 16px; }
-    .page > .content.category .item > div, .page > .content.page_tree .item > div {
+    .page > .content.category .item td > div, .page > .content.page_tree .item td > div {
       padding-bottom: 2px; }
-    .page > .content.category .item > :empty, .page > .content.page_tree .item > :empty {
+    .page > .content.category .item td > :empty, .page > .content.page_tree .item td > :empty {
       padding: 0; }
-    .page > .content.category .item img, .page > .content.page_tree .item img {
+    .page > .content.category .item td img, .page > .content.page_tree .item td img {
       /* Optional rounded corners for browsers that support it */
       -moz-border-radius: 3px;
       -khtml-border-radius: 3px;
       -webkit-border-radius: 3px;
       border-radius: 3px; }
-    .page > .content.category .item .content, .page > .content.page_tree .item .content {
+    .page > .content.category .item td .content, .page > .content.page_tree .item td .content {
       width: 97%;
       float: none; }
-    .page > .content.category .item .wphoto, .page > .content.page_tree .item .wphoto {
+    .page > .content.category .item td .wphoto, .page > .content.page_tree .item td .wphoto {
       text-align: center;
       width: 27%;
       float: left; }
-    .page > .content.category .item .wphoto + .content, .page > .content.page_tree .item .wphoto + .content {
+    .page > .content.category .item td .wphoto + .content, .page > .content.page_tree .item td .wphoto + .content {
       width: 64%;
       padding-left: 10px;
       float: left; }
-  .page > .content.category .item.category, .page > .content.page_tree .item.category {
+  .page > .content.category .item.category td:last-child, .page > .content.page_tree .item.category td:last-child {
     background: url(/images/ui/subcat-arrow.png) 100% 50% no-repeat; }
-  .page > .content.category .item.leaf-name, .page > .content.page_tree .item.leaf-name {
+  .page > .content.category .item.leaf-name td:last-child, .page > .content.page_tree .item.leaf-name td:last-child {
     background: url(/images/ui/subcat-arrow.png) 100% 50% no-repeat; }
   .page > .content.category .item.category, .page > .content.category .item.leaf-name, .page > .content.page_tree .item.category, .page > .content.page_tree .item.leaf-name {
     padding: 16px 20px 16px 0px;

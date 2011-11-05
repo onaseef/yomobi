@@ -60,11 +60,10 @@ script.locations-item type="text/template"
 
 / this template is used when a photo is being displayed
 script.item-wrap type="text/template"
-  .item class="{{ cycle }}"
+  tr.item class="{{ cycle }}"
     | <% if (item.wphotoUrl) { %>
-    .wphoto
+    td.wphoto
       img src="{{ item.wphotoUrl }}"
     | <% } %>
-    .content
+    td.content colspan="<% print(item.wphotoUrl ? 1 : 2); %>"
       | <% print( itemTemplate({ item:item }) ); %>
-    .clearfix= ""

@@ -272,7 +272,11 @@ p {
 
 .page > .content.category, .page > .content.page_tree {
   padding: 0 10px 20px 8px !important;
-  .item {
+
+  table.node-list {
+    width: 100%;
+  }
+  .item td{
     padding: 16px 0px 16px 0px;
     font-size: 16px;
 
@@ -301,9 +305,9 @@ p {
     }
   }
 
-  .item.category {
+  .item.category td:last-child {
     background: url(/images/ui/subcat-arrow.png) 100% 50% no-repeat; }
-  .item.leaf-name {
+  .item.leaf-name td:last-child {
     background: url(/images/ui/subcat-arrow.png) 100% 50% no-repeat; }
   .item.category, .item.leaf-name {
     padding: 16px 20px 16px 0px;
