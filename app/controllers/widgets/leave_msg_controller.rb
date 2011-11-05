@@ -13,7 +13,7 @@ class Widgets::LeaveMsgController < ApplicationController
     UserMailer.leave_msg({
       :to => company.leave_msg_email || company.user.email,
       :subject => 'You have a message',
-      :from => "\"YoMobi\" <message@yomobi.com>",
+      :from => params[:email],
       :reply_to => params[:email],
       :replyto => params[:email],
       :customer_name => params[:name],
