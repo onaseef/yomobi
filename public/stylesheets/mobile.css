@@ -249,10 +249,10 @@ p {
       padding-bottom: 2px; }
     .page > .content.category .item td > :empty, .page > .content.page_tree .item td > :empty {
       padding: 0; }
-    .page > .content.category .item .content, .page > .content.page_tree .item .content {
+    .page > .content.category .item td .content, .page > .content.page_tree .item td .content {
       width: 97%;
       float: none; }
-    .page > .content.category .item .wphoto, .page > .content.page_tree .item .wphoto {
+    .page > .content.category .item td .wphoto, .page > .content.page_tree .item td .wphoto {
       text-align: left;
       width: 27%;
       float: left; }
@@ -276,6 +276,9 @@ p {
     border-top: 1px solid #b3b3b3;
     background: #dddddd;
     margin: 0; }
+
+.separator {
+  border-top: 1px solid #b3b3b3; }
 
 .page > .content.category .name {
   float: left;

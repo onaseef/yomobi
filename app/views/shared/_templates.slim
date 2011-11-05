@@ -385,7 +385,11 @@
                   cycle: util.cycle('c0','c1')
                 }) );
               }
-        | } %>
+          if (i !== stuff.length-1) {
+          %>
+        td colspan="2"
+          .separator
+        | <% } } %>
   
   script.page_tree-page(type="text/template")
     h3 {{ title }}
