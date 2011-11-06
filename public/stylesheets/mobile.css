@@ -242,9 +242,20 @@ p {
   padding: 0 10px 20px 8px !important; }
   .page > .content.category table.node-list, .page > .content.page_tree table.node-list {
     width: 100%; }
+  .page > .content.category .img-col, .page > .content.page_tree .img-col {
+    width: 10%;
+    max-width: 80px; }
+    .page > .content.category .img-col img, .page > .content.page_tree .img-col img {
+      /* Optional rounded corners for browsers that support it */
+      -moz-border-radius: 8px;
+      -webkit-border-radius: 8px;
+      -khtml-border-radius: 8px;
+      border-radius: 8px; }
   .page > .content.category .item td, .page > .content.page_tree .item td {
-    padding: 16px 0px 16px 0px;
+    padding: 8px 0px 8px 0px;
     font-size: 16px; }
+    .page > .content.category .item td .img-col, .page > .content.page_tree .item td .img-col {
+      padding-right: 6px; }
     .page > .content.category .item td > div, .page > .content.page_tree .item td > div {
       padding-bottom: 2px; }
     .page > .content.category .item td > :empty, .page > .content.page_tree .item td > :empty {
@@ -265,7 +276,7 @@ p {
   .page > .content.category .item.leaf-name td:last-child, .page > .content.page_tree .item.leaf-name td:last-child {
     background: url(/images/ui/subcat-arrow.png) 100% 50% no-repeat; }
   .page > .content.category .item.category, .page > .content.category .item.leaf-name, .page > .content.page_tree .item.category, .page > .content.page_tree .item.leaf-name {
-    padding: 16px 20px 16px 0px;
+    padding: 8px 20px 8px 0px;
     cursor: pointer; }
   .page > .content.category .item:first-child, .page > .content.category .category:first-child, .page > .content.page_tree .item:first-child, .page > .content.page_tree .category:first-child {
     border-top: none; }
@@ -330,12 +341,3 @@ pre {
     -khtml-border-radius: 8px;
     border-radius: 8px;
     margin: 0px 15px 15px 0px; }
-
-.img-col {
-  width: 80px; }
-  .img-col img {
-    /* Optional rounded corners for browsers that support it */
-    -moz-border-radius: 8px;
-    -webkit-border-radius: 8px;
-    -khtml-border-radius: 8px;
-    border-radius: 8px; }

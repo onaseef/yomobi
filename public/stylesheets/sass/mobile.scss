@@ -276,10 +276,28 @@ p {
   table.node-list {
     width: 100%;
   }
-  .item td{
-    padding: 16px 0px 16px 0px;
+
+  .img-col {
+    width: 10%;
+    max-width: 80px;
+
+    img {
+      /* Optional rounded corners for browsers that support it */
+      -moz-border-radius: 8px;
+      -webkit-border-radius: 8px;
+      -khtml-border-radius: 8px;
+      border-radius: 8px;
+    }
+  }
+
+  .item td {
+    padding: 8px 6px 8px 0px;
     font-size: 16px;
 
+    .img-col {
+      padding-right: 6px;
+    }
+    
     & > div { padding-bottom: 2px; }
     & > :empty { padding: 0; }
 
@@ -298,12 +316,14 @@ p {
     }
   }
 
+
+
   .item.category td:last-child {
     background: url(/images/ui/subcat-arrow.png) 100% 50% no-repeat; }
   .item.leaf-name td:last-child {
     background: url(/images/ui/subcat-arrow.png) 100% 50% no-repeat; }
   .item.category, .item.leaf-name {
-    padding: 16px 20px 16px 0px;
+    padding: 8px 20px 8px 0px;
     cursor: pointer; }
   .item:first-child, .category:first-child {
     border-top: none; }
@@ -374,17 +394,5 @@ pre {
     -khtml-border-radius: 8px;
     border-radius: 8px;
     margin: 0px 15px 15px 0px;
-  }
-}
-
-.img-col {
-  width: 80px;
-
-  img {
-    /* Optional rounded corners for browsers that support it */
-    -moz-border-radius: 8px;
-    -webkit-border-radius: 8px;
-    -khtml-border-radius: 8px;
-    border-radius: 8px;
   }
 }
