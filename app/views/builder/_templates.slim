@@ -19,14 +19,29 @@ script.add-widget-dialog(type="text/template")
 
 script.add-subcat-dialog(type="text/template")
   #dialog-confirm title="Add New {{ typeName }}"
-    p
-      | {{ typeName }} name:
+      label {{ typeName }} name:
       br
       input type="text" value="{{ _maybe.name }}" name="cat"
 
-      .wphoto-wrap
-        .selected-file.lfloat &nbsp;
-        button name="pick_files" Add Picture
+      table.wphoto-wrap
+        tbody
+          tr
+            | <% if (_maybe.wphotoUrl) { %>
+            td
+              img src="{{ wphotoUrl }}"
+            | <% } %>
+            td
+              label Select a Picture...
+              br
+              .selected-file.lfloat &nbsp;
+              button name="pick_files" Browse...
+              .error
+          | <% if (_maybe.wphotoUrl) { %>
+          tr
+            td
+              a.remove-wphoto-link href="#" Remove Picture
+            td
+          | <% } %>
         .error
       input type="hidden" value="" name="wphotoUrl"
 
