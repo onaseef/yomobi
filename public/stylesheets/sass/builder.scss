@@ -405,6 +405,7 @@ div.wysiwyg ul.toolbar {
 
   
 #builder .edit-area.hours {
+  .double-time-input { margin: 25px 0px 10px 0px; }
   .double-time { margin-bottom: 10px; }
   .day-checkbox {
     float: left;
@@ -497,6 +498,9 @@ div.wysiwyg ul.toolbar {
     font-size: 14px; } }
 
 #dialog-confirm {
+  p { margin: 10px 0px 10px 0px; }
+  label { padding: 0px 0px 1px 1px; }
+
   input[type=text] {
     width: 97%;
     margin: 1px 0px 6px 0px; }
