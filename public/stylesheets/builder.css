@@ -450,6 +450,9 @@ div.wysiwyg ul.toolbar {
   margin: 10px 0px 10px 0px; }
 #dialog-confirm label {
   padding: 0px 0px 1px 1px; }
+#dialog-confirm .add-btn, #dialog-confirm input[type=button] {
+  margin: 0px;
+  padding: 2px 8px 2px 8px; }
 #dialog-confirm input[type=text] {
   width: 97%;
   margin: 1px 0px 6px 0px; }
