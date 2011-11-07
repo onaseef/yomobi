@@ -9,7 +9,8 @@
     , isSpecialKey = function (key) { return key.charAt(0) === '_' }
     , bulletTypes = {
       'cat': '&#x271a;',
-      'item': '&#x25c6;'
+      'item': '&#x25c6;',
+      'page': '&#x25c6;'
     }
   ;
 
