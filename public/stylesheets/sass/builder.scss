@@ -405,7 +405,7 @@ div.wysiwyg ul.toolbar {
 
 .wphoto-wrap {
   width: 100%;
-  border: 1px dashed #515053;
+  border: 1px solid #BDC7D8;
   margin: 10px 0;
   padding: 5px;
   label {
@@ -419,6 +419,7 @@ div.wysiwyg ul.toolbar {
     border-radius: 3px;
   }
 }
+
 .wphoto-wrap .selected-file {
   width: 120px;
   height: 1.25em;
@@ -439,8 +440,9 @@ div.wysiwyg ul.toolbar {
   white-space: nowrap;
   clear: left;
 }
+
 #dialog-confirm .wphoto-wrap {
-  border: none;
+  padding: 0px 4px 0px 4px;
 }
   
 #builder .edit-area.hours {
