@@ -392,7 +392,7 @@ pre {
 }
 
 // used in custom_page, about-us, and category-like widgets
-.wphoto-large, .wphoto{
+.wphoto-large, .wphoto {
   float: left;
   text-align:left;
   img { 
@@ -402,5 +402,14 @@ pre {
     -khtml-border-radius: 8px;
     border-radius: 8px;
     margin: 0px 15px 15px 0px;
+  }
+}
+
+.node-list {
+  .wphoto {
+    img {
+      margin: 0px;
+      padding: 0px;
+    }
   }
 }
