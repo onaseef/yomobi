@@ -71,7 +71,10 @@ p {
     .back-bar .title h3 {
       margin: 0;
       font-weight: bold;
-      font-size: 12px; }
+      font-size: 12px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap; }
 
 .company-info {
   width: 100%;

@@ -96,6 +96,9 @@ p {
       margin: 0;
       font-weight: bold;
       font-size: $back-bar-title-font-size;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
 } } }
 
 .company-info {
