@@ -312,8 +312,7 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       if (idx === -1) return alert('Please select an item to edit.');
 
       if (_.include(this.treeTypes, type)) {
-        util.log('clicking');
-        $(this.widget.pageView.el).find('> div:eq('+idx+')').click();
+        this.widget.pageView.el.find('tr[data-id='+id+']').click();
       }
       else {
         this.editItem(id);
