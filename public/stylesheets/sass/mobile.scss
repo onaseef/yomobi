@@ -313,18 +313,7 @@ p {
       width: 97%;
       float: none;
     }
-    .wphoto {
-      text-align: left;
-      width: 27%;
-      float: left; }
-    .wphoto + .content {
-      width: 64%;
-      padding-left: 0px;
-      float: left;
-    }
   }
-
-
 
   .item.category td:last-child {
     background: url(/images/ui/subcat-arrow.png) 100% 50% no-repeat; }
@@ -392,11 +381,11 @@ pre {
 }
 
 // used in custom_page, about-us, and category-like widgets
-.wphoto-large, .wphoto{
+.wphoto-large {
   float: left;
-  text-align:left;
-  img { 
-    max-width: 100%; 
+  text-align: left;
+  img {
+    max-width: 100%;
     -moz-border-radius: 8px;
     -webkit-border-radius: 8px;
     -khtml-border-radius: 8px;

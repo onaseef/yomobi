@@ -62,8 +62,8 @@ script.locations-item type="text/template"
 script.item-wrap type="text/template"
   tr.item class="{{ cycle }}"
     | <% if (item.wphotoUrl) { %>
-    td.wphoto
+    td.img-col
       img src="{{ item.wphotoUrl }}"
     | <% } %>
-    td.content colspan="<% print(item.wphotoUrl ? 1 : 2); %>"
+    td.txt-col colspan="<% print(item.wphotoUrl ? 1 : 2); %>"
       | <% print( itemTemplate({ item:item }) ); %>

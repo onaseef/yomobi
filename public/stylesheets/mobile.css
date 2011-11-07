@@ -269,14 +269,6 @@ p {
     .page > .content.category .item td .content, .page > .content.page_tree .item td .content {
       width: 97%;
       float: none; }
-    .page > .content.category .item td .wphoto, .page > .content.page_tree .item td .wphoto {
-      text-align: left;
-      width: 27%;
-      float: left; }
-    .page > .content.category .item td .wphoto + .content, .page > .content.page_tree .item td .wphoto + .content {
-      width: 64%;
-      padding-left: 0px;
-      float: left; }
   .page > .content.category .item.category td:last-child, .page > .content.page_tree .item.category td:last-child {
     background: url(/images/ui/subcat-arrow.png) 100% 50% no-repeat; }
   .page > .content.category .item.leaf-name td:last-child, .page > .content.page_tree .item.leaf-name td:last-child {
@@ -337,10 +329,10 @@ pre {
   word-wrap: break-word;
   font-family: Arial, Helvetica, sans-serif; }
 
-.wphoto-large, .wphoto {
+.wphoto-large {
   float: left;
   text-align: left; }
-  .wphoto-large img, .wphoto img {
+  .wphoto-large img {
     max-width: 100%;
     -moz-border-radius: 8px;
     -webkit-border-radius: 8px;
