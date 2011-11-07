@@ -71,7 +71,10 @@ p {
     .back-bar .title h3 {
       margin: 0;
       font-weight: bold;
-      font-size: 12px; }
+      font-size: 12px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap; }
 
 .company-info {
   width: 100%;
@@ -251,8 +254,11 @@ p {
       -webkit-border-radius: 8px;
       -khtml-border-radius: 8px;
       border-radius: 8px; }
+  .page > .content.category .item.category td, .page > .content.page_tree .item.category td {
+    vertical-align: middle; }
   .page > .content.category .item td, .page > .content.page_tree .item td {
-    padding: 8px 0px 8px 0px;
+    vertical-align: top;
+    padding: 8px 6px 8px 0px;
     font-size: 16px; }
     .page > .content.category .item td .img-col, .page > .content.page_tree .item td .img-col {
       padding-right: 6px; }
