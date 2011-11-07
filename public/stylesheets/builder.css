@@ -398,6 +398,8 @@ div.wysiwyg ul.toolbar {
 #dialog-confirm .wphoto-wrap {
   border: none; }
 
+#builder .edit-area.hours .double-time-input {
+  margin: 30px 0px 10px 0px; }
 #builder .edit-area.hours .double-time {
   margin-bottom: 10px; }
 #builder .edit-area.hours .day-checkbox {
