@@ -286,10 +286,14 @@ p {
 
     img {
       /* Optional rounded corners for browsers that support it */
-      -moz-border-radius: 8px;
-      -webkit-border-radius: 8px;
-      -khtml-border-radius: 8px;
-      border-radius: 8px;
+      -moz-border-radius: 0px;
+      -webkit-border-radius: 0px;
+      -khtml-border-radius: 0px;
+      border-radius: 0px;
+    
+      -moz-box-shadow: 0 0 5px #888;
+      -webkit-box-shadow: 0 0 5px#888;
+      box-shadow: 0 0 5px #888;
     }
   }
 
@@ -386,11 +390,16 @@ pre {
   text-align: left;
   img {
     max-width: 100%;
-    -moz-border-radius: 8px;
-    -webkit-border-radius: 8px;
-    -khtml-border-radius: 8px;
-    border-radius: 8px;
     margin: 0px 15px 15px 0px;
+
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px#888;
+    box-shadow: 0 0 5px #888;
+    
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -khtml-border-radius: 0px;
+    border-radius: 0px;
   }
 }
 
