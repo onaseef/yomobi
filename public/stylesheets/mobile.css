@@ -250,10 +250,10 @@ p {
     max-width: 80px; }
     .page > .content.category .img-col img, .page > .content.page_tree .img-col img {
       /* Optional rounded corners for browsers that support it */
-      -moz-border-radius: 8px;
-      -webkit-border-radius: 8px;
-      -khtml-border-radius: 8px;
-      border-radius: 8px; }
+      -moz-border-radius: 0px;
+      -webkit-border-radius: 0px;
+      -khtml-border-radius: 0px;
+      border-radius: 0px; }
   .page > .content.category .item.category td, .page > .content.page_tree .item.category td {
     vertical-align: middle; }
   .page > .content.category .item td, .page > .content.page_tree .item td {
@@ -334,11 +334,11 @@ pre {
   text-align: left; }
   .wphoto-large img {
     max-width: 100%;
-    -moz-border-radius: 8px;
-    -webkit-border-radius: 8px;
-    -khtml-border-radius: 8px;
-    border-radius: 8px;
-    margin: 0px 15px 15px 0px; }
+    margin: 0px 15px 15px 0px;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -khtml-border-radius: 0px;
+    border-radius: 0px; }
 
 .wphoto-large.centered {
   text-align: center;
