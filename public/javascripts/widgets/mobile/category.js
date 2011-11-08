@@ -24,12 +24,13 @@
     getShowData: function () {
       var level = this.getCurrentLevel();
       if (!this.itemTemplate) this.itemTemplate = util.getTemplate(this.get('wsubtype')+'-item');
-      
+
       var extraData = {
         stuff: level._items || [],
         itemWrapTemplate: this.itemWrapTemplate,
         itemTemplate: this.itemTemplate,
-        catTemplate: this.catTemplate
+        catTemplate: this.catTemplate,
+        wphotoUrlLarge: util.largerWphoto(level.wphotoUrl)
       };
       return _.extend({},this.toJSON(),extraData);
     },

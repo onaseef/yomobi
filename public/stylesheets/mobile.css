@@ -340,6 +340,10 @@ pre {
     border-radius: 8px;
     margin: 0px 15px 15px 0px; }
 
+.wphoto-large.centered {
+  text-align: center;
+  float: none; }
+
 .node-list .wphoto img {
   margin: 0px;
   padding: 0px; }
