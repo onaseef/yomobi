@@ -372,10 +372,10 @@ div.wysiwyg ul.toolbar {
     font-weight: bold;
     font-size: 0.8em; }
   .wphoto-wrap img {
-    -moz-border-radius: 3px;
-    -khtml-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px; }
+    -moz-border-radius: 0px;
+    -khtml-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px; }
 
 .wphoto-wrap .selected-file {
   width: 120px;
