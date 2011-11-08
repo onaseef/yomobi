@@ -496,11 +496,11 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       var target = util.ensureClassAncestor($(e.target), 'item');
       if (!target) return;
 
-      var idx = target.index();
+      var node_id = target.data('id');
       this.widget.getEditor()
-        .el.find('select[name=stuff]').find('option')
+        .el.find('select[name=stuff] option')
         .prop('selected',false)
-        .eq(idx)
+        .filter('[value=' + node_id + ']')
           .prop('selected',true)
           .dblclick()
       ;

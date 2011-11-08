@@ -60,7 +60,7 @@ script.locations-item type="text/template"
 
 / this template is used when a photo is being displayed
 script.item-wrap type="text/template"
-  tr.item class="{{ cycle }}"
+  tr.item class="{{ cycle }}" data-id="{{ item._id }}"
     | <% if (item.wphotoUrl) { %>
     td.img-col
       img src="{{ item.wphotoUrl }}"
