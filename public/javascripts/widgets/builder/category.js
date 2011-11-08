@@ -30,7 +30,7 @@
     return function () {
       if (!util.reserveUI()) return;
       // wrap in function for code reuse
-      var dialogElem = this;
+      var dialogElem = util.ensureClassAncestor(this,'ui-dialog-content');
       var cb = function (data) {
         util.log('wut', data);
         util.releaseUI();
@@ -39,7 +39,7 @@
           alert('Photo upload failed ('+ data.result +')');
           return;
         }
-        $(dialogElem).dialog("close");
+        dialogElem.dialog("close");
 
         if (data.wphotoUrl) {
           $(dialogView.el).find('input[name=wphotoUrl]').val(data.wphotoUrl);
@@ -55,8 +55,8 @@
         options.onUpload(options.addAnother);
       }
       else if (uploader.files.length > 0 && uploader.files[0].status !== plupload.DONE) {
-        util.log('has stuff!');
-        $(dialogElem)
+        util.log('has stuff!',dialogElem);
+        dialogElem
           .find('input,textarea,button').prop('disabled',true).end()
           .find('a').hide().end()
         ;
