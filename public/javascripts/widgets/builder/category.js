@@ -56,6 +56,10 @@
       }
       else if (uploader.files.length > 0 && uploader.files[0].status !== plupload.DONE) {
         util.log('has stuff!');
+        $(dialogElem)
+          .find('input,textarea,button').prop('disabled',true).end()
+          .find('a').hide().end()
+        ;
         uploader.yomobiOptions.onDone = cb;
         uploader.start();
       }
