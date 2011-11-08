@@ -497,7 +497,7 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
   window.widgetPages.category = window.widgetPages.category.extend({
 
     onItemClick: function (e) {
-      var target = util.ensureClassAncestor($(e.target), 'item');
+      var target = util.ensureClassAncestor(e.target, 'item');
       if (!target) return;
 
       var node_id = target.data('id');
@@ -513,7 +513,7 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
     onCategoryClick: function (e) {
       if (!mapp.canTransition()) return;
 
-      var target = util.ensureClassAncestor($(e.target), 'item');
+      var target = util.ensureClassAncestor(e.target, 'item');
       if (!target) return;
 
       var cat_id = target.data('id');

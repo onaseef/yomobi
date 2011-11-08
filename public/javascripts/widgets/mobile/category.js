@@ -120,7 +120,7 @@
     onCategoryClick: function (e) {
       if (!mapp.canTransition()) return;
 
-      var target = util.ensureClassAncestor($(e.target), 'item');
+      var target = util.ensureClassAncestor(e.target, 'item');
       if (!target) return;
 
       var cat_id = target.data('id');

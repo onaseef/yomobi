@@ -870,9 +870,9 @@ var util = {
     });
   },
 
-  // expects and returns a jquery object
-  ensureClassAncestor: function ($elem, className) {
-    var failSafe = 8;
+  // returns a jquery object
+  ensureClassAncestor: function (elem, className) {
+    var failSafe = 8, $elem = $(elem);
     while ($elem && !$elem.hasClass(className) && failSafe > 0) {
       $elem = $elem.parent();
       failSafe -= 1;
