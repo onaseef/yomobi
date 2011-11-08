@@ -131,7 +131,8 @@
 
     beforePageRender: function ($pageContent) {
       $pageContent.find('img').unbind('load.yo').bind('load.yo', function () {
-        mapp.resize();
+        clearTimeout(g.catImgLoadTimer);
+        g.catImgLoadTimer = setTimeout(function () { mapp.resize(); }, 50);
       });
     },
 
