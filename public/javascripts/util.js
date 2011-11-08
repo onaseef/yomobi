@@ -806,6 +806,7 @@ var util = {
     }
 
     uploader.bind('FilesAdded', function (up, files) {
+      if (!util.isUIFree()) return;
 
       var isAutoEnabled = uploader.yomobiOptions.auto !== false;
 
@@ -837,6 +838,7 @@ var util = {
 
     uploader.bind('BeforeUpload', function () {
       context.find('.selected-file').text('Uploading...');
+      uploader.layover.find('input').hide();
     });
 
     uploader.bind('UploadProgress', function (up, file) {
@@ -858,6 +860,7 @@ var util = {
     uploader.bind('FileUploaded', function (up, file, response) {
       context.find('.selected-file').text('Upload Complete!');
       $('#'+pickerId).prop('disabled', false);
+      uploader.layover.find('input').show();
 
       var resData = $.parseJSON(response.response);
       util.log('Upload, complete.', up, file, response, resData);
