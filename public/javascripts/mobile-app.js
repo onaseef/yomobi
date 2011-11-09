@@ -427,18 +427,14 @@
     updateWtabs: function (requireValid) {
       var isValid = requireValid ? isValidForShowing : _.identity;
 
-      var names = _(this.metaDoc.wtabs).chain().map(util.widgetById).map(isValid).map(pluckName).value();
-      var wtabs = this.metaDoc.wtabs.concat([]);
-
-      for (var i=0; i < names.length; i++) {
-        if (!names[i]) {
-          wtabs.splice(0,1);
-        }
-      }
-
+      var wdata = _(this.metaDoc.wtabs).chain().map(util.widgetById).map(isValid)
+                  .compact().pluck('attributes').value()
+        , wids   = _.pluck(wdata, 'id')
+        , wnames = _.pluck(wdata, 'name')
+      ;
       this.el.find('#top-bar .tab-bar').html(this.tabBarTemplate({
-        wids: wtabs,
-        wtabNames: _.compact(names)
+        wids: wids,
+        wnames: wnames
       }));
       g.topBarHeight = Math.max(g.topBarHeight, this.el.find('#top-bar').height());
     },
