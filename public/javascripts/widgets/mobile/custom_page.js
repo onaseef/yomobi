@@ -13,5 +13,11 @@
       return _.extend({}, this.toJSON(), extraData);
     }
   });
+
+
+  window.widgetPages.category = WidgetPageView.extend({
+
+    beforePageRender: util.widget.resizeOnImgLoad
+  });
   
 })(jQuery);

@@ -127,5 +127,16 @@
     // but before the page is added to the dom
     beforePageRender: function ($pageContent) {}
   });
-  
+
+  //
+  // functionality shared between some widgets
+  //
+  var imgLoadTimer;
+  util.widget.resizeOnImgLoad = function ($pageContent) {
+    $pageContent.find('img').unbind('load.yo').bind('load.yo', function () {
+      clearTimeout(imgLoadTimer);
+      imgLoadTimer = setTimeout(function () { mapp.resize(); }, 50);
+    });
+  };
+
 })(jQuery);

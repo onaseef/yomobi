@@ -2,6 +2,9 @@ var util = {
   
   debug: true,
   cycleIdx: 0,
+
+  // namespace for shared widget functions
+  widget: {},
   
   // UI event blocking statuses
   busy: {},

@@ -129,12 +129,7 @@
     
     onItemClick: _.identity,
 
-    beforePageRender: function ($pageContent) {
-      $pageContent.find('img').unbind('load.yo').bind('load.yo', function () {
-        clearTimeout(g.catImgLoadTimer);
-        g.catImgLoadTimer = setTimeout(function () { mapp.resize(); }, 50);
-      });
-    },
+    beforePageRender: util.widget.resizeOnImgLoad,
 
     onPageView: function (subpage) {
       if (!mapp.canTransition()) return;
