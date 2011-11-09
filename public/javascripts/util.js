@@ -801,7 +801,12 @@ var util = {
         return;
       this.layover.css('z-index', 10000);
     };
-    uploader.sendToBack   = function () { this.layover.css('z-index', -1); };
+    uploader.sendToBack = function () { this.layover.css('z-index', -1); };
+    uploader.disableBrowseButton = function () {
+      $('#'+pickerId).hide()
+      $('<button>').text('Browse...').prop('disabled',true).insertAfter('#'+pickerId);
+      uploader.refresh();
+    }
 
     if (uploader.yomobiOptions.alwaysOnTop === true) {
       util.log('setting to bring to front');
@@ -826,22 +831,18 @@ var util = {
           file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' +
         '</div>');
       });
-
-      if (uploader.yomobiOptions.auto === true) {
-        $('#'+pickerId).prop('disabled', true);
-      }
       
       if (isAutoEnabled) {
         util.log('starting uploader');
         uploader.start();
       }
 
-      up.refresh(); // Reposition Flash/Silverlight
+      uploader.refresh(); // Reposition Flash/Silverlight
     });
 
     uploader.bind('BeforeUpload', function () {
       context.find('.selected-file').text('Uploading...');
-      uploader.layover.find('input').hide();
+      uploader.disableBrowseButton();
     });
 
     uploader.bind('UploadProgress', function (up, file) {
@@ -862,7 +863,6 @@ var util = {
 
     uploader.bind('FileUploaded', function (up, file, response) {
       context.find('.selected-file').text('Upload Complete!');
-      $('#'+pickerId).prop('disabled', false);
       uploader.layover.find('input').show();
 
       var resData = $.parseJSON(response.response);
