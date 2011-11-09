@@ -862,7 +862,7 @@ var util = {
     });
 
     uploader.bind('FileUploaded', function (up, file, response) {
-      context.find('.selected-file').text('Upload Complete!');
+      context.find('.selected-file').text('Saving widget...');
       uploader.layover.find('input').show();
 
       var resData = $.parseJSON(response.response);
