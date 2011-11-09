@@ -128,6 +128,7 @@
     // accept() needs the UI to be free
     util.releaseUI();
     this.editor.accept();
+    this.pageView.refresh();
   };
 
   var deleteConfirmText = "Are you sure you want to delete? (Data will be lost)";
@@ -240,7 +241,8 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       }
       var callback = _.bind(uploaderCallback, {
         node_id: this.widget.getCurrentNode()._data._id,
-        editor: this
+        editor: this,
+        pageView: this.widget.pageView
       });
 
       if (this.widget.catStack.length > 1) {
@@ -474,6 +476,7 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       var currentNode = this.widget.getCurrentLevel(true);
       this.removeWPhotoFromNode(currentNode);
       this.accept();
+      this.widget.pageView.refresh();
     },
 
     removeWPhotoFromNode: function (node) {
