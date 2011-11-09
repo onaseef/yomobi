@@ -15,7 +15,7 @@
   });
 
 
-  window.widgetPages.category = WidgetPageView.extend({
+  window.widgetPages.custom_page = WidgetPageView.extend({
 
     beforePageRender: util.widget.resizeOnImgLoad
   });
