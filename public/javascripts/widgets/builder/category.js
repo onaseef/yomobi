@@ -576,7 +576,7 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
     
     onKeyDown: function (e) {
       var code = e.keyCode || e.which;
-      if (code == 13) this.addAnotherSaveFunc();
+      if (code == 13) this.addAnotherSaveFunc.call(this.el);
     },
     
     initialize: function () {
