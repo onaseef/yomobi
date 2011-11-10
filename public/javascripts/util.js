@@ -846,12 +846,20 @@ var util = {
     uploader.bind('BeforeUpload', function () {
       context.find('.selected-file').text('Uploading...');
       uploader.disableBrowseButton();
+      uploader.startTimestamp = util.now();
     });
 
     uploader.bind('UploadProgress', function (up, file) {
       var width = context.find('.selected-file').outerWidth();
       var offset = parseInt(-500 + file.percent * width / 100) + 'px 0';
       context.find('.selected-file').css('background-position', offset);
+      if (file.percent === 100) {
+        var delay = Math.max(uploader.startTimestamp + 2000 - util.now(), 0);
+        setTimeout(function () {
+          if (!uploader.startTimestamp) return;
+          context.find('.selected-file').text('Processing...');
+        }, delay);
+      }
     });
 
     uploader.bind('Error', function (up, err) {
@@ -870,6 +878,7 @@ var util = {
 
       var resData = $.parseJSON(response.response);
       util.log('Upload, complete.', up, file, response, resData);
+      delete uploader.startTimestamp;
 
       callback = uploader.yomobiOptions.onDone;
       callback(resData);
@@ -889,7 +898,9 @@ var util = {
   largerWphoto: function (wphotoUrl) {
     if (!wphotoUrl) return null;
     return wphotoUrl.replace('-thumb?', '-original?');
-  }
+  },
+
+  now: function () { return (new Date()).getTime(); }
 }
 
 // useful extensions
