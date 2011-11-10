@@ -801,9 +801,12 @@ var util = {
         return;
       this.layover.css('z-index', 10000);
     };
-    uploader.sendToBack = function () { this.layover.css('z-index', -1); };
+    uploader.sendToBack = function () {
+      $('#'+pickerId).hide();
+      uploader.refresh();
+    };
     uploader.disableBrowseButton = function () {
-      $('#'+pickerId).hide()
+      $('#'+pickerId).hide();
       $('<button>').text('Browse...').prop('disabled',true).insertAfter('#'+pickerId);
       uploader.refresh();
     }
