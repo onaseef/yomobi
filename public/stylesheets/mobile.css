@@ -331,7 +331,8 @@ pre {
 
 .wphoto-large {
   float: left;
-  text-align: left; }
+  text-align: left;
+  width: 100%; }
   .wphoto-large img {
     max-width: 100%;
     margin: 0px 15px 15px 0px;
