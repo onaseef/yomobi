@@ -31,7 +31,9 @@ window.g = {
     'format' : 'json',
     '_method': 'post',
     'authenticity_token': encodeURIComponent('<%= authenticity_token %>'),
-    'auth_token': '<%= @user.authentication_token %>'
+    'auth_token': '<%= @user.authentication_token %>',
+    '<%= request_forgery_protection_token %>': '<%= form_authenticity_token %>',
+    '<%= request.session_options[:key] %>': '<%= request.session_options[:id] %>'
   },
 
   noPhotoPath: '/images/no-wphoto.png'
