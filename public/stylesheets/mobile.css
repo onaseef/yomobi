@@ -245,6 +245,8 @@ p {
   padding: 0 10px 20px 8px !important; }
   .page > .content.category table.node-list, .page > .content.page_tree table.node-list {
     width: 100%; }
+  .page > .content.category .category .txt-col, .page > .content.page_tree .category .txt-col {
+    padding-right: 16px; }
   .page > .content.category td.img-col, .page > .content.page_tree td.img-col {
     width: 10%;
     max-width: 80px;
