@@ -8,9 +8,9 @@
     , downcase = function (str) { return str.toLowerCase() }
     , isSpecialKey = function (key) { return key.charAt(0) === '_' }
     , bulletTypes = {
-      'cat': '&#x271a;',
-      'item': '&#x25c6;',
-      'page': '&#x25c6;'
+      'cat': '&#x25a0;',
+      'item': '&#x25cf;',
+      'page': '&#x25cf;'
     }
   ;
 
