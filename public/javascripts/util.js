@@ -796,6 +796,11 @@ var util = {
     // because we're in a dialog, sometimes we need to set the uploader to be
     // on top of everything else, as well as send it back
     uploader.layover = $('#' + uploader.id + '_' + uploader.runtime + '_container');
+    if (uploader.layover.length === 0) {
+      // layover for html4 runtime
+      uploader.layover = $('form[target=' + uploader.id + '_iframe]');
+    }
+
     uploader.bringToFront = function () {
       if ($.browser.mozilla && $.browser.version.slice(0,3) !== "1.9")
         return;
@@ -809,11 +814,6 @@ var util = {
       $('#'+pickerId).hide();
       $('<button>').text('Browse...').prop('disabled',true).insertAfter('#'+pickerId);
       uploader.refresh();
-    }
-
-    if (uploader.yomobiOptions.alwaysOnTop === true) {
-      util.log('setting to bring to front');
-      uploader.bind('Refresh', function () { uploader.bringToFront(); });
     }
 
     uploader.bind('FilesAdded', function (up, files) {
@@ -841,6 +841,9 @@ var util = {
       }
 
       uploader.refresh(); // Reposition Flash/Silverlight
+      if (uploader.yomobiOptions.alwaysOnTop === true) {
+        uploader.bringToFront();
+      }
     });
 
     uploader.bind('BeforeUpload', function () {
