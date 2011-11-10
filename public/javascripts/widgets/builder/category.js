@@ -733,7 +733,11 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
     },
 
     getTypeName: function () {
-      return this.model.get('catTypeName');
+      var node = this.model.getCurrentNode()[this.options.node_id]
+        , isCat = this.mode === 'add' || node._data.type === 'cat'
+        , typeName = isCat ? 'catTypeName' : 'itemTypeName'
+      ;
+      return this.model.get(typeName);
     }
 
   });
