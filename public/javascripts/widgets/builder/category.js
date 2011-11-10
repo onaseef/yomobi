@@ -245,11 +245,13 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
         pageView: this.widget.pageView
       });
 
-      util.initUploader( $(this.el).find('.wphoto-wrap'), {
-        onDone: callback,
-        emptyQueue: true,
-        wid: this.widget.id
-      });
+      if (mapp.pageLevel > 0) {
+        util.initUploader( $(this.el).find('.wphoto-wrap'), {
+          onDone: callback,
+          emptyQueue: true,
+          wid: this.widget.id
+        });
+      }
     },
     
     grabWidgetValues: function () {
