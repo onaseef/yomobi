@@ -1,0 +1,4 @@
+.page > .content.category table.node-list, .page > .content.page_tree table.node-list {
+  table-layout: fixed; }
+  .page > .content.category table.node-list td.img-col, .page > .content.page_tree table.node-list td.img-col {
+    width: 80px; }

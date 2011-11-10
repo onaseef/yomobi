@@ -12,6 +12,10 @@ html lang="en-US"
     = stylesheet_link_tag 'builder-app'
     = stylesheet_link_tag 'flick/jquery-ui-1.8.11.custom'
     = stylesheet_link_tag 'jquery.wysiwyg'
+    erb:
+      <!--[if IE 7]>
+      <%= stylesheet_link_tag 'ie' %>
+      <![endif]-->
     = csrf_meta_tag
   body
     = topline_notice
