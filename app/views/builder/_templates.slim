@@ -130,7 +130,6 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
       erb:
         <b>Editing: <span class="blue">{{ catCrumbs }}</span></b>
 
-    | <% if (onRootPage !== true) { %>
     table.wphoto-wrap
       tbody
         tr
@@ -148,7 +147,6 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
             a.remove-wphoto-link href="#" Remove Picture
           td
         | <% } %>
-    | <% } %>
 
     select name="stuff" multiple="multiple"
       | <% for (var i=0;i<stuff.length;i++) { %>
