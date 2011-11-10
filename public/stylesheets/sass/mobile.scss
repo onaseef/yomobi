@@ -280,9 +280,10 @@ p {
     width: 100%;
   }
 
-  .img-col {
+  td.img-col {
     width: 10%;
     max-width: 80px;
+    background: none !important;
 
     img {
       /* Optional rounded corners for browsers that support it */
@@ -315,9 +316,9 @@ p {
     }
   }
 
-  .item.category td:last-child {
+  .item.category td {
     background: url(/images/ui/subcat-arrow.png) 100% 50% no-repeat; }
-  .item.leaf-name td:last-child {
+  .item.leaf-name td {
     background: url(/images/ui/subcat-arrow.png) 100% 50% no-repeat; }
   .item.category, .item.leaf-name {
     padding: 8px 20px 8px 0px;

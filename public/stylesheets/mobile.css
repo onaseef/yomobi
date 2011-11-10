@@ -245,10 +245,11 @@ p {
   padding: 0 10px 20px 8px !important; }
   .page > .content.category table.node-list, .page > .content.page_tree table.node-list {
     width: 100%; }
-  .page > .content.category .img-col, .page > .content.page_tree .img-col {
+  .page > .content.category td.img-col, .page > .content.page_tree td.img-col {
     width: 10%;
-    max-width: 80px; }
-    .page > .content.category .img-col img, .page > .content.page_tree .img-col img {
+    max-width: 80px;
+    background: none !important; }
+    .page > .content.category td.img-col img, .page > .content.page_tree td.img-col img {
       /* Optional rounded corners for browsers that support it */
       -moz-border-radius: 0px;
       -webkit-border-radius: 0px;
@@ -269,9 +270,9 @@ p {
     .page > .content.category .item td .content, .page > .content.page_tree .item td .content {
       width: 97%;
       float: none; }
-  .page > .content.category .item.category td:last-child, .page > .content.page_tree .item.category td:last-child {
+  .page > .content.category .item.category td, .page > .content.page_tree .item.category td {
     background: url(/images/ui/subcat-arrow.png) 100% 50% no-repeat; }
-  .page > .content.category .item.leaf-name td:last-child, .page > .content.page_tree .item.leaf-name td:last-child {
+  .page > .content.category .item.leaf-name td, .page > .content.page_tree .item.leaf-name td {
     background: url(/images/ui/subcat-arrow.png) 100% 50% no-repeat; }
   .page > .content.category .item.category, .page > .content.category .item.leaf-name, .page > .content.page_tree .item.category, .page > .content.page_tree .item.leaf-name {
     padding: 8px 20px 8px 0px;
