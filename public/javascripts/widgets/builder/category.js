@@ -83,16 +83,20 @@
   var initDialogUploader = function (dialogView, dialog, shouldEmptyQueue) {
     // configure uploader; callback will be configured later in makeSaveFunc()
 
-    util.initUploader( dialog.find('.wphoto-wrap'), {
-      instanceId: 'dialog',
-      auto: false,
-      alwaysOnTop: true,
-      emptyQueue: shouldEmptyQueue,
-      wid: dialogView.model.id
-    });
-    // because we're in a dialog, we need to set the uploader to be
-    // on top of everything else
-    util._uploaders['dialog'].bringToFront();
+    // This delay is needed because the flash object is present for a
+    // split second, just enough time for a double click to catch it (bad)
+    setTimeout(function () {
+      util.initUploader( dialog.find('.wphoto-wrap'), {
+        instanceId: 'dialog',
+        auto: false,
+        alwaysOnTop: true,
+        emptyQueue: shouldEmptyQueue,
+        wid: dialogView.model.id
+      });
+      // Because we're in a dialog, we need to set the uploader to be
+      // on top of everything else.
+      util._uploaders['dialog'].bringToFront();
+    }, 300);
   }
 
   var validateOrder = function (node_id, node) {
