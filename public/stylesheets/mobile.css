@@ -291,6 +291,8 @@ p {
   .page > .content.category .separator, .page > .content.page_tree .separator {
     background: #b3b3b3;
     height: 1px; }
+  .page > .content.category .leaf-content, .page > .content.page_tree .leaf-content {
+    clear: both; }
 
 .page > .content.category .name {
   float: left;
