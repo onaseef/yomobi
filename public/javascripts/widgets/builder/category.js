@@ -49,7 +49,9 @@
       // check for queued upload
       var uploader = util._uploaders['dialog'];
 
-      if (options.validator && options.validator(options.addAnother) !== true) {
+      if (options.validator && options.validator(options.addAnother) !== true
+         || options.skipUpload
+      ) {
         // skip upload until validator returns true
         util.releaseUI();
         options.onUpload(options.addAnother);
@@ -625,7 +627,8 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       
       buttons["Save"] = makeSaveFunc(this, {
         onUpload: this.validateCategory,
-        validator: this.isCategoryValid
+        validator: this.isCategoryValid,
+        skipUpload: this.options.hideUploader
       });
       buttons["Cancel"] = makeCloseFunc(this);
 
@@ -633,7 +636,8 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       this.addAnotherSaveFunc = makeSaveFunc(this, {
         addAnother: true,
         onUpload: this.validateCategory,
-        validator: this.isCategoryValid
+        validator: this.isCategoryValid,
+        skipUpload: this.options.hideUploader
       });
       
       var dialog = util.dialog(dialogContent, buttons, dialogContent.title)
@@ -812,8 +816,7 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
         }).end()
       ;
 
-      if (!this.options.hideUploader)
-        initDialogUploader(this, dialog, shouldEmptyUploadQueue);
+      initDialogUploader(this, dialog, shouldEmptyUploadQueue);
     },
     
     validateItem: function (item) {
