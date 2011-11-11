@@ -338,7 +338,8 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       this.catDialog.model = this.widget;
       this.catDialog.options = {
         onClose: this.refreshViews,
-        node_id: node._id
+        node_id: node._id,
+        hideUploader: true
       };
 
       this.catDialog.enterMode('edit').prompt(null,node.name);
@@ -640,7 +641,8 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
         .find('[name=add]').click(this.addAnotherSaveFunc).end()
       ;
 
-      initDialogUploader(this, dialog, shouldEmptyUploadQueue);
+      if (!this.options.hideUploader)
+        initDialogUploader(this, dialog, shouldEmptyUploadQueue);
     },
     
     isCategoryValid: function (addAnother) {
@@ -810,7 +812,8 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
         }).end()
       ;
 
-      initDialogUploader(this, dialog, shouldEmptyUploadQueue);
+      if (!this.options.hideUploader)
+        initDialogUploader(this, dialog, shouldEmptyUploadQueue);
     },
     
     validateItem: function (item) {
