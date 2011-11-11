@@ -280,21 +280,16 @@ p {
     width: 100%;
   }
 
-  .category .txt-col {
-    padding-right: 16px;
-  }
-
-  td.img-col {
+  .img-col {
     width: 10%;
     max-width: 80px;
-    background: none !important;
 
     img {
       /* Optional rounded corners for browsers that support it */
-      -moz-border-radius: 0px;
-      -webkit-border-radius: 0px;
-      -khtml-border-radius: 0px;
-      border-radius: 0px;
+      -moz-border-radius: 8px;
+      -webkit-border-radius: 8px;
+      -khtml-border-radius: 8px;
+      border-radius: 8px;
     }
   }
 
@@ -320,9 +315,9 @@ p {
     }
   }
 
-  .item.category td {
+  .item.category td:last-child {
     background: url(/images/ui/subcat-arrow.png) 100% 50% no-repeat; }
-  .item.leaf-name td {
+  .item.leaf-name td:last-child {
     background: url(/images/ui/subcat-arrow.png) 100% 50% no-repeat; }
   .item.category, .item.leaf-name {
     padding: 8px 20px 8px 0px;
@@ -336,13 +331,11 @@ p {
     height: 5px;
     border-top: 1px solid #b3b3b3;
     background: #dddddd;
-    margin: 0;
+    margin: 0; }
   }
   .separator {
-    background: #b3b3b3;
-    height: 1px;
+    border-top: 1px solid #b3b3b3;
   }
-}
 
 .page > .content.category {
   .name {
@@ -388,20 +381,22 @@ pre {
 }
 
 // used in custom_page, about-us, and category-like widgets
+<<<<<<< HEAD
 .wphoto-large {
+=======
+.wphoto-large, .wphoto {
+>>>>>>> 64d9a2758411b0d2f799b3d635665d7ed771a084
   float: left;
   text-align: left;
-  width: 100%;
   img {
     max-width: 100%;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -khtml-border-radius: 8px;
+    border-radius: 8px;
     margin: 0px 15px 15px 0px;
-    -moz-border-radius: 0px;
-    -webkit-border-radius: 0px;
-    -khtml-border-radius: 0px;
-    border-radius: 0px;
   }
 }
-.wphoto-large.centered { text-align: center; float: none; }
 
 .node-list {
   .wphoto {

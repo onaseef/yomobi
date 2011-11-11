@@ -288,10 +288,9 @@ p {
     border-top: 1px solid #b3b3b3;
     background: #dddddd;
     margin: 0; }
-
-.separator {
-  background: #b3b3b3;
-  height: 1px; }
+  .page > .content.category .separator, .page > .content.page_tree .separator {
+    background: #b3b3b3;
+    height: 1px; }
 
 .page > .content.category .name {
   float: left;
