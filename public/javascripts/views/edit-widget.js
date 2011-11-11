@@ -18,8 +18,7 @@
     },
     
     initialize: function (widget) {
-      _.bindAll(this,'changeName');
-      _.bindAll(this,'refreshViews');
+      _.bindAll(this,'changeName','refreshViews');
       this.widget = widget;
       this.extendedEvents = _.extend({},this.defaultEvents,this.events);
       this.changes = {};
@@ -133,6 +132,12 @@
       mapp.resize();
       if (this.hasChanges()) this.accept();
       else if (options && options.forceEditAreaRefresh) this.startEditing();
+
+      // if this is not done, the "choose file" button might
+      // intercept some clicks and open the file dialog
+      if (util._uploaders['dialog']) {
+        util._uploaders['dialog'].sendToBack();
+      }
     },
 
     stopEditingName: function () {
@@ -181,7 +186,7 @@
       util.log('changeName',newName);
     },
     
-    startEditing: function (resetChanges,firstEdit) {
+    startEditing: function (resetChanges,isFirstEdit) {
       util.log('Editing widget:',this.widget.get('name'),this.widget.isNew());
       var widget = this.widget
         , helpText = util.getWidgetBData(widget).help
@@ -206,7 +211,7 @@
         .toggleClass('can-edit-icon', widget._bdata.canEditIcon)
       ;
       
-      if (this.onEditStart) this.onEditStart(resetChanges,firstEdit);
+      if (this.onEditStart) this.onEditStart(resetChanges,isFirstEdit);
     },
     
     stopEditing: function () {

@@ -11,6 +11,7 @@
   window.widgetClasses.category = Widget.extend({
     
     catTemplate: util.getTemplate('category-cat'),
+    itemWrapTemplate: util.getTemplate('item-wrap'),
     
     init: function () {
       _.bindAll(this,'onHomeViewClick');
@@ -23,11 +24,13 @@
     getShowData: function () {
       var level = this.getCurrentLevel();
       if (!this.itemTemplate) this.itemTemplate = util.getTemplate(this.get('wsubtype')+'-item');
-      
+
       var extraData = {
         stuff: level._items || [],
+        itemWrapTemplate: this.itemWrapTemplate,
         itemTemplate: this.itemTemplate,
-        catTemplate: this.catTemplate
+        catTemplate: this.catTemplate,
+        wphotoUrlLarge: util.largerWphoto(level.wphotoUrl)
       };
       return _.extend({},this.toJSON(),extraData);
     },
@@ -58,6 +61,10 @@
       return _.extend({ _items:items, _ref:top }, top._data);
     },
 
+    getCurrentNode: function () {
+      return this.getCurrentLevel(true);
+    },
+
     setPaths: function (currentPath, currentNode) {
 
       for (child_id in currentNode) {
@@ -67,6 +74,17 @@
         this.paths[child_id] = currentPath.concat([child_id]);
         this.setPaths( this.paths[child_id], child );
       }
+    },
+
+    getNodeById: function (id) {
+      var targetPath = this.paths[id]
+        , node = this.get('struct')
+      ;
+      _.each(targetPath, function (child_id) {
+        if (child_id === 'struct') return;
+        node = node[child_id];
+      });
+      return node;
     },
 
     setCatStackById: function (id) {
@@ -102,11 +120,16 @@
     onCategoryClick: function (e) {
       if (!mapp.canTransition()) return;
 
-      var cat_id = $(e.target).data('id');
+      var target = util.ensureClassAncestor(e.target, 'item');
+      if (!target) return;
+
+      var cat_id = target.data('id');
       mapp.goToPage(this.widget.get('name'), cat_id);
     },
     
     onItemClick: _.identity,
+
+    beforePageRender: util.widget.resizeOnImgLoad,
 
     onPageView: function (subpage) {
       if (!mapp.canTransition()) return;

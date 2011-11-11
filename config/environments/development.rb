@@ -6,6 +6,9 @@ Yomobi::Application.configure do
   config.couch_host = 'yomobi.couchone.com'
   config.couch_cred = ['yadmin', 'C0uch!tUp']
 
+  config.aritcaptcha_s3_bucket = 'yomobi'
+  config.logo_s3_bucket = 'yomobi'
+
   # In the development environment your application's code is reloaded on
   # every request.  This slows down response time but is perfect for development
   # since you don't have to restart the webserver when you make code changes.

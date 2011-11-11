@@ -63,7 +63,12 @@
 
     onEditStart: function (resetChanges, firstEdit) {
       categoryEditor.onEditStart.call(this, resetChanges, firstEdit);
-      if (this.widget.hasLeafOnTop()) util.spawnJEditor();
+      if (this.widget.hasLeafOnTop()) {
+        util.spawnJEditor();
+        // clear changes a bit after to ignore initialization changes
+        var self = this;
+        setTimeout(function () { self.setChanged('leaf-content', false); }, 400);
+      }
     },
     
     transitionBack: function (e) {
@@ -98,6 +103,7 @@
     updateActiveLeaf: function () {
       var level = this.widget.getCurrentLevel(true)
         , leaf = level._data
+        , oldContent = leaf.content
       ;
       leaf.content = $('#jeditor').wysiwyg('getContent');
       if (this.areStylesDirty) {
@@ -109,7 +115,10 @@
       }
       this.widget.pageView.refresh();
       mapp.resize();
-      this.setChanged('leaf-content',true);
+
+      if (oldContent !== leaf.content) {
+        this.setChanged('leaf-content',true);
+      }
     },
 
     markStylesAsDirty: function () {

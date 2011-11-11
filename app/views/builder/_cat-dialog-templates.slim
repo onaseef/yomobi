@@ -1,0 +1,137 @@
+/ ========================= \
+/ = Category Item Dialogs = \
+/ ========================= \
+
+script.item-dialog(type="text/template")
+  #dialog-confirm class="addItem"
+    input.item-input type="hidden" name="type" value="item"
+    | {{ innerContent }}
+    table.wphoto-wrap
+      tbody
+        tr
+          | <% if (_maybe.wphotoUrl) { %>
+          td
+            img src="{{ wphotoUrl }}"
+          | <% } %>
+          td
+            label Select a Picture...
+            br
+            .selected-file.lfloat &nbsp;
+            button name="pick_files" Browse...
+            .error
+        | <% if (_maybe.wphotoUrl) { %>
+        tr
+          td
+            a.remove-wphoto-link href="#" Remove Picture
+          td
+        | <% } %>
+    input.item-input type="hidden" value="{{ _maybe.wphotoUrl }}" name="wphotoUrl"
+    | <% if (mode == 'add') { %>
+    input.lfloat type="button" value="Add" name="add" style="margin:10px 15px 0 2px"
+    | <% } %>
+
+    | <% if(flash.error) { %>
+    p.error Error: {{ flash.error }}
+    | <% } if(flash.success) { %>
+    p.success {{ flash.success }}
+    | <% } if (addedItems.length > 0) { %>
+    .clearfix.divider style="margin-top: 15px"
+    .other-names
+      b Added Items:
+      ul
+        | <% for(var i=0; i < addedItems.length; i++) { %>
+        |    <li> {{ addedItems[i] }} </li>
+        |  <% } %>
+    | <% } %>
+
+
+script.menu-item-dialog-content(type="text/template")
+  p Menu Item Information:
+  label Name*
+  br
+  input.item-input type="text" value="{{ _maybe.name }}" name="name"
+  br
+  label Price
+  br
+  input.item-input type="text" value="{{ _maybe.price }}" name="price"
+  br
+  label Description
+  br
+  textarea.item-input name="desc" {{ _maybe.desc }}
+  br
+
+script.services-item-dialog-content(type="text/template")
+  p Service Information:
+  label Name*
+  br
+  input.item-input type="text" value="{{ _maybe.name }}" name="name"
+  br
+  label Price
+  br
+  input.item-input type="text" value="{{ _maybe.price }}" name="price"
+  br
+  label Description
+  br
+  textarea.item-input name="desc" {{ _maybe.desc }}
+  br
+
+script.products-item-dialog-content(type="text/template")
+  p Product Information:
+  label Name*
+  br
+  input.item-input type="text" value="{{ _maybe.name }}" name="name"
+  br
+  label Price
+  br
+  input.item-input type="text" value="{{ _maybe.price }}" name="price"
+  br
+  label Description
+  br
+  textarea.item-input name="desc" {{ _maybe.desc }}
+  br
+
+script.property-listings-item-dialog-content(type="text/template")
+  p Listing Information:
+  label Title*
+  br
+  input.item-input type="text" value="{{ _maybe.name }}" name="name"
+  br
+  label MLS #
+  br
+  input.item-input type="text" value="{{ _maybe.mls }}" name="mls"
+  br
+  label Price
+  br
+  input.item-input type="text" value="{{ _maybe.price }}" name="price"
+  br
+  label Address
+  br
+  input.item-input type="text" value="{{ _maybe.address }}" name="address"
+  br
+  label Photo URL
+  br
+  input.item-input type="text" value="{{ _maybe.photo_url }}" name="photo_url"
+  br
+  label Description
+  br
+  textarea.item-input name="desc" {{ _maybe.desc }}
+  br
+
+script.locations-item-dialog-content(type="text/template")
+  p Location Information:
+  label Name*
+  br
+  input.item-input type="text" value="{{ _maybe.name }}" name="name"
+  br
+  label Phone Number
+  br
+  input.item-input type="text" value="{{ _maybe.phone }}" name="phone"
+  br
+  label Address
+  br
+  input.item-input type="text" value="{{ _maybe.address }}" name="address"
+  br
+  label Additional Information
+  br
+  textarea.item-input name="desc" {{ _maybe.desc }}
+  br

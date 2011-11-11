@@ -1,264 +1,69 @@
-script.menu-item-dialog(type="text/template")
-  #dialog-confirm class="addItem"
+/ =========================== \
+/ = Specific Category Items = \
+/ =========================== \
 
-    input.item-input type="hidden" name="type" value="item"
-
-    p Menu Item Information:
-    label Name*
-    br
-    input.item-input type="text" value="{{ _maybe.name }}" name="name"
-    br
-    label Price
-    br
-    input.item-input type="text" value="{{ _maybe.price }}" name="price"
-    br
-    label Description
-    br
-    textarea.item-input name="desc" {{ _maybe.desc }}
-    br
-    | <% if (mode == 'add') { %>
-    input.lfloat type="button" value="Add" name="add" style="margin:10px 15px 0 2px"
-    | <% } %>
-
-    | <% if(flash.error) { %>
-    p.error Error: {{ flash.error }}
-    | <% } if(flash.success) { %>
-    p.success {{ flash.success }}
-    | <% } if (addedItems.length > 0) { %>
-    .clearfix.divider style="margin-top: 15px"
-    .other-names
-      b Added Items:
-      ul
-        | <% for(var i=0; i < addedItems.length; i++) { %>
-        |    <li> {{ addedItems[i] }} </li>
-        |  <% } %>
-    | <% } %>
-
-script.services-item-dialog(type="text/template")
-  #dialog-confirm class="addItem"
-
-    input.item-input type="hidden" name="type" value="item"
-
-    p Service Information:
-    label Name*
-    br
-    input.item-input type="text" value="{{ _maybe.name }}" name="name"
-    br
-    label Price
-    br
-    input.item-input type="text" value="{{ _maybe.price }}" name="price"
-    br
-    label Description
-    br
-    textarea.item-input name="desc" {{ _maybe.desc }}
-    br
-    | <% if (mode == 'add') { %>
-    input.lfloat type="button" value="Add" name="add" style="margin:10px 15px 0 2px"
-    | <% } %>
-    
-    | <% if(flash.error) { %>
-    p.error Error: {{ flash.error }}
-    | <% } if(flash.success) { %>
-    p.success {{ flash.success }}
-    | <% } if (addedItems.length > 0) { %>
-    .clearfix.divider style="margin-top: 15px"
-    .other-names
-      b Added Items:
-      ul
-        | <% for(var i=0; i < addedItems.length; i++) { %>
-        |    <li> {{ addedItems[i] }} </li>
-        |  <% } %>
-    | <% } %>
-
-script.products-item-dialog(type="text/template")
-  #dialog-confirm class="addItem"
-
-    input.item-input type="hidden" name="type" value="item"
-
-    p Product Information:
-    label Name*
-    br
-    input.item-input type="text" value="{{ _maybe.name }}" name="name"
-    br
-    label Price
-    br
-    input.item-input type="text" value="{{ _maybe.price }}" name="price"
-    br
-    label Description
-    br
-    textarea.item-input name="desc" {{ _maybe.desc }}
-    br
-    | <% if (mode == 'add') { %>
-    input.lfloat type="button" value="Add" name="add" style="margin:10px 15px 0 2px"
-    | <% } %>
-    
-    | <% if(flash.error) { %>
-    p.error Error: {{ flash.error }}
-    | <% } if(flash.success) { %>
-    p.success {{ flash.success }}
-    | <% } if (addedItems.length > 0) { %>
-    .clearfix.divider style="margin-top: 15px"
-    .other-names
-      b Added Items:
-      ul
-        | <% for(var i=0; i < addedItems.length; i++) { %>
-        |    <li> {{ addedItems[i] }} </li>
-        |  <% } %>
-    | <% } %>
-
-script.property-listings-item-dialog(type="text/template")
-  #dialog-confirm class="addItem"
-
-    input.item-input type="hidden" name="type" value="item"
-
-    p Listing Information:
-    label Title*
-    br
-    input.item-input type="text" value="{{ _maybe.name }}" name="name"
-    br
-    label MLS #
-    br
-    input.item-input type="text" value="{{ _maybe.mls }}" name="mls"
-    br
-    label Price
-    br
-    input.item-input type="text" value="{{ _maybe.price }}" name="price"
-    br
-    label Address
-    br
-    input.item-input type="text" value="{{ _maybe.address }}" name="address"
-    br
-    label Photo URL
-    br
-    input.item-input type="text" value="{{ _maybe.photo_url }}" name="photo_url"
-    br
-    label Description
-    br
-    textarea.item-input name="desc" {{ _maybe.desc }}
-    br
-    | <% if (mode == 'add') { %>
-    input.lfloat type="button" value="Add" name="add" style="margin:10px 15px 0 2px"
-    | <% } %>
-    
-    | <% if(flash.error) { %>
-    p.error Error: {{ flash.error }}
-    | <% } if(flash.success) { %>
-    p.success {{ flash.success }}
-    | <% } if (addedItems.length > 0) { %>
-    .clearfix.divider style="margin-top: 15px"
-    .other-names
-      b Added Items:
-      ul
-        | <% for(var i=0; i < addedItems.length; i++) { %>
-        |    <li> {{ addedItems[i] }} </li>
-        |  <% } %>
-    | <% } %>
-
-script.locations-item-dialog(type="text/template")
-  #dialog-confirm class="addItem"
-
-    input.item-input type="hidden" name="type" value="item"
-
-    p Location Information:
-    label Name*
-    br
-    input.item-input type="text" value="{{ _maybe.name }}" name="name"
-    br
-    label Phone Number
-    br
-    input.item-input type="text" value="{{ _maybe.phone }}" name="phone"
-    br
-    label Address
-    br
-    input.item-input type="text" value="{{ _maybe.address }}" name="address"
-    br
-    label Additional Information
-    br
-    textarea.item-input name="desc" {{ _maybe.desc }}
-    br
-    | <% if (mode == 'add') { %>
-    input.lfloat type="button" value="Add" name="add" style="margin:10px 15px 0 2px"
-    | <% } %>
-    
-    | <% if(flash.error) { %>
-    p.error Error: {{ flash.error }}
-    | <% } if(flash.success) { %>
-    p.success {{ flash.success }}
-    | <% } if (addedItems.length > 0) { %>
-    .clearfix.divider style="margin-top: 15px"
-    .other-names
-      b Added Items:
-      ul
-        | <% for(var i=0; i < addedItems.length; i++) { %>
-        |    <li> {{ addedItems[i] }} </li>
-        |  <% } %>
-    | <% } %>
-
-/ ===========================
-/ = Specific Category Items =
-/ ===========================
 script.menu-item type="text/template"
-  .item class="{{ cycle }}"
-    .name {{ item.name }}
-    .price {{ item.price }}
-    .clearfix = ""
-    pre.desc {{ item.desc }}
+  .name {{ item.name }}
+  .price {{ item.price }}
+  .clearfix = ""
+  pre.desc {{ item.desc }}
 
 script.services-item type="text/template"
-  .item class="{{ cycle }}"
-    .name {{ item.name }}
-    .price {{ item.price }}
-    .clearfix = ""
-    pre.desc {{ item.desc }}
+  .name {{ item.name }}
+  .price {{ item.price }}
+  .clearfix = ""
+  pre.desc {{ item.desc }}
 
 script.products-item type="text/template"
-  .item class="{{ cycle }}"
-    .name {{ item.name }}
-    .price {{ item.price }}
-    .clearfix = ""
-    pre.desc {{ item.desc }}
+  .name {{ item.name }}
+  .price {{ item.price }}
+  .clearfix = ""
+  pre.desc {{ item.desc }}
 
 script.property-listings-item type="text/template"
-  .item class="{{ cycle }}"
-    .name.long {{ item.name }}
-    .clearfix = ""
-    div {{ item.price }}
-    
-    | <% if (item.address) { %>
-    div
-      a href="http://maps.google.com/maps?q={{ item.address }}" target="_blank" {{ item.address }}
-    | <% } %>
+  .name.long {{ item.name }}
+  .clearfix = ""
+  div {{ item.price }}
+  
+  | <% if (item.address) { %>
+  div
+    a href="http://maps.google.com/maps?q={{ item.address }}" target="_blank" {{ item.address }}
+  | <% } %>
 
-    | <% if (item.photo_url) { %>
-    div
-      a href="{{ item.photo_url }}" View Property
-    | <% } %>
+  | <% if (item.photo_url) { %>
+  div
+    a href="{{ item.photo_url }}" View Property
+  | <% } %>
 
-    | <% if (_maybe.mls) { %>
-    .mls
-      ' MLS #:
-      a href="http://www.realtor.com/search/searchresults.aspx?mlslid={{ item.mls }}" {{ item.mls }}
-    | <% } %>
-    
-    pre.desc.long {{ item.desc }}
+  | <% if (item.mls) { %>
+  .mls
+    ' MLS #:
+    a href="http://www.realtor.com/search/searchresults.aspx?mlslid={{ item.mls }}" {{ item.mls }}
+  | <% } %>
+  
+  pre.desc.long {{ item.desc }}
 
 script.locations-item type="text/template"
-  .item class="{{ cycle }}"
-    .name.long {{ item.name }}
-    .clearfix = ""
-    | <% if (item.phone) { %>
-    div
-      a href="tel:{{ item.phone }}" {{ item.phone }}
+  .name.long {{ item.name }}
+  .clearfix = ""
+  | <% if (item.phone) { %>
+  div
+    a href="tel:{{ item.phone }}" {{ item.phone }}
+  | <% } %>
+
+  | <% if (item.address) { %>
+  div
+    a href="http://maps.google.com/maps?q={{ item.address }}" target="_blank" {{ item.address }}
+  | <% } %>
+
+  pre.desc.long {{ item.desc }}
+
+/ this template is used when a photo is being displayed
+script.item-wrap type="text/template"
+  tr.item class="{{ cycle }}" data-id="{{ item._id }}"
+    | <% if (item.wphotoUrl) { %>
+    td.img-col
+      img src="{{ item.wphotoUrl }}"
     | <% } %>
-
-    | <% if (item.address) { %>
-    div
-      a href="http://maps.google.com/maps?q={{ item.address }}" target="_blank" {{ item.address }}
-    | <% } %>
-
-    pre.desc.long {{ item.desc }}
-
-/ this represents a page in the page_tree list view
-script.category-item type="text/template"
-  .leaf-name.item class="{{ cycle }}" data-id="{{ item._id }}"
-    | {{ item.name }}
+    td.txt-col colspan="<% print(item.wphotoUrl ? 1 : 2); %>"
+      | <% print( itemTemplate({ item:item }) ); %>

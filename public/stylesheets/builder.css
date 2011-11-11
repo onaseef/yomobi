@@ -363,8 +363,43 @@ div.wysiwyg ul.toolbar {
 .widget-editor .edit-area label {
   white-space: normal; }
 
+.wphoto-wrap {
+  width: 100%;
+  border: 1px solid #BDC7D8;
+  margin: 10px 0;
+  padding: 5px; }
+  .wphoto-wrap label {
+    font-weight: bold;
+    font-size: 0.8em; }
+  .wphoto-wrap img {
+    -moz-border-radius: 0px;
+    -khtml-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px; }
+
+.wphoto-wrap .selected-file {
+  width: 120px;
+  height: 1.25em;
+  padding: 4px;
+  margin-right: 4px;
+  background: white url(/images/ui/blue-bar.png) no-repeat -500px 0;
+  transition: background-position 2s;
+  -moz-transition: background-position 2s;
+  -webkit-transition: background-position 2s;
+  -o-transition: background-position 2s;
+  border: 1px solid #DFDFDF;
+  border-top: 1px solid #DDDDDD;
+  border-bottom: 1px solid #E2E2E2;
+  font-size: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  clear: left; }
+
+#dialog-confirm .wphoto-wrap {
+  padding: 0px 4px 0px 4px; }
+
 #builder .edit-area.hours .double-time-input {
-  margin: 25px 0px 10px 0px; }
+  margin: 30px 0px 10px 0px; }
 #builder .edit-area.hours .double-time {
   margin-bottom: 10px; }
 #builder .edit-area.hours .day-checkbox {
@@ -468,7 +503,7 @@ div.wysiwyg ul.toolbar {
 #dialog-confirm .success {
   color: #008800;
   padding: 0px;
-  margin-top: 13px;
+  margin-top: 23px;
   font-size: 90%; }
 
 #dialog-confirm.edit-icon .icons {
@@ -550,4 +585,12 @@ div.wysiwyg ul.toolbar {
   cursor: pointer; }
 #mobile-container .page .content.category .item:hover, #mobile-container .page .content.page_tree .item:hover {
   background-color: #d8dfea;
+  cursor: pointer; }
+
+div.plupload {
+  cursor: pointer; }
+  div.plupload input {
+    cursor: pointer; }
+
+button[name=pick_files] {
   cursor: pointer; }

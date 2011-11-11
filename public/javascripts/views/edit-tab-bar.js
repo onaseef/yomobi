@@ -20,7 +20,7 @@
       var self = this
         , $elem = $(e.target)
         , idx = $elem.attr('data-idx')
-        , wid = ($elem.val() == '==none==') ? '' : $elem.val()
+        , wid = ($elem.val() == '__none__') ? '' : $elem.val()
       ;
       if (!util.reserveUI()) {
         mapp.updateWtabs();

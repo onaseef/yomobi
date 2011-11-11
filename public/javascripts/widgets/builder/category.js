@@ -23,6 +23,80 @@
       if (child_id.charAt(0) === '_') continue;
       traverseStruct(currentNode[child_id], f);
     }
+  };
+
+  var makeSaveFunc = function (dialogView, options) {
+
+    return function () {
+      if (!util.reserveUI()) return;
+      // wrap in function for code reuse
+      var dialogElem = util.ensureClassAncestor(this,'ui-dialog-content');
+      var cb = function (data) {
+        util.log('wut', data);
+        util.releaseUI();
+
+        if (data.result !== 'success' && data.result !== 'noupload') {
+          alert('Photo upload failed ('+ data.result +')');
+          return;
+        }
+        dialogElem.dialog("close");
+
+        if (data.wphotoUrl) {
+          $(dialogView.el).find('input[name=wphotoUrl]').val(data.wphotoUrl);
+        }
+        options.onUpload(options.addAnother);
+      };
+      // check for queued upload
+      var uploader = util._uploaders['dialog'];
+
+      if (options.validator && options.validator(options.addAnother) !== true
+         || options.skipUpload
+      ) {
+        // skip upload until validator returns true
+        util.releaseUI();
+        options.onUpload(options.addAnother);
+      }
+      else if (uploader.files.length > 0 && uploader.files[0].status !== plupload.DONE) {
+        util.log('has stuff!',dialogElem);
+        dialogElem
+          .find('input,textarea,button').prop('disabled',true).end()
+          .find('a').hide().end()
+        ;
+        uploader.yomobiOptions.onDone = cb;
+        uploader.start();
+      }
+      else {
+        util.log('empty');
+        cb({ result:'noupload' });
+      }
+    }
+  };
+
+  var makeCloseFunc = function (dialogView) {
+    return function () {
+      if (!util.isUIFree()) return;
+      $(this).dialog("close");
+      dialogView.options.onClose && dialogView.options.onClose();
+    };
+  }
+
+  var initDialogUploader = function (dialogView, dialog, shouldEmptyQueue) {
+    // configure uploader; callback will be configured later in makeSaveFunc()
+
+    // This delay is needed because the flash object is present for a
+    // split second, just enough time for a double click to catch it (bad)
+    setTimeout(function () {
+      util.initUploader( dialog.find('.wphoto-wrap'), {
+        instanceId: 'dialog',
+        auto: false,
+        alwaysOnTop: true,
+        emptyQueue: shouldEmptyQueue,
+        wid: dialogView.model.id
+      });
+      // Because we're in a dialog, we need to set the uploader to be
+      // on top of everything else.
+      util._uploaders['dialog'].bringToFront();
+    }, 300);
   }
 
   var validateOrder = function (node_id, node) {
@@ -46,6 +120,21 @@
       var extras = _.without.apply(null, [order].concat(children_ids))
       node._data._order = _.without.apply(null, [order].concat(extras))
     }
+  };
+
+  var uploaderCallback = function(data) {
+    util.log('wutt',data, 'node_id', this.node_id);
+    if (data.result !== 'success' && data.result !== 'noupload') {
+      alert('Photo upload failed ('+ data.result +')');
+      util.releaseUI();
+      return;
+    }
+    var node = this.editor.widget.getNodeById(this.node_id);
+    node._data.wphotoUrl = data.wphotoUrl;
+    // accept() needs the UI to be free
+    util.releaseUI();
+    this.editor.accept();
+    this.pageView.refresh();
   };
 
   var deleteConfirmText = "Are you sure you want to delete? (Data will be lost)";
@@ -86,11 +175,13 @@
         currentNodeType: _.last(this.catStack)._data.type,
         catCrumbs: util.catStackCrumbs(this.get('name'),this.catStack),
         onHomePage: mapp.pageLevel === 0,
+        onRootPage: this.catStack.length === 1,
         isThereStuff: isThereStuff,
         catLabel: this.get('catTypeName'),
         itemLabel: this.get('itemTypeName'),
         itemIconName: 'leaf',
-        bulletTypes: bulletTypes
+        bulletTypes: bulletTypes,
+        wphotoPreviewPath: this.getCurrentLevel(true)._data.wphotoUrl || g.noPhotoPath
       };
       return _.extend({},showData,extraData);
     },
@@ -130,7 +221,9 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       'click input[name=move_up]':          'move',
       'click input[name=move_down]':        'move',
 
-      'click input[name=add_item]':         'addItem'
+      'click input[name=add_item]':         'addItem',
+      'click .rename-link':                 'rename',
+      'click .remove-wphoto-link':          'removeWPhoto'
     },
     
     init: function (widget) {
@@ -151,6 +244,19 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       if (firstEdit) {
         this.widget.catStack.length = 0;
         this.widget.catStack.push( this.widget.get('struct') );
+      }
+      var callback = _.bind(uploaderCallback, {
+        node_id: this.widget.getCurrentNode()._data._id,
+        editor: this,
+        pageView: this.widget.pageView
+      });
+
+      if (mapp.pageLevel > 0) {
+        util.initUploader( $(this.el).find('.wphoto-wrap'), {
+          onDone: callback,
+          emptyQueue: true,
+          wid: this.widget.id
+        });
       }
     },
     
@@ -218,8 +324,7 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       if (idx === -1) return alert('Please select an item to edit.');
 
       if (_.include(this.treeTypes, type)) {
-        util.log('clicking');
-        $(this.widget.pageView.el).find('> div:eq('+idx+')').click();
+        this.widget.pageView.el.find('tr[data-id='+id+']').click();
       }
       else {
         this.editItem(id);
@@ -239,7 +344,8 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       this.catDialog.model = this.widget;
       this.catDialog.options = {
         onClose: this.refreshViews,
-        node_id: node._id
+        node_id: node._id,
+        hideUploader: true
       };
 
       this.catDialog.enterMode('edit').prompt(null,node.name);
@@ -372,6 +478,18 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       this.refreshViews();
     },
 
+    removeWPhoto: function (e) {
+      e.preventDefault();
+      var currentNode = this.widget.getCurrentLevel(true);
+      this.removeWPhotoFromNode(currentNode);
+      this.accept();
+      this.widget.pageView.refresh();
+    },
+
+    removeWPhotoFromNode: function (node) {
+      node._data.wphotoUrl = '';
+    },
+
     selectStuff: function (selectedIdxs,scrollTop) {
       this.el.find('select[name=stuff]')
         .find('option')
@@ -389,18 +507,14 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
   window.widgetPages.category = window.widgetPages.category.extend({
 
     onItemClick: function (e) {
-      var target = $(e.target), failSafe = 0;
-      while (!target.hasClass('item') && failSafe < 5) {
-        target = target.parent();
-        failSafe += 1;
-      }
-      if (!target.hasClass('item')) return;
+      var target = util.ensureClassAncestor(e.target, 'item');
+      if (!target) return;
 
-      var idx = target.index();
+      var node_id = target.data('id');
       this.widget.getEditor()
-        .el.find('select[name=stuff]').find('option')
+        .el.find('select[name=stuff] option')
         .prop('selected',false)
-        .eq(idx)
+        .filter('[value=' + node_id + ']')
           .prop('selected',true)
           .dblclick()
       ;
@@ -409,7 +523,10 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
     onCategoryClick: function (e) {
       if (!mapp.canTransition()) return;
 
-      var cat_id = $(e.target).data('id');
+      var target = util.ensureClassAncestor(e.target, 'item');
+      if (!target) return;
+
+      var cat_id = target.data('id');
       
       mapp.viewWidget(this.widget, cat_id);
       this.widget.getEditor().startEditing();
@@ -436,9 +553,14 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
     },
     
     refresh: function () {
-      var pcontent = this.widget.getPageContent();
-      var wpage = mapp.getActivePage().content.html(pcontent);
-      this.widget.pageView.setContentElem(wpage);
+      var newContent = $(this.widget.getPageContent())
+        , newTitle = this.widget.getTitleContent()
+        , activePage = mapp.getActivePage()
+      ;
+      this.beforePageRender(newContent);
+      activePage.content.empty().append(newContent);
+      activePage.topBar.find('.title').html(newTitle);
+      this.widget.pageView.setContentElem(activePage.content);
     }
     
   });
@@ -464,11 +586,11 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
     
     onKeyDown: function (e) {
       var code = e.keyCode || e.which;
-      if (code == 13) this.validateCategory(true);
+      if (code == 13) this.addAnotherSaveFunc.call(this.el);
     },
     
     initialize: function () {
-      _.bindAll(this,'validateCategory');
+      _.bindAll(this,'validateCategory', 'isCategoryValid');
       this.addedCats = [];
     },
 
@@ -488,8 +610,7 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       });
 
       var self = this;
-      $(this.el).html(dialogHtml).find('.add-btn')
-        .click(function () { self.validateCategory(true); }).end()
+      $(this.el).html(dialogHtml)
         .attr('title',this.el.children[0].title)
       ;
       return this;
@@ -501,37 +622,68 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       var self = this
         , level = this.model.getCurrentLevel()
         , dialogContent = this.render(error,level,origName).el
-        , closeSelf = close(this)
         , buttons = {}
+        , shouldEmptyUploadQueue = !error
       ;
       // cache for later use in validateCategory
       this.level = level;
       if (!error) this.origName = origName;
-
-      var makeSaveFunc = function (addAnother) {
-        return function () {
-          $(this).dialog("close");
-          self.validateCategory(addAnother);
-        }
-      }
       
-      buttons["Save"] = makeSaveFunc();
-      buttons["Cancel"] = closeSelf;
+      buttons["Save"] = makeSaveFunc(this, {
+        onUpload: this.validateCategory,
+        validator: this.isCategoryValid,
+        skipUpload: this.options.hideUploader
+      });
+      buttons["Cancel"] = makeCloseFunc(this);
+
+      // cache for use when user hits enter key
+      this.addAnotherSaveFunc = makeSaveFunc(this, {
+        addAnother: true,
+        onUpload: this.validateCategory,
+        validator: this.isCategoryValid,
+        skipUpload: this.options.hideUploader
+      });
       
       var dialog = util.dialog(dialogContent, buttons, dialogContent.title)
         .find('p.error').show('pulsate',{times:3}).end()
-        .find('input[name=add]').click( makeSaveFunc(true) ).end()
+        .find('[name=add]').click(this.addAnotherSaveFunc).end()
       ;
-      // required for ie7
-      // setTimeout(function () { dialog.find('input[type=text]').focus()[0].focus(); },10);
+
+      if (!this.options.hideUploader)
+        initDialogUploader(this, dialog, shouldEmptyUploadQueue);
     },
     
-    validateCategory: function (addAnother) {
-  		$(this.el).dialog("close");
-
+    isCategoryValid: function (addAnother) {
+      // TODO: redundant code. Make validateCategory() use
+      //       this code somehow.
       var name = $(this.el).find('input[name=cat]').val()
         , name = $.trim(name)
-        , name = name.replace(/\|/g,'')
+
+        , nameCompare = name.toLowerCase()
+        , origNameCompare = (this.origName || '').toLowerCase()
+        , existingNames = _.map(this.getCatNames(), downcase)
+      ;
+      if (_.isEmpty(name) && this.addedCats.length > 0 && addAnother !== true) {
+        return true;
+      }
+      if (_.isEmpty(name) ||
+          nameCompare !== origNameCompare &&
+          _.contains(existingNames,nameCompare)
+      ){
+        return false;
+      }
+      if (this.mode === 'add' ||
+          this.mode == 'edit' && name !== this.origName
+      ){
+        return true;
+      }
+      return false;
+    },
+
+    validateCategory: function (addAnother) {
+  		$(this.el).dialog("close");
+      var name = $(this.el).find('input[name=cat]').val()
+        , name = $.trim(name)
 
         , nameCompare = name.toLowerCase()
         , origNameCompare = (this.origName || '').toLowerCase()
@@ -544,7 +696,11 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       else if ( nameCompare !== origNameCompare && _.contains(existingNames,nameCompare) )
         this.prompt('Name is already in use',name,true);
       else if (this.mode == 'add') {
-        this.addNodeToStruct({ type:this.type, name:name });
+        this.addNodeToStruct({
+          type: this.type,
+          name: name,
+          wphotoUrl: $(this.el).find('input[name=wphotoUrl]').val()
+        });
         this.addedCats.push(name);
 
         bapp.currentEditor.setChanged('something',true);
@@ -587,24 +743,23 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
     },
 
     getTypeName: function () {
-      return this.model.get('catTypeName');
+      var node = this.model.getCurrentNode()[this.options.node_id]
+        , isCat = this.mode === 'add' || node._data.type === 'cat'
+        , typeName = isCat ? 'catTypeName' : 'itemTypeName'
+      ;
+      return this.model.get(typeName);
     }
 
   });
   
-  var close = function (dialogView) {
-    return function () {
-      $(this).dialog("close");
-      dialogView.options.onClose && dialogView.options.onClose();
-    };
-	}
-  
   // =================================
+  var itemDialogTemplate = util.getTemplate('item-dialog');
   var AddItemDialog = Backbone.View.extend({
     
     initialize: function () {
-      this.template = util.getTemplate(this.model.get('wsubtype')+'-item-dialog');
+      this.template = util.getTemplate(this.model.get('wsubtype')+'-item-dialog-content');
       this.addedItems = [];
+      _.bindAll(this, 'saveItem', 'isItemValid');
     },
     
     enterMode: function (mode) {
@@ -616,13 +771,16 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       flash || (flash = {});
       item || (item = {});
       var title = (this.mode == 'add' ? "Add New " : "Edit ") + this.model.get('itemTypeName');
-      var dialogHtml = this.template(_.extend({},item, {
+
+      var templateData = _.extend({}, item, {
         flash: flash,
         _items: level._items,
         itemTypeName: this.model.get('itemTypeName'),
         addedItems: this.addedItems,
         mode: this.mode
-      }) );
+      });
+      templateData.innerContent = this.template(templateData);
+      var dialogHtml = itemDialogTemplate(templateData);
 
       $(this.el).html(dialogHtml).attr('title',title);
       return this;
@@ -634,38 +792,38 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
       var self = this
         , level = this.model.getCurrentLevel()
         , dialogContent = this.render(flash,level,item).el
+        , shouldEmptyUploadQueue = !flash || !flash.error
       ;
       // cache for later use
       this.level = level;
       if (!flash || !flash.error) this.origItem = item;
       
       var buttons = {};
-      var closeFunc = function () {
-        $(this).dialog("close");
-        self.options.onClose && self.options.onClose();
-      };
 
-      var makeSaveFunc = function (addAnother) {
-        return function () {
-          $(this).dialog("close");
-          self.saveItem(addAnother);
-        }
-      }
-
-      buttons["Save"] = makeSaveFunc();
-      buttons["Cancel"] = closeFunc;
+      buttons["Save"] = makeSaveFunc(this, { onUpload:this.saveItem, validator:this.isItemValid });
+      buttons["Cancel"] = makeCloseFunc(this);
 
       var dialog = util.dialog(dialogContent, buttons, dialogContent.title)
         .find('p.error').show('pulsate',{times:3}).end()
         .find('p.success').show('pulsate',{times:1}).end()
-        .find('input[name=add]').click( makeSaveFunc(true) ).end()
+        .find('input[name=add]').click( makeSaveFunc(this, {
+            onUpload: this.saveItem,
+            validator: this.isItemValid,
+            addAnother: true
+            })
+          ).end()
+        .find('.remove-wphoto-link').click(function (e) {
+          e.preventDefault();
+          $(this).hide();
+          $(self.el).find('[name=wphotoUrl]').val('').end()
+                    .find('.wphoto-wrap img').hide();
+        }).end()
       ;
-      // required for ie7
-      // setTimeout(function () { dialog.find('input[type=text]')[0].focus()[0].focus(); },10);
+
+      initDialogUploader(this, dialog, shouldEmptyUploadQueue);
     },
     
     validateItem: function (item) {
-  		$(this.el).dialog("close");
 
       var name = $.trim(item.name)
         , nameCompare = name.toLowerCase()
@@ -681,6 +839,28 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
         return false;
       }
       return true;
+    },
+
+    isItemValid: function (addAnother) {
+      // TODO: redundant code. Make saveItem() use
+      //       this code somehow.
+      var activeItemData = {};
+      $(this.el).find('.item-input').each(function (idx,elem) {
+        activeItemData[$(elem).attr('name')] = $(elem).val();
+      });
+
+      var inputs = _(activeItemData).chain().reject(util.keq('type'))
+                                    .values().compact().value();
+      if (inputs.length === 0 && this.addedItems.length > 0 && addAnother !== true) {
+        return true;
+      }
+      if (!this.validateItem(activeItemData)) {
+        return false;
+      }
+      if (this.mode == 'add' || this.mode == 'edit') {
+        return true;
+      }
+      return false;
     },
 
     saveItem: function (addAnother) {

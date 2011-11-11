@@ -1,0 +1,11 @@
+//
+// IE specific stylings
+//
+$dynamic-width: 320px;
+
+.page > .content.category, .page > .content.page_tree {
+  table.node-list {
+    table-layout: fixed;
+    td.img-col { width: 80px; }
+  }
+}

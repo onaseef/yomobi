@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable, :lockable and :timeoutable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :confirmable
+         :confirmable, :token_authenticatable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :company_type_id,
@@ -19,8 +19,10 @@ class User < ActiveRecord::Base
   end
 
   def self.find_for_authentication(conditions)
-    conditions[:email].downcase!
-    conditions[:email].strip!
+    unless conditions[:email].nil?
+      conditions[:email].downcase!
+      conditions[:email].strip!
+    end
     super(conditions)
   end
 end

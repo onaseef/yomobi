@@ -29,7 +29,8 @@
           isLeaf: true,
           title: leaf._data.name,
           content: leaf._data.content,
-          stuff: []
+          stuff: [],
+          wphotoUrlLarge: util.largerWphoto(leaf._data.wphotoUrl)
         };
         return _.extend({},this.toJSON(),extraData);
       }

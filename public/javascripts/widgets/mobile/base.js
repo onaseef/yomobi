@@ -99,7 +99,6 @@
     
     initialize: function (options) {
       this.widget = options.widget;
-
       if (this.init) this.init();
     },
     
@@ -122,7 +121,22 @@
       return 'forward';
     },
 
-    onGoHome: function () {}
+    onGoHome: function () {},
+
+    // this callback is triggered after the page content is generated,
+    // but before the page is added to the dom
+    beforePageRender: function ($pageContent) {}
   });
-  
+
+  //
+  // functionality shared between some widgets
+  //
+  var imgLoadTimer;
+  util.widget.resizeOnImgLoad = function ($pageContent) {
+    $pageContent.find('img').unbind('load.yo').bind('load.yo', function () {
+      clearTimeout(imgLoadTimer);
+      imgLoadTimer = setTimeout(function () { mapp.resize(); }, 50);
+    });
+  };
+
 })(jQuery);

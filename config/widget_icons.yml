@@ -15,6 +15,7 @@
 - { name: custom-page, pname: Page }
 - { name: donate, pname: Donate }
 - { name: volunteer, pname: Volunteer }
+- { name: weather-1, pname: Weather }
 - { name: event-calendar, pname: Calendar }
 - { name: calendar-event-1, pname: Calendar }
 - { name: calendar-event-2, pname: Calendar }

@@ -2,6 +2,9 @@ var util = {
   
   debug: true,
   cycleIdx: 0,
+
+  // namespace for shared widget functions
+  widget: {},
   
   // UI event blocking statuses
   busy: {},
@@ -34,6 +37,10 @@ var util = {
 
   release: function (key) {
     this.busy[key] = false;
+  },
+
+  isBusy: function (key) {
+    return this.busy[key] === true;
   },
   
   /**
@@ -95,13 +102,13 @@ var util = {
   
   reserveUI: function () {
     util.toggleLoaderOverlay(true);
-    var reservations = _.map(this.busy, function (isReserved) { return isReserved; });
-    return !_.any(reservations) && this.reserve('ui');
+    var reservations = _.values(util.busy);
+    return !_.any(reservations) && util.reserve('ui');
   },
   
   isUIFree: function () {
-    var reservations = _.map(this.busy, function (isReserved) { return isReserved; });
-    return !_.any(reservations) && this.reserve('ui',false);
+    var reservations = _.values(util.busy);
+    return !_.any(reservations) && util.reserve('ui',false);
   },
   
   pushUIBlock: function (block_key) {
@@ -114,7 +121,7 @@ var util = {
   
   releaseUI: function () {
     util.toggleLoaderOverlay(false);
-    this.release('ui');
+    util.release('ui');
   },
   
   resizeOverlays: function () {
@@ -708,7 +715,202 @@ var util = {
     $.post('/builder/gen-id',{});
     g.id_counter += 1;
     return id;
-  }
+  },
+
+  preventDefault: function (e) { e.preventDefault(); },
+
+  _uploaders: {},
+  getOrCreateUploader: function (extraData, options) {
+    var defaults = {
+      instanceId: 'default',
+      extraParams: {},
+      onDone: _.identity
+    }
+    options = _.extend(defaults, options);
+
+    var uploader = this._uploaders[options.instanceId];
+
+    if (uploader && options.emptyQueue && uploader.files.length > 0) {
+      while (uploader.files.length > 0) {
+        uploader.removeFile(uploader.files[0]);
+      }
+    }
+
+    if (uploader && uploader.runtime === 'flash') {
+      this.destroyUploader(options.instanceId);
+    }
+    else if (uploader) {
+      _.extend(uploader.settings, extraData);
+      _.extend(uploader.settings.multipart_params, options.extraParams);
+      uploader.yomobiOptions = options;
+      return uploader;
+    }
+
+    uploader = this._uploaders[options.instanceId] = new plupload.Uploader(_.extend({
+      runtimes: 'html5,flash,html4',
+      url: g.wphotoUploadPath,
+      max_file_size: '10mb',
+      multiple_queues: false,
+      multi_selection: false,
+      filters: [
+        { title:'Image Files', extensions:'jpg,jpeg,gif,png' }
+      ],
+
+      flash_swf_url: '/javascripts/plupload/plupload.flash.swf',
+      multipart: true,
+      multipart_params: _.extend(g.uploadifyScriptData, options.extraParams),
+      headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') }
+    }, extraData));
+
+    uploader.instanceId = options.instanceId;
+    uploader.yomobiOptions = options;
+
+    return uploader;
+  },
+
+  destroyUploader: function (instanceId) {
+    this._uploaders[instanceId].destroy();
+    delete this._uploaders[instanceId];
+  },
+
+  initUploader: function (context, options) {
+    options || (options = {});
+    options.context = context;
+
+    var pickerId = util.generateId()
+      , uploader = util.getOrCreateUploader({ browse_button:pickerId }, options)
+    ;
+    util.uploaderContext = context;
+
+    uploader.unbindAll();
+
+    uploader.bind('Init', function (up, params) {
+      if (uploader.files.length > 0 && uploader.files[0].status === plupload.DONE) {
+        uploader.removeFile(uploader.files[0]);
+      }
+      else if (uploader.files.length > 0) {
+        file = uploader.files[0];
+        context.find('.selected-file').empty().append(
+          '<div id="' + file.id + '">' +
+          file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' +
+        '</div>');
+      }
+    });
+
+    context.find('[name=pick_files]').attr('id', pickerId);
+
+    uploader.init();
+    // because we're in a dialog, sometimes we need to set the uploader to be
+    // on top of everything else, as well as send it back
+    uploader.layover = $('#' + uploader.id + '_' + uploader.runtime + '_container');
+    if (uploader.layover.length === 0) {
+      // layover for html4 runtime
+      uploader.layover = $('form[target=' + uploader.id + '_iframe]');
+    }
+
+    uploader.bringToFront = function () {
+      if ($.browser.mozilla && $.browser.version.slice(0,3) !== "1.9")
+        return;
+      this.layover.css('z-index', 10000);
+    };
+    uploader.sendToBack = function () {
+      $('#'+pickerId).hide();
+      uploader.refresh();
+    };
+    uploader.disableBrowseButton = function () {
+      $('#'+pickerId).hide();
+      $('<button>').text('Browse...').prop('disabled',true).insertAfter('#'+pickerId);
+      uploader.refresh();
+    }
+
+    uploader.bind('FilesAdded', function (up, files) {
+      if (!util.isUIFree()) return;
+
+      var isAutoEnabled = uploader.yomobiOptions.auto !== false;
+
+      while (uploader.files.length > 1) {
+        uploader.removeFile(uploader.files[0]);
+      }
+      if (isAutoEnabled && !util.reserveUI()) {
+        return;
+      }
+
+      $.each(files, function (i, file) {
+        context.find('.selected-file').empty().append(
+          '<div id="' + file.id + '">' +
+          file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' +
+        '</div>');
+      });
+      
+      if (isAutoEnabled) {
+        util.log('starting uploader');
+        uploader.start();
+      }
+
+      uploader.refresh(); // Reposition Flash/Silverlight
+      if (uploader.yomobiOptions.alwaysOnTop === true) {
+        uploader.bringToFront();
+      }
+    });
+
+    uploader.bind('BeforeUpload', function () {
+      context.find('.selected-file').text('Uploading...');
+      uploader.disableBrowseButton();
+      uploader.startTimestamp = util.now();
+    });
+
+    uploader.bind('UploadProgress', function (up, file) {
+      var width = context.find('.selected-file').outerWidth();
+      var offset = parseInt(-500 + file.percent * width / 100) + 'px 0';
+      context.find('.selected-file').css('background-position', offset);
+      if (file.percent === 100) {
+        var delay = Math.max(uploader.startTimestamp + 2000 - util.now(), 0);
+        setTimeout(function () {
+          if (!uploader.startTimestamp) return;
+          context.find('.selected-file').text('Processing...');
+        }, delay);
+      }
+    });
+
+    uploader.bind('Error', function (up, err) {
+      context.find('.error').append("<div>Error: " + err.code +
+        ", Message: " + err.message +
+        (err.file ? ", File: " + err.file.name : "") +
+        "</div>"
+      );
+
+      up.refresh(); // Reposition Flash/Silverlight
+    });
+
+    uploader.bind('FileUploaded', function (up, file, response) {
+      context.find('.selected-file').text('Saving widget...');
+      uploader.layover.find('input').show();
+
+      var resData = $.parseJSON(response.response);
+      util.log('Upload, complete.', up, file, response, resData);
+      delete uploader.startTimestamp;
+
+      callback = uploader.yomobiOptions.onDone;
+      callback(resData);
+    });
+  },
+
+  // returns a jquery object
+  ensureClassAncestor: function (elem, className) {
+    var failSafe = 8, $elem = $(elem);
+    while ($elem && !$elem.hasClass(className) && failSafe > 0) {
+      $elem = $elem.parent();
+      failSafe -= 1;
+    }
+    return ($elem && $elem.hasClass(className)) ? $elem : null;
+  },
+
+  largerWphoto: function (wphotoUrl) {
+    if (!wphotoUrl) return null;
+    return wphotoUrl.replace('-thumb?', '-original?');
+  },
+
+  now: function () { return (new Date()).getTime(); }
 }
 
 // useful extensions

@@ -1,3 +1,75 @@
+/ data taken from mobile/base.js : getIconData()
+script.sidebar-widget(type="text/template")
+  .sidebar.home-icon class="{{ singletonClass }}" data-wtype="{{ wtype }}" data-wsubtype="{{ wsubtype }}"
+    img.add.right src="/images/ui/plus.png"
+    img.add.left src="/images/ui/plus.png"
+    img.icon{ src="/images/widgets/{{ iconName }}.png" }
+    .title
+      | {{ name }}
+
+script.add-widget-dialog(type="text/template")
+  #dialog-confirm title="Please Rename your Widget"
+    p
+      span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"
+      | Please rename your widget:
+      input type="text" value="{{ defaultName }}" name="wname"
+      | <% if(_maybe.error) { %>
+      p.error Error: {{ _maybe.error }}
+      | <% } %>
+
+script.add-subcat-dialog(type="text/template")
+  #dialog-confirm title="Add New {{ typeName }}"
+      label {{ typeName }} name:
+      br
+      input type="text" value="{{ _maybe.name }}" name="cat"
+
+      table.wphoto-wrap
+        tbody
+          tr
+            | <% if (_maybe.wphotoUrl) { %>
+            td
+              img src="{{ wphotoUrl }}"
+            | <% } %>
+            td
+              label Select a Picture...
+              br
+              .selected-file.lfloat &nbsp;
+              button name="pick_files" Browse...
+              .error
+          | <% if (_maybe.wphotoUrl) { %>
+          tr
+            td
+              a.remove-wphoto-link href="#" Remove Picture
+            td
+          | <% } %>
+        .error
+      input type="hidden" value="" name="wphotoUrl"
+
+      input name="add" type="button" value="Add"
+
+      | <% if(_maybe.error) { %>
+      p.error Error: {{ _maybe.error }}
+      | <% } %>
+      | <% if (addedCats.length > 0) { %>
+      .divider
+      .other-names
+        b Added <% print( util.pluralize(typeName) ); %>:
+        ul
+          | <% for(var i=0; i < addedCats.length; i++) { %>
+          |    <li> {{ addedCats[i] }} </li>
+          |  <% } %>
+      | <% } %>
+
+script.edit-subcat-dialog(type="text/template")
+  #dialog-confirm title="Rename"
+    p
+      | New {{ typeName }} name:
+      br
+      input type="text" value="{{ _maybe.name }}" name="cat"
+      | <% if(_maybe.error) { %>
+      p.error Error: {{ _maybe.error }}
+      | <% } %>
+
 script.edit-widget(type="text/template")
   .header
     .icon{ style="background-image: url(/images/widgets/{{ iconName }}.png)" }
@@ -45,3 +117,91 @@ script.edit-icon-dialog(type="text/template")
     .selected-display
       img src=""
       label
+
+
+script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.property-listings-edit-area.locations-edit-area(type="text/template")
+    | <% if (onHomePage === true) { %>
+    input type="button" name="beginEditing" value="Click Here to Start Editing"
+
+    | <% } else if (currentNodeType !== 'page') { %>
+    br
+
+    .crumb-wrap
+      erb:
+        <b>Editing: <span class="blue">{{ catCrumbs }}</span></b>
+
+    table.wphoto-wrap
+      tbody
+        tr
+          td
+            img src="{{ wphotoPreviewPath }}"
+          td
+            label Select a Picture...
+            br
+            .selected-file.lfloat &nbsp;
+            button name="pick_files" Browse...
+            .error
+        | <% if (wphotoPreviewPath !== '/images/no-wphoto.png') { %>
+        tr
+          td
+            a.remove-wphoto-link href="#" Remove Picture
+          td
+        | <% } %>
+
+    select name="stuff" multiple="multiple"
+      | <% for (var i=0;i<stuff.length;i++) { %>
+      option data-type="{{ stuff[i].type }}" value="{{ stuff[i]._id }}"
+        | {{ bulletTypes[ stuff[i].type ] }} {{ stuff[i].name }}
+      | <% } %>
+    br
+    
+    | <%  if (stuff.length >= 2) { %>
+    input.rfloat.down-arrow type="button" name="move_down" data-mod="1" value="&#9660;"
+    input.rfloat.up-arrow type="button" name="move_up" data-mod="-1" value="&#9650;"
+    | <%  } %>
+
+    | <%       if (isThereStuff == true) { %>
+    input type="button" name="rename" value="Rename"
+    input type="button" name="edit" value="Edit"
+    input type="button" name="delete" value="Delete"
+    | <%       } %>
+
+    br
+    .divider
+
+    input type="button" name="back" value="< Back"
+    .button-divider.lfloat
+    input type="button" name="add_cat" value="Add {{ catLabel }}"
+    input type="button" name="add_item" value="Add {{ itemLabel }}"
+
+    | <% } else { %>
+    br
+    .crumb-wrap
+      erb:
+        <b>Editing: <span class="blue">{{ catCrumbs }}</span></b>
+
+    table.wphoto-wrap
+      tbody
+        tr
+          td
+            img src="{{ wphotoPreviewPath }}"
+          td
+            label Select a Picture...
+            br
+            .selected-file.lfloat &nbsp;
+            button name="pick_files" Browse...
+            .error
+        | <% if (wphotoPreviewPath !== '/images/no-wphoto.png') { %>
+        tr
+          td
+            a.remove-wphoto-link href="#" Remove Picture
+          td
+        | <% } %>
+
+    #jeditor-wrapper
+      textarea#jeditor {{ content }}
+    br
+    input type="button" name="back" value="< Back"
+    | <% } %>
+
+= render :partial => 'builder/cat-dialog-templates'
