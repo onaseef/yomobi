@@ -817,6 +817,7 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
           $(this).hide();
           $(self.el).find('[name=wphotoUrl]').val('').end()
                     .find('.wphoto-wrap img').hide();
+          util._uploaders['dialog'].reposition();
         }).end()
       ;
 

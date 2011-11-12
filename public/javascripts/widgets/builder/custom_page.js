@@ -88,6 +88,8 @@
       this.el.find('[name=wphotoUrl]').val('').end()
              .find('.wphoto-wrap img').attr('src', g.noPhotoPath);
       this.setChanged('wphoto', true);
+
+      util._uploaders['default'].reposition();
     }
 
   });

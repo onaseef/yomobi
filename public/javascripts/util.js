@@ -821,7 +821,13 @@ var util = {
       $('#'+pickerId).hide();
       $('<button>').text('Browse...').prop('disabled',true).insertAfter('#'+pickerId);
       uploader.refresh();
-    }
+    };
+    uploader.reposition = function () {
+      uploader.refresh(); // Reposition Flash/Silverlight
+      if (uploader.yomobiOptions.alwaysOnTop === true) {
+        uploader.bringToFront();
+      }
+    };
 
     uploader.bind('FilesAdded', function (up, files) {
       if (!util.isUIFree()) return;
@@ -847,10 +853,7 @@ var util = {
         uploader.start();
       }
 
-      uploader.refresh(); // Reposition Flash/Silverlight
-      if (uploader.yomobiOptions.alwaysOnTop === true) {
-        uploader.bringToFront();
-      }
+      uploader.reposition();
     });
 
     uploader.bind('BeforeUpload', function () {
