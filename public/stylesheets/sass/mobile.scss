@@ -342,9 +342,6 @@ p {
     background: #b3b3b3;
     height: 1px;
   }
-  .leaf-content {
-    clear: both;
-  }
 }
 
 .page > .content.category {
@@ -394,7 +391,6 @@ pre {
 .wphoto-large {
   float: left;
   text-align: left;
-  width: 100%;
   img {
     max-width: 100%;
     margin: 0px 15px 15px 0px;
@@ -404,7 +400,7 @@ pre {
     border-radius: 0px;
   }
 }
-.wphoto-large.centered { text-align: center; float: none; }
+.wphoto-large.centered { text-align: center; float: none; width: 100%; }
 
 .node-list {
   .wphoto {
