@@ -304,7 +304,7 @@ p {
 
   .item td {
     vertical-align: top;
-    padding: 8px 6px 8px 0px;
+    padding: 8px 12px 8px 0px;
     font-size: 16px;
 
     .img-col {
@@ -394,7 +394,7 @@ pre {
 .wphoto-large {
   float: left;
   text-align: left;
-  width: 100%;
+  //width: 100%;
   img {
     max-width: 100%;
     margin: 0px 15px 15px 0px;
@@ -404,7 +404,14 @@ pre {
     border-radius: 0px;
   }
 }
-.wphoto-large.centered { text-align: center; float: none; }
+.wphoto-large.centered { 
+  text-align: center; 
+  float: none; 
+  border-bottom: solid 1px #1D4088;
+}
+.wphoto-large.centered img {
+    margin-bottom: 6px;
+}
 
 .node-list {
   .wphoto {

@@ -261,7 +261,7 @@ p {
     vertical-align: middle; }
   .page > .content.category .item td, .page > .content.page_tree .item td {
     vertical-align: top;
-    padding: 8px 6px 8px 0px;
+    padding: 8px 12px 8px 0px;
     font-size: 16px; }
     .page > .content.category .item td .img-col, .page > .content.page_tree .item td .img-col {
       padding-right: 6px; }
@@ -336,27 +336,22 @@ pre {
 
 .wphoto-large {
   float: left;
-  text-align: left;
-  width: 100%; }
-  
-.wphoto-large img {
-  max-width: 100%;
-  margin: 0px 15px 15px 0px;
-  -moz-border-radius: 0px;
-  -webkit-border-radius: 0px;
-  -khtml-border-radius: 0px;
-  border-radius: 0px; 
-}
+  text-align: left; }
+  .wphoto-large img {
+    max-width: 100%;
+    margin: 0px 15px 15px 0px;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -khtml-border-radius: 0px;
+    border-radius: 0px; }
 
 .wphoto-large.centered {
   text-align: center;
-  float: none; 
-  border-bottom: solid 1px #1D4088;
-}
+  float: none;
+  border-bottom: solid 1px #1D4088; }
 
 .wphoto-large.centered img {
-    margin-bottom: 6px;
-}
+  margin-bottom: 6px; }
 
 .node-list .wphoto img {
   margin: 0px;
