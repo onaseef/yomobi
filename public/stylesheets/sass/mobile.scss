@@ -391,6 +391,7 @@ pre {
 .wphoto-large {
   float: left;
   text-align: left;
+  max-width: 100%;
   img {
     max-width: 100%;
     margin: 0px 15px 15px 0px;
@@ -400,7 +401,16 @@ pre {
     border-radius: 0px;
   }
 }
-.wphoto-large.centered { text-align: center; float: none; width: 100%; }
+.wphoto-large.centered { 
+  text-align: center; 
+  float: none; 
+  width: 100%; 
+  border-bottom: 1px solid #1D4088;
+}
+
+.wphoto-large.centered img {
+    margin-bottom: 6px;
+}
 
 .node-list {
   .wphoto {
