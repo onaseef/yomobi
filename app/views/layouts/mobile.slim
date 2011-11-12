@@ -9,6 +9,10 @@ html lang="en-US" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com
     title = "#{@company.name} | Mobile Website | YoMobi"
     = render 'shared/iphone-meta.html'
     = stylesheet_link_tag 'mobile'
+    erb:
+      <!--[if IE 7]>
+      <%= stylesheet_link_tag 'ie' %>
+      <![endif]-->
     meta name="keywords" content=@company.keywords
   body
     #mobile-container
