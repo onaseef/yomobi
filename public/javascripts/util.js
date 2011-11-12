@@ -913,7 +913,12 @@ var util = {
     return wphotoUrl.replace('-thumb?', '-original?');
   },
 
-  now: function () { return (new Date()).getTime(); }
+  now: function () { return (new Date()).getTime(); },
+
+  ensureUrl: function (url) {
+    var prefix = url.match(/^(https?:\/\/)|(ftps?\/\/)/) ? '' : 'http://';
+    return prefix + url;
+  }
 }
 
 // useful extensions

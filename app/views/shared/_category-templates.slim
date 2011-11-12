@@ -32,7 +32,7 @@ script.property-listings-item type="text/template"
 
   | <% if (item.photo_url) { %>
   div
-    a href="{{ item.photo_url }}" View Property
+    a href="<% print( util.ensureUrl(item.photo_url) ); %>" target="_blank" View Property
   | <% } %>
 
   | <% if (item.mls) { %>
