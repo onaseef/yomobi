@@ -291,8 +291,6 @@ p {
   .page > .content.category .separator, .page > .content.page_tree .separator {
     background: #b3b3b3;
     height: 1px; }
-  .page > .content.category .leaf-content, .page > .content.page_tree .leaf-content {
-    clear: both; }
 
 .page > .content.category .name {
   float: left;
@@ -348,10 +346,7 @@ pre {
 .wphoto-large.centered {
   text-align: center;
   float: none;
-  border-bottom: solid 1px #1D4088; }
-
-.wphoto-large.centered img {
-  margin-bottom: 6px; }
+  width: 100%; }
 
 .node-list .wphoto img {
   margin: 0px;
