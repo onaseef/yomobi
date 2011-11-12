@@ -679,6 +679,11 @@ div.plupload {
   cursor: pointer;
   input { cursor: pointer; }
 }
+
+button[disabled] {
+  padding: 1px 3px 1px 3px;  
+}
+
 button[name=pick_files] {
   cursor: pointer;
   padding: 1px 3px 1px 3px;
