@@ -205,3 +205,133 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
     | <% } %>
 
 = render :partial => 'builder/cat-dialog-templates'
+
+script.edit-widget-idle(type="text/template")
+  = render 'builder/builder-help'
+
+script.edit-tab-bar(type="text/template")
+  .header.edit-tab-bar
+    .icon{ style="background-image: url(/images/edit-tab-bar.png)" }
+    .widget-name
+      | Edit Mobile Tab Bar
+    p.help-text
+      a.help-link href="#" Help
+  div class="edit-area"
+    .explanation == t 'builder.help.edit_tab_bar'
+    .wtab
+      h3 = "Tab #1"
+      h2 style="color:#696969" Home
+    - 3.times do |n|
+      .wtab
+        h3 = "Tab \##{ n+2 }"
+        select name="wtab_1" data-idx="#{ n }"
+          option value="__none__" = "==None=="
+          | <%
+          = "var tabIdx = #{ n };"
+          | for (var i=0; i<widgetVals.length; i++) {
+          |   if ( wtabNames[tabIdx] == widgetVals[i].name ) {
+          |     print('<option selected="selected" value="'+widgetVals[i].id+'">'+widgetVals[i].name+'</option>');
+          |   } else {
+          |     print('<option value="'+widgetVals[i].id+'">'+widgetVals[i].name+'</option>');
+          |   }
+          | } %>
+
+script.edit-settings(type="text/template")
+  .header.edit-settings
+    .icon{ style="background-image: url(/images/edit-settings.png)" }
+    .widget-name
+      | General Settings
+    p.help-text
+      a.help-link href="http://help.yomobi.com/Account/GeneralSettings" target="_blank" Help
+  div class="edit-area edit-settings"
+    .explanation == t 'builder.help.edit_settings'
+
+    .box style="margin-bottom:10px"
+      label Mobile Site URL:
+      br
+      input.read-only readonly="readonly" type="text" value=@company.mobile_url data-orig-val=@company.mobile_url
+      .divider
+
+      label class="help" Desktop Redirect Code:
+      img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.settings.help.redirect')
+      textarea.read-only readonly="readonly" data-orig-val=desktop_redirect_code(@company) = desktop_redirect_code @company
+    
+    = form_tag '/builder/settings', :multipart => true, :class => 'box' do
+      table.site-settings
+        tbody
+          tr
+            td
+              label Site Name:
+            td colspan="2"
+              input type="text" name="company_name" value=@company.name maxlength=MAX_COMPANY_NAME_LENGTH
+          tr
+            td colspan="3"
+              .divider
+          tr
+            td
+              label Site Type:
+            td colspan="2"
+              = select_tag :company_type, options_for_select(company_types,@company.company_type_id)
+          tr
+            td colspan="3"
+              .divider
+          tr
+            td.site-picture
+              label Site Picture:
+            td
+              img.logo{src=@company.logo.url(:mobile) }
+            td
+              a.remove-logo href="#" Remove Picture
+              input type="hidden" name="destroy_logo" value="0"
+
+      table
+        tbody
+          tr
+            td
+              label
+                ' Select a new picture:
+                img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.settings.help.site_pic')
+            td
+          tr
+            td
+              input type="file" name="logo" accept="image/*"
+            td
+              input.rfloat type="submit" value="Upload" disabled="disabled"
+      
+      .clearfix
+
+      .action-bar
+        p.error.lfloat style="margin-top:2px"
+        .accept-btn.main-btn
+          input.content type="submit" value="Save Settings"
+        .loader
+        .clearfix
+
+script.edit-keywords(type="text/template")
+  .header.edit-keywords
+    .icon{ style="background-image: url(/images/edit-keywords.png)" }
+    .widget-name
+      | Traffic Booster
+    p.help-text
+      a.help-link href="http://help.yomobi.com/Account/TrafficBooster" target="_blank" Help
+  div class="edit-area"
+    .explanation == t 'builder.help.edit_keywords'
+
+    label Enter keywords that describe your website, separated by commas:
+    p.error.hide Something went wrong.
+    textarea name="keywords" {{ keywords }}
+    br
+    br
+    .action-bar style="padding-right: 0"
+      p.error.lfloat style="margin-top:2px"
+      .accept-btn.main-btn
+        input.content type="submit" value="Save Settings"
+      .checkmark
+      .loader
+
+#dialog-invalid-drag title="Oops"
+  p
+    span.ui-icon.ui-icon-alert style="float:left"
+    | &nbsp; New widgets can only be added from the mobile home screen.
+  p <br>
+  p Please click on Home in the Mobile Tab Bar to return to the mobile home screen and try adding again.
