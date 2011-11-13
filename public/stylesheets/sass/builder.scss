@@ -680,6 +680,12 @@ div.plupload {
   input { cursor: pointer; }
 }
 
+.selected-file {
+  cursor: pointer;
+  button { cursor: pointer; }
+}
+
+
 button[disabled] {
   padding: 1px 3px 1px 3px;  
 }
