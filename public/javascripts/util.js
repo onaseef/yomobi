@@ -918,6 +918,14 @@ var util = {
   ensureUrl: function (url) {
     var prefix = url.match(/^(https?:\/\/)|(ftps?\/\/)/) ? '' : 'http://';
     return prefix + url;
+  },
+
+  previewTextFromHtml: function (html) {
+    var text = $(html).text()
+      , preview = _.first(text.split(' '), 13).join(' ')
+      , isShorter = preview.length < text.length
+    ;
+    return isShorter ? (preview + '...') : preview;
   }
 }
 

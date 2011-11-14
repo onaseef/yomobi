@@ -35,7 +35,10 @@
         return _.extend({},this.toJSON(),extraData);
       }
       else {
-        return super_getShowData.call(this);
+        var extraData = {
+          isListMode: this.get('isListMode')
+        }
+        return _.extend(super_getShowData.call(this), extraData);
       }
     },
     

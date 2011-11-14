@@ -46,7 +46,8 @@
 
     events: _.extend({}, categoryEditor.events, {
       'click .wysiwyg':             'queueActiveLeafUpdate',
-      'click .cancel-btn':          'discardActiveLeafChanges'
+      'click .cancel-btn':          'discardActiveLeafChanges',
+      'change [name=isListMode]':   'setListMode'
     }),
     
     init: function (widget) {
@@ -68,6 +69,12 @@
         // clear changes a bit after to ignore initialization changes
         var self = this;
         setTimeout(function () { self.setChanged('leaf-content', false); }, 400);
+      }
+      if (mapp.pageLevel === 0) {
+        this.el
+          .find('.help-bubble').simpletooltip(undefined,'help').end()
+          .find('[name=isListMode]').prop('checked', this.widget.get('isListMode'))
+        ;
       }
     },
     
@@ -137,6 +144,13 @@
       leaf.content = origLeaf.content;
       this.setChanged('leaf-content',false);
       this.refreshViews({ forceEditAreaRefresh:true });
+    },
+
+    setListMode: function (e) {
+      if (!util.isUIFree()) return false;
+      var newVal = $(e.target).is(':checked');
+      this.widget.set({ isListMode:newVal });
+      this.accept();
     }
     
   });

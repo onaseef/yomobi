@@ -247,6 +247,9 @@ p {
     width: 100%; }
   .page > .content.category .category .txt-col, .page > .content.page_tree .category .txt-col {
     padding-right: 16px; }
+    .page > .content.category .category .txt-col .preview-text, .page > .content.page_tree .category .txt-col .preview-text {
+      font-size: 12px;
+      padding-top: 4px; }
   .page > .content.category td.img-col, .page > .content.page_tree td.img-col {
     width: 10%;
     max-width: 80px;

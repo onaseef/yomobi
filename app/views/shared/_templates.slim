@@ -237,6 +237,9 @@
         img src="{{ cat.wphotoUrl }}"
       td.txt-col
         | {{ cat.name }}
+        | <% if (_maybe.isListMode) { %>
+        p.preview-text <% print( util.previewTextFromHtml(cat.content) ); %>
+        | <% } %>
       | <% } else { %>
       td colspan="2"
         | {{ cat.name }}
@@ -251,7 +254,11 @@
       tbody
         | <% for (var i=0; i<stuff.length;i++) {
               if (stuff[i].type === "cat" || stuff[i].type === "page") {
-                print( catTemplate({ cat:stuff[i], cycle:util.cycle('c0','c1') }) );
+                print( catTemplate({
+                  cat:stuff[i],
+                  cycle:util.cycle('c0','c1'),
+                  isListMode: _maybe.isListMode
+                }) );
               } else {
                 print( itemWrapTemplate({
                   item: stuff[i],

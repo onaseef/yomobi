@@ -121,6 +121,14 @@ script.edit-icon-dialog(type="text/template")
 
 script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.property-listings-edit-area.locations-edit-area(type="text/template")
     | <% if (onHomePage === true) { %>
+
+    |    <% if (wtype === "page_tree") { %>
+    .list-mode-wrap
+      input type="checkbox" name="isListMode"
+      label Enable List Mode
+      img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.settings.help.list_mode')
+    |    <% } %>
+
     input type="button" name="beginEditing" value="Click Here to Start Editing"
 
     | <% } else if (currentNodeType !== 'page') { %>
