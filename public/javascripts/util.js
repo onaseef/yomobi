@@ -800,6 +800,15 @@ var util = {
     context.find('[name=pick_files]').attr('id', pickerId);
 
     uploader.init();
+
+    uploader.reposition = function () {
+      uploader.refresh(); // Reposition Flash/Silverlight
+      if (uploader.yomobiOptions.alwaysOnTop === true) {
+        uploader.bringToFront();
+      }
+    };
+    context.find('img').load(function () { uploader.reposition(); });
+    
     // because we're in a dialog, sometimes we need to set the uploader to be
     // on top of everything else, as well as send it back
     uploader.layover = $('#' + uploader.id + '_' + uploader.runtime + '_container');
@@ -821,12 +830,6 @@ var util = {
       $('#'+pickerId).hide();
       $('<button>').text('Browse...').prop('disabled',true).insertAfter('#'+pickerId);
       uploader.refresh();
-    };
-    uploader.reposition = function () {
-      uploader.refresh(); // Reposition Flash/Silverlight
-      if (uploader.yomobiOptions.alwaysOnTop === true) {
-        uploader.bringToFront();
-      }
     };
 
     uploader.bind('FilesAdded', function (up, files) {
