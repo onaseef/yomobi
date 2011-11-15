@@ -1,4 +1,5 @@
 var exceptions = <%=raw @exceptions.to_json %>;
+var isMobile = /<%= mobile_devices %>/i.test( navigator.userAgent.toLowerCase() );
 var shouldRedirect = true;
 
 for (var i=exceptions.length-1; i >=0; i--) {
@@ -8,6 +9,6 @@ for (var i=exceptions.length-1; i >=0; i--) {
   }
 }
 
-if (window._RSITE && shouldRedirect) {
-  document.write('<script type="text/javascript" src="http://detect.deviceatlas.com/redirect.js?m='+window._RSITE+'"></script>');
+if (window._RSITE && isMobile && shouldRedirect) {
+  window.location = window._RSITE;
 }
