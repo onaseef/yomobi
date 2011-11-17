@@ -919,6 +919,7 @@ var util = {
   now: function () { return (new Date()).getTime(); },
 
   ensureUrl: function (url) {
+    url = url.trim();
     var prefix = url.match(/^(https?:\/\/)|(ftps?\/\/)/) ? '' : 'http://';
     return prefix + url;
   }
