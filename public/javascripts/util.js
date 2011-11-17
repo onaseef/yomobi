@@ -808,6 +808,13 @@ var util = {
       }
     };
     context.find('img').load(function () { uploader.reposition(); });
+    // fix bug with flash runtime
+    var resizeTimeout;
+    $(window).unbind('resize.yo-up').bind('resize.yo-up', function () {
+      if (uploader.runtime !== 'flash') return;
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(function () { uploader.reposition(); }, 300);
+    });
     
     // because we're in a dialog, sometimes we need to set the uploader to be
     // on top of everything else, as well as send it back
