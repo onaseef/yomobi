@@ -653,10 +653,18 @@ var util = {
     'style', 'width', 'height',
     'border', 'cellpadding', 'frame', 'bgcolor'
   ],
+  tagsToStrip: [
+    'table', 'tr', 'td', 'tbody'
+  ],
 
   // expects a jquery object
   _stripAllStyles: function ($group) {
     $group.each(function (idx,elem) {
+      if ( _.include(util.tagsToStrip,elem.tagName.toLowerCase()) ) {
+        $(elem).replaceWith( $(elem).text() );
+        return;
+      }
+
       if (elem.removeAttribute) {
         for (var i = util.attributesToStrip.length - 1; i >= 0; i--) {
           elem.removeAttribute(util.attributesToStrip[i]);
