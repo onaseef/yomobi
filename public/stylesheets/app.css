@@ -65,6 +65,9 @@ input[type=checkbox] {
   margin-bottom: 18px;
   border: 1px solid #ccc; }
 
+.list-mode-wrap {
+  padding-bottom: 6px; }
+
 label {
   display: inline-block;
   font-size: 13px;
