@@ -285,8 +285,9 @@ p {
     .preview-text {
       font-size: 70%;
       padding-top: 4px;
-      max-height: 4em;
+      max-height: 3.5em;
       overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 
