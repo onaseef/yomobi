@@ -651,10 +651,12 @@ var util = {
 
   attributesToStrip: [
     'style', 'width', 'height',
-    'border', 'cellpadding', 'frame', 'bgcolor'
+    'border', 'cellpadding', 'frame', 'bgcolor',
+    'color', 'size'
   ],
   tagsToStrip: [
-    'table', 'tr', 'td', 'tbody'
+    'table', 'tr', 'td', 'tbody', 'th',
+    'font'
   ],
 
   // expects a jquery object
