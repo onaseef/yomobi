@@ -663,7 +663,7 @@ var util = {
   _stripAllStyles: function ($group) {
     $group.each(function (idx,elem) {
       if ( _.include(util.tagsToStrip,elem.tagName.toLowerCase()) ) {
-        $(elem).replaceWith( $(elem).text() );
+        $(elem).replaceWith( '<p>' + $(elem).text() + '</p>' );
         return;
       }
 
