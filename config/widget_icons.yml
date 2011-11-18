@@ -17,8 +17,8 @@
 - { name: volunteer, pname: Volunteer }
 - { name: weather-1, pname: Weather }
 - { name: event-calendar, pname: Calendar }
-- { name: calendar-event-1, pname: Calendar }
-- { name: calendar-event-2, pname: Calendar }
+- { name: calendar-event-1, pname: Event / Reservation }
+- { name: calendar-event-2, pname: Event / Reservation }
 - { name: facebook, pname: facebook }
 - { name: twitter, pname: twitter }
 - { name: share, pname: Share }
@@ -42,6 +42,10 @@
 - { name: picasa, pname: picasa }
 - { name: reviews, pname: Reviews }
 - { name: reviews-2, pname: Reviews }
+- { name: awards-1, pname: Awards }
+- { name: awards-2, pname: Awards }
+- { name: payment-1, pname: Payment }
+- { name: payment-2, pname: Payment }
 - { name: video, pname: Video }
 - { name: video-2, pname: Video }
 - { name: address-book-1, pname: Address Book }
