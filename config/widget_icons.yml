@@ -42,8 +42,8 @@
 - { name: picasa, pname: picasa }
 - { name: reviews, pname: Reviews }
 - { name: reviews-2, pname: Reviews }
-- { name: awards-1, pname: Awards }
-- { name: awards-2, pname: Awards }
+- { name: award-1, pname: Awards }
+- { name: award-2, pname: Awards }
 - { name: payment-1, pname: Payment }
 - { name: payment-2, pname: Payment }
 - { name: video, pname: Video }
