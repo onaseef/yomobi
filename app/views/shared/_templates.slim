@@ -238,7 +238,7 @@
       td.txt-col
         | {{ cat.name }}
         | <% if (_maybe.isListMode) { %>
-        p.preview-text <% print( util.previewTextFromHtml(cat.content) ); %>
+        .preview-text {{ cat.content }}
         | <% } %>
       | <% } else { %>
       td colspan="2"
