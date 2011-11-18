@@ -418,6 +418,11 @@ div.wysiwyg ul.toolbar {
     -webkit-border-radius: 0px;
     border-radius: 0px;
   }
+  img.ajax {
+    position: relative;
+    top: 3px;
+    left: 4px;
+  }
 }
 
 .wphoto-wrap .selected-file {

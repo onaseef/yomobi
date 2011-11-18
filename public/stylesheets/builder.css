@@ -376,6 +376,10 @@ div.wysiwyg ul.toolbar {
     -khtml-border-radius: 0px;
     -webkit-border-radius: 0px;
     border-radius: 0px; }
+  .wphoto-wrap img.ajax {
+    position: relative;
+    top: 3px;
+    left: 4px; }
 
 .wphoto-wrap .selected-file {
   width: 120px;

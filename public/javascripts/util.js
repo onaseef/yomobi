@@ -843,7 +843,11 @@ var util = {
     };
     uploader.disableBrowseButton = function () {
       $('#'+pickerId).hide();
-      $('<button>').text('Browse...').prop('disabled',true).insertAfter('#'+pickerId);
+      $('<button>').text('Browse...')
+        .prop('disabled',true)
+        .insertAfter('#'+pickerId)
+        .after('<img class="ajax" src="/images/ui/ajax-loader-small.gif">')
+      ;
       uploader.refresh();
     };
 
