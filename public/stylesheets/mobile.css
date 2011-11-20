@@ -248,10 +248,11 @@ p {
   .page > .content.category .category .txt-col, .page > .content.page_tree .category .txt-col {
     padding-right: 16px; }
     .page > .content.category .category .txt-col .preview-text, .page > .content.page_tree .category .txt-col .preview-text {
-      font-size: 70%;
+      font-size: 12px;
       padding-top: 4px;
-      max-height: 4em;
-      overflow: hidden; }
+      max-height: 3.5em;
+      overflow: hidden;
+      text-overflow: ellipsis; }
   .page > .content.category td.img-col, .page > .content.page_tree td.img-col {
     width: 10%;
     max-width: 80px;
