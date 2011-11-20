@@ -661,9 +661,11 @@ var util = {
 
   // expects a jquery object
   _stripAllStyles: function ($group) {
+    var elemIdxsToStrip = [];
+
     $group.each(function (idx,elem) {
       if ( _.include(util.tagsToStrip,elem.tagName.toLowerCase()) ) {
-        $(elem).replaceWith( '<p>' + $(elem).text() + '</p>' );
+        elemIdxsToStrip.push(idx);
         return;
       }
 
@@ -675,6 +677,10 @@ var util = {
       // quick and easy non-perfect way of checking for children
       if (elem.innerHTML)
         util._stripAllStyles( $(elem).children() );
+    });
+
+    _.each(elemIdxsToStrip, function (idx) {
+      $group[idx] = $('<p>' + $( $group[idx] ).text() + '</p>')[0];
     });
   },
 
