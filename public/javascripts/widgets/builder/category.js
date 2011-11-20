@@ -553,6 +553,8 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
     },
     
     refresh: function () {
+      if (mapp.pageLevel === 0) return;
+
       var newContent = $(this.widget.getPageContent())
         , newTitle = this.widget.getTitleContent()
         , activePage = mapp.getActivePage()
