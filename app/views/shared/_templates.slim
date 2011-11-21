@@ -235,15 +235,12 @@
       | <% if (cat.wphotoUrl) { %>
       td.img-col
         img src="{{ cat.wphotoUrl }}"
-      td.txt-col
+      | <% } %>
+      td.txt-col colspan="<% print(cat.wphotoUrl ? 1 : 2); %>"
         | {{ cat.name }}
         | <% if (_maybe.isListMode) { %>
         .preview-text {{ cat.content }}
         | <% } %>
-      | <% } else { %>
-      td colspan="2"
-        | {{ cat.name }}
-      | <% } %>
 
   script.category-page(type="text/template")
     | <% if (_maybe.wphotoUrlLarge) { %>
