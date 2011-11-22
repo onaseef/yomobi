@@ -265,7 +265,7 @@ div.wysiwyg ul.toolbar {
     display: inline; }
 
 #builder .follower-section {
-  margin: 0 0 10px 10px; }
+  padding: 0 0 10px 10px; }
 
 #emulator-wrapper {
   float: left;
