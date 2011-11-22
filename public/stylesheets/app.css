@@ -113,6 +113,11 @@ p {
   line-height: 130%;
   font-size: 110%; }
 
+.follower-section p {
+  margin-bottom: 6px; }
+.follower-section form {
+  padding-top: 12px; }
+
 a, a:visited {
   color: #3b5998;
   text-decoration: none; }
