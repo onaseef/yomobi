@@ -23,6 +23,7 @@ window.g = {
 
   wphotoUploadPath: "<%= wphoto_upload_path %>",
 
+<%- if @is_bulder %>
   <% arr = [] %>
   <% form_authenticity_token.each_char{|c| arr.push(c[0].to_s)} %>
   <% authenticity_token = arr.join("x") %>
@@ -35,6 +36,7 @@ window.g = {
     '<%= request_forgery_protection_token %>': '<%= form_authenticity_token %>',
     '<%= request.session_options[:key] %>': '<%= request.session_options[:id] %>'
   },
+<%- end %>
 
   noPhotoPath: '/images/no-wphoto.png'
 };
