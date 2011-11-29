@@ -107,6 +107,7 @@ var builderUtil = {
 
     dialog.find('[name=delete]').click(function () {
       $(img).remove();
+      $( $('#jeditor').data('wysiwyg').editorDoc ).trigger('save');
       // click the cancel button
       dialog.parent().find('.ui-dialog-buttonset button:last').click();
     });
