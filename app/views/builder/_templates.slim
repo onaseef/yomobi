@@ -332,17 +332,7 @@ script.edit-keywords(type="text/template")
 
 script.jeditor-image-dialog(type="text/template")
   #dialog-confirm.jeditor-image title="Select an Image"
-    | <% if (_maybe.src) { %>
-
-    table.wphoto-wrap.preview
-      tbody
-        tr
-          td
-            img src="{{ _maybe.src }}"
-          td
-            button name="delete" Delete
-
-    | <% } else { %>
+    | <% if (!_maybe.src) { %>
 
     table.wphoto-wrap
       tbody
@@ -356,7 +346,16 @@ script.jeditor-image-dialog(type="text/template")
             button name="pick_files" Browse...
             .error
       .error
-    | <% } %>
+
+    | <% } else { %>
+
+    table.wphoto-wrap.preview
+      tbody
+        tr
+          td
+            img src="{{ _maybe.src }}"
+          td
+            button name="delete" Delete
     p
       label Alignment:
       select name="float"
@@ -374,6 +373,8 @@ script.jeditor-image-dialog(type="text/template")
       .custom-width.hide
         label Enter a number from 1 to 100:
         input type="text" name="custom_width" value="{{ widthInt }}"
+    | <% } %>
+
     input type="hidden" name="src" value="_maybe.src"
     input type="hidden" name="maxWidth" value="100%"
     input type="hidden" name="height" value="auto"
