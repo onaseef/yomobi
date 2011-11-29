@@ -3,7 +3,7 @@
 //
 (function ($) {
 
-  var defaultPageContent = '<p>[Change Me]</p>';
+  var defaultPageContent = '';
   var tempCatStack = [];
 
   var super_getEditAreaData = window.Widget.prototype.getEditAreaData
