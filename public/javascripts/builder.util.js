@@ -64,7 +64,9 @@ var builderUtil = {
   },
 
   jeditorImageDialog: function (img) {
-    var isNew = !img;
+    var isNew = !img
+      , $parent = $(img).parent()
+    ;
     if (isNew) {
       img = util._createDummyImage();
     }
@@ -75,6 +77,10 @@ var builderUtil = {
       width: img.style.width,
       widthInt: parseInt(img.style.width)
     };
+
+    if ( $parent.is('a') ) {
+      templateData.href = $parent.attr('href');
+    }
 
     var dialog = util.dialog(imageDialogTemplate(templateData), {
       'Save': function () {
@@ -89,6 +95,13 @@ var builderUtil = {
         }
         else {
           $(img).css(imgAttrs).addClass('yo');
+          if ($parent.is('a') && imgAttrs.href)
+            $parent.attr('href', util.ensureUrl(imgAttrs.href));
+          else if (imgAttrs.href)
+            $(img).wrap('<a href="'+util.ensureUrl(imgAttrs.href)+'" />');
+          else if ($parent.is('a'))
+            $(img).unwrap();
+
           $( $('#jeditor').data('wysiwyg').editorDoc ).trigger('save');
         }
       },

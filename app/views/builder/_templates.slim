@@ -357,6 +357,9 @@ script.jeditor-image-dialog(type="text/template")
           td
             button name="delete" Delete
     p
+      label Clickable URL (optional):
+      input type="text" name="href" value="{{ _maybe.href }}"
+    p
       label Alignment:
       select name="float"
         option value="none" Inline with Text
