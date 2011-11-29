@@ -123,11 +123,12 @@ p {
 .ad-bar {
   display: none;
   padding: 0 0;
-  border-bottom: 2px solid #627aad;
+  border-bottom: 0px;
   background: #405b80 url(/images/bg-mobile-header.png);
   text-align: center; }
   .ad-bar.bottom {
-    height: 48px; }
+    height: 0px;
+    visible: false; }
 
 .back-btn {
   float: left;
