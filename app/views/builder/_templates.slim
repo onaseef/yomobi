@@ -367,20 +367,16 @@ script.jeditor-image-dialog(type="text/template")
         option value="right" Right
     p
       label Image Size:
-      select name="width"
-        option value="auto" Original Size
-        option value="100%" Fit to screen width (100%)
-        option value="60%" Medium (60%)
-        option value="30%" Small (30%)
-        option value="<% if (!_.include(['100%','60%','30%'], width)) { print(width); } %>" data-custom="true" Custom
-      .custom-width.hide
+      select name="size"
+        option value="100" Original Size
+        option value="60" Medium (60%)
+        option value="30" Small (30%)
+        option value="<% if (!_.include([100,60,30], size)) { print(size); } %>" data-custom="true" Custom
+      .custom-size.hide
         label Enter a number from 1 to 100:
-        input type="text" name="custom_width" value="{{ widthInt }}"
+        input type="text" name="custom_size" value="{{ size }}"
     | <% } %>
-
     input type="hidden" name="src" value="_maybe.src"
-    input type="hidden" name="maxWidth" value="100%"
-    input type="hidden" name="height" value="auto"
 
 #dialog-invalid-drag title="Oops"
   p

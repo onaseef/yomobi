@@ -60,22 +60,23 @@ var builderUtil = {
       float: 'none',
       width: 'auto',
       maxWidth: '100%'
-    })[0];
+    }).attr('data-size',1);
   },
 
   jeditorImageDialog: function (img) {
-    var isNew = !img
+    var $img
+      , isNew = !img
       , $parent = $(img).parent()
     ;
     if (isNew) {
-      img = util._createDummyImage();
+      $img = util._createDummyImage();
     }
+    else $img = $(img);
 
     var templateData = {
-      src: img.src,
-      float: $(img).css('float'),
-      width: img.style.width,
-      widthInt: parseInt(img.style.width)
+      src: $img.attr('src'),
+      float: $img.css('float'),
+      size: $img.data('size')
     };
 
     if ( $parent.is('a') ) {
@@ -86,7 +87,6 @@ var builderUtil = {
       'Save': function () {
         if (!util.isUIFree()) return;
 
-        $(this).dialog('close');
         var imgAttrs = util.getFormValueHash( $(this) );
         if (isNew) {
           $('#jeditor').data('wysiwyg').ui.focus();
@@ -94,43 +94,54 @@ var builderUtil = {
           util.jeditorImageDialog( $('#jeditor').data('wysiwyg').lastInsertedImage );
         }
         else {
-          $(img).css(imgAttrs).addClass('yo');
+          var origImg = dialog.find('.preview img')[0];
+          $img.addClass('yo')
+              .data('size', parseInt(imgAttrs.size))
+              .attr('data-size', parseInt(imgAttrs.size))
+              .css({
+                float: imgAttrs.float,
+                maxWidth:'100%',
+                width: Math.round(imgAttrs.size * origImg.width / 100) + 'px',
+                height: Math.round(imgAttrs.size * origImg.height / 100) + 'px'
+              })
+          ;
+
           if ($parent.is('a') && imgAttrs.href)
             $parent.attr('href', util.ensureUrl(imgAttrs.href));
           else if (imgAttrs.href)
-            $(img).wrap('<a href="'+util.ensureUrl(imgAttrs.href)+'" />');
+            $img.wrap('<a href="'+util.ensureUrl(imgAttrs.href)+'" />');
           else if ($parent.is('a'))
-            $(img).unwrap();
+            $img.unwrap();
 
           $( $('#jeditor').data('wysiwyg').editorDoc ).trigger('save');
         }
+        $(this).dialog('close');
       },
       'Cancel': dialogCloseFunc
     }, isNew ? 'Upload Image' : 'Edit Image');
 
-    dialog.find('[name=width]').change(function () {
+    dialog.find('[name=size]').change(function () {
       var isCustom = !!$(this).find('option:selected').data('custom');
-      dialog.find('.custom-width').toggle(isCustom);
+      dialog.find('.custom-size').toggle(isCustom);
     });
 
-    dialog.find('[name=custom_width]').keyup(function () {
-      var newWidth = parseInt( $(this).val() ) + '%';
-      if (!newWidth) return;
-      dialog.find('[name=width] option:last').val(newWidth);
+    dialog.find('[name=custom_size]').keyup(function () {
+      var newSize = parseInt( $(this).val() );
+      if (!newSize) return;
+      dialog.find('[name=size] option:last').val( util.bound(newSize, 1, 100) );
     });
 
     dialog.find('[name=delete]').click(function () {
-      $(img).remove();
+      $img.remove();
       $( $('#jeditor').data('wysiwyg').editorDoc ).trigger('save');
       // click the cancel button
       dialog.parent().find('.ui-dialog-buttonset button:last').click();
     });
 
     // set selects to current values
-    dialog.find('[name=float]').val( $(img).css('float') );
-    if (img.style.width && img.style.width !== 'auto') {
-      dialog.find('[name=width]').val(img.style.width).trigger('change');
-    }
+    dialog.find('[name=float]').val( $img.css('float') );
+util.log('SIZE', $img.data('size'));
+    dialog.find('[name=size]').val($img.data('size')).trigger('change');
 
     if (isNew) {
       util.initUploader( dialog.find('.wphoto-wrap'), {

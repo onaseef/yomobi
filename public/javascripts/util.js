@@ -660,6 +660,10 @@ var util = {
 
   now: function () { return (new Date()).getTime(); },
 
+  bound: function (x,lower,upper) {
+    return (x < lower) ? lower : (x > upper) ? upper : x;
+  },
+
   ensureUrl: function (url) {
     url = url.trim();
     var prefix = url.match(/^(https?:\/\/)|(ftps?\/\/)/) ? '' : 'http://';
