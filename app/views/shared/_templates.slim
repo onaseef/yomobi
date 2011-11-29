@@ -243,10 +243,22 @@
       | <% } %>
 
   script.category-page(type="text/template")
+    | <% if (nodeType === 'item') { %>
+    .item-nav
+      button name="next" class="<% if (nodeIdx.idx === nodeIdx.total-1) { print('disabled'); } %>" &gt;&gt;
+      button name="prev" class="<% if (nodeIdx.idx === 0) { print('disabled'); } %>" &lt;&lt;
+      label.item-index {{ nodeIdx.humanIdx }}/{{ nodeIdx.total }}
+    | <% } %>
+
     | <% if (_maybe.wphotoUrlLarge) { %>
     .wphoto-large.centered
       img src="{{ wphotoUrlLarge }}"
     | <% } %>
+
+    | <% if (nodeType === 'item') {
+    |     print( itemTemplate({ item:node }) );
+    | } else { %>
+
     table.node-list
       tbody
         | <% for (var i=0; i<stuff.length;i++) {
@@ -264,6 +276,7 @@
         td colspan="2"
           .separator
         | <% } } %>
+    | <% } %>
   
   script.page_tree-page(type="text/template")
     h3 {{ title }}

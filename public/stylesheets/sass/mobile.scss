@@ -276,6 +276,17 @@ p {
 .page > .content.category, .page > .content.page_tree {
   padding: 0 10px 20px 8px !important;
 
+  .item-nav {
+    background: #ECEBEB;
+    margin: 8px 0;
+    padding: 8px 0;
+    text-align: center;
+    button { margin: 0 10px; }
+    button[name=prev] { float: left; }
+    button[name=next] { float: right; }
+    button.disabled { visibility: hidden; }
+  }
+
   table.node-list {
     width: 100%;
   }
@@ -407,9 +418,8 @@ pre {
   width: 100%; 
   border-bottom: 1px solid #1D4088;
 }
-
 .wphoto-large.centered img {
-    margin-bottom: 6px;
+    margin: 0 0 6px 0;
 }
 
 .node-list {

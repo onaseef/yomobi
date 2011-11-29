@@ -243,6 +243,19 @@ p {
 
 .page > .content.category, .page > .content.page_tree {
   padding: 0 10px 20px 8px !important; }
+  .page > .content.category .item-nav, .page > .content.page_tree .item-nav {
+    background: #ECEBEB;
+    margin: 8px 0;
+    padding: 8px 0;
+    text-align: center; }
+    .page > .content.category .item-nav button, .page > .content.page_tree .item-nav button {
+      margin: 0 10px; }
+    .page > .content.category .item-nav button[name=prev], .page > .content.page_tree .item-nav button[name=prev] {
+      float: left; }
+    .page > .content.category .item-nav button[name=next], .page > .content.page_tree .item-nav button[name=next] {
+      float: right; }
+    .page > .content.category .item-nav button.disabled, .page > .content.page_tree .item-nav button.disabled {
+      visibility: hidden; }
   .page > .content.category table.node-list, .page > .content.page_tree table.node-list {
     width: 100%; }
   .page > .content.category .category .txt-col, .page > .content.page_tree .category .txt-col {
@@ -351,7 +364,7 @@ pre {
   border-bottom: 1px solid #1D4088; }
 
 .wphoto-large.centered img {
-  margin-bottom: 6px; }
+  margin: 0 0 6px 0; }
 
 .node-list .wphoto img {
   margin: 0px;
