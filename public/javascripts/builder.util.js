@@ -70,7 +70,7 @@ var builderUtil = {
 
     var templateData = {
       src: img.src,
-      float: img.style.float,
+      float: $(img).css('float'),
       width: img.style.width,
       widthInt: parseInt(img.style.width)
     };
@@ -112,7 +112,7 @@ var builderUtil = {
     });
 
     // set selects to current values
-    dialog.find('[name=float]').val(img.style.float);
+    dialog.find('[name=float]').val( $(img).css('float') );
     if (img.style.width && img.style.width !== 'auto') {
       dialog.find('[name=width]').val(img.style.width).trigger('change');
     }
