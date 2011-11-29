@@ -33,9 +33,10 @@ var builderUtil = {
       events: {
         save: function () { bapp.currentEditor.trigger('wysiwyg-change'); },
         paste: function () { bapp.currentEditor.trigger('wysiwyg-paste'); return false; },
-        dblclick: function (e,b,c) {
+        click: function (e,b,c) {
           if (e.target.tagName.toLowerCase() === 'img') {
             util.jeditorImageDialog(e.target);
+            return false;
           }
         }
       },
