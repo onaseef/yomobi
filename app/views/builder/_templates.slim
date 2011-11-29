@@ -334,11 +334,13 @@ script.jeditor-image-dialog(type="text/template")
   #dialog-confirm.jeditor-image title="Select an Image"
     | <% if (_maybe.src) { %>
 
-    table.wphoto-wrap
+    table.wphoto-wrap.preview
       tbody
         tr
-          td style="text-align: center"
+          td
             img src="{{ _maybe.src }}"
+          td
+            button name="delete" Delete
 
     | <% } else { %>
 

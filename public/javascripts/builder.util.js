@@ -98,10 +98,17 @@ var builderUtil = {
       var isCustom = !!$(this).find('option:selected').data('custom');
       dialog.find('.custom-width').toggle(isCustom);
     });
+
     dialog.find('[name=custom_width]').keyup(function () {
       var newWidth = parseInt( $(this).val() ) + '%';
       if (!newWidth) return;
       dialog.find('[name=width] option:last').val(newWidth);
+    });
+
+    dialog.find('[name=delete]').click(function () {
+      $(img).remove();
+      // click the cancel button
+      dialog.parent().find('.ui-dialog-buttonset button:last').click();
     });
 
     // set selects to current values
@@ -117,6 +124,7 @@ var builderUtil = {
         onDone: util.createUploaderCallback(function (data) {
           dialog.find('input[name=src]').val( util.largerWphoto(data.wphotoUrl) );
           util.releaseUI();
+          // click the save button
           dialog.parent().find('.ui-dialog-buttonset button:first').click();
         }),
         emptyQueue: true,

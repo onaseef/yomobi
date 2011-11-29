@@ -425,6 +425,10 @@ div.wysiwyg ul.toolbar {
     left: 4px;
   }
 }
+.wphoto-wrap.preview {
+  td:first-child { text-align: center; width: 80% }
+  button { cursor: pointer; }
+}
 
 .wphoto-wrap .selected-file {
   width: 120px;
