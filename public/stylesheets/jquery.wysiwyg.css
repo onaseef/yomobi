@@ -64,7 +64,8 @@ div.wysiwyg ul.toolbar li.increaseFontSize { background-position: -20px -100px; 
 div.wysiwyg ul.toolbar li.decreaseFontSize { background-position: -40px -100px; }
 
 div.wysiwyg ul.toolbar li.createLink { background-position: -100px -60px; }
-div.wysiwyg ul.toolbar li.insertImage { background-position: -100px -100px; }
+div.wysiwyg ul.toolbar li.insertImage,
+div.wysiwyg ul.toolbar li.uploadImage { background-position: -100px -100px; }
 
 div.wysiwyg ul.toolbar li.html { background-position: -60px -60px; }
 div.wysiwyg ul.toolbar li.removeFormat { background-position: -100px -80px; }

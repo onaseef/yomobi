@@ -1,3 +1,4 @@
+
 / data taken from mobile/base.js : getIconData()
 script.sidebar-widget(type="text/template")
   .sidebar.home-icon class="{{ singletonClass }}" data-wtype="{{ wtype }}" data-wsubtype="{{ wsubtype }}"
@@ -328,6 +329,51 @@ script.edit-keywords(type="text/template")
         input.content type="submit" value="Save Settings"
       .checkmark
       .loader
+
+script.jeditor-image-dialog(type="text/template")
+  #dialog-confirm.jeditor-image title="Select an Image"
+    | <% if (_maybe.src) { %>
+
+    table.wphoto-wrap
+      tbody
+        tr
+          td style="text-align: center"
+            img src="{{ _maybe.src }}"
+
+    | <% } else { %>
+
+    table.wphoto-wrap
+      tbody
+        tr
+          td
+            img src="<% print(g.noPhotoPath); %>"
+          td
+            label Upload an Image...
+            br
+            .selected-file.lfloat &nbsp;
+            button name="pick_files" Browse...
+            .error
+      .error
+    | <% } %>
+    p
+      label Alignment:
+      select name="float"
+        option value="none" Inline with Text
+        option value="left" Left
+        option value="right" Right
+    p
+      label Image Size:
+      select name="width"
+        option value="auto" Original Size
+        option value="100%" Fit to screen width (100%)
+        option value="60%" Medium (60%)
+        option value="30%" Small (30%)
+        option value="<% if (!_.include(['100%','60%','30%'], width)) { print(width); } %>" data-custom="true" Custom
+      .custom-width.hide
+        label Enter a number from 1 to 100:
+        input type="text" name="custom_width" value="{{ widthInt }}"
+    input type="hidden" name="src" value="_maybe.src"
+    input type="hidden" name="maxWidth" value="100%"
 
 #dialog-invalid-drag title="Oops"
   p

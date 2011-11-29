@@ -5,6 +5,12 @@ if (!window.util) {
   return;
 }
 
+var imageDialogTemplate = util.getTemplate('jeditor-image-dialog');
+var dialogCloseFunc = function () {
+  if (!util.isUIFree()) return;
+  $(this).dialog('close');
+};
+
 var builderUtil = {
 
   dialog: function (html,buttons,title) {
@@ -27,16 +33,96 @@ var builderUtil = {
       events: {
         save: function () { bapp.currentEditor.trigger('wysiwyg-change'); },
         paste: function () { bapp.currentEditor.trigger('wysiwyg-paste'); return false; },
-        click: function (a,b,c) { util.log('CLICK',a,b,c); }
+        dblclick: function (e,b,c) {
+          if (e.target.tagName.toLowerCase() === 'img') {
+            util.jeditorImageDialog(e.target);
+          }
+        }
       },
       controls: {
         insertImage: { visible:false },
         insertTable: { visible:false },
         subscript: { visible:false },
-        superscript: { visible:false }
+        superscript: { visible:false },
+        uploadImage: {
+          visible: true,
+          exec: util.jeditorImageDialog,
+          className: 'uploadImage'
+        }
       }
     });
     // $('.wysiwyg iframe').css('height',250).css('width',320);
+  },
+
+  _createDummyImage: function () {
+    return $('<img class="yo">').css({
+      float: 'none',
+      width: 'auto',
+      maxWidth: '100%'
+    })[0];
+  },
+
+  jeditorImageDialog: function (img) {
+    var isNew = !img;
+    if (isNew) {
+      img = util._createDummyImage();
+    }
+
+    var templateData = {
+      src: img.src,
+      float: img.style.float,
+      width: img.style.width,
+      widthInt: parseInt(img.style.width)
+    };
+
+    var dialog = util.dialog(imageDialogTemplate(templateData), {
+      'Save': function () {
+        if (!util.isUIFree()) return;
+
+        $(this).dialog('close');
+        var imgAttrs = util.getFormValueHash( $(this) );
+        if (isNew) {
+          $('#jeditor').data('wysiwyg').ui.focus();
+          $('#jeditor').wysiwyg('insertImage', imgAttrs.src, imgAttrs);
+          util.jeditorImageDialog( $('#jeditor').data('wysiwyg').lastInsertedImage );
+        }
+        else {
+          $(img).css(imgAttrs).addClass('yo');
+          $( $('#jeditor').data('wysiwyg').editorDoc ).trigger('save');
+        }
+      },
+      'Cancel': dialogCloseFunc
+    }, isNew ? 'Upload Image' : 'Edit Image');
+
+    dialog.find('[name=width]').change(function () {
+      var isCustom = !!$(this).find('option:selected').data('custom');
+      dialog.find('.custom-width').toggle(isCustom);
+    });
+    dialog.find('[name=custom_width]').keyup(function () {
+      var newWidth = parseInt( $(this).val() ) + '%';
+      if (!newWidth) return;
+      dialog.find('[name=width] option:last').val(newWidth);
+    });
+
+    // set selects to current values
+    dialog.find('[name=float]').val(img.style.float);
+    if (img.style.width && img.style.width !== 'auto') {
+      dialog.find('[name=width]').val(img.style.width).trigger('change');
+    }
+
+    if (isNew) {
+      util.initUploader( dialog.find('.wphoto-wrap'), {
+        instanceId: 'dialog',
+        alwaysOnTop: true,
+        onDone: util.createUploaderCallback(function (data) {
+          dialog.find('input[name=src]').val( util.largerWphoto(data.wphotoUrl) );
+          util.releaseUI();
+          dialog.parent().find('.ui-dialog-buttonset button:first').click();
+        }),
+        emptyQueue: true,
+        wid: bapp.currentEditor.widget.id
+      });
+    }
   },
 
   toHtml: function (jqueryObject) {
@@ -64,6 +150,8 @@ var builderUtil = {
     var elemIdxsToStrip = [];
 
     $group.each(function (idx,elem) {
+      if (elem.className === 'yo') return;
+
       if ( elem.tagName && _.include(util.tagsToStrip,elem.tagName.toLowerCase()) ) {
         elemIdxsToStrip.push(idx);
         return;
@@ -292,6 +380,18 @@ var builderUtil = {
       callback = uploader.yomobiOptions.onDone;
       callback(resData);
     });
+  },
+
+  createUploaderCallback: function (onSuccess) {
+    return function (data) {
+      util.log('wut wut',data);
+      if (data.result !== 'success' && data.result !== 'noupload') {
+        alert('Photo upload failed ('+ data.result +')');
+        util.releaseUI();
+        return;
+      }
+      onSuccess(data);
+    }
   }
 };
 

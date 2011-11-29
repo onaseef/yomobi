@@ -1,3 +1,5 @@
+_.templateSettings.interpolate = /\{\{([^\{].*?)\}\}/g;
+
 var util = {
   
   debug: true,
