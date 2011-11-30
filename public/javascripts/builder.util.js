@@ -48,7 +48,8 @@ var builderUtil = {
         uploadImage: {
           visible: true,
           exec: util.jeditorImageDialog,
-          className: 'uploadImage'
+          className: 'uploadImage',
+          tooltip: "Add a Picture"
         }
       }
     });
