@@ -32,6 +32,10 @@ en:
         redirect: "To automatically redirect visitors to your mobile site when they visit your desktop site from a mobile phone, copy this code snippet and paste it into your desktop site’s home page, just before the closing &lt;head&gt; tag."
         site_pic: "Note: Large size pictures may take up to 1 minute to load."
 
+    jeditor:
+      help:
+        default_image: "Useful thumbnail preview is useful."
+
   widgets:
     helpText:
       about-us:

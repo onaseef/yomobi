@@ -653,6 +653,11 @@ var util = {
     return ($elem && $elem.hasClass(className)) ? $elem : null;
   },
 
+  thumbWphoto: function (wphotoUrl) {
+    if (!wphotoUrl) return null;
+    return wphotoUrl.replace('-original?', '-thumb?');
+  },
+
   largerWphoto: function (wphotoUrl) {
     if (!wphotoUrl) return null;
     return wphotoUrl.replace('-thumb?', '-original?');

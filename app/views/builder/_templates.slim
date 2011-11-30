@@ -339,6 +339,15 @@ script.jeditor-image-dialog(type="text/template")
             img src="{{ _maybe.src }}"
           td
             button name="delete" Delete
+
+    .default-enabled class="<% print(isThumbEnabled && isDefault ? '' : 'hide'); %>"
+      | This photo is set as your thumbnail preview.
+      img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.jeditor.help.default_image')
+
+    .default-button class="<% print(isThumbEnabled && !isDefault ? '' : 'hide'); %>"
+      button name="make_default" Set as Thumbnail Preview
+      img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.jeditor.help.default_image')
+
     p
       label Clickable URL (optional):
       input type="text" name="href" value="{{ _maybe.href }}"
@@ -357,7 +366,7 @@ script.jeditor-image-dialog(type="text/template")
         option value="<% if (!_.include([100,60,30], size)) { print(size); } %>" data-custom="true" Custom
       .custom-size.hide
         label Enter a number from 1 to 100:
-        input type="text" name="custom_size" value="{{ size }}"
+        input type="text" name="custom_size" size="3" value="{{ size }}"
     | <% } %>
     input type="hidden" name="src" value="_maybe.src"
 

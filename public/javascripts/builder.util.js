@@ -34,7 +34,9 @@ var builderUtil = {
         save: function () { bapp.currentEditor.trigger('wysiwyg-change'); },
         paste: function () { bapp.currentEditor.trigger('wysiwyg-paste'); return false; },
         click: function (e,b,c) {
+
           if (e.target.tagName.toLowerCase() === 'img') {
+
             util.jeditorImageDialog(e.target);
             return false;
           }
@@ -64,8 +66,9 @@ var builderUtil = {
     }).attr('data-size',1);
   },
 
-  jeditorImageDialog: function (img) {
-    var $img
+  jeditorImageDialog: function (img, options) {
+    var $img, currentThumb
+      , widget = bapp.currentEditor.widget
       , isNew = !img
       , $parent = $(img).parent()
     ;
@@ -74,10 +77,17 @@ var builderUtil = {
     }
     else $img = $(img);
 
+    if (widget.get('wtype') === 'page_tree') {
+      currentThumb = widget.getCurrentNode()._data.wphotoUrl
+    }
+
     var templateData = {
       src: $img.attr('src'),
       float: $img.css('float'),
-      size: $img.data('size')
+      size: $img.data('size'),
+      isThumbEnabled: widget.get('wtype') === 'page_tree',
+      isDefault: util.thumbWphoto($img.attr('src')) === currentThumb,
+      thumb: currentThumb
     };
 
     if ( $parent.is('a') ) {
@@ -117,6 +127,13 @@ var builderUtil = {
           else if ($parent.is('a'))
             $img.unwrap();
 
+          if (dialog.find('.default-enabled').is(':visible')
+              && util.thumbWphoto($img.attr('src')) !== currentThumb)
+          {
+            widget.getCurrentNode()._data.wphotoUrl = util.thumbWphoto($img.attr('src'));
+            bapp.currentEditor.setChanged('thumb', true);
+          }
+
           $( $('#jeditor').data('wysiwyg').editorDoc ).trigger('save');
         }
         $(this).dialog('close');
@@ -142,9 +159,17 @@ var builderUtil = {
       dialog.parent().find('.ui-dialog-buttonset button:last').click();
     });
 
+    dialog.find('[name=make_default]').click(function () {
+      dialog.find('.default-button').hide();
+      dialog.find('.default-enabled').show();
+    });
+
     // set selects to current values
     dialog.find('[name=float]').val( $img.css('float') );
     dialog.find('[name=size]').val($img.data('size')).trigger('change');
+
+    dialog.find('.help-bubble').simpletooltip(undefined,'help');
+
     if (!$img.data('size')) {
       var origImg = dialog.find('img.hide')[0];
       var updateSize = function () {
