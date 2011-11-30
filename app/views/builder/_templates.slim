@@ -156,10 +156,10 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
       | <% } %>
     br
     
-    | <%  if (stuff.length >= 2) { %>
+    | <%       if (stuff.length >= 2) { %>
     input.rfloat.down-arrow type="button" name="move_down" data-mod="1" value="&#9660;"
     input.rfloat.up-arrow type="button" name="move_up" data-mod="-1" value="&#9650;"
-    | <%  } %>
+    | <%       } %>
 
     | <%       if (isThereStuff == true) { %>
     input type="button" name="rename" value="Rename"
@@ -180,24 +180,6 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
     .crumb-wrap
       erb:
         <b>Editing: <span class="blue">{{ catCrumbs }}</span></b>
-
-    table.wphoto-wrap
-      tbody
-        tr
-          td
-            img src="{{ wphotoPreviewPath }}"
-          td
-            label Select a Picture...
-            br
-            .selected-file.lfloat &nbsp;
-            button name="pick_files" Browse...
-            .error
-        | <% if (wphotoPreviewPath !== '/images/no-wphoto.png') { %>
-        tr
-          td
-            a.remove-wphoto-link href="#" Remove Picture
-          td
-        | <% } %>
 
     #jeditor-wrapper
       textarea#jeditor {{ content }}

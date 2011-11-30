@@ -263,10 +263,6 @@
   
   script.page_tree-page(type="text/template")
     h3 {{ title }}
-    | <% if (_maybe.wphotoUrlLarge) { %>
-    .wphoto-large
-      img src="{{ wphotoUrlLarge }}"
-    | <% } %>
     .leaf-content {{ content }}
     .clearfix
 
