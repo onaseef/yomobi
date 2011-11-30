@@ -89,13 +89,16 @@ var builderUtil = {
         if (!util.isUIFree()) return;
 
         var imgAttrs = util.getFormValueHash( $(this) );
+
         if (isNew) {
           $('#jeditor').data('wysiwyg').ui.focus();
           $('#jeditor').wysiwyg('insertImage', imgAttrs.src, imgAttrs);
           util.jeditorImageDialog( $('#jeditor').data('wysiwyg').lastInsertedImage );
         }
         else {
-          var origImg = dialog.find('.preview img')[0];
+          var origImg = dialog.find('img.hide')[0];
+          imgAttrs.size || (imgAttrs.size = Math.round($img[0].width / origImg.width * 100));
+
           $img.addClass('yo')
               .data('size', parseInt(imgAttrs.size))
               .attr('data-size', parseInt(imgAttrs.size))
@@ -141,8 +144,16 @@ var builderUtil = {
 
     // set selects to current values
     dialog.find('[name=float]').val( $img.css('float') );
-util.log('SIZE', $img.data('size'));
     dialog.find('[name=size]').val($img.data('size')).trigger('change');
+    if (!$img.data('size')) {
+      var origImg = dialog.find('img.hide')[0];
+      var updateSize = function () {
+        var size = Math.round($img[0].width / origImg.width * 100);
+        dialog.find('[name=custom_size]').val(size).trigger('keyup');
+      };
+      if (origImg.width) updateSize();
+      else origImg.load(updateSize);
+    }
 
     if (isNew) {
       util.initUploader( dialog.find('.wphoto-wrap'), {

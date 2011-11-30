@@ -542,7 +542,7 @@ div.wysiwyg ul.toolbar {
 #dialog-confirm.edit-icon p {
   padding: 4px 0px 0px 0px; }
 
-#dialog-confirm.jeditor-image img {
+#dialog-confirm.jeditor-image .preview img {
   max-width: 100%;
   max-height: 80px;
   vertical-align: middle; }
