@@ -15,7 +15,6 @@ class Widgets::LeaveMsgController < ApplicationController
       :subject => params[:subject],
       :from => params[:email],
       :reply_to => params[:email],
-      :replyto => params[:email],
       :customer_name => params[:name],
       :customer_subject => params[:subject],
       :customer_feedback => params[:feedback],

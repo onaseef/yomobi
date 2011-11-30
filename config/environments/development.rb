@@ -49,26 +49,15 @@ Yomobi::Application.configure do
   #   :enable_starttls_auto => true
   # }
 
-  # use sendgrid for real emailing
-  config.action_mailer.delivery_method = :smtp
+  # use amazon for real emailing
+  ActionMailer::Base.add_delivery_method :ses, AWS::SES::Base,
+    :access_key_id => ENV['EMAIL_S3_KEY'],
+    :secret_access_key => ENV['EMAIL_S3_SECRET']
+
+  config.action_mailer.delivery_method = :ses
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_url_options = { :host => "local.host:3000" }
-  ActionMailer::Base.smtp_settings = {
-    :address => "smtp.sendgrid.net",
-    :port => '25',
-    :domain => "yomobi.com",
-    :authentication => :plain,
-    :user_name => "yomobi",
-    :password => "yoMob1SendGrId"
-  }
-  config.text_smtp_settings = {
-    :address => "smtp.sendgrid.net",
-    :port => '25',
-    :domain => "yomobi.com",
-    :authentication => :plain,
-    :user_name => "yomobi_text",
-    :password => "ymT3xtsenDgr!d"
-  }
+  
 
   Slim::Engine.set_default_options :pretty => true
 end

@@ -40,26 +40,14 @@ Yomobi::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # use sendgrid for real emailing
-  config.action_mailer.delivery_method = :smtp
+  ActionMailer::Base.add_delivery_method :ses, AWS::SES::Base,
+    :access_key_id => ENV['S3_KEY'],
+    :secret_access_key => ENV['S3_SECRET']
+
+  config.action_mailer.delivery_method = :ses
   # Disable delivery errors, bad email addresses will be ignored
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default_url_options = { :host => "yomobi.com" }
-  ActionMailer::Base.smtp_settings = {
-    :address => "smtp.sendgrid.net",
-    :port => '25',
-    :domain => "yomobi.com",
-    :authentication => :plain,
-    :user_name => "yomobi",
-    :password => "yoMob1SendGrId"
-  }
-  config.text_smtp_settings = {
-    :address => "smtp.sendgrid.net",
-    :port => '25',
-    :domain => "yomobi.com",
-    :authentication => :plain,
-    :user_name => "yomobi_text",
-    :password => "ymT3xtsenDgr!d"
-  }
 
   # Enable threaded mode
   # config.threadsafe!

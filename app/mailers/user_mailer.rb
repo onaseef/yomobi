@@ -1,6 +1,10 @@
 class UserMailer < ActionMailer::Base
   default :from => "\"YoMobi\" <message@yomobi.com>"
 
+  def self.legal_headers
+    @legal_headers ||= %W{to from subject reply_to}.map {|h| h.to_sym}
+  end
+
   def send_welcome_email(user)
     @mobile_url = user.company.mobile_url
     mail({
@@ -12,17 +16,17 @@ class UserMailer < ActionMailer::Base
 
   def leave_msg(params)
     @params = params
-    mail params
+    mail scrub_headers params
   end
 
   def call_back(params)
     @params = params
-    mail params
+    mail scrub_headers params
   end
 
   def tell_friend(params)
     @params = params
-    mail params
+    mail scrub_headers params
   end
 
   def send_text(params)
@@ -30,27 +34,28 @@ class UserMailer < ActionMailer::Base
     @content = params[:content]
     @short_url = follower.short_url
     @company_name = params[:company].name
-    
-    old_settings = ActionMailer::Base.smtp_settings
-    ActionMailer::Base.smtp_settings = Rails.application.config.text_smtp_settings
-
     mail(
       :subject => "From #{params[:company].name}",
       :to => "#{follower.phone}@#{follower.carrier.text_email}",
       :from => "\"YoMobi\" <message@yomobi.com>",
       :reply_to => params[:company].informed_email || params[:company].user.email
     )
-
-    ActionMailer::Base.smtp_settings = old_settings
   end
 
   def email_follower(params)
     @params = params
-    mail params
+    mail scrub_headers params
   end
 
   def booking_email(params)
     @params = params
-    mail params
+    mail scrub_headers params
+  end
+
+  private
+
+  # removes any illegal email headers
+  def scrub_headers(headers)
+    headers.select {|h| UserMailer.legal_headers.include? h}
   end
 end
