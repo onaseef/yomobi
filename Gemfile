@@ -6,6 +6,7 @@ gem 'couchrest', "~> 1.1"
 
 gem 'paperclip', :git => 'https://github.com/thoughtbot/paperclip', :tag => "v2.3.14"
 gem 'aws-s3', :require => 'aws/s3'
+gem "aws-ses", "~> 0.4.4", :require => 'aws/ses'
 gem 'rmagick', :require => false
 gem 'shortly'
 

@@ -61,6 +61,11 @@ GEM
       builder
       mime-types
       xml-simple
+    aws-ses (0.4.4)
+      builder
+      mail (> 2.2.5)
+      mime-types
+      xml-simple
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
     cocaine (0.1.0)
@@ -149,6 +154,7 @@ PLATFORMS
 DEPENDENCIES
   aritcaptcha!
   aws-s3
+  aws-ses (~> 0.4.4)
   couchrest (~> 1.1)
   devise (~> 1.4)
   heroku
