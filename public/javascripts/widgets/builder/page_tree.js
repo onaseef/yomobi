@@ -71,6 +71,21 @@
       }
     },
     
+    accept: function () {
+      if (this.widget.hasLeafOnTop()) {
+        var node = this.widget.getCurrentNode()
+          , wphotoUrl = util.largerWphoto(node._data.wphotoUrl)
+          , content = node._data.content
+        ;
+        // if thumbnail image does not exist in the page,
+        // then remove the thumbnail from being displayed.
+        if (content.indexOf(wphotoUrl) === -1) {
+          delete node._data.wphotoUrl;
+        }
+      }
+      categoryEditor.accept.call(this);
+    },
+
     transitionBack: function (e) {
       // transition to the previous page by emulating a click
       mapp.getActivePage().find('.back-btn').click();
