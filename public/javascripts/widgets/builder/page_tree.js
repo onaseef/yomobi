@@ -151,6 +151,7 @@
       if (!origLevel || !origLeaf) return;
       leaf.content = origLeaf.content;
       this.setChanged('leaf-content',false);
+      this.setChanged('thumb',false);
       this.refreshViews({ forceEditAreaRefresh:true });
     }
     

@@ -34,7 +34,8 @@ en:
 
     jeditor:
       help:
-        default_image: "Useful thumbnail preview is useful."
+        thumb: "<< THUMBNAIL PREVIEW HELP >>"
+        url: "<< URL HELP >>"
 
   widgets:
     helpText:

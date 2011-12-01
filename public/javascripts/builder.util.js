@@ -60,7 +60,7 @@ var builderUtil = {
 
   _createDummyImage: function () {
     return $('<img class="yo">').css({
-      float: 'none',
+      float: 'left',
       width: 'auto',
       maxWidth: '100%'
     }).attr('data-size',1);
@@ -81,12 +81,13 @@ var builderUtil = {
       currentThumb = widget.getCurrentNode()._data.wphotoUrl
     }
 
+    var isDefault = util.thumbWphoto($img.attr('src')) === currentThumb;
     var templateData = {
       src: $img.attr('src'),
       float: $img.css('float'),
       size: $img.data('size'),
       isThumbEnabled: widget.get('wtype') === 'page_tree',
-      isDefault: util.thumbWphoto($img.attr('src')) === currentThumb,
+      isDefault: isDefault,
       thumb: currentThumb
     };
 
@@ -102,21 +103,26 @@ var builderUtil = {
 
         if (isNew) {
           $('#jeditor').data('wysiwyg').ui.focus();
-          $('#jeditor').wysiwyg('insertImage', imgAttrs.src, imgAttrs);
+          $('#jeditor').wysiwyg('insertImage', imgAttrs.src, {
+            src: imgAttrs.src,
+            style:'float:left'
+          });
           util.jeditorImageDialog( $('#jeditor').data('wysiwyg').lastInsertedImage );
         }
         else {
           var origImg = dialog.find('img.hide')[0];
-          imgAttrs.size || (imgAttrs.size = Math.round($img[0].width / origImg.width * 100));
+          var newSize = parseInt(imgAttrs.size)
+                         || ( Math.round($img[0].width / origImg.width * 100) );
+          newSize = util.bound(newSize, 1, 100);
 
           $img.addClass('yo')
-              .data('size', parseInt(imgAttrs.size))
-              .attr('data-size', parseInt(imgAttrs.size))
+              .data('size', newSize)
+              .attr('data-size', newSize)
               .css({
                 float: imgAttrs.float,
                 maxWidth:'100%',
-                width: Math.round(imgAttrs.size * origImg.width / 100) + 'px',
-                height: Math.round(imgAttrs.size * origImg.height / 100) + 'px'
+                width: Math.round(newSize * origImg.width / 100) + 'px',
+                height: Math.round(newSize * origImg.height / 100) + 'px'
               })
           ;
 
@@ -127,10 +133,16 @@ var builderUtil = {
           else if ($parent.is('a'))
             $img.unwrap();
 
-          if (dialog.find('.default-enabled').is(':visible')
+          if (dialog.find('[name=is_default]').is(':checked')
               && util.thumbWphoto($img.attr('src')) !== currentThumb)
           {
             widget.getCurrentNode()._data.wphotoUrl = util.thumbWphoto($img.attr('src'));
+            bapp.currentEditor.setChanged('thumb', true);
+          }
+          else if (util.thumbWphoto($img.attr('src')) === currentThumb
+              && dialog.find('[name=is_default]').not(':checked'))
+          {
+            delete widget.getCurrentNode()._data.wphotoUrl;
             bapp.currentEditor.setChanged('thumb', true);
           }
 
@@ -146,12 +158,6 @@ var builderUtil = {
       dialog.find('.custom-size').toggle(isCustom);
     });
 
-    dialog.find('[name=custom_size]').keyup(function () {
-      var newSize = parseInt( $(this).val() );
-      if (!newSize) return;
-      dialog.find('[name=size] option:last').val( util.bound(newSize, 1, 100) );
-    });
-
     dialog.find('[name=delete]').click(function () {
       $img.remove();
       $( $('#jeditor').data('wysiwyg').editorDoc ).trigger('save');
@@ -159,14 +165,10 @@ var builderUtil = {
       dialog.parent().find('.ui-dialog-buttonset button:last').click();
     });
 
-    dialog.find('[name=make_default]').click(function () {
-      dialog.find('.default-button').hide();
-      dialog.find('.default-enabled').show();
-    });
+    dialog.find('[name=is_default]').prop('checked', isDefault);
 
     // set selects to current values
     dialog.find('[name=float]').val( $img.css('float') );
-    dialog.find('[name=size]').val($img.data('size')).trigger('change');
 
     dialog.find('.help-bubble').simpletooltip(undefined,'help');
 
@@ -174,7 +176,7 @@ var builderUtil = {
       var origImg = dialog.find('img.hide')[0];
       var updateSize = function () {
         var size = Math.round($img[0].width / origImg.width * 100);
-        dialog.find('[name=custom_size]').val(size).trigger('keyup');
+        dialog.find('[name=size]').val(size);
       };
       if (origImg.width) updateSize();
       else origImg.onLoad = updateSize;

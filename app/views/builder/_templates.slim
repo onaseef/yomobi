@@ -340,33 +340,29 @@ script.jeditor-image-dialog(type="text/template")
           td
             button name="delete" Delete
 
-    .default-enabled class="<% print(isThumbEnabled && isDefault ? '' : 'hide'); %>"
-      | This photo is set as your thumbnail preview.
-      img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.jeditor.help.default_image')
-
-    .default-button class="<% print(isThumbEnabled && !isDefault ? '' : 'hide'); %>"
-      button name="make_default" Set as Thumbnail Preview
-      img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.jeditor.help.default_image')
-
-    p
-      label Clickable URL (optional):
-      input type="text" name="href" value="{{ _maybe.href }}"
     p
       label Alignment:
       select name="float"
-        option value="none" Inline with Text
         option value="left" Left
         option value="right" Right
+        option value="none" Inline with Text
     p
       label Image Size:
-      select name="size"
-        option value="100" Original Size
-        option value="60" Medium (60%)
-        option value="30" Small (30%)
-        option value="<% if (!_.include([100,60,30], size)) { print(size); } %>" data-custom="true" Custom
-      .custom-size.hide
-        label Enter a number from 1 to 100:
-        input type="text" name="custom_size" size="3" value="{{ size }}"
+      input type="text" name="size" size="3" value="{{ size }}"
+      span.percent-sign %
+    
+    p
+      label Clickable URL (optional):
+      a href="http://help.yomobi.com/Wysiwyg/Url" target="_blank"
+        img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.jeditor.help.url')
+      input type="text" name="href" value="{{ _maybe.href }}"
+
+    .default-enabled class="<% print(isThumbEnabled ? '' : 'hide'); %>"
+      input type="checkbox" name="is_default"
+      ' Set as Thumbnail Preview
+      a href="http://help.yomobi.com/Wysiwyg/Thumbnail" target="_blank"
+        img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.jeditor.help.thumb')
+
     | <% } %>
     input type="hidden" name="src" value="_maybe.src"
 

@@ -546,7 +546,7 @@ div.wysiwyg ul.toolbar {
   max-width: 100%;
   max-height: 80px;
   vertical-align: middle; }
-#dialog-confirm.jeditor-image input[name=custom_size] {
+#dialog-confirm.jeditor-image input[name=size] {
   width: auto; }
 
 #builder input[name="back"] {
