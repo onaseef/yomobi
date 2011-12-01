@@ -116,6 +116,8 @@ var builderUtil = {
           newSize = util.bound(newSize, 1, 100);
 
           $img.addClass('yo')
+              .removeClass( 'yo-' + $img.css('float') )
+              .addClass('yo-' + imgAttrs.float)
               .data('size', newSize)
               .attr('data-size', newSize)
               .css({
