@@ -177,7 +177,7 @@ var builderUtil = {
         dialog.find('[name=custom_size]').val(size).trigger('keyup');
       };
       if (origImg.width) updateSize();
-      else origImg.load(updateSize);
+      else origImg.onLoad = updateSize;
     }
 
     if (isNew) {
