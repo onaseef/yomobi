@@ -85,7 +85,7 @@ var builderUtil = {
     var templateData = {
       src: $img.attr('src'),
       float: $img.css('float'),
-      size: $img.data('size'),
+      size: $img.data('size') || 100,
       isThumbEnabled: widget.get('wtype') === 'page_tree',
       isDefault: isDefault,
       thumb: currentThumb
