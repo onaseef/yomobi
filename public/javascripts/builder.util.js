@@ -61,12 +61,14 @@ var builderUtil = {
         superscript: { visible:false },
         uploadImage: {
           visible: true,
+          groupIndex: 9,
           exec: util.jeditorImageDialog,
           className: 'uploadImage',
           tooltip: "Add a Picture"
         },
         embedYoutube: {
           visible: true,
+          groupIndex: 9,
           exec: util.jeditorYoutubeDialog,
           className: 'embedYoutube',
           tooltip: 'Add a YouTube video'
