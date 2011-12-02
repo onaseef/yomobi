@@ -244,10 +244,15 @@
 
   script.category-page(type="text/template")
     | <% if (nodeType === 'item') { %>
-    .item-nav
-      button name="next" class="<% if (nodeIdx.idx === nodeIdx.total-1) { print('disabled'); } %>" &gt;&gt;
-      button name="prev" class="<% if (nodeIdx.idx === 0) { print('disabled'); } %>" &lt;&lt;
-      label.item-index {{ nodeIdx.humanIdx }}/{{ nodeIdx.total }}
+    table.item-nav
+      tbody
+        tr
+          td
+            button name="prev" class="<% if (nodeIdx.idx === 0) { print('disabled'); } %>" &lt;&lt;
+          td
+            label.item-index {{ nodeIdx.humanIdx }}/{{ nodeIdx.total }}
+          td
+            button name="next" class="<% if (nodeIdx.idx === nodeIdx.total-1) { print('disabled'); } %>" &gt;&gt;
     | <% } %>
 
     | <% if (_maybe.wphotoUrlLarge) { %>

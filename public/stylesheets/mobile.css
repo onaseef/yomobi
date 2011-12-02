@@ -247,13 +247,15 @@ p {
     background: #ECEBEB;
     margin: 8px 0;
     padding: 8px 0;
-    text-align: center; }
+    text-align: center;
+    width: 100%; }
+    .page > .content.category .item-nav td, .page > .content.page_tree .item-nav td {
+      vertical-align: middle; }
+    .page > .content.category .item-nav td label, .page > .content.page_tree .item-nav td label {
+      margin: 0 !important; }
     .page > .content.category .item-nav button, .page > .content.page_tree .item-nav button {
-      margin: 0 10px; }
-    .page > .content.category .item-nav button[name=prev], .page > .content.page_tree .item-nav button[name=prev] {
-      float: left; }
-    .page > .content.category .item-nav button[name=next], .page > .content.page_tree .item-nav button[name=next] {
-      float: right; }
+      margin: 0 10px;
+      cursor: pointer; }
     .page > .content.category .item-nav button.disabled, .page > .content.page_tree .item-nav button.disabled {
       visibility: hidden; }
   .page > .content.category table.node-list, .page > .content.page_tree table.node-list {
@@ -285,13 +287,11 @@ p {
     .page > .content.category .item td .content, .page > .content.page_tree .item td .content {
       width: 97%;
       float: none; }
-  .page > .content.category .item.category td, .page > .content.page_tree .item.category td {
-    background: url(/images/ui/subcat-arrow.png) 100% 50% no-repeat; }
-  .page > .content.category .item.leaf-name td, .page > .content.page_tree .item.leaf-name td {
-    background: url(/images/ui/subcat-arrow.png) 100% 50% no-repeat; }
-  .page > .content.category .item.category, .page > .content.category .item.leaf-name, .page > .content.page_tree .item.category, .page > .content.page_tree .item.leaf-name {
-    padding: 8px 20px 8px 0px;
+  .page > .content.category .item td, .page > .content.page_tree .item td {
+    background: url(/images/ui/subcat-arrow.png) 100% 50% no-repeat;
     cursor: pointer; }
+  .page > .content.category .item.category, .page > .content.category .item.leaf-name, .page > .content.page_tree .item.category, .page > .content.page_tree .item.leaf-name {
+    padding: 8px 20px 8px 0px; }
   .page > .content.category .item:first-child, .page > .content.category .category:first-child, .page > .content.page_tree .item:first-child, .page > .content.page_tree .category:first-child {
     border-top: none; }
   .page > .content.category .c0, .page > .content.category .c1, .page > .content.page_tree .c0, .page > .content.page_tree .c1 {
