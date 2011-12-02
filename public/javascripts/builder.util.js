@@ -6,10 +6,22 @@ if (!window.util) {
 }
 
 var imageDialogTemplate = util.getTemplate('jeditor-image-dialog');
+var youtubeDialogTemplate = util.getTemplate('jeditor-youtube-dialog');
 var dialogCloseFunc = function () {
   if (!util.isUIFree()) return;
   $(this).dialog('close');
 };
+var youtubeEmbedTemplate = util.getTemplate('youtube-embed-html');
+
+var ytRegex = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+var getYoutubeVideoId = function (url) {
+  var match = url.match(ytRegex);
+  if (match && match[7].length == 11) {
+    return match[7];
+  } else {
+    return undefined;
+  }
+}
 
 var builderUtil = {
 
@@ -52,6 +64,12 @@ var builderUtil = {
           exec: util.jeditorImageDialog,
           className: 'uploadImage',
           tooltip: "Add a Picture"
+        },
+        embedYoutube: {
+          visible: true,
+          exec: util.jeditorYoutubeDialog,
+          className: 'embedYoutube',
+          tooltip: 'Add a YouTube video'
         }
       }
     });
@@ -200,6 +218,29 @@ var builderUtil = {
     }
   },
 
+  jeditorYoutubeDialog: function () {
+    var dialog = util.dialog(youtubeDialogTemplate(), {
+      'Save': function () {
+
+        var vid = getYoutubeVideoId( dialog.find('[name=url]').val() )
+          , html = youtubeEmbedTemplate({
+              vid: vid || 'GGT8ZCTBoBA'
+            })
+        ;
+        if (!vid) {
+          dialog.find('.error').show('pulsate', { times:3 });
+          return;
+        }
+        else {
+          $('#jeditor').data('wysiwyg').ui.focus();
+          $('#jeditor').data('wysiwyg').insertHtml(html);
+          $(this).dialog('close');
+        }
+      },
+      'Cancel': dialogCloseFunc
+    });
+  },
+
   toHtml: function (jqueryObject) {
     return $('<div>').html( jqueryObject ).html();
   },
@@ -219,6 +260,9 @@ var builderUtil = {
     'table', 'tr', 'td', 'tbody', 'th',
     'font'
   ],
+  tagsToIgnore: [
+    'object'
+  ],
 
   // expects a jquery object
   _stripAllStyles: function ($group) {
@@ -232,7 +276,9 @@ var builderUtil = {
         return;
       }
 
-      if (elem.removeAttribute) {
+      if (elem.removeAttribute &&
+        !_.include(util.tagsToIgnore,elem.tagName.toLowerCase()) )
+      {
         for (var i = util.attributesToStrip.length - 1; i >= 0; i--) {
           elem.removeAttribute(util.attributesToStrip[i]);
         }
