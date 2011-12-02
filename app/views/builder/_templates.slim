@@ -367,9 +367,10 @@ script.jeditor-image-dialog(type="text/template")
     input type="hidden" name="src" value="_maybe.src"
 
 script.jeditor-youtube-dialog(type="text/template")
-  #dialog-confirm.jeditor-image title="Select an Image"
+  #dialog-confirm.jeditor-image title="Add YouTube Video"
     p
-      label Youtube Video Url:
+      label YouTube Video Url:
+      img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.jeditor.help.youtube')
       input type="text" name="url" value=""
     p.error.hide
       | Invalid youtube url.

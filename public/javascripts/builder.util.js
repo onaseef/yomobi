@@ -241,6 +241,7 @@ var builderUtil = {
       },
       'Cancel': dialogCloseFunc
     });
+    dialog.find('.help-bubble').simpletooltip(undefined,'help');
   },
 
   toHtml: function (jqueryObject) {
