@@ -12,7 +12,7 @@ gem 'shortly'
 
 gem 'devise', "~> 1.4"
 gem 'recaptcha', :require => 'recaptcha/rails'
-gem 'typus', :git => 'https://github.com/typus/typus.git'
+gem 'typus', "~> 3.0"
 
 gem 'slim', :require => 'slim'
 gem 'sass'
