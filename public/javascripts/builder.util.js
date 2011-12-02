@@ -135,14 +135,14 @@ var builderUtil = {
           else if ($parent.is('a'))
             $img.unwrap();
 
-          if (dialog.find('[name=is_default]').is(':checked')
+          if (dialog.find('[name=is_default]').prop('checked') === true
               && util.thumbWphoto($img.attr('src')) !== currentThumb)
           {
             widget.getCurrentNode()._data.wphotoUrl = util.thumbWphoto($img.attr('src'));
             bapp.currentEditor.setChanged('thumb', true);
           }
           else if (util.thumbWphoto($img.attr('src')) === currentThumb
-              && dialog.find('[name=is_default]').not(':checked'))
+              && dialog.find('[name=is_default]').prop('checked') === false)
           {
             delete widget.getCurrentNode()._data.wphotoUrl;
             bapp.currentEditor.setChanged('thumb', true);
