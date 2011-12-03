@@ -236,7 +236,8 @@ script.edit-settings(type="text/template")
       .divider
 
       label class="help" Desktop Redirect Code:
-      img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.settings.help.redirect')
+      a href="http://help.yomobi.com/Account/MobileRedirectScript" target="ymhelp"
+        img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.settings.help.redirect')
       textarea.read-only readonly="readonly" data-orig-val=desktop_redirect_code(@company) = desktop_redirect_code @company
     
     = form_tag '/builder/settings', :multipart => true, :class => 'box' do
@@ -273,7 +274,8 @@ script.edit-settings(type="text/template")
             td
               label
                 ' Select a new picture:
-                img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.settings.help.site_pic')
+                a href="http://help.yomobi.com/Mobile/ChangeSitePicture" target="ymhelp"
+                  img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.settings.help.site_pic')
             td
           tr
             td
@@ -370,7 +372,8 @@ script.jeditor-youtube-dialog(type="text/template")
   #dialog-confirm.jeditor-image title="Add YouTube Video"
     p
       label YouTube Video Url:
-      img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.jeditor.help.youtube')
+      a href="http://help.yomobi.com/Wysiwyg/YouTube" target="_blank"
+        img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.jeditor.help.youtube')
       input type="text" name="url" value=""
     p.error.hide
       | Invalid youtube url.
