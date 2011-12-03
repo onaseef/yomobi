@@ -29,14 +29,14 @@ en:
     
     settings:
       help:
-        redirect: "To automatically redirect visitors to your mobile site when they visit your desktop site from a mobile phone, copy this code snippet and paste it into your desktop site’s home page, just before the closing &lt;head&gt; tag."
+        redirect: "To automatically redirect visitors to your mobile site when they visit your desktop site from a mobile phone, copy this code snippet and paste it into your desktop site’s home page, just before the closing &lt;head&gt; tag. <b>Click ? more help.</b>"
         site_pic: "Note: Large size pictures may take up to 1 minute to load."
 
     jeditor:
       help:
-        thumb: "<< THUMBNAIL PREVIEW HELP >>"
-        url: "<< URL HELP >>"
-        youtube: "<< YOUTUBE HELP >>"
+        thumb: "Set this picture as the preview thumbnail for this page.<br><b>Click ? for more information.</b>"
+        url: "Make this picture a clickable URL.<br><b>Click ? for more information</b>"
+        youtube: "Add a YouTube video to your page.<br><b>Click ? for more information.</b>"
 
   widgets:
     helpText:
