@@ -14,6 +14,17 @@ class UserMailer < ActionMailer::Base
     })
   end
 
+  def email_changed_notice(user,old_email)
+    @old_email = old_email
+    @new_email = user.email
+    @mobile_url = user.company.mobile_url
+    mail({
+      :subject => "Your YoMobi account username has changed.",
+      :to => [old_email, user.email],
+      :from => 'support@yomobi.com'
+    })
+  end
+
   def leave_msg(params)
     @params = params
     mail scrub_headers params
