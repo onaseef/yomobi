@@ -147,15 +147,11 @@ p {
 .ad-bar {
   display: none;
   padding: 0 0;
-  //border-bottom: 2px solid $secondary-color;
-  border-bottom: 0px;
+  border-bottom: 2px solid $secondary-color;
   background: $color-topbar;
   text-align: center;
   &.bottom {
-    //height: 48px;
-    height: 0px;
-    visible: false;
-  } }
+    height: 48px; } }
 
 .back-btn {
   float: left;
