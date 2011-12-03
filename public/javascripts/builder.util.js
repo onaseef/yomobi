@@ -235,7 +235,13 @@ var builderUtil = {
         }
         else {
           $('#jeditor').data('wysiwyg').ui.focus();
-          $('#jeditor').data('wysiwyg').insertHtml(html);
+
+          // insert temporary image to get around execCommand's insertHtml limitations
+          var Wysiwyg = $('#jeditor').data('wysiwyg');
+          Wysiwyg.editorDoc.execCommand("insertImage", false, "#jwysiwyg#");
+          var temp = Wysiwyg.getElementByAttributeValue("img", "src", "#jwysiwyg#");
+          $(temp).replaceWith(html);
+
           $(this).dialog('close');
         }
       },
