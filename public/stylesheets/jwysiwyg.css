@@ -13,4 +13,4 @@ p {
 
 img.yo { cursor: pointer; }
 img.yo-left  { padding: 3px 10px 0px 0px; }
-img.yo-right { padding-left: 3px 0px 0px 10px; }
+img.yo-right { padding: 3px 0px 0px 10px; }
