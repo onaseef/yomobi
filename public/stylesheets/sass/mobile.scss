@@ -276,6 +276,20 @@ p {
 .page > .content.category, .page > .content.page_tree {
   padding: 0 10px 20px 8px !important;
 
+  .item-nav {
+    background: #ECEBEB;
+    margin: 8px 0;
+    padding: 8px 0;
+    text-align: center;
+    width: 100%;
+
+    td { vertical-align: middle; }
+    td label { margin: 0 !important; }
+
+    button { margin: 0 10px; cursor: pointer; }
+    button.disabled { visibility: hidden; }
+  }
+
   table.node-list {
     width: 100%;
   }
@@ -320,13 +334,11 @@ p {
     }
   }
 
-  .item.category td {
-    background: url(/images/ui/subcat-arrow.png) 100% 50% no-repeat; }
-  .item.leaf-name td {
-    background: url(/images/ui/subcat-arrow.png) 100% 50% no-repeat; }
-  .item.category, .item.leaf-name {
-    padding: 8px 20px 8px 0px;
+  .item td {
+    background: url(/images/ui/subcat-arrow.png) 100% 50% no-repeat;
     cursor: pointer; }
+  .item.category, .item.leaf-name {
+    padding: 8px 20px 8px 0px; }
   .item:first-child, .category:first-child {
     border-top: none; }
 
@@ -406,10 +418,10 @@ pre {
   float: none; 
   width: 100%; 
   border-bottom: 1px solid #1D4088;
+  margin-bottom: 12px;
 }
-
 .wphoto-large.centered img {
-    margin-bottom: 6px;
+    margin: 0 0 6px 0;
 }
 
 .node-list {

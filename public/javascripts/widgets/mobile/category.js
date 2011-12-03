@@ -7,6 +7,9 @@
   var toItemData = function (level) {
     return function (key) { return level[key]._data }
   };
+  var isItem = function (parent) {
+    return function (node_id) { return parent[node_id]._data.type === 'item' };
+  }
   
   window.widgetClasses.category = Widget.extend({
     
@@ -26,6 +29,9 @@
       if (!this.itemTemplate) this.itemTemplate = util.getTemplate(this.get('wsubtype')+'-item');
 
       var extraData = {
+        node: level,
+        nodeType: level.type,
+        nodeIdx: (level.type === 'item') ? this.getCurrentNodeIdx(true) : -1,
         stuff: level._items || [],
         itemWrapTemplate: this.itemWrapTemplate,
         itemTemplate: this.itemTemplate,
@@ -63,6 +69,38 @@
 
     getCurrentNode: function () {
       return this.getCurrentLevel(true);
+    },
+
+    getNodeParent: function (node) {
+      var path = this.paths[node._data._id]
+        , parent_id = path[path.length - 2]
+      ;
+      return this.getNodeById(parent_id);
+    },
+
+    getCurrentNodeIdx: function (onlyItems) {
+      var node = this.getCurrentNode()
+        , parent = this.getNodeParent(node)
+        , order = parent._data._order
+        , order = onlyItems ? _.select(order, isItem(parent)) : order
+
+        , nodeIdx = _.indexOf(order, node._data._id)
+        , total = order.length
+      ;
+      return { idx:nodeIdx, humanIdx:nodeIdx+1, total:total };
+    },
+
+    // direction should be 1 or -1
+    getSiblingId: function (direction,onlyItems) {
+      var node = this.getCurrentNode()
+        , parent = this.getNodeParent(node)
+        , order = parent._data._order
+        , order = onlyItems ? _.select(order, isItem(parent)) : order
+
+        , nodeIdx = _.indexOf(order, node._data._id)
+        , sibling_id = order[nodeIdx + direction]
+      ;
+      return sibling_id;
     },
 
     setPaths: function (currentPath, currentNode) {
@@ -114,7 +152,8 @@
     
     events: {
       'click .item.category':                 'onCategoryClick',
-      'click .item:not([class*=category])':   'onItemClick'
+      'click .item:not([class*=category])':   'onItemClick',
+      'click .item-nav button':               'onItemNavClick'
     },
     
     onCategoryClick: function (e) {
@@ -127,7 +166,14 @@
       mapp.goToPage(this.widget.get('name'), cat_id);
     },
     
-    onItemClick: _.identity,
+    onItemClick: function (e) { this.onCategoryClick(e); },
+
+    onItemNavClick: function (e) {
+      var direction = (e.target.name === 'next') ? 1 : -1
+        , node_id = this.widget.getSiblingId(direction, true)
+      ;
+      mapp.goToPage(this.widget.get('name'), node_id);
+    },
 
     beforePageRender: util.widget.resizeOnImgLoad,
 
