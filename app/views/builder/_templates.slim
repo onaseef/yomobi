@@ -24,6 +24,7 @@ script.add-subcat-dialog(type="text/template")
       br
       input type="text" value="{{ _maybe.name }}" name="cat"
 
+      | <% if (!hideUploader) { %>
       table.wphoto-wrap
         tbody
           tr
@@ -45,6 +46,7 @@ script.add-subcat-dialog(type="text/template")
           | <% } %>
         .error
       input type="hidden" value="" name="wphotoUrl"
+      | <% } %>
 
       input name="add" type="button" value="Add"
 

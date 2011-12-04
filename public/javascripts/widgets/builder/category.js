@@ -611,7 +611,8 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
         error: error,
         name: name,
         typeName: this.getTypeName(),
-        addedCats: this.addedCats
+        addedCats: this.addedCats,
+        hideUploader: this.type === 'page'
       });
 
       var self = this;
