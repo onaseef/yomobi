@@ -73,6 +73,13 @@
     
     accept: function () {
       if (this.widget.hasLeafOnTop()) {
+
+        if (this.updateTimeoutId) {
+          // update content before proceeding
+          clearTimeout(this.updateTimeoutId);
+          this.updateActiveLeaf();
+        }
+
         var node = this.widget.getCurrentNode()
           , wphotoUrl = util.largerWphoto(node._data.wphotoUrl)
           , content = node._data.content
@@ -106,13 +113,15 @@
     },
 
     queueActiveLeafUpdate: function () {
-      if (!this.updateTimeoutId) {
-        var self = this;
-        this.updateTimeoutId = setTimeout(function () {
-          self.updateActiveLeaf();
-          delete self.updateTimeoutId;
-        },350);
-      }
+      clearTimeout(this.updateTimeoutId);
+
+      var self = this
+        , delay = this.areStylesDirty ? 350 : 1200
+      ;
+      this.updateTimeoutId = setTimeout(function () {
+        self.updateActiveLeaf();
+        delete self.updateTimeoutId;
+      }, delay);
     },
     
     updateActiveLeaf: function () {
@@ -138,6 +147,7 @@
 
     markStylesAsDirty: function () {
       this.areStylesDirty = true;
+      this.queueActiveLeafUpdate();
     },
 
     discardActiveLeafChanges: function () {
