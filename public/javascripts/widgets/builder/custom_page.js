@@ -3,19 +3,6 @@
 //
 (function ($) {
 
-  var uploaderCallback = function(data) {
-    util.log('wut wut',data);
-    if (data.result !== 'success' && data.result !== 'noupload') {
-      alert('Photo upload failed ('+ data.result +')');
-      util.releaseUI();
-      return;
-    }
-    this.editor.el.find('input[name=wphotoUrl]').val(data.wphotoUrl);
-    // accept() needs the UI to be free
-    util.releaseUI();
-    this.editor.accept();
-  };
-
   window.widgetClasses.custom_page = window.widgetClasses.custom_page.extend({
 
     getEditData: function () {
@@ -43,14 +30,6 @@
       this.originalContent = this.widget.get('content');
       util.spawnJEditor();
       if (resetChanges || isFirstEdit) this.changes = {};
-
-      var callback = _.bind(uploaderCallback, { editor:this });
-
-      util.initUploader( $(this.el).find('.wphoto-wrap'), {
-        onDone: callback,
-        emptyQueue: true,
-        wid: this.widget.id
-      });
     },
 
     grabWidgetValues: function () {
@@ -81,15 +60,6 @@
     stripStyles: function () {
       var strippedContent = util.stripAllStyles( $('#jeditor').wysiwyg('getContent') );
       $('#jeditor').wysiwyg('setContent', strippedContent);
-    },
-
-    removeWPhoto: function (e) {
-      e.preventDefault();
-      this.el.find('[name=wphotoUrl]').val('').end()
-             .find('.wphoto-wrap img').attr('src', g.noPhotoPath);
-      this.setChanged('wphoto', true);
-
-      util._uploaders['default'].reposition();
     }
 
   });

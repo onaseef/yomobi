@@ -6,6 +6,7 @@ a img {
   border: none; }
 
 p {
+  font-size: 100%;
   margin-top: 0px;
   margin-bottom: 0px;
   -webkit-margin-before: 0em;
@@ -370,3 +371,9 @@ pre {
 .node-list .wphoto img {
   margin: 0px;
   padding: 0px; }
+
+img.yo-left {
+  padding: 3px 10px 0px 0px; }
+
+img.yo-right {
+  padding: 3px 0px 0px 10px; }

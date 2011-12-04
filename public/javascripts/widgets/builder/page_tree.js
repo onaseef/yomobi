@@ -71,6 +71,28 @@
       }
     },
     
+    accept: function () {
+      if (this.widget.hasLeafOnTop()) {
+
+        if (this.updateTimeoutId) {
+          // update content before proceeding
+          clearTimeout(this.updateTimeoutId);
+          this.updateActiveLeaf();
+        }
+
+        var node = this.widget.getCurrentNode()
+          , wphotoUrl = util.largerWphoto(node._data.wphotoUrl)
+          , content = node._data.content
+        ;
+        // if thumbnail image does not exist in the page,
+        // then remove the thumbnail from being displayed.
+        if (content.indexOf(wphotoUrl) === -1) {
+          delete node._data.wphotoUrl;
+        }
+      }
+      categoryEditor.accept.call(this);
+    },
+
     transitionBack: function (e) {
       // transition to the previous page by emulating a click
       mapp.getActivePage().find('.back-btn').click();
@@ -91,13 +113,15 @@
     },
 
     queueActiveLeafUpdate: function () {
-      if (!this.updateTimeoutId) {
-        var self = this;
-        this.updateTimeoutId = setTimeout(function () {
-          self.updateActiveLeaf();
-          delete self.updateTimeoutId;
-        },350);
-      }
+      clearTimeout(this.updateTimeoutId);
+
+      var self = this
+        , delay = this.areStylesDirty ? 350 : 1200
+      ;
+      this.updateTimeoutId = setTimeout(function () {
+        self.updateActiveLeaf();
+        delete self.updateTimeoutId;
+      }, delay);
     },
     
     updateActiveLeaf: function () {
@@ -123,6 +147,7 @@
 
     markStylesAsDirty: function () {
       this.areStylesDirty = true;
+      this.queueActiveLeafUpdate();
     },
 
     discardActiveLeafChanges: function () {
@@ -136,6 +161,7 @@
       if (!origLevel || !origLeaf) return;
       leaf.content = origLeaf.content;
       this.setChanged('leaf-content',false);
+      this.setChanged('thumb',false);
       this.refreshViews({ forceEditAreaRefresh:true });
     }
     

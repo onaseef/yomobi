@@ -1,3 +1,4 @@
+
 / data taken from mobile/base.js : getIconData()
 script.sidebar-widget(type="text/template")
   .sidebar.home-icon class="{{ singletonClass }}" data-wtype="{{ wtype }}" data-wsubtype="{{ wsubtype }}"
@@ -23,6 +24,7 @@ script.add-subcat-dialog(type="text/template")
       br
       input type="text" value="{{ _maybe.name }}" name="cat"
 
+      | <% if (!hideUploader) { %>
       table.wphoto-wrap
         tbody
           tr
@@ -44,6 +46,7 @@ script.add-subcat-dialog(type="text/template")
           | <% } %>
         .error
       input type="hidden" value="" name="wphotoUrl"
+      | <% } %>
 
       input name="add" type="button" value="Add"
 
@@ -155,10 +158,10 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
       | <% } %>
     br
     
-    | <%  if (stuff.length >= 2) { %>
+    | <%       if (stuff.length >= 2) { %>
     input.rfloat.down-arrow type="button" name="move_down" data-mod="1" value="&#9660;"
     input.rfloat.up-arrow type="button" name="move_up" data-mod="-1" value="&#9650;"
-    | <%  } %>
+    | <%       } %>
 
     | <%       if (isThereStuff == true) { %>
     input type="button" name="rename" value="Rename"
@@ -179,24 +182,6 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
     .crumb-wrap
       erb:
         <b>Editing: <span class="blue">{{ catCrumbs }}</span></b>
-
-    table.wphoto-wrap
-      tbody
-        tr
-          td
-            img src="{{ wphotoPreviewPath }}"
-          td
-            label Select a Picture...
-            br
-            .selected-file.lfloat &nbsp;
-            button name="pick_files" Browse...
-            .error
-        | <% if (wphotoPreviewPath !== '/images/no-wphoto.png') { %>
-        tr
-          td
-            a.remove-wphoto-link href="#" Remove Picture
-          td
-        | <% } %>
 
     #jeditor-wrapper
       textarea#jeditor {{ content }}
@@ -253,7 +238,8 @@ script.edit-settings(type="text/template")
       .divider
 
       label class="help" Desktop Redirect Code:
-      img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.settings.help.redirect')
+      a href="http://help.yomobi.com/Account/MobileRedirectScript" target="ymhelp"
+        img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.settings.help.redirect')
       textarea.read-only readonly="readonly" data-orig-val=desktop_redirect_code(@company) = desktop_redirect_code @company
     
     = form_tag '/builder/settings', :multipart => true, :class => 'box' do
@@ -290,7 +276,8 @@ script.edit-settings(type="text/template")
             td
               label
                 ' Select a new picture:
-                img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.settings.help.site_pic')
+                a href="http://help.yomobi.com/Mobile/ChangeSitePicture" target="ymhelp"
+                  img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.settings.help.site_pic')
             td
           tr
             td
@@ -329,9 +316,76 @@ script.edit-keywords(type="text/template")
       .checkmark
       .loader
 
+script.jeditor-image-dialog(type="text/template")
+  #dialog-confirm.jeditor-image title="Select an Image"
+    | <% if (!_maybe.src) { %>
+
+    table.wphoto-wrap
+      tbody
+        tr
+          td
+            img src="<% print(g.noPhotoPath); %>"
+          td
+            label Upload an Image...
+            br
+            .selected-file.lfloat &nbsp;
+            button name="pick_files" Browse...
+            .error
+      .error
+
+    | <% } else { %>
+
+    img.hide src="{{ _maybe.src }}"
+    table.wphoto-wrap.preview
+      tbody
+        tr
+          td
+            img src="{{ _maybe.src }}"
+          td
+            button name="delete" Delete
+
+    p
+      label Alignment:
+      select name="float"
+        option value="left" Left
+        option value="right" Right
+        option value="none" Inline with Text
+    p
+      label Image Size:
+      input type="text" name="size" size="3" value="{{ size }}"
+      span.percent-sign %
+    
+    p
+      label Clickable URL (optional):
+      a href="http://help.yomobi.com/Wysiwyg/Url" target="_blank"
+        img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.jeditor.help.url')
+      input type="text" name="href" value="{{ _maybe.href }}"
+
+    .default-enabled class="<% print(isThumbEnabled ? '' : 'hide'); %>"
+      input type="checkbox" name="is_default"
+      ' Set as Thumbnail Preview
+      a href="http://help.yomobi.com/Wysiwyg/Thumbnail" target="_blank"
+        img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.jeditor.help.thumb')
+
+    | <% } %>
+    input type="hidden" name="src" value="_maybe.src"
+
+script.jeditor-youtube-dialog(type="text/template")
+  #dialog-confirm.jeditor-image title="Add YouTube Video"
+    p
+      label YouTube Video Url:
+      a href="http://help.yomobi.com/Wysiwyg/YouTube" target="_blank"
+        img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.jeditor.help.youtube')
+      input type="text" name="url" value=""
+    p.error.hide
+      | Invalid youtube url.
+
 #dialog-invalid-drag title="Oops"
   p
     span.ui-icon.ui-icon-alert style="float:left"
     | &nbsp; New widgets can only be added from the mobile home screen.
   p <br>
   p Please click on Home in the Mobile Tab Bar to return to the mobile home screen and try adding again.
+
+script.youtube-embed-html(type="text/template")
+  iframe class="youtube-player" type="text/html" src="http://www.youtube.com/embed/{{ vid }}?wmode=transparent" frameborder="0"

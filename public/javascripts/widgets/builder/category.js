@@ -251,12 +251,15 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
         pageView: this.widget.pageView
       });
 
-      if (mapp.pageLevel > 0) {
+      if (mapp.pageLevel > 0 && this.widget.getCurrentNode()._data.type !== 'page') {
         util.initUploader( $(this.el).find('.wphoto-wrap'), {
           onDone: callback,
           emptyQueue: true,
           wid: this.widget.id
         });
+      }
+      else if (util._uploaders['default']) {
+        util._uploaders['default'].destroy();
       }
     },
     
@@ -608,7 +611,8 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
         error: error,
         name: name,
         typeName: this.getTypeName(),
-        addedCats: this.addedCats
+        addedCats: this.addedCats,
+        hideUploader: this.type === 'page'
       });
 
       var self = this;

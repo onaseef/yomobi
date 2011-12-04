@@ -10,3 +10,7 @@ p {
   -webkit-margin-before: 0em;
   -webkit-margin-after: 0em;
 }
+
+img.yo { cursor: pointer; }
+img.yo-left  { padding: 3px 10px 0px 0px; }
+img.yo-right { padding: 3px 0px 0px 10px; }

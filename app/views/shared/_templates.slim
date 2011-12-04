@@ -46,10 +46,6 @@
   / = Widget Show Pages =
   / =====================
   script.custom_page-page(type="text/template")
-    | <% if (_maybe.wphotoUrl) { %>
-    .wphoto-large
-      img src="{{ wphotoUrlLarge }}"
-    | <% } %>
     | {{ _maybe.content }}
     .clearfix
   
@@ -285,10 +281,6 @@
   
   script.page_tree-page(type="text/template")
     h3 {{ title }}
-    | <% if (_maybe.wphotoUrlLarge) { %>
-    .wphoto-large
-      img src="{{ wphotoUrlLarge }}"
-    | <% } %>
     .leaf-content {{ content }}
     .clearfix
 
@@ -315,24 +307,6 @@
     input(name="userId" type="text" value="{{ _maybe.userId }}")
   
   script.custom-page-edit-area.about-us-edit-area(type="text/template")
-    table.wphoto-wrap
-      tbody
-        tr
-          td
-            img src="{{ wphotoPreviewPath }}"
-          td
-            label Select a Picture...
-            br
-            .selected-file.lfloat &nbsp;
-            button name="pick_files" Browse...
-            .error
-        | <% if (wphotoPreviewPath !== '/images/no-wphoto.png') { %>
-        tr
-          td
-            a.remove-wphoto-link href="#" Remove Picture
-          td
-        | <% } %>
-    input type="hidden" value="{{ _maybe.wphotoUrl }}" name="wphotoUrl"
     #jeditor-wrapper
       textarea#jeditor rows=8 cols=8 {{ _maybe.content }}
 

@@ -1,3 +1,5 @@
+_.templateSettings.interpolate = /\{\{([^\{].*?)\}\}/g;
+
 var util = {
   
   debug: true,
@@ -651,6 +653,11 @@ var util = {
     return ($elem && $elem.hasClass(className)) ? $elem : null;
   },
 
+  thumbWphoto: function (wphotoUrl) {
+    if (!wphotoUrl) return null;
+    return wphotoUrl.replace('-original?', '-thumb?');
+  },
+
   largerWphoto: function (wphotoUrl) {
     if (!wphotoUrl) return null;
     return wphotoUrl.replace('-thumb?', '-original?');
@@ -658,8 +665,12 @@ var util = {
 
   now: function () { return (new Date()).getTime(); },
 
+  bound: function (x,lower,upper) {
+    return (x < lower) ? lower : (x > upper) ? upper : x;
+  },
+
   ensureUrl: function (url) {
-    url = url.trim();
+    url = $.trim(url);
     var prefix = url.match(/^(https?:\/\/)|(ftps?\/\/)/) ? '' : 'http://';
     return prefix + url;
   }

@@ -30,7 +30,7 @@ var hoverInHandler = function (e) {
 	var tipX = e.pageX + 12;
 	var tipY = e.pageY + 12;
 	$("body").append("<div id='simpleTooltip' class='" + e.data.className + 
-									 "' style='position: absolute; z-index: 100; display: none;'>" + e.data.text + "</div>");
+									 "' style='position: absolute; z-index: 9999; display: none;'>" + e.data.text + "</div>");
 	if ($.browser.msie) var tipWidth = $("#simpleTooltip").outerWidth(true);
 	else var tipWidth = $("#simpleTooltip").width();
 	$("#simpleTooltip").width(tipWidth);
