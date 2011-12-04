@@ -137,6 +137,17 @@ var builderUtil = {
               display: 'block', visibility: 'hidden'
             });
           }
+
+          if (origImg.width === 0) {
+            // image not loaded yet. Wait until it does
+            var retry = arguments.callee;
+            $(origImg).load(function () {
+              util.releaseUI();
+              retry();
+            });
+            return;
+          }
+
           var newSize = parseInt(imgAttrs.size)
                          || ( Math.round($img[0].width / origImg.width * 100) );
           newSize = util.bound(newSize, 1, 100);
