@@ -188,6 +188,7 @@
         if (mapp.widgets.lastMod == 1) {
           var height = mapp.homeView.el.height();
           $('#mobile-scroller').animate({ scrollTop:height },3000);
+          mapp.widgets.lastMod = 0;
         }
       });
       
