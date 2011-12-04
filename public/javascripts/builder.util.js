@@ -131,6 +131,12 @@ var builderUtil = {
         }
         else {
           var origImg = dialog.find('img.hide')[0];
+          if ($.browser.msie) {
+            $(origImg).css({
+              position: 'absolute', top: -1000, left: -1000,
+              display: 'block', visibility: 'hidden'
+            });
+          }
           var newSize = parseInt(imgAttrs.size)
                          || ( Math.round($img[0].width / origImg.width * 100) );
           newSize = util.bound(newSize, 1, 100);

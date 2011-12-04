@@ -670,7 +670,7 @@ var util = {
   },
 
   ensureUrl: function (url) {
-    url = url.trim();
+    url = $.trim(url);
     var prefix = url.match(/^(https?:\/\/)|(ftps?\/\/)/) ? '' : 'http://';
     return prefix + url;
   }
