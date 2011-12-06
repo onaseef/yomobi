@@ -326,7 +326,7 @@ var builderUtil = {
     var elemIdxsToStrip = [];
 
     $group.each(function (idx,elem) {
-      if (elem.className === 'yo') return;
+      if ( $(elem).hasClass('yo') ) return;
 
       if ( elem.tagName && _.include(util.tagsToStrip,elem.tagName.toLowerCase()) ) {
         elemIdxsToStrip.push(idx);
