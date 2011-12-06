@@ -154,8 +154,16 @@ var builderUtil = {
           }
 
           var newSize = parseInt(imgAttrs.size)
-                         || ( Math.round($img[0].width / origImg.width * 100) );
-          newSize = util.bound(newSize, 1, 100);
+                         || ( Math.round($img[0].width / origImg.width * 100) )
+            , newSize = util.bound(newSize, 1, 100)
+            , width = Math.round(newSize * origImg.width / 100)
+            , height = Math.round(newSize * origImg.height / 100)
+          ;
+          if (width < 16 || height < 16) {
+            newSize = Math.round(100 * 16 / Math.min(origImg.width, origImg.height));
+            width = Math.round(newSize * origImg.width / 100);
+            height = Math.round(newSize * origImg.height / 100);
+          }
 
           $img.addClass('yo')
               .removeClass( 'yo-' + $img.css('float') )
@@ -165,8 +173,8 @@ var builderUtil = {
               .css({
                 float: imgAttrs.float,
                 maxWidth:'100%',
-                width: Math.round(newSize * origImg.width / 100) + 'px',
-                height: Math.round(newSize * origImg.height / 100) + 'px'
+                width: width + 'px',
+                height: height + 'px'
               })
           ;
 
