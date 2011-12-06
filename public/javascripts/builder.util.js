@@ -87,7 +87,7 @@ var builderUtil = {
   },
 
   jeditorImageDialog: function (img, options) {
-    var $img, currentThumb
+    var $img, currentThumb, uploader
       , widget = bapp.currentEditor.widget
       , isNew = !img
       , $parent = $(img).parent()
@@ -128,6 +128,11 @@ var builderUtil = {
             style:'float:left'
           });
           util.jeditorImageDialog( $('#jeditor').data('wysiwyg').lastInsertedImage );
+
+          if (uploader && uploader.instanceId !== 'dialog') {
+            // temp uploader to workaround cancelling; destroy
+            uploader.destroy();
+          }
         }
         else {
           var origImg = dialog.find('img.hide')[0];
@@ -189,7 +194,18 @@ var builderUtil = {
         }
         $(this).dialog('close');
       },
-      'Cancel': dialogCloseFunc
+      'Cancel': function (e) {
+        if (uploader && uploader.state === plupload.STARTED) {
+          uploader.stop();
+          uploader.yoIsCancelled = true;
+          util.releaseUI();
+        }
+        else if (uploader && uploader.instanceId !== 'dialog') {
+          // temp uploader to workaround cancelling; destroy
+          uploader.destroy();
+        }
+        dialogCloseFunc.call(this, e);
+      }
     }, isNew ? 'Upload Image' : 'Edit Image');
 
     dialog.find('[name=size]').change(function () {
@@ -222,8 +238,15 @@ var builderUtil = {
     }
 
     if (isNew) {
-      util.initUploader( dialog.find('.wphoto-wrap'), {
-        instanceId: 'dialog',
+      var currentUploader = util._uploaders['dialog']
+        , uploader_id = 'dialog'
+      ;
+      if (currentUploader && currentUploader.yoIsCancelled === true) {
+        uploader_id = util.generateId();
+      }
+
+      uploader = util.initUploader( dialog.find('.wphoto-wrap'), {
+        instanceId: uploader_id,
         alwaysOnTop: true,
         onDone: util.createUploaderCallback(function (data) {
           dialog.find('input[name=src]').val( util.largerWphoto(data.wphotoUrl) );
@@ -488,12 +511,16 @@ var builderUtil = {
     });
 
     uploader.bind('BeforeUpload', function () {
+      if (uploader.yoIsCancelled === true) return;
+
       context.find('.selected-file').text('Uploading...');
       uploader.disableBrowseButton();
       uploader.startTimestamp = util.now();
     });
 
     uploader.bind('UploadProgress', function (up, file) {
+      if (uploader.yoIsCancelled === true) return;
+
       var width = context.find('.selected-file').outerWidth();
       var offset = parseInt(-500 + file.percent * width / 100) + 'px 0';
       context.find('.selected-file').css('background-position', offset);
@@ -507,6 +534,8 @@ var builderUtil = {
     });
 
     uploader.bind('Error', function (up, err) {
+      if (uploader.yoIsCancelled === true) return;
+
       context.find('.error').append("<div>Error: " + err.code +
         ", Message: " + err.message +
         (err.file ? ", File: " + err.file.name : "") +
@@ -517,6 +546,11 @@ var builderUtil = {
     });
 
     uploader.bind('FileUploaded', function (up, file, response) {
+      if (uploader.yoIsCancelled === true) {
+        delete uploader.yoIsCancelled;
+        return;
+      }
+
       context.find('.selected-file').text('Saving widget...');
       uploader.layover.find('input').show();
 
@@ -527,6 +561,8 @@ var builderUtil = {
       callback = uploader.yomobiOptions.onDone;
       callback(resData);
     });
+
+    return uploader;
   },
 
   createUploaderCallback: function (onSuccess) {
