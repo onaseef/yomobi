@@ -536,11 +536,21 @@ var builderUtil = {
     uploader.bind('Error', function (up, err) {
       if (uploader.yoIsCancelled === true) return;
 
-      context.find('.error').append("<div>Error: " + err.code +
-        ", Message: " + err.message +
-        (err.file ? ", File: " + err.file.name : "") +
-        "</div>"
-      );
+      if (err.code === -601 && err.file.name.indexOf('.bmp') >= 0) {
+        alert('You cannot upload a Bitmap file. Please select ' +
+          'files with the following extension: png, jpg, jpeg, gif');
+      }
+      else if (err.code === -601) {
+        alert('Invalid file type. Please select ' +
+          'files with the following extension: png, jpg, jpeg, gif');
+      }
+      else {
+        context.find('.error').append("<div>Error: " + err.code +
+          ", Message: " + err.message +
+          (err.file ? ", File: " + err.file.name : "") +
+          "</div>"
+        );
+      }
 
       up.refresh(); // Reposition Flash/Silverlight
     });
