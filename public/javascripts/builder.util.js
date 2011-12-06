@@ -323,13 +323,13 @@ var builderUtil = {
 
   // expects a jquery object
   _stripAllStyles: function ($group) {
-    var elemIdxsToStrip = [];
 
     $group.each(function (idx,elem) {
       if ( $(elem).hasClass('yo') ) return;
 
       if ( elem.tagName && _.include(util.tagsToStrip,elem.tagName.toLowerCase()) ) {
-        elemIdxsToStrip.push(idx);
+        var plainText = $('<p>' + $(elem).text() + '</p>');
+        $(elem).replaceWith(plainText);
         return;
       }
 
@@ -343,10 +343,6 @@ var builderUtil = {
       // quick and easy non-perfect way of checking for children
       if (elem.innerHTML)
         util._stripAllStyles( $(elem).children() );
-    });
-
-    _.each(elemIdxsToStrip, function (idx) {
-      $group[idx] = $('<p>' + $( $group[idx] ).text() + '</p>')[0];
     });
   },
 
