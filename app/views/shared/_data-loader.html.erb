@@ -23,7 +23,7 @@ window.g = {
 
   wphotoUploadPath: "<%= wphoto_upload_path %>",
 
-<%- if @is_bulder %>
+<%- if @is_builder %>
   <% arr = [] %>
   <% form_authenticity_token.each_char{|c| arr.push(c[0].to_s)} %>
   <% authenticity_token = arr.join("x") %>
