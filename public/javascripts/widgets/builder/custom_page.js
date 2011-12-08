@@ -58,8 +58,7 @@
     },
 
     stripStyles: function () {
-      var strippedContent = util.stripAllStyles( $('#jeditor').wysiwyg('getContent') );
-      $('#jeditor').wysiwyg('setContent', strippedContent);
+      util.stripAllStyles( $('#jeditor').data('wysiwyg').editorDoc.body );
     }
 
   });

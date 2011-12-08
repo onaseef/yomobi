@@ -302,12 +302,6 @@ var builderUtil = {
     return $('<div>').html( jqueryObject ).html();
   },
 
-  stripAllStyles: function (html) {
-    var $html = $(html);
-    util._stripAllStyles( $html );
-    return util.toHtml( $html );
-  },
-
   attributesToStrip: [
     'style', 'width', 'height',
     'border', 'cellpadding', 'frame', 'bgcolor',
@@ -322,7 +316,8 @@ var builderUtil = {
   ],
 
   // expects a jquery object
-  _stripAllStyles: function ($group) {
+  stripAllStyles: function ($group) {
+    $group.jquery || ($group = $($group));
 
     $group.each(function (idx,elem) {
       if ( $(elem).hasClass('yo') ) return;
@@ -342,7 +337,7 @@ var builderUtil = {
       }
       // quick and easy non-perfect way of checking for children
       if (elem.innerHTML)
-        util._stripAllStyles( $(elem).children() );
+        util.stripAllStyles( $(elem).children() );
     });
   },
 

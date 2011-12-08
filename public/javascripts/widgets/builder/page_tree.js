@@ -129,14 +129,13 @@
         , leaf = level._data
         , oldContent = leaf.content
       ;
-      leaf.content = $('#jeditor').wysiwyg('getContent');
-      if (this.areStylesDirty) {
-        leaf.content = util.stripAllStyles(leaf.content);
 
-        $('#jeditor').wysiwyg('setContent', leaf.content);
-        
+      if (this.areStylesDirty) {
+        util.stripAllStyles( $('#jeditor').data('wysiwyg').editorDoc.body );
         this.areStylesDirty = false;
       }
+
+      leaf.content = $('#jeditor').wysiwyg('getContent');
       this.widget.pageView.refresh();
       mapp.resize();
 
