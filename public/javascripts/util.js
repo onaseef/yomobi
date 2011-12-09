@@ -5,6 +5,20 @@ var util = {
   debug: true,
   cycleIdx: 0,
 
+  //
+  // Constants 
+  //
+  linkTypeURL:     "url",
+  linkTypePhone:   "phone",
+  linkTypeAddress: "address",
+  linkTypeEmail:   "email", 
+  linkTypeUnknown: "unknown",
+
+  linkURLProtocol:     "http://",
+  linkPhoneProtocol:   "tel:",
+  linkAddressProtocol: "http://maps.google.com/?q=",
+  linkEmailProtocol:   "mailto:",
+
   // namespace for shared widget functions
   widget: {},
   
@@ -670,10 +684,65 @@ var util = {
   },
 
   ensureUrl: function (url) {
+    return ensureUrl(url, util.linkTypeURL);
+  },
+
+  ensureUrl: function (url, type) {
+
+    if (url==null) url="";
+    if (type==null) type = util.linkTypeURL;
+
     url = $.trim(url);
-    var prefix = url.match(/^(https?:\/\/)|(ftps?\/\/)/) ? '' : 'http://';
+
+    if (url.length == 0) return;
+
+    var prefix = "";
+
+    if (type == util.linkTypePhone)
+      prefix = url.match(/^tel:/) ? '' : util.linkPhoneProtocol;
+    else if (type == util.linkTypeAddress)
+      prefix = url.match(/^http:\/\/maps.google.com\/?\?q=/) ? '' : util.linkAddressProtocol;
+    else if (type == util.linkTypeEmail)
+      prefix = url.match(/^mailto:/) ? '' : util.linkEmailProtocol;
+    else
+      prefix = url.match(/^(https?:\/\/)|(ftps?\/\/)/) ? '' : util.linkURLProtocol;
+
     return prefix + url;
-  }
+  },
+
+  urlType: function (url) {
+
+    if (url==null) return;
+
+    var type = util.linkTypeUnknown;
+
+    url = $.trim(url);
+    if (url.match(/^tel:/))
+      type = util.linkTypePhone;
+    else if (url.match(/^http:\/\/maps.google.com\/?\?q=/))
+      type = util.linkTypeAddress;
+    else if (url.match(/^(https?:\/\/)|(ftps?\/\/)/))
+      type = util.linkTypeURL;
+    else if (url.match(/^mailto:/))
+      type = util.linkTypeEmail;
+
+    return type;
+  },
+
+  urlValue: function(url) {
+    if (url==null) return;
+
+    var type = util.urlType(url);
+    if (type == util.linkTypePhone) 
+      url = url.replace(util.linkPhoneProtocol, "");
+    else if (type==util.linkTypeAddress)
+      url = url.replace(util.linkAddressProtocol, "");
+   else if (type==util.linkTypeEmail)
+      url = url.replace(util.linkEmailProtocol, "");
+
+    return unescape(url);
+  },
+
 }
 
 // useful extensions

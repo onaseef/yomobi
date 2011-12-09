@@ -83,8 +83,25 @@ background-color:white; padding:3px; margin:0;
 
 .wysiwyg label {
   float: left;
-  width: 75px;
+  padding-right: 6px;
   padding-top: 4px;
   clear: left;
 }
+
 .wysiwyg input[type=text] { float: left; }
+.wysiwyg .help-bubble { margin-left: 10px; }
+
+.wysiwyg table { width:100%; }
+.wysiwyg td.label { 
+  vertical-align: top;
+  width:1%;
+}
+
+
+
+
+
+
+
+
+

@@ -27,18 +27,35 @@
 
 			dialogReplacements = {
 				legend: "Insert Link",
-				url   : "Link URL",
+				type  : "Type",
+				url   : "Value",
 				title : "Link Title",
 				target: "Link Target",
 				submit: "Insert Link",
-				reset: "Cancel"
+				reset : "Cancel"
 			};
 
-			formLinkHtml = '<form class="wysiwyg" title="{legend}" style="padding-top:30px">' +
-				'<label>{url}: </label><input type="text" name="linkhref" value=""/>' +
+			formLinkHtml = 
+				'<form class="wysiwyg addlink" title="{legend}" style="padding-top:30px">' +
+				'<table>' + 
+				'<tr>' + 
+				'<td class="label"><label>{type}: </label></td>' +
+				'<td><select name="linktype">' +
+				  '<option value="url">URL</option>' +
+				  '<option value="email">Email</option>' +
+				  '<option value="phone">Phone</option>' +
+				  '<option value="address">Address</option>' +
+				'</select>' + 
+				'<a href="http://help.yomobi.com/Wysiwyg/InsertLink" target="ymhelp"><img class="help-bubble" src="/images/ui/help-bubble.png" title=""></a>' +
+				'</td></tr>' +
+				'<tr>' + 
+				'<td class="label"><label>{url}: </label></td>' +
+				'<td><input type="text" name="linkhref" value=""/></td>' + 
+				'</tr></table>' +
 				'<input type="text" name="linktitle" value="" style="display:none"/>' +
 				'<input type="text" name="linktarget" value="" style="display:none" />' +
 				'</form>';
+
 
 			for (key in dialogReplacements) {
 				if ($.wysiwyg.i18n) {
@@ -57,7 +74,7 @@
 
 			a = {
 				self: Wysiwyg.dom.getElement("a"), // link to element node
-				href: "http://",
+				href: "",
 				title: "",
 				target: ""
 			};
@@ -70,9 +87,14 @@
 
 			if ($.fn.dialog) {
 				elements = $(formLinkHtml);
-				elements.find("input[name=linkhref]").val(a.href);
+				elements.find("input[name=linkhref]").val(util.urlValue(a.href));
 				elements.find("input[name=linktitle]").val(a.title);
 				elements.find("input[name=linktarget]").val(a.target);
+
+				var type = util.urlType(a.href);
+				if (type != null)
+					elements.find("select[name=linktype]").val(type);
+
 
 				if ($.browser.msie) {
 					try {
@@ -90,8 +112,9 @@
 						"Submit": function (e,ui) {
 							e.preventDefault();
 
-							var url = $('input[name="linkhref"]', dialog).val(),
-								title = $('input[name="linktitle"]', dialog).val(),
+							var type   = $('select[name="linktype"]', dialog).val(),
+								url    = $('input[name="linkhref"]', dialog).val(),
+								title  = $('input[name="linktitle"]', dialog).val(),
 								target = $('input[name="linktarget"]', dialog).val(),
 								baseUrl,
 								img;
@@ -102,6 +125,8 @@
 									url = url.substr(baseUrl.length);
 								}
 							}
+
+							url = util.ensureUrl(url, type);
 
 							if (a.self) {
 								if ("string" === typeof (url)) {
