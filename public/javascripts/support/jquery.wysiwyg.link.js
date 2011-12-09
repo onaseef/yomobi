@@ -46,7 +46,7 @@
 				  '<option value="phone">Phone</option>' +
 				  '<option value="address">Address</option>' +
 				'</select>' + 
-				'<a href="http://help.yomobi.com/Wysiwyg/InsertLink" target="ymhelp"><img class="help-bubble" src="/images/ui/help-bubble.png" title=""></a>' +
+				'<a href="http://help.yomobi.com/Wysiwyg/LinkTypes" target="ymhelp"><img class="help-bubble" src="/images/ui/help-bubble.png" title=""></a>' +
 				'</td></tr>' +
 				'<tr>' + 
 				'<td class="label"><label>{url}: </label></td>' +
