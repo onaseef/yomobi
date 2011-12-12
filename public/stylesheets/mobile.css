@@ -37,7 +37,8 @@ p {
 #canvas .page > .content {
   min-height: 120px;
   padding: 20px 10px;
-  font-size: 16px; }
+  font-size: 16px;
+  word-break: break-word; }
   #canvas .page > .content label {
     margin-bottom: 2px; }
   #canvas .page > .content input[type=text] {
@@ -63,6 +64,18 @@ p {
   padding: 0;
   margin: 12px 0 12px 0;
   background: url(/images/ui/bg-back-bar.png) repeat-x;
+  /* IE10 */
+  background-image: -ms-linear-gradient(top, white 0%, #b8b8b8 50%);
+  /* Mozilla Firefox */
+  background-image: -moz-linear-gradient(top, white 0%, #b8b8b8 50%);
+  /* Opera */
+  background-image: -o-linear-gradient(top, white 0%, #b8b8b8 50%);
+  /* Webkit (Safari/Chrome 10) */
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, white), color-stop(0.5, #b8b8b8));
+  /* Webkit (Chrome 11+) */
+  background-image: -webkit-linear-gradient(top, white 0%, #b8b8b8 50%);
+  /* Proposed W3C Markup */
+  background-image: linear-gradient(top, white 0%, #b8b8b8 50%);
   color: #333333; }
   .back-bar .title {
     float: left;
@@ -131,14 +144,16 @@ p {
     height: 48px; }
 
 .back-btn {
+  cursor: pointer;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
   float: left;
   width: 48px;
   height: 38px;
   border-right: 1px solid gray;
-  margin: 0 12px 0 1px;
-  padding: 0;
-  background: url(/images/ui/back-btn.png) no-repeat;
-  background-position: center; }
+  margin: -1px 12px 0 1px;
+  padding: 0; }
 
 .title h2, .title h3 {
   margin: 9px 0 0 15px;
@@ -288,8 +303,16 @@ p {
     .page > .content.category .item td .content, .page > .content.page_tree .item td .content {
       width: 97%;
       float: none; }
+  .page > .content.category .item td.nav-col, .page > .content.page_tree .item td.nav-col {
+    font-size: 30px;
+    font-weight: bold;
+    color: #333333;
+    margin: 0px;
+    padding: 0px;
+    width: 1px;
+    text-alight: right;
+    vertical-align: middle; }
   .page > .content.category .item td, .page > .content.page_tree .item td {
-    background: url(/images/ui/subcat-arrow.png) 100% 50% no-repeat;
     cursor: pointer; }
   .page > .content.category .item.category, .page > .content.category .item.leaf-name, .page > .content.page_tree .item.category, .page > .content.page_tree .item.leaf-name {
     padding: 8px 20px 8px 0px; }
@@ -361,12 +384,27 @@ pre {
 .wphoto-large.centered {
   text-align: center;
   float: none;
-  width: 100%;
-  border-bottom: 1px solid #1D4088;
-  margin-bottom: 12px; }
+  width: 100%; }
 
 .wphoto-large.centered img {
   margin: 0 0 6px 0; }
+
+.wphoto-large-separator {
+  height: 4px;
+  width: 100%;
+  margin-bottom: 4px;
+  /* IE10 */
+  background-image: -ms-linear-gradient(top, #d5e3f0 0%, #b3b3b3 50%, #d5e3f0 100%);
+  /* Mozilla Firefox */
+  background-image: -moz-linear-gradient(top, #d5e3f0 0%, #b3b3b3 50%, #d5e3f0 100%);
+  /* Opera */
+  background-image: -o-linear-gradient(top, #d5e3f0 0%, #b3b3b3 50%, #d5e3f0 100%);
+  /* Webkit (Safari/Chrome 10) */
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #d5e3f0), color-stop(0.5, #b3b3b3), color-stop(1, #d5e3f0));
+  /* Webkit (Chrome 11+) */
+  background-image: -webkit-linear-gradient(top, #d5e3f0 0%, #b3b3b3 50%, #d5e3f0 100%);
+  /* Proposed W3C Markup */
+  background-image: linear-gradient(top, #d5e3f0 0%, #b3b3b3 50%, #d5e3f0 100%); }
 
 .node-list .wphoto img {
   margin: 0px;

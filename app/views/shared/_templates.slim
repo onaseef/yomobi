@@ -31,7 +31,7 @@
   script.widget-page(type="text/template")
     .page
       .back-bar
-        .back-btn
+        .back-btn &#0139;
         .title
         .clearfix
       .content
@@ -237,6 +237,7 @@
       td colspan="2"
         | {{ cat.name }}
       | <% } %>
+      td.nav-col &#0155;
 
   script.category-page(type="text/template")
     | <% if (nodeType === 'item') { %>
@@ -254,6 +255,7 @@
     | <% if (_maybe.wphotoUrlLarge) { %>
     .wphoto-large.centered
       img src="{{ wphotoUrlLarge }}"
+    .wphoto-large-separator
     | <% } %>
 
     | <% if (nodeType === 'item') {
@@ -274,7 +276,7 @@
               }
           if (i !== stuff.length-1) {
           %>
-        td colspan="2"
+        td colspan="3"
           .separator
         | <% } } %>
     | <% } %>
