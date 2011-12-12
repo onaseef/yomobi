@@ -741,7 +741,7 @@ var util = {
       url = url.replace(util.linkEmailProtocol, "");
 
     return unescape(url);
-  },
+  }
 
 }
 
