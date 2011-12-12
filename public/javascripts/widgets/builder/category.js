@@ -430,7 +430,8 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
 
       this.itemDialog = this.itemDialog || new this.AddItemDialog({ model:this.widget });
       this.itemDialog.options = {
-        onClose: this.refreshViews
+        onClose: this.refreshViews,
+        hideUploader: this.itemDialog.type === 'page'
       };
 
       this.itemDialog.enterMode('add').prompt();
@@ -655,8 +656,12 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
         .find('[name=add]').click(this.addAnotherSaveFunc).end()
       ;
 
-      if (!this.options.hideUploader)
+      if (this.options.hideUploader) {
+        util._uploaders['dialog'] && util._uploaders['dialog'].destroy();
+      }
+      else {
         initDialogUploader(this, dialog, shouldEmptyUploadQueue);
+      }
     },
     
     isCategoryValid: function (addAnother) {
