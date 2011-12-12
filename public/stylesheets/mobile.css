@@ -309,7 +309,7 @@ p {
     color: #333333;
     margin: 0px;
     padding: 0px;
-    width: 1px;
+    width: 10px;
     text-alight: right;
     vertical-align: middle; }
   .page > .content.category .item td, .page > .content.page_tree .item td {
