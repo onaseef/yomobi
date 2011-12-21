@@ -315,7 +315,8 @@ var util = {
   },
   
   getTemplate: function (name) {
-    return _.template($('#templates .'+name).html());
+    var source = $('#templates .'+name).html();
+    return source ? _.template(source) : null;
   },
   
   getWidgetBData: function (widget) {
