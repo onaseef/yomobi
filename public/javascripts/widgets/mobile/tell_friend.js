@@ -18,7 +18,7 @@
     },
 
     prettyErrorMsg: prettyErrorMsg,
-    submit: util.widgetPageViewSubmit
+    submit: util.widget.widgetPageViewSubmit
 
   });
 

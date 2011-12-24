@@ -8,7 +8,8 @@
       return this.get('email') && (this.get('optForEmails') || this.get('optForTexts'));
     }
   });
-  
+
+
   window.widgetPages.informed = WidgetPageView.extend({
 
     events: {
@@ -20,11 +21,12 @@
       _.bindAll(this,'submit');
     },
     
-    spawnCaptcha: util.spawnCaptcha,
+    spawnCaptcha: util.widget.spawnCaptcha,
 
     prettyErrorMsg: prettyErrorMsg,
-    submit: util.widgetPageViewSubmit
+    submit: util.widget.widgetPageViewSubmit
   });
+
 
   function prettyErrorMsg (serverResponse) {
     var msg = '<ul>';

@@ -6,7 +6,8 @@
   window.widgetClasses.leave_msg = Widget.extend({
     requiredAttrs: ['email']
   });
-  
+
+
   window.widgetPages.leave_msg = WidgetPageView.extend({
 
     events: {
@@ -18,11 +19,12 @@
       _.bindAll(this,'submit');
     },
     
-    spawnCaptcha: util.spawnCaptcha,
+    spawnCaptcha: util.widget.spawnCaptcha,
 
     prettyErrorMsg: prettyErrorMsg,
-    submit: util.widgetPageViewSubmit
+    submit: util.widget.widgetPageViewSubmit
   });
+
 
   function prettyErrorMsg (serverResponse) {
     var msg = '<ul>';

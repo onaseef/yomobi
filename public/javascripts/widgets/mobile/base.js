@@ -128,15 +128,53 @@
     beforePageRender: function ($pageContent) {}
   });
 
-  //
-  // functionality shared between some widgets
-  //
+  // // // // // // // // // // // // // // // //
+  // Functionality shared between some widgets //
+  // // // // // // // // // // // // // // // //
+
   var imgLoadTimer;
   util.widget.resizeOnImgLoad = function ($pageContent) {
     $pageContent.find('img').unbind('load.yo').bind('load.yo', function () {
       clearTimeout(imgLoadTimer);
       imgLoadTimer = setTimeout(function () { mapp.resize(); }, 50);
     });
+  };
+
+  // Used in mobile captcha pages. `this` is assumed to be the widget page view.
+  //
+  util.widget.spawnCaptcha = function () {
+    var myWidget = this.widget;
+    setTimeout(function () {
+      if (mapp.currentWidget === myWidget) util.spawnAritcaptcha();
+    },1000);
+  };
+
+  // Used in mobile page forms. `this` is assumed to be the widget page view.
+  //
+  util.widget.widgetPageViewSubmit = function () {
+    var self = this
+      , form = this.el.find('form')
+      , url  = form.attr('action')
+      , params = form.serialize()
+      , method = form.attr('method')
+    ;
+    this.el.find('input[type=submit]').prop('disabled',true);
+    $.post(url,params,function (data) {
+      util.log('data',data);
+      self.el
+        .find('.input-wrap').hide().end()
+        .find('.thanks-wrap').show().end()
+      ;
+      $(window).scrollTop(0);
+    })
+    .error(function (e,textStatus,errorThrown) {
+      var msg = self.prettyErrorMsg($.parseJSON(e.responseText))
+      self.el.find('.response').html('ERROR: '+msg).show('pulsate',{ times:3 });
+      self.el.find('input[type=submit]').prop('disabled',false);
+      mapp.resize();
+    });
+
+    return false;
   };
 
 })(jQuery);

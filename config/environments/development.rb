@@ -3,11 +3,11 @@ Yomobi::Application.configure do
 
   config.opt_out_url_host = 'http://local.host:3000'
 
-  config.couch_host = 'yomobi.couchone.com'
-  config.couch_cred = ['yadmin', 'C0uch!tUp']
+  config.couch_host = ENV['COUCH_HOST']
+  config.couch_cred = [ENV['COUCH_ADMIN_USER'], ENV['COUCH_ADMIN_PASS']]
 
-  config.aritcaptcha_s3_bucket = 'yomobi'
-  config.logo_s3_bucket = 'yomobi'
+  config.aritcaptcha_s3_bucket = ENV['ARITCAPTCHA_S3_BUCKET']
+  config.logo_s3_bucket = ENV['LOGO_S3_BUCKET']
 
   # In the development environment your application's code is reloaded on
   # every request.  This slows down response time but is perfect for development

@@ -13,7 +13,8 @@
       return _.extend(this.toJSON(),extraData);
     }
   });
-  
+
+
   window.widgetPages.booking = WidgetPageView.extend({
 
     events: {
@@ -25,10 +26,10 @@
       _.bindAll(this,'submit');
     },
     
-    spawnCaptcha: util.spawnCaptcha,
+    spawnCaptcha: util.widget.spawnCaptcha,
 
     prettyErrorMsg: prettyErrorMsg,
-    submit: util.widgetPageViewSubmit,
+    submit: util.widget.widgetPageViewSubmit,
 
     validateParams: function (params) {
       params.phone = params.phone.replace(/[^0-9]+/g,'');
@@ -38,7 +39,8 @@
     }
 
   });
-  
+
+
   function prettyErrorMsg (serverResponse) {
     var msg = '<ul>';
     if (serverResponse === "bad message")
