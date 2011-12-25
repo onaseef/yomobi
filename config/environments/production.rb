@@ -3,9 +3,6 @@ Yomobi::Application.configure do
 
   config.opt_out_url_host = 'http://www.yomobi.com'
 
-  config.couch_host = 'yomobi.couchone.com'
-  config.couch_cred = ['yadmin', 'C0uch!tUp']
-
   # The production environment is meant for finished, "live" apps.
   # Code is not reloaded between requests
   config.cache_classes = true
@@ -39,12 +36,6 @@ Yomobi::Application.configure do
   # Enable serving of images, stylesheets, and javascripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
 
-  # use sendgrid for real emailing
-  ActionMailer::Base.add_delivery_method :ses, AWS::SES::Base,
-    :access_key_id => ENV['S3_KEY'],
-    :secret_access_key => ENV['S3_SECRET']
-
-  config.action_mailer.delivery_method = :ses
   # Disable delivery errors, bad email addresses will be ignored
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default_url_options = { :host => "yomobi.com" }

@@ -39,9 +39,19 @@ module Yomobi
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
 
+    # CouchDB authentication
+    config.couch_host = ENV['COUCH_HOST']
+    config.couch_cred = [ENV['COUCH_ADMIN_USER'], ENV['COUCH_ADMIN_PASS']]
+
     # Amazon S3
-    config.aritcaptcha_s3_bucket = 'yomobi-logos'
-    config.logo_s3_bucket = 'yomobi-logos'
+    config.aritcaptcha_s3_bucket = ENV['ARITCAPTCHA_S3_BUCKET']
+    config.logo_s3_bucket = ENV['LOGO_S3_BUCKET']
     config.s3_base_path = "http://s3.amazonaws.com"
+
+    # Amazon Simple Emailing
+    ActionMailer::Base.add_delivery_method :ses, AWS::SES::Base,
+      :access_key_id => ENV['S3_KEY'],
+      :secret_access_key => ENV['S3_SECRET']
+    config.action_mailer.delivery_method = :ses
   end
 end

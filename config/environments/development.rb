@@ -1,13 +1,7 @@
 Yomobi::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
-  config.opt_out_url_host = 'http://local.host:3000'
-
-  config.couch_host = ENV['COUCH_HOST']
-  config.couch_cred = [ENV['COUCH_ADMIN_USER'], ENV['COUCH_ADMIN_PASS']]
-
-  config.aritcaptcha_s3_bucket = ENV['ARITCAPTCHA_S3_BUCKET']
-  config.logo_s3_bucket = ENV['LOGO_S3_BUCKET']
+  config.opt_out_url_host = ENV['DEVISE_URL_HOST'] || 'http://local.host:3000'
 
   # In the development environment your application's code is reloaded on
   # every request.  This slows down response time but is perfect for development
@@ -49,14 +43,17 @@ Yomobi::Application.configure do
   #   :enable_starttls_auto => true
   # }
 
-  # use amazon for real emailing
-  ActionMailer::Base.add_delivery_method :ses, AWS::SES::Base,
-    :access_key_id => ENV['EMAIL_S3_KEY'],
-    :secret_access_key => ENV['EMAIL_S3_SECRET']
+  if ENV['SES_KEY'] && ENV['SES_SECRET']
+    puts "Using separate auth keys for Amazon SES"
+    ActionMailer::Base.add_delivery_method :ses, AWS::SES::Base,
+      :access_key_id => ENV['SES_KEY'],
+      :secret_access_key => ENV['SES_SECRET']
+  end
 
-  config.action_mailer.delivery_method = :ses
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { :host => "local.host:3000" }
+  config.action_mailer.default_url_options = {
+    :host => ENV['ACTION_MAILER_HOST'] || 'local.host:3000'
+  }
   
 
   Slim::Engine.set_default_options :pretty => true
