@@ -2,7 +2,7 @@
 
 [YoMobi](http://www.yomobi.com) is a mobile website builder that aims to be generic enough to fit many use cases.
 
-YoMobi is built using Ruby 1.9.2, Rails 3.0.8, generic ActiveRecord (i.e. no db-specific sql), and CouchDB 1.0.2.
+YoMobi is built using Ruby 1.9.2, Rails 3.0.8, generic ActiveRecord (i.e. no db-specific sql), and CouchDB 1.1.1.
 
 ## Overview
 
