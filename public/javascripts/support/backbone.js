@@ -720,6 +720,7 @@
         if (e instanceof URIError && hash == unescape(this.hash)) {
           return false
         }
+        else { throw e; }
       }
       if (this.iframe) this.saveLocation(hash);
       this.hash = hash;
