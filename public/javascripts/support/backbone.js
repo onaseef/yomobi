@@ -718,9 +718,9 @@
         if (hash == this.hash || hash == decodeURIComponent(this.hash)) return false;
       } catch (e) {
         if (e instanceof URIError && hash == unescape(this.hash)) {
-          return false
+          return false;
         }
-        else { throw e; }
+        else if (!(e instanceof URIError)) { throw e; }
       }
       if (this.iframe) this.saveLocation(hash);
       this.hash = hash;
