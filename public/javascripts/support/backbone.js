@@ -713,7 +713,14 @@
     checkUrl : function() {
       var hash = this.getHash();
       if (hash == this.hash && this.iframe) hash = this.getHash(this.iframe.location);
-      if (hash == this.hash || hash == decodeURIComponent(this.hash)) return false;
+
+      try {
+        if (hash == this.hash || hash == decodeURIComponent(this.hash)) return false;
+      } catch (e) {
+        if (e instanceof URIError && hash == unescape(this.hash)) {
+          return false
+        }
+      }
       if (this.iframe) this.saveLocation(hash);
       this.hash = hash;
       this.loadUrl();
