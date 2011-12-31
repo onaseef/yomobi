@@ -12,8 +12,10 @@ p {
   -webkit-margin-before: 0em;
   -webkit-margin-after: 0em; }
 
-.leaf-content h1, .leaf-content h2, .leaf-content h3, .leaf-content ul {
+.leaf-content h1, .leaf-content h2, .leaf-content h3, .leaf-content ul, .leaf-content ol {
   margin: 0px; }
+.leaf-content ul, .leaf-content ol {
+  margin-top: 6px; }
 .leaf-content h1.page_title {
   margin-bottom: 6px; }
 

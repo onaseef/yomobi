@@ -14,9 +14,11 @@ p {
 	-webkit-margin-after: 0em;
 }
 
-h1, h2, h3, ul {
+h1, h2, h3, ul, ol {
 	margin: 0px; 
 }
+
+ul, ol { margin-top: 6px; }
 
 img.yo { cursor: pointer; }
 img.yo-left  { padding: 3px 10px 0px 0px; }
