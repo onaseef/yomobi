@@ -301,14 +301,14 @@ script.jeditor-image-dialog(type="text/template")
     input type="hidden" name="src" value="_maybe.src"
 
 script.jeditor-youtube-dialog(type="text/template")
-  #dialog-confirm.jeditor-image title="Add YouTube Video"
+  #dialog-confirm.jeditor-image title="Add Video"
     p
-      label YouTube Video Url:
+      label Video URL:
       a href="http://help.yomobi.com/Wysiwyg/YouTube" target="_blank"
         img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.jeditor.help.youtube')
       input type="text" name="url" value=""
     p.error.hide
-      | Invalid youtube url.
+      | Invalid Video URL.
 
 #dialog-invalid-drag title="Oops"
   p
@@ -320,6 +320,8 @@ script.jeditor-youtube-dialog(type="text/template")
 script.youtube-embed-html(type="text/template")
   iframe class="youtube-player" type="text/html" src="http://www.youtube.com/embed/{{ vid }}?wmode=transparent" frameborder="0"
 
+script.vimeo-embed-html(type="text/template")
+  iframe class="youtube-player" type="text/html" src="http://player.vimeo.com/video/{{ vid }}" frameborder="0"
 
 / =====================
 / = Widget Edit Pages =
