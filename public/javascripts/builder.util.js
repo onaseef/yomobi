@@ -23,6 +23,19 @@ var getYoutubeVideoId = function (url) {
   }
 }
 
+var vimeoEmbedTemplate = util.getTemplate('vimeo-embed-html');
+
+var vmRegex = /^.*((vimeo.com\/)|(v\/)|(\/u\/\w\/)|(video\/))([^#\&\?]*).*/;
+var getVimeoVideoId = function (url) {
+  var match = url.match(vmRegex);
+  if (match && match[6].length > 0) {
+    return match[6];
+  } else {
+    return undefined;
+  }
+}
+
+
 var builderUtil = {
 
   dialog: function (html,buttons,title) {
@@ -71,7 +84,7 @@ var builderUtil = {
           groupIndex: 9,
           exec: util.jeditorYoutubeDialog,
           className: 'embedYoutube',
-          tooltip: 'Add a YouTube video'
+          tooltip: 'Add a Video'
         }
       }
     });
@@ -271,12 +284,25 @@ var builderUtil = {
   jeditorYoutubeDialog: function () {
     var dialog = util.dialog(youtubeDialogTemplate(), {
       'Save': function () {
+        
+        var vurl = dialog.find('[name=url]').val();
+        var html = null;
 
-        var vid = getYoutubeVideoId( dialog.find('[name=url]').val() )
-          , html = youtubeEmbedTemplate({
-              vid: vid || 'GGT8ZCTBoBA'
-            })
-        ;
+        // First check if the video URL is a YouTube video URL
+        var vid = getYoutubeVideoId( vurl );
+        
+        // If the vid is valid, it is a YouTube video. Handle it as such
+        if (vid) {
+          html = youtubeEmbedTemplate({ vid: vid || 'GGT8ZCTBoBA' });
+        }
+        else {
+          // Check if the video is a Vimeo URL
+          vid = getVimeoVideoId( vurl );
+          if (vid) {
+            html = vimeoEmbedTemplate( { vid: vid || '17853047' } );
+          }
+        }
+
         if (!vid) {
           dialog.find('.error').show('pulsate', { times:3 });
           return;
