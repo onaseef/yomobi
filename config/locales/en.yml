@@ -36,7 +36,7 @@ en:
       help:
         thumb: "Set this picture as the preview thumbnail for this page.<br><b>Click ? for more information.</b>"
         url: "Make this picture a clickable URL.<br><b>Click ? for more information</b>"
-        youtube: "Add a YouTube video to your page.<br><b>Click ? for more information.</b>"
+        youtube: "Add a video to your page.<br><b>Click ? for more information.</b>"
 
   widgets:
     helpText:
