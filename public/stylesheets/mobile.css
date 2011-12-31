@@ -12,6 +12,11 @@ p {
   -webkit-margin-before: 0em;
   -webkit-margin-after: 0em; }
 
+.leaf-content h1, .leaf-content h2, .leaf-content h3, .leaf-content ul {
+  margin: 0px; }
+.leaf-content h1.page_title {
+  margin-bottom: 6px; }
+
 .input-wrap p {
   margin-bottom: 1em; }
 

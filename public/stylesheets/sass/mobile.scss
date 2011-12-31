@@ -35,6 +35,16 @@ p {
   -webkit-margin-after: 0em;
 }
 
+.leaf-content {
+  h1, h2, h3, ul {
+    margin: 0px;
+  }
+
+  h1.page_title {
+    margin-bottom: 6px;
+  }
+}
+
 .input-wrap p {
     margin-bottom: 1em;
 }
