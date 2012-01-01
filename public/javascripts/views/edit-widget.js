@@ -293,7 +293,7 @@
         Cancel: closeFunc
       };
       util.dialog(dialogContent, buttons, dialogContent.title)
-        .dialog('option','width', 354)
+        .dialog('option','width', 500)
       ;
     },
 

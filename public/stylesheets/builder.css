@@ -517,7 +517,7 @@ div.wysiwyg ul.toolbar {
   font-size: 90%; }
 
 #dialog-confirm.edit-icon .icons {
-  max-height: 200px;
+  max-height: 235px;
   margin: 0 2px 8px -3px;
   padding: 10px 0 10px 0;
   border-bottom: 1px solid #ccc;
@@ -526,8 +526,8 @@ div.wysiwyg ul.toolbar {
     border: 2px solid #fff;
     padding: 1px;
     cursor: pointer;
-    width: 30px;
-    height: 30px; }
+    width: 40px;
+    height: 40px; }
   #dialog-confirm.edit-icon .icons img:hover {
     border: 2px solid #d8dfea; }
   #dialog-confirm.edit-icon .icons img.selected {
