@@ -285,6 +285,8 @@
     },
 
     prompt: function () {
+      delete this.selectedIcon;
+
       var dialogContent = this.render().el
         , self = this
       ;
@@ -298,6 +300,8 @@
     },
 
     saveIcon: function () {
+      if (!this.selectedIcon) return;
+
       util.log('saving icon', this.selectedIcon.data('name'));
       this.model.set({'iconName': this.selectedIcon.data('name')});
       bapp.currentEditor.setChanged('icon',true);
