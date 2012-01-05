@@ -20,7 +20,7 @@ class CouchDocs
   def self.security_doc(db_name)
     {
       "_id" => "_security",
-      "admins" => {"names" => ["yadmin"], "roles" => []},
+      "admins" => {"names" => [Rails.application.config.couch_cred[0]], "roles" => []},
       "readers" => {"names" => [], "roles" => []}
     }
   end
@@ -28,7 +28,7 @@ class CouchDocs
   def self.security_doc
     {
       "admins" => {
-        "names" => ["yadmin"],
+        "names" => [Rails.application.config.couch_cred[0]],
         "roles" => []
       },
       "readers" => {
