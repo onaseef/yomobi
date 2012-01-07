@@ -4,7 +4,6 @@
 (function ($) {
 
   var defaultPageContent = '';
-  var tempCatStack = [];
 
   var super_getEditAreaData = window.Widget.prototype.getEditAreaData
       // at this point, categoryBuilder is actually references builder/category.js

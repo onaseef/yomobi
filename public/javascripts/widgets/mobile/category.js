@@ -18,10 +18,10 @@
     
     init: function () {
       _.bindAll(this,'onHomeViewClick');
-      this.catStack = [ this.get('struct') ];
 
       this.paths = { struct:['struct'] };
-      this.setPaths( ['struct'], this.catStack[0] );
+      this.setPaths( ['struct'], this.get('struct') );
+      this.resetCatStack();
     },
     
     getShowData: function () {
@@ -135,9 +135,7 @@
         if (child_id === 'struct') return;
         newStack.push( _.last(newStack)[child_id] );
       });
-      // manually push for builder purposes
-      var stack = this.catStack; stack.length = 0;
-      _.each(newStack, function (x) { stack.push(x); })
+
       this.catStack = newStack;
       return this;
     },

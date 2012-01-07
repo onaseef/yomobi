@@ -3,8 +3,7 @@
 //
 (function ($) {
 
-  var tempCatStack = []
-    , $isSelected = function (idx,elem) { return $(elem).is(':selected') }
+  var $isSelected = function (idx,elem) { return $(elem).is(':selected') }
     , downcase = function (str) { return str.toLowerCase() }
     , isSpecialKey = function (key) { return key.charAt(0) === '_' }
     , bulletTypes = {
@@ -187,8 +186,6 @@
     },
     
     onHomeViewClick: function () {
-      tempCatStack = [ this.get('struct') ];
-      
       bapp.homeViewWidgetClick(this);
       return false;
     },
@@ -198,7 +195,6 @@
     },
 
     onSave: function () {
-util.log('onSave',this.get('struct')._data._order.join(', '));
       this.origStruct = util.clone(this.get('struct'));
     }
   });
@@ -239,11 +235,9 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
 
     onEditStart: function (resetChanges, firstEdit) {
       if (resetChanges) this.discardChanges();
-      this.widget.catStack = tempCatStack;
 
       if (firstEdit) {
-        this.widget.catStack.length = 0;
-        this.widget.catStack.push( this.widget.get('struct') );
+        this.widget.resetCatStack();
       }
       var callback = _.bind(uploaderCallback, {
         node_id: this.widget.getCurrentNode()._data._id,
@@ -292,8 +286,9 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
 
     discardChanges: function () {
       util.log('Discarding changes for category widget');
+      var currentNode_id = this.widget.getCurrentNode()._data._id;
       this.widget.set({ struct:util.clone(this.widget.origStruct) });
-      this.widget.catStack = tempCatStack;
+      this.widget.setCatStackById(currentNode_id);
     },
 
     onDiscardByNavigation: function () {
@@ -428,7 +423,8 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
     addItem: function (e) {
       if (!util.isUIFree()) return;
 
-      this.itemDialog = this.itemDialog || new this.AddItemDialog({ model:this.widget });
+      this.itemDialog = this.itemDialog || new this.AddItemDialog();
+      this.itemDialog.model = this.widget;
       this.itemDialog.options = {
         onClose: this.refreshViews,
         hideUploader: this.itemDialog.type === 'page'
@@ -733,7 +729,7 @@ util.log('onSave',this.get('struct')._data._order.join(', '));
     },
 
     addNodeToStruct: function (data) {
-      var level = this.level._ref
+      var level = this.model.getCurrentLevel(true)
         , level_id = level._data._id
         , cat_id = util.generateId()
         , newPath = this.model.paths[ level_id ].concat([cat_id])
