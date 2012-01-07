@@ -13,10 +13,8 @@ class User < ActiveRecord::Base
 
   validates_presence_of :first_name, :last_name
 
-  before_save do
-    self.email.downcase! if self.email
-    self.email.strip! if self.email
-  end
+  before_validation :clean_email, :only => [:email]
+  before_save :clean_email
 
   def self.find_for_authentication(conditions)
     unless conditions[:email].nil?
@@ -24,5 +22,11 @@ class User < ActiveRecord::Base
       conditions[:email].strip!
     end
     super(conditions)
+  end
+
+  private
+
+  def clean_email
+    self.email = self.email.downcase.strip if self.email
   end
 end
