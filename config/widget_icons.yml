@@ -12,6 +12,19 @@
 - { name: property-listings, pname: Property Listings }
 - { name: services, pname: Services Listing }
 - { name: menu, pname: Food Menu }
+- { name: 306.menu-new-items, pname: Menu - New Items }
+- { name: 307.menu-seasonal, pname: Menu - Seasonal }
+- { name: 296.nutritional-information, pname: Nutritional Information }
+- { name: 64.drinks-bar-1, pname: Drinks }
+- { name: 64.drinks-bar-2, pname: Drinks }
+- { name: 65.happy-hour, pname: Happy Hour }
+- { name: 304.soup, pname: Soup }
+- { name: 300.sandwich-shop, pname: Sandwich }
+- { name: 305.smoothie, pname: Smoothie }
+- { name: 301.shaved-ice, pname: Shaved Ice }
+- { name: 119.wedding-cakes, pname: Wedding Cake }
+- { name: 82.bakery-1, pname: Bakery / Baked Goods }
+- { name: 82.bakery-2, pname: Bakery / Baked Goods }
 - { name: coupon, pname: Coupon }
 - { name: custom-page, pname: Page }
 - { name: donate, pname: Donate }
@@ -20,6 +33,7 @@
 - { name: event-calendar, pname: Calendar }
 - { name: calendar-event-1, pname: Event / Reservation }
 - { name: calendar-event-2, pname: Event / Reservation }
+- { name: 255.upcoming-events, pname: Upcoming Events }
 - { name: facebook, pname: facebook }
 - { name: twitter, pname: twitter }
 - { name: share, pname: Share }
@@ -113,7 +127,6 @@
 - { name: 116.video-rental-2, pname: 116.video-rental-2 }
 - { name: 117.videographer, pname: 117.videographer }
 - { name: 118.website-design-1, pname: 118.website-design-1 }
-- { name: 119.wedding-cakes, pname: 119.wedding-cakes }
 - { name: 12.environmentally-friendly-green, pname: 12.environmentally-friendly-green }
 - { name: 120.court-reporter, pname: 120.court-reporter }
 - { name: 120.transcription-1, pname: 120.transcription-1 }
@@ -355,9 +368,6 @@
 - { name: 61.tax-preparation, pname: 61.tax-preparation }
 - { name: 62.wire-transfers, pname: 62.wire-transfers }
 - { name: 63.dress-code, pname: 63.dress-code }
-- { name: 64.drinks-bar-1, pname: 64.drinks-bar-1 }
-- { name: 64.drinks-bar-2, pname: 64.drinks-bar-2 }
-- { name: 65.happy-hour, pname: 65.happy-hour }
 - { name: 66.vip-1, pname: 66.vip-1 }
 - { name: 66.vip-2, pname: 66.vip-2 }
 - { name: 67.affilates, pname: 67.affilates }
@@ -387,8 +397,6 @@
 - { name: 80.fair-trade-1, pname: 80.fair-trade-1 }
 - { name: 80.fair-trade-2, pname: 80.fair-trade-2 }
 - { name: 81.accountant, pname: 81.accountant }
-- { name: 82.bakery-1, pname: 82.bakery-1 }
-- { name: 82.bakery-2, pname: 82.bakery-2 }
 - { name: 83.stylist-1, pname: 83.stylist-1 }
 - { name: 83.stylist-2, pname: 83.stylist-2 }
 - { name: 84.bridal-services, pname: 84.bridal-services }
@@ -432,7 +440,6 @@
 - { name: 252.orchestra, pname: 252.orchestra }
 - { name: 253.shows-live-music, pname: 253.shows-live-music }
 - { name: 254.theaters, pname: 254.theaters }
-- { name: 255.upcoming-events, pname: 255.upcoming-events }
 - { name: 256.festivals, pname: 256.festivals }
 - { name: 261.dogs, pname: 261.dogs }
 - { name: 263.general-exams, pname: 263.general-exams }
@@ -442,13 +449,6 @@
 - { name: 286.independent, pname: 286.independent }
 - { name: 287.libertarian, pname: 287.libertarian }
 - { name: 288.republican, pname: 288.republican }
-- { name: 296.nutritional-information, pname: 296.nutritional-information }
-- { name: 300.sandwich-shop, pname: 300.sandwich-shop }
-- { name: 301.shaved-ice, pname: 301.shaved-ice }
-- { name: 304.soup, pname: 304.soup }
-- { name: 305.smoothie, pname: 305.smoothie }
-- { name: 306.menu-new-items, pname: 306.menu-new-items }
-- { name: 307.menu-seasonal, pname: 307.menu-seasonal }
 - { name: 308.beauty-products, pname: 308.beauty-products }
 - { name: 309.beauty-treatments, pname: 309.beauty-treatments }
 - { name: 311.laser-hair-removal, pname: 311.laser-hair-removal }
