@@ -423,7 +423,7 @@
     addItem: function (e) {
       if (!util.isUIFree()) return;
 
-      this.itemDialog = this.itemDialog || new this.AddItemDialog();
+      this.itemDialog = this.itemDialog || new this.AddItemDialog({ model:this.widget });
       this.itemDialog.model = this.widget;
       this.itemDialog.options = {
         onClose: this.refreshViews,
