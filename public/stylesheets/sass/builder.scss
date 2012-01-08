@@ -582,7 +582,7 @@ div.wysiwyg ul.toolbar {
     max-height: 235px;
     margin: 0 2px 8px -3px;
     padding: 10px 0 10px 0;
-    border-bottom: 1px solid #ccc;
+    border: 1px solid #ccc;
     overflow: auto;
         
     img {
@@ -608,7 +608,40 @@ div.wysiwyg ul.toolbar {
     left: 10px;
   }
 
-  p { padding: 4px 0px 0px 0px; }
+  .selected-label {
+    font-size: 120%;
+    float: left;
+  }
+
+  p { 
+    font-size: 120%;
+    padding: 4px 0px 0px 0px; 
+  }
+
+  table.change-icon-separator {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0px 4px 0px;
+    
+    td.l {
+      width: 5%;
+      padding-left: 4px;
+    }
+    td.r { 
+      width: 100%;
+      padding-right: 16px;
+    }
+    div.label { 
+      font-size: 120%;
+      margin: 0px 4px 0px 2px;
+      white-space: nowrap; 
+    }
+    div.l, div.r { 
+      border-top: 4px solid $light-border; 
+    }
+  }
+  
+  table.first { margin-top: 0px; }
 
 }
 
