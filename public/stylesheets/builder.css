@@ -541,7 +541,8 @@ div.wysiwyg ul.toolbar {
   left: 10px; }
 #dialog-confirm.edit-icon .selected-label {
   font-size: 120%;
-  float: left; }
+  float: left;
+  margin: 4px 10px 0px 0px; }
 #dialog-confirm.edit-icon p {
   font-size: 120%;
   padding: 4px 0px 0px 0px; }
