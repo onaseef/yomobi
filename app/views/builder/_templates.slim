@@ -113,10 +113,32 @@ script.edit-icon-dialog(type="text/template")
   #dialog-confirm.edit-icon title="Change Icon"
     p Click on icon to select:
     .icons
+      | <% var first=1; %>
       | <% for (var i=0; i < icons.length; i++) { %>
+      | <% if (icons[i].separator && first==1) { first=0; %>
+      table.change-icon-separator.first
+        tr
+          td.l
+            div.l
+          td.label
+            div.label {{ icons[i].separator }}
+          td.r
+            div.r 
+      | <% } else if (icons[i].separator) {  %>
+      table.change-icon-separator
+        tr
+          td.l
+            div.l
+          td.label
+            div.label {{ icons[i].separator }}
+          td.r
+            div.r 
+      | <% } else { %>
       img src="/images/widgets/{{ icons[i].name }}.png" data-pname="{{ icons[i].pname }}" title="{{ icons[i].pname }}" data-name="{{ icons[i].name }}"
+      | <% } %>        
       | <% } %>
     .selected-display
+      div.selected-label Selected icon:
       img src=""
       label
 
