@@ -72,6 +72,7 @@ var builderUtil = {
         insertTable: { visible:false },
         subscript: { visible:false },
         superscript: { visible:false },
+        html: { visible:true },
         uploadImage: {
           visible: true,
           groupIndex: 9,
