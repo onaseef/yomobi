@@ -98,7 +98,7 @@ class BuilderController < ApplicationController
     return redirect_to builder_main_path(:anchor => 'edit-settings')
   end
 
-  def traffic_booster
+  def change_advanced_settings
     @user = current_user
     @company = @user.company
     return error 'bad keywords' if !params[:keywords].present?

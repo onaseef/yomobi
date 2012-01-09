@@ -1,10 +1,10 @@
 (function ($) {
 
-  window.EditKeywordsView = Backbone.View.extend({
+  window.EditAdvancedSettingsView = Backbone.View.extend({
     
     el: $('#builder .widget-editor'),
 
-    template: util.getTemplate('edit-keywords'),
+    template: util.getTemplate('edit-advanced-settings'),
     
     events: {
       'click input[type=submit]': 'submit'
@@ -22,7 +22,7 @@
         .find('.loader').show().end()
         .find('textarea').val()
       ;
-      $.post('/builder/booster', { keywords:keywords }, function () {
+      $.post('/builder/adv-settings', { keywords:keywords }, function () {
         self.el
           .find('.checkmark').show().end()
           .find('.loader').hide().end()

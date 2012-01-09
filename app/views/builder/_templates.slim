@@ -247,15 +247,15 @@ script.edit-settings(type="text/template")
         .loader
         .clearfix
 
-script.edit-keywords(type="text/template")
-  .header.edit-keywords
-    .icon{ style="background-image: url(/images/edit-keywords.png)" }
+script.edit-advanced-settings(type="text/template")
+  .header.edit-advanced-settings
+    .icon{ style="background-image: url(/images/edit-advanced-settings.png)" }
     .widget-name
-      | Traffic Booster
+      | Advanced Settings
     p.help-text
       a.help-link href="http://help.yomobi.com/Account/TrafficBooster" target="_blank" Help
   div class="edit-area"
-    .explanation == t 'builder.help.edit_keywords'
+    .explanation == t 'builder.help.edit_advanced_settings'
 
     label Enter keywords that describe your website, separated by commas:
     p.error.hide Something went wrong.

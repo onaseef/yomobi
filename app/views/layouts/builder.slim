@@ -12,6 +12,7 @@ html lang="en-US"
     = stylesheet_link_tag 'builder-app'
     = stylesheet_link_tag 'flick/jquery-ui-1.8.11.custom'
     = stylesheet_link_tag 'jquery.wysiwyg'
+    = stylesheet_link_tag 'colorpicker'
     erb:
       <!--[if IE 7]>
       <%= stylesheet_link_tag 'ie' %>
@@ -63,7 +64,7 @@ html lang="en-US"
     = javascript_include_tag 'views/edit-widget'
     = javascript_include_tag 'views/edit-tab-bar'
     = javascript_include_tag 'views/edit-settings'
-    = javascript_include_tag 'views/edit-keywords'
+    = javascript_include_tag 'views/edit-advanced-settings'
 
     - Dir[widgets_dir('builder/*.js')].sort.each do |widget|
       - next if File.basename(widget) == 'base.js'
@@ -76,6 +77,8 @@ html lang="en-US"
     / ajax file uploading
     = javascript_include_tag "support/swfobject.js"
     = javascript_include_tag "plupload/plupload.full"
+
+    = javascript_include_tag "support/colorpicker"
 
     - if Rails.env.production?
       = javascript_include_tag 'google-analytics'
