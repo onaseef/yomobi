@@ -627,6 +627,20 @@ div.wysiwyg ul.toolbar {
   background-color: #d8dfea;
   cursor: pointer; }
 
+.color-picker {
+  background: transparent url(/images/ui/color-select.png) no-repeat;
+  height: 36px;
+  width: 72px;
+  position: relative; }
+
+.color-picker div {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 66px;
+  height: 30px;
+  background: url(/images/ui/color-select.png) center; }
+
 div.plupload {
   cursor: pointer; }
   div.plupload input {

@@ -102,8 +102,17 @@ class BuilderController < ApplicationController
     @user = current_user
     @company = @user.company
     return error 'bad keywords' if !params[:keywords].present?
+
+    @company.settings.header_color = params[:header_color]
+    return error 'Bad header color' if !@company.settings.save
+
     @company.keywords = params[:keywords]
-    @company.save ? success(true) : error('server error')
+    if @company.save
+      success :header_color => @company.settings.header_color,
+              :keywords => @company.keywords
+    else
+      error('server error')
+    end
   end
 
   def upload_wphoto

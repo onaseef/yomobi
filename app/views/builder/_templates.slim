@@ -258,8 +258,13 @@ script.edit-advanced-settings(type="text/template")
     .explanation == t 'builder.help.edit_advanced_settings'
 
     label Enter keywords that describe your website, separated by commas:
-    p.error.hide Something went wrong.
     textarea name="keywords" {{ keywords }}
+    br
+    br
+
+    label Set the header color of your website:
+    .color-picker data-color="{{ header_color }}"
+      div style="background-color:{{header_color}}"
     br
     br
     .action-bar style="padding-right: 0"

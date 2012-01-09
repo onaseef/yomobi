@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  company: 
+  header_color: MyString
+
+two:
+  company: 
+  header_color: MyString

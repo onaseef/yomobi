@@ -611,6 +611,30 @@ var builderUtil = {
       }
       onSuccess(data);
     }
+  },
+
+  spawnColorPicker: function ($elems, options) {
+    $elems.ColorPicker({
+      color: function (elem) {
+        return $(elem).data('color');
+      },
+      onShow: function (colpkr) {
+        $(colpkr).fadeIn(500);
+        return false;
+      },
+      onHide: function (colpkr) {
+        $(colpkr).fadeOut(500);
+        return false;
+      },
+      onChange: function (elem, hsb, hex, rgb) {
+        $('div',elem).css('backgroundColor', '#' + hex);
+        options.onChange && options.onChange('#' + hex);
+      }
+    });
+  },
+
+  updateMobileHeaderColor: function (color) {
+    $('#mobile-container .company-info').css('background',color);
   }
 };
 
