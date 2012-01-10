@@ -332,32 +332,32 @@ div.wysiwyg ul.toolbar {
   border-top: 1px solid #b3b3b3;
   margin: 10px 0; }
 
-#builder .edit-area.edit-settings {
+#builder .edit-area.edit-settings, #builder .edit-area.edit-advanced-settings {
   padding-top: 8px; }
-  #builder .edit-area.edit-settings .box {
+  #builder .edit-area.edit-settings .box, #builder .edit-area.edit-advanced-settings .box {
     margin: 10px 0px 0px 0px;
     border: 2px solid #d0d7e3;
     padding: 8px; }
-    #builder .edit-area.edit-settings .box input[type=text] {
+    #builder .edit-area.edit-settings .box input[type=text], #builder .edit-area.edit-advanced-settings .box input[type=text] {
       width: 274px;
       margin: 0; }
-    #builder .edit-area.edit-settings .box textarea {
+    #builder .edit-area.edit-settings .box textarea, #builder .edit-area.edit-advanced-settings .box textarea {
       width: 326px;
       margin: 0; }
-  #builder .edit-area.edit-settings .divider {
+  #builder .edit-area.edit-settings .divider, #builder .edit-area.edit-advanced-settings .divider {
     border-color: #d0d7e3; }
-  #builder .edit-area.edit-settings form .action-bar {
+  #builder .edit-area.edit-settings form .action-bar, #builder .edit-area.edit-advanced-settings form .action-bar {
     border-top: 2px solid #d0d7e3;
     padding-right: 0;
     padding-top: 8px;
     margin-top: 15px; }
-  #builder .edit-area.edit-settings .site-settings input[type=text] {
+  #builder .edit-area.edit-settings .site-settings input[type=text], #builder .edit-area.edit-advanced-settings .site-settings input[type=text] {
     width: 240px; }
-  #builder .edit-area.edit-settings select {
+  #builder .edit-area.edit-settings select, #builder .edit-area.edit-advanced-settings select {
     width: 245px; }
-  #builder .edit-area.edit-settings .site-picture {
+  #builder .edit-area.edit-settings .site-picture, #builder .edit-area.edit-advanced-settings .site-picture {
     vertical-align: top; }
-  #builder .edit-area.edit-settings .logo {
+  #builder .edit-area.edit-settings .logo, #builder .edit-area.edit-advanced-settings .logo {
     margin: 3px 0px; }
 
 .widget-editor .edit-area label {

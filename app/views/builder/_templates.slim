@@ -183,17 +183,6 @@ script.edit-settings(type="text/template")
       a.help-link href="http://help.yomobi.com/Account/GeneralSettings" target="_blank" Help
   div class="edit-area edit-settings"
     .explanation == t 'builder.help.edit_settings'
-
-    .box style="margin-bottom:10px"
-      label Mobile Site URL:
-      br
-      input.read-only readonly="readonly" type="text" value=@company.mobile_url data-orig-val=@company.mobile_url
-      .divider
-
-      label class="help" Desktop Redirect Code:
-      a href="http://help.yomobi.com/Account/MobileRedirectScript" target="ymhelp"
-        img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.settings.help.redirect')
-      textarea.read-only readonly="readonly" data-orig-val=desktop_redirect_code(@company) = desktop_redirect_code @company
     
     = form_tag '/builder/settings', :multipart => true, :class => 'box' do
       table.site-settings
@@ -254,19 +243,30 @@ script.edit-advanced-settings(type="text/template")
       | Advanced Settings
     p.help-text
       a.help-link href="http://help.yomobi.com/Account/TrafficBooster" target="_blank" Help
-  div class="edit-area"
+  div class="edit-area edit-advanced-settings"
     .explanation == t 'builder.help.edit_advanced_settings'
 
-    label Enter keywords that describe your website, separated by commas:
-    textarea name="keywords" {{ keywords }}
-    br
-    br
+    .box style="margin-bottom:10px"
+      label Mobile Site URL:
+      br
+      input.read-only readonly="readonly" type="text" value=@company.mobile_url data-orig-val=@company.mobile_url
+      .divider
 
-    label Set the header color of your website:
-    .color-picker data-color="{{ header_color }}"
-      div style="background-color:{{header_color}}"
-    br
-    br
+      label class="help" Desktop Redirect Code:
+      a href="http://help.yomobi.com/Account/MobileRedirectScript" target="ymhelp"
+        img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.settings.help.redirect')
+      textarea.read-only readonly="readonly" data-orig-val=desktop_redirect_code(@company) = desktop_redirect_code @company
+
+    .box
+      label Enter keywords that describe your website, separated by commas:
+      textarea name="keywords" {{ keywords }}
+      br
+      .divider
+
+      label Set Header Color:
+      .color-picker data-color="{{ header_color }}"
+        div style="background-color:{{header_color}}"
+
     .action-bar style="padding-right: 0"
       p.error.lfloat style="margin-top:2px"
       .accept-btn.main-btn

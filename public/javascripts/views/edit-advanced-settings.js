@@ -53,7 +53,9 @@
       this.el.html( this.template({
         keywords: g.keywords,
         header_color: g.header_color
-      }) );
+      }) )
+        .find('.help-bubble').simpletooltip(undefined,'help').end()
+      ;
       this.delegateEvents();
       util.spawnColorPicker(this.el.find('.color-picker'));
     },
