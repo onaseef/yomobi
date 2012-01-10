@@ -226,6 +226,13 @@ script.edit-settings(type="text/template")
               input type="file" name="logo" accept="image/*"
             td
               input.rfloat type="submit" value="Upload" disabled="disabled"
+          tr
+            td
+              label Header Color:
+            td
+              .color-picker data-color="{{ header_color }}"
+                div style="background-color:{{ header_color }}"
+              input type="hidden" name="header_color"
       
       .clearfix
 
@@ -262,10 +269,6 @@ script.edit-advanced-settings(type="text/template")
       textarea name="keywords" {{ keywords }}
       br
       .divider
-
-      label Set Header Color:
-      .color-picker data-color="{{ header_color }}"
-        div style="background-color:{{header_color}}"
 
     .action-bar style="padding-right: 0"
       p.error.lfloat style="margin-top:2px"

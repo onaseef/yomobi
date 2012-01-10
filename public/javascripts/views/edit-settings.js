@@ -46,12 +46,20 @@
       
       this.el.html( this.template({
         wnames: _.keys(mapp.metaDoc.worder),
-        wtabs: mapp.metaDoc.wtabs
+        wtabs: mapp.metaDoc.wtabs,
+        header_color: g.header_color
       }) )
         .find('.help-bubble').simpletooltip(undefined,'help').end()
         .find('input:file').keypress(function () { return false; }).end()
       ;
       this.delegateEvents();
+
+      var self = this;
+      util.spawnColorPicker(this.el.find('.color-picker'), {
+        onChange: function (color) {
+          self.el.find('[name=header_color]').val(color);
+        }
+      });
     },
     
     stopEditing: function () {

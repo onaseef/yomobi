@@ -36,7 +36,6 @@
         g.header_color = resp.header_color;
         self.el.find('[name=keywords]').val(g.keywords);
         self.el.find('.color-picker').data('color',g.header_color);
-        util.updateMobileHeaderColor(g.header_color);
       }, 'json')
       .error(function (e,textStatus,errorThrown) {
         self.el
@@ -51,8 +50,7 @@
       util.log('Editing Settings');
       
       this.el.html( this.template({
-        keywords: g.keywords,
-        header_color: g.header_color
+        keywords: g.keywords
       }) )
         .find('.help-bubble').simpletooltip(undefined,'help').end()
       ;

@@ -73,6 +73,10 @@ class BuilderController < ApplicationController
     if params[:company_name].present?
       cname = params[:company_name]
 
+      company = current_user.company
+      company.settings.header_color = params[:header_color]
+      company.settings.save
+
       attrs = {}
       attrs[:logo] = params[:logo] if params[:logo].present? && params[:destroy_logo] != "1"
       attrs[:name] = cname if cname.length > 2 && cname.length <= MAX_COMPANY_NAME_LENGTH
@@ -80,13 +84,13 @@ class BuilderController < ApplicationController
 
       attrs.delete :company_type if attrs[:company_type].nil?
 
-      save_success = current_user.company.update_attributes(attrs)
+      save_success = company.update_attributes(attrs)
 
-      if save_success == false && current_user.company.errors[:logo_file_size]
+      if save_success == false && company.errors[:logo_file_size]
         attrs.delete :logo
         flash[:alert] = 'The picture you have selected is too large. The maximum allowed size is 3MB.'
         # resave to prevent losing other changes
-        current_user.company.update_attributes(attrs)
+        company.update_attributes(attrs)
       end
     end
 
@@ -103,13 +107,9 @@ class BuilderController < ApplicationController
     @company = @user.company
     return error 'bad keywords' if !params[:keywords].present?
 
-    @company.settings.header_color = params[:header_color]
-    return error 'Bad header color' if !@company.settings.save
-
     @company.keywords = params[:keywords]
     if @company.save
-      success :header_color => @company.settings.header_color,
-              :keywords => @company.keywords
+      success :keywords => @company.keywords
     else
       error('server error')
     end
