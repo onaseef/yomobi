@@ -214,6 +214,8 @@
             }
 
             var widgetsAvailable =  _.map(bdata, function (data) {
+              if (data.hideFromSidebar) return;
+
               var wdata = _.extend({},data);
               delete wdata.editAreaTemplate;
               

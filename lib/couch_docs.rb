@@ -75,7 +75,11 @@ class CouchDocs
   
   def self.meta_doc(widget_docs,wtabs)
     worder = {}
-    widget_docs.each_index {|i| worder[ widget_docs[i][:wsubtype] ] = i}
+    widget_docs.each_index {|i|
+      key = widget_docs[i][:wsubtype]
+      key += "::#{widget_docs[i][:name]}" if widget_docs[i][:name]
+      worder[key] = i
+    }
 
     {
       "_id" => "meta",
@@ -95,7 +99,7 @@ class CouchDocs
   end
   
   def self.gmap_doc(address)
-    self.by_wsubtype('find-us').merge!(address)
+    self.by_wsubtype('find-us').merge(address)
   end
   
   def self.gen_salt
@@ -106,10 +110,11 @@ class CouchDocs
   end
 
   def self.by_wsubtype(wsubtype)
-    wsubtype, icon, name = wsubtype if wsubtype.is_a? Array
+    additional_specs = wsubtype.is_a? Array
+    wsubtype, icon, name = wsubtype if additional_specs
     wdata = self.all.select {|doc| doc[:wsubtype] == wsubtype}.first
-    if defined? icon
-      wdata.merge! :iconName => icon.gsub(/\.png$/, ''), :name => name
+    if additional_specs
+      wdata = wdata.merge :iconName => icon.gsub(/\.png$/, ''), :name => name
     end
     wdata
   end
@@ -121,7 +126,8 @@ class CouchDocs
         :wsubtype => 'flickr',
         :host => 'http://m.flickr.com/photos/',
         :basename => 'flickr',
-        :singleton => true
+        :singleton => true,
+        :hideFromSidebar => true
       },
       
       {
@@ -129,31 +135,37 @@ class CouchDocs
         :wsubtype => "picasa",
         :host => 'http://picasaweb.google.com/',
         :basename => 'picasa',
-        :singleton => true
+        :singleton => true,
+        :hideFromSidebar => true
       },
 
       {
         :wtype => 'link',
         :wsubtype => "blog",
-        :singleton => true
+        :singleton => true,
+        :hideFromSidebar => true
       },
 
       {
         :wtype => 'link',
         :wsubtype => "donate",
-        :singleton => true
+        :singleton => true,
+        :hideFromSidebar => true
       },
 
       {
         :wtype => 'link',
         :wsubtype => "news",
-        :singleton => true
+        :singleton => true,
+        :hideFromSidebar => true,
+        :hideFromSidebar => true
       },
 
       {
         :wtype => 'link',
         :wsubtype => "reviews",
-        :singleton => true
+        :singleton => true,
+        :hideFromSidebar => true
       },
       
       {
@@ -245,7 +257,8 @@ class CouchDocs
       {
         :wtype => 'link',
         :wsubtype => "event-calendar",
-        :singleton => true
+        :singleton => true,
+        :hideFromSidebar => true
       },
 
       {
@@ -256,7 +269,8 @@ class CouchDocs
       {
         :wtype => 'link',
         :wsubtype => "photo-bucket",
-        :singleton => true
+        :singleton => true,
+        :hideFromSidebar => true
       },
 
       {
@@ -334,7 +348,8 @@ class CouchDocs
         :singleton => true,
         "struct" => {
           :_data => { :_id => "struct", :name => "Services", :_order => [] },
-        }
+        },
+        :hideFromSidebar => true
       },
 
       {
@@ -389,7 +404,8 @@ class CouchDocs
 
       {
         :wtype => 'custom_page',
-        :wsubtype => 'about-us'
+        :wsubtype => 'about-us',
+        :hideFromSidebar => true
       },
 
       {
@@ -399,7 +415,8 @@ class CouchDocs
 
       {
         :wtype => 'link',
-        :wsubtype => "video"
+        :wsubtype => "video",
+        :hideFromSidebar => true
       },
     ].sort! {|a,b| b[:wsubtype] <=> a[:wsubtype]}
   end

@@ -403,18 +403,29 @@
 
       // remove worderInit and translate into proper worder
       var worder = {}, worderInit = metaDoc.worderInit;
-      for (var wsubtype in worderInit) {
+      for (var wsubtypeSpec in worderInit) {
+        var name = wsubtypeSpec.split('::')[1]
+          , wsubtype = wsubtypeSpec.split('::')[0]
+        ;
         var widget = mapp.widgets.detect(function (w) {
-          return w.get('wsubtype') == wsubtype;
+          var truth = w.get('wsubtype') == wsubtype;
+          if (name) truth = truth && w.get('name') == name;
+          return truth;
         });
-        worder[widget.id] = worderInit[wsubtype];
+        worder[widget.id] = worderInit[wsubtypeSpec];
       }
 
       // remove wtabsInit and translate into proper wtabs
       var wtabs = [], wtabsInit = metaDoc.wtabsInit;
       _.each(wtabsInit, function (wsubtype) {
+        var name = wsubtype.split('::')[1]
+          , wsubtype = wsubtype.split('::')[0]
+        ;
+
         var widget = mapp.widgets.detect(function (w) {
-          return w.get('wsubtype') == wsubtype;
+          var truth = w.get('wsubtype') == wsubtype;
+          if (name) truth = truth && w.get('name') == name;
+          return truth;
         });
 
         if (widget) wtabs.push(widget.id);
