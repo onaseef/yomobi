@@ -45,7 +45,7 @@ class SignupController < ApplicationController
       # TODO: randomly generate password
       begin
         puts "Creating company with company_type_id: #{current_user.company_type_id}"
-        result = current_user.create_company\
+        result = current_user.companies.create \
           :name => data['title'],
           :db_name => data['site_url'].downcase,
           :db_pass => '123123',

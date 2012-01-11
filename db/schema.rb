@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111012204149) do
+ActiveRecord::Schema.define(:version => 20120111220506) do
 
   create_table "carriers", :force => true do |t|
     t.string    "name"
@@ -42,6 +42,14 @@ ActiveRecord::Schema.define(:version => 20111012204149) do
   end
 
   add_index "companies", ["db_name"], :name => "index_companies_on_db_name", :unique => true
+
+  create_table "company_settings", :force => true do |t|
+    t.integer  "company_id"
+    t.string   "header_color"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "header_text_color"
+  end
 
   create_table "company_types", :force => true do |t|
     t.string    "name"
@@ -96,6 +104,8 @@ ActiveRecord::Schema.define(:version => 20111012204149) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "authentication_token"
+    t.integer  "default_company_id"
+    t.integer  "active_company_id"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
