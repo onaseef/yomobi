@@ -230,9 +230,16 @@ script.edit-settings(type="text/template")
             td
               label Header Color:
             td
-              .color-picker data-color="{{ header_color }}"
+              .color-picker data-color="{{ header_color }}" data-target="header_color"
                 div style="background-color:{{ header_color }}"
-              input type="hidden" name="header_color"
+              input type="hidden" name="header_color" value="{{ header_color }}"
+          tr
+            td
+              label Header Text:
+            td
+              .color-picker data-color="{{ header_text_color }}" data-target="header_text_color"
+                div style="background-color:{{ header_text_color }}"
+              input type="hidden" name="header_text_color" value="{{ header_text_color }}"
       
       .clearfix
 

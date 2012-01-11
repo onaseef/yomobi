@@ -17,6 +17,10 @@
   /* Proposed W3C Markup */
   background-image: linear-gradient(top, <%= @color %> 0%, #FFFFFF 275%);
   <% end %>
+
+  <% if @company.settings.header_text_color %>
+  color: <%= @company.settings.header_text_color %>;
+  <% end %>
 }
 
 </style>

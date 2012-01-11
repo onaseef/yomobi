@@ -75,6 +75,7 @@ class BuilderController < ApplicationController
 
       company = current_user.company
       company.settings.header_color = params[:header_color]
+      company.settings.header_text_color = params[:header_text_color]
       company.settings.save
 
       attrs = {}

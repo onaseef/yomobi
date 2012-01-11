@@ -630,7 +630,7 @@ var builderUtil = {
       },
       onChange: function (elem, hsb, hex, rgb) {
         $('div',elem).css('backgroundColor', '#' + hex);
-        options.onChange && options.onChange('#' + hex);
+        options.onChange && options.onChange('#' + hex, elem);
       }
     });
   },
