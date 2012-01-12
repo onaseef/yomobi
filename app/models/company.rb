@@ -70,6 +70,16 @@ class Company < ActiveRecord::Base
     ApplicationController::couch_url self.db_name, :@admin
   end
 
+  def as_json(options=nil)
+    {
+      id: self.id,
+      name: self.name,
+      path: self.db_name,
+      logo: self.logo.url(:mobile),
+      owner: self.user
+    }
+  end
+
   private
 
   def check_file_size

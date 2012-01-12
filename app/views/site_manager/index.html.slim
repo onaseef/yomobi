@@ -1,0 +1,41 @@
+- content_for :css do
+  = stylesheet_link_tag 'site-manager'
+
+#templates
+  script.site-li(type="text/template")
+    span.url YoMobi.com/{{ path }}
+
+- content_for :js do
+  = render 'layouts/js-base'
+  erb:
+    <script type="text/javascript">
+    window._sitesData = <%=raw @companies.to_json %>;
+    window.g = {
+      activateSitePath: "<%=raw activate_site_path(77).gsub '77','' %>"
+    };
+    </script>
+  = javascript_include_tag 'site-manager'
+
+#manager-container
+  #sites-container
+    ul.sites.fancy-selectable
+    button.edit Edit Site
+    button.create Create New Site
+    button.make_default Make Default
+  #admins-container
+    h3.active-site yomobi.com/site-a
+    button Generate Signup Key
+    ul#admins.fancy-selectable
+      li
+        img src="http://www.yomobi.com/images/default-logo_mobile.png"
+        .name me@gmail.com
+      li
+        img src="http://www.yomobi.com/images/default-logo_mobile.png"
+        .name some_other_guy@gmail.com
+      li
+        img src="http://www.yomobi.com/images/default-logo_mobile.png"
+        .name some_other_guy_with_a_longer_email@gmail.com
+    button Add Collaborator
+    button Revoke Access
+    button Concede Ownership
+  .clearfix

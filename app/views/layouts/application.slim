@@ -12,6 +12,7 @@ html lang="en-US"
 
     = stylesheet_link_tag 'signup-app'
     = stylesheet_link_tag 'flick/jquery-ui-1.8.11.custom'
+    = yield :css
     = csrf_meta_tag
   body
     = topline_notice

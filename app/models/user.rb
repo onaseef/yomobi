@@ -43,6 +43,15 @@ class User < ActiveRecord::Base
     co
   end
 
+  def as_json(options=nil)
+    {
+      id: self.id,
+      email: self.email,
+      firstName: self.first_name,
+      lastName: self.last_name
+    }
+  end
+
   private
 
   def clean_email
