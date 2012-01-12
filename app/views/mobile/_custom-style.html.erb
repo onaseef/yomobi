@@ -5,17 +5,17 @@
   <% @color = @company.settings.header_color %>
   background: <%= @company.settings.header_color %>;
   /* IE10 */
-  background-image: -ms-linear-gradient(top, <%= @color %> 0%, #FFFFFF 275%);
+  background-image: -ms-linear-gradient(bottom, <%= @color %> 0%, #FFFFFF 500%);
   /* Mozilla Firefox */
-  background-image: -moz-linear-gradient(top, <%= @color %> 0%, #FFFFFF 275%);
+  background-image: -moz-linear-gradient(bottom, <%= @color %> 0%, #FFFFFF 500%);
   /* Opera */
-  background-image: -o-linear-gradient(top, <%= @color %> 0%, #FFFFFF 275%);
+  background-image: -o-linear-gradient(bottom, <%= @color %> 0%, #FFFFFF 500%);
   /* Webkit (Safari/Chrome 10) */
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, <%= @color %>), color-stop(2.75, #FFFFFF));
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, <%= @color %>), color-stop(5, #FFFFFF));
   /* Webkit (Chrome 11+) */
-  background-image: -webkit-linear-gradient(top, <%= @color %> 0%, #FFFFFF 275%);
+  background-image: -webkit-linear-gradient(bottom, <%= @color %> 0%, #FFFFFF 500%);
   /* Proposed W3C Markup */
-  background-image: linear-gradient(top, <%= @color %> 0%, #FFFFFF 275%);
+  background-image: linear-gradient(bottom, <%= @color %> 0%, #FFFFFF 500%);
   <% end %>
 
   <% if @company.settings.header_text_color %>
