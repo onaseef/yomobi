@@ -28,3 +28,14 @@ ul.fancy-selectable {
 #admins-container {
   float: left;
 }
+
+form#account-setup-box.dialog {
+  .loading { display: none; }
+}
+
+form#account-setup-box.dialog.submitting {
+  .fields { display: none; }
+  .loading {
+    display: block;
+  }
+}

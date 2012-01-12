@@ -25,7 +25,7 @@ Yomobi::Application.routes.draw do
   get "site-manager" => 'site_manager#index', :as => :site_manager
   get "site-manager/activate/:id" => 'site_manager#make_active', :as => :activate_site
 
-  post    "site-manager/sites"     => 'site_manager#create'
+  post    "site-manager/sites"     => 'site_manager#create', :as => :create_site
   delete  "site-manager/sites/:id" => 'site_manager#delete'
   post    "site-manager/default" => 'site_manager#make_default'
 

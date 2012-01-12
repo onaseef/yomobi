@@ -74,7 +74,7 @@ class Company < ActiveRecord::Base
     {
       id: self.id,
       name: self.name,
-      path: self.db_name,
+      url: self.db_name,
       logo: self.logo.url(:mobile),
       owner: self.user
     }

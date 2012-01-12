@@ -3,7 +3,46 @@
 
 #templates
   script.site-li(type="text/template")
-    span.url YoMobi.com/{{ path }}
+    span.url YoMobi.com/{{ url }}
+
+  script.new-site-dialog(type="text/template")
+    form#account-setup-box.dialog title="Create a New Site"
+      .fields
+        h3 Site Name
+        | <% if (errors.title) { %>
+        p.error
+          ' Invalid Site Name. Site Name must be at least 2 characters and at most
+          = MAX_COMPANY_NAME_LENGTH
+          | &nbsp;characters.
+        | <% } %>
+        input type="text" name="site[title]" value="{{ title }}" maxlength=MAX_COMPANY_NAME_LENGTH
+
+        h3 Mobile Site Url:
+
+        | <% if (errors.url === 'illegal') { %>
+        p.error Invalid URL: the URL must be at least 3 characters long and contain only A-Z, a-z, 0-9, underscores (_), and dashes (-).
+        | <% } else if (errors.url === 'reserved') { %>
+        p.error Sorry, that name is reserved. Please choose another.
+        | <% } else if (errors.url === 'taken') { %>
+        p.error URL is already taken.
+        | <% } else if (errors.url === 'taken?') { %>
+        p.error Name is already taken?
+        | <% } %>
+
+        .site-url
+          span.lfloat http://www.yomobi.com/
+          .site-url-input-wrap
+            input type="text" value="{{ url }}" name="site[url]"
+          .clearfix
+
+        h3 Site Type:
+        | <% if (errors.type) { %>
+        p.error Invalid site type.
+        | <% } %>
+        = select :site, :type, options_for_select(company_types, 57)
+      .loading
+        h3 Submitting...
+        img src="/images/ui/ajax-loader-small.gif"
 
 - content_for :js do
   = render 'layouts/js-base'
@@ -11,7 +50,8 @@
     <script type="text/javascript">
     window._sitesData = <%=raw @companies.to_json %>;
     window.g = {
-      activateSitePath: "<%=raw activate_site_path(77).gsub '77','' %>"
+      activateSitePath: "<%=raw activate_site_path(77).gsub '77','' %>",
+      createSitePath: "<%=raw create_site_path %>"
     };
     </script>
   = javascript_include_tag 'site-manager'

@@ -35,17 +35,20 @@ var getVimeoVideoId = function (url) {
   }
 }
 
+var _blank = {};
 
 var builderUtil = {
 
-  dialog: function (html,buttons,title) {
+  dialog: function (html,buttons,title,options) {
+    options || (options = _blank);
     return $(html).dialog({
       resizable: false,
       modal: true,
       draggable: false,
       closeOnEscape: false,
       buttons: buttons,
-      title: title
+      title: title,
+      width: options.width || 360
     });
   },
 
