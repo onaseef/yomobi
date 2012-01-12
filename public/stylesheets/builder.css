@@ -359,6 +359,8 @@ div.wysiwyg ul.toolbar {
     vertical-align: top; }
   #builder .edit-area.edit-settings .logo, #builder .edit-area.edit-advanced-settings .logo {
     margin: 3px 0px; }
+  #builder .edit-area.edit-settings .new-picture, #builder .edit-area.edit-advanced-settings .new-picture {
+    width: 100%; }
 
 .widget-editor .edit-area label {
   white-space: normal; }

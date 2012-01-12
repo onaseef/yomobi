@@ -212,7 +212,7 @@ script.edit-settings(type="text/template")
               a.remove-logo href="#" Remove Picture
               input type="hidden" name="destroy_logo" value="0"
 
-      table
+      table.site-settings.new-picture
         tbody
           tr
             td
@@ -226,6 +226,11 @@ script.edit-settings(type="text/template")
               input type="file" name="logo" accept="image/*"
             td
               input.rfloat type="submit" value="Upload" disabled="disabled"
+          tr
+            td colspan="3"
+              .divider
+      table.site-settings.header-colors
+        tbody
           tr
             td
               label Header Color:
