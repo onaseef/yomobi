@@ -41,12 +41,8 @@ html lang="en-US"
     = javascript_include_tag 'support/jquery-1.6.2.min'
     = render 'shared/jquery-auth-patch'
 
-    = javascript_include_tag 'support/jquery-ui-1.8.13.custom.min'
-    = javascript_include_tag 'support/jquery.tooltip.v.1.1'
+    = render 'layouts/js-base'
     = javascript_include_tag 'support/dbx'
-    = javascript_include_tag 'support/underscore'
-    = javascript_include_tag 'support/backbone'
-    = javascript_include_tag 'util', 'builder.util'
     = render :partial => 'shared/data-loader' if @company
     = javascript_include_tag 'preview-mobile'
     
