@@ -3,11 +3,11 @@ docs:
     types:
       - Airport
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
-      - services
+      - [products, services, Services]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -24,11 +24,11 @@ docs:
     types:
       - Arts / Entertainment / Nightlife
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
-      - reviews
+      - [link, reviews, Reviews]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -45,13 +45,13 @@ docs:
     types:
       - Automotive
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
-      - services
+      - [products, services, Services]
       - coupon
-      - reviews
+      - [link, reviews, Reviews]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -65,13 +65,13 @@ docs:
       - keep-me-informed
   -
     types:
-      - Bank / Financial Services
+      - Bank / Financial [products, services, Services]
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
-      - services
+      - [products, services, Services]
       - locations
       - keep-me-informed
       - leave-a-message
@@ -88,11 +88,11 @@ docs:
     types:
       - Bar
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
-      - reviews
+      - [link, reviews, Reviews]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -109,12 +109,12 @@ docs:
     types:
       - Book Store
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
       - coupon
-      - reviews
+      - [link, reviews, Reviews]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -129,15 +129,15 @@ docs:
       - keep-me-informed
   -
     types:
-      - Business Services
+      - Business [products, services, Services]
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
-      - services
+      - [products, services, Services]
       - coupon
-      - reviews
+      - [link, reviews, Reviews]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -153,11 +153,11 @@ docs:
     types:
       - Church / Religious Organization
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
-      - services
+      - [products, services, Services]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -174,11 +174,11 @@ docs:
     types:
       - Club
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
-      - reviews
+      - [link, reviews, Reviews]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -195,11 +195,11 @@ docs:
     types:
       - Community / Government
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
-      - services
+      - [products, services, Services]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -215,12 +215,12 @@ docs:
     types:
       - Computers / Technology
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
-      - services
-      - reviews
+      - [products, services, Services]
+      - [link, reviews, Reviews]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -236,11 +236,11 @@ docs:
     types:
       - Concert Venue
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
-      - reviews
+      - [link, reviews, Reviews]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -255,14 +255,14 @@ docs:
       - keep-me-informed
   -
     types:
-      - Consulting / Business Services
+      - Consulting / Business [products, services, Services]
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
-      - services
-      - reviews
+      - [products, services, Services]
+      - [link, reviews, Reviews]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -272,13 +272,13 @@ docs:
       - full-website
     tabs:
       - call-us
-      - services
+      - [products, services, Services]
       - keep-me-informed
   -
     types:
       - Education
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
@@ -298,11 +298,11 @@ docs:
     types:
       - Energy / Utility
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
-      - services
+      - [products, services, Services]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -313,18 +313,18 @@ docs:
       - full-website
     tabs:
       - call-us
-      - services
+      - [products, services, Services]
       - keep-me-informed
   -
     types:
       - Engineering / Construction
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
-      - services
-      - reviews
+      - [products, services, Services]
+      - [link, reviews, Reviews]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -334,18 +334,18 @@ docs:
       - full-website
     tabs:
       - call-us
-      - services
+      - [products, services, Services]
       - keep-me-informed
   -
     types:
-      - Event Planning / Event Services
+      - Event Planning / Event [products, services, Services]
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
-      - services
-      - reviews
+      - [products, services, Services]
+      - [link, reviews, Reviews]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -356,18 +356,18 @@ docs:
       - full-website
     tabs:
       - call-us
-      - services
+      - [products, services, Services]
       - keep-me-informed
   -
     types:
       - Food / Grocery
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
       - locations
-      - services
+      - [products, services, Services]
       - coupon
       - keep-me-informed
       - leave-a-message
@@ -384,11 +384,11 @@ docs:
     types:
       - Government Organization
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
-      - services
+      - [products, services, Services]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -399,18 +399,18 @@ docs:
       - full-website
     tabs:
       - business-hours
-      - services
+      - [products, services, Services]
       - keep-me-informed
   -
     types:
       - Health / Medical / Pharmacy
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
       - locations
-      - services
+      - [products, services, Services]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -420,18 +420,18 @@ docs:
       - full-website
     tabs:
       - locations
-      - services
+      - [products, services, Services]
       - keep-me-informed
   -
     types:
       - Home Improvement
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
-      - services
-      - reviews
+      - [products, services, Services]
+      - [link, reviews, Reviews]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -441,19 +441,19 @@ docs:
       - full-website
     tabs:
       - call-us
-      - services
+      - [products, services, Services]
       - keep-me-informed
   -
     types:
       - Hospital / Clinic
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
       - locations
-      - services
-      - reviews
+      - [products, services, Services]
+      - [link, reviews, Reviews]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -463,20 +463,20 @@ docs:
       - full-website
     tabs:
       - call-us
-      - services
+      - [products, services, Services]
       - keep-me-informed
   -
     types:
       - Hotel
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
       - booking-request
       - locations
-      - services
-      - reviews
+      - [products, services, Services]
+      - [link, reviews, Reviews]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -493,7 +493,7 @@ docs:
     types:
       - Individual / Personal Site
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - keep-me-informed
@@ -510,12 +510,12 @@ docs:
     types:
       - Insurance Company
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
       - products
-      - reviews
+      - [link, reviews, Reviews]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -532,12 +532,12 @@ docs:
     types:
       - Internet / Software
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
-      - services
-      - reviews
+      - [products, services, Services]
+      - [link, reviews, Reviews]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -547,18 +547,18 @@ docs:
       - full-website
     tabs:
       - call-us
-      - services
+      - [products, services, Services]
       - keep-me-informed
   -
     types:
       - Legal / Law
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
-      - services
-      - reviews
+      - [products, services, Services]
+      - [link, reviews, Reviews]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -568,18 +568,18 @@ docs:
       - full-website
     tabs:
       - call-us
-      - services
+      - [products, services, Services]
       - keep-me-informed
   -
     types:
       - Library
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
       - locations
-      - services
+      - [products, services, Services]
       - event-calendar
       - keep-me-informed
       - leave-a-message
@@ -590,21 +590,21 @@ docs:
       - full-website
     tabs:
       - locations
-      - services
+      - [products, services, Services]
       - keep-me-informed
   -
     types:
       - Local / Small Business
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
       - locations
-      - services
+      - [products, services, Services]
       - products
       - coupon
-      - event-calendar
+      - [link, event-calendar, Event Calendar]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -620,16 +620,16 @@ docs:
     types:
       - Media / News / Publishing
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
-      - services
+      - [products, services, Services]
       - keep-me-informed
       - leave-a-message
       - call-me-back
       - tell-a-friend
-      - event-calendar
+      - [link, event-calendar, Event Calendar]
       - facebook
       - twitter
       - full-website
@@ -641,7 +641,7 @@ docs:
     types:
       - Movie Theater
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
@@ -651,7 +651,7 @@ docs:
       - leave-a-message
       - call-me-back
       - tell-a-friend
-      - event-calendar
+      - [link, event-calendar, Event Calendar]
       - facebook
       - twitter
       - full-website
@@ -663,7 +663,7 @@ docs:
     types:
       - Museum / Art Gallery
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
@@ -673,7 +673,7 @@ docs:
       - leave-a-message
       - call-me-back
       - tell-a-friend
-      - event-calendar
+      - [link, event-calendar, Event Calendar]
       - facebook
       - twitter
       - full-website
@@ -685,7 +685,7 @@ docs:
     types:
       - Non-Governmental Organization (NGO)
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
@@ -693,19 +693,19 @@ docs:
       - leave-a-message
       - call-me-back
       - tell-a-friend
-      - event-calendar
+      - [link, event-calendar, Event Calendar]
       - facebook
       - twitter
       - full-website
     tabs:
-      - about-us
+      - [custom-page, about-us, About Us]
       - business-hours
       - keep-me-informed
   -
     types:
       - Non-Profit Organization
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
@@ -713,28 +713,28 @@ docs:
       - leave-a-message
       - call-me-back
       - tell-a-friend
-      - event-calendar
+      - [link, event-calendar, Event Calendar]
       - facebook
       - twitter
       - full-website
     tabs:
-      - about-us
+      - [custom-page, about-us, About Us]
       - business-hours
       - keep-me-informed
   -
     types:
       - Organization
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
-      - services
+      - [products, services, Services]
       - keep-me-informed
       - leave-a-message
       - call-me-back
       - tell-a-friend
-      - event-calendar
+      - [link, event-calendar, Event Calendar]
       - facebook
       - twitter
       - full-website
@@ -744,13 +744,13 @@ docs:
       - keep-me-informed
   -
     types:
-      - Pet Services
+      - Pet [products, services, Services]
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
-      - services
+      - [products, services, Services]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -766,11 +766,11 @@ docs:
     types:
       - Political Party / Organization
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
-      - event-calendar
+      - [link, event-calendar, Event Calendar]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -780,17 +780,17 @@ docs:
       - full-website
     tabs:
       - call-us
-      - event-calendar
+      - [link, event-calendar, Event Calendar]
       - keep-me-informed
   -
     types:
-      - Professional Services
+      - Professional [products, services, Services]
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
-      - services
+      - [products, services, Services]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -800,17 +800,17 @@ docs:
       - full-website
     tabs:
       - call-us
-      - services
+      - [products, services, Services]
       - keep-me-informed
   -
     types:
       - Public Places
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
-      - services
+      - [products, services, Services]
       - event-calendar
       - keep-me-informed
       - leave-a-message
@@ -821,19 +821,19 @@ docs:
       - full-website
     tabs:
       - call-us
-      - services
+      - [products, services, Services]
       - keep-me-informed
 
   -
     types:
       - Real Estate
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
       - property-listings
-      - services
+      - [products, services, Services]
       - event-calendar
       - keep-me-informed
       - leave-a-message
@@ -850,14 +850,14 @@ docs:
     types:
       - Restaurant / Cafe
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
       - menu
       - coupon
       - booking-request
-      - reviews
+      - [link, reviews, Reviews]
       - event-calendar
       - keep-me-informed
       - leave-a-message
@@ -874,13 +874,13 @@ docs:
     types:
       - Retail and Consumer Merchandise
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
       - products
       - coupon
-      - reviews
+      - [link, reviews, Reviews]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -896,12 +896,12 @@ docs:
     types:
       - School
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
       - locations
-      - reviews
+      - [link, reviews, Reviews]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -917,14 +917,14 @@ docs:
     types:
       - Shopping / Retail
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
       - locations
       - products
       - coupon
-      - reviews
+      - [link, reviews, Reviews]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -940,14 +940,14 @@ docs:
     types:
       - Spas / Beauty / Personal Care
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
-      - services
+      - [products, services, Services]
       - products
       - coupon
-      - reviews
+      - [link, reviews, Reviews]
       - locations
       - booking-request
       - keep-me-informed
@@ -958,14 +958,14 @@ docs:
       - twitter
       - full-website
     tabs:
-      - services
+      - [products, services, Services]
       - booking-request
       - keep-me-informed
   -
     types:
       - Sports Venue
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
@@ -985,7 +985,7 @@ docs:
     types:
       - Sports / Recreation / Activities
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
@@ -1005,13 +1005,13 @@ docs:
     types:
       - Tours / Sightseeing
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
-      - services
+      - [products, services, Services]
       - coupon
-      - reviews
+      - [link, reviews, Reviews]
       - event-calendar
       - keep-me-informed
       - leave-a-message
@@ -1021,19 +1021,19 @@ docs:
       - twitter
       - full-website
     tabs:
-      - about-us
-      - services
+      - [custom-page, about-us, About Us]
+      - [products, services, Services]
       - keep-me-informed
   -
     types:
       - Transit Stop
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
       - coupon
-      - reviews
+      - [link, reviews, Reviews]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -1049,7 +1049,7 @@ docs:
     types:
       - Transportation
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
@@ -1068,12 +1068,12 @@ docs:
     types:
       - Travel / Leisure
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
-      - services
-      - reviews
+      - [products, services, Services]
+      - [link, reviews, Reviews]
       - event-calendar
       - keep-me-informed
       - leave-a-message
@@ -1084,13 +1084,13 @@ docs:
       - full-website
     tabs:
       - call-us
-      - services
+      - [products, services, Services]
       - keep-me-informed
   -
     types:
       - University
     widgets:
-      - about-us
+      - [custom-page, about-us, About Us]
       - call-us
       - find-us
       - business-hours
