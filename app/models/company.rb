@@ -2,7 +2,10 @@ class Company < ActiveRecord::Base
   require 'couch_docs'
   
   belongs_to :user
+  alias :owner :user
   belongs_to :company_type
+  has_many :keys
+  has_many :admins, :through => :keys, :source => :user
   has_many :followers
   has_many :wphotos
   

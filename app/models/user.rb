@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   has_many :companies
+  has_many :keys
+  has_many :shared_companies, :through => :keys, :source => :company
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable and :timeoutable

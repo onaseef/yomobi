@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120111220506) do
+ActiveRecord::Schema.define(:version => 20120113202409) do
 
   create_table "carriers", :force => true do |t|
     t.string    "name"
@@ -74,6 +74,14 @@ ActiveRecord::Schema.define(:version => 20120111220506) do
   add_index "followers", ["email", "company_id"], :name => "index_followers_on_email_and_company_id", :unique => true
   add_index "followers", ["opt_out_key"], :name => "index_followers_on_opt_out_key", :unique => true
   add_index "followers", ["phone", "company_id"], :name => "index_followers_on_phone_and_company_id", :unique => true
+
+  create_table "keys", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "company_id"
+    t.boolean  "owner"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sigs", :force => true do |t|
     t.string    "email"
