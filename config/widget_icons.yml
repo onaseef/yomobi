@@ -60,7 +60,8 @@
 - { name: 281.family, pname: Family }
 - { name: 279.senior-citizens, pname: Senior Citizens  }
 - { name: 280.veterans, pname: Veterans }
-- { name: 282.lgbt, pname: LGBT }
+- { name: 282.lgbt-1, pname: LGBT }
+- { name: 282.lgbt-2, pname: LGBT }
 - { name: person-group-1, pname: Group }
 - { name: person-group-2, pname: Group }
 - { name: person-group-3, pname: Group }
@@ -111,7 +112,8 @@
 - { name: 256.festivals, pname: Festival }
 - { name: 158.festival, pname: Festival }
 - { name: 68.club, pname: Club }
-- { name: 248.dance-club, pname: Dance Club }
+- { name: 248.dance-1, pname: Dance / Dance Club }
+- { name: 248.dance-2, pname: Dance / Dance Club }
 - { name: 63.dress-code, pname: Dress Code }
 - { name: 87.dj, pname: D.J. }
 - { name: 66.vip-1, pname: VIP }
@@ -283,10 +285,21 @@
 - { separator: Beauty / Personal Care }
 - { name: 83.stylist-1, pname: Stylist }
 - { name: 83.stylist-2, pname: Stylist }
+- { name: 314.massage, pname: Massage }
+- { name: 316.pedicure, pname: Pedicure }
+- { name: 317.permanent-makeup, pname: Permanent Makeup }
+- { name: 320.threading, pname: Threading }
+- { name: 321.waxing, pname: Waxing }
+- { name: 323.hair-stylist, pname: Hair Stylist }
+- { name: 318.spa, pname: Spa }
+- { name: 319.teeth-whitening, pname: Teeth Whitening }
+- { name: 322.weight-loss, pname: Weight Loss }
+- { name: 332.weight-loss-2, pname: Weight Loss }
 - { name: 308.beauty-products, pname: Beauty Products }
 - { name: 309.beauty-treatments, pname: Beauty Treatments }
 - { name: 311.laser-hair-removal, pname: Laser Hair Removal }
-- { name: 312.makeover, pname: Makeover }
+- { name: 312.makeover-1, pname: Makeover }
+- { name: 312.makeover-2, pname: Makeover }
 - { name: 313.manicure, pname: Manicure }
 - { name: 314.massage, pname: Massage }
 - { name: 99.lingerie-shop, pname: Lingerie Shop }
@@ -481,4 +494,57 @@
 - { name: 96.laundromat, pname: Laundromat }
 - { name: 97.lawn-care, pname: Lawn Care }
 - { name: 98.lighting-store, pname: Lighting Store }
-- { name: 121.shoe-store-2, pname: Shoe Store }
+- { name: 121.shoes, pname: Shoes / Shoe Store }
+- { name: 201.university, pname: University }
+- { name: 202.technical-college, pname: Technical College }
+- { name: 203.community-college, pname: Community College }
+- { name: 236.hospice, pname: Hospice }
+- { name: 251.nightlife, pname: Nightlife }
+- { name: 255.upcoming-events, pname: Upcoming Events }
+- { name: 257.animal-dentistry, pname: Animal Dentistry }
+- { name: 258.animal-surgery, pname: Animal Surgery }
+- { name: 260.dog-training, pname: Dog Training }
+- { name: 264.grooming, pname: Grooming }
+- { name: 265.horse-rental, pname: Horse Rental }
+- { name: 266.eletronic-tracking, pname: Eletronic Tracking }
+- { name: 268.pet-hotel, pname: Pet Hotel }
+- { name: 269.pet-store, pname: Pet Store }
+- { name: 270.petting-zoo, pname: Petting-zoo }
+- { name: 271.spay-neuter, pname: Spay / Neuter }
+- { name: 272.vaccination, pname: Vaccination }
+- { name: 283.portfolio-1, pname: Portfolio }
+- { name: 283.portfolio-2, pname: Portfolio }
+- { name: 324.games-baseball, pname: Baseball }
+- { name: 324.games-basketball, pname: Basketball }
+- { name: 324.games-cricket, pname: Cricket }
+- { name: 324.games-football, pname: Football }
+- { name: 324.games-golf, pname: Golf }
+- { name: 324.games-hockey, pname: Hockey }
+- { name: 324.games-lacrosse1, pname: Lacrosse }
+- { name: 324.games-soccer, pname: Soccer }
+- { name: 324.games-tennis, pname: Tennis }
+- { name: 324.games-volleyball, pname: Volleyball }
+- { name: 326.seating, pname: Seating }
+- { name: 327.tickets, pname: Tickets }
+- { name: 328.skydiving, pname: Skydiving }
+- { name: 329.africa-middle east, pname: Africa / Middle East }
+- { name: 330.asia, pname: Asia }
+- { name: 330.carribean-mexico, pname: Mexico / Carribean }
+- { name: 330.europe, pname: Europe }
+- { name: 330.south-america, pname: South America }
+- { name: 330.south-pacific, pname: South Pacific }
+- { name: 330.world-map, pname: world-map }
+- { name: 332.business-travel-1, pname: Business Travel }
+- { name: 332.business-travel-2, pname: Business Travel }
+- { name: 333.camping, pname: Camping }
+- { name: 334.canoe-rental, pname: Canoe Rental }
+- { name: 336.cruises-1, pname: Cruise }
+- { name: 336.cruises-2, pname: Cruise }
+- { name: 338.guided-tour, pname: Guided Tour }
+- { name: 339.hiking, pname: Hiking }
+- { name: 340.honeymoon, pname: Honeymoon }
+- { name: 341.outdoor-activities, pname: Outdoor Activities }
+- { name: 342.rafting, pname: Rafting }
+- { name: 343.scuba-diving, pname: Scuba Diving }
+- { name: 346.tours, pname: Tours }
+- { name: 347.vacation-packages, pname: Vacation Packages }
