@@ -1,6 +1,11 @@
 (function ($) {
 
   window.Site = Backbone.Model.extend({
+
+    initialize: function () {
+      this.set({ owned:(this.get('owner').id === g.user_id) });
+    },
+
     edit: function () {
       document.location.href = g.activateSitePath + this.get('id');
     }

@@ -45,6 +45,15 @@ class User < ActiveRecord::Base
     co
   end
 
+  def all_companies
+    self.companies + self.shared_companies
+  end
+
+  def can_access_company?(co)
+    return false if co.nil?
+    self == co.user || Key.exists?(:user_id => self.id, :company_id => co.id)
+  end
+
   def as_json(options=nil)
     {
       id: self.id,

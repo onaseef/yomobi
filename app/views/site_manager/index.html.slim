@@ -9,7 +9,9 @@
     window.g = {
       activateSitePath: "<%=raw activate_site_path(77).gsub '77','' %>",
       createSitePath: "<%=raw create_site_path %>",
-      addAdminPath: "<%=raw add_admin_path %>"
+      addAdminPath: "<%=raw add_admin_path %>",
+
+      user_id: <%= current_user.id %>
     };
     </script>
   = javascript_include_tag 'site-manager'
@@ -35,16 +37,27 @@
 
 #templates
   script.site-li(type="text/template")
-    span.url YoMobi.com/{{ url }}
+    span.url
+      ' YoMobi.com/{{ url }}
+      | <% if (owned === true) { %>
+      | *
+      | <% } %>
 
   script.site-details(type="text/template")
-    h3.active-site Selected: YoMobi.com/{{ url }}
+    h3.active-site
+      ' Selected: YoMobi.com/{{ url }}
+      | <% if (owned === true) { %>
+      | *
+      | <% } %>
     button Generate Signup Key
     ul.admins.fancy-selectable
       | <% for (var i=0; i < admins.length; i++) { %>
       li
         img src="http://www.yomobi.com/images/default-logo_mobile.png"
         .name {{ admins[i].email }}
+      | <% } %>
+      | <% if (admins.length === 0) { %>
+      h3 No Collaborators
       | <% } %>
     button.add-admin Add Collaborator
     button Revoke Access

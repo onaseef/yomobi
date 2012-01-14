@@ -2,12 +2,12 @@ class SiteManagerController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @companies = current_user.companies
+    @companies = current_user.all_companies
   end
 
   def make_active
     company = Company.find_by_id params[:id]
-    if company && company.user == current_user
+    if current_user.can_access_company?(company)
       current_user.active_company_id = company.id
       current_user.save
     end
