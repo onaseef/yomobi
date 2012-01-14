@@ -39,6 +39,16 @@ var _blank = {};
 
 var builderUtil = {
 
+  // WARNING: If there are multiple values with the same name,
+  // values will be overwritten.
+  serializedArrayToHash: function (array) {
+    var hash = {};
+    _.each(array, function (param) {
+      hash[param.name] = param.value;
+    });
+    return hash;
+  },
+
   dialog: function (html,buttons,title,options) {
     options || (options = _blank);
     return $(html).dialog({

@@ -23,14 +23,14 @@ Yomobi::Application.routes.draw do
 
 
   get "site-manager" => 'site_manager#index', :as => :site_manager
-  get "site-manager/activate/:id" => 'site_manager#make_active', :as => :activate_site
+  get "sites/:id/activate" => 'site_manager#make_active', :as => :activate_site
 
-  post    "site-manager/sites"     => 'site_manager#create', :as => :create_site
-  delete  "site-manager/sites/:id" => 'site_manager#delete'
-  post    "site-manager/default" => 'site_manager#make_default'
+  post    "sites"     => 'site_manager#create', :as => :create_site
+  delete  "sites/:id" => 'site_manager#delete'
+  post    "sides/:id/make-default" => 'site_manager#make_default'
 
-  post "site-manager/admin/add" => 'site_manager#add_admin', :as => :add_admin
-  post "site-manager/admin/remove" => 'site_manager#remove_admin'
+  post "sites/:id/admins"           => 'site_manager#add_admin', :as => :add_admin
+  post "sites/:id/admins/:admin_id/delete" => 'site_manager#remove_admin', :as => :remove_admin
   post "site-manager/generate-key" => 'site_manager#gen_signup_key'
 
 

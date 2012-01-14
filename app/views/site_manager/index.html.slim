@@ -7,9 +7,10 @@
     <script type="text/javascript">
     window._sitesData = <%=raw @companies.to_json %>;
     window.g = {
-      activateSitePath: "<%=raw activate_site_path(77).gsub '77','' %>",
-      createSitePath: "<%=raw create_site_path %>",
-      addAdminPath: "<%=raw add_admin_path %>",
+      activateSitePath: _.template( unescape("<%=raw activate_site_path('{{ id }}') %>") ),
+      createSitePath: _.template( unescape("<%=raw create_site_path %>") ),
+      addAdminPath: _.template( unescape("<%=raw add_admin_path '{{ id }}' %>") ),
+      removeAdminPath: _.template( unescape("<%=raw remove_admin_path '{{ id }}', '{{ admin_id }}' %>") ),
 
       user_id: <%= current_user.id %>
     };
@@ -51,19 +52,19 @@
       | <% } %>
     button Generate Signup Key
     ul.admins.fancy-selectable
-      li
+      li data-id="{{ owner.id }}"
         img src="{{ owner.logo }}"
         .name
           .email {{ owner.email }}
           .is-owner (Owner)
       | <% for (var i=0; i < admins.length; i++) { %>
-      li
+      li data-id="{{ admins[i].id }}"
         img src="{{ admins[i].logo }}"
         .name {{ admins[i].email }}
       | <% } %>
     button.add-admin Add Collaborator
-    button Revoke Access
-    button Concede Ownership
+    button.remove-admin disabled="disabled" Revoke Access
+    button  disabled="disabled" Concede Ownership
 
   script.admin(type="text/template")
     span.url YoMobi.com/{{ name }}
@@ -118,8 +119,6 @@
         p.error You cannot add yourself as a collaborator.
         | <% } %>
         input type="text" name="email" value="{{ email }}"
-
-        input type="hidden" name="site_id" value="{{ id }}"
       .loading
         h3 Submitting...
         img src="/images/ui/ajax-loader-small.gif"

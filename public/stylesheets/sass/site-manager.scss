@@ -10,6 +10,7 @@ ul.fancy-selectable {
     padding: 6px 10px;
     border: 1px solid #b3b3b3;
     margin-bottom: 4px;
+    cursor: pointer;
   }
   li.ui-selecting { background: #FECA40; }
   li.ui-selected { background: #F39814; color: white; }

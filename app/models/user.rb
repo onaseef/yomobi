@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :companies
-  has_many :keys
+  has_many :keys, :dependent => :delete_all
   has_many :shared_companies, :through => :keys, :source => :company
   
   # Include default devise modules. Others available are:

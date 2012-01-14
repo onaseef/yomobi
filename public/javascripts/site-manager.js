@@ -7,7 +7,8 @@
     },
 
     edit: function () {
-      document.location.href = g.activateSitePath + this.get('id');
+      var url = g.activateSitePath(this.toJSON());
+      document.location.href = url;
     }
   });
   window.Sites = Backbone.Collection.extend({
@@ -43,10 +44,13 @@
   SiteManagerView = Backbone.View.extend({
     el: $('#manager-container'),
     events: {
+      'click .sites li':            'selectSite',
       'click button.edit':          'edit',
       'click button.create':        'create',
-      'click .sites li':            'selectSite',
-      'click button.add-admin':     'addAdmin'
+
+      'click .admins li':           'selectAdmin',
+      'click button.add-admin':     'addAdmin',
+      'click button.remove-admin':  'removeAdmin'
     },
 
     initialize: function () {
@@ -77,9 +81,40 @@
       return this.sites.get(site_id);
     },
 
+    selectAdmin: function (e) {
+      this.$('.admins li').removeClass('ui-selected');
+      $(e.currentTarget).addClass('ui-selected');
+      var isSelf = this.getSelectedAdminId() === g.user_id
+        , userIsOwner = this.getSelectedSite().get('owner').id === g.user_id
+      ;
+      this.$('.remove-admin').prop('disabled',isSelf || !userIsOwner);
+    },
+
+    getSelectedAdminId: function () {
+      return this.$('.admins li.ui-selected').data('id');
+    },
+
     addAdmin: function () {
-      var dialog = new AddAdminDialog({ model:sman.getSelectedSite() });
+      var dialog = this.adminDialog || new AdminDialog();
+      dialog.model = this.getSelectedSite();
       dialog.prompt();
+    },
+
+    removeAdmin: function () {
+      var site = this.getSelectedSite()
+        , admin_id = this.getSelectedAdminId()
+      ;
+      submitForm(site, g.removeAdminPath, {
+        params: { admin_id:admin_id },
+        success: function (resp) {
+          site.set(resp.site);
+          sman.siteDetailsView.render( site );
+        },
+        error: function (resp) {
+          alert('Something went wrong.');
+          util.log('removeAdmin error response:',resp);
+        }
+      });
     },
 
     render: function () {
@@ -104,13 +139,18 @@
     return new Site({ title:'', url:'my-site-url', type:57 });
   }
 
-  function submitForm (path, options) {
+  function submitForm (model, pathTemplate, options) {
     if (!util.reserve('form-submit')) return;
 
-    this.$('form').addClass('submitting');
-    var payload = this.$('form').serialize();
+    var self = this
+      , formSelector = options.formSelector || 'form'
+      , paramHash = options.params ||
+                    util.serializedArrayToHash( this.$(formSelector).serializeArray() )
+      , path = pathTemplate( _.extend(model.toJSON(),paramHash) )
+      , payload = $.param( paramHash )
+    ;
+    this.$(formSelector).addClass('submitting');
 
-    var self = this;
     $.post(path, payload, function (resp) {
       util.release('form-submit');
 
@@ -125,7 +165,9 @@
 
   var NewSiteDialog = Backbone.View.extend({
     template: util.getTemplate('new-site-dialog'),
-
+    events: {
+      'submit': 'submit'
+    },
     initialize: function () {
       _.bindAll(this, 'submit', 'render');
     },
@@ -155,7 +197,7 @@
 
     submit: function () {
       var self = this;
-      submitForm(g.createSitePath, {
+      submitForm(this.model, g.createSitePath, {
         success: function (resp) {
           self.model.set(resp.site);
           self.model.edit();
@@ -164,13 +206,16 @@
           this.render(resp.reasons);
         }
       });
+      return false;
     }
   });
 
 
-  var AddAdminDialog = Backbone.View.extend({
+  var AdminDialog = Backbone.View.extend({
     template: util.getTemplate('add-admin-dialog'),
-
+    events: {
+      'submit': 'submit'
+    },
     initialize: function () {
       _.bindAll(this, 'submit', 'render');
     },
@@ -202,7 +247,7 @@
 
     submit: function () {
       var self = this;
-      submitForm(g.addAdminPath, {
+      submitForm(this.model, g.addAdminPath, {
         success: function (resp) {
           self.model.set(resp.site);
           window.sman.siteDetailsView.render( self.model );
@@ -212,6 +257,7 @@
           self.render(resp.reasons, resp.email);
         }
       });
+      return false;
     }
   });
 

@@ -4,7 +4,7 @@ class Company < ActiveRecord::Base
   belongs_to :user
   alias :owner :user
   belongs_to :company_type
-  has_many :keys
+  has_many :keys, :dependent => :delete_all
   has_many :admins, :through => :keys, :source => :user
   has_many :followers
   has_many :wphotos

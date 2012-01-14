@@ -1,5 +1,6 @@
 class SiteManagerController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :ensure_user_owns_company, :only => [:add_admin, :remove_admin, :delete]
 
   def index
     @companies = current_user.all_companies
@@ -8,8 +9,7 @@ class SiteManagerController < ApplicationController
   def make_active
     company = Company.find_by_id params[:id]
     if current_user.can_access_company?(company)
-      current_user.active_company_id = company.id
-      current_user.save
+      current_user.update_attribute :active_company_id, company.id
     end
     redirect_to builder_main_path
   end
@@ -65,32 +65,45 @@ class SiteManagerController < ApplicationController
   end
 
   def add_admin
-    @errors = {}
-    company = Company.find_by_id params[:site_id]
     admin = User.find_by_email params[:email]
+    errors = validate_company_admin(@company, admin)
 
-    if admin.nil? || company.nil? || company.owner != current_user
-      # don't let them know they have access for security reasons
-      @errors['email'] = true
-    elsif admin == current_user
-      @errors['self'] = true
-    end
-
-    if @errors.count > 0
-      render :json => { :status => :error, :reasons => @errors, :email => params[:email] }
+    if errors.count > 0
+      render :json => { :status => :error, :reasons => errors, :email => params[:email] }
     else
-      Key.create :user => admin, :company => company
-      render :json => { :status => :ok, :site => company }
+      Key.create :user => admin, :company => @company
+      render :json => { :status => :ok, :site => @company }
     end
   end
 
   def remove_admin
+    admin = User.find_by_id params[:admin_id]
+    errors = validate_company_admin(@company, admin)
+
+    if errors.count > 0
+      render :json => { :status => :error, :reasons => errors, :admin_id => params[:admin_id] }
+    else
+      Key.where(:user_id => admin.id, :company_id => @company.id).each {|key|
+        key.user.update_attribute :active_company_id, nil
+        key.delete
+      }
+      render :json => { :status => :ok, :site => @company }
+    end
   end
 
   def gen_signup_key
   end
 
   private
+
+  def ensure_user_owns_company
+    @company = Company.find_by_id params[:id]
+    if @company.owner != current_user
+      render :json => { :status => :error,
+                        :reasons => { :insufficient_permissions => true} }
+      return false
+    end
+  end
 
   def reserved_site_url?(site_url)
     RESERVED_SITE_URLS.include? site_url
@@ -103,6 +116,19 @@ class SiteManagerController < ApplicationController
     rescue RestClient::ResourceNotFound => nfe
       return false
     end
+  end
+
+  def validate_company_admin(company,admin)
+    errors = {}
+    if admin.nil?
+      errors['email'] = true
+    elsif company.nil? || company.owner != current_user
+      # don't let them know they have access for security reasons
+      errors['email'] = true
+    elsif admin == current_user
+      errors['self'] = true
+    end
+    return errors
   end
 
 end
