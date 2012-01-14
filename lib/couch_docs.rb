@@ -213,7 +213,6 @@ class CouchDocs
         :wsubtype => "twitter",
         :host => 'http://twitter.com/',
         :basename => 'twitter',
-        :singleton => true
       },
 
       {
@@ -221,7 +220,6 @@ class CouchDocs
         :wsubtype => "facebook",
         :host => 'http://facebook.com/',
         :basename => 'facebook',
-        :singleton => true
       },
 
       {
@@ -357,7 +355,6 @@ class CouchDocs
         :wsubtype => "products",
         :catTypeName => "Folder",
         :itemTypeName => "Item",
-        :singleton => true,
         "struct" => {
           :_data => { :_id => "struct", :name => "Products", :_order => [] },
         }
