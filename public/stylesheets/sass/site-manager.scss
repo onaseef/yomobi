@@ -21,12 +21,21 @@ ul.fancy-selectable {
   border-top: none;
 }
 
-#sites-container {
+.site-list-wrap {
   float: left;
+  width: 360px;
+  margin: 20px;
 }
 
-#admins-container {
+.site-details-wrap {
   float: left;
+  margin: 20px;
+  ul.admins {
+    height: 230px;
+    overflow: auto;
+    margin-top: 20px;
+    width: 500px;
+  }
 }
 
 form#account-setup-box.dialog {

@@ -33,7 +33,7 @@ class SiteManagerController < ApplicationController
       @errors['type'] = 'invalid'
     end
 
-    if @errors.size == 0
+    if @errors.count == 0
       begin
         puts "Creating company with company_type_id: #{company_type}"
         result = current_user.companies.create \
@@ -65,6 +65,23 @@ class SiteManagerController < ApplicationController
   end
 
   def add_admin
+    @errors = {}
+    company = Company.find_by_id params[:site_id]
+    admin = User.find_by_email params[:email]
+
+    if admin.nil? || company.nil? || company.owner != current_user
+      # don't let them know they have access for security reasons
+      @errors['email'] = true
+    elsif admin == current_user
+      @errors['self'] = true
+    end
+
+    if @errors.count > 0
+      render :json => { :status => :error, :reasons => @errors, :email => params[:email] }
+    else
+      Key.create :user => admin, :company => company
+      render :json => { :status => :ok, :site => company }
+    end
   end
 
   def remove_admin

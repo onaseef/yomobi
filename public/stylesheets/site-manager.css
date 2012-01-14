@@ -19,11 +19,19 @@ ul.fancy-selectable {
   border: 1px solid #b3b3b3;
   border-top: none; }
 
-#sites-container {
-  float: left; }
+.site-list-wrap {
+  float: left;
+  width: 360px;
+  margin: 20px; }
 
-#admins-container {
-  float: left; }
+.site-details-wrap {
+  float: left;
+  margin: 20px; }
+  .site-details-wrap ul.admins {
+    height: 230px;
+    overflow: auto;
+    margin-top: 20px;
+    width: 500px; }
 
 form#account-setup-box.dialog .loading {
   display: none; }

@@ -29,7 +29,7 @@ Yomobi::Application.routes.draw do
   delete  "site-manager/sites/:id" => 'site_manager#delete'
   post    "site-manager/default" => 'site_manager#make_default'
 
-  post "site-manager/admin/add" => 'site_manager#add_admin'
+  post "site-manager/admin/add" => 'site_manager#add_admin', :as => :add_admin
   post "site-manager/admin/remove" => 'site_manager#remove_admin'
   post "site-manager/generate-key" => 'site_manager#gen_signup_key'
 
