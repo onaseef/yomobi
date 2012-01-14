@@ -57,6 +57,7 @@ class RefreshCompanyTypes < ActiveRecord::Migration
     Transportation
     Travel\ /\ Leisure
     University
+    Other
     }.each do |type_name|
       CompanyType.create :name => type_name
     end
