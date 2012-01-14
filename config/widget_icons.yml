@@ -34,6 +34,10 @@
 - { name: address-book-1, pname: Address Book }
 - { name: 283.portfolio-1, pname: Portfolio }
 - { name: 283.portfolio-2, pname: Portfolio }
+- { name: news, pname: News }
+- { name: news-2, pname: News }
+- { name: award-1, pname: Awards }
+- { name: award-2, pname: Awards }
 - { separator: Building }
 - { name: building-1, pname: Building }
 - { name: building-2, pname: Building }
@@ -42,15 +46,22 @@
 - { name: 219.leed-green-building, pname: LEED / Green Building }
 - { name: 217.construction, pname: Construction }
 - { separator: Interactive / Social Media }
-- { name: booking-request, pname: Booking Request }
-- { name: call-me-back, pname: Call Me Back }
 - { name: call-us, pname: Call }
+- { name: call-me-back, pname: Call Me Back }
 - { name: keep-me-informed, pname: Keep Me Informed }
 - { name: leave-a-message, pname: Message }
+- { name: booking-request, pname: Booking Request }
 - { name: facebook, pname: facebook }
 - { name: twitter, pname: twitter }
 - { name: share, pname: Share }
 - { name: tell-a-friend, pname: Tell A Friend }
+- { name: reviews, pname: Reviews }
+- { name: reviews-2, pname: Reviews }
+- { name: feedback-1, pname: Message }
+- { name: feedback-2, pname: Message }
+- { name: feedback-3, pname: Message }
+- { name: 21.mailing-list-1, pname: Mailing List }
+- { name: 21.mailing-list-2, pname: Mailing List }
 - { name: video, pname: Video }
 - { name: video-2, pname: Video }
 - { name: photos, pname: Photos }
@@ -59,11 +70,10 @@
 - { name: flickr, pname: flickr }
 - { name: photo-bucket, pname: photobucket }
 - { name: picasa, pname: picasa }
-- { name: reviews, pname: Reviews }
-- { name: reviews-2, pname: Reviews }
 - { separator: City }
 - { name: 164.311-info, pname: 311 / Info }
 - { name: 165.911-emergecy, pname: 911 / Emergecy }
+- { name: 183.report-a-problem-1, pname: Report a Problem }
 - { name: 17.human-resources, pname: Human Resources }
 - { name: 170.electricty, pname: Electricty }
 - { name: 171.fire, pname: Fire }
@@ -81,9 +91,10 @@
 - { name: 188.water-utility-2, pname: Water Utility }
 - { name: 189.road-work, pname: Road Work }
 - { name: 180.recreation, pname: Recreation }
+- { name: 28.park, pname: Park }
+- { name: 34.playground-1, pname: Playground }
 - { name: 181.permits, pname: Permits }
 - { name: 182.police, pname: Police }
-- { name: 183.report-a-problem-1, pname: Report a Problem }
 - { name: 184.small-business, pname: Small Business }
 - { name: 185.tourism, pname: Tourism }
 - { name: 186.utilities, pname: Utilities }
@@ -128,6 +139,7 @@
 - { name: 89.electrician, pname: Electrician }
 - { name: 107.plumber, pname: Plumber }
 - { name: 104.nanny-services, pname: Nanny Services }
+- { name: 233.allergist-1, pname: Allergist }
 - { separator: Auto }
 - { name: 126.car-dealership, pname: Car Dealership }
 - { name: 130.leasing, pname: Car Leasing }
@@ -160,13 +172,17 @@
 - { name: 286.independent, pname: Independent }
 - { name: 287.libertarian, pname: Libertarian }
 - { separator: Entertainment / Night Life }
-- { name: 3.arts-culture, pname: Arts / Culture }
+- { name: 251.nightlife, pname: Nightlife }
 - { name: 245.showtimes, pname: Showtimes }
+- { name: 255.upcoming-events, pname: Upcoming Events }
+- { name: 249.entertainment-schedule, pname: Entertainment Schedule }
+- { name: 3.arts-culture, pname: Arts / Culture }
 - { name: 246.exhibit, pname: Exhibit }
 - { name: 247.concerts, pname: Concerts }
 - { name: 250.movies, pname: Movies }
 - { name: 252.orchestra, pname: Orchestra }
 - { name: 253.shows-live-music, pname: Shows / Live Music }
+- { name: 24.music-songs, pname: Music / Songs }
 - { name: 254.theaters, pname: Theater }
 - { name: 256.festivals, pname: Festival }
 - { name: 158.festival, pname: Festival }
@@ -184,6 +200,7 @@
 - { name: 40.training-2, pname: Training }
 - { name: 263.general-exams, pname: General Exams }
 - { name: 191.school, pname: School }
+- { name: 351.school-bus, pname: School Bus }
 - { name: 192.academics, pname: Academics }
 - { name: 193.athletics, pname: Athletics }
 - { name: 194.class-schedule-1, pname: Class Schedule }
@@ -195,6 +212,7 @@
 - { name: 202.technical-college, pname: Technical College }
 - { name: 203.community-college, pname: Community College }
 - { name: 25.music-lessons, pname: Music Lessons }
+- { name: 24.music-songs, pname: Music / Songs }
 - { separator: Professions }
 - { name: profession-medical-1, pname: Medical }
 - { name: profession-legal-1, pname: Legal }
@@ -203,6 +221,7 @@
 - { name: 234.dentist-1, pname: Dentist }
 - { name: 89.electrician, pname: Electrician }
 - { name: 107.plumber, pname: Plumber }
+- { name: therapy-1, pname: Physical Therapist }
 - { name: 104.nanny-services, pname: Nanny Services }
 - { name: 108.pool-cleaning, pname: Pool Cleaning }
 - { name: 109.printing-services, pname: Printing Services }
@@ -381,24 +400,35 @@
 - { name: 210.swimming, pname: Swimming }
 - { name: 211.weight-lifting, pname: Weight Lifting }
 - { name: 212.yoga, pname: Yoga }
-- { separator: Health }
-- { name: 173.health-and-human-services-1, pname: Health / Human Services }
-- { name: 173.health-and-human-services, pname: Health / Human Services }
+- { separator: Insurance }
+- { name: 222.home-insurance-1, pname: Home Insurance }
+- { name: 225.vehicle-insurance-1, pname: Vehicle Insurance }
 - { name: 226.vision-insurance-1, pname: Vision Insurance }
 - { name: 226.vision-insurance-2, pname: Vision Insurance }
 - { name: 221.dental-insurance, pname: Dental Insurance }
 - { name: 223.medical-insurance-1, pname: Medical Insurance }
 - { name: 223.medical-insurance-2, pname: Medical Insurance }
 - { name: 224.pet-insurance, pname: Pet Insurance }
-- { name: 235.home-healthcare, pname: Home Healthcare }
+- { separator: Health }
 - { name: 237.hospital-clinic, pname: Hospital / Clinic }
-- { name: 238.nursing-home, pname: Nursing Home }
-- { name: 240.pediatrician, pname: Pediatrician }
 - { name: 241.pharmacy, pname: Pharmacy }
 - { name: 242.urgent-care, pname: Urgent Care }
+- { name: 236.hospice, pname: Hospice }
+- { name: 233.allergist-1, pname: Allergist }
+- { name: 173.health-and-human-services-1, pname: Health / Human Services }
+- { name: 173.health-and-human-services, pname: Health / Human Services }
+- { name: 235.home-healthcare, pname: Home Healthcare }
+- { name: 238.nursing-home, pname: Nursing Home }
+- { name: 240.pediatrician, pname: Pediatrician }
 - { name: 243.womens-health, pname: Women's Health }
 - { name: 244.acupuncture, pname: Acupuncture }
 - { name: 272.vaccination, pname: Vaccination }
+- { name: 226.vision-insurance-1, pname: Vision Insurance }
+- { name: 226.vision-insurance-2, pname: Vision Insurance }
+- { name: 221.dental-insurance, pname: Dental Insurance }
+- { name: 223.medical-insurance-1, pname: Medical Insurance }
+- { name: 223.medical-insurance-2, pname: Medical Insurance }
+- { name: 224.pet-insurance, pname: Pet Insurance }
 - { separator: Beauty / Personal Care }
 - { name: 83.stylist-1, pname: Stylist }
 - { name: 83.stylist-2, pname: Stylist }
@@ -454,29 +484,25 @@
 - { name: 341.outdoor-activities, pname: Outdoor Activities }
 - { name: 342.rafting, pname: Rafting }
 - { name: 343.scuba-diving, pname: Scuba Diving }
+- { separator: Services }
+- { name: 104.nanny-services, pname: Nanny Services }
+- { name: 100.maid-services, pname: Cleaning Service }
+- { name: 112.steam-cleaning, pname: Steam Cleaning }
+- { name: 102.moving-services, pname: Moving Service }
+- { name: 218.landscaping, pname: Landscaping }
+- { name: 97.lawn-care, pname: Lawn Care }
+- { name: therapy-1, pname: Physical Therapy }
 - { separator: More Icons }
-- { name: feedback-1, pname: Message }
-- { name: feedback-2, pname: Message }
-- { name: feedback-3, pname: Message }
 - { name: link, pname: Link }
-- { name: news, pname: News }
-- { name: news-2, pname: News }
-- { name: award-1, pname: Awards }
-- { name: award-2, pname: Awards }
 - { name: articles, pname: Articles }
 - { name: business-job-1, pname: Job / Employment }
 - { name: business-job-2, pname: Job / Employment }
 - { name: business-partners, pname: Business Partners }
 - { name: guidelines, pname: Guidelines }
-- { name: therapy-1, pname: Therapy }
 - { name: therapy-2, pname: Therapy }
-- { name: weather-1, pname: Weather }
 - { name: 1.apparel-clothing, pname: Apparel / Cothing }
 - { name: 10.departments-1, pname: Departments }
 - { name: 10.departments-2, pname: Departments }
-- { name: 100.maid-services, pname: Cleaning Service }
-- { name: 112.steam-cleaning, pname: Steam Cleaning }
-- { name: 102.moving-services, pname: Moving Service }
 - { name: 103.music-shop, pname: Music Shop }
 - { name: 105.newsstand-1, pname: Newsstand }
 - { name: 105.newsstand-2, pname: Newsstand }
@@ -499,30 +525,20 @@
 - { name: 20.login-register-1, pname: Login / Register }
 - { name: 20.login-register-2, pname: Login / Register }
 - { name: 200.campus-life, pname: Campus Life }
-- { name: 21.mailing-list-1, pname: Mailing List }
-- { name: 21.mailing-list-2, pname: Mailing List }
-- { name: 218.landscaping, pname: Landscaping }
 - { name: 220.remodeling, pname: Remodeling }
-- { name: 222.home-insurance-1, pname: Home Insurance }
 - { name: 222.home-security, pname: Home Security }
-- { name: 225.vehicle-insurance-1, pname: Vehicle Insurance }
 - { name: 23.membership-1, pname: Membership }
 - { name: 23.membership-2, pname: Membership }
-- { name: 233.allergist-1, pname: Allergist }
-- { name: 24.music-songs, pname: Music / Songs }
 - { name: 26.ngo, pname: N.G.O. }
 - { name: 27.organizational-chart, pname: Organizational Chart }
-- { name: 28.park, pname: Park }
 - { name: 29.party-supplies-1, pname: Party Supplies }
 - { name: 29.party-supplies-2, pname: Party Supplies }
 - { name: 31.piano, pname: Piano }
 - { name: 33.play-1, pname: Play }
 - { name: 33.play-2, pname: Play }
-- { name: 34.playground-1, pname: Playground }
 - { name: 349.bicycle, pname: Bicycle }
 - { name: 350.bicycle-rental-1, pname: Bicycle Rental }
 - { name: 350.bicycle-rental-2, pname: Bicycle Rental }
-- { name: 351.school-bus, pname: School Bus }
 - { name: 36.privacy, pname: Privacy }
 - { name: 37.product-catalog, pname: Product aalog }
 - { name: 38.staff, pname: Staff }
@@ -551,8 +567,5 @@
 - { name: 95.internet-cafe-1, pname: Internet Cafe }
 - { name: 95.internet-cafe-2, pname: Internet Cafe }
 - { name: 96.laundromat, pname: Laundromat }
-- { name: 97.lawn-care, pname: Lawn Care }
 - { name: 98.lighting-store, pname: Lighting Store }
 - { name: 121.shoes, pname: Shoes / Shoe Store }
-- { name: 236.hospice, pname: Hospice }
-- { name: 251.nightlife, pname: Nightlife }
