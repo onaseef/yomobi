@@ -3,7 +3,8 @@
   window.Site = Backbone.Model.extend({
 
     initialize: function () {
-      this.set({ owned:(this.get('owner').id === g.user_id) });
+      var isOwnedByUser = (this.get('owner') || {}).id === g.user_id;
+      this.set({ isOwnedByUser:isOwnedByUser });
     },
 
     edit: function () {
@@ -203,7 +204,7 @@
           self.model.edit();
         },
         error: function (resp) {
-          this.render(resp.reasons);
+          self.render(resp.reasons);
         }
       });
       return false;

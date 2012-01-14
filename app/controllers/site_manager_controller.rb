@@ -33,6 +33,8 @@ class SiteManagerController < ApplicationController
       @errors['type'] = 'invalid'
     end
 
+    @errors['maxSiteCount'] = MAX_SITE_COUNT if current_user.companies.count >= MAX_SITE_COUNT
+
     if @errors.count == 0
       begin
         puts "Creating company with company_type_id: #{company_type}"

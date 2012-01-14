@@ -40,14 +40,14 @@
   script.site-li(type="text/template")
     span.url
       ' YoMobi.com/{{ url }}
-      | <% if (owned === true) { %>
+      | <% if (isOwnedByUser === true) { %>
       | *
       | <% } %>
 
   script.site-details(type="text/template")
     h3.active-site
       ' Selected: YoMobi.com/{{ url }}
-      | <% if (owned === true) { %>
+      | <% if (isOwnedByUser === true) { %>
       | *
       | <% } %>
     button Generate Signup Key
@@ -72,6 +72,9 @@
   script.new-site-dialog(type="text/template")
     form#account-setup-box.new-site.dialog title="Create a New Site"
       .fields
+        | <% if (errors.maxSiteCount) { %>
+        p.error You are at your site count limit (max is {{ errors.maxSiteCount }})
+        | <% } %>
         h3 Site Name
         | <% if (errors.title) { %>
         p.error
