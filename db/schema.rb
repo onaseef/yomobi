@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120113202409) do
+ActiveRecord::Schema.define(:version => 20120114225057) do
 
   create_table "carriers", :force => true do |t|
     t.string    "name"
@@ -79,6 +79,14 @@ ActiveRecord::Schema.define(:version => 20120113202409) do
     t.integer  "user_id"
     t.integer  "company_id"
     t.boolean  "owner"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "signup_keys", :force => true do |t|
+    t.integer  "company_id"
+    t.string   "key"
+    t.boolean  "expired",    :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

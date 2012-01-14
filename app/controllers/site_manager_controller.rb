@@ -1,6 +1,7 @@
 class SiteManagerController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :ensure_user_owns_company, :only => [:add_admin, :remove_admin, :delete]
+  before_filter :ensure_user_owns_company,
+                :only => [:add_admin, :remove_admin, :delete, :gen_signup_key]
 
   def index
     @companies = current_user.all_companies
@@ -94,6 +95,11 @@ class SiteManagerController < ApplicationController
   end
 
   def gen_signup_key
+    if (key = SignupKey.create :company => @company)
+      render :json => { :status => :ok, :site => @company }
+    else
+      render :json => { :status => :error }
+    end
   end
 
   private

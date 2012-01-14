@@ -11,6 +11,7 @@
       createSitePath: _.template( unescape("<%=raw create_site_path %>") ),
       addAdminPath: _.template( unescape("<%=raw add_admin_path '{{ id }}' %>") ),
       removeAdminPath: _.template( unescape("<%=raw remove_admin_path '{{ id }}', '{{ admin_id }}' %>") ),
+      genSignupKey: _.template( unescape("<%=raw gen_signup_key_path '{{ id }}' %>") ),
 
       user_id: <%= current_user.id %>
     };
@@ -50,7 +51,17 @@
       | <% if (isOwnedByUser === true) { %>
       | *
       | <% } %>
-    button Generate Signup Key
+
+    button.gen-signup-key Generate Signup Key
+    img.help-bubble src="/images/ui/help-bubble.png" title=t('site_manager.help.signup_keys')
+    | <% if (signupKeys.length > 0) { %>
+    h3 Active Signup Keys
+    ul.signup-keys
+      | <% for (var i=0; i < signupKeys.length; i++) { %>
+      li= "#{new_user_registration_url}?sk={{ signupKeys[i] }}"
+      | <% } %>
+    | <% } %>
+
     ul.admins.fancy-selectable
       li data-id="{{ owner.id }}"
         img src="{{ owner.logo }}"
@@ -62,6 +73,7 @@
         img src="{{ admins[i].logo }}"
         .name {{ admins[i].email }}
       | <% } %>
+
     button.add-admin Add Collaborator
     button.remove-admin disabled="disabled" Revoke Access
     button  disabled="disabled" Concede Ownership

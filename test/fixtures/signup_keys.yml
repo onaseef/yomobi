@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  company: 
+  key: MyString
+  used: false
+
+two:
+  company: 
+  key: MyString
+  used: false

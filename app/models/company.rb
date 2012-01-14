@@ -4,8 +4,11 @@ class Company < ActiveRecord::Base
   belongs_to :user
   alias :owner :user
   belongs_to :company_type
+
   has_many :keys, :dependent => :delete_all
   has_many :admins, :through => :keys, :source => :user
+  has_many :signup_keys, :dependent => :delete_all
+
   has_many :followers
   has_many :wphotos
   
@@ -80,7 +83,8 @@ class Company < ActiveRecord::Base
       url: self.db_name,
       logo: self.logo.url(:mobile),
       owner: self.user,
-      admins: self.admins
+      admins: self.admins,
+      signupKeys: self.signup_keys.where(:expired => false)
     }
   end
 

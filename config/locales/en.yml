@@ -38,6 +38,10 @@ en:
         url: "Make this picture a clickable URL.<br><b>Click ? for more information</b>"
         youtube: "Add a video to your page.<br><b>Click ? for more information.</b>"
 
+  site_manager:
+    help:
+      signup_keys: "Useful information about signup keys."
+
   widgets:
     helpText:
       about-us:

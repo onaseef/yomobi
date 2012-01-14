@@ -38,6 +38,7 @@
 
     render: function (site) {
       $(this.el).html( this.template(site.toJSON()) );
+      this.$('.help-bubble').simpletooltip(undefined,'help');
     }
   });
 
@@ -45,13 +46,15 @@
   SiteManagerView = Backbone.View.extend({
     el: $('#manager-container'),
     events: {
-      'click .sites li':            'selectSite',
-      'click button.edit':          'editSite',
-      'click button.create':        'createSite',
+      'click .sites li':             'selectSite',
+      'click button.edit':           'editSite',
+      'click button.create':         'createSite',
 
-      'click .admins li':           'selectAdmin',
-      'click button.add-admin':     'addAdmin',
-      'click button.remove-admin':  'removeAdmin'
+      'click .admins li':            'selectAdmin',
+      'click button.add-admin':      'addAdmin',
+      'click button.remove-admin':   'removeAdmin',
+
+      'click button.gen-signup-key': 'genSignupKey'
     },
 
     initialize: function () {
@@ -74,7 +77,10 @@
     selectSite: function (e) {
       this.el.find('.sites li').removeClass('ui-selected');
       $(e.currentTarget).addClass('ui-selected');
-      this.siteDetailsView.render( this.getSelectedSite() );
+
+      var site = this.getSelectedSite();
+      this.siteDetailsView.render(site);
+      this.$('.gen-signup-key').prop('disabled', !site.get('isOwnedByUser'));
     },
 
     getSelectedSite: function () {
@@ -110,10 +116,20 @@
         success: function (resp) {
           site.set(resp.site);
           sman.siteDetailsView.render( site );
-        },
-        error: function (resp) {
-          alert('Something went wrong.');
-          util.log('removeAdmin error response:',resp);
+        }
+      });
+    },
+
+    genSignupKey: function () {
+      var site = this.getSelectedSite();
+      var button = this.$('.gen-signup-key').prop('disabled',true);
+
+      submitForm(site, g.genSignupKey, {
+        params: {},
+        success: function (resp) {
+          site.set(resp.site);
+          sman.siteDetailsView.render( site );
+          button.prop('disabled',false);
         }
       });
     },
@@ -159,9 +175,14 @@
         options.success(resp);
       }
       else {
-        options.error(resp);
+        (options.error || defaultErrorFunc)(resp);
       }
     });
+  }
+
+  function defaultErrorFunc (resp) {
+    alert('Something went wrong.');
+    util.log('removeAdmin error response:', resp);
   }
 
   var NewSiteDialog = Backbone.View.extend({
