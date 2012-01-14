@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   def company
     co = Company.find_by_id self.active_company_id
     if co.nil?
-      co = self.companies.last
+      co = self.all_companies.last
       (self.active_company_id = co.id) && save unless co.nil?
     end
     co
@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   def default_company
     co = Company.find_by_id self.default_company_id
     if co.nil?
-      co = self.companies.first
+      co = self.all_companies.first
       (self.default_company_id = co.id) && save unless co.nil?
     end
     co
@@ -59,7 +59,8 @@ class User < ActiveRecord::Base
       id: self.id,
       email: self.email,
       firstName: self.first_name,
-      lastName: self.last_name
+      lastName: self.last_name,
+      logo: self.default_company.logo.url(:mobile)
     }
   end
 

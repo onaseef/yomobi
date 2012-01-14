@@ -51,13 +51,15 @@
       | <% } %>
     button Generate Signup Key
     ul.admins.fancy-selectable
+      li
+        img src="{{ owner.logo }}"
+        .name
+          .email {{ owner.email }}
+          .is-owner (Owner)
       | <% for (var i=0; i < admins.length; i++) { %>
       li
-        img src="http://www.yomobi.com/images/default-logo_mobile.png"
+        img src="{{ admins[i].logo }}"
         .name {{ admins[i].email }}
-      | <% } %>
-      | <% if (admins.length === 0) { %>
-      h3 No Collaborators
       | <% } %>
     button.add-admin Add Collaborator
     button Revoke Access
