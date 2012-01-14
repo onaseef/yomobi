@@ -65,7 +65,7 @@ docs:
       - keep-me-informed
   -
     types:
-      - Bank / Financial [products, services, Services]
+      - Bank / Financial Services
     widgets:
       - [custom-page, about-us, About Us]
       - call-us
@@ -129,7 +129,7 @@ docs:
       - keep-me-informed
   -
     types:
-      - Business [products, services, Services]
+      - Business Services
     widgets:
       - [custom-page, about-us, About Us]
       - call-us
@@ -255,7 +255,7 @@ docs:
       - keep-me-informed
   -
     types:
-      - Consulting / Business [products, services, Services]
+      - Consulting / Business Services
     widgets:
       - [custom-page, about-us, About Us]
       - call-us
@@ -272,7 +272,7 @@ docs:
       - full-website
     tabs:
       - call-us
-      - [products, services, Services]
+      - services
       - keep-me-informed
   -
     types:
@@ -313,7 +313,7 @@ docs:
       - full-website
     tabs:
       - call-us
-      - [products, services, Services]
+      - services
       - keep-me-informed
   -
     types:
@@ -334,7 +334,7 @@ docs:
       - full-website
     tabs:
       - call-us
-      - [products, services, Services]
+      - services
       - keep-me-informed
   -
     types:
@@ -356,7 +356,7 @@ docs:
       - full-website
     tabs:
       - call-us
-      - [products, services, Services]
+      - services
       - keep-me-informed
   -
     types:
@@ -399,7 +399,7 @@ docs:
       - full-website
     tabs:
       - business-hours
-      - [products, services, Services]
+      - services
       - keep-me-informed
   -
     types:
@@ -420,7 +420,7 @@ docs:
       - full-website
     tabs:
       - locations
-      - [products, services, Services]
+      - services
       - keep-me-informed
   -
     types:
@@ -441,7 +441,7 @@ docs:
       - full-website
     tabs:
       - call-us
-      - [products, services, Services]
+      - services
       - keep-me-informed
   -
     types:
@@ -463,7 +463,7 @@ docs:
       - full-website
     tabs:
       - call-us
-      - [products, services, Services]
+      - services
       - keep-me-informed
   -
     types:
@@ -547,7 +547,7 @@ docs:
       - full-website
     tabs:
       - call-us
-      - [products, services, Services]
+      - services
       - keep-me-informed
   -
     types:
@@ -568,7 +568,7 @@ docs:
       - full-website
     tabs:
       - call-us
-      - [products, services, Services]
+      - services
       - keep-me-informed
   -
     types:
@@ -590,7 +590,7 @@ docs:
       - full-website
     tabs:
       - locations
-      - [products, services, Services]
+      - services
       - keep-me-informed
   -
     types:
@@ -698,7 +698,7 @@ docs:
       - twitter
       - full-website
     tabs:
-      - [custom-page, about-us, About Us]
+      - about-us
       - business-hours
       - keep-me-informed
   -
@@ -718,7 +718,7 @@ docs:
       - twitter
       - full-website
     tabs:
-      - [custom-page, about-us, About Us]
+      - about-us
       - business-hours
       - keep-me-informed
   -
@@ -744,7 +744,7 @@ docs:
       - keep-me-informed
   -
     types:
-      - Pet [products, services, Services]
+      - Pet Services
     widgets:
       - [custom-page, about-us, About Us]
       - call-us
@@ -780,11 +780,11 @@ docs:
       - full-website
     tabs:
       - call-us
-      - [link, event-calendar, Event Calendar]
+      - event-calendar
       - keep-me-informed
   -
     types:
-      - Professional [products, services, Services]
+      - Professional Services
     widgets:
       - [custom-page, about-us, About Us]
       - call-us
@@ -800,7 +800,7 @@ docs:
       - full-website
     tabs:
       - call-us
-      - [products, services, Services]
+      - services
       - keep-me-informed
   -
     types:
@@ -821,7 +821,7 @@ docs:
       - full-website
     tabs:
       - call-us
-      - [products, services, Services]
+      - services
       - keep-me-informed
 
   -
@@ -958,7 +958,7 @@ docs:
       - twitter
       - full-website
     tabs:
-      - [products, services, Services]
+      - services
       - booking-request
       - keep-me-informed
   -
@@ -1021,8 +1021,8 @@ docs:
       - twitter
       - full-website
     tabs:
-      - [custom-page, about-us, About Us]
-      - [products, services, Services]
+      - about-us
+      - services
       - keep-me-informed
   -
     types:
@@ -1084,7 +1084,7 @@ docs:
       - full-website
     tabs:
       - call-us
-      - [products, services, Services]
+      - services
       - keep-me-informed
   -
     types:
@@ -1096,6 +1096,25 @@ docs:
       - business-hours
       - locations
       - event-calendar
+      - keep-me-informed
+      - leave-a-message
+      - call-me-back
+      - tell-a-friend
+      - facebook
+      - twitter
+      - full-website
+    tabs:
+      - call-us
+      - find-us
+      - keep-me-informed
+  -
+    types:
+      - Other
+    widgets:
+      - [custom-page, about-us, About Us]
+      - call-us
+      - find-us
+      - business-hours
       - keep-me-informed
       - leave-a-message
       - call-me-back
