@@ -45,8 +45,8 @@
     el: $('#manager-container'),
     events: {
       'click .sites li':            'selectSite',
-      'click button.edit':          'edit',
-      'click button.create':        'create',
+      'click button.edit':          'editSite',
+      'click button.create':        'createSite',
 
       'click .admins li':           'selectAdmin',
       'click button.add-admin':     'addAdmin',
@@ -61,11 +61,11 @@
       this.render();
     },
 
-    edit: function () {
+    editSite: function () {
       this.getSelectedSite().edit();
     },
 
-    create: function () {
+    createSite: function () {
       var dialog = new NewSiteDialog({ model:newBlankSite() });
       dialog.prompt();
     },
