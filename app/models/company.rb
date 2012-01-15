@@ -3,6 +3,7 @@ class Company < ActiveRecord::Base
   
   belongs_to :user
   alias :owner :user
+  alias :owner= :user=
   belongs_to :company_type
 
   has_many :keys, :dependent => :delete_all

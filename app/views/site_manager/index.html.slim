@@ -12,8 +12,11 @@
       addAdminPath: _.template( unescape("<%=raw add_admin_path '{{ id }}' %>") ),
       removeAdminPath: _.template( unescape("<%=raw remove_admin_path '{{ id }}', '{{ admin_id }}' %>") ),
       genSignupKey: _.template( unescape("<%=raw gen_signup_key_path '{{ id }}' %>") ),
+      concedeSitePath: _.template( unescape("<%=raw concede_site_path '{{ id }}' %>") ),
 
-      user_id: <%= current_user.id %>
+      user_id: <%= current_user.id %>,
+
+      concedeSiteConfirmation: "<%=t 'site_manager.confirm.concede_site' %>"
     };
     </script>
   = javascript_include_tag 'site-manager'
@@ -31,9 +34,9 @@
       h3.active-site Please select a site on the left.
       button disabled="disabled" Generate Signup Key
       ul.admins.fancy-selectable
-      button disabled="disabled" Add Collaborator
-      button disabled="disabled" Revoke Access
-      button disabled="disabled" Concede Ownership
+    button.add-admin    disabled="disabled" Add Collaborator
+    button.remove-admin disabled="disabled" Revoke Access
+    button.concede      disabled="disabled" Concede Site Ownership
   .clearfix
 
 
@@ -73,10 +76,6 @@
         img src="{{ admins[i].logo }}"
         .name {{ admins[i].email }}
       | <% } %>
-
-    button.add-admin Add Collaborator
-    button.remove-admin disabled="disabled" Revoke Access
-    button  disabled="disabled" Concede Ownership
 
   script.admin(type="text/template")
     span.url YoMobi.com/{{ name }}

@@ -41,6 +41,8 @@ en:
   site_manager:
     help:
       signup_keys: "Useful information about signup keys."
+    confirm:
+      concede_site: Are you sure? You will lose ownership of this site.
 
   widgets:
     helpText:

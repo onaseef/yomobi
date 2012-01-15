@@ -3,6 +3,10 @@
   window.Site = Backbone.Model.extend({
 
     initialize: function () {
+      this.updateOwnedByUser();
+    },
+
+    updateOwnedByUser: function () {
       var isOwnedByUser = (this.get('owner') || {}).id === g.user_id;
       this.set({ isOwnedByUser:isOwnedByUser });
     },
@@ -33,12 +37,15 @@
 
 
   SiteDetailsView = Backbone.View.extend({
-    el: $('#manager-container .details'),
+    el: $('#manager-container .site-details-wrap'),
     template: util.getTemplate('site-details'),
 
     render: function (site) {
-      $(this.el).html( this.template(site.toJSON()) );
+      this.$('.details').html( this.template(site.toJSON()) );
       this.$('.help-bubble').simpletooltip(undefined,'help');
+      this.$('.gen-signup-key, .add-admin')
+        .prop('disabled', !site.get('isOwnedByUser'));
+      this.$('.remove-admin, .concede').prop('disabled', true);
     }
   });
 
@@ -53,6 +60,7 @@
       'click .admins li':            'selectAdmin',
       'click button.add-admin':      'addAdmin',
       'click button.remove-admin':   'removeAdmin',
+      'click button.concede':        'concedeSite',
 
       'click button.gen-signup-key': 'genSignupKey'
     },
@@ -62,7 +70,7 @@
 
       this.sites = new Sites(window._sitesData);
       this.siteDetailsView = new SiteDetailsView();
-      this.render();
+      this.renderInit();
     },
 
     editSite: function () {
@@ -80,7 +88,6 @@
 
       var site = this.getSelectedSite();
       this.siteDetailsView.render(site);
-      this.$('.gen-signup-key').prop('disabled', !site.get('isOwnedByUser'));
     },
 
     getSelectedSite: function () {
@@ -94,7 +101,8 @@
       var isSelf = this.getSelectedAdminId() === g.user_id
         , userIsOwner = this.getSelectedSite().get('owner').id === g.user_id
       ;
-      this.$('.remove-admin').prop('disabled',isSelf || !userIsOwner);
+      this.$('.remove-admin, .concede')
+        .prop('disabled',isSelf || !userIsOwner);
     },
 
     getSelectedAdminId: function () {
@@ -120,6 +128,27 @@
       });
     },
 
+    concedeSite: function () {
+      if (!confirm(g.concedeSiteConfirmation)) return;
+
+      var site = this.getSelectedSite()
+        , admin_id = this.getSelectedAdminId()
+      ;
+      submitForm(site, g.concedeSitePath, {
+        params: { admin_id:admin_id },
+        success: function (resp) {
+          site.set(resp.site);
+          site.updateOwnedByUser();
+          sman.render();
+          sman.siteDetailsView.render( site );
+        },
+        error: function (resp) {
+          if (resp.reasons.email) alert('That user does not exist.');
+          else alert('Something went wrong (2)');
+        }
+      });
+    },
+
     genSignupKey: function () {
       var site = this.getSelectedSite();
       var button = this.$('.gen-signup-key').prop('disabled',true);
@@ -134,11 +163,18 @@
       });
     },
 
-    render: function () {
-      var list = this.el.find('ul.sites');
+    renderInit: function () {
+      var list = this.el.find('ul.sites').empty();
       this.sites.each(function (site) {
         var view = new SiteView({ model:site });
         list.append(view.render().el);
+      });
+      return this;
+    },
+
+    render: function () {
+      this.sites.each(function (site) {
+        site.view.render();
       });
       return this;
     }

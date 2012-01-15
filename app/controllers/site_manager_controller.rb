@@ -1,7 +1,8 @@
 class SiteManagerController < ApplicationController
   before_filter :authenticate_user!
   before_filter :ensure_user_owns_company,
-                :only => [:add_admin, :remove_admin, :delete, :gen_signup_key]
+                :only => [:add_admin, :remove_admin, :gen_signup_key,
+                          :concede, :delete]
 
   def index
     @companies = current_user.all_companies
@@ -58,6 +59,25 @@ class SiteManagerController < ApplicationController
       end
     else
       render :json => { :status => :error, :reasons => @errors, :site => data }
+    end
+  end
+
+  def concede
+    new_owner = User.find_by_id params[:admin_id]
+    errors = validate_company_admin(@company, new_owner)
+
+    if errors.count > 0
+      render :json => { :status => :error, :reasons => errors }
+    else
+      @company.owner = new_owner
+      @company.save
+      # remove new owner's access key, as it's no longer needed
+      Key.where(:user_id => new_owner.id, :company_id => @company.id).delete_all
+
+      # give previous owner admin access
+      Key.create :user => current_user, :company => @company
+
+      render :json => { :status => :ok, :site => @company }
     end
   end
 
