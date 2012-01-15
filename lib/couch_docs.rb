@@ -355,6 +355,7 @@ class CouchDocs
         :wsubtype => "products",
         :catTypeName => "Folder",
         :itemTypeName => "Item",
+        :name => "Products / Services",
         "struct" => {
           :_data => { :_id => "struct", :name => "Products", :_order => [] },
         }
