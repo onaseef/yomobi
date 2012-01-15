@@ -106,8 +106,20 @@ p {
 .company-info {
   width: 100%;
   padding-left: 0 1px 0 8px;
-  background: #405b80 url(/images/bg-mobile-header.png);
-  color: white; }
+  color: white;
+  background: #2a426a;
+  /* IE10 */
+  background-image: -ms-linear-gradient(bottom, #2a426a 0%, white 500%);
+  /* Mozilla Firefox */
+  background-image: -moz-linear-gradient(bottom, #2a426a 0%, white 500%);
+  /* Opera */
+  background-image: -o-linear-gradient(bottom, #2a426a 0%, white 500%);
+  /* Webkit (Safari/Chrome 10) */
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #2a426a), color-stop(5, white));
+  /* Webkit (Chrome 11+) */
+  background-image: -webkit-linear-gradient(bottom, #2a426a 0%, white 500%);
+  /* Proposed W3C Markup */
+  background-image: linear-gradient(bottom, #2a426a 0%, white 500%); }
   .company-info table {
     height: 36px; }
   .company-info td {
@@ -151,7 +163,7 @@ p {
   display: none;
   padding: 0 0;
   border-bottom: 2px solid #627aad;
-  background: #405b80 url(/images/bg-mobile-header.png);
+  background: #2a426a;
   text-align: center; }
   .ad-bar.bottom {
     height: 48px; }
