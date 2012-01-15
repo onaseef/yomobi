@@ -109,10 +109,15 @@
       return this.$('.admins li.ui-selected').data('id');
     },
 
-    addAdmin: function () {
+    openAdminDialog: function (mode,admin_id) {
       var dialog = this.adminDialog || new AdminDialog();
       dialog.model = this.getSelectedSite();
+      dialog.options = { mode:mode, admin_id:admin_id };
       dialog.prompt();
+    },
+
+    addAdmin: function () {
+      this.openAdminDialog('add');
     },
 
     removeAdmin: function () {
@@ -131,22 +136,8 @@
     concedeSite: function () {
       if (!confirm(g.concedeSiteConfirmation)) return;
 
-      var site = this.getSelectedSite()
-        , admin_id = this.getSelectedAdminId()
-      ;
-      submitForm(site, g.concedeSitePath, {
-        params: { admin_id:admin_id },
-        success: function (resp) {
-          site.set(resp.site);
-          site.updateOwnedByUser();
-          sman.render();
-          sman.siteDetailsView.render( site );
-        },
-        error: function (resp) {
-          if (resp.reasons.email) alert('That user does not exist.');
-          else alert('Something went wrong (2)');
-        }
-      });
+      var admin_id = this.getSelectedAdminId()
+      this.openAdminDialog('concede', admin_id);
     },
 
     genSignupKey: function () {
@@ -244,7 +235,7 @@
     prompt: function () {
       var dialogContent = this.render().el
         , buttons = {
-            "Save": this.submit,
+            "Create": this.submit,
             "Cancel": function () { $(this).dialog('close'); }
           }
       ;
@@ -270,7 +261,8 @@
 
 
   var AdminDialog = Backbone.View.extend({
-    template: util.getTemplate('add-admin-dialog'),
+    addTemplate: util.getTemplate('add-admin-dialog'),
+    concedeTemplate: util.getTemplate('concede-dialog'),
     events: {
       'submit': 'submit'
     },
@@ -278,26 +270,32 @@
       _.bindAll(this, 'submit', 'render');
     },
 
-    render: function (errors,email) {
-      var templateData = this.model.toJSON();
+    render: function (errors,data) {
       var extraData = {
-        errors: errors || {},
-        email: email
-      }
-      _.extend(templateData, extraData);
+          errors: errors || {},
+          admin_id: this.options.admin_id,
+          email: ''
+        }
+        , templateData = this.model.toJSON()
+        , template = this[this.options.mode + 'Template']
+      ;
+      _.extend(templateData, extraData, data);
 
-      $(this.el).html( this.template(templateData) );
+      $(this.el).html( template(templateData) );
       return this;
     },
 
     prompt: function () {
       var dialogContent = this.render().el
-        , buttons = {
-            "Save": this.submit,
-            "Cancel": function () { $(this).dialog('close'); }
-          }
         , title = 'Add Collaborator for YoMobi.com/' + this.model.get('url')
+        , title = this.options.mode == 'concede' ? 'Concede Site Ownership' : title
+
+        , buttons = {}
+        , saveLabel = this.options.mode == 'concede' ? 'Continue' : 'Add'
       ;
+      buttons["Save"] = this.submit;
+      buttons["Cancel"] = function () { $(this).dialog('close'); };
+
       this.dialog = util.dialog(dialogContent, buttons, title, {
         width: 484
       });
@@ -305,14 +303,18 @@
 
     submit: function () {
       var self = this;
-      submitForm(this.model, g.addAdminPath, {
+      var path = this.options.mode == 'add' ? g.addAdminPath : g.concedeSitePath;
+      submitForm(this.model, path, {
         success: function (resp) {
           self.model.set(resp.site);
-          window.sman.siteDetailsView.render( self.model );
+          self.model.updateOwnedByUser();
+
+          sman.siteDetailsView.render( self.model );
+          sman.render();
           $(self.el).dialog('close');
         },
         error: function (resp) {
-          self.render(resp.reasons, resp.email);
+          self.render(resp.reasons, resp);
         }
       });
       return false;

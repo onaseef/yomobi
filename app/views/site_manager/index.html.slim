@@ -136,3 +136,22 @@
       .loading
         h3 Submitting...
         img src="/images/ui/ajax-loader-small.gif"
+
+  script.concede-dialog(type="text/template")
+    form#account-setup-box.add-admin.dialog title="Concede Site Ownership"
+      .fields
+        h3.error Are you Sure?
+        p.error= t 'site_manager.dialog.concede_site'
+
+        h3 Enter Your Password to Continue:
+        | <% if (errors.password) { %>
+        p.error Incorrect Password
+        | <% } %>
+        | <% if (errors.self) { %>
+        p.error You cannot concede ownership to yourself.
+        | <% } %>
+        input type="password" name="password"
+        input type="hidden" name="admin_id" value="{{ admin_id }}"
+      .loading
+        h3 Submitting...
+        img src="/images/ui/ajax-loader-small.gif"

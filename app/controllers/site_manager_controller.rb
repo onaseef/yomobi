@@ -63,6 +63,11 @@ class SiteManagerController < ApplicationController
   end
 
   def concede
+    unless current_user.valid_password? params[:password]
+      return render :json => { :status => :error,
+                               :reasons => { :password => true } }
+    end
+
     new_owner = User.find_by_id params[:admin_id]
     errors = validate_company_admin(@company, new_owner)
 
