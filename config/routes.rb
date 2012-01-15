@@ -27,7 +27,7 @@ Yomobi::Application.routes.draw do
 
   post    "sites"     => 'site_manager#create', :as => :create_site
   delete  "sites/:id" => 'site_manager#delete'
-  post    "sides/:id/make-default" => 'site_manager#make_default'
+  post    "sites/:id/make-default" => 'site_manager#make_default', :as => :make_default_site
   post    "sites/:id/concede"      => 'site_manager#concede', :as => :concede_site
 
   post "sites/:id/admins"           => 'site_manager#add_admin', :as => :add_admin

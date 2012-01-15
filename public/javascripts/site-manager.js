@@ -3,12 +3,14 @@
   window.Site = Backbone.Model.extend({
 
     initialize: function () {
-      this.updateOwnedByUser();
+      this.updateDependentAttrs();
     },
 
-    updateOwnedByUser: function () {
-      var isOwnedByUser = (this.get('owner') || {}).id === g.user_id;
-      this.set({ isOwnedByUser:isOwnedByUser });
+    updateDependentAttrs: function () {
+      this.set({
+        isOwnedByUser: (this.get('owner') || {}).id === g.user_id,
+        isDefault: this.get('id') === g.defaultSite_id
+      });
     },
 
     edit: function () {
@@ -56,6 +58,7 @@
       'click .sites li':             'selectSite',
       'click button.edit':           'editSite',
       'click button.create':         'createSite',
+      'click button.make-default':   'makeDefaultSite',
 
       'click .admins li':            'selectAdmin',
       'click button.add-admin':      'addAdmin',
@@ -80,6 +83,17 @@
     createSite: function () {
       var dialog = new NewSiteDialog({ model:newBlankSite() });
       dialog.prompt();
+    },
+
+    makeDefaultSite: function () {
+      var site = this.getSelectedSite();
+
+      submitForm(site, g.makeDefaultSitePath, {
+        params: {},
+        success: function (resp) {
+          window.location.reload(true);
+        }
+      });
     },
 
     selectSite: function (e) {
@@ -307,7 +321,7 @@
       submitForm(this.model, path, {
         success: function (resp) {
           self.model.set(resp.site);
-          self.model.updateOwnedByUser();
+          self.model.updateDependentAttrs();
 
           sman.siteDetailsView.render( self.model );
           sman.render();

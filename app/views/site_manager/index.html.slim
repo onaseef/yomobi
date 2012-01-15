@@ -13,8 +13,10 @@
       removeAdminPath: _.template( unescape("<%=raw remove_admin_path '{{ id }}', '{{ admin_id }}' %>") ),
       genSignupKey: _.template( unescape("<%=raw gen_signup_key_path '{{ id }}' %>") ),
       concedeSitePath: _.template( unescape("<%=raw concede_site_path '{{ id }}' %>") ),
+      makeDefaultSitePath: _.template( unescape("<%=raw make_default_site_path '{{ id }}' %>") ),
 
       user_id: <%= current_user.id %>,
+      defaultSite_id: <%= current_user.default_company_id %>,
 
       concedeSiteConfirmation: "<%=t 'site_manager.confirm.concede_site' %>"
     };
@@ -46,6 +48,9 @@
       ' YoMobi.com/{{ url }}
       | <% if (isOwnedByUser === true) { %>
       | *
+      | <% } %>
+      | <% if (isDefault === true) { %>
+      |  (default)
       | <% } %>
 
   script.site-details(type="text/template")
