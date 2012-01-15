@@ -22,8 +22,7 @@
         .find('.loader').show().end()
       ;
       var data = {
-        keywords: this.el.find('[name=keywords]').val(),
-        header_color: this.el.find('.color-picker').ColorPickerGetColor()
+        keywords: this.el.find('[name=keywords]').val()
       };
 
       $.post('/builder/adv-settings', data, function (resp) {
@@ -33,9 +32,7 @@
           .find('input[type=submit]').prop('disabled',false).end()
         ;
         g.keywords = resp.keywords;
-        g.header_color = resp.header_color;
         self.el.find('[name=keywords]').val(g.keywords);
-        self.el.find('.color-picker').data('color',g.header_color);
       }, 'json')
       .error(function (e,textStatus,errorThrown) {
         self.el
@@ -55,7 +52,6 @@
         .find('.help-bubble').simpletooltip(undefined,'help').end()
       ;
       this.delegateEvents();
-      util.spawnColorPicker(this.el.find('.color-picker'));
     },
     
     stopEditing: function () {
