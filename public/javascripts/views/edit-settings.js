@@ -47,8 +47,8 @@
       this.el.html( this.template({
         wnames: _.keys(mapp.metaDoc.worder),
         wtabs: mapp.metaDoc.wtabs,
-        header_color: g.header_color || '#2a426a',
-        header_text_color: g.header_text_color || '#ffffff'
+        header_color: g.header_color || util.defaultHeaderBackgroundColor,
+        header_text_color: g.header_text_color || util.defaultHeaderTextColor
       }) )
         .find('.help-bubble').simpletooltip(undefined,'help').end()
         .find('input:file').keypress(function () { return false; }).end()
