@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120114225057) do
+ActiveRecord::Schema.define(:version => 20120115020244) do
 
   create_table "carriers", :force => true do |t|
     t.string    "name"
@@ -89,7 +89,10 @@ ActiveRecord::Schema.define(:version => 20120114225057) do
     t.boolean  "expired",    :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "signup_keys", ["key"], :name => "index_signup_keys_on_key", :unique => true
 
   create_table "sigs", :force => true do |t|
     t.string    "email"
