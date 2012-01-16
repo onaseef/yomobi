@@ -169,11 +169,16 @@
     },
 
     renderInit: function () {
-      var list = this.el.find('ul.sites').empty();
+      var list = this.el.find('.sites').empty();
       this.sites.each(function (site) {
         var view = new SiteView({ model:site });
         list.append(view.render().el);
       });
+
+      var activeSite = this.sites.get(g.activeSite_id);
+      $(activeSite.view.el).addClass('ui-selected');
+      this.siteDetailsView.render(activeSite);
+
       return this;
     },
 
@@ -301,7 +306,7 @@
 
     prompt: function () {
       var dialogContent = this.render().el
-        , title = 'Add Collaborator for YoMobi.com/' + this.model.get('url')
+        , title = 'Add Admin for YoMobi.com/' + this.model.get('url')
         , title = this.options.mode == 'concede' ? 'Concede Site Ownership' : title
 
         , buttons = {}

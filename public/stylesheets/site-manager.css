@@ -25,14 +25,21 @@ ul.fancy-selectable {
   width: 360px;
   margin: 20px; }
 
+.sites img.site-pic {
+  vertical-align: middle; }
+
 .site-details-wrap {
   float: left;
-  margin: 20px; }
+  border-left: 1px solid #b3b3b3;
+  margin: 20px 20px 20px 0;
+  padding-left: 20px; }
   .site-details-wrap ul.admins {
     height: 230px;
     overflow: auto;
     margin-top: 20px;
     width: 500px; }
+    .site-details-wrap ul.admins img {
+      vertical-align: middle; }
 
 form#account-setup-box.dialog .loading {
   display: none; }

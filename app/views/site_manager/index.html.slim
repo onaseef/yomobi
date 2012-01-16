@@ -17,6 +17,7 @@
 
       user_id: <%= current_user.id %>,
       defaultSite_id: <%= current_user.default_company_id %>,
+      activeSite_id: <%= current_user.active_company_id %>,
 
       concedeSiteConfirmation: "<%=t 'site_manager.confirm.concede_site' %>"
     };
@@ -36,16 +37,17 @@
       h3.active-site Please select a site on the left.
       button disabled="disabled" Generate Signup Key
       ul.admins.fancy-selectable
-    button.add-admin    disabled="disabled" Add Collaborator
+    button.add-admin    disabled="disabled" Add Admin
     button.remove-admin disabled="disabled" Revoke Access
-    button.concede      disabled="disabled" Concede Site Ownership
+    button.concede      disabled="disabled" Make Owner
   .clearfix
 
 
 #templates
   script.site-li(type="text/template")
-    span.url
-      ' YoMobi.com/{{ url }}
+    img.site-pic src="{{ logo }}" align="middle"
+    span.site-name
+      ' {{ url }}
       | <% if (isOwnedByUser === true) { %>
       | *
       | <% } %>
@@ -55,7 +57,7 @@
 
   script.site-details(type="text/template")
     h3.active-site
-      ' Selected: YoMobi.com/{{ url }}
+      ' Selected: {{ url }}
       | <% if (isOwnedByUser === true) { %>
       | *
       | <% } %>
@@ -71,15 +73,15 @@
     | <% } %>
 
     ul.admins.fancy-selectable
-      li data-id="{{ owner.id }}"
+      li.admin.owner data-id="{{ owner.id }}"
         img src="{{ owner.logo }}"
-        .name
-          .email {{ owner.email }}
-          .is-owner (Owner)
+        span.name
+          ' {{ owner.firstName }} {{ owner.lastName }}
+          span.is-owner (Owner)
       | <% for (var i=0; i < admins.length; i++) { %>
-      li data-id="{{ admins[i].id }}"
+      li.admin data-id="{{ admins[i].id }}"
         img src="{{ admins[i].logo }}"
-        .name {{ admins[i].email }}
+        span.name {{ admins[i].firstName }} {{ admins[i].lastName }}
       | <% } %>
 
   script.admin(type="text/template")
@@ -128,14 +130,14 @@
         img src="/images/ui/ajax-loader-small.gif"
   
   script.add-admin-dialog(type="text/template")
-    form#account-setup-box.add-admin.dialog title="Add Collaborator"
+    form#account-setup-box.add-admin.dialog title="Add Admin"
       .fields
-        h3 Collaborator's email:
+        h3 Admin's email:
         | <% if (errors.email) { %>
         p.error Sorry, there is no YoMobi account associated with that email.
         | <% } %>
         | <% if (errors.self) { %>
-        p.error You cannot add yourself as a collaborator.
+        p.error You cannot add yourself as a Admin.
         | <% } %>
         input type="text" name="email" value="{{ email }}"
       .loading
@@ -153,7 +155,7 @@
         p.error Incorrect Password
         | <% } %>
         | <% if (errors.self) { %>
-        p.error You cannot concede ownership to yourself.
+        p.error You are already the owner of this site.
         | <% } %>
         input type="password" name="password"
         input type="hidden" name="admin_id" value="{{ admin_id }}"

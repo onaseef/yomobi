@@ -28,14 +28,24 @@ ul.fancy-selectable {
   margin: 20px;
 }
 
+.sites {
+
+  img.site-pic {
+    vertical-align: middle;
+  }
+}
+
 .site-details-wrap {
   float: left;
-  margin: 20px;
+  border-left: 1px solid #b3b3b3;
+  margin: 20px 20px 20px 0;
+  padding-left: 20px;
   ul.admins {
     height: 230px;
     overflow: auto;
     margin-top: 20px;
     width: 500px;
+    img { vertical-align: middle }
   }
 }
 
