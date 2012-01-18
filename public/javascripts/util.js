@@ -18,6 +18,8 @@ var util = {
   linkPhoneProtocol:   "tel:",
   linkAddressProtocol: "http://maps.google.com/?q=",
   linkEmailProtocol:   "mailto:",
+  defaultHeaderBackgroundColor:  "#2a426a",
+  defaultHeaderTextColor: "#ffffff",
 
   // namespace for shared widget functions
   widget: {},

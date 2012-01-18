@@ -365,7 +365,7 @@ div.wysiwyg ul.toolbar {
   border-top: 1px solid $light-border;
   margin: 10px 0; }
 
-#builder .edit-area.edit-settings {
+#builder .edit-area.edit-settings, #builder .edit-area.edit-advanced-settings {
   padding-top: 8px;
   .box {
     margin: 10px 0px 0px 0px;
@@ -395,6 +395,8 @@ div.wysiwyg ul.toolbar {
     vertical-align: top;
   }
   .logo { margin: 3px 0px; }
+
+  .new-picture { width: 100%; }
 }
 
 
@@ -725,6 +727,18 @@ div.wysiwyg ul.toolbar {
   }
 }
 
+.color-picker {
+  background: transparent url(/images/color-picker/select2.png) no-repeat;
+  height: 36px;
+  width: 72px;
+  position: relative;
+}
+.color-picker div {
+  position: absolute;
+  top: 6px; left: 6px;
+  width: 64px; height: 28px;
+  background: url(/images/color-picker/select2.png) center;
+}
 
 div.plupload {
   cursor: pointer;

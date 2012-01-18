@@ -46,12 +46,22 @@
       
       this.el.html( this.template({
         wnames: _.keys(mapp.metaDoc.worder),
-        wtabs: mapp.metaDoc.wtabs
+        wtabs: mapp.metaDoc.wtabs,
+        header_color: g.header_color || util.defaultHeaderBackgroundColor,
+        header_text_color: g.header_text_color || util.defaultHeaderTextColor
       }) )
         .find('.help-bubble').simpletooltip(undefined,'help').end()
         .find('input:file').keypress(function () { return false; }).end()
       ;
       this.delegateEvents();
+
+      var self = this;
+      util.spawnColorPicker(this.el.find('.color-picker'), {
+        onChange: function (color,elem) {
+          var targetName = $(elem).data('target');
+          self.el.find('[name='+targetName+']').val(color);
+        }
+      });
     },
     
     stopEditing: function () {

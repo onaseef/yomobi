@@ -17,6 +17,8 @@ window.g = {
     booking: "<%=escape_javascript @company.booking_email %>"
   },
   keywords: "<%=escape_javascript @company.keywords %>",
+  header_color: "<%=escape_javascript @company.settings.header_color %>",
+  header_text_color: "<%=escape_javascript @company.settings.header_text_color %>",
   MAX_TEXT_CHARS: <%= @max_text_chars || -1 %>,
   MAX_COMPANY_NAME_LENGTH: <%= MAX_COMPANY_NAME_LENGTH %>,
   openEditSettings: <%= @open_edit_settings || false %>,

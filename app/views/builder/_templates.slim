@@ -183,17 +183,6 @@ script.edit-settings(type="text/template")
       a.help-link href="http://help.yomobi.com/Account/GeneralSettings" target="_blank" Help
   div class="edit-area edit-settings"
     .explanation == t 'builder.help.edit_settings'
-
-    .box style="margin-bottom:10px"
-      label Mobile Site URL:
-      br
-      input.read-only readonly="readonly" type="text" value=@company.mobile_url data-orig-val=@company.mobile_url
-      .divider
-
-      label class="help" Desktop Redirect Code:
-      a href="http://help.yomobi.com/Account/MobileRedirectScript" target="ymhelp"
-        img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.settings.help.redirect')
-      textarea.read-only readonly="readonly" data-orig-val=desktop_redirect_code(@company) = desktop_redirect_code @company
     
     = form_tag '/builder/settings', :multipart => true, :class => 'box' do
       table.site-settings
@@ -223,7 +212,7 @@ script.edit-settings(type="text/template")
               a.remove-logo href="#" Remove Picture
               input type="hidden" name="destroy_logo" value="0"
 
-      table
+      table.site-settings.new-picture
         tbody
           tr
             td
@@ -237,6 +226,25 @@ script.edit-settings(type="text/template")
               input type="file" name="logo" accept="image/*"
             td
               input.rfloat type="submit" value="Upload" disabled="disabled"
+          tr
+            td colspan="3"
+              .divider
+      table.site-settings.header-colors
+        tbody
+          tr
+            td
+              label Header Background:
+            td
+              .color-picker data-color="{{ header_color }}" data-target="header_color"
+                div style="background-color:{{ header_color }}"
+              input type="hidden" name="header_color" value="{{ header_color }}"
+          tr
+            td
+              label Header Text:
+            td
+              .color-picker data-color="{{ header_text_color }}" data-target="header_text_color"
+                div style="background-color:{{ header_text_color }}"
+              input type="hidden" name="header_text_color" value="{{ header_text_color }}"
       
       .clearfix
 
@@ -247,21 +255,32 @@ script.edit-settings(type="text/template")
         .loader
         .clearfix
 
-script.edit-keywords(type="text/template")
-  .header.edit-keywords
-    .icon{ style="background-image: url(/images/edit-keywords.png)" }
+script.edit-advanced-settings(type="text/template")
+  .header.edit-advanced-settings
+    .icon{ style="background-image: url(/images/edit-advanced-settings.png)" }
     .widget-name
-      | Traffic Booster
+      | Advanced Settings
     p.help-text
       a.help-link href="http://help.yomobi.com/Account/TrafficBooster" target="_blank" Help
-  div class="edit-area"
-    .explanation == t 'builder.help.edit_keywords'
+  div class="edit-area edit-advanced-settings"
+    .explanation == t 'builder.help.edit_advanced_settings'
 
-    label Enter keywords that describe your website, separated by commas:
-    p.error.hide Something went wrong.
-    textarea name="keywords" {{ keywords }}
-    br
-    br
+    .box style="margin-bottom:10px"
+      label Mobile Site URL:
+      br
+      input.read-only readonly="readonly" type="text" value=@company.mobile_url data-orig-val=@company.mobile_url
+      .divider
+
+      label class="help" Desktop Redirect Code:
+      a href="http://help.yomobi.com/Account/MobileRedirectScript" target="ymhelp"
+        img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.settings.help.redirect')
+      textarea.read-only readonly="readonly" data-orig-val=desktop_redirect_code(@company) = desktop_redirect_code @company
+
+    .box
+      label Enter keywords that describe your website, separated by commas:
+      textarea name="keywords" {{ keywords }}
+      br
+
     .action-bar style="padding-right: 0"
       p.error.lfloat style="margin-top:2px"
       .accept-btn.main-btn

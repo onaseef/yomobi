@@ -611,6 +611,42 @@ var builderUtil = {
       }
       onSuccess(data);
     }
+  },
+
+  spawnColorPicker: function ($elems, options) {
+    options || (options = {});
+
+    $elems.ColorPicker({
+      color: function (elem) {
+        return $(elem).data('color');
+      },
+      onShow: function (colpkr) {
+        $(colpkr).fadeIn(500);
+        return false;
+      },
+      onHide: function (colpkr) {
+        $(colpkr).fadeOut(500);
+        return false;
+      },
+      onChange: function (elem, hsb, hex, rgb) {
+        $('div',elem).css('backgroundColor', '#' + hex);
+        options.onChange && options.onChange('#' + hex, elem);
+      }
+    });
+  },
+
+  updateMobileHeaderColor: function (color) {
+    // cover all browsers
+    $('#mobile-container .company-info')
+    .css('background',color)
+    .css('background-image','-ms-linear-gradient(top, '+color+' 0%, #FFFFFF 275%)')
+    .css('background-image','-moz-linear-gradient(top, '+color+' 0%, #FFFFFF 275%)')
+    .css('background-image','-o-linear-gradient(top, '+color+' 0%, #FFFFFF 275%)')
+    .css('background-image','-webkit-gradient(linear, left top, left bottom, color-stop(0,'+
+                            color+'), color-stop(2.75, #FFFFFF))')
+    .css('background-image','-webkit-linear-gradient(top, '+color+' 0%, #FFFFFF 275%)')
+    .css('background-image','linear-gradient(top, '+color+' 0%, #FFFFFF 275%)')
+    ;
   }
 };
 

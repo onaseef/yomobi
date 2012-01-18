@@ -24,7 +24,7 @@ en:
   builder:
     help:
       edit_settings: "<p>Edit general settings.</p>"
-      edit_keywords: "<p>Give your traffic... a boost!</p>"
+      edit_advanced_settings: "<p>Edit advanced settings.</p>"
       edit_tab_bar: "<p>Edit the navigation tab bar at the top of your mobile site.</p><br><p>Highlight the widgets you want your mobile site visitors to see first by adding them to the navigation tab bar which appears at the top of your mobile site.</p>"
     
     settings:

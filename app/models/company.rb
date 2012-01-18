@@ -5,6 +5,7 @@ class Company < ActiveRecord::Base
   belongs_to :company_type
   has_many :followers
   has_many :wphotos
+  has_one :company_settings
   
   has_attached_file :logo,
     :styles => {
@@ -68,6 +69,13 @@ class Company < ActiveRecord::Base
 
   def couch_db_url
     ApplicationController::couch_url self.db_name, :@admin
+  end
+
+  def settings
+    if self.company_settings.nil?
+      self.create_company_settings
+    end
+    self.company_settings
   end
 
   private

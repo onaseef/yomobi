@@ -1,10 +1,10 @@
 (function ($) {
 
-  window.EditKeywordsView = Backbone.View.extend({
+  window.EditAdvancedSettingsView = Backbone.View.extend({
     
     el: $('#builder .widget-editor'),
 
-    template: util.getTemplate('edit-keywords'),
+    template: util.getTemplate('edit-advanced-settings'),
     
     events: {
       'click input[type=submit]': 'submit'
@@ -16,20 +16,24 @@
     
     submit: function () {
       var self = this;
-      var keywords = this.el
+      this.el
         .find('input[type=submit]').prop('disabled',true).end()
         .find('.checkmark').hide().end()
         .find('.loader').show().end()
-        .find('textarea').val()
       ;
-      $.post('/builder/booster', { keywords:keywords }, function () {
+      var data = {
+        keywords: this.el.find('[name=keywords]').val()
+      };
+
+      $.post('/builder/adv-settings', data, function (resp) {
         self.el
           .find('.checkmark').show().end()
           .find('.loader').hide().end()
           .find('input[type=submit]').prop('disabled',false).end()
         ;
-        g.keywords = keywords;
-      })
+        g.keywords = resp.keywords;
+        self.el.find('[name=keywords]').val(g.keywords);
+      }, 'json')
       .error(function (e,textStatus,errorThrown) {
         self.el
           .find('.loader').hide().end()
@@ -44,7 +48,9 @@
       
       this.el.html( this.template({
         keywords: g.keywords
-      }) );
+      }) )
+        .find('.help-bubble').simpletooltip(undefined,'help').end()
+      ;
       this.delegateEvents();
     },
     
