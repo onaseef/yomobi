@@ -467,6 +467,29 @@ div.wysiwyg ul.toolbar {
   font-size: 150%;
   word-wrap: break-word; }
 
+#builder .edit-area.category .controls .button, #builder .edit-area.page_tree .controls .button {
+  height: 22px;
+  padding: 6px 6px 0 20px;
+  margin: 0 4px 8px 0;
+  border: 1px solid #b3b3b3;
+  background: url(/images/ui/plus.png) 3px 5px no-repeat;
+  float: left;
+  cursor: pointer; }
+  #builder .edit-area.category .controls .button:empty, #builder .edit-area.page_tree .controls .button:empty {
+    padding-left: 16px;
+    background-position: 50% 50%; }
+#builder .edit-area.category .controls .button:hover, #builder .edit-area.page_tree .controls .button:hover {
+  border-color: #324774; }
+#builder .edit-area.category .button.back, #builder .edit-area.page_tree .button.back {
+  background-image: url(/images/ui/back-btn.png); }
+#builder .edit-area.category .nodes .handle, #builder .edit-area.page_tree .nodes .handle {
+  float: right;
+  padding: 6px 10px;
+  border-left: 1px solid #b3b3b3;
+  cursor: move; }
+#builder .edit-area.category .nodes .name, #builder .edit-area.page_tree .nodes .name {
+  padding: 6px 10px;
+  float: left; }
 #builder .edit-area.category .icon-wrap, #builder .edit-area.page_tree .icon-wrap {
   padding: 0 5px 0 0; }
   #builder .edit-area.category .icon-wrap img, #builder .edit-area.page_tree .icon-wrap img {

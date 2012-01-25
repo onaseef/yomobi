@@ -521,6 +521,37 @@ div.wysiwyg ul.toolbar {
     word-wrap: break-word; } }
 
 #builder .edit-area.category, #builder .edit-area.page_tree {
+
+  .controls {
+  }
+  .controls .button {
+    height: 22px;
+    padding: 6px 6px 0 20px;
+    margin: 0 4px 8px 0;
+    border: 1px solid #b3b3b3;
+    background: url(/images/ui/plus.png) 3px 5px no-repeat;
+    float: left;
+    cursor: pointer;
+    &:empty { padding-left: 16px; background-position: 50% 50%; }
+  }
+  .controls .button:hover {
+    border-color: #324774;
+  }
+  .button.back { background-image: url(/images/ui/back-btn.png); }
+
+  .nodes {
+    .handle {
+      float: right;
+      padding: 6px 10px;
+      border-left: 1px solid #b3b3b3;
+      cursor: move;
+    }
+    .name {
+      padding: 6px 10px;
+      float: left;
+    }
+  }
+
   .icon-wrap {
     padding: 0 5px 0 0;
     img { width: 18px; height: 18px; }
