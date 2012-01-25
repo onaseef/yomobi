@@ -620,6 +620,13 @@ var builderUtil = {
       color: function (elem) {
         return $(elem).data('color');
       },
+      onBeforeShow: function (elem, colpkr) {
+        var inputName = $(elem).data('target')
+          , input = bapp.settingsEditor.$('[name='+inputName+']')
+        ;
+        util.log('EH?',input);
+        $(elem).ColorPickerSetColor( input.val() );
+      },
       onShow: function (colpkr) {
         $(colpkr).fadeIn(500);
         return false;

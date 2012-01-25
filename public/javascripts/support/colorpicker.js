@@ -203,7 +203,7 @@
 			},
 			show = function (ev) {
 				var cal = $('#' + $(this).data('colorpickerId'));
-				cal.data('colorpicker').onBeforeShow.apply(this, [cal.get(0)]);
+				cal.data('colorpicker').onBeforeShow.apply(this, [cal.data('colorpicker').el, cal.get(0)]);
 				var pos = $(this).offset();
 				var viewPort = getViewport();
 				var top = pos.top + this.offsetHeight;
