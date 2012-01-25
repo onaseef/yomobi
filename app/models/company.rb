@@ -84,8 +84,7 @@ class Company < ActiveRecord::Base
       url: self.db_name,
       logo: self.logo.url(:mobile),
       owner: self.user,
-      admins: self.admins,
-      signupKeys: self.signup_keys.where(:expired => false)
+      admins: self.admins
     }
   end
 

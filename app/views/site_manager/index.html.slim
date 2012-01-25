@@ -63,14 +63,8 @@
       | <% } %>
 
     button.gen-signup-key Generate Signup Key
+    input.signup-key.hide type="text" readonly="readonly"
     img.help-bubble src="/images/ui/help-bubble.png" title=t('site_manager.help.signup_keys')
-    | <% if (signupKeys.length > 0) { %>
-    h3 Active Signup Keys
-    ul.signup-keys
-      | <% for (var i=0; i < signupKeys.length; i++) { %>
-      li= "#{new_user_registration_url}?sk={{ signupKeys[i] }}"
-      | <% } %>
-    | <% } %>
 
     ul.admins.fancy-selectable
       li.admin.owner data-id="{{ owner.id }}"

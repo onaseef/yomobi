@@ -41,6 +41,9 @@
   SiteDetailsView = Backbone.View.extend({
     el: $('#manager-container .site-details-wrap'),
     template: util.getTemplate('site-details'),
+    events: {
+      'click .signup-key':            'selectKey'
+    },
 
     render: function (site) {
       this.$('.details').html( this.template(site.toJSON()) );
@@ -48,6 +51,14 @@
       this.$('.gen-signup-key, .add-admin')
         .prop('disabled', !site.get('isOwnedByUser'));
       this.$('.remove-admin, .concede').prop('disabled', true);
+    },
+
+    setSignupKey: function (key) {
+      this.$('.signup-key').val(key).show();
+    },
+
+    selectKey: function () {
+      this.$('.signup-key').select();
     }
   });
 
@@ -154,15 +165,17 @@
       this.openAdminDialog('concede', admin_id);
     },
 
+    // Generate signup key
     genSignupKey: function () {
       var site = this.getSelectedSite();
       var button = this.$('.gen-signup-key').prop('disabled',true);
+      sman.siteDetailsView.$('.signup-key').hide();
 
       submitForm(site, g.genSignupKey, {
         params: {},
         success: function (resp) {
-          site.set(resp.site);
           sman.siteDetailsView.render( site );
+          sman.siteDetailsView.setSignupKey( resp.key );
           button.prop('disabled',false);
         }
       });
