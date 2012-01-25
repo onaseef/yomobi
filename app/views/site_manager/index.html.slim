@@ -25,6 +25,8 @@
   = javascript_include_tag 'site-manager'
 
 #manager-container
+  h2.active-site= "Active Site: #{current_user.company.db_name}"
+
   .site-list-wrap
     h2 Sites you have access to:
     ul.sites.fancy-selectable
