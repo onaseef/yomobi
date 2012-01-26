@@ -65,7 +65,7 @@ docs:
       - keep-me-informed
   -
     types:
-      - Bank / Financial [products, services, Services]
+      - Bank / Financial Services
     widgets:
       - [custom-page, about-us, About Us]
       - call-us
@@ -129,7 +129,7 @@ docs:
       - keep-me-informed
   -
     types:
-      - Business [products, services, Services]
+      - Business Services
     widgets:
       - [custom-page, about-us, About Us]
       - call-us
@@ -255,7 +255,7 @@ docs:
       - keep-me-informed
   -
     types:
-      - Consulting / Business [products, services, Services]
+      - Consulting / Business Services
     widgets:
       - [custom-page, about-us, About Us]
       - call-us
@@ -338,7 +338,7 @@ docs:
       - keep-me-informed
   -
     types:
-      - Event Planning / Event [products, services, Services]
+      - Event Planning / Event Services
     widgets:
       - [custom-page, about-us, About Us]
       - call-us
@@ -784,7 +784,7 @@ docs:
       - keep-me-informed
   -
     types:
-      - Professional [products, services, Services]
+      - Professional Services
     widgets:
       - [custom-page, about-us, About Us]
       - call-us
