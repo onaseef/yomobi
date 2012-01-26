@@ -225,8 +225,8 @@
       'click .add-cat.button':              'addCat',
       'click .rename.button':               'rename',
       'click .edit.button':                 'edit',
-      'dblclick select[name=stuff]':        'edit',
-      'click .delete.button':                'deleteNodes',
+      'dblclick .node':                     'edit',
+      'click .delete.button':               'deleteNodes',
 
       'click .add-item.button':             'addItem',
       'click .rename-link':                 'rename',
