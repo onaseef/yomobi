@@ -541,7 +541,8 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
       li.node data-type="{{ stuff[i].type }}" data-id="{{ stuff[i]._id }}"
         .handle
           .ui-icon.ui-icon-carat-2-n-s
-        .name {{ bulletTypes[ stuff[i].type ] }} {{ stuff[i].name }}
+        .icon class="{{ stuff[i].type }}"
+        .name {{ stuff[i].name }}
         .clearfix
       | <% } %>
     br

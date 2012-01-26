@@ -487,6 +487,15 @@ div.wysiwyg ul.toolbar {
   padding: 6px 10px;
   border-left: 1px solid #b3b3b3;
   cursor: move; }
+#builder .edit-area.category .nodes .icon, #builder .edit-area.page_tree .nodes .icon {
+  height: 28px;
+  width: 16px;
+  float: left;
+  background: transparent 50% 50% no-repeat; }
+#builder .edit-area.category .nodes .icon.cat, #builder .edit-area.page_tree .nodes .icon.cat {
+  background-image: url(/images/ui/help-bubble.png); }
+#builder .edit-area.category .nodes .icon.page, #builder .edit-area.page_tree .nodes .icon.page {
+  background-image: url(/images/ui/plus.png); }
 #builder .edit-area.category .nodes .name, #builder .edit-area.page_tree .nodes .name {
   padding: 6px 10px;
   float: left; }

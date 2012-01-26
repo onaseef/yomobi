@@ -546,6 +546,18 @@ div.wysiwyg ul.toolbar {
       border-left: 1px solid #b3b3b3;
       cursor: move;
     }
+    .icon {
+      height: 28px;
+      width: 16px;
+      float: left;
+      background: transparent 50% 50% no-repeat;
+    }
+    .icon.cat {
+      background-image: url(/images/ui/help-bubble.png);
+    }
+    .icon.page {
+      background-image: url(/images/ui/plus.png);
+    }
     .name {
       padding: 6px 10px;
       float: left;
