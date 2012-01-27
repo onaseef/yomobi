@@ -482,23 +482,31 @@ div.wysiwyg ul.toolbar {
   border-color: #324774; }
 #builder .edit-area.category .button.back, #builder .edit-area.page_tree .button.back {
   background-image: url(/images/ui/back-btn.png); }
+#builder .edit-area.category ul.fancy-selectable, #builder .edit-area.page_tree ul.fancy-selectable {
+  height: 290px;
+  overflow: auto; }
 #builder .edit-area.category .nodes .handle, #builder .edit-area.page_tree .nodes .handle {
   float: right;
-  padding: 6px 10px;
-  border-left: 1px solid #b3b3b3;
+  padding: 6px 6px 0px 6px;
   cursor: move; }
 #builder .edit-area.category .nodes .icon, #builder .edit-area.page_tree .nodes .icon {
-  height: 28px;
+  height: 26px;
   width: 16px;
+  padding-left: 6px;
   float: left;
   background: transparent 50% 50% no-repeat; }
+#builder .edit-area.category .nodes .name, #builder .edit-area.page_tree .nodes .name {
+  padding: 6px 10px 6px 3px;
+  float: left;
+  width: 270px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: no-wrap;
+  border-right: 1px solid #b3b3b3; }
 #builder .edit-area.category .nodes .icon.cat, #builder .edit-area.page_tree .nodes .icon.cat {
   background-image: url(/images/ui/help-bubble.png); }
-#builder .edit-area.category .nodes .icon.page, #builder .edit-area.page_tree .nodes .icon.page {
+#builder .edit-area.category .nodes .icon.page, #builder .edit-area.category .nodes .icon.item, #builder .edit-area.page_tree .nodes .icon.page, #builder .edit-area.page_tree .nodes .icon.item {
   background-image: url(/images/ui/plus.png); }
-#builder .edit-area.category .nodes .name, #builder .edit-area.page_tree .nodes .name {
-  padding: 6px 10px;
-  float: left; }
 #builder .edit-area.category .icon-wrap, #builder .edit-area.page_tree .icon-wrap {
   padding: 0 5px 0 0; }
   #builder .edit-area.category .icon-wrap img, #builder .edit-area.page_tree .icon-wrap img {

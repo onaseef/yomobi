@@ -357,8 +357,7 @@ p {
 .page > .content.category .name {
   float: left;
   width: 97%;
-  font-size: 16px;
-  font-weight: bold; }
+  font-size: 16px; }
 .page > .content.category .name.long {
   width: 100%;
   padding: 0 0 8px 0; }

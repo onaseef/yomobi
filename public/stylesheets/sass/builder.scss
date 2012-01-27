@@ -539,28 +539,38 @@ div.wysiwyg ul.toolbar {
   }
   .button.back { background-image: url(/images/ui/back-btn.png); }
 
+  ul.fancy-selectable {
+    height: 290px;
+    overflow: auto;
+  }
   .nodes {
     .handle {
       float: right;
-      padding: 6px 10px;
-      border-left: 1px solid #b3b3b3;
+      padding: 6px 6px 0px 6px;
       cursor: move;
     }
     .icon {
-      height: 28px;
+      height: 26px;
       width: 16px;
+      padding-left: 6px;
       float: left;
       background: transparent 50% 50% no-repeat;
     }
+    .name {
+      padding: 6px 10px 6px 3px;
+      float: left;
+      width: 270px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: no-wrap;      
+      border-right: 1px solid #b3b3b3;
+    }
+
     .icon.cat {
       background-image: url(/images/ui/help-bubble.png);
     }
-    .icon.page {
+    .icon.page, .icon.item {
       background-image: url(/images/ui/plus.png);
-    }
-    .name {
-      padding: 6px 10px;
-      float: left;
     }
   }
 
