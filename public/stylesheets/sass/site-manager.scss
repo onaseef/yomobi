@@ -31,10 +31,11 @@ h2.active-site {
 .site-list-wrap {
   float: left;
   width: 360px;
-  margin: 20px;
+  margin: 20px 20px 0px 20px;
   ul.sites {
     height:400px;
     overflow:auto;
+    margin-bottom: 6px;
   }
 }
 
@@ -51,9 +52,10 @@ h2.active-site {
   border-left: 1px solid #B3B3B3;  
   .signup-key {}
   ul.admins {
-    height: 327px;
+    height: 337px;
     overflow: auto;
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-bottom: 6px;
     width: 500px;
     img { vertical-align: middle }
   }

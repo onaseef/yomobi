@@ -28,10 +28,11 @@ h2.active-site {
 .site-list-wrap {
   float: left;
   width: 360px;
-  margin: 20px; }
+  margin: 20px 20px 0px 20px; }
   .site-list-wrap ul.sites {
     height: 400px;
-    overflow: auto; }
+    overflow: auto;
+    margin-bottom: 6px; }
 
 .sites img.site-pic {
   vertical-align: middle; }
@@ -42,9 +43,10 @@ h2.active-site {
   padding-left: 20px;
   border-left: 1px solid #B3B3B3; }
   .site-details-wrap ul.admins {
-    height: 327px;
+    height: 337px;
     overflow: auto;
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-bottom: 6px;
     width: 500px; }
     .site-details-wrap ul.admins img {
       vertical-align: middle; }
