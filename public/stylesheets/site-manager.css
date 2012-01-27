@@ -22,13 +22,16 @@ ul.fancy-selectable {
 
 h2.active-site {
   margin: 0;
-  padding: 10px;
+  padding: 10px 10px 10px 20px;
   border-bottom: 1px solid #b3b3b3; }
 
 .site-list-wrap {
   float: left;
   width: 360px;
   margin: 20px; }
+  .site-list-wrap ul.sites {
+    height: 400px;
+    overflow: auto; }
 
 .sites img.site-pic {
   vertical-align: middle; }
@@ -39,7 +42,7 @@ h2.active-site {
   padding-left: 20px;
   border-left: 1px solid #B3B3B3; }
   .site-details-wrap ul.admins {
-    height: 230px;
+    height: 327px;
     overflow: auto;
     margin-top: 20px;
     width: 500px; }
