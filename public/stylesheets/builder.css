@@ -488,17 +488,17 @@ div.wysiwyg ul.toolbar {
   border: none;
   background: gray; }
 #builder .edit-area.category .button.add-cat, #builder .edit-area.page_tree .button.add-cat {
-  background-image: url(http://local.host/icon-folder-new.png); }
+  background-image: url(/images/ui/icon-folder-new.png); }
 #builder .edit-area.category .button.add-item, #builder .edit-area.page_tree .button.add-item {
-  background-image: url(http://local.host/icon-item-new.png); }
+  background-image: url(/images/ui/icon-item-new.png); }
 #builder .edit-area.category .button.rename, #builder .edit-area.page_tree .button.rename {
-  background-image: url(http://local.host/icon-rename.png);
+  background-image: url(/images/ui/icon-rename.png);
   background-position: center; }
 #builder .edit-area.category .button.edit, #builder .edit-area.page_tree .button.edit {
-  background-image: url(http://local.host/icon-edit.png);
+  background-image: url(/images/ui/icon-edit.png);
   background-position: center; }
 #builder .edit-area.category .button.delete, #builder .edit-area.page_tree .button.delete {
-  background-image: url(http://local.host/icon-delete.png);
+  background-image: url(/images/ui/icon-delete.png);
   background-position: center; }
 #builder .edit-area.category ul.fancy-selectable, #builder .edit-area.page_tree ul.fancy-selectable {
   height: 290px;
@@ -522,9 +522,9 @@ div.wysiwyg ul.toolbar {
   white-space: no-wrap;
   border-right: 1px solid #b3b3b3; }
 #builder .edit-area.category .nodes .icon.cat, #builder .edit-area.page_tree .nodes .icon.cat {
-  background-image: url(http://local.host/icon-folder.png); }
+  background-image: url(/images/ui/icon-folder.png); }
 #builder .edit-area.category .nodes .icon.page, #builder .edit-area.category .nodes .icon.item, #builder .edit-area.page_tree .nodes .icon.page, #builder .edit-area.page_tree .nodes .icon.item {
-  background-image: url(http://local.host/icon-item.png);
+  background-image: url(/images/ui/icon-item.png);
   background-position: 3px 6px; }
 #builder .edit-area.category .icon-wrap, #builder .edit-area.page_tree .icon-wrap {
   padding: 0 5px 0 0; }
