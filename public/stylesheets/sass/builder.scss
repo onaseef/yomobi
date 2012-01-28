@@ -523,26 +523,32 @@ div.wysiwyg ul.toolbar {
 #builder .edit-area.category, #builder .edit-area.page_tree {
 
   .controls {
+    border: 1px solid #b3b3b3;
+    padding: 3px;
+    background: rgb(192, 192, 192);
   }
   .controls .button {
     height: 22px;
     padding: 6px 6px 0 24px;
-    margin: 0 4px 8px 0;
-    border: 1px solid #b3b3b3;
+    margin: 0 4px 0 0;
+    //border: 1px solid #b3b3b3;
     background: url(/images/ui/plus.png) 3px 5px no-repeat;
     float: left;
     cursor: pointer;
-    &:empty { padding-left: 16px; background-position: 50% 50%; }
+    &:empty { padding-left: 24px; background-position: 50% 50%; }
   }
   .controls .button:hover {
-    border-color: #324774;
+    border: 1px outset rgb(224, 224, 224);
+    margin: -1px 3px -4px -1px;
   }
-
+  
   .button.back { 
     background-image: url(/images/ui/back-btn.png); 
   }
-  .button.separator {
-    margin-top: 1px;
+  .button-separator {
+    float: left;
+    height: 22px;
+    margin: -1px 4px 0 0;
     padding: 3px 1px;
     border: none;
     background: gray;
