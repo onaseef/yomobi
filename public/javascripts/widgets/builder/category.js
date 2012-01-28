@@ -171,7 +171,7 @@
       ;
 
       if (showData.stuff.length === 0) {
-        showData.stuff = [{ name:'--None (Click the Add button below)--' }];
+        showData.stuff = [{ name:'--None (Click Add above)--' }];
         isThereStuff = false;
       }
 
