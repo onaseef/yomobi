@@ -209,7 +209,7 @@ script.edit-settings(type="text/template")
             td
               img.logo{src=@company.logo.url(:mobile) }
             td
-              a.remove-logo href="#" Remove Picture
+              a.remove-logo href="#" class=(@company.logo.exists? ? '' : 'hide') Remove Picture
               input type="hidden" name="destroy_logo" value="0"
 
       table.site-settings.new-picture

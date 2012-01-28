@@ -39,12 +39,18 @@ class Company < ActiveRecord::Base
     result
   end
   
-  def get_widget_doc(wname)
-    row = CouchRest.database(self.couch_db_url).view('widgets/by_name', {
+  def get_widget_doc(wsubtype,wname=nil)
+    rows = CouchRest.database(self.couch_db_url).view('widgets/by_name', {
       :include_docs => true,
-      :key => [nil,wname]
-    })['rows'].first
-    row && row['doc']
+      :key => [nil,wsubtype]
+    })['rows']
+
+    if wname.nil?
+      rows.first && rows.first['doc']
+    else
+      row = rows.select {|row| row['doc']['name'] == wname}.first
+      row['doc']
+    end
   end
 
   def save_doc(doc)

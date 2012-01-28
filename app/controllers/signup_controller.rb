@@ -56,7 +56,7 @@ class SignupController < ApplicationController
           company = current_user.company
 
           if data['desc'].present?
-            about_us_doc = company.get_widget_doc 'about-us'
+            about_us_doc = company.get_widget_doc 'custom-page', 'About Us'
             if about_us_doc
               about_us_doc['content'] = data['desc']
               company.save_doc about_us_doc
