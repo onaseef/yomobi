@@ -50,8 +50,9 @@
     .clearfix
   
   script.phone-page(type="text/template")
-    p Call us at:
-    h1 {{ _maybe.phone }}
+    h2 Call:
+    h2 
+      a href="tel:{{ _maybe.phone }}" {{ _maybe.phone }} 
   
   script.leave_msg-page(type="text/template")
     .input-wrap
