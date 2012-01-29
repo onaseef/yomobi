@@ -138,11 +138,17 @@
 
   var deleteConfirmText = "Are you sure you want to delete? (Data will be lost)";
 
+
+  // // // // // // // // // // // // // // // // // // // // // // // // //
+  // // // // // // // // // // // // // // // // // // // // // // // // //
+  //  Widget Class  // // // // // // // // // // // // // // // // // // //
+  // // // // // // // // // // // // // // // // // // // // // // // // //
+  // // // // // // // // // // // // // // // // // // // // // // // // //
   var super_getEditAreaData = window.Widget.prototype.getEditAreaData
     , super_init = window.widgetClasses.category.prototype.init
   ;
   window.widgetClasses.category = window.widgetClasses.category.extend({
-    
+
     init: function () {
       super_init.call(this);
       this.origStruct = util.clone(this.get('struct'));
@@ -165,7 +171,7 @@
       ;
 
       if (showData.stuff.length === 0) {
-        showData.stuff = [{ name:'--None (Click the Add button below)--' }];
+        showData.stuff = [{ name:'--None (Click Add above)--' }];
         isThereStuff = false;
       }
 
@@ -184,7 +190,7 @@
       };
       return _.extend({},showData,extraData);
     },
-    
+
     onHomeViewClick: function () {
       bapp.homeViewWidgetClick(this);
       return false;
@@ -199,34 +205,41 @@
     }
   });
 
-  // ---------------------------------------------------------
-  var super_accept = window.EditWidgetView.prototype.accept;
+
+  // // // // // // // // // // // // // // // // // // // // // // // // //
+  // // // // // // // // // // // // // // // // // // // // // // // // //
+  //  Editor  // // // // // // // // // // // // // // // // // // // // //
+  // // // // // // // // // // // // // // // // // // // // // // // // //
+  // // // // // // // // // // // // // // // // // // // // // // // // //
+  var super_accept = window.EditWidgetView.prototype.accept
+    , super_refreshViews = window.EditWidgetView.prototype.refreshViews
+  ;
   window.widgetEditors.category = window.EditWidgetView.extend({
 
     treeTypes: ['cat'],
 
     events: {
       'click input[name=beginEditing]':     'enterEditMode',
-      'click input[name=back]':             'transitionBack',
+      'click .back.button':                 'transitionBack',
 
-      'click input[name=add_cat]':          'addCat',
-      'click input[name=rename]':           'rename',
-      'click input[name=edit]':             'edit',
-      'dblclick select[name=stuff]':        'edit',
-      'click input[name=delete]':           'deleteNode',
-      'click input[name=move_up]':          'move',
-      'click input[name=move_down]':        'move',
+      'click .add-cat.button':              'addCat',
+      'click .rename.button':               'rename',
+      'click .edit.button':                 'edit',
+      'dblclick .node':                     'edit',
+      'click .delete.button':               'deleteNodes',
 
-      'click input[name=add_item]':         'addItem',
+      'click .add-item.button':             'addItem',
       'click .rename-link':                 'rename',
-      'click .remove-wphoto-link':          'removeWPhoto'
+      'click .remove-wphoto-link':          'removeWPhoto',
+
+      'sortstop':                           'updateOrder'
     },
-    
+
     init: function (widget) {
       // this is needed for proper inheritance due to closures
       this.AddItemDialog = AddItemDialog;
     },
-    
+
     // the button that activates this should only be available on the home page
     enterEditMode: function () {
       mapp.viewWidget(this.widget);
@@ -255,12 +268,14 @@
       else if (util._uploaders['default']) {
         util._uploaders['default'].destroy();
       }
+
+      $('.nodes').sortable({ handle:'.handle' }).selectable();
     },
-    
+
     grabWidgetValues: function () {
       return { struct:this.widget.get('struct') };
     },
-    
+
     accept: function () {
       // grab all selected indicies and make sure they're selected after save
       var select = this.el.find('select[name=stuff]')
@@ -276,7 +291,7 @@
       if ( EditWidgetView.prototype.remove.call(this) )
         mapp.goHome();
     },
-    
+
     cancel: function () {
       this.discardChanges();
       EditWidgetView.prototype.cancel.call(this);
@@ -294,10 +309,14 @@
     onDiscardByNavigation: function () {
       this.discardChanges();
     },
-    
+
     transitionBack: function (e) {
       // transition to the previous page by emulating a click
       mapp.getActivePage().find('.back-btn').click();
+    },
+
+    preventSorting: function () {
+      this.$('.nodes').sortable('option', 'delay', 50000);
     },
 
     addCat: function (e) {
@@ -311,115 +330,89 @@
 
       this.catDialog.enterMode('add').prompt();
     },
-    
-    edit: function (e) {
-      // transition into subcat by emulating a click
-      var target = $(this.el).find('select[name=stuff] option:selected:first')
-        , idx = target.index()
-        , type = target.data('type')
-        , id = target.val()
-      ;
-      if (idx === -1) return alert('Please select an item to edit.');
 
-      if (_.include(this.treeTypes, type)) {
-        this.widget.pageView.el.find('tr[data-id='+id+']').click();
+    edit: function (e) {
+      if (!util.isUIFree()) return;
+
+      // transition into subcat by emulating a click
+      var node = this.getFirstSelectedNode();
+      if (!node) return alert('Please select an item to edit.');
+
+      if (_.include(this.treeTypes, node._data.type)) {
+        this.widget.pageView.$('tr[data-id='+ node._data._id +']').click();
       }
       else {
-        this.editItem(id);
+        this.editItem( node._data._id );
       }
     },
 
     rename: function (e) {
       if (!util.isUIFree()) return;
 
-      var level = this.widget.getCurrentLevel(true)
-        , target_id = $(this.el).find('select[name=stuff] option:selected:first').val()
-        , node = level[target_id]._data
-      ;
+      var node = this.getFirstSelectedNode();
       if (!node) return alert('Please select an item to rename.');
-      
+
       this.catDialog = this.catDialog || new AddCatDialog();
       this.catDialog.model = this.widget;
       this.catDialog.options = {
         onClose: this.refreshViews,
-        node_id: node._id,
+        node_id: node._data._id,
         hideUploader: true
       };
 
-      this.catDialog.enterMode('edit').prompt(null,node.name);
+      this.catDialog.enterMode('edit').prompt(null,node._data.name);
     },
-    
-    move: function (e) {
+
+    updateOrder: function (e,ui) {
       if (!util.isUIFree()) return;
 
-      var mod = parseInt( $(e.target).attr('data-mod'),10 )
-        , $select = $(this.el).find('select[name=stuff]')
-        , targetOption = $select.find('option:selected:first')
-        , targetIdx = targetOption.index()
-        , target_id = targetOption.val()
+      var self = this, newOrder = [], noChange = true
+        , oldOrder = this.widget.getCurrentNode()._data._order
       ;
-      util.log('mod',mod,'targetIdx',targetIdx,target_id);
-      if (targetIdx <= 0 && mod == -1 ||
-          targetIdx >= $select.find('option').length-1 && mod == 1)
-      {
-        return;
-      }
-      if (!target_id)
-        return alert('Please select an item to move ' + (mod==1 ? 'down.' : 'up.'));
-      
-      var swapIdx = targetIdx + mod
-        , swapOption = $select.find('option:eq('+swapIdx+')')
-        , swap_id = swapOption.val()
-        , level = this.widget.getCurrentLevel(true)
-        , order = level._data._order
-      ;
-      if (!swap_id) return;
-      
-      // swap the categories internally
-      var tmp = order[targetIdx];
-      order[targetIdx] = order[swapIdx];
-      order[swapIdx] = tmp;
-      
-      // now swap graphically in the editor
-      (mod==1) ? targetOption.before(swapOption) : targetOption.after(swapOption);
-      this.setChanged('something',true);
-      this.refreshViews();
+      this.$('.nodes .node').each(function (idx, elem) {
+        var node_id = $(elem).data('id');
+        newOrder.push(node_id);
+        noChange = noChange && (node_id === oldOrder[idx]);
+      });
+      if (noChange) return;
+
+      this.widget.getCurrentNode()._data._order = newOrder;
+      this.updateNodeListUI();
     },
-    
-    deleteNode: function (e) {
+
+    deleteNodes: function (e) {
       if (!util.isUIFree()) return;
 
       var level = this.widget.getCurrentLevel(true)
-        , select = this.el.find('select[name=stuff]')
-        , selectedItems = select.find('option:selected')
-        , hasSomeSelected = selectedItems.length > 0
-        , lowestDeletedIdx = 99999
+        , selectedIds = this.getSelectedNodeIds()
+        , hasSomeSelected = selectedIds.length > 0
       ;
       if (hasSomeSelected && !confirm(deleteConfirmText)) return;
       else if (!hasSomeSelected) return alert('Please select an item to delete.');
 
-      selectedItems.map(function (idx,elem) {
-        var node_id = $(elem).val();
+      _.map(selectedIds, function (node_id) {
 
         if (level[node_id]) {
           delete level[node_id];
           var orderIdx = _.indexOf(level._data._order, node_id);
           level._data._order.splice(orderIdx,1);
-          lowestDeletedIdx = Math.min($(elem).index(), lowestDeletedIdx);
         }
       });
 
-      this.setChanged('something',true);
-
-      // select the lowest deleted index
-      select
-        .find('option:selected').prop('selected',false).end()
-        .find('option:eq('+lowestDeletedIdx+')').prop('selected',true).end()
-      ;
-
-      this.refreshViews();
+      this.updateNodeListUI();
     },
-    
+
+    getSelectedNodeIds: function () {
+      return this.$('.nodes .node.ui-selected').map(function (idx,elem) {
+        return $(elem).data('id');
+      });
+    },
+
+    getFirstSelectedNode: function () {
+      var node_id = this.$('.nodes .node.ui-selected:first').data('id');
+      return node_id ? this.widget.getNodeById(node_id) : null;
+    },
+
     addItem: function (e) {
       if (!util.isUIFree()) return;
 
@@ -432,7 +425,7 @@
 
       this.itemDialog.enterMode('add').prompt();
     },
-    
+
     editItem: function (item_id) {
       if (!util.isUIFree()) return;
       util.log('Editing item');
@@ -441,41 +434,12 @@
         , item = level[item_id]._data
       ;
       if (_.isEmpty(item)) return alert('Please select an item to edit.');
-      
+
       var dialog =  new this.AddItemDialog({
         model: this.widget,
         onClose: this.refreshViews
       });
       dialog.enterMode('edit').prompt(null,item);
-    },
-    
-    moveItem: function (e) {
-      if (!util.isUIFree()) return;
-
-      var mod = parseInt( $(e.target).attr('data-mod'),10 )
-        , $select = $(this.el).find('select[name=items]')
-        , _items = this.widget.getCurrentLevel()._items
-        
-        , targetOption = $select.find('option:selected:first')
-        , targetIdx = targetOption.index()
-        , swapIdx = targetIdx + mod
-        , swapOption = $select.find('option:eq('+swapIdx+')')
-      ;
-      if (targetIdx <= 0 && mod == -1 ||
-          targetIdx >= _items.length-1 && mod == 1)
-      {
-        return;
-      }
-      if (swapIdx >= _items.length)
-        return alert('Please select an item to move ' + (mod==1 ? 'down.' : 'up.'));
-      
-      // first swap internally
-      _items.swap(targetIdx,swapIdx);
-      
-      // now swap in the editor
-      (mod==1) ? targetOption.before(swapOption) : targetOption.after(swapOption);
-      this.setChanged('something',true);
-      this.refreshViews();
     },
 
     removeWPhoto: function (e) {
@@ -500,10 +464,26 @@
       // not sure why, but this seems to work while chaining does not.
       // no time to investigate
       this.el.find('select[name=stuff]').scrollTop(scrollTop);
+    },
+
+    updateNodeListUI: function () {
+      this.setChanged('something',true);
+      this.refreshViews();
+    },
+
+    refreshViews: function (options) {
+      this.preventSorting();
+      super_refreshViews.call(this, options);
     }
-    
+
   });
-  
+
+
+  // // // // // // // // // // // // // // // // // // // // // // // // //
+  // // // // // // // // // // // // // // // // // // // // // // // // //
+  //  Widget Page   // // // // // // // // // // // // // // // // // // //
+  // // // // // // // // // // // // // // // // // // // // // // // // //
+  // // // // // // // // // // // // // // // // // // // // // // // // //
   window.widgetPages.category = window.widgetPages.category.extend({
 
     onItemClick: function (e) {
@@ -512,10 +492,10 @@
 
       var node_id = target.data('id');
       this.widget.getEditor()
-        .el.find('select[name=stuff] option')
-        .prop('selected',false)
-        .filter('[value=' + node_id + ']')
-          .prop('selected',true)
+        .el.find('.nodes .node')
+        .removeClass('ui-selected')
+        .filter('[data-id="' + node_id + '"]')
+          .addClass('ui-selected')
           .dblclick()
       ;
     },
@@ -527,14 +507,14 @@
       if (!target) return;
 
       var cat_id = target.data('id');
-      
+
       mapp.viewWidget(this.widget, cat_id);
       this.widget.getEditor().startEditing();
     },
-    
+
     // this event is only triggered by bapp,
     // thus it's only useful when declared in the builder.
-    // 
+    //
     onBackBtnClick: function () {
       if (!mapp.canTransition()) return;
 
@@ -551,7 +531,7 @@
 
       this.widget.getEditor().startEditing();
     },
-    
+
     refresh: function () {
       if (mapp.pageLevel === 0) return;
 
@@ -564,7 +544,7 @@
       activePage.topBar.find('.title').html(newTitle);
       this.widget.pageView.setContentElem(activePage.content);
     }
-    
+
   });
 
 
@@ -585,12 +565,12 @@
     events: {
       'keydown input[name="cat"]':      'onKeyDown'
     },
-    
+
     onKeyDown: function (e) {
       var code = e.keyCode || e.which;
       if (code == 13) this.addAnotherSaveFunc.call(this.el);
     },
-    
+
     initialize: function () {
       _.bindAll(this,'validateCategory', 'isCategoryValid');
       this.addedCats = [];
@@ -600,7 +580,7 @@
       this.mode = mode;
       return this;
     },
-    
+
     render: function (error,level,name) {
       var template = (this.mode == 'add') ? addCatTemplate : editCatTemplate;
 
@@ -618,7 +598,7 @@
       ;
       return this;
     },
-    
+
     prompt: function (error,origName,keepAddedCats) {
       if (!keepAddedCats) this.addedCats.length = 0;
 
@@ -631,7 +611,7 @@
       // cache for later use in validateCategory
       this.level = level;
       if (!error) this.origName = origName;
-      
+
       buttons["Save"] = makeSaveFunc(this, {
         onUpload: this.validateCategory,
         validator: this.isCategoryValid,
@@ -646,7 +626,7 @@
         validator: this.isCategoryValid,
         skipUpload: this.options.hideUploader
       });
-      
+
       var dialog = util.dialog(dialogContent, buttons, dialogContent.title)
         .find('p.error').show('pulsate',{times:3}).end()
         .find('[name=add]').click(this.addAnotherSaveFunc).end()
@@ -659,7 +639,7 @@
         initDialogUploader(this, dialog, shouldEmptyUploadQueue);
       }
     },
-    
+
     isCategoryValid: function (addAnother) {
       // TODO: redundant code. Make validateCategory() use
       //       this code somehow.
@@ -758,22 +738,22 @@
     }
 
   });
-  
+
   // =================================
   var itemDialogTemplate = util.getTemplate('item-dialog');
   var AddItemDialog = Backbone.View.extend({
-    
+
     initialize: function () {
       this.template = util.getTemplate(this.model.get('wsubtype')+'-item-dialog-content');
       this.addedItems = [];
       _.bindAll(this, 'saveItem', 'isItemValid');
     },
-    
+
     enterMode: function (mode) {
       this.mode = mode;
       return this;
     },
-    
+
     render: function (flash,level,item) {
       flash || (flash = {});
       item || (item = {});
@@ -792,7 +772,7 @@
       $(this.el).html(dialogHtml).attr('title',title);
       return this;
     },
-    
+
     prompt: function (flash,item,keepAddedItems) {
       if (!keepAddedItems) this.addedItems.length = 0;
 
@@ -804,7 +784,7 @@
       // cache for later use
       this.level = level;
       if (!flash || !flash.error) this.origItem = item;
-      
+
       var buttons = {};
 
       buttons["Save"] = makeSaveFunc(this, { onUpload:this.saveItem, validator:this.isItemValid });
@@ -830,7 +810,7 @@
 
       initDialogUploader(this, dialog, shouldEmptyUploadQueue);
     },
-    
+
     validateItem: function (item) {
 
       var name = $.trim(item.name)
@@ -876,13 +856,13 @@
       $(this.el).find('.item-input').each(function (idx,elem) {
         activeItemData[$(elem).attr('name')] = $(elem).val();
       });
-      
+
       var inputs = _(activeItemData).chain().reject(util.keq('type'))
                                     .values().compact().value();
       if (inputs.length === 0 && this.addedItems.length > 0 && addAnother !== true)
         return this.options.onClose && this.options.onClose();
       if (!this.validateItem(activeItemData)) return;
-      
+
       if (this.mode == 'add') {
         AddCatDialog.prototype.addNodeToStruct.call(this,activeItemData);
 

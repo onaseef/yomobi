@@ -521,31 +521,32 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
           td
         | <% } %>
 
-    select name="stuff" multiple="multiple"
-      | <% for (var i=0;i<stuff.length;i++) { %>
-      option data-type="{{ stuff[i].type }}" value="{{ stuff[i]._id }}"
-        | {{ bulletTypes[ stuff[i].type ] }} {{ stuff[i].name }}
+    .controls
+      / For icon-only buttons, you need = ""
+      .button.back title="Go Back" = ""
+      .button-separator
+      .button.add-cat Add {{ catLabel }}
+      .button.add-item Add {{ itemLabel }}
+
+      | <% if (isThereStuff == true) { %>
+      .button-separator
+      .button.edit title="Edit" &nbsp;
+      .button.rename title="Rename" &nbsp;
+      .button.delete title="Delete" &nbsp;
+      | <% } %>
+
+      .clearfix
+
+    ul.nodes.fancy-selectable
+      | <% for (var i=0; i<stuff.length; i++) { %>
+      li.node data-type="{{ stuff[i].type }}" data-id="{{ stuff[i]._id }}"
+        .handle
+          .ui-icon.ui-icon-carat-2-n-s
+        .icon class="{{ stuff[i].type }}"
+        .name {{ stuff[i].name }}
+        .clearfix
       | <% } %>
     br
-    
-    | <%       if (stuff.length >= 2) { %>
-    input.rfloat.down-arrow type="button" name="move_down" data-mod="1" value="&#9660;"
-    input.rfloat.up-arrow type="button" name="move_up" data-mod="-1" value="&#9650;"
-    | <%       } %>
-
-    | <%       if (isThereStuff == true) { %>
-    input type="button" name="rename" value="Rename"
-    input type="button" name="edit" value="Edit"
-    input type="button" name="delete" value="Delete"
-    | <%       } %>
-
-    br
-    .divider
-
-    input type="button" name="back" value="< Back"
-    .button-divider.lfloat
-    input type="button" name="add_cat" value="Add {{ catLabel }}"
-    input type="button" name="add_item" value="Add {{ itemLabel }}"
 
     | <% } else { %>
     br

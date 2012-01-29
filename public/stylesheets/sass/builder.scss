@@ -521,6 +521,93 @@ div.wysiwyg ul.toolbar {
     word-wrap: break-word; } }
 
 #builder .edit-area.category, #builder .edit-area.page_tree {
+
+  .controls {
+    border: 1px solid #b3b3b3;
+    padding: 3px;
+    background: rgb(192, 192, 192);
+  }
+  .controls .button {
+    height: 22px;
+    padding: 6px 6px 0 24px;
+    margin: 0 4px 0 0;
+    //border: 1px solid #b3b3b3;
+    background: url(/images/ui/plus.png) 3px 5px no-repeat;
+    float: left;
+    cursor: pointer;
+    &:empty { padding-left: 24px; background-position: 50% 50%; }
+  }
+  .controls .button:hover {
+    border: 1px outset rgb(224, 224, 224);
+    margin: -1px 3px -4px -1px;
+  }
+  
+  .button.back { 
+    background-image: url(/images/ui/back-btn.png); 
+  }
+  .button-separator {
+    float: left;
+    height: 22px;
+    margin: -1px 4px 0 0;
+    padding: 3px 1px;
+    border: none;
+    background: gray;
+  }
+  .button.add-cat { 
+    background-image: url(/images/ui/icon-folder-new.png);
+  }
+  .button.add-item { 
+    background-image: url(/images/ui/icon-item-new.png); 
+  }
+  .button.rename { 
+    background-image: url(/images/ui/icon-rename.png); 
+    background-position: center;
+  }
+  .button.edit { 
+    background-image: url(/images/ui/icon-edit.png); 
+    background-position: center;
+  }
+  .button.delete { 
+    background-image: url(/images/ui/icon-delete.png); 
+    background-position: center;
+  }
+
+  ul.fancy-selectable {
+    height: 290px;
+    overflow: auto;
+  }
+  .nodes {
+    .handle {
+      float: right;
+      padding: 6px 6px 0px 6px;
+      cursor: move;
+    }
+    .icon {
+      height: 24px;
+      width: 16px;
+      padding-left: 6px;
+      float: left;
+      background: transparent 50% 50% no-repeat;
+    }
+    .name {
+      padding: 6px 10px 6px 3px;
+      float: left;
+      width: 270px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: no-wrap;      
+      border-right: 1px solid #b3b3b3;
+    }
+
+    .icon.cat {
+      background-image: url(/images/ui/icon-folder.png);
+    }
+    .icon.page, .icon.item {
+      background-image: url(/images/ui/icon-item.png);
+      background-position: 3px 6px;
+    }
+  }
+
   .icon-wrap {
     padding: 0 5px 0 0;
     img { width: 18px; height: 18px; }

@@ -328,6 +328,23 @@ p.success {
     #footer .site-links a, #footer .site-links a:visited {
       color: #000; }
 
+ul.fancy-selectable {
+  background: #fff;
+  border: 1px solid #b3b3b3;
+  list-style: none;
+  margin: 0;
+  padding: 10px; }
+  ul.fancy-selectable li {
+    padding: 0;
+    border: 1px solid #b3b3b3;
+    margin-bottom: 4px;
+    cursor: pointer; }
+  ul.fancy-selectable li.ui-selecting {
+    background: #FECA40; }
+  ul.fancy-selectable li.ui-selected {
+    background: #F39814;
+    color: white; }
+
 .social-share {
   margin: 0;
   padding: 0 0 0 0;

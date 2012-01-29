@@ -467,6 +467,71 @@ div.wysiwyg ul.toolbar {
   font-size: 150%;
   word-wrap: break-word; }
 
+#builder .edit-area.category .controls, #builder .edit-area.page_tree .controls {
+  border: 1px solid #b3b3b3;
+  padding: 3px;
+  background: silver; }
+#builder .edit-area.category .controls .button, #builder .edit-area.page_tree .controls .button {
+  height: 22px;
+  padding: 6px 6px 0 24px;
+  margin: 0 4px 0 0;
+  background: url(/images/ui/plus.png) 3px 5px no-repeat;
+  float: left;
+  cursor: pointer; }
+  #builder .edit-area.category .controls .button:empty, #builder .edit-area.page_tree .controls .button:empty {
+    padding-left: 24px;
+    background-position: 50% 50%; }
+#builder .edit-area.category .controls .button:hover, #builder .edit-area.page_tree .controls .button:hover {
+  border: 1px outset #e0e0e0;
+  margin: -1px 3px -4px -1px; }
+#builder .edit-area.category .button.back, #builder .edit-area.page_tree .button.back {
+  background-image: url(/images/ui/back-btn.png); }
+#builder .edit-area.category .button-separator, #builder .edit-area.page_tree .button-separator {
+  float: left;
+  height: 22px;
+  margin: -1px 4px 0 0;
+  padding: 3px 1px;
+  border: none;
+  background: gray; }
+#builder .edit-area.category .button.add-cat, #builder .edit-area.page_tree .button.add-cat {
+  background-image: url(/images/ui/icon-folder-new.png); }
+#builder .edit-area.category .button.add-item, #builder .edit-area.page_tree .button.add-item {
+  background-image: url(/images/ui/icon-item-new.png); }
+#builder .edit-area.category .button.rename, #builder .edit-area.page_tree .button.rename {
+  background-image: url(/images/ui/icon-rename.png);
+  background-position: center; }
+#builder .edit-area.category .button.edit, #builder .edit-area.page_tree .button.edit {
+  background-image: url(/images/ui/icon-edit.png);
+  background-position: center; }
+#builder .edit-area.category .button.delete, #builder .edit-area.page_tree .button.delete {
+  background-image: url(/images/ui/icon-delete.png);
+  background-position: center; }
+#builder .edit-area.category ul.fancy-selectable, #builder .edit-area.page_tree ul.fancy-selectable {
+  height: 290px;
+  overflow: auto; }
+#builder .edit-area.category .nodes .handle, #builder .edit-area.page_tree .nodes .handle {
+  float: right;
+  padding: 6px 6px 0px 6px;
+  cursor: move; }
+#builder .edit-area.category .nodes .icon, #builder .edit-area.page_tree .nodes .icon {
+  height: 24px;
+  width: 16px;
+  padding-left: 6px;
+  float: left;
+  background: transparent 50% 50% no-repeat; }
+#builder .edit-area.category .nodes .name, #builder .edit-area.page_tree .nodes .name {
+  padding: 6px 10px 6px 3px;
+  float: left;
+  width: 270px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: no-wrap;
+  border-right: 1px solid #b3b3b3; }
+#builder .edit-area.category .nodes .icon.cat, #builder .edit-area.page_tree .nodes .icon.cat {
+  background-image: url(/images/ui/icon-folder.png); }
+#builder .edit-area.category .nodes .icon.page, #builder .edit-area.category .nodes .icon.item, #builder .edit-area.page_tree .nodes .icon.page, #builder .edit-area.page_tree .nodes .icon.item {
+  background-image: url(/images/ui/icon-item.png);
+  background-position: 3px 6px; }
 #builder .edit-area.category .icon-wrap, #builder .edit-area.page_tree .icon-wrap {
   padding: 0 5px 0 0; }
   #builder .edit-area.category .icon-wrap img, #builder .edit-area.page_tree .icon-wrap img {
