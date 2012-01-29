@@ -473,7 +473,7 @@ div.wysiwyg ul.toolbar {
   background: silver; }
 #builder .edit-area.category .controls .button, #builder .edit-area.page_tree .controls .button {
   height: 22px;
-  padding: 6px 6px 0 24px;
+  padding: 6px 6px 0 22px;
   margin: 0 4px 0 0;
   background: url(/images/ui/plus.png) 3px 5px no-repeat;
   float: left;
@@ -522,7 +522,7 @@ div.wysiwyg ul.toolbar {
 #builder .edit-area.category .nodes .name, #builder .edit-area.page_tree .nodes .name {
   padding: 6px 10px 6px 3px;
   float: left;
-  width: 270px;
+  width: 255px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: no-wrap;
