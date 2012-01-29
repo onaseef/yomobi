@@ -40,7 +40,9 @@ window.g = {
   },
 <%- end %>
 
-  noPhotoPath: '/images/no-wphoto.png'
+  noPhotoPath: '/images/no-wphoto.png',
+  isPreview: <%= @is_preview_mode.present? %>,
+  isBuilder: <%= @is_builder.present? %>
 };
 window.widgetClasses = {};
 window.widgetPages = {};

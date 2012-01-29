@@ -192,6 +192,9 @@ p {
   float: left;
   width: 25%;
   height: 102px; }
+  .home-icon a {
+    color: #000;
+    text-decoration: none; }
   .home-icon .inner {
     padding: 7.5px 5.5px 7.5px 5.5px; }
   .home-icon .icon {

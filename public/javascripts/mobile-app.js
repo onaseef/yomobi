@@ -62,6 +62,12 @@
     
     render: function () {
       $(this.el).html( this.template(this.model.getIconData()) );
+
+      // special case due to browser limitations of the tel: protocol
+      if (this.model.get('wtype') === 'phone' && !g.isBuilder && !g.isPreview) {
+        $(this.el).wrapInner('<a href="tel:' + this.model.get('phone') + '">');
+      }
+
       // even though this only relates to bapp, it only triggers when
       // bapp tells mapp to show invalid widgets
       if (mapp.homeView.showInvalidWidgets && !this.model.validForShowing()) {
