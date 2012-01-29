@@ -44,7 +44,7 @@ informed::keep-me-informed:
   canRename: true
   canEditIcon: false
 link::full-website:
-  canRename: false
+  canRename: true
   canEditIcon: false
 link_fb::flickr:
   canRename: true
