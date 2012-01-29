@@ -492,10 +492,10 @@
 
       var node_id = target.data('id');
       this.widget.getEditor()
-        .el.find('select[name=stuff] option')
-        .prop('selected',false)
-        .filter('[value=' + node_id + ']')
-          .prop('selected',true)
+        .el.find('.nodes .node')
+        .removeClass('ui-selected')
+        .filter('[data-id="' + node_id + '"]')
+          .addClass('ui-selected')
           .dblclick()
       ;
     },
