@@ -64,7 +64,7 @@
       $(this.el).html( this.template(this.model.getIconData()) );
 
       // special case due to browser limitations of the tel: protocol
-      if (this.model.get('wtype') === 'phone' && !g.isBuilder && !g.isPreview && !g.isIPad) {
+      if (this.model.get('wtype') === 'phone' && !g.isBuilder && !g.isPreview && !g.isTablet) {
         $(this.el).wrapInner('<a href="tel:' + this.model.get('phone') + '">');
       }
 

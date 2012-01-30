@@ -11,7 +11,7 @@ window.g = {
   company: '<%=escape_javascript @company.name %>',
   isPreview: <%= @is_preview_mode.present? %>,
   isBuilder: <%= @is_builder.present? %>,
-  isIPad: navigator.userAgent.match(/iPad/i) != null
+  isTablet: navigator.userAgent.match(/ipad|kindle/i) != null
 };
 window.widgetClasses = {};
 window.widgetPages = {};
