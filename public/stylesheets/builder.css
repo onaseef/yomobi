@@ -154,13 +154,19 @@ div.wysiwyg ul.toolbar {
     font-weight: bold;
     font-size: 18px;
     padding: 0px;
-    margin: 15px 0px 20px 0px; }
+    margin: 15px 0px 3px 0px; }
+  #builder-help p.help-text {
+    margin-bottom: 20px; }
+  #builder-help p {
+    margin-bottom: 5px; }
+  #builder-help img {
+    border: 2px solid #203360; }
   #builder-help .first {
     margin-left: -2px; }
   #builder-help .or {
     font-size: 18px;
     font-weight: bold;
-    margin: 25px 0px 25px 0px;
+    margin: 8px 0px 8px 0px;
     padding: 10px 0px 10px 0px;
     text-align: center; }
     #builder-help .or table {
