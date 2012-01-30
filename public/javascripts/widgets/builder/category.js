@@ -316,6 +316,7 @@
     },
 
     preventSorting: function () {
+      if ( !this.hasChanges() ) return;
       this.$('.nodes').sortable('option', 'delay', 50000);
     },
 
