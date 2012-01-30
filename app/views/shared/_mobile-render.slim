@@ -9,13 +9,13 @@
         td.wtab
         td.wtab
         td.wtab
-  - unless @is_preview_mode
+  - unless @is_preview_mode || @company.premium?
     .ad-bar
       = render 'mobile/adsense' if Rails.env == 'production'
 #canvas
   #home.page
     #home-widgets.content.dbx-group
-    - unless @is_preview_mode
+    - unless @is_preview_mode || @company.premium?
       .ad-bar.bottom
         div align="center"
         = render 'mobile/adsense' if Rails.env == 'production'

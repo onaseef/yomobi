@@ -84,6 +84,10 @@ class Company < ActiveRecord::Base
     self.company_settings
   end
 
+  def premium?
+    self.premium == true
+  end
+
   private
 
   def check_file_size

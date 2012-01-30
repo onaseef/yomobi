@@ -5,7 +5,7 @@ html lang="en-US" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com
     link rel="shortcut icon" type="image/x-icon" href="yomobi.ico"
     link rel="canonical" href==@company.mobile_url
     = render 'mobile/meta'
-    
+
     title = "#{@company.name} | Mobile Website | YoMobi"
     = render 'shared/iphone-meta.html'
     = stylesheet_link_tag 'mobile'
@@ -18,7 +18,7 @@ html lang="en-US" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com
   body
     #mobile-container
       = yield
-    
+
     = render 'shared/templates'
     = javascript_include_tag 'support/json2.min'
     = javascript_include_tag 'support/jquery-1.6.2.min'
@@ -26,15 +26,15 @@ html lang="en-US" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com
     = javascript_include_tag 'support/backbone'
     = javascript_include_tag 'util'
     = render :partial => 'shared/mobile-data-loader'
-    
+
     = javascript_include_tag 'widgets/mobile/base'
-    
+
     - Dir[widgets_dir('mobile/*.js')].sort.each do |widget|
       - next if File.basename(widget) == 'base.js'
       = javascript_include_tag "widgets/mobile/#{File.basename widget}"
-    
+
     = javascript_include_tag 'mobile-app'
-    - unless @is_preview_mode
+    - unless @is_preview_mode || @company.premium?
       javascript:
         showAds = true
     javascript:
@@ -60,7 +60,7 @@ html lang="en-US" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com
       $(window).load(function () {
         setTimeout(function () { $(window).scrollTop(0); },1000);
       });
-    
+
     = javascript_include_tag 'support/bezen.domwrite.js'
 
     - if Rails.env.production?
