@@ -220,6 +220,7 @@
 
     events: {
       'click input[name=beginEditing]':     'enterEditMode',
+      'click input[name=back]':             'transitionBack',
       'click .back.button':                 'transitionBack',
 
       'click .add-cat.button':              'addCat',
