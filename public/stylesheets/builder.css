@@ -6,14 +6,13 @@
   font-family: "lucida grande", tahoma, verdana, arial, sans-serif; }
 
 #jeditor-wrapper .wysiwyg {
-  width: 343px; }
-
+  width: 364px; }
 #jeditor-wrapper iframe {
-  width: 335px; }
+  width: 355px;
+  max-width: 355px; }
 
 div.wysiwyg ul.toolbar {
-  border-bottom: 0px !important;
-  width: 97% !important; }
+  border-bottom: 0px !important; }
 
 #sidebar {
   float: left;
@@ -180,7 +179,7 @@ div.wysiwyg ul.toolbar {
       margin-left: 3px; }
 
 #builder .widget-editor {
-  width: 360px;
+  width: 376px;
   padding: 0px;
   margin: 0 auto; }
   #builder .widget-editor .header {
@@ -474,6 +473,7 @@ div.wysiwyg ul.toolbar {
   word-wrap: break-word; }
 
 #builder .edit-area.category .controls, #builder .edit-area.page_tree .controls {
+  height: 28px;
   border: 1px solid #b3b3b3;
   padding: 3px;
   background: silver; }
@@ -495,7 +495,7 @@ div.wysiwyg ul.toolbar {
 #builder .edit-area.category .button-separator, #builder .edit-area.page_tree .button-separator {
   float: left;
   height: 22px;
-  margin: -1px 4px 0 0;
+  margin: 0 4px 0 0;
   padding: 3px 1px;
   border: none;
   background: gray; }
@@ -528,7 +528,7 @@ div.wysiwyg ul.toolbar {
 #builder .edit-area.category .nodes .name, #builder .edit-area.page_tree .nodes .name {
   padding: 6px 10px 6px 3px;
   float: left;
-  width: 255px;
+  width: 265px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: no-wrap;
@@ -544,7 +544,9 @@ div.wysiwyg ul.toolbar {
     width: 18px;
     height: 18px; }
 #builder .edit-area.category .crumb-wrap, #builder .edit-area.page_tree .crumb-wrap {
-  padding: 1px 0 0 0; }
+  padding: 6px 6px 0 6px;
+  height: 16px;
+  overflow: hidden; }
 #builder .edit-area.category select, #builder .edit-area.page_tree select {
   width: 360px;
   margin: 2px 0;

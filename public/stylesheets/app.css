@@ -95,11 +95,6 @@ input[type=text], input[type=password] {
   margin-bottom: 10px;
   font-size: 12px; }
 
-#jeditor-wrapper .wysiwyg {
-  width: 348px; }
-#jeditor-wrapper iframe {
-  max-width: 340px; }
-
 em {
   font-size: 12px; }
 

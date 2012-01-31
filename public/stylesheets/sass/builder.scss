@@ -9,15 +9,19 @@
   font-family: "lucida grande", tahoma, verdana, arial, sans-serif;  
 }  
 
-#jeditor-wrapper .wysiwyg {
-  width: 343px; }
-
-#jeditor-wrapper iframe {
-  width: 335px; }
+#jeditor-wrapper {
+  .wysiwyg { 
+    width: 364px; 
+  }
+  iframe { 
+    width: 355px;
+    max-width: 355px; 
+  } 
+}
 
 div.wysiwyg ul.toolbar { 
   border-bottom: 0px !important; 
-  width:97% !important; }
+}
 
 
 #sidebar {
@@ -195,7 +199,7 @@ div.wysiwyg ul.toolbar {
 }
 
 #builder .widget-editor {
-  width: $widget-editor-width - 25px - 25px;
+  width: $widget-editor-width - 17px - 17px;
   padding: 0px;
   margin: 0 auto;
   .header {
@@ -524,6 +528,7 @@ div.wysiwyg ul.toolbar {
 #builder .edit-area.category, #builder .edit-area.page_tree {
 
   .controls {
+    height: 28px;
     border: 1px solid #b3b3b3;
     padding: 3px;
     background: rgb(192, 192, 192);
@@ -549,7 +554,7 @@ div.wysiwyg ul.toolbar {
   .button-separator {
     float: left;
     height: 22px;
-    margin: -1px 4px 0 0;
+    margin: 0 4px 0 0;
     padding: 3px 1px;
     border: none;
     background: gray;
@@ -593,7 +598,7 @@ div.wysiwyg ul.toolbar {
     .name {
       padding: 6px 10px 6px 3px;
       float: left;
-      width: 255px;
+      width: 265px;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: no-wrap;      
@@ -615,7 +620,9 @@ div.wysiwyg ul.toolbar {
   }
 
   .crumb-wrap {
-    padding: 1px 0 0 0;
+    padding: 6px 6px 0 6px;
+    height: 16px;
+    overflow: hidden;
   }
   select {
     width: 360px;

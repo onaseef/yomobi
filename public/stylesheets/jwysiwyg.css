@@ -1,10 +1,14 @@
+@import url('mobile.css');
+
 /* css for jwysiwyg */
 body {
 	font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
 	font-size: 16px; 
 	margin: 0px 0px 0px 0px;
-	padding: 0px 4px 0px 0px;  
+	padding: 0px 4px 0px 4px;  
 	word-wrap: break-word;
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
 
 p {

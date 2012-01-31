@@ -549,13 +549,12 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
     br
 
     | <% } else { %>
-    br
-    .crumb-wrap
-      erb:
-        <b>Editing: <span class="blue">{{ catCrumbs }}</span></b>
-
+    .controls
+      .button.back title="Go Back" = ""
+      .button-separator
+      .crumb-wrap
+        erb:
+          <b>Editing: <span class="blue">{{ catCrumbs }}</span></b>
     #jeditor-wrapper
       textarea#jeditor {{ content }}
-    br
-    input type="button" name="back" value="< Back"
     | <% } %>
