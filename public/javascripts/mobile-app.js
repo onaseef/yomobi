@@ -194,8 +194,8 @@
     render: function () {
       util.log('app render');
       $('#top-bar .company-info').html(this.headerTemplate({
-        name: g.db_name,
-        name: g.company
+        name: g.company,
+        slogan: g.slogan
       }))
       .find('img').load(function (e,elem) {
         g.topBarHeight = Math.max(g.topBarHeight,$('#top-bar').height());

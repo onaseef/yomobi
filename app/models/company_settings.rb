@@ -5,7 +5,11 @@ class CompanySettings < ActiveRecord::Base
             :allow_nil => true,
             :format => { :with => /#[0-9a-f]{3}([0-9a-f]{3})?$/,
                          :message => "Invalid hex format." }
-  
+
+  validates :slogan,
+            :allow_nil => true,
+            :length => { :maximum => MAX_COMPANY_SLOGAN_LENGTH }
+
   before_validation :format_color
 
   private

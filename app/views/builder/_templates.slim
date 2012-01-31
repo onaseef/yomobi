@@ -123,7 +123,7 @@ script.edit-icon-dialog(type="text/template")
           td.label
             div.label {{ icons[i].separator }}
           td.r
-            div.r 
+            div.r
       | <% } else if (icons[i].separator) {  %>
       table.change-icon-separator
         tr
@@ -132,10 +132,10 @@ script.edit-icon-dialog(type="text/template")
           td.label
             div.label {{ icons[i].separator }}
           td.r
-            div.r 
+            div.r
       | <% } else { %>
       img src="/images/widgets/{{ icons[i].name }}.png" data-pname="{{ icons[i].pname }}" title="{{ icons[i].pname }}" data-name="{{ icons[i].name }}"
-      | <% } %>        
+      | <% } %>
       | <% } %>
     .selected-display
       div.selected-label Selected icon:
@@ -183,7 +183,7 @@ script.edit-settings(type="text/template")
       a.help-link href="http://help.yomobi.com/Account/GeneralSettings" target="_blank" Help
   div class="edit-area edit-settings"
     .explanation == t 'builder.help.edit_settings'
-    
+
     = form_tag '/builder/settings', :multipart => true, :class => 'box' do
       table.site-settings
         tbody
@@ -192,6 +192,11 @@ script.edit-settings(type="text/template")
               label Site Name:
             td colspan="2"
               input type="text" name="company_name" value=@company.name maxlength=MAX_COMPANY_NAME_LENGTH
+          tr
+            td
+              label Site Slogan:
+            td colspan="2"
+              textarea name="company_slogan" maxlength=MAX_COMPANY_SLOGAN_LENGTH = @company.settings.slogan
           tr
             td colspan="3"
               .divider
@@ -245,7 +250,7 @@ script.edit-settings(type="text/template")
               .color-picker data-color="{{ header_text_color }}" data-target="header_text_color"
                 div style="background-color:{{ header_text_color }}"
               input type="hidden" name="header_text_color" value="{{ header_text_color }}"
-      
+
       .clearfix
 
       .action-bar
@@ -325,7 +330,7 @@ script.jeditor-image-dialog(type="text/template")
       label Image Size:
       input type="text" name="size" size="3" value="{{ size }}"
       span.percent-sign %
-    
+
     p
       label Clickable URL (optional):
       a href="http://help.yomobi.com/Wysiwyg/Url" target="_blank"
@@ -488,7 +493,7 @@ script.calendar-edit-area(type="text/template")
   .url
     a href="{{ showUrl }}" target="_blank" {{ showUrl }}
   input(type="hidden" name="url" value="{{ _maybe.url }}")
-  
+
   label Paste your "Embed this Calendar" link here:
   textarea(name="paste" type="text") {{ _maybe.description }}
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120130191336) do
+ActiveRecord::Schema.define(:version => 20120131203333) do
 
   create_table "carriers", :force => true do |t|
     t.string   "name"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(:version => 20120130191336) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "header_text_color"
+    t.string   "slogan"
   end
 
   create_table "company_types", :force => true do |t|
