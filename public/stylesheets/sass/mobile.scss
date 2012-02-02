@@ -160,7 +160,12 @@ p {
   .name {
     padding-left: 8px;
     font-size: 18px;
-    font-weight: bold; } }
+    font-weight: bold; }
+  .slogan {
+    padding-left: 8px;
+    font-style: italic;
+  }
+}
 
 .tab-bar {
   background: #c4cde0;

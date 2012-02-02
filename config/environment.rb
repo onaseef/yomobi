@@ -16,6 +16,7 @@ SHORT_URL_RESERVED_COUNT = 23
 
 # used in builder_controller.rb, among other places
 MAX_COMPANY_NAME_LENGTH = 45
+MAX_COMPANY_SLOGAN_LENGTH = 90
 
 # Initialize the rails application
 Yomobi::Application.initialize!

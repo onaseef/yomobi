@@ -356,7 +356,7 @@ div.wysiwyg ul.toolbar {
     padding-right: 0;
     padding-top: 8px;
     margin-top: 15px; }
-  #builder .edit-area.edit-settings .site-settings input[type=text], #builder .edit-area.edit-advanced-settings .site-settings input[type=text] {
+  #builder .edit-area.edit-settings .site-settings input[type=text], #builder .edit-area.edit-settings .site-settings textarea, #builder .edit-area.edit-advanced-settings .site-settings input[type=text], #builder .edit-area.edit-advanced-settings .site-settings textarea {
     width: 240px; }
   #builder .edit-area.edit-settings select, #builder .edit-area.edit-advanced-settings select {
     width: 245px; }
@@ -696,7 +696,7 @@ div.wysiwyg ul.toolbar {
   font-size: 14px;
   font-family: Arial, Helvetica, sans-serif; }
 
-#mobile-container .company-info .name, #mobile-container .company-info .logo {
+#mobile-container .company-info .name, #mobile-container .company-info .logo, #mobile-container .company-info .slogan {
   cursor: pointer; }
 #mobile-container .page .content.category .item:hover, #mobile-container .page .content.page_tree .item:hover {
   background-color: #d8dfea;

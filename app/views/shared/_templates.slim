@@ -8,14 +8,18 @@
       .icon.dbx-handle{ style="background-image: url(/images/widgets/{{ iconName }}.png)" }
       .title {{ name }}
       .invalid-icon
-  
+
   script.mapp-header(type="text/template")
     table
       tr
-        td
+        td rowspan="<% print( _maybe.slogan ? '2' : '1' ); %>"
           img.logo src=@company.logo.url(:mobile)
         td.name {{ name }}
-  
+      | <% if (_maybe.slogan) { %>
+      tr
+        td.slogan {{ slogan }}
+      | <% } %>
+
   script.tab-bar(type="text/template")
     table
       tr
@@ -39,7 +43,7 @@
   / =============================
   / = Category Add-Item Dialogs =
   / =============================
-  
+
   = render :partial => 'shared/category-templates'
 
   / =====================
@@ -48,12 +52,12 @@
   script.custom_page-page(type="text/template")
     | {{ _maybe.content }}
     .clearfix
-  
+
   script.phone-page(type="text/template")
     h2 Call:
-    h2 
-      a href="tel:{{ _maybe.phone }}" {{ _maybe.phone }} 
-  
+    h2
+      a href="tel:{{ _maybe.phone }}" {{ _maybe.phone }}
+
   script.leave_msg-page(type="text/template")
     .input-wrap
       p Leave a message:
@@ -77,7 +81,7 @@
         input(type="submit" value="Send")
     .thanks-wrap style="display:none"
       h3 = "Your message has been sent to #{@company.name}. Thank you."
-  
+
   script.call_back-page(type="text/template")
     .input-wrap
       p Enter your call back information:
@@ -100,14 +104,14 @@
         input(type="submit" value="Send")
     .thanks-wrap style="display:none"
       h3 Your call back request has been sent.
-  
+
   script.tell_friend-page(type="text/template")
     .input-wrap
       p
         ' Share
         = @company.name + " "
         | with your friend. A short email will be sent to your friend with a link to this mobile site.
-      
+
       = form_tag "/#{@company.db_name}/tell_friend/submit", :method => 'post' do
         label Your Friend's Email:
         br
@@ -122,7 +126,7 @@
         input type="submit" value="Send"
     .thanks-wrap style="display:none"
       h3 Thank you for sharing this site with your friend.
-  
+
   script.booking-page(type="text/template")
     .input-wrap
       p Send a Booking Request:
@@ -131,7 +135,7 @@
         br
         input name="name" type="text"
         br
-        label Phone: 
+        label Phone:
         br
         input name="phone" type="text"
         br
@@ -149,7 +153,7 @@
           option value="{{ times[i] }}" {{ times[i] }}
           | <% } } %>
         br
-        label Date: 
+        label Date:
         br
         = select_tag 'date_m', options_for_select(1..12,Date.today.month)
         | &nbsp;&frasl;&nbsp;
@@ -162,7 +166,7 @@
         input(type="submit" value="Send")
     .thanks-wrap style="display:none"
       h3 Your booking request has been sent.
-  
+
   script.informed-page(type="text/template")
     .input-wrap
       p
@@ -210,7 +214,7 @@
       a.map-link href="http://maps.google.com/maps?q={{ fullAddress }}"
         img src="{{ mapUrl2 }}"
     a.map-link href="http://maps.google.com/maps?q={{ fullAddress }}" View Google Map
-    
+
     .directions
       .banner Get Directions:
       form action="http://maps.google.com/maps" method="get"
@@ -219,14 +223,14 @@
         input type="text" name="saddr"
         input type="submit" value="Map It"
         input type="hidden" name="daddr" value="{{ fullAddress }}"
-  
+
   script.coupon-page(type="text/template")
     h2 {{ _maybe.couponName }}
     | <% if (_maybe.expire) { %>
     p Expires: {{ _maybe.expire }}
     | <% } %>
     pre.desc {{ _maybe.description }}
-  
+
   script.category-cat.category-item(type="text/template")
     tr.category.item class="{{ cat._type }}" data-id="{{ cat._id }}"
       | <% if (cat.wphotoUrl) { %>
@@ -281,7 +285,7 @@
           .separator
         | <% } } %>
     | <% } %>
-  
+
   script.page_tree-page(type="text/template")
     h3.page_title {{ title }}
     .leaf-content {{ content }}

@@ -389,7 +389,7 @@ div.wysiwyg ul.toolbar {
     }
   }
   .site-settings {
-    input[type=text] {
+    input[type=text], textarea {
       width: 240px;
     }
   }
@@ -812,7 +812,7 @@ div.wysiwyg ul.toolbar {
 // override mobile styling
 #mobile-container {
   .company-info {
-    .name, .logo { cursor: pointer; }
+    .name, .logo, .slogan { cursor: pointer; }
   }
   .page .content.category, .page .content.page_tree {
     .item:hover {
