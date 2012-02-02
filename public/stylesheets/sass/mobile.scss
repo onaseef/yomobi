@@ -151,19 +151,23 @@ p {
   background-image: linear-gradient(bottom, $color-topbar 0%, #FFFFFF 500%);
 
   table { height: 36px; }
-  td {
-    vertical-align: center; }
+  td { vertical-align: center; }
+  td.top { vertical-align: top; }
   .logo {
     background: no-repeat;
     vertical-align: top;
     margin: 2px 0px 2px 0px; }
   .name {
     padding-left: 8px;
-    font-size: 18px;
-    font-weight: bold; }
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 1em;
+  }
   .slogan {
-    padding-left: 8px;
+    font-size: 15px;
+    padding: 6px 8px;
     font-style: italic;
+    line-height: 1em;
   }
 }
 

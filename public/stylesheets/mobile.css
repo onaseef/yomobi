@@ -124,17 +124,22 @@ p {
     height: 36px; }
   .company-info td {
     vertical-align: center; }
+  .company-info td.top {
+    vertical-align: top; }
   .company-info .logo {
     background: no-repeat;
     vertical-align: top;
     margin: 2px 0px 2px 0px; }
   .company-info .name {
     padding-left: 8px;
-    font-size: 18px;
-    font-weight: bold; }
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 1em; }
   .company-info .slogan {
-    padding-left: 8px;
-    font-style: italic; }
+    font-size: 15px;
+    padding: 6px 8px;
+    font-style: italic;
+    line-height: 1em; }
 
 .tab-bar {
   background: #c4cde0;

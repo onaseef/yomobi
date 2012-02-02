@@ -77,10 +77,11 @@
   window.MobileAppView = window.MobileAppView.extend({
     
     events: {
-      'click .back-btn':            'goBack',
-      'click .tab-bar':             'editTabBar',
-      'click .company-info .name':  'editSettings',
-      'click .company-info .logo':  'editSettings'
+      'click .back-btn':              'goBack',
+      'click .tab-bar':               'editTabBar',
+      'click .company-info .name':    'editSettings',
+      'click .company-info .logo':    'editSettings',
+      'click .company-info .slogan':  'editSettings'
     },
 
     goBack: function () {
@@ -429,6 +430,7 @@
       $('#top-bar .company-info')
         .find('.logo').simpletooltip(bhelp.hoverHelpText.companyLogo, 'help').end()
         .find('.name').simpletooltip(bhelp.hoverHelpText.companyName, 'help').end()
+        .find('.slogan').simpletooltip(bhelp.hoverHelpText.companySlogan, 'help').end()
       ;
       $('#top-bar .tab-bar').simpletooltip(bhelp.hoverHelpText.tabBar, 'help');
     }

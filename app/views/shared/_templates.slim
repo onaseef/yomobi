@@ -11,13 +11,18 @@
 
   script.mapp-header(type="text/template")
     table
-      tr
-        td rowspan="<% print( _maybe.slogan ? '2' : '1' ); %>"
-          img.logo src=@company.logo.url(:mobile)
-        td.name {{ name }}
       | <% if (_maybe.slogan) { %>
       tr
-        td.slogan {{ slogan }}
+        td.logo.top
+          img.logo src=@company.logo.url(:mobile)
+        td
+          div.name {{ name }}
+          div.slogan {{ slogan }}
+      | <% } else { %>
+      tr
+        td.logo
+          img.logo src=@company.logo.url(:mobile)
+        td.name {{ name }}
       | <% } %>
 
   script.tab-bar(type="text/template")

@@ -370,16 +370,20 @@ div.wysiwyg ul.toolbar {
   border-top: 1px solid $light-border;
   margin: 10px 0; }
 
-#builder .edit-area.edit-settings, #builder .edit-area.edit-advanced-settings {
+#builder .edit-area.edit-settings, 
+#builder .edit-area.edit-advanced-settings {
   padding-top: 8px;
   .box {
     margin: 10px 0px 0px 0px;
     border: 2px solid #d0d7e3;
     padding: 8px;
-    input[type=text] { width: 274px; margin: 0; }
+    input[type=text] { width: 274px; margin-bottom: 5px; }
     textarea { width: 326px; margin: 0; }
   }
-  .divider { border-color: #d0d7e3; }
+  .divider { 
+    border-color: #d0d7e3; 
+    margin: 5px 0px;
+  }
   form {
     .action-bar {
       border-top: 2px solid #d0d7e3;
@@ -392,15 +396,12 @@ div.wysiwyg ul.toolbar {
     input[type=text], textarea {
       width: 240px;
     }
+    textarea { height: 4em; }
   }
-  select {
-    width: 245px;
-  }
-  .site-picture {
-    vertical-align: top;
-  }
+  select { width: 245px; }
+  .top { vertical-align: top; }
   .logo { margin: 3px 0px; }
-
+  .site-name { padding-bottom: 10px; }
   .new-picture { width: 100%; }
 }
 

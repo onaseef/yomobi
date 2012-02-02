@@ -188,12 +188,12 @@ script.edit-settings(type="text/template")
       table.site-settings
         tbody
           tr
-            td
+            td.top.site-name
               label Site Name:
-            td colspan="2"
+            td.top colspan="2"
               input type="text" name="company_name" value=@company.name maxlength=MAX_COMPANY_NAME_LENGTH
           tr
-            td
+            td.top
               label Site Slogan:
             td colspan="2"
               textarea name="company_slogan" maxlength=MAX_COMPANY_SLOGAN_LENGTH = @company.settings.slogan
@@ -209,7 +209,7 @@ script.edit-settings(type="text/template")
             td colspan="3"
               .divider
           tr
-            td.site-picture
+            td.top
               label Site Picture:
             td
               img.logo{src=@company.logo.url(:mobile) }

@@ -337,34 +337,53 @@ div.wysiwyg ul.toolbar {
   border-top: 1px solid #b3b3b3;
   margin: 10px 0; }
 
-#builder .edit-area.edit-settings, #builder .edit-area.edit-advanced-settings {
+#builder .edit-area.edit-settings,
+#builder .edit-area.edit-advanced-settings {
   padding-top: 8px; }
-  #builder .edit-area.edit-settings .box, #builder .edit-area.edit-advanced-settings .box {
+  #builder .edit-area.edit-settings .box,
+  #builder .edit-area.edit-advanced-settings .box {
     margin: 10px 0px 0px 0px;
     border: 2px solid #d0d7e3;
     padding: 8px; }
-    #builder .edit-area.edit-settings .box input[type=text], #builder .edit-area.edit-advanced-settings .box input[type=text] {
+    #builder .edit-area.edit-settings .box input[type=text],
+    #builder .edit-area.edit-advanced-settings .box input[type=text] {
       width: 274px;
-      margin: 0; }
-    #builder .edit-area.edit-settings .box textarea, #builder .edit-area.edit-advanced-settings .box textarea {
+      margin-bottom: 5px; }
+    #builder .edit-area.edit-settings .box textarea,
+    #builder .edit-area.edit-advanced-settings .box textarea {
       width: 326px;
       margin: 0; }
-  #builder .edit-area.edit-settings .divider, #builder .edit-area.edit-advanced-settings .divider {
-    border-color: #d0d7e3; }
-  #builder .edit-area.edit-settings form .action-bar, #builder .edit-area.edit-advanced-settings form .action-bar {
+  #builder .edit-area.edit-settings .divider,
+  #builder .edit-area.edit-advanced-settings .divider {
+    border-color: #d0d7e3;
+    margin: 5px 0px; }
+  #builder .edit-area.edit-settings form .action-bar,
+  #builder .edit-area.edit-advanced-settings form .action-bar {
     border-top: 2px solid #d0d7e3;
     padding-right: 0;
     padding-top: 8px;
     margin-top: 15px; }
-  #builder .edit-area.edit-settings .site-settings input[type=text], #builder .edit-area.edit-settings .site-settings textarea, #builder .edit-area.edit-advanced-settings .site-settings input[type=text], #builder .edit-area.edit-advanced-settings .site-settings textarea {
+  #builder .edit-area.edit-settings .site-settings input[type=text], #builder .edit-area.edit-settings .site-settings textarea,
+  #builder .edit-area.edit-advanced-settings .site-settings input[type=text],
+  #builder .edit-area.edit-advanced-settings .site-settings textarea {
     width: 240px; }
-  #builder .edit-area.edit-settings select, #builder .edit-area.edit-advanced-settings select {
+  #builder .edit-area.edit-settings .site-settings textarea,
+  #builder .edit-area.edit-advanced-settings .site-settings textarea {
+    height: 4em; }
+  #builder .edit-area.edit-settings select,
+  #builder .edit-area.edit-advanced-settings select {
     width: 245px; }
-  #builder .edit-area.edit-settings .site-picture, #builder .edit-area.edit-advanced-settings .site-picture {
+  #builder .edit-area.edit-settings .top,
+  #builder .edit-area.edit-advanced-settings .top {
     vertical-align: top; }
-  #builder .edit-area.edit-settings .logo, #builder .edit-area.edit-advanced-settings .logo {
+  #builder .edit-area.edit-settings .logo,
+  #builder .edit-area.edit-advanced-settings .logo {
     margin: 3px 0px; }
-  #builder .edit-area.edit-settings .new-picture, #builder .edit-area.edit-advanced-settings .new-picture {
+  #builder .edit-area.edit-settings .site-name,
+  #builder .edit-area.edit-advanced-settings .site-name {
+    padding-bottom: 10px; }
+  #builder .edit-area.edit-settings .new-picture,
+  #builder .edit-area.edit-advanced-settings .new-picture {
     width: 100%; }
 
 .widget-editor .edit-area label {
