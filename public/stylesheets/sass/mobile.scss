@@ -103,19 +103,21 @@ p {
   width: 100%;
   padding: 0;
   margin: 12px 0 12px 0;
-  background: url(/images/ui/bg-back-bar.png) repeat-x;
+  background: $back-bar-bg-color;
+
+  //background: url(/images/ui/bg-back-bar.png) repeat-x;
   /* IE10 */ 
-  background-image: -ms-linear-gradient(top, #FFFFFF 0%, $back-bar-bg-color 50%);
+  //background-image: -ms-linear-gradient(top, #FFFFFF 0%, $back-bar-bg-color 50%);
   /* Mozilla Firefox */ 
-  background-image: -moz-linear-gradient(top, #FFFFFF 0%, $back-bar-bg-color 50%);
+  //background-image: -moz-linear-gradient(top, #FFFFFF 0%, $back-bar-bg-color 50%);
   /* Opera */ 
-  background-image: -o-linear-gradient(top, #FFFFFF 0%, $back-bar-bg-color 50%);
+  //background-image: -o-linear-gradient(top, #FFFFFF 0%, $back-bar-bg-color 50%);
   /* Webkit (Safari/Chrome 10) */ 
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFFFFF), color-stop(.5, $back-bar-bg-color));
+  //background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFFFFF), color-stop(.5, $back-bar-bg-color));
   /* Webkit (Chrome 11+) */ 
-  background-image: -webkit-linear-gradient(top, #FFFFFF 0%, $back-bar-bg-color 50%);
+  //background-image: -webkit-linear-gradient(top, #FFFFFF 0%, $back-bar-bg-color 50%);
   /* Proposed W3C Markup */ 
-  background-image: linear-gradient(top, #FFFFFF 0%, $back-bar-bg-color 50%);
+  //background-image: linear-gradient(top, #FFFFFF 0%, $back-bar-bg-color 50%);
 
   color: $back-bar-color;
   .title {

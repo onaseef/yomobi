@@ -76,19 +76,13 @@ p {
   width: 100%;
   padding: 0;
   margin: 12px 0 12px 0;
-  background: url(/images/ui/bg-back-bar.png) repeat-x;
+  background: #b8b8b8;
   /* IE10 */
-  background-image: -ms-linear-gradient(top, white 0%, #b8b8b8 50%);
   /* Mozilla Firefox */
-  background-image: -moz-linear-gradient(top, white 0%, #b8b8b8 50%);
   /* Opera */
-  background-image: -o-linear-gradient(top, white 0%, #b8b8b8 50%);
   /* Webkit (Safari/Chrome 10) */
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, white), color-stop(0.5, #b8b8b8));
   /* Webkit (Chrome 11+) */
-  background-image: -webkit-linear-gradient(top, white 0%, #b8b8b8 50%);
   /* Proposed W3C Markup */
-  background-image: linear-gradient(top, white 0%, #b8b8b8 50%);
   color: #333333; }
   .back-bar .title {
     float: left;
