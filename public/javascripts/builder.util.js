@@ -579,6 +579,7 @@ var builderUtil = {
       }
 
       up.refresh(); // Reposition Flash/Silverlight
+      util.releaseUI();
     });
 
     uploader.bind('FileUploaded', function (up, file, response) {
