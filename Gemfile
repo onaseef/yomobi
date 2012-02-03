@@ -11,7 +11,7 @@ gem 'rmagick', :require => false
 gem 'shortly'
 
 gem 'devise', "~> 1.4"
-gem 'recaptcha', :require => 'recaptcha/rails'
+gem 'recaptcha', "= 0.3.4", :require => 'recaptcha/rails'
 gem 'typus', "~> 3.0"
 
 gem 'slim', :require => 'slim'
