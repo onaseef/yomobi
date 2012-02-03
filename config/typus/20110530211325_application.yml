@@ -49,6 +49,6 @@ User:
   order_by: 
   relationships: company
   filters: created_at
-  search: 
+  search: email
   application: yomobi
 
