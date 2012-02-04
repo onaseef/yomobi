@@ -15,7 +15,7 @@ bob = User.create! \
 bob.update_attribute(:confirmed_at, DateTime.new)
 puts "Created User: #{bob.inspect}"
 
-bob.create_company \
+bob.companies.create \
   :name => 'Chipotle!',
   :db_name => 'chipotle',
   :db_pass => 'n0n-_-exist@nt??'

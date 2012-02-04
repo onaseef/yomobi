@@ -12,6 +12,7 @@ html lang="en-US"
 
     = stylesheet_link_tag 'signup-app'
     = stylesheet_link_tag 'flick/jquery-ui-1.8.11.custom'
+    = yield :css
     = csrf_meta_tag
   body
     = topline_notice
@@ -43,12 +44,8 @@ html lang="en-US"
         .clearfix
       = render 'shared/footer'
     
-    = javascript_include_tag 'support/underscore'
-    = javascript_include_tag 'support/jquery-1.6.2.min'
-    = javascript_include_tag 'support/jquery.tooltip.v.1.1'
-    = javascript_include_tag 'util', 'builder.util'
-    = javascript_include_tag 'notice'
     = yield :js
+    = javascript_include_tag 'notice'
 
     - if Rails.env.production?
       = javascript_include_tag 'google-analytics'

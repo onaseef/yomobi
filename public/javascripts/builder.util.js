@@ -35,17 +35,30 @@ var getVimeoVideoId = function (url) {
   }
 }
 
+var _blank = {};
 
 var builderUtil = {
 
-  dialog: function (html,buttons,title) {
+  // WARNING: If there are multiple values with the same name,
+  // values will be overwritten.
+  serializedArrayToHash: function (array) {
+    var hash = {};
+    _.each(array, function (param) {
+      hash[param.name] = param.value;
+    });
+    return hash;
+  },
+
+  dialog: function (html,buttons,title,options) {
+    options || (options = _blank);
     return $(html).dialog({
       resizable: false,
       modal: true,
       draggable: false,
       closeOnEscape: false,
       buttons: buttons,
-      title: title
+      title: title,
+      width: options.width || 360
     });
   },
 

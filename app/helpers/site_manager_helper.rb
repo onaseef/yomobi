@@ -1,0 +1,2 @@
+module SiteManagerHelper
+end

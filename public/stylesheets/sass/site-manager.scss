@@ -1,0 +1,73 @@
+@import "constants";
+
+ul.fancy-selectable {
+  background: #fff;
+  border: 1px solid #b3b3b3;
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+  li {
+    padding: 6px 10px;
+    border: 1px solid #b3b3b3;
+    margin-bottom: 4px;
+    cursor: pointer;
+  }
+  li.ui-selecting { background: #FECA40; }
+  li.ui-selected { background: #F39814; color: white; }
+}
+
+#manager-container {
+  background: $light-bg-color;
+  border: 1px solid #b3b3b3;
+  border-top: none;
+}
+
+h2.active-site {
+  margin: 0;
+  padding: 10px 10px 10px 20px;
+  border-bottom: 1px solid #b3b3b3;
+}
+
+.site-list-wrap {
+  float: left;
+  width: 360px;
+  margin: 20px 20px 0px 20px;
+  ul.sites {
+    height:400px;
+    overflow:auto;
+    margin-bottom: 6px;
+  }
+}
+
+.sites {
+  img.site-pic {
+    vertical-align: middle;
+  }
+}
+
+.site-details-wrap {
+  float: left;
+  padding: 20px;
+  padding-left: 20px;
+  border-left: 1px solid #B3B3B3;  
+  .signup-key {}
+  ul.admins {
+    height: 337px;
+    overflow: auto;
+    margin-top: 10px;
+    margin-bottom: 6px;
+    width: 500px;
+    img { vertical-align: middle }
+  }
+}
+
+form#account-setup-box.dialog {
+  .loading { display: none; }
+}
+
+form#account-setup-box.dialog.submitting {
+  .fields { display: none; }
+  .loading {
+    display: block;
+  }
+}

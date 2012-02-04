@@ -77,6 +77,25 @@ ActiveRecord::Schema.define(:version => 20120131203333) do
   add_index "followers", ["opt_out_key"], :name => "index_followers_on_opt_out_key", :unique => true
   add_index "followers", ["phone", "company_id"], :name => "index_followers_on_phone_and_company_id", :unique => true
 
+  create_table "keys", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "company_id"
+    t.boolean  "owner"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "signup_keys", :force => true do |t|
+    t.integer  "company_id"
+    t.string   "key"
+    t.boolean  "expired",    :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "signup_keys", ["key"], :name => "index_signup_keys_on_key", :unique => true
+
   create_table "sigs", :force => true do |t|
     t.string   "email"
     t.integer  "type"
@@ -106,6 +125,8 @@ ActiveRecord::Schema.define(:version => 20120131203333) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "authentication_token"
+    t.integer  "default_company_id"
+    t.integer  "active_company_id"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true

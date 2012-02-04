@@ -21,6 +21,20 @@ Yomobi::Application.routes.draw do
     get 'confirmation/new' => 'confirmations#show'
   end
 
+
+  get "site-manager" => 'site_manager#index', :as => :site_manager
+  get "sites/:id/activate" => 'site_manager#make_active', :as => :activate_site
+
+  post    "sites"     => 'site_manager#create', :as => :create_site
+  delete  "sites/:id" => 'site_manager#delete'
+  post    "sites/:id/make-default" => 'site_manager#make_default', :as => :make_default_site
+  post    "sites/:id/concede"      => 'site_manager#concede', :as => :concede_site
+
+  post "sites/:id/admins"           => 'site_manager#add_admin', :as => :add_admin
+  post "sites/:id/admins/:admin_id/delete" => 'site_manager#remove_admin', :as => :remove_admin
+  post "sites/:id/signup-key" => 'site_manager#gen_signup_key', :as => :gen_signup_key
+
+
   get 'builder/main'      => 'builder#index', :as => :builder_main
 
   post 'builder/wphoto/upload' => 'builder#upload_wphoto', :as => :wphoto_upload

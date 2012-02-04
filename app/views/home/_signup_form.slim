@@ -32,6 +32,12 @@
           label Site Type:
         td
           = f.select :company_type_id, options_for_select(company_types, @user.company_type_id || 57)
+      - if params[:sk]
+        tr
+          td
+            label Signup Key:
+          td
+            = f.text_field :signup_key, :value => params[:sk], :readonly => "readonly"
   
   - unless hide_captcha
     = render 'shared/recaptcha'

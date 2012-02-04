@@ -38,6 +38,14 @@ en:
         url: "Make this picture a clickable URL.<br><b>Click ? for more information</b>"
         youtube: "Add a video to your page.<br><b>Click ? for more information.</b>"
 
+  site_manager:
+    help:
+      signup_keys: "Useful information about signup keys."
+    confirm:
+      concede_site: Are you sure? You will lose ownership of this site.
+    dialog:
+      concede_site: Conceding your ownership of this site will give up your ownership rights. That means you will no longer have control over collaborators.
+
   widgets:
     helpText:
       about-us:

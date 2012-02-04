@@ -18,5 +18,8 @@ SHORT_URL_RESERVED_COUNT = 23
 MAX_COMPANY_NAME_LENGTH = 45
 MAX_COMPANY_SLOGAN_LENGTH = 90
 
+# used in site_manager_controller.rb
+MAX_SITE_COUNT = 10
+
 # Initialize the rails application
 Yomobi::Application.initialize!

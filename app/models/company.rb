@@ -2,7 +2,14 @@ class Company < ActiveRecord::Base
   require 'couch_docs'
   
   belongs_to :user
+  alias :owner :user
+  alias :owner= :user=
   belongs_to :company_type
+
+  has_many :keys, :dependent => :delete_all
+  has_many :admins, :through => :keys, :source => :user
+  has_many :signup_keys, :dependent => :delete_all
+
   has_many :followers
   has_many :wphotos
   has_one :company_settings
@@ -86,6 +93,17 @@ class Company < ActiveRecord::Base
 
   def premium?
     self.premium == true
+  end
+
+  def as_json(options=nil)
+    {
+      id: self.id,
+      name: self.name,
+      url: self.db_name,
+      logo: self.logo.url(:mobile),
+      owner: self.user,
+      admins: self.admins
+    }
   end
 
   private

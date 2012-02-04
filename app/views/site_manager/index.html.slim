@@ -1,0 +1,160 @@
+- content_for :css do
+  = stylesheet_link_tag 'site-manager'
+
+- content_for :js do
+  = render 'layouts/js-base'
+  erb:
+    <script type="text/javascript">
+    window._sitesData = <%=raw @companies.to_json %>;
+    window.g = {
+      activateSitePath: _.template( unescape("<%=raw activate_site_path('{{ id }}') %>") ),
+      createSitePath: _.template( unescape("<%=raw create_site_path %>") ),
+      addAdminPath: _.template( unescape("<%=raw add_admin_path '{{ id }}' %>") ),
+      removeAdminPath: _.template( unescape("<%=raw remove_admin_path '{{ id }}', '{{ admin_id }}' %>") ),
+      genSignupKey: _.template( unescape("<%=raw gen_signup_key_path '{{ id }}' %>") ),
+      concedeSitePath: _.template( unescape("<%=raw concede_site_path '{{ id }}' %>") ),
+      makeDefaultSitePath: _.template( unescape("<%=raw make_default_site_path '{{ id }}' %>") ),
+
+      user_id: <%= current_user.id %>,
+      defaultSite_id: <%= current_user.default_company_id %>,
+      activeSite_id: <%= current_user.active_company_id %>,
+
+      concedeSiteConfirmation: "<%=t 'site_manager.confirm.concede_site' %>"
+    };
+    </script>
+  = javascript_include_tag 'site-manager'
+
+#manager-container
+  h2.active-site= "Active Site: #{current_user.company.db_name}"
+
+  .site-list-wrap
+    h2 Sites you have access to:
+    ul.sites.fancy-selectable
+    button.edit Edit Site
+    button.create Create New Site
+    button.make-default Make Default
+  .site-details-wrap
+    h2 Site Details
+    .details
+      h3.active-site Please select a site on the left.
+      button disabled="disabled" Generate Signup Key
+      ul.admins.fancy-selectable
+    button.add-admin    disabled="disabled" Add Admin
+    button.remove-admin disabled="disabled" Revoke Access
+    button.concede      disabled="disabled" Make Owner
+  .clearfix
+
+
+#templates
+  script.site-li(type="text/template")
+    img.site-pic src="{{ logo }}" align="middle"
+    span.site-name
+      ' {{ url }}
+      | <% if (isOwnedByUser === true) { %>
+      | *
+      | <% } %>
+      | <% if (isDefault === true) { %>
+      |  (default)
+      | <% } %>
+
+  script.site-details(type="text/template")
+    h3.active-site
+      ' Selected: {{ url }}
+      | <% if (isOwnedByUser === true) { %>
+      | *
+      | <% } %>
+
+    button.gen-signup-key Generate Signup Key
+    input.signup-key.hide type="text" readonly="readonly"
+    img.help-bubble src="/images/ui/help-bubble.png" title=t('site_manager.help.signup_keys')
+
+    ul.admins.fancy-selectable
+      li.admin.owner data-id="{{ owner.id }}"
+        img src="{{ owner.logo }}"
+        span.name
+          ' {{ owner.firstName }} {{ owner.lastName }}
+          span.is-owner (Owner)
+      | <% for (var i=0; i < admins.length; i++) { %>
+      li.admin data-id="{{ admins[i].id }}"
+        img src="{{ admins[i].logo }}"
+        span.name {{ admins[i].firstName }} {{ admins[i].lastName }}
+      | <% } %>
+
+  script.admin(type="text/template")
+    span.url YoMobi.com/{{ name }}
+
+  script.new-site-dialog(type="text/template")
+    form#account-setup-box.new-site.dialog title="Create a New Site"
+      .fields
+        | <% if (errors.maxSiteCount) { %>
+        p.error You are at your site count limit (max is {{ errors.maxSiteCount }})
+        | <% } %>
+        h3 Site Name
+        | <% if (errors.title) { %>
+        p.error
+          ' Invalid Site Name. Site Name must be at least 2 characters and at most
+          = MAX_COMPANY_NAME_LENGTH
+          | &nbsp;characters.
+        | <% } %>
+        input type="text" name="site[title]" value="{{ title }}" maxlength=MAX_COMPANY_NAME_LENGTH
+
+        h3 Mobile Site Url:
+
+        | <% if (errors.url === 'illegal') { %>
+        p.error Invalid URL: the URL must be at least 3 characters long and contain only A-Z, a-z, 0-9, underscores (_), and dashes (-).
+        | <% } else if (errors.url === 'reserved') { %>
+        p.error Sorry, that name is reserved. Please choose another.
+        | <% } else if (errors.url === 'taken') { %>
+        p.error URL is already taken.
+        | <% } else if (errors.url === 'taken?') { %>
+        p.error Name is already taken?
+        | <% } %>
+
+        .site-url
+          span.lfloat http://www.yomobi.com/
+          .site-url-input-wrap
+            input type="text" value="{{ url }}" name="site[url]"
+          .clearfix
+
+        h3 Site Type:
+        | <% if (errors.type) { %>
+        p.error Invalid site type.
+        | <% } %>
+        = select :site, :type, options_for_select(company_types, 57)
+      .loading
+        h3 Submitting...
+        img src="/images/ui/ajax-loader-small.gif"
+  
+  script.add-admin-dialog(type="text/template")
+    form#account-setup-box.add-admin.dialog title="Add Admin"
+      .fields
+        h3 Admin's email:
+        | <% if (errors.email) { %>
+        p.error Sorry, there is no YoMobi account associated with that email.
+        | <% } %>
+        | <% if (errors.self) { %>
+        p.error You cannot add yourself as a Admin.
+        | <% } %>
+        input type="text" name="email" value="{{ email }}"
+      .loading
+        h3 Submitting...
+        img src="/images/ui/ajax-loader-small.gif"
+
+  script.concede-dialog(type="text/template")
+    form#account-setup-box.add-admin.dialog title="Concede Site Ownership"
+      .fields
+        h3.error Are you Sure?
+        p.error= t 'site_manager.dialog.concede_site'
+
+        h3 Enter Your Password to Continue:
+        | <% if (errors.password) { %>
+        p.error Incorrect Password
+        | <% } %>
+        | <% if (errors.self) { %>
+        p.error You are already the owner of this site.
+        | <% } %>
+        input type="password" name="password"
+        input type="hidden" name="admin_id" value="{{ admin_id }}"
+      .loading
+        h3 Submitting...
+        img src="/images/ui/ajax-loader-small.gif"

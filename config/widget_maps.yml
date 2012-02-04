@@ -338,7 +338,7 @@ docs:
       - keep-me-informed
   -
     types:
-      - Event Planning / Event [products, services, Services]
+      - Event Planning / Event Services
     widgets:
       - [custom-page, about-us, About Us]
       - call-us
