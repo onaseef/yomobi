@@ -16,8 +16,8 @@
       makeDefaultSitePath: _.template( unescape("<%=raw make_default_site_path '{{ id }}' %>") ),
 
       user_id: <%= current_user.id %>,
-      defaultSite_id: <%= current_user.default_company_id %>,
-      activeSite_id: <%= current_user.active_company_id %>,
+      defaultSite_id: <%= current_user.default_company.id %>,
+      activeSite_id: <%= current_user.company.id %>,
 
       concedeSiteConfirmation: "<%=t 'site_manager.confirm.concede_site' %>"
     };
