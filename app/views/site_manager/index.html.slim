@@ -47,15 +47,24 @@
 
 #templates
   script.site-li(type="text/template")
-    img.site-pic src="{{ logo }}" align="middle"
-    span.site-name
-      ' {{ url }}
-      | <% if (isOwnedByUser === true) { %>
-      | *
-      | <% } %>
-      | <% if (isDefault === true) { %>
-      |  (default)
-      | <% } %>
+    table
+      tbody
+        tr
+          td.site-pic
+            img.site-pic src="{{ logo }}" align="middle"
+          td.site-name
+            div.site-url
+              ' {{ url }}
+              | <% if (isOwnedByUser === true) { %>
+              | *
+              | <% } %>
+            div.site-name
+              ' {{ name }}
+            div.is-default
+              | <% if (isDefault === true) { %>
+              |  [Default]
+              | <% } %>
+
 
   script.site-details(type="text/template")
     h3.active-site
@@ -66,19 +75,30 @@
 
     button.gen-signup-key Generate Signup Key
     input.signup-key.hide type="text" readonly="readonly"
-    img.help-bubble src="/images/ui/help-bubble.png" title=t('site_manager.help.signup_keys')
+    a href="http://help.yomobi.com/Account/SignupKey" target="ymhelp"
+      img.help-bubble src="/images/ui/help-bubble.png" title=t('site_manager.help.signup_keys')
 
     ul.admins.fancy-selectable
       li.admin.owner data-id="{{ owner.id }}"
-        img src="{{ owner.logo }}"
-        span.name
-          ' {{ owner.firstName }} {{ owner.lastName }}
-          span.is-owner (Owner)
-      | <% for (var i=0; i < admins.length; i++) { %>
-      li.admin data-id="{{ admins[i].id }}"
-        img src="{{ admins[i].logo }}"
-        span.name {{ admins[i].firstName }} {{ admins[i].lastName }}
-      | <% } %>
+        table
+          tbody
+            tr
+              td.site-pic
+                img src="{{ owner.logo }}"
+              td
+                span.name
+                  ' {{ owner.firstName }} {{ owner.lastName }}
+                  span.is-owner (Owner)
+        | <% for (var i=0; i < admins.length; i++) { %>
+        li.admin data-id="{{ admins[i].id }}"
+          table
+            tbody
+              tr
+                td.site-pic
+                  img src="{{ admins[i].logo }}"
+                td
+                  span.name {{ admins[i].firstName }} {{ admins[i].lastName }}
+        | <% } %>
 
   script.admin(type="text/template")
     span.url YoMobi.com/{{ name }}

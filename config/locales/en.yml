@@ -40,7 +40,7 @@ en:
 
   site_manager:
     help:
-      signup_keys: "Useful information about signup keys."
+      signup_keys: "When you are ready to hand this site over to its owner, generate a signup key, then email the link to the site owner and have them click on the link to sign up to Yomobi and take ownership of their site.<br><b>Click ? for more information.</b>"
     confirm:
       concede_site: Are you sure? You will lose ownership of this site.
     dialog:
