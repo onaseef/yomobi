@@ -8,7 +8,8 @@ ul.fancy-selectable {
     padding: 6px 10px;
     border: 1px solid #b3b3b3;
     margin-bottom: 4px;
-    cursor: pointer; }
+    cursor: pointer;
+    overflow: auto; }
   ul.fancy-selectable li.ui-selecting {
     background: #FECA40; }
   ul.fancy-selectable li.ui-selected {
@@ -34,8 +35,15 @@ h2.active-site {
     overflow: auto;
     margin-bottom: 6px; }
 
-.sites img.site-pic {
+.sites img.site-pic, .admins img.site-pic {
   vertical-align: middle; }
+.sites td.site-pic, .admins td.site-pic {
+  float: left;
+  padding-right: 10px;
+  width: 100px;
+  text-align: right; }
+.sites div.site-url, .admins div.site-url {
+  font-weight: bold; }
 
 .site-details-wrap {
   float: left;
