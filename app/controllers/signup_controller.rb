@@ -103,6 +103,7 @@ class SignupController < ApplicationController
     puts "Validating step 3: #{data.inspect}"
     success = current_user.company.update_attribute :logo, data['logo'] if data['logo']
     @errors['logo'] = true if data['logo'].present?
+    @company = current_user.company
     puts "Updated logo? #{success.inspect}"
   end
 
