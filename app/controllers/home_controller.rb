@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   before_filter :redirect_if_signed_out, :only => [:confirm_account, :resend_confirmation]
   before_filter :redirect_if_confirmed, :only => [:confirm_account]
 
-  before_filter :show_landing_bar
+  before_filter :show_landing_bar, :except => [:resend_confirmation, :confirm_account]
 
   def index
     prevent_caching
