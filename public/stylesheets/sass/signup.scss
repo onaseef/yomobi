@@ -3,7 +3,7 @@
 // layout related
 
 #header.signed-in {
-  .signup-bar { display: none; }
+  .signup-bar, .landing-bar { display: none; }
 }
 
 #header.signed-out {
@@ -144,6 +144,11 @@ label {
 .signup-bar .pretty-button {
     margin: 12px 12px 12px 0px;
   }
+
+.landing-bar {
+  @extend .signup-bar;
+  a, a:visited { color:$main-color !important; }
+}
 
 #signup-box, #actual-signin-box {
   table {

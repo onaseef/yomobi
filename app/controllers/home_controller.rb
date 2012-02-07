@@ -1,9 +1,11 @@
 class HomeController < ApplicationController
-  
+
   before_filter :redirect_if_signed_in, :only => :index
   before_filter :redirect_if_signed_out, :only => [:confirm_account, :resend_confirmation]
   before_filter :redirect_if_confirmed, :only => [:confirm_account]
-  
+
+  before_filter :show_landing_bar
+
   def index
     prevent_caching
     redirect_to builder_main_path if user_signed_in?
@@ -11,7 +13,7 @@ class HomeController < ApplicationController
     @page_wrapper_class = 'home'
     @hide_signup_bar = true
   end
-  
+
   def confirm_account
     @email = current_user.email
   end
@@ -28,7 +30,7 @@ class HomeController < ApplicationController
     flash[:notice] = 'The confirmation email was resent. Please check your mailbox.'
     return redirect_to confirm_account_path
   end
-  
+
   def ad_test
     render :layout => 'mobile_basic'
   end
@@ -45,8 +47,14 @@ class HomeController < ApplicationController
   def easy
   end
 
+  def why_mobile
+  end
+
+  def opportunity
+  end
+
   private
-  
+
   def redirect_if_signed_in
     if user_signed_in?
       return redirect_to(account_setup_path 1) if current_user.company.nil?
@@ -61,5 +69,9 @@ class HomeController < ApplicationController
   def redirect_if_confirmed
     return redirect_to(account_setup_path 1) if current_user.confirmed_at?
   end
-  
+
+  def show_landing_bar
+    @landing_bar = true
+  end
+
 end

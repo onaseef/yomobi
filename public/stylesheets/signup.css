@@ -1,4 +1,4 @@
-#header.signed-in .signup-bar {
+#header.signed-in .signup-bar, #header.signed-in .landing-bar, #header.signed-in .landing-bar {
   display: none; }
 
 #header.signed-out {
@@ -109,24 +109,27 @@ label {
     #banner .images img {
       padding-top: 10px; }
 
-.signup-bar {
+.signup-bar, .landing-bar {
   background-color: #EDEFF4;
   border-bottom: 1px solid #D8DFEA;
   padding: 5px 40px 5px 40px; }
-  .signup-bar .content {
+  .signup-bar .content, .landing-bar .content {
     width: 1010px;
     margin: 0 auto; }
-  .signup-bar a {
+  .signup-bar a, .landing-bar a {
     color: white !important;
     text-decoration: none; }
-  .signup-bar .description {
+  .signup-bar .description, .landing-bar .description {
     color: #203360;
     font-size: 14px;
     font-weight: bold;
     padding: 19px; }
 
-.signup-bar .pretty-button {
+.signup-bar .pretty-button, .landing-bar .pretty-button {
   margin: 12px 12px 12px 0px; }
+
+.landing-bar a, .landing-bar a:visited {
+  color: #36485c !important; }
 
 #signup-box table, #actual-signin-box table {
   float: right;
@@ -161,7 +164,7 @@ label {
 #signup-box {
   float: left;
   width: 346px;
-  padding-top: 85px; }
+  padding-top: 65px; }
   #signup-box h2 {
     margin-bottom: 5px; }
   #signup-box p {
