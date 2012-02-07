@@ -27,11 +27,12 @@
           label Re-enter Password:
         td
           = f.password_field :password_confirmation, :autocomplete => "off"
-      tr
-        td
-          label Site Type:
-        td
-          = f.select :company_type_id, options_for_select(company_types, @user.company_type_id || 57)
+      - unless params[:sk]
+        tr
+          td
+            label Site Type:
+          td
+            = f.select :company_type_id, options_for_select(company_types, @user.company_type_id || 57)
       - if params[:sk]
         tr
           td
