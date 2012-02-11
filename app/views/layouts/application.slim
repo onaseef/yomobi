@@ -28,6 +28,23 @@ html lang="en-US"
             = render :partial => 'shared/header-signin-form'
           = render :partial => 'shared/nav'
           .clearfix
+      - if @landing_bar
+        .landing-bar
+          .content
+            ul.menu-bar
+              li
+                div.menu-item
+                  a href=about_path About Us
+              li
+                div.menu-item
+                  a href=why_mobile_path Why Mobile
+              li
+                div.menu-item
+                  a href=opportunity_path Business Opportunities
+              li
+                div.menu-item
+                  a target="ym-help" href=help_url Help 
+            .clearfix
       - unless user_signed_in? || @hide_signup_bar
         .signup-bar
           .content

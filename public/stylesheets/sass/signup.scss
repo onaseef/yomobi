@@ -3,7 +3,7 @@
 // layout related
 
 #header.signed-in {
-  .signup-bar { display: none; }
+  .signup-bar, .landing-bar { display: none; }
 }
 
 #header.signed-out {
@@ -31,7 +31,7 @@
     input[type=text], input[type=password] {
       width: 142px;
       padding: 2px;
-      margin: 0px; 
+      margin: 0px;
       border-color: #8A9CC2;}
     .main-btn {
       background: #5B74A8;
@@ -45,7 +45,7 @@
       cursor: pointer; }
 
     table tr td {
-      padding: 0px 14px 4px 0px; }  
+      padding: 0px 14px 4px 0px; }
    #label_persistent {
       color: #98a9ca;
     }
@@ -55,7 +55,7 @@
 }
 
 label {
-  padding-left:0px; 
+  padding-left:0px;
 }
 
 #sidebar {
@@ -127,8 +127,9 @@ label {
   border-bottom: 1px solid #D8DFEA;
   padding: 5px 40px 5px 40px;
   .content {
-    width: $page-width;
+    width: $page-width - 40;
     margin: 0 auto;
+    padding-left: 40px;
   }
   a {
     color: white !important;
@@ -145,6 +146,32 @@ label {
     margin: 12px 12px 12px 0px;
   }
 
+.landing-bar {
+  @extend .signup-bar;
+  overflow-x: hidden;
+  overflow-y: auto;
+  a, a:visited { color:$main-color !important; }
+  .menu-bar {
+    display: inline;
+    text-align: left;
+    list-style-type: none;
+    li { position: relative; float:left; }
+    li:first-child { margin-left: -10px; }
+
+    .menu-item {
+      font-size: $font-size-landing-bar;
+      font-weight: bold;
+      border: 1px solid transparent;
+      padding: 3px 10px;
+      cursor: pointer;
+    }
+    .menu-item:hover {
+      background: #e4ecf4; border:
+      1px solid #999999;
+    }
+  }
+}
+
 #signup-box, #actual-signin-box {
   table {
     float: right;
@@ -156,11 +183,11 @@ label {
   td {
     padding-bottom:5px;
   }
-  
+
   label {
     float:right;
     white-space: nowrap;
-    text-align:right; 
+    text-align:right;
     vertical-align:middle;
     padding: 0px 4px 0px 0px; }
   input[type=text], input[type=password] {
@@ -172,12 +199,12 @@ label {
   select {
     width: 186px !important;
   }
-  
+
   input[type=submit] {
     float: right;
     margin: 5px 10px 0px 40px;
   }
-  
+
   #recaptcha_container {
     float: right;
     margin-right: 10px;
@@ -210,7 +237,7 @@ label {
   .meta-group {
     padding-left: 0; }
   .main-btn {
-    margin-right: 4px; } 
+    margin-right: 4px; }
   .pretty-button {
     float: left;
     margin: 10px 10px 0px 0px;
@@ -235,7 +262,7 @@ label {
     vertical-align:middle;
     padding-top:14px;
     a {
-      margin-left:4px; 
+      margin-left:4px;
     }
   }
 }
@@ -323,12 +350,12 @@ label {
     width: 125px;
     height: 100px;
     text-align: center; }
-  
+
   .already-confirmed {
     font-size: 1.5em; }
-  
+
   .edit_user {
-    input[type=submit] { 
+    input[type=submit] {
       font-size: 1.5em;
       margin-top: 20px;
     }
@@ -339,7 +366,7 @@ label {
   @extend #account-setup-box;
 }
 
-#privacy, #terms, #about {
+.yomobi-info-page {
   margin: 40px;
 }
 
@@ -353,8 +380,8 @@ label {
     font-size:14px;
     margin-bottom: 4px;
   }
-  .line-3 { 
-    margin-bottom: 8px; 
+  .line-3 {
+    margin-bottom: 8px;
   }
   ul {
     font-size:14px;
