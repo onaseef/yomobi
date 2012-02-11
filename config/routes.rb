@@ -6,6 +6,7 @@ Yomobi::Application.routes.draw do
   get 'how-to-make-a-mobile-website' => 'home#easy', :as => :easy
   get 'why-mobile' => 'home#why_mobile', :as => :why_mobile
   get 'business-opportunities' => 'home#opportunity', :as => :opportunity
+  get 'biz' => 'home#opportunity', :as => :opportunity
   get 'help' => redirect('http://help.yomobi.com'), :as => :help
 
   get 'confirm' => 'home#confirm_account', :as => :confirm_account

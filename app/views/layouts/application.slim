@@ -30,17 +30,20 @@ html lang="en-US"
           .clearfix
       - if @landing_bar
         .landing-bar
-          table.content
-            tbody
-              tr
-                td
+          .content
+            ul.menu-bar
+              li
+                div.menu-item
                   a href=about_path About Us
-                td
+              li
+                div.menu-item
                   a href=why_mobile_path Why Mobile
-                td
+              li
+                div.menu-item
                   a href=opportunity_path Business Opportunities
-                td
-                  a href=help_url Help
+              li
+                div.menu-item
+                  a target="ym-help" href=help_url Help 
       - unless user_signed_in? || @hide_signup_bar
         .signup-bar
           .content

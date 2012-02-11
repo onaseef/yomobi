@@ -147,7 +147,26 @@ label {
 
 .landing-bar {
   @extend .signup-bar;
+  overflow-x: hidden;
+  overflow-y: auto;
   a, a:visited { color:$main-color !important; }
+  .menu-bar {
+    display: inline;
+    text-align: left;
+    list-style-type: none;
+    li { position: relative; float:left; }
+    .menu-item {
+      font-size: $font-size-landing-bar;
+      font-weight: bold;
+      border: 1px solid transparent; 
+      padding: 3px 10px; 
+      cursor: pointer; 
+    }
+    .menu-item:hover { 
+      background: #e4ecf4; border: 
+      1px solid #999999;
+    }
+  }
 }
 
 #signup-box, #actual-signin-box {

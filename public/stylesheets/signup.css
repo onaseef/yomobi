@@ -128,8 +128,27 @@ label {
 .signup-bar .pretty-button, .landing-bar .pretty-button {
   margin: 12px 12px 12px 0px; }
 
-.landing-bar a, .landing-bar a:visited {
-  color: #36485c !important; }
+.landing-bar {
+  overflow-x: hidden;
+  overflow-y: auto; }
+  .landing-bar a, .landing-bar a:visited {
+    color: #36485c !important; }
+  .landing-bar .menu-bar {
+    display: inline;
+    text-align: left;
+    list-style-type: none; }
+    .landing-bar .menu-bar li {
+      position: relative;
+      float: left; }
+    .landing-bar .menu-bar .menu-item {
+      font-size: 14px;
+      font-weight: bold;
+      border: 1px solid transparent;
+      padding: 3px 10px;
+      cursor: pointer; }
+    .landing-bar .menu-bar .menu-item:hover {
+      background: #e4ecf4;
+      border: 1px solid #999999; }
 
 #signup-box table, #actual-signin-box table {
   float: right;
