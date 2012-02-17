@@ -500,7 +500,12 @@ script.calendar-edit-area(type="text/template")
 script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.property-listings-edit-area.locations-edit-area(type="text/template")
     | <% if (onHomePage === true) { %>
     input type="button" name="beginEditing" value="Click Here to Start Editing"
+    br
+    br
 
+    input type="checkbox" name="hideWidget"
+    label for="hide" Deactivate
+    img.help-bubble src="/images/ui/help-bubble.png" title=t('widgets.helpText.category.hide')
     | <% } else if (currentNodeType !== 'page') { %>
     br
 
