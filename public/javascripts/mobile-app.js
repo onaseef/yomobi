@@ -44,6 +44,7 @@
   
   // ==================================
   var invalidWidgetTooltip = "This widget will <b>NOT</b> appear on your mobile site because required information is missing.<br /><br />Please click on this widget to edit. Remember to <b>Save Changes</b> when you are done.";
+  var deactivatedWidgetTooltip = "You have deactivated this widget; it <b>WILL NOT</b> appear on your mobile site.<br /><br />To undo this, please click this widget and uncheck the \"Deactivate\" checkbox.";
   WidgetHomeView = Backbone.View.extend({
     tagName: 'div',
     className: 'home-icon dbx-box',
@@ -71,10 +72,10 @@
       // even though this only relates to bapp, it only triggers when
       // bapp tells mapp to show invalid widgets
       if (mapp.homeView.showInvalidWidgets && !this.model.validForShowing()) {
-        $(this.el)
-          .addClass('invalid')
-          .simpletooltip(invalidWidgetTooltip)
-        ;
+
+        var className = 'invalid' + (this.model.get('hide') ? ' deactivated' : '');
+        var tip = this.model.get('hide') ? deactivatedWidgetTooltip : invalidWidgetTooltip;
+        $(this.el).addClass(className).simpletooltip(tip);
       }
       return this;
     },
