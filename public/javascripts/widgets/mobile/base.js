@@ -77,7 +77,7 @@
       var self = this
         , pluckAttr = function (attr) { return self.get(attr); }
       ;
-      return _.all(_.map(this.requiredAttrs, pluckAttr));
+      return !this.get('hide') && _.all(_.map(this.requiredAttrs, pluckAttr));
     },
 
     set: function(attributes, options) {

@@ -1,5 +1,9 @@
 Yomobi::Application.routes.draw do
 
+  constraints(Subdomain) do
+    match '/' => 'mobile#index'
+  end
+
   get 'privacy' => 'home#privacy', :as => :privacy
   get 'terms' => 'home#terms', :as => :terms
   get 'about' => 'home#about', :as => :about

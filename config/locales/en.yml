@@ -69,6 +69,7 @@ en:
 
       category:
         help: <p>Use this widget to create and organize web pages on your mobile site.</p>
+        hide: <p>Hide this widget from your mobile site.</p>
 
       coupon:
         help: <p>Add a coupon to your mobile site.</p>

@@ -120,6 +120,9 @@ div.wysiwyg ul.toolbar {
   left: 43px;
   background: url(/images/ui/invalid-for-showing.png) no-repeat; }
 
+.home-icon.invalid.deactivated .invalid-icon {
+  background-image: url(/images/ui/deactivated.png); }
+
 #builder-container {
   background: #edeff4;
   border-top: 1px solid #b3b3b3; }

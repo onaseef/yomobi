@@ -1,9 +1,11 @@
 class MobileController < ApplicationController
+
   def index
     @is_preview_mode = params[:preview].present?
-    @company = Company.where(:db_name => params[:company].downcase).first
+    site_name = params[:company] || request.subdomain
+    @company = Company.where(:db_name => site_name).first
     # TODO: create "Company not found" page and redirect there instead
-    redirect_to root_path if @company.nil?
+    redirect_to root_url(:subdomain => 'www') if @company.nil?
   end
 
   def aritcaptcha

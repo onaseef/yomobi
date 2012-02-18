@@ -222,6 +222,7 @@
       'click input[name=beginEditing]':     'enterEditMode',
       'click input[name=back]':             'transitionBack',
       'click .back.button':                 'transitionBack',
+      'change [name=hideWidget]':           'toggleHideStatus',
 
       'click .add-cat.button':              'addCat',
       'click .rename.button':               'rename',
@@ -259,7 +260,11 @@
         pageView: this.widget.pageView
       });
 
-      if (mapp.pageLevel > 0 && this.widget.getCurrentNode()._data.type !== 'page') {
+      if (mapp.pageLevel === 0) {
+        this.$('[name=hideWidget]').prop('checked', this.widget.get('hide'));
+        this.$('.help-bubble').simpletooltip(undefined,'help');
+      }
+      else if (mapp.pageLevel > 0 && this.widget.getCurrentNode()._data.type !== 'page') {
         util.initUploader( $(this.el).find('.wphoto-wrap'), {
           onDone: callback,
           emptyQueue: true,
@@ -286,6 +291,12 @@
       ;
       // first argument is an event object
       super_accept.call(this,null,callback);
+    },
+
+    toggleHideStatus: function (e) {
+      var isChecked = $(e.target).is(':checked');
+      this.widget.set({ hide:isChecked });
+      this.accept();
     },
 
     remove: function () {
