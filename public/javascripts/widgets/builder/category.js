@@ -202,6 +202,110 @@
 
     onSave: function () {
       this.origStruct = util.clone(this.get('struct'));
+    },
+
+    addChildNode: function (parent, childData) {
+      var child_id = util.generateId()
+        , newPath = this.paths[ parent._data._id ].concat([child_id])
+        , newChild = {
+          _data: _.extend({ _id:child_id, _order:[] }, childData)
+        }
+      ;
+      parent[child_id] = newChild;
+      this.paths[child_id] = newPath;
+      parent._data._order.push(child_id);
+      return newChild;
+    },
+
+    importSpecXML: function (specXML) {
+      var node = this.getCurrentNode()
+        , widget = this
+        , alerts = []
+      ;
+      node.__spec = $( $.parseXML(specXML) ).find('spec');
+
+      if (!node.__spec) {
+        alert('Invalid spec.');
+        return;
+      }
+
+      traverseStruct(node, function (node_id, node) {
+        if (!node.__spec) return;
+        var spec = node.__spec;
+
+        $(spec).children('folder,item,operation').each(function (idx,specNode) {
+          var nodeType = specNode.nodeName.toLowerCase()
+            , op = specNode.getAttribute('operation')
+            , data = null
+          ;
+          if (nodeType === 'folder') {
+            data = { type: 'cat', name: specNode.getAttribute('name') };
+          }
+          else if (nodeType === 'operation') {
+            var options = util.attributeHash(specNode)
+              , params = util.hashFromXML(specNode)
+              , kind = (options.kind === 'folder') ? 'cat' : options.kind
+            ;
+            if (_.keys(params).length === 0) {
+              alerts.push('Warning: no parameters. Skipping operation.');
+              alerts.push('    ' + JSON.stringify(options));
+              return;
+            }
+            if (!options.kind) {
+              alerts.push('Error: `kind` attribute required for operations.')
+              alerts.push('    ' + JSON.stringify(options));
+              return;
+            }
+            // search for matching item and delete
+            var found = false;
+            for (child_id in node) {
+              if (child_id.charAt(0) === '_') continue;
+
+              var child = node[child_id];
+              if (child._data.type != kind) continue;
+
+              var matches = _.map(params, function (v,k) { return child._data[k] === v; });
+              if (_.all(matches)) {
+                delete node[child._data._id];
+                found = true;
+                break;
+              }
+            }
+            if (found) {
+              alerts.push(util.capitalize(options.type) + ' operation successful.');
+              alerts.push('    Params: ' + JSON.stringify(params));
+            }
+            else {
+              alerts.push('Warning: No match found for '+options.type+' operation');
+              alerts.push('    Params: ' + JSON.stringify(params));
+            }
+          }
+          else if (nodeType === 'item') {
+            data = { type:'item' };
+            _.extend(data, util.hashFromXML(specNode));
+          }
+          else {
+            alerts.push('Error: XML nodeName not recognized');
+            return;
+          }
+
+          // data can be null after an operation or unrecognized node
+          if (data === null) return;
+
+          var newChild = widget.addChildNode(node, data);
+          if (nodeType === 'folder') {
+            // assign temporary variable for traversing
+            newChild.__spec = specNode;
+          }
+          alerts.push('New '+nodeType+': '+data.name);
+          util.log(node._data.name,idx,specNode);
+          util.log('  > data:',data);
+        });
+
+        delete node.__spec;
+      });
+
+      _.map(alerts, function (msg) { util.log(msg); });
     }
   });
 
@@ -722,17 +826,8 @@
     },
 
     addNodeToStruct: function (data) {
-      var level = this.model.getCurrentLevel(true)
-        , level_id = level._data._id
-        , cat_id = util.generateId()
-        , newPath = this.model.paths[ level_id ].concat([cat_id])
-        , newCat = {
-          _data: _.extend({ _id:cat_id, _order:[] }, data)
-        }
-      ;
-      level[cat_id] = newCat;
-      this.model.paths[cat_id] = newPath;
-      level._data._order.push(cat_id);
+      var parent = this.model.getCurrentNode();
+      this.model.addChildNode(parent, data);
     },
 
     renameNode: function (newName) {

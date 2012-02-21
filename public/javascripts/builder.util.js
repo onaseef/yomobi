@@ -49,6 +49,24 @@ var builderUtil = {
     return hash;
   },
 
+  attributeHash: function (elem) {
+    var hash = {};
+    for (var attr, i=0, attrs=elem.attributes, l=attrs.length; i<l; i++) {
+      attr = attrs.item(i);
+      hash[attr.nodeName] = attr.nodeValue;
+    }
+    return hash;
+  },
+
+  hashFromXML: function (xmlNode) {
+    var hash = {};
+    $(xmlNode).children().each(function (idx, child) {
+      var attrName = child.nodeName.toLowerCase();
+      hash[attrName] = $(child).text();
+    });
+    return hash;
+  },
+
   dialog: function (html,buttons,title,options) {
     options || (options = _blank);
     return $(html).dialog({
