@@ -234,8 +234,7 @@
       node.__spec = $( $.parseXML(specXML) ).find('spec');
 
       if (!node.__spec || node.__spec.length === 0) {
-        alert('Invalid spec.');
-        return;
+        return false;
       }
 
       traverseStruct(node, function (node_id, node) {
@@ -1053,6 +1052,13 @@
         , data = this.dialog.find('[name=data]').val()
         , outputLines = this.model.importSpecXML(data)
       ;
+      if (outputLines === false) {
+        // spec xml is invalid
+        output.val('Invalid spec.');
+        return;
+      }
+
+      output.val('');
       _.map(outputLines, function (line) {
         output.val( output.val() + line + "\n" );
       });
