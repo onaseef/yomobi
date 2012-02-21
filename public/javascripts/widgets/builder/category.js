@@ -1084,7 +1084,7 @@
         output.val( output.val() + line + "\n" );
       });
 
-      this.dialog.find('[name=data]').val('');
+      this.dialog.find('[name=data]').prop('readonly',true).css('outline','none');
       this.dialog.dialog('option', 'buttons', {
         'Save': function () {
           $(this).dialog("close");
