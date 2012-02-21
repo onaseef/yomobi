@@ -348,6 +348,7 @@
     init: function (widget) {
       // this is needed for proper inheritance due to closures
       this.AddItemDialog = AddItemDialog;
+      _.bindAll(this, 'discardChanges');
     },
 
     // the button that activates this should only be available on the home page
@@ -525,6 +526,10 @@
 
     openImportDialog: function () {
       this.itemDialog = this.itemDialog || new ImportDialog({ model:this.widget });
+      this.itemDialog.options = {
+        onSave: this.refreshViews,
+        onCancel: this.discardChanges
+      };
       this.itemDialog.clear().prompt();
     },
 
@@ -1024,7 +1029,7 @@
       var dialogContent = importDialogTemplate();
       var buttons = {
         'Import': this.importData,
-        'Close': makeCloseFunc(this)
+        'Cancel': makeCloseFunc(this)
       };
 
       this.dialog = util.dialog(dialogContent, buttons, 'Import')
@@ -1033,15 +1038,28 @@
     },
 
     importData: function () {
-      util.log('go', this.dialog.find('[name=data]'));
-      var output = this.dialog.find('[name=output]')
+      var self = this
+        , output = this.dialog.find('[name=output]')
         , data = this.dialog.find('[name=data]').val()
         , outputLines = this.model.importSpecXML(data)
       ;
       _.map(outputLines, function (line) {
         output.val( output.val() + line + "\n" );
       });
+
       this.dialog.find('[name=data]').val('');
+      this.dialog.dialog('option', 'buttons', {
+        'Save': function () {
+          $(this).dialog("close");
+          bapp.currentEditor.setChanged('import',true);
+          self.options.onSave();
+        },
+        'Cancel': function () {
+          $(this).dialog("close");
+          bapp.currentEditor.setChanged('import',false);
+          self.options.onCancel();
+        }
+      })
     }
   });
 
