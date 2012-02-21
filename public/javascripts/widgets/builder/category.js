@@ -245,6 +245,7 @@
           var nodeType = specNode.nodeName.toLowerCase()
             , name = specNode.getAttribute('name')
             , op = specNode.getAttribute('operation')
+            , wphotoUrl = specNode.getAttribute('picture-url')
             , data = null
             , existingNode = findChildNodeByName(node,name)
           ;
@@ -279,19 +280,38 @@
           }
           else if (nodeType === 'folder' && existingNode) {
             existingNode.__spec = specNode;
+            if (wphotoUrl && existingNode._data.wphotoUrl !== wphotoUrl) {
+              existingNode._data.wphotoUrl = wphotoUrl;
+              alerts.push('Modified pictureUrl for folder: '+name);
+            }
           }
           else if (nodeType === 'folder') {
             data = { type:'cat', name:name };
+            if (wphotoUrl) data.wphotoUrl = wphotoUrl;
           }
           else if (nodeType === 'item' && existingNode) {
             var changes = util.hashFromXML(specNode);
+
             if (_.keys(changes).length > 0) {
-              _.extend(existingNode._data, changes);
-              alerts.push('Modified '+nodeType+': '+name);
+
+              var modified = false;
+              for (var k in changes) {
+                if (existingNode._data[k] !== changes[k]) {
+                  existingNode._data[k] = changes[k];
+                  modified = true;
+                }
+              }
+              if (modified) alerts.push('Modified item: '+name);
+            }
+
+            if (wphotoUrl && existingNode._data.wphotoUrl !== wphotoUrl) {
+              existingNode._data.wphotoUrl = wphotoUrl;
+              alerts.push('Modified pictureUrl for item: '+name);
             }
           }
           else if (nodeType === 'item') {
             data = { type:'item', name:name };
+            if (wphotoUrl) data.wphotoUrl = wphotoUrl;
             _.extend(data, util.hashFromXML(specNode));
           }
           else {
