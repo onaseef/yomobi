@@ -225,9 +225,8 @@
       return newChild;
     },
 
-    importSpecXML: function (specXML) {
-      var node = this.getCurrentNode()
-        , widget = this
+    importSpecXML: function (node, specXML) {
+      var widget = this
         , alerts = []
       ;
       util.log('hmm',$.parseXML(specXML));
@@ -336,6 +335,8 @@
       });
 
       alerts.push('Done.');
+
+      if (alerts.length === 1) alerts.unshift('Nothing to do.');
       _.map(alerts, function (msg) { util.log(msg); });
       return alerts;
     }
@@ -365,7 +366,7 @@
       'click .edit.button':                 'edit',
       'dblclick .node':                     'edit',
       'click .delete.button':               'deleteNodes',
-      'click .import.button':               'openImportDialog',
+      'click [name=import]':                'openImportDialog',
 
       'click .add-item.button':             'addItem',
       'click .rename-link':                 'rename',
@@ -1070,7 +1071,7 @@
       var self = this
         , output = this.dialog.find('[name=output]')
         , data = this.dialog.find('[name=data]').val()
-        , outputLines = this.model.importSpecXML(data)
+        , outputLines = this.model.importSpecXML(this.model.get('struct'), data)
       ;
       if (outputLines === false) {
         // spec xml is invalid

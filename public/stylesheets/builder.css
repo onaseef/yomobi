@@ -534,11 +534,6 @@ div.wysiwyg ul.toolbar {
 #builder .edit-area.category .button.delete, #builder .edit-area.page_tree .button.delete {
   background-image: url(/images/ui/icon-delete.png);
   background-position: center; }
-#builder .edit-area.category .button.import, #builder .edit-area.page_tree .button.import {
-  margin: 0;
-  padding: 6px 6px 0 16px;
-  background-image: url(/images/ui/icon-edit.png);
-  background-position: center; }
 #builder .edit-area.category ul.fancy-selectable, #builder .edit-area.page_tree ul.fancy-selectable {
   height: 290px;
   overflow: auto; }

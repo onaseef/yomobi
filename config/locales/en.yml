@@ -31,7 +31,8 @@ en:
       help:
         redirect: "To automatically redirect visitors to your mobile site when they visit your desktop site from a mobile phone, copy this code snippet and paste it into your desktop site’s home page, just before the closing &lt;head&gt; tag. <b>Click ? more help.</b>"
         site_pic: "Note: Large size pictures may take up to 1 minute to load."
-        import: "For detailed information, click this help bubble."
+        import: "Import well-formed XML into this widget. Click this bubble for documentation."
+        import_dialog: "For documentation, click this help bubble."
 
     jeditor:
       help:
