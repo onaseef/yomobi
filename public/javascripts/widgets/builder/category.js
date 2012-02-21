@@ -136,6 +136,14 @@
     this.pageView.refresh();
   };
 
+  var findChildNodeByName = function (node, name) {
+    for (child_id in node) {
+      if (child_id.charAt(0) === '_') continue;
+      if (node[child_id]._data.name === name) return node[child_id];
+    }
+    return null;
+  }
+
   var deleteConfirmText = "Are you sure you want to delete? (Data will be lost)";
 
 
@@ -234,27 +242,22 @@
         if (!node.__spec) return;
         var spec = node.__spec;
 
-        $(spec).children('folder,item,operation').each(function (idx,specNode) {
+        $(spec).children('folder,item').each(function (idx,specNode) {
           var nodeType = specNode.nodeName.toLowerCase()
+            , name = specNode.getAttribute('name')
             , op = specNode.getAttribute('operation')
             , data = null
+            , existingNode = findChildNodeByName(node,name)
           ;
-          if (nodeType === 'folder') {
-            data = { type: 'cat', name: specNode.getAttribute('name') };
-          }
-          else if (nodeType === 'operation') {
+          util.log('SPEC',specNode,name,existingNode,node);
+          if (op === 'delete') {
             var options = util.attributeHash(specNode)
               , params = util.hashFromXML(specNode)
-              , kind = (options.kind === 'folder') ? 'cat' : options.kind
+              , kind = (nodeType === 'folder') ? 'cat' : nodeType
             ;
-            if (_.keys(params).length === 0) {
-              alerts.push('Warning: no parameters. Skipping operation.');
-              alerts.push('    ' + JSON.stringify(options));
-              return;
-            }
-            if (!options.kind) {
-              alerts.push('Error: `kind` attribute required for operations.')
-              alerts.push('    ' + JSON.stringify(options));
+            if (name && !existingNode) {
+              alerts.push(util.capitalize(op) + ' operation error: Name does not exist');
+              alerts.push('    Name: ' + name);
               return;
             }
             // search for matching item and delete
@@ -268,21 +271,28 @@
               var matches = _.map(params, function (v,k) { return child._data[k] === v; });
               if (_.all(matches)) {
                 delete node[child._data._id];
+                alerts.push('Deleted '+nodeType+': '+name);
                 found = true;
                 break;
               }
+
             }
-            if (found) {
-              alerts.push(util.capitalize(options.type) + ' operation successful.');
-              alerts.push('    Params: ' + JSON.stringify(params));
-            }
-            else {
-              alerts.push('Warning: No match found for '+options.type+' operation');
-              alerts.push('    Params: ' + JSON.stringify(params));
+          }
+          else if (nodeType === 'folder' && existingNode) {
+            existingNode.__spec = specNode;
+          }
+          else if (nodeType === 'folder') {
+            data = { type:'cat', name:name };
+          }
+          else if (nodeType === 'item' && existingNode) {
+            var changes = util.hashFromXML(specNode);
+            if (_.keys(changes).length > 0) {
+              _.extend(existingNode._data, changes);
+              alerts.push('Modified '+nodeType+': '+name);
             }
           }
           else if (nodeType === 'item') {
-            data = { type:'item' };
+            data = { type:'item', name:name };
             _.extend(data, util.hashFromXML(specNode));
           }
           else {
@@ -298,7 +308,7 @@
             // assign temporary variable for traversing
             newChild.__spec = specNode;
           }
-          alerts.push('New '+nodeType+': '+data.name);
+          alerts.push('New '+nodeType+': '+name);
           util.log(node._data.name,idx,specNode);
           util.log('  > data:',data);
         });
