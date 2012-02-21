@@ -222,9 +222,10 @@
         , widget = this
         , alerts = []
       ;
+      util.log('hmm',$.parseXML(specXML));
       node.__spec = $( $.parseXML(specXML) ).find('spec');
 
-      if (!node.__spec) {
+      if (!node.__spec || node.__spec.length === 0) {
         alert('Invalid spec.');
         return;
       }
@@ -305,7 +306,9 @@
         delete node.__spec;
       });
 
+      alerts.push('Done.');
       _.map(alerts, function (msg) { util.log(msg); });
+      return alerts;
     }
   });
 
@@ -333,6 +336,7 @@
       'click .edit.button':                 'edit',
       'dblclick .node':                     'edit',
       'click .delete.button':               'deleteNodes',
+      'click .import.button':               'openImportDialog',
 
       'click .add-item.button':             'addItem',
       'click .rename-link':                 'rename',
@@ -517,6 +521,11 @@
       });
 
       this.updateNodeListUI();
+    },
+
+    openImportDialog: function () {
+      this.itemDialog = this.itemDialog || new ImportDialog({ model:this.widget });
+      this.itemDialog.clear().prompt();
     },
 
     getSelectedNodeIds: function () {
@@ -992,6 +1001,47 @@
         bapp.currentEditor.setChanged('something',true);
         this.options.onClose && this.options.onClose();
       }
+    }
+  });
+
+
+  // =================================
+  var importDialogTemplate = util.getTemplate('import-collection-dialog');
+  var ImportDialog = Backbone.View.extend({
+
+    initialize: function () {
+      _.bindAll(this, 'importData');
+    },
+
+    clear: function () {
+      if (this.dialog) {
+        this.dialog.find('[name=data]').val('');
+      }
+      return this;
+    },
+
+    prompt: function () {
+      var dialogContent = importDialogTemplate();
+      var buttons = {
+        'Import': this.importData,
+        'Close': makeCloseFunc(this)
+      };
+
+      this.dialog = util.dialog(dialogContent, buttons, 'Import')
+        .find('.help-bubble').simpletooltip(undefined,'help').end()
+      ;
+    },
+
+    importData: function () {
+      util.log('go', this.dialog.find('[name=data]'));
+      var output = this.dialog.find('[name=output]')
+        , data = this.dialog.find('[name=data]').val()
+        , outputLines = this.model.importSpecXML(data)
+      ;
+      _.map(outputLines, function (line) {
+        output.val( output.val() + line + "\n" );
+      });
+      this.dialog.find('[name=data]').val('');
     }
   });
 

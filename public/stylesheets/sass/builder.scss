@@ -582,6 +582,12 @@ div.wysiwyg ul.toolbar {
     background-image: url(/images/ui/icon-delete.png); 
     background-position: center;
   }
+  .button.import {
+    margin: 0;
+    padding: 6px 6px 0 16px;
+    background-image: url(/images/ui/icon-edit.png);
+    background-position: center;
+  }
 
   ul.fancy-selectable {
     height: 290px;
@@ -752,6 +758,13 @@ div.wysiwyg ul.toolbar {
   .preview img { max-width: 100%; max-height: 80px; vertical-align: middle; }
   input[name=size] {
     width: auto;
+  }
+}
+
+#dialog-confirm.import {
+  textarea[name=output] {
+    font-family: Consolas,Monaco,'Courier New',monospace;
+    outline: none;
   }
 }
 

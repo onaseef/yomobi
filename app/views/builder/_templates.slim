@@ -543,6 +543,7 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
       .button.edit title="Edit" &nbsp;
       .button.rename title="Rename" &nbsp;
       .button.delete title="Delete" &nbsp;
+      .button.import title="Import" &nbsp;
       | <% } %>
 
       .clearfix
@@ -568,3 +569,14 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
     #jeditor-wrapper
       textarea#jeditor {{ content }}
     | <% } %>
+
+script.import-collection-dialog(type="text/template")
+  #dialog-confirm.import title="Import"
+    | Paste your XML here:
+    a href="http://help.yomobi.com/Advanced/ImportingCollections"
+      img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.settings.help.import')
+    textarea name="data"
+    label Output:
+    textarea name="output" readonly="readonly"
+
+
