@@ -58,13 +58,22 @@ var builderUtil = {
     return hash;
   },
 
-  hashFromXML: function (xmlNode) {
+  hashFromXML: function (xmlNode, excludes) {
     var hash = {};
     $(xmlNode).children().each(function (idx, child) {
-      var attrName = child.nodeName.toLowerCase();
-      hash[attrName] = $(child).text();
+      var attrName = util.camelfy('-', child.nodeName.toLowerCase());
+      if (!excludes || !_.include(excludes,attrName))
+        hash[attrName] = $(child).text();
     });
     return hash;
+  },
+
+  camelfy: function (seperator, string) {
+    var words = string.split(seperator);
+    for (var i = 1; i < words.length; i++) {
+      words[i] = util.capitalize(words[i]);
+    }
+    return words.join('');
   },
 
   dialog: function (html,buttons,title,options) {
