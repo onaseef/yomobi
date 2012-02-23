@@ -9,7 +9,7 @@ DUPLICATE_ERROR_MESSAGES = ["Duplicate entry", "duplicate key", "not unique"]
 # used in signup_controller.rb
 RESERVED_SITE_URLS = %w{
   about account-setup admin builder confirm confirmation easy
-  home mobile opt-out order preview terms users widgets
+  home mobile opt-out order preview terms users widgets www
   how-to-make-a-mobile-website
 }
 

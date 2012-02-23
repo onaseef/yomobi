@@ -6,7 +6,8 @@ class Widgets::InformedController < ApplicationController
     return error('bad message') unless follower_data_present? params
     return error('captcha') unless verify_aritcaptcha params
 
-    company = Company.find_by_db_name params[:company]
+    site_name = params[:company] || request.subdomain
+    company = Company.find_by_db_name site_name
     carrier = Carrier.find_by_name params[:carrier]
 
     return error('bad company') if company.nil?

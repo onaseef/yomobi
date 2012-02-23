@@ -9,8 +9,8 @@ class Widgets::BookingController < ApplicationController
 
     return error('captcha') unless verify_aritcaptcha params
 
-
-    company = Company.find_by_db_name params[:company]
+    site_name = params[:company] || request.subdomain
+    company = Company.find_by_db_name site_name
     return error('bad company') if company.nil?
 
     phone = params[:phone]

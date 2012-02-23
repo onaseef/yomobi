@@ -2,6 +2,12 @@ Yomobi::Application.routes.draw do
 
   constraints(Subdomain) do
     match '/' => 'mobile#index'
+    post ':company/leave_msg/submit' => 'widgets/leave_msg#submit'
+    post ':company/call_back/submit' => 'widgets/call_back#mobile_submit'
+    post ':company/tell_friend/submit' => 'widgets/tell_friend#mobile_submit'
+    post ':company/informed/submit' => 'widgets/informed#mobile_submit'
+    post ':company/booking/submit' => 'widgets/booking#mobile_submit'
+    get 'mobile/aritcaptcha' => 'mobile#aritcaptcha'
     match '*else' => redirect('/')
   end
 
@@ -19,7 +25,7 @@ Yomobi::Application.routes.draw do
 
   get "account/edit", :as => :account
   put "account/update", :as => :update_account
-  
+
   match 'account-setup/:step_num' => 'signup#account_setup', :as => :account_setup
 
   devise_for :users, :controllers => {
@@ -60,17 +66,21 @@ Yomobi::Application.routes.draw do
   put    'widgets/:id' => 'builder#update_widget'
   post   'widgets'     => 'builder#new_widget'
   delete 'widgets/:_id/:_rev' => 'builder#delete_widget'
-  
+
   post 'order' => 'builder#update_order'
 
   get 'opt-out/:key' => 'widgets/informed#opt_out'
 
   root :to => 'home#index'
-  
-  get '/javascripts/mobile-redirect.js' => 'mobile#mobile_redirect'
-  get 'mobile/aritcaptcha' => 'mobile#aritcaptcha'
 
+  get '/javascripts/mobile-redirect.js' => 'mobile#mobile_redirect'
   get 'preview/:company' => 'mobile#index', :as => :mobile_preview, :defaults => { :preview => true }
+
+
+  ######################
+  # Mobile-side routes #
+  ######################
+  get 'mobile/aritcaptcha' => 'mobile#aritcaptcha'
 
   ##########################
   # Widget-specific routes #
