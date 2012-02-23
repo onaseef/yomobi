@@ -2,6 +2,7 @@ Yomobi::Application.routes.draw do
 
   constraints(Subdomain) do
     match '/' => 'mobile#index'
+    match '*else' => redirect('/')
   end
 
   get 'privacy' => 'home#privacy', :as => :privacy
