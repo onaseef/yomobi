@@ -225,7 +225,7 @@
       'change [name=hideWidget]':           'toggleHideStatus',
 
       'click .add-cat.button':              'addCat',
-      'click .rename.button':               'rename',
+      'click .rename.button':               'onRenameButtonClick',
       'click .edit.button':                 'edit',
       'dblclick .node':                     'edit',
       'click .delete.button':               'deleteNodes',
@@ -359,7 +359,7 @@
       }
     },
 
-    rename: function (e) {
+    onRenameButtonClick: function (e) {
       if (!util.isUIFree()) return;
 
       var node = this.getFirstSelectedNode();
