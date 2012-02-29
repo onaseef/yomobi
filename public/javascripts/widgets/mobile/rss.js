@@ -11,7 +11,7 @@
   };
 
   window.widgetClasses.rss = Widget.extend({
-    requriedAttrs: ['url'],
+    requiredAttrs: ['url'],
 
     state: 'loading', // loading, titles, post
     feedData: null,
@@ -25,7 +25,7 @@
 
       if (!this.feedData) {
         // load feed data
-        var feed = new google.feeds.Feed("http://sanantonio.citysearch.com/rss/reviews.xml")
+        var feed = new google.feeds.Feed( this.get('url') )
           , self = this
         ;
         feed.load(function (result) {
