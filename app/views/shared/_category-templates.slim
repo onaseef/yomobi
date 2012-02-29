@@ -58,7 +58,12 @@ script.locations-item type="text/template"
 
   pre.desc.long {{ item.desc }}
 
-/ this template is used when a photo is being displayed
+script.rss-item type="text/template"
+  .name.long {{ item.title }}
+  .desc.long {{ item.content }}
+  a href="{{ item.link }}" More...
+
+/ this template is used to check if a photo is being displayed
 script.item-wrap type="text/template"
   tr.item class="{{ cycle }}" data-id="{{ item._id }}"
     | <% if (item.wphotoUrl) { %>

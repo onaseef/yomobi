@@ -26,7 +26,7 @@
         return widget;
       });
     },
-    
+
     validCount: function () {
       return this.select(function (w) { return w.validForShowing(); }).length;
     },
@@ -36,31 +36,31 @@
         return w.get('wtype') == wtype && w.get('wsubtype') == wsubtype;
       });
     },
-    
+
     comparator: function (widget) {
       return widget.getOrder();
     }
   });
-  
+
   // ==================================
   var invalidWidgetTooltip = "This widget will <b>NOT</b> appear on your mobile site because required information is missing.<br /><br />Please click on this widget to edit. Remember to <b>Save Changes</b> when you are done.";
   var deactivatedWidgetTooltip = "You have deactivated this widget; it <b>WILL NOT</b> appear on your mobile site.<br /><br />To undo this, please click this widget and uncheck the \"Deactivate\" checkbox.";
   WidgetHomeView = Backbone.View.extend({
     tagName: 'div',
     className: 'home-icon dbx-box',
-    
+
     template: util.getTemplate('home-icon'),
-    
+
     events: {
       'click': 'onClick'
     },
-    
+
     initialize: function () {
       _.bindAll(this,'render','onClick');
       this.model.homeView = this;
       this.model.bind('change:name',this.render);
     },
-    
+
     render: function () {
       $(this.el).html( this.template(this.model.getIconData()) );
 
@@ -79,31 +79,31 @@
       }
       return this;
     },
-    
+
     onClick: function () {
       if(this.model.onHomeViewClick()) {
         mapp.goToPage(this.model.get('name'));
       }
     },
-    
+
     highlight: function (toggle) {
       $(this.el).toggleClass('editing',toggle);
     }
-    
+
   });
-  
+
   // ===================================
   window.HomeView = Backbone.View.extend({
     el: $('#home'),
 
     showInvalidWidgets: false,
-    
+
     initialize: function (widgets) {
       _.bindAll(this,'render');
 
       this.widgets = widgets;
     },
-    
+
     render: function () {
       var content = this.el.find('.content').empty(), self = this;
 
@@ -112,7 +112,7 @@
         var view = new WidgetHomeView({ model:w });
         content.append(view.render().el);
       });
-      
+
       content.append('<div class="clearfix">');
       this.trigger('render');
       util.log('rendered',this.widgets.length,'widgets');
@@ -124,7 +124,7 @@
       mapp.resize();
     }
   });
-  
+
   // =============================================
   MobileAppController = Backbone.Controller.extend({
 
@@ -133,11 +133,11 @@
       'page/:widget':           'viewWidgetByName',
       'page/:widget/*subpage':  'viewWidgetByName'
     },
-  
+
     home: function () {
       mapp.goHome();
     },
-    
+
     viewWidgetByName: function (name,subpage) {
       name = unescape(name);
       util.log('viewing widget: ' + name + ' with subpage: ' + subpage);
@@ -157,41 +157,41 @@
     }
 
   });
-  
+
   // ========================================
   window.MobileAppView = Backbone.View.extend({
 
     el: $('#mobile-container'),
-    
+
     events: {
       'click .back-btn':      'goBack',
       'click .wtab':          'onWidgetTabClick'
     },
-    
+
     headerTemplate: util.getTemplate('mapp-header'),
     pageTemplate: util.getTemplate('widget-page'),
     tabBarTemplate: util.getTemplate('tab-bar'),
-    
+
     // n == 0 is home, n > 0 is widget page level depth
     pageLevel: 0,
     scrollStack: [],
-    
+
     initialize: function (options) {
       options = options || {};
       var self = this;
 
       this.widgets = options.widgets || new Widgets();
-      
+
       this.homeView = new HomeView(this.widgets);
       this.homeView.showInvalidWidgets = options.showInvalidWidgets || false;
 
       this.scrollElem = options.scrollElem || $(window);
 
       this.isDesktop = window.location.href.match(/_d\=1/);
-      
+
       _.bindAll(this, 'render');
     },
-    
+
     render: function () {
       util.log('app render');
       $('#top-bar .company-info').html(this.headerTemplate({
@@ -204,11 +204,12 @@
 
       this.trigger('render');
     },
-    
+
     goBack: function () {
       var widget = mapp.currentWidget;
       if (widget.get('wtype') === 'category' ||
-          widget.get('wtype') === 'page_tree'
+          widget.get('wtype') === 'page_tree' ||
+          widget.get('wtype') === 'rss'
       ) {
         widget.pageView.popPage();
       }
@@ -216,7 +217,7 @@
         mapp.goHome();
       }
     },
-    
+
     onWidgetTabClick: function (e) {
       var $target = e.target.tagName == 'TD' ? $(e.target) : $(e.target).parent()
         , widget = mapp.widgets.get( $target.data('wid') )
@@ -225,7 +226,7 @@
         mapp.goToPage(widget.get('name'));
       }
     },
-    
+
     viewWidget: function (widget,subpage) {
       var direction = widget.pageView.onPageView(subpage)
         , wpage = this.getNextPage(direction,true)
@@ -234,13 +235,13 @@
       widget.pageView.beforePageRender(wpageContent);
       wpage.content.empty().append(wpageContent);
       wpage.topBar.find('.title').html(widget.getTitleContent());
-      
+
       widget.pageView.setContentElem(wpage.content);
       mapp.transition(direction);
       this.currentWidget = widget;
       this.hasRendered = true;
     },
-    
+
     getActivePage: function () {
       var page = this.el.find('.page:eq('+this.pageLevel+')');
       page.topBar = page.find('.back-bar');
@@ -248,13 +249,13 @@
 
       return page;
     },
-    
+
     getNextPage: function (direction,noHomeAllowed) {
       direction = direction || 'forward';
       var mod = (direction === 'forward') ? 1 : -1;
 
       var page = this.el.find('.page:eq(' + (this.pageLevel+mod) + ')');
-      
+
       if (page.length == 0 || noHomeAllowed && this.pageLevel == 1) {
         page = this.injectNewPage(direction);
       }
@@ -263,14 +264,14 @@
 
       return page;
     },
-    
+
     injectNewPage: function (direction) {
       var originalCount = this.el.find('.page').length
         , newPage = $(this.pageTemplate())
         , pivot = this.el.find('.page:eq(' + this.pageLevel + ')')
       ;
       (direction == 'forward') ? pivot.after(newPage) : pivot.before(newPage);
-      
+
       var newCount = this.el.find('.page').length
         , canvasWidth = $('#canvas').width()
         , newWidth = canvasWidth * (newCount / originalCount)
@@ -285,25 +286,25 @@
 
       return newPage;
     },
-    
+
     goToPage: function (widgetName,subpage) {
-      subpagePath = subpage ? '/' + subpage : '';
+      subpagePath = (subpage !== null && subpage !== undefined) ? '/' + subpage : '';
 
       mapp.hasRendered = false;
       router.saveLocation("#page/" + escape(widgetName + subpagePath));
-      
+
       setTimeout(function () {
         util.log('Has rendered? ' + mapp.hasRendered);
         if (mapp.hasRendered === false)
           router.viewWidgetByName(widgetName, subpage);
       }, 10);
     },
-    
+
     goHome: function () {
       // TODO: delete all pages between current
       // and home for a smoother transition
       var canvas = this.el.find('#canvas');
-      
+
       if (this.pageLevel > 0){
         for (var i = this.pageLevel; i > 1; i --) {
           this.el.find('.page:eq(1)').remove();
@@ -317,7 +318,7 @@
         delete this.currentWidget;
       }
     },
-    
+
     canTransition: function () {
       return util.reserve('pageTransition',false);
     },
@@ -351,7 +352,7 @@
         if (self.isDesktop) self.scrollElem.scrollTop(0);
 
         util.release('pageTransition');
-        
+
         if (window.bapp) {
           if (mapp.pageLevel == 0) {
             delete mapp.currentWidget;
@@ -365,14 +366,14 @@
 
       return true;
     },
-    
+
     // overridden in builder-app.js
     resize: function (height) {
       height = ( height || mapp.getActivePage().height() ) + g.topBarMaxHeight;
       $('#mobile-container').height(height);
       return height;
     },
-    
+
     scrollPush: function () {
       this.scrollStack.push( this.scrollElem.scrollTop() );
       if (this.scrollElem.scrollTop() > g.topBarHeight)
@@ -441,7 +442,7 @@
       delete metaDoc.worderInit; delete metaDoc.wtabsInit;
       metaDoc.worder = worder;   metaDoc.wtabs = wtabs;
     },
-    
+
     updateWtabs: function (requireValid) {
       var isValid = requireValid ? isValidForShowing : _.identity;
 
@@ -460,7 +461,7 @@
     showAds: function () {
       $('.ad-bar').show();
     }
-    
+
   });
-  
+
 })(jQuery);

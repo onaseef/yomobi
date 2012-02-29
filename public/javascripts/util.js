@@ -240,7 +240,11 @@ var util = {
   widgetById: function (id) {
     return mapp.widgets.get(id);
   },
-  
+
+  between: function (min,max,x) {
+    return Math.max(min, Math.min(max, x));
+  },
+
   // Example inputs/outputs:
   // "08:00" -> "08:00am"
   // "16:00" -> "04:00pm"

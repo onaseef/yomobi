@@ -51,7 +51,7 @@ class CouchDocs
       }"
     }
   end
-  
+
   def self.view_doc
     {
       "_id" => "_design/widgets",
@@ -72,7 +72,7 @@ class CouchDocs
       }
     }
   end
-  
+
   def self.meta_doc(widget_docs,wtabs)
     worder = {}
     widget_docs.each_index {|i|
@@ -89,19 +89,19 @@ class CouchDocs
       "wtabsInit" => wtabs
     }
   end
-  
+
   def self.about_us_doc(desc)
     self.by_wsubtype('about-us').merge :content => desc
   end
-  
+
   def self.phone_doc(phone)
     self.by_wsubtype('call-us').merge :phone => phone
   end
-  
+
   def self.gmap_doc(address)
     self.by_wsubtype('find-us').merge(address)
   end
-  
+
   def self.gen_salt
     lengths = [[48,10],[97,26]]
     result = ""
@@ -129,7 +129,7 @@ class CouchDocs
         :singleton => true,
         :hideFromSidebar => true
       },
-      
+
       {
         :wtype => 'link_fb',
         :wsubtype => "picasa",
@@ -167,7 +167,7 @@ class CouchDocs
         :singleton => true,
         :hideFromSidebar => true
       },
-      
+
       {
         :wtype => 'call_back',
         :wsubtype => "call-me-back",
@@ -207,7 +207,7 @@ class CouchDocs
           }
         }
       },
-      
+
       {
         :wtype => 'link_fb',
         :wsubtype => "twitter",
@@ -404,6 +404,11 @@ class CouchDocs
         :wtype => 'custom_page',
         :wsubtype => 'about-us',
         :hideFromSidebar => true
+      },
+
+      {
+        :wtype => 'rss',
+        :wsubtype => 'rss-feed'
       },
 
       {
