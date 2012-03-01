@@ -288,7 +288,7 @@ class CouchDocs
       {
         :wtype => 'link',
         :wsubtype => "full-website",
-        :singleton => true
+        :singleton => false
       },
 
       {
