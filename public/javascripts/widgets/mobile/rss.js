@@ -28,6 +28,7 @@
         var feed = new google.feeds.Feed( this.get('url') )
           , self = this
         ;
+        feed.setNumEntries(this.get('postCount') || 10);
         feed.load(function (result) {
           if (result.error) return;
           util.log('RESULT',result);
