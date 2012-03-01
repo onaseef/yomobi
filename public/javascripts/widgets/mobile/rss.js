@@ -135,7 +135,7 @@
     },
 
     onGoHome: function () {
-      this.state = 'loading';
+      this.widget.state = 'titles';
     },
 
     refresh: function () {
