@@ -548,6 +548,9 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
       .button-separator
       .button.add-cat Add {{ catLabel }}
       .button.add-item Add {{ itemLabel }}
+      | <% if (wtype === 'page_tree') { %>
+      .button.add-rss-feed = ""
+      | <% } %>
 
       | <% if (isThereStuff == true) { %>
       .button-separator

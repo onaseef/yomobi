@@ -564,22 +564,25 @@ div.wysiwyg ul.toolbar {
     border: none;
     background: gray;
   }
-  .button.add-cat { 
+  .button.add-cat {
     background-image: url(/images/ui/icon-folder-new.png);
   }
-  .button.add-item { 
-    background-image: url(/images/ui/icon-item-new.png); 
+  .button.add-item {
+    background-image: url(/images/ui/icon-item-new.png);
   }
-  .button.rename { 
-    background-image: url(/images/ui/icon-rename.png); 
+  .button.add-rss-feed {
+    padding: 6px 2px 0 18px;
+  }
+  .button.rename {
+    background-image: url(/images/ui/icon-rename.png);
     background-position: center;
   }
-  .button.edit { 
-    background-image: url(/images/ui/icon-edit.png); 
+  .button.edit {
+    background-image: url(/images/ui/icon-edit.png);
     background-position: center;
   }
-  .button.delete { 
-    background-image: url(/images/ui/icon-delete.png); 
+  .button.delete {
+    background-image: url(/images/ui/icon-delete.png);
     background-position: center;
   }
 
@@ -823,6 +826,11 @@ div.wysiwyg ul.toolbar {
     .item:hover {
       background-color: $highlight-color;
       cursor: pointer;
+    }
+    .item.rss-feed-title:hover {
+      background-color: transparent;
+      cursor: default;
+      td { cursor: default; }
     }
   }
 }

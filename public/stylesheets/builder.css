@@ -525,6 +525,8 @@ div.wysiwyg ul.toolbar {
   background-image: url(/images/ui/icon-folder-new.png); }
 #builder .edit-area.category .button.add-item, #builder .edit-area.page_tree .button.add-item {
   background-image: url(/images/ui/icon-item-new.png); }
+#builder .edit-area.category .button.add-rss-feed, #builder .edit-area.page_tree .button.add-rss-feed {
+  padding: 6px 2px 0 18px; }
 #builder .edit-area.category .button.rename, #builder .edit-area.page_tree .button.rename {
   background-image: url(/images/ui/icon-rename.png);
   background-position: center; }
@@ -723,6 +725,11 @@ div.wysiwyg ul.toolbar {
 #mobile-container .page .content.category .item:hover, #mobile-container .page .content.page_tree .item:hover {
   background-color: #d8dfea;
   cursor: pointer; }
+#mobile-container .page .content.category .item.rss-feed-title:hover, #mobile-container .page .content.page_tree .item.rss-feed-title:hover {
+  background-color: transparent;
+  cursor: default; }
+  #mobile-container .page .content.category .item.rss-feed-title:hover td, #mobile-container .page .content.page_tree .item.rss-feed-title:hover td {
+    cursor: default; }
 
 .color-picker {
   background: transparent url(/images/color-picker/select2.png) no-repeat;

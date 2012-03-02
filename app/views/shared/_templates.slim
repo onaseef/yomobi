@@ -237,7 +237,7 @@
     pre.desc {{ _maybe.description }}
 
   script.category-cat.page-item(type="text/template")
-    tr.category.item data-id="{{ cat._id }}"
+    tr.category.item class="<% print(cat.type + '-title'); %>" data-id="{{ cat._id }}"
       | <% if (cat.wphotoUrl) { %>
       td.img-col
         img src="{{ cat.wphotoUrl }}"

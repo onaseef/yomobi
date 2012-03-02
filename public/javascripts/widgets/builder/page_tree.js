@@ -169,8 +169,8 @@
   window.widgetPages.page_tree = window.widgetPages.category.extend({
 
     events: {
-      'click .item.category':       'onCategoryClick',
-      'click .item.leaf-name':      'onCategoryClick'
+      'click .category.cat-title':       'onCategoryClick',
+      'click .category.page-title':      'onCategoryClick'
     }
   });
 

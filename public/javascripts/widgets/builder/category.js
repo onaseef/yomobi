@@ -234,6 +234,7 @@
       'click .rename-link':                 'rename',
       'click .remove-wphoto-link':          'removeWPhoto',
 
+      'click .add-rss-feed.button':         'addRssFeed',
       'sortstop':                           'updateOrder'
     },
 
@@ -439,6 +440,20 @@
       this.itemDialog.enterMode('add').prompt();
     },
 
+    addRssFeed: function (e) {
+      if (!util.isUIFree()) return;
+
+      // Node the important lack of `this` before `AddItemDialog`
+      this.itemDialog = this.itemDialog || new AddItemDialog({ model:this.widget });
+      this.itemDialog.model = this.widget;
+      this.itemDialog.options = {
+        onClose: this.refreshViews,
+        hideUploader: this.itemDialog.type === 'page'
+      };
+
+      this.itemDialog.enterMode('add').prompt(undefined, { name:'', type:'rss-feed' });
+    },
+
     editItem: function (item_id) {
       if (!util.isUIFree()) return;
       util.log('Editing item');
@@ -547,7 +562,7 @@
 
     refresh: function () {
       if (mapp.pageLevel === 0) return;
-      util.widgetPage.call(this);
+      util.widgetPage.refresh.call(this);
     }
 
   });
@@ -771,7 +786,10 @@
         addedItems: this.addedItems,
         mode: this.mode
       });
-      templateData.innerContent = this.template(templateData);
+      var template = (item.type === 'rss-feed') ?
+                      util.getTemplate('rss-feed-item-dialog-content') :
+                      this.template;
+      templateData.innerContent = template(templateData);
       var dialogHtml = itemDialogTemplate(templateData);
 
       $(this.el).html(dialogHtml).attr('title',title);

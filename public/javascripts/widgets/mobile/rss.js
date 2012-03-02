@@ -51,7 +51,8 @@
         var extraData = {
           nodeType: 'cat',
           stuff: posts,
-          catTemplate: this.titleTemplate
+          catTemplate: this.titleTemplate,
+          wphotoUrlLarge: util.largerWphoto( this.get('wphotoUrl') )
         };
       }
       else if (this.state === 'post') {
