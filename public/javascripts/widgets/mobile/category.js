@@ -181,11 +181,13 @@
       util.log('onPageView subpage: ' + subpage);
       if (!subpage && this.widget.catStack.length === 1) return 'forward';
 
-      var subpage = subpage || 'struct'
+      var subpageParts = (subpage || 'struct').split('/')
+        , subpage = subpageParts[0]
         , stackSize = this.widget.catStack.length
         , newStackSize = this.widget.setCatStackById(subpage).catStack.length
         , direction = newStackSize > stackSize ? 'forward' : 'backward'
       ;
+      if (subpageParts.length > 1) this.onSubpageView && this.onSubpageView(subpageParts);
 
       return direction;
     },

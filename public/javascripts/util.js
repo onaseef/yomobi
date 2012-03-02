@@ -23,7 +23,10 @@ var util = {
 
   // namespace for shared widget functions
   widget: {},
-  
+
+  // namespace for shared widget page functions
+  widgetPage: {},
+
   // UI event blocking statuses
   busy: {},
   // Concurrent UI event blocking groups

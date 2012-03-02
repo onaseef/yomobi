@@ -43,8 +43,10 @@
       }
       else if (this.state === 'titles' || this.feedData && this.postIdx === null) {
         this.state = 'titles';
-        var posts = _.map(this.feedData.entries, entryToTitleNode);
-        _.each(posts, function (p,i){ p._id = i; });
+        var posts = _.map(this.feedData.entries, entryToTitleNode)
+          , idPrefix = this.get('postIdPrefix') || ''
+        ;
+        _.each(posts, function (p,i){ p._id = idPrefix + i; });
 
         var extraData = {
           nodeType: 'cat',
@@ -72,7 +74,8 @@
 
     // direction should be 1 or -1
     getSiblingId: function (direction) {
-      return util.between(0, this.feedData.entries.length, this.postIdx + direction);
+      var idPrefix = this.get('postIdPrefix') || '';
+      return idPrefix + util.between(0, this.feedData.entries.length, this.postIdx + direction);
     }
 
   });
@@ -134,20 +137,12 @@
       }
     },
 
+    refresh: util.widgetPage.refresh,
+
     onGoHome: function () {
       this.widget.state = 'titles';
-    },
-
-    refresh: function () {
-      var newContent = $(this.widget.getPageContent())
-        , newTitle = this.widget.getTitleContent()
-        , activePage = mapp.getActivePage()
-      ;
-      this.beforePageRender(newContent);
-      activePage.content.empty().append(newContent);
-      activePage.topBar.find('.title').html(newTitle);
-      this.widget.pageView.setContentElem(activePage.content);
     }
+
   });
 
 })(jQuery);

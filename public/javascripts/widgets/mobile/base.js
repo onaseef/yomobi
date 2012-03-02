@@ -55,6 +55,8 @@
     },
 
     initialize: function () {
+      if (this.get('skipInit')) return;
+
       this.pageView = new (widgetPages[this.get('wtype')] || WidgetPageView)({
         widget: this
       });
@@ -129,7 +131,8 @@
 
     // this callback is triggered after the page content is generated,
     // but before the page is added to the dom
-    beforePageRender: function ($pageContent) {}
+    beforePageRender: function ($pageContent) {},
+
   });
 
   // // // // // // // // // // // // // // // //
@@ -179,6 +182,19 @@
     });
 
     return false;
+  };
+
+  // Refreshes the widget page view.
+  //
+  util.widgetPage.refresh = function () {
+    var newContent = $(this.widget.getPageContent())
+      , newTitle = this.widget.getTitleContent()
+      , activePage = mapp.getActivePage()
+    ;
+    this.beforePageRender(newContent);
+    activePage.content.empty().append(newContent);
+    activePage.topBar.find('.title').html(newTitle);
+    this.widget.pageView.setContentElem(activePage.content);
   };
 
 })(jQuery);

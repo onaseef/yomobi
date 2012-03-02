@@ -547,15 +547,7 @@
 
     refresh: function () {
       if (mapp.pageLevel === 0) return;
-
-      var newContent = $(this.widget.getPageContent())
-        , newTitle = this.widget.getTitleContent()
-        , activePage = mapp.getActivePage()
-      ;
-      this.beforePageRender(newContent);
-      activePage.content.empty().append(newContent);
-      activePage.topBar.find('.title').html(newTitle);
-      this.widget.pageView.setContentElem(activePage.content);
+      util.widgetPage.call(this);
     }
 
   });

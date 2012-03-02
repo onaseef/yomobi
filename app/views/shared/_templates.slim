@@ -236,7 +236,7 @@
     | <% } %>
     pre.desc {{ _maybe.description }}
 
-  script.category-cat.category-item(type="text/template")
+  script.category-cat.page-item(type="text/template")
     tr.category.item data-id="{{ cat._id }}"
       | <% if (cat.wphotoUrl) { %>
       td.img-col
@@ -278,7 +278,8 @@
     table.node-list
       tbody
         | <% for (var i=0; i<stuff.length;i++) {
-              if (stuff[i].type === "cat" || stuff[i].type === "page" || stuff[i].type === "title") {
+              if (stuff[i].type === "cat" || stuff[i].type === "page" ||
+                  stuff[i].type === "title" || stuff[i].type === "rss-feed") {
                 print( catTemplate({ cat:stuff[i], cycle:util.cycle('c0','c1') }) );
               } else {
                 print( itemWrapTemplate({
