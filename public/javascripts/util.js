@@ -319,12 +319,17 @@ var util = {
 
     return _.map(clock24hourInc, util.from24to12);
   },
-  
+
+  _tmplCache: {},
   getTemplate: function (name) {
+    if (this._tmplCache[name])
+      return this._tmplCache[name];
+
     var source = $('#templates .'+name).html();
-    return source ? _.template(source) : null;
+    this._tmplCache[name] = source ? _.template(source) : null;
+    return this._tmplCache[name];
   },
-  
+
   getWidgetBData: function (widget) {
     if (widget._bdata) return widget._bdata;
 
