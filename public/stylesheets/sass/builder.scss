@@ -542,7 +542,7 @@ div.wysiwyg ul.toolbar {
     height: 22px;
     padding: 6px 6px 0 22px;
     margin: 0 4px 0 0;
-    //border: 1px solid #b3b3b3;
+    border: 1px outset transparent;
     background: url(/images/ui/plus.png) 3px 5px no-repeat;
     float: left;
     cursor: pointer;
@@ -550,7 +550,6 @@ div.wysiwyg ul.toolbar {
   }
   .controls .button:hover {
     border: 1px outset rgb(224, 224, 224);
-    margin: -1px 3px -4px -1px;
   }
   
   .button.back { 
