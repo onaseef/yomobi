@@ -827,11 +827,6 @@ div.wysiwyg ul.toolbar {
       background-color: $highlight-color;
       cursor: pointer;
     }
-    .item.rss-feed-title:hover {
-      background-color: transparent;
-      cursor: default;
-      td { cursor: default; }
-    }
   }
 }
 

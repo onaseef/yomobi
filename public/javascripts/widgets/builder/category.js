@@ -240,7 +240,7 @@
 
     init: function (widget) {
       // this is needed for proper inheritance due to closures
-      this.AddItemDialog = AddItemDialog;
+      this.AddItemDialog = util.widgetEditor.AddItemDialog;
     },
 
     // the button that activates this should only be available on the home page
@@ -444,14 +444,18 @@
       if (!util.isUIFree()) return;
 
       // Node the important lack of `this` before `AddItemDialog`
-      this.itemDialog = this.itemDialog || new AddItemDialog({ model:this.widget });
+      this.itemDialog = this.rssDialog ||
+                        new util.widgetEditor.AddItemDialog({ model:this.widget });
+      this.rssDialog || (this.rssDialog = this.itemDialog);
+
       this.itemDialog.model = this.widget;
       this.itemDialog.options = {
         onClose: this.refreshViews,
-        hideUploader: this.itemDialog.type === 'page'
+        hideUploader: this.itemDialog.type === 'page',
+        defaultItem: { name:'', type:'rss-feed' }
       };
 
-      this.itemDialog.enterMode('add').prompt(undefined, { name:'', type:'rss-feed' });
+      this.itemDialog.enterMode('add').prompt(undefined);
     },
 
     editItem: function (item_id) {
@@ -463,10 +467,10 @@
       ;
       if (_.isEmpty(item)) return alert('Please select an item to edit.');
 
-      var dialog =  new this.AddItemDialog({
-        model: this.widget,
+      var dialog =  this.itemDialog || new this.AddItemDialog({ model: this.widget });
+      this.itemDialog.options = {
         onClose: this.refreshViews
-      });
+      };
       dialog.enterMode('edit').prompt(null,item);
     },
 
@@ -754,14 +758,17 @@
         , isCat = this.mode === 'add' || node._data.type === 'cat'
         , typeName = isCat ? 'catTypeName' : 'itemTypeName'
       ;
-      return this.model.get(typeName);
+      if (node._data.type === 'rss-feed')
+        return 'Rss Feed';
+      else
+        return this.model.get(typeName);
     }
 
   });
 
   // =================================
   var itemDialogTemplate = util.getTemplate('item-dialog');
-  var AddItemDialog = Backbone.View.extend({
+  util.widgetEditor.AddItemDialog = Backbone.View.extend({
 
     initialize: function () {
       this.template = util.getTemplate(this.model.get('wsubtype')+'-item-dialog-content');
@@ -777,7 +784,8 @@
     render: function (flash,level,item) {
       flash || (flash = {});
       item || (item = {});
-      var title = (this.mode == 'add' ? "Add New " : "Edit ") + this.model.get('itemTypeName');
+      var itemTypeName = item.type || this.model.get('itemTypeName');
+      var title = (this.mode == 'add' ? "Add New " : "Edit ") + util.prettifyName(itemTypeName);
 
       var templateData = _.extend({}, item, {
         flash: flash,
@@ -798,6 +806,7 @@
 
     prompt: function (flash,item,keepAddedItems) {
       if (!keepAddedItems) this.addedItems.length = 0;
+      item || (item = this.options.defaultItem);
 
       var self = this
         , level = this.model.getCurrentLevel()

@@ -725,11 +725,6 @@ div.wysiwyg ul.toolbar {
 #mobile-container .page .content.category .item:hover, #mobile-container .page .content.page_tree .item:hover {
   background-color: #d8dfea;
   cursor: pointer; }
-#mobile-container .page .content.category .item.rss-feed-title:hover, #mobile-container .page .content.page_tree .item.rss-feed-title:hover {
-  background-color: transparent;
-  cursor: default; }
-  #mobile-container .page .content.category .item.rss-feed-title:hover td, #mobile-container .page .content.page_tree .item.rss-feed-title:hover td {
-    cursor: default; }
 
 .color-picker {
   background: transparent url(/images/color-picker/select2.png) no-repeat;

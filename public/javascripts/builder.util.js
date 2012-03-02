@@ -39,6 +39,9 @@ var _blank = {};
 
 var builderUtil = {
 
+  // namespace for shared widget editor functions
+  widgetEditor: {},
+
   // WARNING: If there are multiple values with the same name,
   // values will be overwritten.
   serializedArrayToHash: function (array) {
