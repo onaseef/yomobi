@@ -755,10 +755,10 @@
 
     getTypeName: function () {
       var node = this.model.getCurrentNode()[this.options.node_id]
-        , isCat = this.mode === 'add' || node._data.type === 'cat'
+        , isCat = this.mode === 'add' || node && node._data.type === 'cat'
         , typeName = isCat ? 'catTypeName' : 'itemTypeName'
       ;
-      if (node._data.type === 'rss-feed')
+      if (node && node._data.type === 'rss-feed')
         return 'Rss Feed';
       else
         return this.model.get(typeName);
