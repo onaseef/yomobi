@@ -518,7 +518,6 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
     label for="hide" Deactivate
     img.help-bubble src="/images/ui/help-bubble.png" title=t('widgets.helpText.category.hide')
     | <% } else if (currentNodeType !== 'page') { %>
-    br
 
     .crumb-wrap
       erb:
@@ -549,7 +548,7 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
       .button.add-cat Add {{ catLabel }}
       .button.add-item Add {{ itemLabel }}
       | <% if (wtype === 'page_tree') { %>
-      .button.add-rss-feed = ""
+      .button.add-rss-feed title="Add RSS Feed" = ""
       | <% } %>
 
       | <% if (isThereStuff == true) { %>

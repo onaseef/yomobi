@@ -571,6 +571,7 @@ div.wysiwyg ul.toolbar {
     background-image: url(/images/ui/icon-item-new.png);
   }
   .button.add-rss-feed {
+    background-image: url(/images/ui/icon-rss-new.png);
     padding: 6px 2px 0 18px;
   }
   .button.rename {
@@ -618,6 +619,11 @@ div.wysiwyg ul.toolbar {
     }
     .icon.page, .icon.item {
       background-image: url(/images/ui/icon-item.png);
+      background-position: 3px 6px;
+    }
+
+    .icon.rss-feed {
+      background-image: url(/images/ui/icon-rss.png);
       background-position: 3px 6px;
     }
   }
