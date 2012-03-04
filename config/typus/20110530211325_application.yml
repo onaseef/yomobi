@@ -6,7 +6,7 @@ Carrier:
   fields:
     default: name, text_email
     form: name, text_email
-  order_by: 
+  order_by:
   relationships: followers
   filters: created_at
   search: name
@@ -16,7 +16,7 @@ Company:
   fields:
     default: user, name, db_name, id_counter, logo_file_name
     form: premium, user, name, db_name, id_counter, informed_email, leave_msg_email, booking_email, call_back_email
-  order_by: 
+  order_by:
   relationships: followers, user
   filters: created_at
   search: name
@@ -26,28 +26,28 @@ Follower:
   fields:
     default: active, company, carrier, email, phone, opt_out_key, short_url
     form: active, email, phone, company, carrier
-  order_by: 
+  order_by:
   relationships: carrier, company
   filters: created_at
-  search: 
+  search:
   application: yomobi
 
 Sig:
   fields:
     default: email, delete_hash, custom
     form: email, delete_hash, custom
-  order_by: 
-  relationships: 
+  order_by:
+  relationships:
   filters: created_at
-  search: 
+  search:
   application: yomobi
 
 User:
   fields:
     default: email, remember_token, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, confirmation_token, confirmed_at, confirmation_sent_at
     form: email, reset_password_token, remember_token, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, confirmation_token, confirmed_at, confirmation_sent_at
-  order_by: 
-  relationships: company
+  order_by:
+  relationships:
   filters: created_at
   search: email
   application: yomobi
