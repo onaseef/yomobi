@@ -10,6 +10,7 @@ window.g = {
   db_name: '<%=escape_javascript @company.db_name %>',
   company: '<%=escape_javascript @company.name %>',
   slogan: "<%=escape_javascript @company.settings.slogan %>",
+  logo: "<%=escape_javascript @company.logo.url(:mobile) %>",
   isPreview: <%= @is_preview_mode.present? %>,
   isBuilder: <%= @is_builder.present? %>,
   isTablet: navigator.userAgent.match(/ipad|kindle/i) != null,

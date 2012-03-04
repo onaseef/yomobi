@@ -9,6 +9,7 @@ window.g = {
   db_name: '<%=escape_javascript @company.db_name %>',
   company: "<%=escape_javascript @company.name %>",
   slogan: "<%=escape_javascript @company.settings.slogan %>",
+  logo: "<%=escape_javascript @company.logo.url(:mobile) %>",
   id_counter: <%=@company.id_counter %>,
   userEmails: {
     yomobi: "<%=escape_javascript @company.user.email %>",

@@ -196,7 +196,8 @@
       util.log('app render');
       $('#top-bar .company-info').html(this.headerTemplate({
         name: g.company,
-        slogan: g.slogan
+        slogan: g.slogan,
+        logo: g.logo.match(/default-logo_mobile.png$/) ? null : g.logo
       }))
       .find('img').load(function (e,elem) {
         g.topBarHeight = Math.max(g.topBarHeight,$('#top-bar').height());

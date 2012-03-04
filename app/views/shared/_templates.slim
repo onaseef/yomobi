@@ -13,15 +13,19 @@
     table
       | <% if (_maybe.slogan) { %>
       tr
+        | <% if (_maybe.logo) { %>
         td.logo.top
-          img.logo src=@company.logo.url(:mobile)
-        td
+          img.logo src="{{ _maybe.logo }}"
+        | <% } %>
+        td.name
           div.name {{ name }}
           div.slogan {{ slogan }}
       | <% } else { %>
       tr
+        | <% if (_maybe.logo) { %>
         td.logo
-          img.logo src=@company.logo.url(:mobile)
+          img.logo src="{{ _maybe.logo }}"
+        | <% } %>
         td.name {{ name }}
       | <% } %>
 
