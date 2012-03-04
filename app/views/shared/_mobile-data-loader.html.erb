@@ -12,7 +12,8 @@ window.g = {
   slogan: "<%=escape_javascript @company.settings.slogan %>",
   isPreview: <%= @is_preview_mode.present? %>,
   isBuilder: <%= @is_builder.present? %>,
-  isTablet: navigator.userAgent.match(/ipad|kindle/i) != null
+  isTablet: navigator.userAgent.match(/ipad|kindle/i) != null,
+  isMobile: /<%= mobile_devices %>/i.test( navigator.userAgent.toLowerCase() )
 };
 window.widgetClasses = {};
 window.widgetPages = {};
