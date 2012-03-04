@@ -3,7 +3,7 @@ class MobileController < ApplicationController
   def index
     @is_preview_mode = params[:preview].present?
     site_name = params[:company] || request.subdomain
-    @company = Company.where(:db_name => site_name).first
+    @company = Company.where(:db_name => site_name.downcase).first
     # TODO: create "Company not found" page and redirect there instead
     redirect_to root_url(:subdomain => 'www') if @company.nil?
   end
