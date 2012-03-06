@@ -1,23 +1,22 @@
 = form_tag session_path(:user) do |f|
-  .signin-bg
-    .signin-section1
-      span.signin-text Email
-      br
-      label
-        = text_field_tag 'user[email]', '', :class => "signin-field"
-      br
-      .floatleft
-        label
+  
+  table
+    tbody
+      tr
+        td
+          label Email
+        td
+          label Password
+      tr
+        td
+          = text_field_tag 'user[email]', ''
+        td
+          = password_field_tag 'user[password]', ''
+        td
+          input.content.main-btn type="submit" value="Sign In"
+      tr
+        td.login_form_label_field
           = check_box_tag 'user[remember_me]'
-      .signin-whitetext  Keep me logged in
-
-    .signin-section2
-      span.signin-text Password
-      br
-      label
-        = password_field_tag 'user[password]', '', :class => "signin-field"
-      br
-      a.signin-whitetext  href="/users/password/new" Forget Your Password?
-
-    .signin-button
-      = image_submit_tag("new_design/signin-button.png")
+          label#label_persistent for="persistent" Keep me logged in
+        td
+          a.subtext href="/users/password/new" Forgot your password?
