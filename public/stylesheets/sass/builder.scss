@@ -161,17 +161,28 @@ div.wysiwyg ul.toolbar {
       color: #000066; }
     & > .title-subtext {
       height: 30px;
-      padding: 0 10px 5px 0; } }
+      padding: 0 10px 5px 0; } 
+    }
   .left {
     width: $content-width - $widget-editor-width;
     height: 100%;
     border-right: 1px solid #b3b3b3;
-    padding: 0 0 10px 10px; }
+    padding: 0 0 10px 10px; 
+    & > .title-subtext {
+      font-weight: bold;
+      color: green; 
+      img { 
+        float: left;
+        margin: 2px 6px 0 0; 
+      }
+    }
+  }
   .right {
     & > .title {
       padding: 10px 15px 10px; }
     & > .title-subtext {
-      padding-left: 10px; }
+      padding-left: 10px;
+    }
     width: $widget-editor-width - 10px - 1px - 3px;
     height: 100%;
     .title {

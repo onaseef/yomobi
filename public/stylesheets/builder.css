@@ -144,6 +144,12 @@ div.wysiwyg ul.toolbar {
   height: 100%;
   border-right: 1px solid #b3b3b3;
   padding: 0 0 10px 10px; }
+  #builder .left > .title-subtext {
+    font-weight: bold;
+    color: green; }
+    #builder .left > .title-subtext img {
+      float: left;
+      margin: 2px 6px 0 0; }
 #builder .right {
   width: 396px;
   height: 100%; }
