@@ -19,6 +19,7 @@ Yomobi::Application.routes.draw do
   get 'business-opportunities' => 'home#opportunity', :as => :opportunity
   get 'biz' => 'home#opportunity', :as => :opportunity
   get 'help' => redirect('http://help.yomobi.com'), :as => :help
+  get 'webesity' => 'home#webesity', :as => :webesity
 
   get 'confirm' => 'home#confirm_account', :as => :confirm_account
   post 'confirm' => 'home#resend_confirmation', :as => :resend_confirmation
