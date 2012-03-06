@@ -213,7 +213,8 @@ p {
     .home-icon .icon:hover {
       cursor: pointer; }
   .home-icon .title {
-    width: 102%;
+    width: 70px;
+    margin-left: -2px;
     line-height: 1.2em;
     height: 2.4em;
     overflow: hidden;

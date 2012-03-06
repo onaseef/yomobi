@@ -75,6 +75,7 @@ div.wysiwyg ul.toolbar {
     }
     .title {
       width: auto;
+      margin-left: 0px;
       padding: 2.5px 0 0 4px;
       text-align: left;
       height: auto;
@@ -122,10 +123,17 @@ div.wysiwyg ul.toolbar {
   display: none !important; }
 
 .home-icon.editing {
-  background: url(/images/ui/highlight.png) no-repeat 0px 1px !important;
+  //background: url(/images/ui/highlight.png) no-repeat 0px 1px !important;
+  background:  #a4bec6 no-repeat 0px 1px !important;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -khtml-border-radius: 15px;
   .title {
     color: #333333;
-    font-weight: bold; } }
+    //font-weight: bold; 
+  } 
+}
 
 .home-icon.invalid {
   .invalid-icon {
