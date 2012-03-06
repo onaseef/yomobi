@@ -1,0 +1,33 @@
+script type="text/javascript" var _RSITE = 'http://www.yomobi.com/yomobi';
+script type="text/javascript" src="http://www.yomobi.com/javascripts/mobile-redirect.js"
+
+#banner
+  h2 = t 'home_page.banner.title'
+  p.subtitle style="font-size:14px" = t 'home_page.banner.subtitle'
+  .clearfix
+
+  .images
+    img.lfloat src="/images/home-phone.png"
+    .marketing-copy.lfloat
+      p.line-1 YoMobi makes building a mobile site easy.
+      p.line-2 Go from sign up to online in 4 minutes.
+      p.line-3 Features include:
+      ul
+        li No sign up costs
+        li Free hosting
+        li One-click calling
+        li Interactive maps
+        li Social media integration
+        li Easily customizable content
+        li Subscriber notification
+      a.pretty-button.easy-button href=new_user_registration_path Sign&nbsp;Up
+
+#signup-box
+  erb:
+    <iframe width="500" height="285"
+         src="http://player.vimeo.com/video/36200802?title=0&amp;byline=0&amp;portrait=0"
+          frameborder="0"
+          webkitAllowFullScreen mozallowfullscreen allowfullscreen 
+    ></iframe>
+.clearfix
+
