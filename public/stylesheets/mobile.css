@@ -121,14 +121,13 @@ p {
   /* Proposed W3C Markup */
   background-image: linear-gradient(bottom, #2a426a 0%, white 500%); }
   .company-info table {
-    height: 36px; }
+    height: 60px; }
   .company-info td {
     vertical-align: center; }
   .company-info td.top {
     vertical-align: top; }
   .company-info .logo {
     background: no-repeat;
-    vertical-align: top;
     margin: 2px 0px 2px 0px; }
   .company-info .name {
     padding-left: 8px;

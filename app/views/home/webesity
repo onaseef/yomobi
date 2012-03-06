@@ -4,12 +4,17 @@
 
   <table border="1">
   <tr> 
-  <td>
-  <div class="webesity">WEBESITY</dic>
-  <br>
-  [noun]</td>
-  <td>[weh-bee-si-tee]</td>
-  <td rowspan="3">image</td>
+  	<td>
+  	<div class="word">WEBESITY</div>
+  	<br>
+  	[noun]
+  	</td>
+  	<td>
+  	[weh-bee-si-tee]
+	</td>
+	<td rowspan="3">
+	<img src="/images/webese-site.png"/>
+	</td>
   </tr>
   <tr> 
   <td colspan="2">
