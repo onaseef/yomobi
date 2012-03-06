@@ -1,18 +1,43 @@
 script type="text/javascript" var _RSITE = 'http://www.yomobi.com/yomobi';
 script type="text/javascript" src="http://www.yomobi.com/javascripts/mobile-redirect.js"
 
-#banner
-  h2 = t 'home_page.banner.title'
-  p.subtitle style="font-size:14px" = t 'home_page.banner.subtitle'
-  .clearfix
+.menumain
+  .menu-corner1
+  .menu-bg
+    ul.menu-ul
+      li.menu-li
+        a.menulink href=root_path Home
+      li.menu-li
+        a.menulink href=about_path About
+      li.menu-li
+        a.menulink href=privacy_path Privacy
+      li.menu-li
+        a.menulink href=terms_path Terms
+      li.menu-li
+        a.menulink href="mailto:feedback@yomobi.com" Feedback
+      li.menu-li
+        a.menulink href="http://help.yomobi.com" Help
 
-  .images
-    img.lfloat src="/images/home-phone.png"
-    .marketing-copy.lfloat
-      p.line-1 YoMobi makes building a mobile site easy.
-      p.line-2 Go from sign up to online in 4 minutes.
-      p.line-3 Features include:
-      ul
+    = render :partial => 'builder/social-share-new'
+
+  .menu-corner2
+
+.main-whitebg
+  .header-main
+    .header-bg
+      = render :partial => 'home/image-slider'
+
+
+  .devider-line
+  .main-content
+    .content-heading
+      span.blue-text Get mobilized!
+    .content-image
+      img src="images/new_design/iphone.png"
+    .content-text Reach more people with a mobile website. YoMobi makes building a mobile site easy. Go from sign up to online in 4 minutes.
+    .content-list
+      strong.blue-text Features include
+      ul.content-ul
         li No sign up costs
         li Free hosting
         li One-click calling
@@ -20,14 +45,7 @@ script type="text/javascript" src="http://www.yomobi.com/javascripts/mobile-redi
         li Social media integration
         li Easily customizable content
         li Subscriber notification
-      a.pretty-button.easy-button href=new_user_registration_path Sign&nbsp;Up
-
-#signup-box
-  erb:
-    <iframe width="500" height="285"
-         src="http://player.vimeo.com/video/36200802?title=0&amp;byline=0&amp;portrait=0"
-          frameborder="0"
-          webkitAllowFullScreen mozallowfullscreen allowfullscreen 
-    ></iframe>
-.clearfix
+    .content-signup
+      a href=new_user_registration_path
+        img src="images/new_design/signup-button1.png" border="0"
 
