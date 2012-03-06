@@ -10,7 +10,7 @@ module BuilderHelper
   end
 
   def desktop_redirect_code(company)
-    %Q{<!-- Place these tags in the head tag of your website -->
+    %Q{<!-- Copy these lines to your website's homepage. -->
 <script type="text/javascript">var _RSITE = '#{escape_javascript company.mobile_url}';</script>
 <script type="text/javascript" src="http://www.yomobi.com/javascripts/mobile-redirect.js"></script>}
   end
