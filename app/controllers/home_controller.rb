@@ -12,6 +12,7 @@ class HomeController < ApplicationController
     @user = User.new
     @page_wrapper_class = 'home'
     @hide_signup_bar = true
+	render :layout => 'application_new'
   end
 
   def confirm_account
