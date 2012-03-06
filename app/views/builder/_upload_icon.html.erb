@@ -1,0 +1,14 @@
+
+<div id="upload_link">
+	<a href="javascript:void();" onclick="$('#upload_link').hide();$('#upload_icon').show();">Add Icon</a>
+</div>
+<div id="upload_icon" class="hide">
+	 <%= form_for :file,  :url => builder_upload_icon_path(:format => :js) , :html => { :method => :post, :id => 'uploadIcon',:onsubmit => "$('#upload_link').show();$('#upload_icon').hide();", :multipart => true} , :remote => true do |f| %>
+		  File: <%= f.file_field :image %>
+		  <%= f.submit %>		  
+		  <a href="javascript:void();" onclick="$('#upload_link').show();$('#upload_icon').hide();">Cancel</a>	
+	 <% end %>
+		  	
+	
+</div>
+

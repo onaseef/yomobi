@@ -1,0 +1,341 @@
+@charset "utf-8";
+/* yomobi stylesheet */
+
+body {
+	background:url(../images/new_design/mainbg.jpg) center top repeat-x;
+	margin:0px;
+	font-family:"Trebuchet MS";
+	font-size: 14px;
+	color:#000000;
+}
+.passwordlink {
+	color:#f0f0f2;
+	text-decoration:none;
+}
+.passwordlink:hover {
+	color:#f0f0f2;
+	text-decoration:underline;
+}
+.menulink {
+	color:#FFFFFF;
+	text-transform:uppercase;
+	font-size:18px;
+	text-decoration:none;
+	line-height:32px;
+	padding-top:6px;
+	padding-bottom:6px;
+/*	margin-left:10px;*/
+	padding-left:15px;
+	padding-right:15px;
+	text-shadow:1px 1px 1px #0273bf;
+}
+.menulink:hover {
+	color:#FFFFFF;
+	text-transform:uppercase;
+	font-size:18px;
+	text-decoration:none;
+	line-height:32px;
+	padding-top:6px;
+	padding-bottom:6px;
+	margin-left:10px;
+	padding-left:15px;
+	padding-right:15px;
+	text-shadow:1px 1px 1px #1c1c1c;
+	background:url(../images/new_design/menubutton-bg.jpg);
+	border-radius: 7px 7px 7px 7px;
+}
+.footerlink {
+	color:#000000;
+	margin-left:10px;
+	margin-right:10px;
+	text-decoration:none;
+	text-transform:uppercase;
+}
+.footerlink:hover {
+	color:#038be6;
+	margin-left:10px;
+	margin-right:10px;
+	text-decoration:none;
+	text-transform:uppercase;
+}.wrapper {
+	width:950px;
+	margin:auto;
+}
+.topheader {
+	float:left;
+	width:950px;
+	height:102px;
+}
+.companylogo {
+    background:url(../images/new_design/companylogo.png);
+	float:left;
+	margin-left:10px;
+	margin-top:30px;
+	width:200px;
+	height:62px;
+}
+.topsignup {
+    background:url(../images/new_design/signup-button.png);
+	float:right;
+	width:162px;
+	height:64px;
+	margin-top:21px;
+}
+
+.signin-bg {
+	float:right;
+	width:328px;
+	height:65px;
+	background:url(../images/new_design/signin-bg.png) no-repeat;
+	margin-right:7px;
+	margin-top:21px;
+}
+.signin-section1 {
+	float:left;
+	width:125px;
+	margin-top:7px;
+	margin-left:13px;
+}
+.signin-text {
+	font-size:11px;
+	text-transform:uppercase;
+	text-align:left;
+	text-shadow:1px 1px 1px #ffd366;
+}
+.signin-field {
+	background:url(../images/new_design/textfield-bg.png);
+	width:120px;
+	height:21px;
+	border:none;
+	padding-left:5px;
+	color:#ffba00;
+}
+.signin-whitetext {
+	font-size:11px;
+	text-transform:uppercase;
+	text-align:left;
+	text-shadow:1px 1px 1px #d88202;
+	color:#f0f0f2;
+	float:left;
+	margin-top:2px;
+}
+.floatleft {
+	float:left;
+}
+.checkbox {
+	padding:0px;
+	margin:0px;
+	margin-top:2px;
+	margin-right:3px;
+}
+.signin-section2 {
+	float:left;
+	width:130px;
+	margin-top:7px;
+	margin-left:5px;
+}
+.signin-button {
+	float:left;
+	width:45px;
+	height:23px;
+	margin-top:21px;
+}
+.menumain {
+	float:left;
+	width:950px;
+	height:55px;
+}
+.menu-corner1 {
+	float:left;
+	background:url(../images/new_design/menu-corner1.png);
+	width:6px;
+	height:55px;
+}
+.menu-bg {
+	float:left;
+	background:url(../images/new_design/menu-bg.jpg);
+	width:938px;
+	height:55px;
+}
+.menu-ul {
+	list-style:none;
+	display:inline;
+}
+.menu-li {
+	float:left;
+	margin-top:10px;
+}
+.menu-corner2 {
+	float:right;
+	background:url(../images/new_design/menu-corner2.png);
+	width:6px;
+	height:55px;
+}
+.social-icon {
+	float:right;
+	margin-top:20px;
+	width:46px;
+}
+.main-whitebg {
+	float:left;
+	width:950px;
+	background:#FFFFFF;
+}
+.header-main {
+	float:left;
+	width:950px;
+	margin-top:36px;
+}
+.left-arrow {
+	float:left;
+	width:21px;
+	height:35px;
+	margin-left:25px;
+	margin-top:150px;
+}
+.right-arrow {
+	float:right;
+	width:21px;
+	height:35px;
+	margin-right:25px;
+	margin-top:150px;
+}
+.header-bg {
+	float:left;
+	width:827px;
+	height:388px;
+	background:url(../images/new_design/header-bg.jpg) no-repeat;
+	margin-left:55px;
+}
+#header-slider {
+	width:800px;
+	height:300px;
+/*	margin:auto;*/
+	margin-top:28px;
+}
+    #header-slider ul{
+	    width:800px;
+	    height:300px;
+    }
+
+.slider-text{
+    float:left;
+    width:310px;
+    margin-top:40px;
+    margin-left:10px;
+}
+
+
+.content-heading2{
+    float:left;
+	font-size:30px;
+	font-weight:bold;
+	text-align:left;
+
+}
+.slider-image{
+    margin-top:40px;
+}
+
+.yomobi-com{
+    margin-left:30px;
+}
+.read-more{
+    margin-top: 10px;
+    cursor: pointer;
+}
+.content-text2{
+    float:left;
+	margin-left:10px;
+	margin-top:25px;
+	text-align:left;
+	font-size:14px;
+}
+
+.devider-line {
+	width:866px;
+	height:1px;
+	margin:42px;
+	background:#cccccc;
+	float:left;
+}
+.main-content {
+	float:left;
+	width:866px;
+	margin-left:42px;
+	margin-right:42px;
+}
+.content-heading {
+	float:left;
+	width:866px;
+	font-size:30px;
+	font-weight:bold;
+	text-transform:uppercase;
+	text-align:left;
+}
+.content-image {
+	float:left;
+	width:247px;
+	height:286px;
+	margin-top:25px;
+}
+.content-text {
+	float:left;
+	width:569px;
+	margin-left:50px;
+	margin-top:25px;
+	text-align:left;
+	font-size:14px;
+}
+.content-list {
+	float:left;
+	width:250px;
+	margin-left:50px;
+	margin-top:25px;
+	font-size:14px;
+	text-transform:uppercase;
+}
+.blue-text {
+	color:#038be6;
+}
+.content-ul {
+	list-style:url(../images/new_design/arrow-bullet.png);
+	line-height:20px;
+}
+.content-signup {
+	float:left;
+	width:215px;
+	height:76px;
+	margin-top:80px;
+	margin-left:50px;
+}
+.footer-main {
+	margin-top:25px;
+	float:left;
+	width:100%;
+	background:url(../images/new_design/footerbg.jpg) center top #f0f0f2;
+	height:103px;
+}
+.footer-wrapper {
+	width:950px;
+	margin:auto;
+}
+.footer-text {
+	float:left;
+	width:950px;
+	margin-top:50px;
+	text-align:center;
+	color:#3a3a3a;
+	font-size:13px;
+	line-height:20px;
+}
+
+.signin-bg {
+float: right;
+width: 328px;
+height: 65px;
+background: url(../images/signin-bg.png) no-repeat;
+margin-right: 7px;
+margin-top: 21px;
+}
+
