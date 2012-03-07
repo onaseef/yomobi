@@ -93,7 +93,7 @@ body {
 .signin-section1 {
 	float:left;
 	width:125px;
-	margin-top:7px;
+	margin-top:2px;
 	margin-left:13px;
 }
 .signin-text {
@@ -131,14 +131,14 @@ body {
 .signin-section2 {
 	float:left;
 	width:130px;
-	margin-top:7px;
+	margin-top:2px;
 	margin-left:5px;
 }
 .signin-button {
 	float:left;
 	width:45px;
 	height:23px;
-	margin-top:21px;
+	margin-top:20px;
 }
 .menumain {
 	float:left;
