@@ -413,3 +413,72 @@ label.help { padding-bottom: 4px; }
 
 .hide {
   display: none; }
+
+
+
+/********************************************/
+/* CSS for Pages                            */
+/********************************************/
+
+#webesity {
+  table, td, th  {
+    border: 0px;
+    border-collapse: collapse;
+    padding: 10px;
+  }
+
+  .left { float: left; }
+  .word { 
+    font-size: 3em;
+    color:red; 
+    font-weight: bold; 
+    margin: 0 10px 10px 0;
+  }
+  .type, .pronunciation, .definition { font-weight: bold; }
+  .pronunciation {  margin-top: 4px; }
+  .definition, .use { margin: 0 30px; }
+
+  img { height: 100%; }
+  .entry { background: #E8ECF5; }
+  td.img { vertical-align: top; width: 50% }
+  .marketing {
+    p { margin-bottom: 10px; }
+  }
+}
+
+/**********************/
+
+#why_mobile {
+  #container{
+    width:1000px;
+    height:500px;
+    border:0px; 
+    overflow:hidden;
+    margin:auto;
+  }
+  #container iframe {
+    width:1000px;
+    height:1000px;
+    margin-left:-20px;
+    margin-top:-150px;
+    margin-right:-90px;  
+    border:0;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
