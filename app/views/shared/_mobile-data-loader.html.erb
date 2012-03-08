@@ -13,7 +13,7 @@ window.g = {
   logo: "<%=escape_javascript @company.logo.url(:mobile) %>",
   isPreview: <%= @is_preview_mode.present? %>,
   isBuilder: <%= @is_builder.present? %>,
-  isTablet: navigator.userAgent.match(/ipad|kindle/i) != null,
+  isTablet: /<%= tablet_devices %>/i.test( navigator.userAgent.toLowerCase() ),
   isMobile: /<%= mobile_devices %>/i.test( navigator.userAgent.toLowerCase() )
 };
 window.widgetClasses = {};
