@@ -215,13 +215,14 @@ body {
 }
     #header-slider ul{
 	    width:800px;
-	    height:300px;
+	    height:300px; 
+            list-style:none;
     }
 
 .slider-text{
     float:left;
     width:310px;
-    margin-top:40px;
+    margin-top:20px;
     margin-left:10px;
 }
 
@@ -247,7 +248,7 @@ body {
 .content-text2{
     float:left;
 	margin-left:10px;
-	margin-top:25px;
+	margin-top:15px;
 	text-align:left;
 	font-size:14px;
 }
@@ -337,5 +338,118 @@ height: 65px;
 background: url(../images/new_design/signin-bg.png) no-repeat;
 margin-right: 30px;
 margin-top: 21px;
+}
+
+.social-facebook {
+	float:right;
+	margin-top:15px;
+	height:28px;
+	background:url(../images/new_design/facebook.jpg) center top;
+	cursor:default;
+	width:50px;
+}
+.social-facebook:hover {
+	float:right;
+	margin-top:15px;
+	height:28px;
+	background:url(../images/new_design/facebook-hover.jpg) center top;
+	cursor:pointer;
+	width:50px;
+}
+.social-twitter {
+	float:right;
+	margin-top:15px;
+	height:28px;
+	background:url(../images/new_design/twitter.jpg) center top;
+	cursor:default;
+	width:50px;
+}
+.social-twitter:hover {
+	float:right;
+	margin-top:15px;
+	height:28px;
+	background:url(../images/new_design/twitter-hover.jpg) center top;
+	cursor:pointer;
+	width:50px;
+}
+.social-linkdin {
+	float:right;
+	margin-top:15px;
+	height:28px;
+	background:url(../images/new_design/linkdin.jpg) center top;
+	cursor:default;
+	width:50px;
+}
+.social-linkdin:hover {
+	float:right;
+	margin-top:15px;
+	height:28px;
+	background:url(../images/new_design/linkdin-hover.jpg) center top;
+	cursor:pointer;
+	width:50px;
+}
+.social-linkdin {
+	float:right;
+	margin-top:15px;
+	height:28px;
+	background:url(../images/new_design/linkdin.jpg) center top;
+	cursor:default;
+	width:50px;
+}
+.social-linkdin:hover {
+	float:right;
+	margin-top:15px;
+	height:28px;
+	background:url(../images/new_design/linkdin-hover.jpg) center top;
+	cursor:pointer;
+	width:50px;
+}
+.social-stumble {
+	float:right;
+	margin-top:15px;
+	height:28px;
+	background:url(../images/new_design/stumble.jpg) center top;
+	cursor:default;
+	width:50px;
+}
+.social-stumble:hover {
+	float:right;
+	margin-top:15px;
+	height:28px;
+	background:url(../images/new_design/stumble-hover.jpg) center top;
+	cursor:pointer;
+	width:50px;
+}
+.social-google {
+	float:right;
+	margin-top:15px;
+	height:28px;
+	background:url(../images/new_design/google.jpg) center top;
+	cursor:default;
+	width:50px;
+}
+.social-google:hover {
+	float:right;
+	margin-top:15px;
+	height:28px;
+	background:url(../images/new_design/google-hover.jpg) center top;
+	cursor:pointer;
+	width:50px;
+}
+.social-gmail {
+	float:right;
+	margin-top:15px;
+	height:28px;
+	background:url(../images/new_design/gmail.jpg) center top;
+	cursor:default;
+	width:50px;
+}
+.social-gmail:hover {
+	float:right;
+	margin-top:15px;
+	height:28px;
+	background:url(../images/new_design/gmail-hover.jpg) center top;
+	cursor:pointer;
+	width:50px;
 }
 
