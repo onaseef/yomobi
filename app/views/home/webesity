@@ -1,29 +1,40 @@
 <div id="webesity" class="yomobi-info-page">
 
-  <h2>YoMobi's mission is to put an end to webesity.</h2>
+  <h2>Help us put an end to webesity by promoting tap-friendly mobile sites.</h2>
 
-  <table border="1">
+  <table>
   <tr> 
-  	<td>
-  	<div class="word">WEBESITY</div>
-  	<br>
-  	[noun]
-  	</td>
-  	<td>
-  	[weh-bee-si-tee]
-	</td>
-	<td rowspan="3">
+  	<td class="entry">
+  	<div class="word left">WEBESITY</div>
+    <div class="right">
+    <p class="pronunciation">[weh-bee-si-tee]</p>
+  	<p class="type">[noun]</p>
+    </div>
+    <div class="left">
+  <p class="definition">A condition that results from cramming too much information into a small screen:</p>
+  <br>
+  <p class="use"><i>webisty</i> often leads to frustrated customers, competitive disadvantage and loss of revenue.</p>
+  </div>
+	<td class="img" rowspan="2">
 	<img src="/images/webese-site.png"/>
 	</td>
   </tr>
   <tr> 
-  <td colspan="2">
-  A condition that results from cramming too much information into a small screen.
-  <br>
-  <i>webisty</i> often leads to frustrated customers, competitive disadvantage and loss of revenue.
+  <td>
+  <div class="marketing">
+  <p>Browsing the web on a mobile phone is often frustrating because most sites are webese.</p>
+  <p>As a result, finding basic information like a phone number, business hours or an address involves an intricate sequence of pinching, zooming and scrolling in every direction until you find what you need.</p>
+  <p>Webesity is more than an inconvenience, it <a href="/why-mobile">affects your bottom line</a>. When your site is webese, your mobile visitors will notice and many will turn away.</p>
+  <p>Fixing this problem used to be expensive and a lot of hard work, but not anymore, so you can relax.</p>
+  <p>We designed Yomobi to make it fast and easy for you to create your own mobile-friendly site. We organize all your information in such a way that it is easy for your mobile vistors to find what they need with only one move: a tap. They don't have to pinch and zoom. We like to think of ourselves as the one stop shop for 'tap-friendly' sites.</p>
+  <p>Our platform really is simple. If you can drag-and-drop and cut-and-paste, you can create your own beautiful mobile site in 5 minutes.</p>
+  <p>Join Yomobi's tap my site campaign by <a href="/users/sign_up">signing up today</a>, and together we can put an end to websity.</p>
+  </div>
   </td>
   </tr>
   </table>
   <div class="webesity">
+
+
 
 </div>
