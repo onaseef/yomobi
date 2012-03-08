@@ -332,10 +332,10 @@ body {
 
 .signin-bg {
 float: right;
-width: 328px;
+width: 366px;
 height: 65px;
-background: url(../images/signin-bg.png) no-repeat;
-margin-right: 7px;
+background: url(../images/new_design/signin-bg.png) no-repeat;
+margin-right: 30px;
 margin-top: 21px;
 }
 
