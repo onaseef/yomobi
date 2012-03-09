@@ -34,13 +34,22 @@ html lang="en-US"
             ul.menu-bar
               li
                 div.menu-item
-                  a href=about_path About Us
+                  a href=root_path Home
               li
                 div.menu-item
-                  a href="mailto:feedback@yomobi.com" Feedback
+                  a href=about_path About
               li
                 div.menu-item
-                  a target="ym-help" href=help_url Help 
+                  a href=why_mobile_path Mobile Matters
+              li
+                div.menu-item
+                  a href=webesity_path Webesity
+              li
+                div.menu-item
+                  a target="ym" href=vote_path Vote
+              li
+                div.menu-item
+                  a target="ym" href=help_url Help 
             .clearfix
       - unless user_signed_in? || @hide_signup_bar
         .signup-bar
