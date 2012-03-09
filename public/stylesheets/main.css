@@ -253,6 +253,10 @@ body {
 	font-size:14px;
 }
 
+.free {
+	color: red;
+}
+
 .devider-line {
 	width:866px;
 	height:1px;
