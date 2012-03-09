@@ -438,9 +438,10 @@ label.help { padding-bottom: 4px; }
   .pronunciation {  margin-top: 4px; }
   .definition, .use { margin: 0 30px; }
 
-  img { height: 100%; }
+  img { height: 100%; margin-left: 30px;
+  }
   .entry { background: #E8ECF5; }
-  td.img { vertical-align: top; width: 50% }
+  td.img { vertical-align: top; width: 40% }
   .marketing {
     p { margin-bottom: 10px; }
   }
