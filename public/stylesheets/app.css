@@ -381,7 +381,7 @@ label.help {
   display: none; }
 
 /********************************************/
-/* CSS for Pages                            */
+/* CSS for home & landing pages                       
 /********************************************/
 #webesity table, #webesity td, #webesity th {
   border: 0px;
@@ -425,3 +425,11 @@ label.help {
   margin-top: -150px;
   margin-right: -90px;
   border: 0; }
+#why_mobile h1 {
+  padding-left: 0px !important; }
+#why_mobile .hilite {
+  font-weight: bold;
+  color: red; }
+#why_mobile li {
+  font-size: 14px;
+  font-weight: bold; }

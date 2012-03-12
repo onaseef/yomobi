@@ -222,8 +222,7 @@ body {
 .slider-text{
     float:left;
     width:310px;
-    margin-top:20px;
-    margin-left:10px;
+    margin:20px 10px 0px 0px;
 }
 
 
@@ -247,14 +246,15 @@ body {
 }
 .content-text2{
     float:left;
-	margin-left:10px;
-	margin-top:15px;
+	margin:8px 0px 6px 0px;
+	padding-right: 10px;
 	text-align:left;
 	font-size:14px;
 }
 
-.free {
+.hilite, .hilite a {
 	color: red;
+	font-weight:bold;
 }
 
 .devider-line {
