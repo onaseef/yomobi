@@ -1,23 +1,28 @@
-= form_tag session_path(:user) do |f|
-  .signin-bg
-    .signin-section1
-      span.signin-text Email
-      br
-      label
-        = text_field_tag 'user[email]', '', :class => "signin-field"
-      br
-      .floatleft
-        label
-          = check_box_tag 'user[remember_me]'
-      .signin-whitetext  Keep me logged in
+.topheader
+	a href=root_path
+		.companylogo
+	a href=new_user_registration_path
+				.topsignup
+	= form_tag session_path(:user) do |f|
+		.signin-bg
+			.signin-section1
+				span.signin-text Email
+				br
+				label
+					= text_field_tag 'user[email]', '', :class => "signin-field"
+				br
+				.floatleft
+					label
+						= check_box_tag 'user[remember_me]'
+				.signin-whitetext  Keep me logged in
 
-    .signin-section2
-      span.signin-text Password
-      br
-      label
-        = password_field_tag 'user[password]', '', :class => "signin-field"
-      br
-      a.signin-whitetext  href="/users/password/new" Forget Your Password?
+			.signin-section2
+				span.signin-text Password
+				br
+				label
+					= password_field_tag 'user[password]', '', :class => "signin-field"
+				br
+				a.signin-whitetext  href="/users/password/new" Forget Your Password?
 
-    .signin-button
-      = image_submit_tag("new_design/signin-button.png")
+			.signin-button
+				= image_submit_tag("new_design/signin-button.png")

@@ -17,7 +17,7 @@ ul.fancy-selectable {
     color: white; }
 
 #manager-container {
-  background: #edeff4;
+  background: #fff;
   border: 1px solid #b3b3b3;
   border-top: none; }
 
@@ -28,7 +28,7 @@ h2.active-site {
 
 .site-list-wrap {
   float: left;
-  width: 360px;
+  width: 345px;
   margin: 20px 20px 0px 20px; }
   .site-list-wrap ul.sites {
     height: 400px;

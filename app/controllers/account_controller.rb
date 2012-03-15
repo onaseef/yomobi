@@ -3,6 +3,7 @@ class AccountController < ApplicationController
 
   def edit
     @user = current_user
+    @page_wrapper_class = "wrapper"
     puts @user.errors
   end
 

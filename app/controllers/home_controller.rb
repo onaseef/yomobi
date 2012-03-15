@@ -10,9 +10,8 @@ class HomeController < ApplicationController
     prevent_caching
     redirect_to builder_main_path if user_signed_in?
     @user = User.new
-    @page_wrapper_class = 'home'
+    @page_wrapper_class = 'wrapper'
     @hide_signup_bar = true
-	render :layout => 'application_new'
   end
 
   def confirm_account

@@ -10,66 +10,38 @@ html lang="en-US"
 
     title YoMobi - Free Mobile Website Builder Platform
 
-    = stylesheet_link_tag 'signup-app'
+    = stylesheet_link_tag 'main-app'
     = stylesheet_link_tag 'flick/jquery-ui-1.8.11.custom'
-    = yield :css
-    = csrf_meta_tag
+	= yield :css    
+	= csrf_meta_tag
   body
     = topline_notice
-
-    #global-container
-
-      #header class=(user_signed_in? ? 'signed-in' : 'signed-out')
-        .content
-          a#logo href=root_path
-            img src="/images/yomobi-logo-#{user_signed_in? ? 20 : 32}.png"
-
-          - if current_user.nil? && @hide_header_signin_form != true
-            = render :partial => 'shared/header-signin-form'
-          = render :partial => 'shared/nav'
-          .clearfix
-      - if @landing_bar
-        .landing-bar
-          .content
-            ul.menu-bar
-              li
-                div.menu-item
-                  a href=root_path Home
-              li
-                div.menu-item
-                  a href=about_path About
-              li
-                div.menu-item
-                  a href=why_mobile_path Mobile Matters
-              li
-                div.menu-item
-                  a href=webesity_path Webesity
-              li
-                div.menu-item
-                  a target="ym" href=vote_path Vote
-              li
-                div.menu-item
-                  a target="ym" href=help_url Help 
-            .clearfix
-      - unless user_signed_in? || @hide_signup_bar
-        .signup-bar
-          .content
-            a.pretty-button href="/" Sign Up
-            .description = t 'signup_bar'
-            .clearfix
-      #page-container-wrapper class=@page_wrapper_class
-        #page-container
-          #sidebar
-            = yield :sidebar
-          #content
-            = yield
-          .clearfix
+    #page-wrapper class=@page_wrapper_class
+      - if current_user.nil? && @hide_header_signin_form != true    
+        = render :partial => 'shared/header-signin-form_new'
+      - else        
+        = render :partial => 'shared/nav' 
+      
+      #page-container-new
+        #sidebar
+          = yield :sidebar
+        #content-new
+          = yield
         .clearfix
-      = render 'shared/footer'
-
-    = render 'layouts/js-base'
-    = yield :js
+        
+	- if current_user.nil?
+	  = render :partial => 'shared/footer-new'
+	- else
+		= render :partial => 'shared/footer-social-share'
+			
+    = javascript_include_tag 'support/underscore'
+    = javascript_include_tag 'support/jquery-1.6.2.min'
+    = javascript_include_tag 'support/jquery.tooltip.v.1.1'
+    = javascript_include_tag 'util', 'builder.util'
     = javascript_include_tag 'notice'
+    = javascript_include_tag 'main'
+    = javascript_include_tag 'jcarousellite'
+    = yield :js
 
     - if Rails.env.production?
       = javascript_include_tag 'google-analytics'

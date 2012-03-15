@@ -25,11 +25,11 @@ h1 = @company.name
       = form_tag '', :method => :post do
         label Subject
         br
-        input type="text" name="subject" value=@old_subject
+        input.textfields type="text" name="subject" value=@old_subject
         br
         label Content
         br
-        textarea rows=12 cols=70 name="content" = @old_content
+        textarea.textfields1 rows=12 cols=70 name="content" = @old_content
         br
         = submit_tag 'Send Email', :class => 'lfloat'
         .load-box style="padding-top: 3px; display:none"

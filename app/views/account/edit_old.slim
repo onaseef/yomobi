@@ -1,0 +1,53 @@
+#account-settings-box.center-box
+  .content
+    h2 Account Settings
+    / .divider
+
+    = form_for @user, :url => update_account_path do |f|
+      h3 Current Password*:
+      = f.password_field :current_password
+      .divider
+      
+      h3 Contact Information:
+      br
+
+      table
+        tbody
+          tr
+            td
+              label First Name:
+            td
+              = f.text_field :first_name
+          tr
+            td
+              label Last Name:
+            td
+              = f.text_field :last_name
+          tr
+            td
+              label Email:
+            td
+              = f.text_field :email, :autocomplete => "off"
+
+      h3 Change Password (optional):
+      br
+
+      table
+        tbody
+          tr
+            td
+              label New Password:
+            td
+              = f.password_field :password
+          tr
+            td
+              label Re-enter New Password:
+            td
+              = f.password_field :password_confirmation
+      
+
+      input type="submit" value="Save Changes"
+      - if flash[:notice] || flash[:alert]
+        br
+        br
+        p class=(flash[:notice] ? 'success' : 'error') = flash[:notice] || flash[:alert]

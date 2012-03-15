@@ -23,26 +23,30 @@
     };
     </script>
   = javascript_include_tag 'site-manager'
+.pagecorner
+  img src="/images/new_design/page-corner.png"
+#page-container
+	.innercontent-main
 
-#manager-container
-  h2.active-site= "Active Site: #{current_user.company.db_name}"
+		#manager-container
+			h2.active-site= "Active Site: #{current_user.company.db_name}"
 
-  .site-list-wrap
-    h2 Sites you have access to:
-    ul.sites.fancy-selectable
-    button.edit Edit Site
-    button.create Create New Site
-    button.make-default Make Default
-  .site-details-wrap
-    h2 Site Details
-    .details
-      h3.active-site Please select a site on the left.
-      button disabled="disabled" Generate Signup Key
-      ul.admins.fancy-selectable
-    button.add-admin    disabled="disabled" Add Admin
-    button.remove-admin disabled="disabled" Revoke Access
-    button.concede      disabled="disabled" Make Owner
-  .clearfix
+			.site-list-wrap
+				h2 Sites you have access to:
+				ul.sites.fancy-selectable
+				button.edit Edit Site
+				button.create Create New Site
+				button.make-default Make Default
+			.site-details-wrap
+				h2 Site Details
+				.details
+				  h3.active-site Please select a site on the left.
+				  button disabled="disabled" Generate Signup Key
+				  ul.admins.fancy-selectable
+				button.add-admin    disabled="disabled" Add Admin
+				button.remove-admin disabled="disabled" Revoke Access
+				button.concede      disabled="disabled" Make Owner
+			.clearfix
 
 
 #templates

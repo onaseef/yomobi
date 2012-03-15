@@ -44,23 +44,6 @@ body {
 	background:url(../images/new_design/menubutton-bg.jpg);
 	border-radius: 7px 7px 7px 7px;
 }
-.footerlink {
-	color:#000000;
-	margin-left:10px;
-	margin-right:10px;
-	text-decoration:none;
-	text-transform:uppercase;
-}
-.footerlink:hover {
-	color:#038be6;
-	margin-left:10px;
-	margin-right:10px;
-	text-decoration:none;
-	text-transform:uppercase;
-}.wrapper {
-	width:950px;
-	margin:auto;
-}
 .topheader {
 	float:left;
 	width:950px;
@@ -84,10 +67,10 @@ body {
 
 .signin-bg {
 	float:right;
-	width:328px;
+	width:366px;
 	height:65px;
-	background:url(../images/new_design/signin-bg.png) no-repeat;
-	margin-right:7px;
+	background:url(/images/new_design/signin-bg.png) no-repeat;
+	margin-right:30px;
 	margin-top:21px;
 }
 .signin-section1 {
@@ -314,26 +297,6 @@ body {
 	margin-top:80px;
 	margin-left:50px;
 }
-.footer-main {
-	margin-top:25px;
-	float:left;
-	width:100%;
-	background:url(../images/new_design/footerbg.jpg) center top #f0f0f2;
-	height:103px;
-}
-.footer-wrapper {
-	width:950px;
-	margin:auto;
-}
-.footer-text {
-	float:left;
-	width:950px;
-	margin-top:50px;
-	text-align:center;
-	color:#3a3a3a;
-	font-size:13px;
-	line-height:20px;
-}
 
 .signin-bg {
 float: right;
@@ -457,3 +420,419 @@ margin-top: 21px;
 	width:50px;
 }
 
+
+.footer-main {
+	margin-top:25px;
+	float:left;
+	width:100%;
+	background:url(../images/new_design/footerbg.jpg) center top #f0f0f2;
+	height:103px;
+}
+.footer-wrapper {
+	width:950px;
+	margin:auto;
+}
+.footer-text {
+	float:left;
+	width:950px;
+	margin-top:50px;
+	text-align:center;
+	color:#3a3a3a;
+	font-size:13px;
+	line-height:20px;
+}
+
+.footerlink {
+	color:#000000;
+	margin-left:10px;
+	margin-right:10px;
+	text-decoration:none;
+	text-transform:uppercase;
+}
+.footerlink:hover {
+	color:#038be6;
+	margin-left:10px;
+	margin-right:10px;
+	text-decoration:none;
+	text-transform:uppercase;
+}
+#page-wrapper{
+	width:950px;
+	margin:auto;
+}
+.wrapper {
+	width:950px;
+	margin:auto;
+}
+.footer-social {
+	float:left;
+	width:950px;
+	text-align:center;
+	margin-top:50px;
+}
+
+.footer-text1 {
+	float:left;
+	width:950px;
+	margin-top:10px;
+	text-align:center;
+	margin-bottom:10px;
+	color:#3a3a3a;
+	font-size:13px;
+	line-height:20px;
+}
+/**End footers***/
+
+/**Complete yomobi stylesheet file**/
+
+.pagecorner {
+	float:left;
+	width:950px;
+	height:16px;
+}
+.topmenu-li {
+	float:right;
+	margin-top:22px;
+}
+
+.topmenulink {
+	color:#FFFFFF;
+	text-transform:uppercase;
+	font-size:14px;
+	text-decoration:none;
+	line-height:32px;
+	padding-top:6px;
+	padding-bottom:6px;
+	margin-left:10px;
+	padding-left:10px;
+	padding-right:10px;
+}
+.topmenulink:hover {
+	color:#FFFFFF;
+	text-transform:uppercase;
+	font-size:14px;
+	text-decoration:none;
+	line-height:32px;
+	padding-top:6px;
+	padding-bottom:6px;
+	margin-left:10px;
+	padding-left:10px;
+	padding-right:10px;
+	background:url(../images/new_design/top-menubg.jpg);
+	border-radius: 5px 5px 5px 5px;
+}
+.topheader1 {
+	float:left;
+	width:950px;
+	height:74px;
+}
+
+.companylogo1 {
+	float:left;
+	margin-left:10px;
+	margin-top:24px;
+	width:200px;
+	height:43px;
+}
+
+.footer-main1 {
+	float:left;
+	width:100%;
+	background:url(../images/new_design/footerbg.jpg) center top #f0f0f2 repeat-x;
+}
+.footer-text1 {
+	float:left;
+	width:950px;
+	margin-top:10px;
+	text-align:center;
+	margin-bottom:10px;
+	color:#3a3a3a;
+	font-size:13px;
+	line-height:20px;
+}
+.leftmenulink {
+	color:#0099ff;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:13px;
+	text-decoration:none;
+}
+.leftmenulink:hover {
+	color:#000000;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:13px;
+	text-decoration:none;
+}
+
+.leftmenusublink {
+	font-size:13px;
+	font-family:Tahoma;
+	color:#000000;
+	font-weight:bold;
+	text-decoration:none;
+}
+.leftmenusublink:hover {
+	font-size:13px;
+	font-family:Tahoma;
+	color:#999999;
+	font-weight:bold;
+	text-decoration:none;
+}
+
+.mobilewidgets {
+	float:left;
+	margin-top:10px;
+	width:160px;
+}
+.widgetmain {
+	float:left;
+	background:url(../images/new_design/dottedline2.jpg) left bottom repeat-x;
+	width:160px;
+	height:24px;
+}
+.widgetmain1 {
+	float:left;
+	width:160px;
+	height:24px;
+}
+.widgeticon {
+	float:left;
+	width:18px;
+	height:18px;
+	margin-top:3px;
+}
+.widgetlink {
+	float:left;
+	width:137px;
+	margin-left:5px;
+	line-height:23px;
+}
+.innerpage-heading {
+	float:left;
+	width:730px;
+	margin-left:15px;
+	font-size:30px;
+	font-weight:bold;
+	text-align:left;
+	color:#000000;
+}
+.section3-main {
+	float:right;
+	width:304px;
+	margin-left:15px;
+}
+.section4-main {
+	float:right;
+	width:730px;
+	margin-left:15px;
+}
+.section5-main {
+	width:730px;
+	margin:auto;
+	margin-top:35px;
+}
+.section3-bluegradient {
+	float:left;
+	width:274px;
+	padding:15px;
+	background:-moz-linear-gradient(top, #e5f5ff 0%, #ffffff 100%);
+}
+.section4-bluegradient {
+	float:left;
+	width:700px;
+	padding:15px;
+	background:-moz-linear-gradient(top, #e5f5ff 0%, #ffffff 100%);
+}
+.section3-heading {
+	float:left;
+	width:274px;
+	font-size:18px;
+	font-weight:bold;
+	text-transform:uppercase;
+	color:#000000;
+}
+.section3-text {
+	float:left;
+	width:274px;
+	color:#5f6366;
+	font-size:12px;
+	text-align:left;
+	margin-top:10px;
+}
+.section4-heading {
+	float:left;
+	width:700px;
+	font-size:18px;
+	font-weight:bold;
+	text-transform:uppercase;
+	color:#000000;
+}
+.section4-text {
+	float:left;
+	width:700px;
+	color:#5f6366;
+	font-size:14px;
+	text-align:left;
+	margin-top:10px;
+}
+.section4-caption {
+	float:left;
+	width:700px;
+	color:#0099ff;
+	font-size:14px;
+	text-align:left;
+	margin-top:10px;
+}
+.section4-field {
+	float:left;
+	width:700px;
+	color:#000000;
+	font-size:14px;
+	text-align:left;
+	margin-top:3px;
+}
+
+.section2-main {
+	float:right;
+	width:395px;
+	padding-right:15px;
+	padding-left:15px;
+	background:url(../images/dottedline3.jpg) right top repeat-y;
+}
+
+
+
+.section4-field input{
+	width:695px;
+	height:30px;
+	border:1px solid #7bc9fd;
+	box-shadow:1px 1px #d7d7d7;
+} 
+.textfields {
+	width:695px;
+	height:30px;
+	border:1px solid #7bc9fd;
+	box-shadow:1px 1px #d7d7d7;
+}
+.textfields1 {
+	width:695px;
+	border:1px solid #7bc9fd;
+	box-shadow:1px 1px #d7d7d7;
+}
+
+/**Social Share***/
+.social-facebook-footer {
+	float:right;
+	margin-top:15px;
+	height:28px;
+	background:url(../images/new_design/facebook1.jpg) center top;
+	cursor:default;
+	width:50px;
+}
+.social-facebook-footer:hover {
+	float:right;
+	margin-top:15px;
+	height:28px;
+	background:url(../images/new_design/facebook1-hover.jpg) center top;
+	cursor:pointer;
+	width:50px;
+}
+.social-twitter-footer {
+	float:right;
+	margin-top:15px;
+	height:28px;
+	background:url(../images/new_design/twitter1.jpg) center top;
+	cursor:default;
+	width:50px;
+}
+.social-twitter-footer:hover {
+	float:right;
+	margin-top:15px;
+	height:28px;
+	background:url(../images/new_design/twitter1-hover.jpg) center top;
+	cursor:pointer;
+	width:50px;
+}
+.social-linkdin-footer {
+	float:right;
+	margin-top:15px;
+	height:28px;
+	background:url(../images/new_design/linkdin1.jpg) center top;
+	cursor:default;
+	width:50px;
+}
+.social-linkdin-footer:hover {
+	float:right;
+	margin-top:15px;
+	height:28px;
+	background:url(../images/new_design/linkdin1-hover.jpg) center top;
+	cursor:pointer;
+	width:50px;
+}
+.social-linkdin-footer {
+	float:right;
+	margin-top:15px;
+	height:28px;
+	background:url(../images/new_design/linkdin1.jpg) center top;
+	cursor:default;
+	width:50px;
+}
+.social-linkdin-footer:hover {
+	float:right;
+	margin-top:15px;
+	height:28px;
+	background:url(../images/new_design/linkdin1-hover.jpg) center top;
+	cursor:pointer;
+	width:50px;
+}
+.social-stumble-footer {
+	float:right;
+	margin-top:15px;
+	height:28px;
+	background:url(../images/new_design/stumble1.jpg) center top;
+	cursor:default;
+	width:50px;
+}
+.social-stumble-footer:hover {
+	float:right;
+	margin-top:15px;
+	height:28px;
+	background:url(../images/new_design/stumble1-hover.jpg) center top;
+	cursor:pointer;
+	width:50px;
+}
+.social-google-footer {
+	float:right;
+	margin-top:15px;
+	height:28px;
+	background:url(../images/new_design/google1.jpg) center top;
+	cursor:default;
+	width:50px;
+}
+.social-google-footer:hover {
+	float:right;
+	margin-top:15px;
+	height:28px;
+	background:url(../images/new_design/google1-hover.jpg) center top;
+	cursor:pointer;
+	width:50px;
+}
+.social-gmail-footer {
+	float:right;
+	margin-top:15px;
+	height:28px;
+	background:url(../images/new_design/gmail1.jpg) center top;
+	cursor:default;
+	width:50px;
+	margin-right:300px;
+}
+.social-gmail-footer:hover {
+	float:right;
+	margin-top:15px;
+	height:28px;
+	background:url(../images/new_design/gmail1-hover.jpg) center top;
+	cursor:pointer;
+	width:50px;
+	margin-right:300px;
+}
+
+/**Social Share End***/

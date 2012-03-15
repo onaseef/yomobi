@@ -1,0 +1,75 @@
+! doctype 5
+html lang="en-US"
+  head
+    meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+    link rel="shortcut icon" type="image/x-icon" href="/yomobi.ico"
+    link rel="canonical" href="http://www.yomobi.com"
+
+    = render 'shared/meta-description'
+    = render 'shared/meta-keywords'
+
+    title YoMobi - Free Mobile Website Builder Platform
+
+    = stylesheet_link_tag 'signup-app'
+    = stylesheet_link_tag 'flick/jquery-ui-1.8.11.custom'
+    = yield :css
+    = csrf_meta_tag
+  body
+    = topline_notice
+
+    #global-container
+
+      #header class=(user_signed_in? ? 'signed-in' : 'signed-out')
+        .content
+          a#logo href=root_path
+            img src="/images/yomobi-logo-#{user_signed_in? ? 20 : 32}.png"
+
+          - if current_user.nil? && @hide_header_signin_form != true
+            = render :partial => 'shared/header-signin-form'
+          = render :partial => 'shared/nav'
+          .clearfix
+      - if @landing_bar
+        .landing-bar
+          .content
+            ul.menu-bar
+              li
+                div.menu-item
+                  a href=root_path Home
+              li
+                div.menu-item
+                  a href=about_path About
+              li
+                div.menu-item
+                  a href=why_mobile_path Mobile Matters
+              li
+                div.menu-item
+                  a href=webesity_path Webesity
+              li
+                div.menu-item
+                  a target="ym" href=vote_path Vote
+              li
+                div.menu-item
+                  a target="ym" href=help_url Help 
+            .clearfix
+      - unless user_signed_in? || @hide_signup_bar
+        .signup-bar
+          .content
+            a.pretty-button href="/" Sign Up
+            .description = t 'signup_bar'
+            .clearfix
+      #page-container-wrapper class=@page_wrapper_class
+        #page-container
+          #sidebar
+            = yield :sidebar
+          #content
+            = yield
+          .clearfix
+        .clearfix
+      = render 'shared/footer'
+
+    = render 'layouts/js-base'
+    = yield :js
+    = javascript_include_tag 'notice'
+
+    - if Rails.env.production?
+      = javascript_include_tag 'google-analytics'

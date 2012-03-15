@@ -10,6 +10,7 @@ html lang="en-US"
 
     title YoMobi - Free Mobile Website Builder Platform
     = stylesheet_link_tag 'builder-app'
+    = stylesheet_link_tag 'main'
     = stylesheet_link_tag 'flick/jquery-ui-1.8.11.custom'
     = stylesheet_link_tag 'jquery.wysiwyg'
     = stylesheet_link_tag 'colorpicker'
@@ -22,20 +23,19 @@ html lang="en-US"
   body
     = topline_notice
     
-    #global-container
-      #header.signed-in
-        .content
-          a#logo href=builder_main_path
-            img src="/images/yomobi-logo-20.png"
-          = render :partial => 'shared/nav'
-          .clearfix
+    #page-wrapper.wrapper
+      = render :partial => 'shared/nav' 
+      .clearfix
+		  .pagecorner
+		    img src="/images/new_design/page-corner.png"
       #page-container
-        #sidebar
-          = yield :sidebar
-        #content
-          = yield
-        .clearfix
-        = render 'shared/footer'
+      	.innercontent-main
+		      #sidebar
+		        = yield :sidebar
+		      #content
+		        = yield
+		      .clearfix
+    = render 'shared/footer-social-share'
     
     = render 'shared/templates'
 

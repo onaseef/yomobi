@@ -1,53 +1,41 @@
-#account-settings-box.center-box
-  .content
-    h2 Account Settings
-    / .divider
+.pagecorner
+	img src="/images/new_design/page-corner.png"
+.main-whitebg
+  .innercontent-main
+    .section5-main
+      .section4-bluegradient
+      	= form_for @user, :url => update_account_path do |f|
+		      .section4-heading Account Settings
+		      .section4-text
+		      	strong CURRENT PASSWORD *
+		      .section4-field
+		        label
+		        	= f.password_field :current_password
+		      .section4-text
+		      	strong CONTACT INFORMATION:
+		      .section4-caption First Name
+		      .section4-field
+		        label
+			        = f.text_field :first_name 
+		      .section4-caption Last Name
+		      .section4-field
+		        label
+			        = f.text_field :last_name 
+		      .section4-caption Email
+		      .section4-field
+		        label
+			        = f.text_field :email, :autocomplete => "off"
 
-    = form_for @user, :url => update_account_path do |f|
-      h3 Current Password*:
-      = f.password_field :current_password
-      .divider
-      
-      h3 Contact Information:
-      br
-
-      table
-        tbody
-          tr
-            td
-              label First Name:
-            td
-              = f.text_field :first_name
-          tr
-            td
-              label Last Name:
-            td
-              = f.text_field :last_name
-          tr
-            td
-              label Email:
-            td
-              = f.text_field :email, :autocomplete => "off"
-
-      h3 Change Password (optional):
-      br
-
-      table
-        tbody
-          tr
-            td
-              label New Password:
-            td
-              = f.password_field :password
-          tr
-            td
-              label Re-enter New Password:
-            td
-              = f.password_field :password_confirmation
-      
-
-      input type="submit" value="Save Changes"
-      - if flash[:notice] || flash[:alert]
-        br
-        br
-        p class=(flash[:notice] ? 'success' : 'error') = flash[:notice] || flash[:alert]
+		      .section4-text
+		      	strong CHANGE PASSWORD (OPTIONAL):
+		      .section4-caption New Password:
+		      .section4-field
+		        label
+			        = f.password_field :password
+		      .section4-caption Re-enter New Password:
+		      .section4-field
+		        label
+			        = f.password_field :password_confirmation 
+		      
+		      .section4-caption
+	      		input type="image" src="/images/new_design/savechanges.png" width="148" height="44" border="0" 
