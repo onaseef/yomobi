@@ -247,15 +247,33 @@
   var NewSiteDialog = Backbone.View.extend({
     template: util.getTemplate('new-site-dialog'),
     events: {
-      'submit': 'submit'
+      'click .select-source':   'showSiteSource',
+      'click .select-type':     'showSiteType',
+      'submit':                 'submit'
     },
     initialize: function () {
       _.bindAll(this, 'submit', 'render');
     },
 
+    showSiteSource: function (e) {
+      e.preventDefault();
+      this.$('.site-type').hide();
+      this.$('.site-source').show();
+    },
+
+    showSiteType: function (e) {
+      e.preventDefault();
+      this.$('.site-source').hide();
+      this.$('.site-type').show();
+      this.$('[name=source_db_name]').val('');
+    },
+
     render: function (errors) {
-      var templateData = this.model.toJSON();
-      _.extend(templateData, { errors:errors || {} });
+      var templateData = {
+        errors: errors || {},
+        sites: _.map(sman.sites.models, function (m) { return m.attributes; })
+      };
+      _.extend(templateData, this.model.toJSON());
 
       $(this.el)
         .html( this.template(templateData) )

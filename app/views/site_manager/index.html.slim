@@ -136,11 +136,25 @@
             input type="text" value="{{ url }}" name="site[url]"
           .clearfix
 
-        h3 Site Type:
-        | <% if (errors.type) { %>
-        p.error Invalid site type.
-        | <% } %>
-        = select :site, :type, options_for_select(company_types, 57)
+        .site-type
+          h3 Site Type:
+          | <% if (errors.type) { %>
+          p.error Invalid site type.
+          | <% } %>
+          = select :site, :type, options_for_select(company_types, 57)
+          br
+          a.select-source href="#" Copy from Site Instead
+
+        .site-source.hide
+          h3 Copy Site:
+          select name="site[source_db_name]"
+            option value="" -- Please Select a Site to Copy --
+            | <% for (var i=0; i < sites.length; i++) { %>
+            option value="{{ sites[i].url }}" [/{{ sites[i].url }}] {{ sites[i].name }}
+            | <% } %>
+          br
+          a.select-type href="#" Create New Site Instead
+
       .loading
         h3 Submitting...
         img src="/images/ui/ajax-loader-small.gif"
