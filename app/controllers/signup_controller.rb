@@ -1,4 +1,5 @@
 class SignupController < ApplicationController
+  require 'couch'
   require 'couch_docs'
   
   before_filter :authenticate_user!
@@ -37,7 +38,7 @@ class SignupController < ApplicationController
       @errors['site_url'] = 'illegal'
     elsif reserved_site_url? data['site_url']
       @errors['site_url'] = 'reserved'
-    elsif couchdb_exists? data['site_url'].downcase
+    elsif Couch::couchdb_exists? data['site_url'].downcase
       @errors['site_url'] = 'taken'
     end
     
@@ -111,15 +112,6 @@ class SignupController < ApplicationController
   
   def reserved_site_url?(site_url)
     RESERVED_SITE_URLS.include? site_url
-  end
-
-  def couchdb_exists?(db_name)
-    db = CouchRest.database "http://#{Rails.application.config.couch_host}/m_#{db_name}"
-    begin
-      return !db.info.nil?
-    rescue RestClient::ResourceNotFound => nfe
-      return false
-    end
   end
 
 end

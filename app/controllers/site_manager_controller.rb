@@ -1,4 +1,6 @@
 class SiteManagerController < ApplicationController
+  require 'couch'
+
   before_filter :authenticate_user!
   before_filter :ensure_user_owns_company,
                 :only => [:add_admin, :remove_admin, :gen_signup_key,
@@ -26,7 +28,7 @@ class SiteManagerController < ApplicationController
       @errors['url'] = 'illegal'
     elsif reserved_site_url? data['url']
       @errors['url'] = 'reserved'
-    elsif couchdb_exists? data['url'].downcase
+    elsif Couch::couchdb_exists? data['url'].downcase
       @errors['url'] = 'taken'
     end
 
@@ -153,15 +155,6 @@ class SiteManagerController < ApplicationController
 
   def reserved_site_url?(site_url)
     RESERVED_SITE_URLS.include? site_url
-  end
-
-  def couchdb_exists?(db_name)
-    db = CouchRest.database "http://#{Rails.application.config.couch_host}/m_#{db_name}"
-    begin
-      return !db.info.nil?
-    rescue RestClient::ResourceNotFound => nfe
-      return false
-    end
   end
 
   def validate_company_admin(company,admin)
