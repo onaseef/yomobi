@@ -1,17 +1,24 @@
-#account-setup-box.center-box
-  .content
-    h2 Confirm your Account
-    erb:
-      <p>A confirmation was sent to <%= @email %>. Please confirm your account to continue.</p>
-    br
-    p Didn't get a confirmation email? Check your spam folder or click the button below:
-    = form_tag resend_confirmation_path do
-      input type="submit" value="Resend Confirmation Email"
-      - if flash[:notice]
-        br
-        br
-        p.success = flash[:notice]
-      - if @already_confirmed
-        .divider
-        erb:
-          <p class="already-confirmed">Please <a href="/builder/main">click here</a> to begin building your site.</p>
+.pagecorner
+	img src="/images/new_design/page-corner.png"
+.main-whitebg
+  .innercontent-main
+    .section5-main
+      .section4-bluegradient
+
+				#account-setup-box.center-box
+					.content
+						h2 Confirm your Account
+						erb:
+							<p>A confirmation was sent to <%= @email %>. Please confirm your account to continue.</p>
+						br
+						p Didn't get a confirmation email? Check your spam folder or click the button below:
+						= form_tag resend_confirmation_path do
+							input type="submit" value="Resend Confirmation Email"
+							- if flash[:notice]
+								br
+								br
+								p.success = flash[:notice]
+							- if @already_confirmed
+								.divider
+								erb:
+								  <p class="already-confirmed">Please <a href="/builder/main">click here</a> to begin building your site.</p>

@@ -1,14 +1,27 @@
-<div class="center-box">
-  <h2>Resend confirmation instructions</h2>
-
-  <%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
-    <%= devise_error_messages! %>
-
-    <p><%= f.label :email %><br />
-    <%= f.text_field :email %></p>
-
-    <p><%= f.submit "Resend confirmation instructions" %></p>
-  <% end %>
-
-  <%= render :partial => "devise/shared/links" %>
+<div class = "pagecorner">
+	<img src="/images/new_design/page-corner.png">
 </div>
+<div class= "main-whitebg">
+  <div class = "innercontent-main">
+    <div class = "section5-main" >
+      <div class = "section4-bluegradient">
+
+				<div class="center-box">
+					<h2>Resend confirmation instructions</h2>
+
+					<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
+						<%= devise_error_messages! %>
+
+						<p><%= f.label :email %><br />
+						<%= f.text_field :email %></p>
+
+						<p><%= f.submit "Resend confirmation instructions" %></p>
+					<% end %>
+
+					<%= render :partial => "devise/shared/links" %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+				

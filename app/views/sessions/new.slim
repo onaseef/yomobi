@@ -1,44 +1,50 @@
-= form_for resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => 'center-box', :id => 'signin-box' } do |f|
-  
-  h2 YoMobi Sign in
-  - if alert
-    .login-error
-      b Please re-enter your password
-      p The password you entered is incorrect. Please try again (make sure your caps lock is off).
-      p
-        | Forgot your password? 
-        a href=new_password_path(:user) Request a new one.
+.pagecorner
+	img src="/images/new_design/page-corner.png"
+.main-whitebg
+  .innercontent-main
+    .section5-main
+      .section4-bluegradient
+				= form_for resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => 'center-box', :id => 'signin-box' } do |f|
+		
+					h2 YoMobi Sign in
+					- if alert
+						.login-error
+							b Please re-enter your password
+							p The password you entered is incorrect. Please try again (make sure your caps lock is off).
+							p
+								| Forgot your password? 
+								a href=new_password_path(:user) Request a new one.
 
-  #actual-signin-box.sign-in-form
-    table
-      tbody
-        tr
-          td
-            = f.label 'Email:'
-          td
-            = f.text_field :email, :size => 30
-        tr
-          td
-          td
-            .remember-me
-              = f.check_box :remember_me
-              span.subtext Remember me
-        tr
-          td
-            = f.label 'Password:'
-          td
-            = f.password_field :password, :size => 30
-        tr
-          td
-          td
-            .forgot-password
-              a href=new_password_path(:user) Forgot your password?
-        tr
-          td
-          td
-            input.pretty-button.lfloat type="submit" value="Sign In"
-            .sign-up-offer
-              | or
-              a href=new_user_registration_path style="font-weight:bold" Sign Up for YoMobi
-    .clearfix
-  .clearfix
+					#actual-signin-box.sign-in-form
+						table
+							tbody
+								tr
+								  td
+								    = f.label 'Email:'
+								  td
+								    = f.text_field :email, :size => 30
+								tr
+								  td
+								  td
+								    .remember-me
+								      = f.check_box :remember_me
+								      span.subtext Remember me
+								tr
+								  td
+								    = f.label 'Password:'
+								  td
+								    = f.password_field :password, :size => 30
+								tr
+								  td
+								  td
+								    .forgot-password
+								      a href=new_password_path(:user) Forgot your password?
+								tr
+								  td
+								  td
+								    input.pretty-button.lfloat type="submit" value="Sign In"
+								    .sign-up-offer
+								      | or
+								      a href=new_user_registration_path style="font-weight:bold" Sign Up for YoMobi
+						.clearfix
+					.clearfix
