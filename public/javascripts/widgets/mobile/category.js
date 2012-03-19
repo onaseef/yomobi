@@ -1,6 +1,6 @@
-// 
+//
 // MOBILE
-// 
+//
 (function ($) {
 
   var isSpecialKey = function (key) { return key.charAt(0) === '_' };
@@ -10,12 +10,12 @@
   var isItem = function (parent) {
     return function (node_id) { return parent[node_id]._data.type === 'item' };
   }
-  
+
   window.widgetClasses.category = Widget.extend({
-    
+
     catTemplate: util.getTemplate('category-cat'),
     itemWrapTemplate: util.getTemplate('item-wrap'),
-    
+
     init: function () {
       _.bindAll(this,'onHomeViewClick');
 
@@ -23,7 +23,7 @@
       this.setPaths( ['struct'], this.get('struct') );
       this.resetCatStack();
     },
-    
+
     getShowData: function () {
       var level = this.getCurrentLevel();
       if (!this.itemTemplate) this.itemTemplate = util.getTemplate(this.get('wsubtype')+'-item');
@@ -40,11 +40,11 @@
       };
       return _.extend({},this.toJSON(),extraData);
     },
-    
+
     getTitleContent: function () {
       return '<h3>' + util.catStackCrumbs(this.get('name'),this.catStack) + '</h3>';
     },
-    
+
     getCurrentLevel: function (refOnly, context) {
       var stack = this.catStack;
       if (context) {
@@ -145,15 +145,15 @@
     }
 
   });
-  
+
   window.widgetPages.category = WidgetPageView.extend({
-    
+
     events: {
       'click .item.category':                 'onCategoryClick',
       'click .item:not([class*=category])':   'onItemClick',
       'click .item-nav button':               'onItemNavClick'
     },
-    
+
     onCategoryClick: function (e) {
       if (!mapp.canTransition()) return;
 
@@ -163,7 +163,7 @@
       var cat_id = target.data('id');
       mapp.goToPage(this.widget.get('name'), cat_id);
     },
-    
+
     onItemClick: function (e) { this.onCategoryClick(e); },
 
     onItemNavClick: function (e) {
@@ -177,15 +177,17 @@
 
     onPageView: function (subpage) {
       if (!mapp.canTransition()) return;
-      
+
       util.log('onPageView subpage: ' + subpage);
       if (!subpage && this.widget.catStack.length === 1) return 'forward';
-      
-      var subpage = subpage || 'struct'
+
+      var subpageParts = (subpage || 'struct').split('/')
+        , subpage = subpageParts[0]
         , stackSize = this.widget.catStack.length
         , newStackSize = this.widget.setCatStackById(subpage).catStack.length
         , direction = newStackSize > stackSize ? 'forward' : 'backward'
       ;
+      if (subpageParts.length > 1) this.onSubpageView && this.onSubpageView(subpageParts);
 
       return direction;
     },
@@ -200,11 +202,11 @@
         mapp.goToPage( this.widget.get('name'), subpage);
       }
     },
-    
+
     onGoHome: function () {
       this.widget.resetCatStack();
     }
-    
+
   });
-  
+
 })(jQuery);

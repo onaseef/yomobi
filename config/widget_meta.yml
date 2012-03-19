@@ -88,3 +88,6 @@ link::blog:
 custom_page::about-us:
   canRename: true
   canEditIcon: false
+rss::rss-feed:
+  canRename: true
+  canEditIcon: true

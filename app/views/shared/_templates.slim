@@ -244,8 +244,8 @@
     | <% } %>
     pre.desc {{ _maybe.description }}
 
-  script.category-cat.category-item(type="text/template")
-    tr.category.item class="{{ cat._type }}" data-id="{{ cat._id }}"
+  script.category-cat.page-item(type="text/template")
+    tr.category.item class="<% print(cat.type + '-title'); %>" data-id="{{ cat._id }}"
       | <% if (cat.wphotoUrl) { %>
       td.img-col
         img src="{{ cat.wphotoUrl }}"
@@ -276,14 +276,18 @@
     .wphoto-large-separator
     | <% } %>
 
-    | <% if (nodeType === 'item') {
+
+    | <% if (nodeType === 'loading') { %>
+    h2 Loading...
+    | <% } else if (nodeType === 'item') {
     |     print( itemTemplate({ item:node }) );
     | } else { %>
 
     table.node-list
       tbody
         | <% for (var i=0; i<stuff.length;i++) {
-              if (stuff[i].type === "cat" || stuff[i].type === "page") {
+              if (stuff[i].type === "cat" || stuff[i].type === "page" ||
+                  stuff[i].type === "title" || stuff[i].type === "rss-feed") {
                 print( catTemplate({ cat:stuff[i], cycle:util.cycle('c0','c1') }) );
               } else {
                 print( itemWrapTemplate({

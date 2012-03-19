@@ -538,6 +538,9 @@ div.wysiwyg ul.toolbar {
   background-image: url(/images/ui/icon-folder-new.png); }
 #builder .edit-area.category .button.add-item, #builder .edit-area.page_tree .button.add-item {
   background-image: url(/images/ui/icon-item-new.png); }
+#builder .edit-area.category .button.add-rss-feed, #builder .edit-area.page_tree .button.add-rss-feed {
+  background-image: url(/images/ui/icon-rss-new.png);
+  padding: 6px 2px 0 18px; }
 #builder .edit-area.category .button.rename, #builder .edit-area.page_tree .button.rename {
   background-image: url(/images/ui/icon-rename.png);
   background-position: center; }
@@ -572,6 +575,9 @@ div.wysiwyg ul.toolbar {
   background-image: url(/images/ui/icon-folder.png); }
 #builder .edit-area.category .nodes .icon.page, #builder .edit-area.category .nodes .icon.item, #builder .edit-area.page_tree .nodes .icon.page, #builder .edit-area.page_tree .nodes .icon.item {
   background-image: url(/images/ui/icon-item.png);
+  background-position: 3px 6px; }
+#builder .edit-area.category .nodes .icon.rss-feed, #builder .edit-area.page_tree .nodes .icon.rss-feed {
+  background-image: url(/images/ui/icon-rss.png);
   background-position: 3px 6px; }
 #builder .edit-area.category .icon-wrap, #builder .edit-area.page_tree .icon-wrap {
   padding: 0 5px 0 0; }
