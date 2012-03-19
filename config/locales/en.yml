@@ -22,6 +22,15 @@ en:
       address: "Enter an address you would like your mobile site visitors to use to locate you."
 
   builder:
+    sidebar:
+      view_mobile_site: "View Mobile Site"
+      email_followers: "Email Your Followers"
+      text_followers: "Text Your Followers"
+      general_settings: "General Settings"
+      advanced_settings: "Advanced Settings"
+      edit_tab_bar: "Edit Mobile Tab Bar"
+      mobile_site_builder: "Mobile Site Builder"
+
     help:
       edit_settings: "<p>Edit general settings.</p>"
       edit_advanced_settings: "<p>Edit advanced settings.</p>"
