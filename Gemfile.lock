@@ -1,4 +1,14 @@
 GIT
+  remote: git://github.com/couchrest/couchrest.git
+  revision: 239e6c95cfec7cb027bc613f9bb24f82c5751d64
+  ref: 239e6c95cfec7
+  specs:
+    couchrest (1.1.2)
+      mime-types (~> 1.15)
+      multi_json (~> 1.0.0)
+      rest-client (~> 1.6.1)
+
+GIT
   remote: https://github.com/mindeavor/aritcaptcha.git
   revision: f95ad8292012fa34bc0293e05de267553907a1d9
   specs:
@@ -59,10 +69,6 @@ GEM
     builder (2.1.2)
     cocaine (0.1.0)
     configuration (1.3.1)
-    couchrest (1.1.1)
-      mime-types (~> 1.15)
-      multi_json (~> 1.0.0)
-      rest-client (~> 1.6.1)
     crack (0.1.8)
     devise (1.4.2)
       bcrypt-ruby (~> 2.1.2)
@@ -88,7 +94,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
-    multi_json (1.0.3)
+    multi_json (1.0.4)
     newrelic_rpm (3.3.2)
     orm_adapter (0.0.5)
     polyglot (0.3.1)
@@ -151,7 +157,7 @@ DEPENDENCIES
   aritcaptcha!
   aws-s3
   aws-ses (~> 0.4.4)
-  couchrest (~> 1.1)
+  couchrest!
   devise (~> 1.4)
   heroku
   json

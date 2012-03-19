@@ -45,7 +45,6 @@ class Company < ActiveRecord::Base
     if result == true && self.source_db_name.present? && Couch::couchdb_exists?(source_db_name)
       # replicate from another site instead of creating the default docs
       source_db_url = ApplicationController::couch_url self.source_db_name, :@admin
-      puts "Replicating existing couch: #{source_db_url}"
       db.replicate_from CouchRest.database(source_db_url)
     elsif result == true
       default_docs = CouchDocs::default_docs(self.company_type.name, self.user.email)
