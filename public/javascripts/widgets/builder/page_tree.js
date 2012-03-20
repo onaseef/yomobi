@@ -11,7 +11,7 @@
   ;
 
   window.widgetClasses.page_tree = window.widgetClasses.page_tree.extend({
-    
+
     init: categoryBuilder.init,
 
     getEditAreaData: function () {
@@ -26,11 +26,11 @@
       };
       return _.extend({},editAreaData,extraData);
     },
-    
+
     getEditData: categoryBuilder.getEditData,
 
     onHomeViewClick: categoryBuilder.onHomeViewClick,
-    
+
     onSave: categoryBuilder.onSave,
 
     validate: categoryBuilder.validate
@@ -47,7 +47,7 @@
       'click .wysiwyg':             'queueActiveLeafUpdate',
       'click .cancel-btn':          'discardActiveLeafChanges'
     }),
-    
+
     init: function (widget) {
       this.AddItemDialog = AddItemDialog;
 
@@ -69,7 +69,29 @@
         setTimeout(function () { self.setChanged('leaf-content', false); }, 400);
       }
     },
-    
+
+    delegateItemDialog: function (item_id) {
+      if (this.widget.getNodeById(item_id)._data.type === 'rss-feed') {
+        this.itemDialog = this.rssDialog ||
+                          new util.widgetEditor.AddItemDialog({ model:this.widget });
+        this.rssDialog = this.itemDialog;
+      }
+      else {
+        this.itemDialog = this.pageDialog || new AddItemDialog({ model:this.widget });
+        this.pageDialog = this.itemDialog;
+      }
+    },
+
+    editItem: function (item_id) {
+      this.delegateItemDialog(item_id);
+      categoryEditor.editItem.call(this, item_id);
+    },
+
+    addItem: function (item_id) {
+      this.delegateItemDialog(item_id);
+      categoryEditor.addItem.call(this, item_id);
+    },
+
     accept: function () {
       if (this.widget.hasLeafOnTop()) {
 
@@ -122,7 +144,7 @@
         delete self.updateTimeoutId;
       }, delay);
     },
-    
+
     updateActiveLeaf: function () {
       var level = this.widget.getCurrentLevel(true)
         , leaf = level._data
@@ -162,15 +184,16 @@
       this.setChanged('thumb',false);
       this.refreshViews({ forceEditAreaRefresh:true });
     }
-    
+
   });
-  
+
 
   window.widgetPages.page_tree = window.widgetPages.category.extend({
 
     events: {
-      'click .item.category':       'onCategoryClick',
-      'click .item.leaf-name':      'onCategoryClick'
+      'click .category.cat-title':       'onCategoryClick',
+      'click .category.page-title':      'onCategoryClick',
+      'click .category.rss-feed-title':  'onItemClick'
     }
   });
 
@@ -181,7 +204,12 @@
     type: 'page',
 
     getTypeName: function () {
-      return this.model.get('itemTypeName');
+      var node = this.model.getCurrentNode()
+      util.log('TYPE NAAAME',node);
+      if (node._data.type === 'rss-feed')
+        return 'RSS Feed';
+      else
+        return this.model.get('itemTypeName');
     }
   });
 

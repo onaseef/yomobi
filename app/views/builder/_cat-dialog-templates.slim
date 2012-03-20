@@ -4,7 +4,7 @@
 
 script.item-dialog(type="text/template")
   #dialog-confirm class="addItem"
-    input.item-input type="hidden" name="type" value="item"
+    input.item-input type="hidden" name="type" value="<% print(_maybe.type || 'item'); %>"
     | {{ innerContent }}
     table.wphoto-wrap
       tbody
@@ -134,4 +134,15 @@ script.locations-item-dialog-content(type="text/template")
   label Additional Information
   br
   textarea.item-input name="desc" {{ _maybe.desc }}
+  br
+
+script.rss-feed-item-dialog-content(type="text/template")
+  p RSS Feed Information:
+  label Feed Title*
+  br
+  input.item-input type="text" value="{{ _maybe.name }}" name="name"
+  br
+  label Feed URL*:
+  br
+  input.item-input type="text" value="{{ _maybe.url }}" name="url"
   br

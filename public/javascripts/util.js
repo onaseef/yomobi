@@ -23,7 +23,10 @@ var util = {
 
   // namespace for shared widget functions
   widget: {},
-  
+
+  // namespace for shared widget page functions
+  widgetPage: {},
+
   // UI event blocking statuses
   busy: {},
   // Concurrent UI event blocking groups
@@ -240,7 +243,11 @@ var util = {
   widgetById: function (id) {
     return mapp.widgets.get(id);
   },
-  
+
+  between: function (min,max,x) {
+    return Math.max(min, Math.min(max, x));
+  },
+
   // Example inputs/outputs:
   // "08:00" -> "08:00am"
   // "16:00" -> "04:00pm"
@@ -315,12 +322,17 @@ var util = {
 
     return _.map(clock24hourInc, util.from24to12);
   },
-  
+
+  _tmplCache: {},
   getTemplate: function (name) {
+    if (this._tmplCache[name])
+      return this._tmplCache[name];
+
     var source = $('#templates .'+name).html();
-    return source ? _.template(source) : null;
+    this._tmplCache[name] = source ? _.template(source) : null;
+    return this._tmplCache[name];
   },
-  
+
   getWidgetBData: function (widget) {
     if (widget._bdata) return widget._bdata;
 

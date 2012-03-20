@@ -376,13 +376,17 @@ p {
   float: left;
   width: 97%;
   font-size: 14px; }
-.page > .content.category .desc {
+.page > .content.category .desc, .page > .content.category .post-content {
   width: 97%;
   margin-top: 0;
   padding-top: 4px;
   font-size: 15px; }
 .page > .content.category .desc.long {
   width: 100%; }
+.page > .content.category .post-content img {
+  max-width: 100%; }
+.page > .content.category .post-content p {
+  margin: 20px 0; }
 
 #cat-crumbs-test {
   position: absolute;

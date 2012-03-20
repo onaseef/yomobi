@@ -440,13 +440,19 @@ p {
     float: left;
     width:97%;
     font-size: 14px; }
-  .desc {
+  .desc, .post-content {
     width: 97%;
     margin-top: 0;
     padding-top: 4px;
-    font-size: 15px; }
+    font-size: 15px;
+  }
   .desc.long {
-    width: 100%; } }
+    width: 100%; }
+  .post-content {
+    img { max-width: 100%; }
+    p { margin: 20px 0; }
+  }
+}
 
 #cat-crumbs-test {
   position: absolute;

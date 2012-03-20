@@ -585,22 +585,26 @@ div.wysiwyg ul.toolbar {
     border: none;
     background: gray;
   }
-  .button.add-cat { 
+  .button.add-cat {
     background-image: url(/images/ui/icon-folder-new.png);
   }
-  .button.add-item { 
-    background-image: url(/images/ui/icon-item-new.png); 
+  .button.add-item {
+    background-image: url(/images/ui/icon-item-new.png);
   }
-  .button.rename { 
-    background-image: url(/images/ui/icon-rename.png); 
+  .button.add-rss-feed {
+    background-image: url(/images/ui/icon-rss-new.png);
+    padding: 6px 2px 0 18px;
+  }
+  .button.rename {
+    background-image: url(/images/ui/icon-rename.png);
     background-position: center;
   }
-  .button.edit { 
-    background-image: url(/images/ui/icon-edit.png); 
+  .button.edit {
+    background-image: url(/images/ui/icon-edit.png);
     background-position: center;
   }
-  .button.delete { 
-    background-image: url(/images/ui/icon-delete.png); 
+  .button.delete {
+    background-image: url(/images/ui/icon-delete.png);
     background-position: center;
   }
 
@@ -636,6 +640,11 @@ div.wysiwyg ul.toolbar {
     }
     .icon.page, .icon.item {
       background-image: url(/images/ui/icon-item.png);
+      background-position: 3px 6px;
+    }
+
+    .icon.rss-feed {
+      background-image: url(/images/ui/icon-rss.png);
       background-position: 3px 6px;
     }
   }

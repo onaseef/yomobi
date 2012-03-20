@@ -9,7 +9,7 @@
   };
   
   window.widgetClasses.custom_page = Widget.extend({
-    requriedAttrs: ['content'],
+    requiredAttrs: ['content'],
 
     getShowData: function () {
       var extraData = {

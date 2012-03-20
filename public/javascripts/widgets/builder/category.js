@@ -234,12 +234,13 @@
       'click .rename-link':                 'rename',
       'click .remove-wphoto-link':          'removeWPhoto',
 
+      'click .add-rss-feed.button':         'addRssFeed',
       'sortstop':                           'updateOrder'
     },
 
     init: function (widget) {
       // this is needed for proper inheritance due to closures
-      this.AddItemDialog = AddItemDialog;
+      this.AddItemDialog = util.widgetEditor.AddItemDialog;
     },
 
     // the button that activates this should only be available on the home page
@@ -439,6 +440,24 @@
       this.itemDialog.enterMode('add').prompt();
     },
 
+    addRssFeed: function (e) {
+      if (!util.isUIFree()) return;
+
+      // Node the important lack of `this` before `AddItemDialog`
+      this.itemDialog = this.rssDialog ||
+                        new util.widgetEditor.AddItemDialog({ model:this.widget });
+      this.rssDialog || (this.rssDialog = this.itemDialog);
+
+      this.itemDialog.model = this.widget;
+      this.itemDialog.options = {
+        onClose: this.refreshViews,
+        hideUploader: this.itemDialog.type === 'page',
+        defaultItem: { name:'', type:'rss-feed' }
+      };
+
+      this.itemDialog.enterMode('add').prompt(undefined);
+    },
+
     editItem: function (item_id) {
       if (!util.isUIFree()) return;
       util.log('Editing item');
@@ -448,10 +467,10 @@
       ;
       if (_.isEmpty(item)) return alert('Please select an item to edit.');
 
-      var dialog =  new this.AddItemDialog({
-        model: this.widget,
+      var dialog =  this.itemDialog || new this.AddItemDialog({ model: this.widget });
+      this.itemDialog.options = {
         onClose: this.refreshViews
-      });
+      };
       dialog.enterMode('edit').prompt(null,item);
     },
 
@@ -547,15 +566,7 @@
 
     refresh: function () {
       if (mapp.pageLevel === 0) return;
-
-      var newContent = $(this.widget.getPageContent())
-        , newTitle = this.widget.getTitleContent()
-        , activePage = mapp.getActivePage()
-      ;
-      this.beforePageRender(newContent);
-      activePage.content.empty().append(newContent);
-      activePage.topBar.find('.title').html(newTitle);
-      this.widget.pageView.setContentElem(activePage.content);
+      util.widgetPage.refresh.call(this);
     }
 
   });
@@ -744,17 +755,20 @@
 
     getTypeName: function () {
       var node = this.model.getCurrentNode()[this.options.node_id]
-        , isCat = this.mode === 'add' || node._data.type === 'cat'
+        , isCat = this.mode === 'add' || node && node._data.type === 'cat'
         , typeName = isCat ? 'catTypeName' : 'itemTypeName'
       ;
-      return this.model.get(typeName);
+      if (node && node._data.type === 'rss-feed')
+        return 'Rss Feed';
+      else
+        return this.model.get(typeName);
     }
 
   });
 
   // =================================
   var itemDialogTemplate = util.getTemplate('item-dialog');
-  var AddItemDialog = Backbone.View.extend({
+  util.widgetEditor.AddItemDialog = Backbone.View.extend({
 
     initialize: function () {
       this.template = util.getTemplate(this.model.get('wsubtype')+'-item-dialog-content');
@@ -770,7 +784,8 @@
     render: function (flash,level,item) {
       flash || (flash = {});
       item || (item = {});
-      var title = (this.mode == 'add' ? "Add New " : "Edit ") + this.model.get('itemTypeName');
+      var itemTypeName = item.type || this.model.get('itemTypeName');
+      var title = (this.mode == 'add' ? "Add New " : "Edit ") + util.prettifyName(itemTypeName);
 
       var templateData = _.extend({}, item, {
         flash: flash,
@@ -779,7 +794,10 @@
         addedItems: this.addedItems,
         mode: this.mode
       });
-      templateData.innerContent = this.template(templateData);
+      var template = (item.type === 'rss-feed') ?
+                      util.getTemplate('rss-feed-item-dialog-content') :
+                      this.template;
+      templateData.innerContent = template(templateData);
       var dialogHtml = itemDialogTemplate(templateData);
 
       $(this.el).html(dialogHtml).attr('title',title);
@@ -788,6 +806,7 @@
 
     prompt: function (flash,item,keepAddedItems) {
       if (!keepAddedItems) this.addedItems.length = 0;
+      item || (item = this.options.defaultItem);
 
       var self = this
         , level = this.model.getCurrentLevel()
