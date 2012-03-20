@@ -1,0 +1,254 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  general:
+    call: "Call:"
+    email: "Email Address:"
+    click_here_start: "Click here"
+    click_here_middle: "click here"
+    name: "Name:"
+    phone_number: "Phone Number:"
+    your_name: "Your Name:"
+    submitting: "Submitting..."
+    error:
+      incorrect_password: "Incorrect Password"
+
+  new_site:
+    site_name: "Site Name:"
+    site_url: "Mobile Site URL:"
+    error:
+      invalid_site_name: "Invalid Site Name. Site name must be 2 - %{max_length} characters long."
+      invalid_site_url: "Invalid URL: the URL must be at least 3 characters long and contain only A-Z, a-z, 0-9, underscores (_), and dashes (-)."
+      name_reserved: "Sorry, that name is reserved. Please choose another."
+      url_taken: "URL is already taken."
+
+  leave_a_message:
+    insructions: "Leave a message:"
+    subject: "Subject:"
+    message: "Message:"
+    confirmation: "Your message has been sent to %{company_name}. Thank you."
+
+  call_back:
+    insructions: "Enter your call back information:"
+    confirmation: "Your call back request has been sent to %{company_name}. Thank you."
+
+  tell_a_friend:
+    instructions: "Share %{company_name} with a friend. A short email will be sent to your friend with a link to this mobile site."
+    friend_email: "Your Friend's Email:"
+    confirmation: "Thank you for sharing %{company_name} with your friend."
+
+  booking_request:
+    instructions: "Send a Booking Request:"
+    number_of_people: "Number of People:"
+    time: "Time:"
+    date: "Date:"
+    confirmation: "Your booking request has been sent to %{company_name}."
+
+  keep_me_informed:
+    instructions: "Enter your information to follow the latest news from %{company_name}. You can opt out at any time and your information will remain private."
+    mobile_number: "Mobile Number:"
+    mobile_carrier: "Mobile Service Carrier:"
+    confirmation: "Thank you for following %{company_name}."
+
+  signup_bar: "YoMobi helps you reach more people with a mobile optimized website."
+
+  home_page:
+    banner:
+      title: "Get Mobilized!"
+      subtitle: "Reach more people with a mobile website."
+    form:
+      title: "Sign Up"
+      subtitle: "It's free."
+  
+  account_setup:
+    help:
+      site_name: "Input your name or business name. This will appear at the top of your mobile site."
+      site_url: "Select a URL for your mobile site. It cannot contains spaces or special characters."
+      site_pic: "Note: Large size pictures may take up to 1 minute to load."
+
+      phone: "Enter a number you would like your mobile site visitors to use to call you."
+      address: "Enter an address you would like your mobile site visitors to use to locate you."
+
+  builder:
+    mobile_phone_emulator: "Mobile Phone Emulator"
+    widget_editor: "Widget Editor"
+    widget_editor_instructions: "Click on a widget in the Mobile Phone Emulator to edit it here."
+    mobile_redirect: " to learn how to auto-redirect mobile visitors from your desktop site to your mobile site."
+
+    sidebar:
+      view_mobile_site: "Ver Sitio Móvil"
+      email_followers: "Enviar correo"
+      text_followers: "Enviar texto"
+      general_settings: "Configuración general"
+      advanced_settings: "Configuración avanzada"
+      edit_tab_bar: "Editar barra de fichas"
+      mobile_site_builder: "Generar sitio móvil"
+
+    help:
+      edit_settings: "<p>Edit general settings.</p>"
+      edit_advanced_settings: "<p>Edit advanced settings.</p>"
+      edit_tab_bar: "<p>Edit the navigation tab bar at the top of your mobile site.</p><br><p>Highlight the widgets you want your mobile site visitors to see first by adding them to the navigation tab bar which appears at the top of your mobile site.</p>"
+    
+    settings:
+      help:
+        redirect: "To automatically redirect visitors to your mobile site when they visit your desktop site from a mobile phone, copy this code snippet and paste it into your desktop site’s home page, just before the closing &lt;head&gt; tag. <b>Click ? more help.</b>"
+        site_pic: "Note: Large size pictures may take up to 1 minute to load."
+
+    jeditor:
+      help:
+        thumb: "Set this picture as the preview thumbnail for this page.<br><b>Click ? for more information.</b>"
+        url: "Make this picture a clickable URL.<br><b>Click ? for more information</b>"
+        youtube: "Add a video to your page.<br><b>Click ? for more information.</b>"
+
+  site_manager:
+    active_site: "Active Site: %{site_name}"
+    add_admin: "Add Admin"
+    revoke_access: "Revoke Access"
+    make_owner: "Make Owner"
+    create_new_site: "Create New Site"
+    make_default: "Make Default"
+    site_name: "Site Name:"
+    site_details: "Site Details"
+    select_site: "Please select a site on the left."
+    edit_site: "Edit Site"
+    generate_signup_key: "Generate Signup Key"
+    site_access_list: "Sites you have access to:"
+    admin_email: "Admin's Email:"
+    enter_password: "Enter your password to continue:"
+    error:
+      are_you_sure: "Are you sure?"
+      site_limit: "You are at your site count limit. [Max is %{max_site_count}]."
+      email_not_found: "Sorry, there is no YoMobi account associated with that email."
+      no_self_admin: "You cannot add yourself as a Admin."
+      already_owner: "You are already the owner of this site."
+      
+    help:
+      signup_keys: "When you are ready to hand this site over to its owner, generate a signup key, then email the link to the site owner and have them click on the link to sign up to Yomobi and take ownership of their site.<br><b>Click ? for more information.</b>"
+    confirm:
+      concede_site: Are you sure? You will lose ownership of this site.
+    dialog:
+      concede_site: Conceding your ownership of this site will give up your ownership rights. That means you will no longer have control over collaborators.
+
+  widgets:
+    helpText:
+      about-us:
+        pname: "About Us"
+        help: <p>Tell your mobile site visitors about you.</p>
+
+      blog:
+        help: <p>Add a link to your blog on your mobile site.</p>
+        subHelp: Blog
+
+      booking-request:
+        help: <p>Allow your mobile site visitors to email you a booking request.</p><br><p>Booking requests will be sent to this email address, so check your mail often.</p>
+
+      business-hours:
+        help: <p>Let your mobile site visitors know when you are open for business.</p>
+
+      call-me-back:
+        help: <p>Allow your mobile site visitors to request a call back from you.</p><br><p>Call back requests will be sent to this email address, so check your mail often.</p>
+
+      call-us:
+        help: <p>Allow your mobile site visitors to call you with a single click.</p>
+
+      category:
+        help: <p>Use this widget to create and organize web pages on your mobile site.</p>
+        hide: <p>Hide this widget from your mobile site.</p>
+
+      coupon:
+        help: <p>Add a coupon to your mobile site.</p>
+
+      custom-page:
+        help: <p>Add a web page to your mobile site.</p>
+
+      donate:
+        help: <p>Use this widget to direct visitors to the online site that allows them to donate to your cause.</p>
+        subHelp: online donation site
+
+      event-calendar:
+        help: <p>Add a link to your online calendar on your mobile site.</p>
+        subHelp: online calendar
+
+      facebook:
+        help: <p>Add a link to your Facebook page on your mobile site to make it easy for visitors to friend you.</p><br><p><a target="ymhelp" href="http://www.facebook.com/username">Click here</a> to find your facebook username.</p>
+        subHelp: Facebook username
+
+      find-us:
+        help: <p>Allow your mobile site visitors to easily find you.</p>
+
+      flickr:
+        help: <p>Add a link to your Flickr album on your mobile site.</p><br><p><a target="ymhelp" href="http://www.flickr.com/profile_url.gne">Click here</a> to find your flickr URL.</p>
+        subHelp: Flickr alias or custom URL
+
+      full-website:
+        help: <p>Add a link to your full website on your mobile site.</p>
+        subHelp: full website
+
+      keep-me-informed:
+        help: <p>Allow your mobile site visitors to request to receive email and text notifications from you.</p><br><p>This widget allows visitors to your mobile site to become fans and follow your latest news via email and text notifications.</p><br><p>You can send email notifications and instant messages to your followers by clicking on the “Email your Followers” or "Send Text to Your Followers" link in the navigation column on the left.</p>
+
+      leave-a-message:
+        help: <p>Allow your mobile website visitors to easily leave you an email message.</p><br><p>Messages will be sent to this email address, so check your mail often.</p>
+
+      link:
+        help: <p>Add a link to a web page.</p>
+
+      locations:
+        help: <p>Give your mobile site visitors easy access to a directory of your business locations.</p><br><p>Use this widget to create a directory of your business locations.</p>
+
+      menu:
+        help: <p>Use this widget to create a mobile optimized version of your menu.</p>
+
+      news:
+        help: <p>Add a link to your online news site on your mobile site.</p>
+        subHelp: online news site
+
+      photo-bucket:
+        help: <p>Add a link to your PhotoBucket album on your mobile site.</p><br><p><a target="ymhelp" href="http://support.photobucket.com/app/answers/detail/a_id/184/kw/custom%20url">Click here</a> to find your photobucket URL.</p>
+        subHelp: Photobucket album custom
+
+      picasa:
+        help: <p>Add a link to your Picasa album on your mobile site.</p><br><p><a target="ymhelp" href="http://picasa.google.com/support/bin/answer.py?answer=39510">Click here</a> to find your Picasa album URL.</p>
+        subHelp: Picasa album URL
+
+      products:
+        help: <p>Use this widget to create a mobile optimized catalog of your products or services.</p>
+
+      property-listings:
+        help: <p>Use this widget to create a mobile optimized list of properties for lease or sale.</p>
+
+      reviews:
+        help: <p>Show visitors how great you are by adding a link to your online reviews page on your mobile site.</p>
+        subHelp: reviews page
+
+      rss-feed:
+        help: <p>Display a nicely formatted rss feed on your mobile site.</p>
+
+      services:
+        help: <p>Give your mobile site visitors easy access to your catalog of services.</p><br><p>Use this widget to create a mobile optimized catalog of your services.</p>
+
+      tell-a-friend:
+        help: <p>Let your mobile site visitors tell their friends about you.</p>
+
+      twitter:
+        help: <p>Add a link to your twitter account on your mobile site to make it easy for visitors to follow you.</p><br><p><a target="ymhelp" href="http://support.twitter.com/articles/14609-how-to-change-your-username">Click here</a> to find your twitter uername.</p>
+        subHelp: Twitter username
+
+      video:
+        help: <p>Add a link to a video on your mobile site.</p>
+        subHelp: video
+
+    hoverHelpText:
+      tabBar: "<p>Click here to edit the <b>tab bar</b>.</p>"
+
+      companyLogo: "<p>Click here to change your <b>site photo</b>.</p>"
+      companyName: "<p>Click here to change your <b>site title</b>.</p>"
+      companySlogan: "<p>Click here to change your <b>site slogan</b>.</p>"
+
+    widget_icons:
+      call: "Call"
+      information: "Information77"
+
+  mobile_tab_bar:
+    home: "Casa"
