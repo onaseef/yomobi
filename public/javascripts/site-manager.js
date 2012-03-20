@@ -247,25 +247,19 @@
   var NewSiteDialog = Backbone.View.extend({
     template: util.getTemplate('new-site-dialog'),
     events: {
-      'click .select-source':   'showSiteSource',
-      'click .select-type':     'showSiteType',
+      'change [name=create_type]':   'changeSiteCreateType',
       'submit':                 'submit'
     },
     initialize: function () {
       _.bindAll(this, 'submit', 'render');
     },
 
-    showSiteSource: function (e) {
+    changeSiteCreateType: function (e) {
+      var showType = $(e.target).val() == 'type';
       e.preventDefault();
-      this.$('.site-type').hide();
-      this.$('.site-source').show();
-    },
-
-    showSiteType: function (e) {
-      e.preventDefault();
-      this.$('.site-source').hide();
-      this.$('.site-type').show();
-      this.$('[name=source_db_name]').val('');
+      this.$('.site-type').toggle( showType );
+      this.$('.site-source').toggle( !showType );
+      this.$('[name="site[source_db_name]"]').val('');
     },
 
     render: function (errors) {
