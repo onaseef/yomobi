@@ -33,7 +33,7 @@
     table
       tr
         td.go-home
-          a href="#" Home
+          a href="#" =t'mobile_tab_bar.home'
         td.wtab data-wid="{{ wids[0] }}"
           div {{ wnames[0] }}
         td.wtab data-wid="{{ wids[1] }}"
@@ -73,41 +73,41 @@
 
   script.leave_msg-page(type="text/template")
     .input-wrap
-      p Leave a message:
+      p =t'leave_a_message.instructions'
       = form_tag "/#{@company.db_name}/leave_msg/submit", :method => 'post' do
-        label Your Name:
+        label =t'general.name'
         br
         input type="text" name="name"
         br
-        label Your Email Address:
+        label =t'general.email'
         br
         input type="text" name="email"
         br
-        label Subject:
+        label =t'leave_a_message.subject'
         br
         input type="text" name="subject"
         br
-        label Message Content:
+        label =t'leave_a_message.message'
         textarea name="feedback" rows=5
         .aritcaptcha-container
         p.response.error
         input(type="submit" value="Send")
     .thanks-wrap style="display:none"
-      h3 = "Your message has been sent to #{@company.name}. Thank you."
+      h3 = t('leave_a_message.confirmation', :company_name => @company.name)
 
   script.call_back-page(type="text/template")
     .input-wrap
-      p Enter your call back information:
+      p =t'call_back.instructions'
       = form_tag "/#{@company.db_name}/call_back/submit", :method => 'post' do
-        label Name:
+        label =t'general.name'
         br
         input type="text" name="name"
         br
-        label Phone Number:
+        label =t'general.phone_number'
         br
         input type="text" name="phone"
         br
-        label Message:
+        label =t'leave_a_message.message'
         br
         textarea name="message" rows=5 cols=30
         br
@@ -116,21 +116,18 @@
         br
         input(type="submit" value="Send")
     .thanks-wrap style="display:none"
-      h3 Your call back request has been sent.
+      h3 =t('call_back.confirmation', :company_name => @company.name)
 
   script.tell_friend-page(type="text/template")
     .input-wrap
-      p
-        ' Share
-        = @company.name + " "
-        | with your friend. A short email will be sent to your friend with a link to this mobile site.
-
+      p =t('tell_a_friend.instructions', :company_name => @company.name)
+  
       = form_tag "/#{@company.db_name}/tell_friend/submit", :method => 'post' do
-        label Your Friend's Email:
+        label =t'tell_a_friend.friend_email'
         br
         input type="text" name="email_to"
         br
-        label Your Name:
+        label =t'general.your_name'
         br
         input type="text" name="name_from"
         br
@@ -138,25 +135,25 @@
         br
         input type="submit" value="Send"
     .thanks-wrap style="display:none"
-      h3 Thank you for sharing this site with your friend.
+      h3 =t('tell_a_friend.confirmation', :company_name => @company.name)
 
   script.booking-page(type="text/template")
     .input-wrap
-      p Send a Booking Request:
+      p =t'booking_request.instructions'
       = form_tag "/#{@company.db_name}/booking/submit", :method => 'post' do
-        label Name:
+        label =t'general.name'
         br
         input name="name" type="text"
         br
-        label Phone:
+        label =t'general.phone'
         br
         input name="phone" type="text"
         br
-        label Number of People:
+        label =t'booking_request.number_of_people'
         br
         = select_tag 'party_size', options_for_select(1..50,2)
         br
-        label Time:
+        label =t'booking_request.time'
         br
         select name="time"
           | <% for (var i=0; i < times.length; i++) {
@@ -166,7 +163,7 @@
           option value="{{ times[i] }}" {{ times[i] }}
           | <% } } %>
         br
-        label Date:
+        label =t'booking_request.date'
         br
         = select_tag 'date_m', options_for_select(1..12,Date.today.month)
         | &nbsp;&frasl;&nbsp;
@@ -178,26 +175,23 @@
         p.error.response
         input(type="submit" value="Send")
     .thanks-wrap style="display:none"
-      h3 Your booking request has been sent.
+      h3 =t('booking_request.confirmation', :company_name => @company.name)
 
   script.informed-page(type="text/template")
     .input-wrap
-      p
-        | Enter your information to follow the latest news from
-        = " #{@company.name}. "
-        | You can opt out at any time and your information will remain private.
+      p =t('keep_me_informed.instructions', :company_name => @company.name)
       = form_tag "/#{@company.db_name}/informed/submit", :method => 'post' do
         | <% if (_maybe.optForEmails) { %>
-        label Email Address:
+        label =t'general.email'
         br
         input type="text" name="email"
         br
         | <% } if (_maybe.optForTexts) { %>
-        label Mobile Number:
+        label =t'keep_me_informed.mobile_number'
         br
         input type="text" name="phone"
         br
-        label Mobile Service Carrier:
+        label =t'keep_me_informed.mobile_carrier'
         br
         = select_tag 'carrier', options_for_select(carrier_names,'AT&T')
         br
@@ -206,7 +200,7 @@
         p.response.error
         input(type="submit" value="Send")
     .thanks-wrap style="display:none"
-      h3= "Thank you for following #{@company.name}."
+      h3 =t('keep_me_informed.confirmation', :company_name => @company.name)
 
   script.hours-page(type="text/template")
     - %w(mon tue wed thu fri sat sun).each do |day|

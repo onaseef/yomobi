@@ -19,29 +19,29 @@
       defaultSite_id: <%= current_user.default_company.id %>,
       activeSite_id: <%= current_user.company.id %>,
 
-      concedeSiteConfirmation: "<%=t 'site_manager.confirm.concede_site' %>"
+      concedeSiteConfirmation: "<%= t'site_manager.confirm.concede_site' %>"
     };
     </script>
   = javascript_include_tag 'site-manager'
 
 #manager-container
-  h2.active-site= "Active Site: #{current_user.company.db_name}"
+  h2.active-site =t('site_manager.active_site', :site_name => current_user.company.db_name)
 
   .site-list-wrap
-    h2 Sites you have access to:
+    h2 =t'site_manager.site_access_list'
     ul.sites.fancy-selectable
-    button.edit Edit Site
-    button.create Create New Site
-    button.make-default Make Default
+    button.edit =t'site_manager.edit_site'
+    button.create =t'site_manager.create_new_site'
+    button.make-default =t'site_manager.make_default'
   .site-details-wrap
-    h2 Site Details
+    h2 =t'site_manager.site_details'
     .details
-      h3.active-site Please select a site on the left.
-      button disabled="disabled" Generate Signup Key
+      h3.active-site =t'site_manager.select_site'
+      button disabled="disabled" =t'site_manager.generate_signup_key'
       ul.admins.fancy-selectable
-    button.add-admin    disabled="disabled" Add Admin
-    button.remove-admin disabled="disabled" Revoke Access
-    button.concede      disabled="disabled" Make Owner
+    button.add-admin    disabled="disabled" =t'site_manager.add_admin'
+    button.remove-admin disabled="disabled" =t'site_manager.revoke_access'
+    button.concede      disabled="disabled" =t'site_manager.make_owner'
   .clearfix
 
 
@@ -73,7 +73,7 @@
       | *
       | <% } %>
 
-    button.gen-signup-key Generate Signup Key
+    button.gen-signup-key =t'site_manager.generate_signup_key'
     input.signup-key.hide type="text" readonly="readonly"
     a href="http://help.yomobi.com/Account/SignupKey" target="ymhelp"
       img.help-bubble src="/images/ui/help-bubble.png" title=t('site_manager.help.signup_keys')
@@ -101,33 +101,30 @@
         | <% } %>
 
   script.admin(type="text/template")
-    span.url YoMobi.com/{{ name }}
+    span.url yomobi.com/{{ name }}
 
   script.new-site-dialog(type="text/template")
     form#account-setup-box.new-site.dialog title="Create a New Site"
       .fields
         | <% if (errors.maxSiteCount) { %>
-        p.error You are at your site count limit (max is {{ errors.maxSiteCount }})
+        p.error "You are at your site count limit (max is {{ errors.maxSiteCount }})"
         | <% } %>
-        h3 Site Name
+        h3 =t'site_manager.site_name'
         | <% if (errors.title) { %>
-        p.error
-          ' Invalid Site Name. Site Name must be at least 2 characters and at most
-          = MAX_COMPANY_NAME_LENGTH
-          | &nbsp;characters.
+        p.error =t('new_site.error.invalid_site_name', :max_length => MAX_COMPANY_NAME_LENGTH)
         | <% } %>
         input type="text" name="site[title]" value="{{ title }}" maxlength=MAX_COMPANY_NAME_LENGTH
 
-        h3 Mobile Site Url:
+        h3 =t'new_site.site_url'
 
         | <% if (errors.url === 'illegal') { %>
-        p.error Invalid URL: the URL must be at least 3 characters long and contain only A-Z, a-z, 0-9, underscores (_), and dashes (-).
+        p.error =t'new_site.error.invalid_site_url'
         | <% } else if (errors.url === 'reserved') { %>
-        p.error Sorry, that name is reserved. Please choose another.
+        p.error =t'new_site.error.name_reserved'
         | <% } else if (errors.url === 'taken') { %>
-        p.error URL is already taken.
+        p.error =t'new_site.error.name_taken'
         | <% } else if (errors.url === 'taken?') { %>
-        p.error Name is already taken?
+        p.error =t'new_site.error.name_taken'
         | <% } %>
 
         .site-url
@@ -142,39 +139,39 @@
         | <% } %>
         = select :site, :type, options_for_select(company_types, 57)
       .loading
-        h3 Submitting...
+        h3 =t'general.submitting'
         img src="/images/ui/ajax-loader-small.gif"
   
   script.add-admin-dialog(type="text/template")
     form#account-setup-box.add-admin.dialog title="Add Admin"
       .fields
-        h3 Admin's email:
+        h3 =t'site_manager.admin_email'
         | <% if (errors.email) { %>
-        p.error Sorry, there is no YoMobi account associated with that email.
+        p.error =t'site_manager.error.email_not_found'
         | <% } %>
         | <% if (errors.self) { %>
-        p.error You cannot add yourself as a Admin.
+        p.error =t'site_manager.error.no_self_admin'
         | <% } %>
         input type="text" name="email" value="{{ email }}"
       .loading
-        h3 Submitting...
+        h3 =t'general.submitting'
         img src="/images/ui/ajax-loader-small.gif"
 
   script.concede-dialog(type="text/template")
     form#account-setup-box.add-admin.dialog title="Concede Site Ownership"
       .fields
-        h3.error Are you Sure?
-        p.error= t 'site_manager.dialog.concede_site'
+        h3.error =t'site_manager.error.are_you_sure'
+        p.error =t'site_manager.dialog.concede_site'
 
-        h3 Enter Your Password to Continue:
+        h3 =t'site_manager.enter_password'
         | <% if (errors.password) { %>
-        p.error Incorrect Password
+        p.error =t'general.error.incorrect_password'
         | <% } %>
         | <% if (errors.self) { %>
-        p.error You are already the owner of this site.
+        p.error =t'site_manager.error.already_owner'
         | <% } %>
         input type="password" name="password"
         input type="hidden" name="admin_id" value="{{ admin_id }}"
       .loading
-        h3 Submitting...
+        h3 =t'general.submitting'
         img src="/images/ui/ajax-loader-small.gif"

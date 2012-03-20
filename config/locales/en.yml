@@ -2,6 +2,55 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  general:
+    call: "Call:"
+    email: "Email Address:"
+    click_here_start: "Click here"
+    click_here_middle: "click here"
+    name: "Name:"
+    phone_number: "Phone Number:"
+    your_name: "Your Name:"
+    submitting: "Submitting..."
+    error:
+      incorrect_password: "Incorrect Password"
+
+  new_site:
+    site_name: "Site Name:"
+    site_url: "Mobile Site URL:"
+    error:
+      invalid_site_name: "Invalid Site Name. Site name must be 2 - %{max_length} characters long."
+      invalid_site_url: "Invalid URL: the URL must be at least 3 characters long and contain only A-Z, a-z, 0-9, underscores (_), and dashes (-)."
+      name_reserved: "Sorry, that name is reserved. Please choose another."
+      url_taken: "URL is already taken."
+
+  leave_a_message:
+    insructions: "Leave a message:"
+    subject: "Subject:"
+    message: "Message:"
+    confirmation: "Your message has been sent to %{company_name}. Thank you."
+
+  call_back:
+    insructions: "Enter your call back information:"
+    confirmation: "Your call back request has been sent to %{company_name}. Thank you."
+
+  tell_a_friend:
+    instructions: "Share %{company_name} with a friend. A short email will be sent to your friend with a link to this mobile site."
+    friend_email: "Your Friend's Email:"
+    confirmation: "Thank you for sharing %{company_name} with your friend."
+
+  booking_request:
+    instructions: "Send a Booking Request:"
+    number_of_people: "Number of People:"
+    time: "Time:"
+    date: "Date:"
+    confirmation: "Your booking request has been sent to %{company_name}."
+
+  keep_me_informed:
+    instructions: "Enter your information to follow the latest news from %{company_name}. You can opt out at any time and your information will remain private."
+    mobile_number: "Mobile Number:"
+    mobile_carrier: "Mobile Service Carrier:"
+    confirmation: "Thank you for following %{company_name}."
+
   signup_bar: "YoMobi helps you reach more people with a mobile optimized website."
 
   home_page:
@@ -22,6 +71,20 @@ en:
       address: "Enter an address you would like your mobile site visitors to use to locate you."
 
   builder:
+    mobile_phone_emulator: "Mobile Phone Emulator"
+    widget_editor: "Widget Editor"
+    widget_editor_instructions: "Click on a widget in the Mobile Phone Emulator to edit it here."
+    mobile_redirect: " to learn how to auto-redirect mobile visitors from your desktop site to your mobile site."
+
+    sidebar:
+      view_mobile_site: "View Mobile Site"
+      email_followers: "Email Your Followers"
+      text_followers: "Text Your Followers"
+      general_settings: "General Settings"
+      advanced_settings: "Advanced Settings"
+      edit_tab_bar: "Edit Mobile Tab Bar"
+      mobile_site_builder: "Mobile Site Builder"
+
     help:
       edit_settings: "<p>Edit general settings.</p>"
       edit_advanced_settings: "<p>Edit advanced settings.</p>"
@@ -39,6 +102,27 @@ en:
         youtube: "Add a video to your page.<br><b>Click ? for more information.</b>"
 
   site_manager:
+    active_site: "Active Site: %{site_name}"
+    add_admin: "Add Admin"
+    revoke_access: "Revoke Access"
+    make_owner: "Make Owner"
+    create_new_site: "Create New Site"
+    make_default: "Make Default"
+    site_name: "Site Name:"
+    site_details: "Site Details"
+    select_site: "Please select a site on the left."
+    edit_site: "Edit Site"
+    generate_signup_key: "Generate Signup Key"
+    site_access_list: "Sites you have access to:"
+    admin_email: "Admin's Email:"
+    enter_password: "Enter your password to continue:"
+    error:
+      are_you_sure: "Are you sure?"
+      site_limit: "You are at your site count limit. [Max is %{max_site_count}]."
+      email_not_found: "Sorry, there is no YoMobi account associated with that email."
+      no_self_admin: "You cannot add yourself as a Admin."
+      already_owner: "You are already the owner of this site."
+      
     help:
       signup_keys: "When you are ready to hand this site over to its owner, generate a signup key, then email the link to the site owner and have them click on the link to sign up to Yomobi and take ownership of their site.<br><b>Click ? for more information.</b>"
     confirm:
@@ -49,6 +133,7 @@ en:
   widgets:
     helpText:
       about-us:
+        pname: "About Us"
         help: <p>Tell your mobile site visitors about you.</p>
 
       blog:
@@ -157,3 +242,10 @@ en:
       companyLogo: "<p>Click here to change your <b>site photo</b>.</p>"
       companyName: "<p>Click here to change your <b>site title</b>.</p>"
       companySlogan: "<p>Click here to change your <b>site slogan</b>.</p>"
+
+    widget_icons:
+      call: "Call"
+      information: "Information77"
+
+  mobile_tab_bar:
+    home: "Home"

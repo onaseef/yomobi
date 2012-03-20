@@ -1,25 +1,25 @@
 ul
   li.option.basic class=active?('mobile',active)
     .icon
-    a#preview-mobile-site href=mobile_preview_path(@company.db_name) View Mobile Site
+    a#preview-mobile-site href=mobile_preview_path(@company.db_name) =t'builder.sidebar.view_mobile_site'
   li.spacer
   li.option.text class=active?('email',active)
     .icon
-    a href=builder_email_path Email Your Followers
+    a href=builder_email_path =t'builder.sidebar.email_followers'
   li.option.text class=active?('text',active)
     .icon
-    a href=builder_text_path Text Your Followers
+    a href=builder_text_path =t'builder.sidebar.text_followers'
   li.spacer
   li.option.edit-settings
     .icon
-    a href=builder_main_path(:anchor => 'edit-settings') General Settings
+    a href=builder_main_path(:anchor => 'edit-settings') =t'builder.sidebar.general_settings'
   li.option.edit-advanced-settings
     .icon
-    a href=builder_main_path(:anchor => 'edit-advanced-settings') Advanced Settings
+    a href=builder_main_path(:anchor => 'edit-advanced-settings') =t'builder.sidebar.advanced_settings'
   li.option.edit-tab-bar
     .icon
-    a href=builder_main_path(:anchor => 'edit-tab-bar') Edit Mobile Tab Bar
+    a href=builder_main_path(:anchor => 'edit-tab-bar') =t'builder.sidebar.edit_tab_bar'
   li.spacer
   li.option.builder class=active?('builder',active)
     .icon
-    a href=builder_main_path Mobile Website Builder
+    a href=builder_main_path =t'builder.sidebar.mobile_site_builder'
