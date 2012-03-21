@@ -248,6 +248,7 @@
     template: util.getTemplate('new-site-dialog'),
     events: {
       'change [name=create_type]':   'changeSiteCreateType',
+      'change select.source':        'onSourceSelect',
       'submit':                 'submit'
     },
     initialize: function () {
@@ -260,6 +261,22 @@
       this.$('.site-type').toggle( showType );
       this.$('.site-source').toggle( !showType );
       this.$('[name="site[source_db_name]"]').val('');
+      this.toggleCreateButton(showType);
+    },
+
+    onSourceSelect: function (e) {
+      var selected = $(e.target).find('option:selected')[0]
+        , noop = $(e.target).find('option:first')[0]
+        , isBlank = (selected == noop)
+      ;
+      this.toggleCreateButton( !isBlank );
+    },
+
+    toggleCreateButton: function (enabled) {
+      $(this.el).parent()
+        .find('.ui-dialog-buttonset button:first')
+        .prop('disabled', !enabled)
+      ;
     },
 
     render: function (errors) {
