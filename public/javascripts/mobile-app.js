@@ -19,12 +19,13 @@
 
     parse: function (res) {
       util.log('widget res',res);
-      return _.map(res.rows, function (row) {
+      var widgets = _.map(res.rows, function (row) {
         var wdata = row.doc
           , widget = util.newWidget(wdata)
         ;
         return widget;
       });
+      return _.compact(widgets);
     },
 
     validCount: function () {
