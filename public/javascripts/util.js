@@ -350,7 +350,8 @@ var util = {
   },
   
   newWidget: function (data) {
-    return new window.widgetClasses[data.wtype](data);
+    var widgetClass = window.widgetClasses[data.wtype];
+    return widgetClass && (new widgetClass(data));
   },
 
   newWidgetByType: function (wtype,wsubtype) {
