@@ -383,8 +383,11 @@ p {
   font-size: 15px; }
 .page > .content.category .desc.long {
   width: 100%; }
+.page > .content.category .post-content > * {
+  max-width: 100% !important; }
 .page > .content.category .post-content img {
-  max-width: 100%; }
+  max-width: 100% !important;
+  height: auto !important; }
 .page > .content.category .post-content p {
   margin: 20px 0; }
 

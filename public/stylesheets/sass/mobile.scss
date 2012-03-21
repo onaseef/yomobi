@@ -449,7 +449,8 @@ p {
   .desc.long {
     width: 100%; }
   .post-content {
-    img { max-width: 100%; }
+    > * { max-width: 100% !important; }
+    img { max-width: 100% !important; height: auto !important; }
     p { margin: 20px 0; }
   }
 }
