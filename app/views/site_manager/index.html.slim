@@ -107,7 +107,7 @@
     form#account-setup-box.new-site.dialog title="Create a New Site"
       .fields
         | <% if (errors.maxSiteCount) { %>
-        p.error "You are at your site count limit (max is {{ errors.maxSiteCount }})"
+        p.error =t('site_manager.error.site_limit', :max_site_count => "{{errors.maxSiteCount}}")
         | <% } %>
         h3 =t'site_manager.site_name'
         | <% if (errors.title) { %>
@@ -122,9 +122,9 @@
         | <% } else if (errors.url === 'reserved') { %>
         p.error =t'new_site.error.name_reserved'
         | <% } else if (errors.url === 'taken') { %>
-        p.error =t'new_site.error.name_taken'
+        p.error =t'new_site.error.url_taken'
         | <% } else if (errors.url === 'taken?') { %>
-        p.error =t'new_site.error.name_taken'
+        p.error =t'new_site.error.url_taken'
         | <% } %>
 
         .site-url

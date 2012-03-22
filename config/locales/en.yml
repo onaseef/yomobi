@@ -118,7 +118,7 @@ en:
     enter_password: "Enter your password to continue:"
     error:
       are_you_sure: "Are you sure?"
-      site_limit: "You are at your site count limit. [Max is %{max_site_count}]."
+      site_limit: "You have reached the site count limit of %{max_site_count}."
       email_not_found: "Sorry, there is no YoMobi account associated with that email."
       no_self_admin: "You cannot add yourself as a Admin."
       already_owner: "You are already the owner of this site."
