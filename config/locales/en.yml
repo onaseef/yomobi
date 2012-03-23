@@ -24,13 +24,13 @@ en:
       url_taken: "URL is already taken."
 
   leave_a_message:
-    insructions: "Leave a message:"
+    instructions: "Leave a message:"
     subject: "Subject:"
     message: "Message:"
     confirmation: "Your message has been sent to %{company_name}. Thank you."
 
   call_back:
-    insructions: "Enter your call back information:"
+    instructions: "Enter your call back information:"
     confirmation: "Your call back request has been sent to %{company_name}. Thank you."
 
   tell_a_friend:

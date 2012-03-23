@@ -75,8 +75,9 @@
     .input-wrap
       | <% if (_maybe.message) { %>
       p {{ message }}
-      | <% } %>
+      | <% } else { %>
       p =t'leave_a_message.instructions'
+      | <% } %>
 
       = form_tag "/#{@company.db_name}/leave_msg/submit", :method => 'post' do
         label =t'general.name'
@@ -103,8 +104,9 @@
     .input-wrap
       | <% if (_maybe.message) { %>
       p {{ message }}
-      | <% } %>
+      | <% } else { %>
       p =t'call_back.instructions'
+      | <% } %>
 
       = form_tag "/#{@company.db_name}/call_back/submit", :method => 'post' do
         label =t'general.name'
@@ -189,8 +191,9 @@
     .input-wrap
       | <% if (_maybe.message) { %>
       p {{ message }}
-      | <% } %>
+      | <% } else { %>
       p =t('keep_me_informed.instructions', :company_name => @company.name)
+      | <% } %>
 
       = form_tag "/#{@company.db_name}/informed/submit", :method => 'post' do
         | <% if (_maybe.optForEmails) { %>

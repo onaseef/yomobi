@@ -404,14 +404,14 @@ script.leave-a-message-edit-area(type="text/template")
   input(name="email" type="text" value="{{ _maybe.email }}")
   br
   label Message to Mobile Visitors:
-  textarea name="message" {{ _maybe.message }}
+  textarea name="message" == "<% print(_maybe.message || '#{ t'leave_a_message.instructions' }'); %>"
 
 script.call-me-back-edit-area(type="text/template")
   label Your Email Address*:
   input(name="email" type="text" value="{{ _maybe.email }}")
   br
   label Message to Mobile Visitors:
-  textarea name="message" {{ _maybe.message }}
+  textarea name="message" == "<% print(_maybe.message || '#{ t'call_back.instructions' }'); %>"
 
 script.tell-a-friend-edit-area(type="text/template")
   p This widget appears as an icon on your mobile site and makes it easy for visitors to share your site with their friends.
@@ -436,7 +436,7 @@ script.keep-me-informed-edit-area(type="text/template")
   input name="email" type="text" value="{{ _maybe.email }}"
   br
   label Message to Mobile Visitors:
-  textarea name="message" {{ _maybe.message }}
+  textarea name="message" == "<% print(_maybe.message || '#{ t'keep_me_informed.instructions', :company_name => @company.name }'); %>"
   br
   .opt-in-select
     label Please select at least one of the following*:
