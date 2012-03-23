@@ -1,11 +1,11 @@
 (function ($) {
 
   window.EditWidgetView = Backbone.View.extend({
-    
+
     el: $('#builder .widget-editor'),
 
     template: util.getTemplate('edit-widget'),
-    
+
     defaultEvents: {
       'click .accept-btn':          'accept',
       'click .remove-link':         'remove',
@@ -16,21 +16,21 @@
       'keyup input[type=text][name!=wname]': 'checkForChanges',
       'keyup textarea':                      'checkForChanges'
     },
-    
+
     initialize: function (widget) {
       _.bindAll(this,'changeName','refreshViews');
       this.widget = widget;
       this.extendedEvents = _.extend({},this.defaultEvents,this.events);
       this.changes = {};
-      
+
       if (this.init) this.init();
     },
-    
+
     accept: function (e,callback) {
       util.log('accept');
       if (!util.reserveWidget(this.widget)) return;
       util.showLoading(this.el.find('.action-bar'));
-      
+
       var values = this.grabWidgetValues();
       var self = this;
       this.widget.save(values, {
@@ -48,7 +48,7 @@
           if (model.get('email')) {
             g.userEmails[model.get('wtype')] = model.get('email');
           }
-          
+
           if (self.validForShowingStatus != model.validForShowing()
            || self.changes.icon
           ){
@@ -60,7 +60,7 @@
         }
       });
     },
-    
+
     remove: function () {
       util.log('remove',this.widget);
       if (!this.widget) return;
@@ -80,7 +80,7 @@
         return false;
       }
     },
-    
+
     cancel: function () {
       util.log('discard');
       if (!util.reserveWidget(this.widget)) return;
@@ -89,14 +89,14 @@
 
       util.releaseWidget(this.widget);
     },
-    
+
     onDiscardByNavigation: function () {},
 
     editName: function (e) {
       util.log('editName',e);
       e.preventDefault();
       if (!this.widget._bdata.canRename) return;
-      
+
       var self = this;
       this.el
         .find('.widget-name').hide().end()
@@ -148,7 +148,7 @@
       ;
       this.el.find('.widget-name span').text(this.widget.get('name'));
     },
-    
+
     changeName: function (e) {
       if (!util.reserveUI()) {
         $(e.target).focus();
@@ -163,7 +163,7 @@
         this.stopEditingName();
         return;
       }
-      
+
       bapp.validateWidgetName(newName,this.widget.get('wtype'),this.widget.get('singleton'), {
         exception: util.toComparableName(oldName),
         mode: 'rename',
@@ -186,7 +186,7 @@
       });
       util.log('changeName',newName);
     },
-    
+
     startEditing: function (resetChanges,isFirstEdit) {
       util.log('Editing widget:',this.widget.get('name'),this.widget.isNew());
       var widget = this.widget
@@ -211,17 +211,18 @@
         .toggleClass('can-rename', widget._bdata.canRename)
         .toggleClass('can-edit-icon', widget._bdata.canEditIcon)
       ;
-      
+      this.$('.help-bubble').simpletooltip(undefined,'help');
+
       if (this.onEditStart) this.onEditStart(resetChanges,isFirstEdit);
     },
-    
+
     stopEditing: function () {
       this.el.html(bapp.idleTemplate());
       this.changes = {};
       this.widget && this.widget.homeView.highlight(false);
       this.onStopEditing && this.onStopEditing();
     },
-    
+
     grabWidgetValues: function () {
       var vals = {};
       util.getInputElements(this.el,'.edit-area').each(function (idx,elem) {
@@ -249,7 +250,7 @@
     hasChanges: function () {
       return _.keys(this.changes).length > 0;
     }
-    
+
   });
 
 

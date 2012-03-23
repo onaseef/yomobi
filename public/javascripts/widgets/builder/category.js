@@ -263,7 +263,6 @@
 
       if (mapp.pageLevel === 0) {
         this.$('[name=hideWidget]').prop('checked', this.widget.get('hide'));
-        this.$('.help-bubble').simpletooltip(undefined,'help');
       }
       else if (mapp.pageLevel > 0 && this.widget.getCurrentNode()._data.type !== 'page') {
         util.initUploader( $(this.el).find('.wphoto-wrap'), {

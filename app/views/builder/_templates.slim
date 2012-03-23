@@ -404,6 +404,7 @@ script.leave-a-message-edit-area(type="text/template")
   input(name="email" type="text" value="{{ _maybe.email }}")
   br
   label Message to Mobile Visitors:
+  img.help-bubble src="/images/ui/help-bubble.png" title=t('widgets.helpText.keep-me-informed.mobile-message')
   textarea name="message" == "<% print(_maybe.message || '#{ t'leave_a_message.instructions' }'); %>"
 
 script.call-me-back-edit-area(type="text/template")
@@ -411,6 +412,7 @@ script.call-me-back-edit-area(type="text/template")
   input(name="email" type="text" value="{{ _maybe.email }}")
   br
   label Message to Mobile Visitors:
+  img.help-bubble src="/images/ui/help-bubble.png" title=t('widgets.helpText.keep-me-informed.mobile-message')
   textarea name="message" == "<% print(_maybe.message || '#{ t'call_back.instructions' }'); %>"
 
 script.tell-a-friend-edit-area(type="text/template")
@@ -436,6 +438,7 @@ script.keep-me-informed-edit-area(type="text/template")
   input name="email" type="text" value="{{ _maybe.email }}"
   br
   label Message to Mobile Visitors:
+  img.help-bubble src="/images/ui/help-bubble.png" title=t('widgets.helpText.keep-me-informed.mobile-message')
   textarea name="message" == "<% print(_maybe.message || '#{ t'keep_me_informed.instructions', :company_name => @company.name }'); %>"
   br
   .opt-in-select
