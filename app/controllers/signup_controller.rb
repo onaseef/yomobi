@@ -8,7 +8,7 @@ class SignupController < ApplicationController
     @step_num = params[:step_num]
     return redirect_to account_setup_path(1) if current_user.company.nil? && @step_num.to_i >= 2
 
-    if @step_num.to_i >= 4 || !current_user.company.nil? && @step_num.to_i == 1
+    if @step_num.to_i >= 5 || !current_user.company.nil? && @step_num.to_i == 1
       return redirect_to builder_main_path, :notice => 'Your account has already been setup.'
     end
     
@@ -105,6 +105,9 @@ class SignupController < ApplicationController
     @errors['logo'] = true if data['logo'].present?
     @company = current_user.company
     puts "Updated logo? #{success.inspect}"
+  end
+
+  def validate_step_4(data)
   end
 
   private
