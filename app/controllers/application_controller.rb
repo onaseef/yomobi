@@ -72,7 +72,12 @@ class ApplicationController < ActionController::Base
   def set_locale
     lang = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
     lang = nil unless lang.match /^(es)$/
-    I18n.locale = params[:locale] || lang || I18n.default_locale
+
+    if params[:locale].present? && params[:locale].match(/^(es|en)/)
+      cookies[:locale] = params[:locale]
+    end
+
+    I18n.locale = cookies[:locale] || lang || I18n.default_locale
   end
 
   def default_url_options(options={})
