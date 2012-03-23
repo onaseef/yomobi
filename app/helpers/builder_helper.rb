@@ -24,6 +24,15 @@ module BuilderHelper
   end
 
   def widget_icons
-    WICONS.to_json
+    icon_names = WICONS_cache[I18n.locale]
+    if icon_names.nil?
+      # lazy load locale
+      icon_names = WICONS_cache[I18n.locale] = WICONS.map {|i|
+        next if i.nil?
+        i.merge :pname => I18n.t("widgets.icons.#{ i['name'] || i['separator'] }")
+      }
+    end
+    icon_names.to_json
   end
+
 end

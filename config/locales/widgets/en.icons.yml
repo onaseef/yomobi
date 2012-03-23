@@ -1,0 +1,595 @@
+en:
+  widgets:
+    icons:
+      sep-general: General
+      about-us: Information
+      call-us: Call
+      business-hours: Business Hours
+      find-us: Map
+      full-website: Full Site
+      faq: F.A.Q.
+      book: Information
+      time: Time
+      coupon: Coupon
+      9-deals-specials: Deals / Specials
+      custom-page: Page
+      category: Category
+      products: Products
+      75-products-1: Products
+      75-products-2: Products
+      property-listings: Property Listings
+      services: Services
+      76-services-1: Services
+      76-services: Services
+      blog: Blog
+      weather-1: Weather
+      event-calendar: Calendar
+      calendar-event-1: Event / Reservation
+      calendar-event-2: Event / Reservation
+      255-upcoming-events: Upcoming Events
+      249-entertainment-schedule: Entertainment Schedule
+      locations: Map
+      history-1: History
+      history-2: History
+      15-history-1: History
+      73-mobile-site-1: Mobile Site
+      73-mobile-site-2: Mobile Site
+      address-book-1: Address Book
+      283-portfolio-1: Portfolio
+      283-portfolio-2: Portfolio
+      news: News
+      news-2: News
+      award-1: Awards
+      award-2: Awards
+
+      sep-building: Building
+      building-1: Building
+      building-2: Building
+      building-3: Building
+      building-4: Building
+      219-leed-green-building: LEED / Green Building
+      217-construction: Construction
+
+      sep-interactive: Interactive / Social Media
+      call-us: Call
+      call-me-back: Call Me Back
+      keep-me-informed: Keep Me Informed
+      leave-a-message: Message
+      booking-request: Booking Request
+      facebook: facebook
+      twitter: twitter
+      share: Share
+      tell-a-friend: Tell A Friend
+      reviews: Reviews
+      reviews-2: Reviews
+      feedback-1: Message
+      feedback-2: Message
+      feedback-3: Message
+      21-mailing-list-1: Mailing List
+      21-mailing-list-2: Mailing List
+      video: Video
+      video-2: Video
+      photos: Photos
+      photo-gallary-1: Photos
+      photo-gallary-2: Photos
+      flickr: flickr
+      photo-bucket: photobucket
+      picasa: picasa
+
+      sep-city: City
+      164-311-info: 311 / Info
+      165-911-emergecy: 911 / Emergecy
+      183-report-a-problem-1: Report a Problem
+      17-human-resources: Human Resources
+      170-electricty: Electricty
+      171-fire: Fire
+      172-solid-waste-services: Solid Waste Services
+      12-environmentally-friendly-green: Environmentally Friendly / Green
+      174-historic-district: Historic District
+      175-housing: Housing
+      176-library: Library
+      177-mayor-city-council: Mayor / City Council
+      178-minority-business-1: Minority Business
+      178-minority-business: Minority Business
+      179-neighborhood: Neighborhood
+      188-electric-utility: Electric Utility
+      188-water-utility-1: Water Utility
+      188-water-utility-2: Water Utility
+      189-road-work: Road Work
+      180-recreation: Recreation
+      28-park: Park
+      34-playground-1: Playground
+      181-permits: Permits
+      182-police: Police
+      184-small-business: Small Business
+      185-tourism: Tourism
+      186-utilities: Utilities
+      187-visitor-guide: Visitor Guide
+      190-city-hall: City Hall
+      199-offices: Offices
+      2-apply-for-job: Apply for Job
+      166-airport: Airport
+      167-code-compliance: Code Compliance
+      168-convention-center-1: Convention Center
+      168-convention-center-2: Convention Center
+      169-courts: Courts
+      74-parking: Parking
+      11-disabled-access: Disabled Access
+      72-media-public-relations: Media / Public Relations
+
+      sep-people: People
+      person-male-1: Person
+      person-male-2: Person
+      person-female-1: Person
+      person-female-2: Person
+      273-child-male: Child - Male
+      274-child-female: Child - Female
+      275-children: Children
+      276-teen-male: Teen - Male
+      277-teen-female: Teen - Female
+      278-teenagers: Teenagers
+      281-family: Family
+      279-senior-citizens: Senior Citizens
+      280-veterans: Veterans
+      282-lgbt-1: LGBT
+      282-lgbt-2: LGBT
+      person-group-1: Group
+      person-group-2: Group
+      person-group-3: Group
+      person-group-4: Group
+      person-group-5: Group
+      person-group-6: Group
+      profession-doctor-1: Doctor
+      233-doctor: Doctor
+      234-dentist-1: Dentist
+      therapy-1: Therapist
+      89-electrician: Electrician
+      107-plumber: Plumber
+      104-nanny-services: Nanny Services
+      233-allergist-1: Allergist
+
+      sep-auto: Auto
+      126-car-dealership: Car Dealership
+      130-leasing: Car Leasing
+      122-auto-parts-store-1: Auto Parts
+      122-auto-parts-store-2: Auto Parts
+      128-diagnostics: Diagnostics
+      128-diagnostics-1: Diagnostics
+      123-brake-repair: Brake Repair
+      125-car-repair-general-1: Car Repair
+      125-car-repair-general-2: Car Repair
+      131-mechanic-shop-1: Mechanic
+      131-mechanic-shop: Mechanic
+      133-oil-change: Oil Change
+      134-road-side-assistance: Roadside Assistance
+      135-tire-dealer-tire-repair: Tire Dealer / Tire Repair
+      136-transmission-shop: Transmission Repair
+      127-carwash: Carwash
+      124-car-detailing-1: Car Detailing
+      124-car-detailing: Car Detailing
+      129-hybrid-electric-vehicles: Hybrid Vehicles
+      352-car-share-program: Car Share
+      7-car-care-1: Car Care
+      7-car-care-2: Car Care
+      92-gas-station-1: Gas Station
+      92-gas-station-2: Gas Station
+
+      sep-politics: Politics
+      284-democrat: Democrat
+      288-republican: Republican
+      285-green: Green
+      286-independent: Independent
+      287-libertarian: Libertarian
+
+      sep-entertainment: Entertainment / Night Life
+      251-nightlife: Nightlife
+      245-showtimes: Showtimes
+      255-upcoming-events: Upcoming Events
+      249-entertainment-schedule: Entertainment Schedule
+      3-arts-culture: Arts / Culture
+      246-exhibit: Exhibit
+      247-concerts: Concerts
+      250-movies: Movies
+      252-orchestra: Orchestra
+      253-shows-live-music: Shows / Live Music
+      24-music-songs: Music / Songs
+      254-theaters: Theater
+      256-festivals: Festival
+      158-festival: Festival
+      68-club: Club
+      248-dance-1: Dance / Dance Club
+      248-dance-2: Dance / Dance Club
+      63-dress-code: Dress Code
+      87-dj: D.J.
+      66-vip-1: VIP
+      66-vip-2: VIP
+
+      sep-education: Education
+      class-1: Class
+      class-2: Class
+      40-training-1: Training
+      40-training-2: Training
+      263-general-exams: General Exams
+      191-school: School
+      351-school-bus: School Bus
+      192-academics: Academics
+      193-athletics: Athletics
+      194-class-schedule-1: Class Schedule
+      195-dormitory: Dormitory
+      196-faculty: Faculty
+      197-financial-aid: Financial Aid
+      198-graduation: Graduation
+      201-university: University
+      202-technical-college: Technical College
+      203-community-college: Community College
+      25-music-lessons: Music Lessons
+      24-music-songs: Music / Songs
+
+      sep-professions: Professions
+      profession-medical-1: Medical
+      profession-legal-1: Legal
+      profession-doctor-1: Doctor
+      233-doctor: Doctor
+      234-dentist-1: Dentist
+      89-electrician: Electrician
+      107-plumber: Plumber
+      therapy-1: Physical Therapist
+      104-nanny-services: Nanny Services
+      108-pool-cleaning: Pool Cleaning
+      109-printing-services: Printing Services
+      208-personal-trainer: Personal Trainer
+      120-court-reporter: Court Reporter
+      120-transcription-1: Transcription
+      111-staffing-agency-1: Staffing Agency
+      111-staffing-agency: Staffing Agency
+      113-television-repair: Television Repair
+      114-traffic-school: Traffic School
+      115-translation-services: Translation Services
+      81-accountant: Accountant
+      117-videographer: Videographer
+
+      sep-restaurant: Restaurant / Food
+      menu: Food Menu
+      47-food-court: Food Court
+      137-food-1: Food
+      137-food-2: Food
+      306-menu-new-items: Menu - New Items
+      307-menu-seasonal: Menu - Seasonal
+      296-nutritional-information: Nutritional Information
+      64-drinks-bar-1: Drinks
+      64-drinks-bar-2: Drinks
+      65-happy-hour: Happy Hour
+      304-soup: Soup
+      300-sandwich-shop: Sandwich
+      289-burger-shop: Burger Shop
+      305-smoothie: Smoothie
+      301-shaved-ice: Shaved Ice
+      119-wedding-cakes: Wedding Cake
+      82-bakery-1: Bakery / Baked Goods
+      82-bakery-2: Bakery / Baked Goods
+      290-cake: Cake
+      291-coffee: Coffee / Coffee Shop
+      292-donuts-pastries: Donuts / Pastries
+      32-places-to-eat-1: Places to Eat
+      32-places-to-eat-2: Places to Eat
+
+      sep-religion: Religion
+      159-religious-education: Religious Education
+      157-prayer-service-1: Prayer Services
+      157-prayer-service-2: Prayer Service
+      144-buddhist-1: Buddhist
+      144-buddhist-2: Buddhist
+      145-christian-1: Christian
+      145-christian-2: Christian
+      162-scripture: Scripture
+      154-ministry: Ministry
+      160-sacraments: Sacraments
+      146-christmas: Christmas
+      163-wedding-services: Wedding Services
+      147-easter: Easter
+      153-jewish: Jewish
+      150-hannukah: Hannukah
+      156-passover: Passover
+      151-hindu: Hindu
+      155-muslim-1: Muslim
+      155-muslim-2: Muslim
+      155-mosque: Mosque
+      158-ramadan-1: Ramadan
+      148-eid-1: Eid
+      161-scientology: Scientology
+      152-interfaith: Interfaith
+      359-atheist-1: Atheist
+      359-atheist: Atheist
+      91-funeral-home-1: Funeral Home
+      91-funeral-home-2: Funeral Home
+      91-funeral-services: Funeral Services
+
+      sep-volunteer: Volunteer / Social
+      donate: Donate
+      volunteer: Volunteer
+      138-get-involved: Get Involved
+      139-getting-assistance: Getting Assistance
+      141-legal-assistance-1: Legal Assistance
+      141-legal-assistance-2: Legal Assistance
+      67-partnerships: Partnerships
+
+      sep-legal: Legal
+      227-civil-trials: Civil Trial
+      228-criminal-defense: Criminal Defense
+      229-legal-services: Legal Services
+      232-terms-conditions-1: Terms / Conditions
+      232-terms-conditions-2: Terms / Conditions
+      profession-legal-1: Legal
+      141-legal-assistance-1: Legal Assistance
+      141-legal-assistance-2: Legal Assistance
+
+      sep-financial: Financial
+      48-auditing: Auditing
+      49-bank-accounts-1: Bank Accounts
+      49-bank-accounts-2: Bank Accounts
+      50-bank-statements-1: Bank Statements
+      51-business-accounts: Business Accounts
+      35-prices: Prices
+      52-money-orders: Money Orders
+      53-check-cashing: Check Cashing
+      54-checking-account: Checking Account
+      55-services: Services
+      56-international-banking: International Banking
+      57-investing-stocks: Investing Stocks
+      58-lending: Lending
+      59-personal-accounts: Personal Accounts
+      6-buy-2: Buy
+      6-buy: Buy
+      60-savings-account-1: Savings Account
+      60-savings-account-2: Savings Account
+      61-tax-preparation-1: Tax Preparation
+      61-tax-preparation: Tax Preparation
+      62-wire-transfers: Wire Transfers
+      payment-1: Payment
+      payment-2: Payment
+      30-payment-types-1: Payment Types
+      30-payment: Payment
+      22-make-a-payment-1: Make a Payment
+      22-make-a-payment-2: Make a Payment
+
+      sep-travel: Travel
+      336-cruises-1: Cruise
+      336-cruises-2: Cruise
+      338-guided-tour: Guided Tour
+      340-honeymoon: Honeymoon
+      346-tours: Tours
+      347-vacation-packages: Vacation Packages
+      348-airplane: Airplane
+      351-bus: Bus
+      353-helicopter: Helicopter
+      354-car: Car
+      354-limousine: Limousine
+      355-motorcycle-1: Motorcycle
+      355-motorcycle-2: Motorcycle
+      356-public-transportation-1: Public Transportation
+      356-public-transportation-2: Public Transportation
+      357-subway: Subway
+      358-taxi: Taxi
+      travel-1: Travel
+      41-arrivals: Arrivals
+      42-baggage-claim: Baggage Claim
+      43-checkin: Checkin
+      44-departures: Departures
+      45-first-class-lounge: First Class Lounge
+      46-flight-times-1: Flight Times
+      46-flight-times-2: Flight Times
+      332-business-travel-1: Business Travel
+      332-business-travel-2: Business Travel
+      travel-2: Travel
+      330-asia: Asia
+      329-africa-middle east: Africa / Middle East
+      330-carribean-mexico: Mexico / Carribean
+      330-europe: Europe
+      330-south-america: South America
+      330-south-pacific: South Pacific
+      330-world-map: world-map
+
+      sep-sports: Sports
+      324-games-baseball: Baseball
+      324-games-basketball: Basketball
+      324-games-cricket: Cricket
+      324-games-football: Football
+      324-games-golf: Golf
+      324-games-hockey: Hockey
+      324-games-lacrosse1: Lacrosse
+      324-games-soccer: Soccer
+      324-games-tennis: Tennis
+      324-games-volleyball: Volleyball
+      326-seating: Seating
+      327-tickets: Tickets
+
+      sep-hotel: Hotel / Lodging
+      94-hotel: Hotel
+      216-room-service: Room Service
+      213-concierge: Concierge
+      214-front-desk: Front Desk
+      215-rates-1: Rates
+
+      sep-fitness: Fitness
+      fitness-1: Fitness
+      fitness-2: Fitness
+      204-aquatics-class: Aquatics Class
+      205-class-schedule: Class Schedule
+      206-facilities: Facilities
+      207-karate-martial-arts: Martial Arts
+      209-spin-class: Spin Class
+      210-swimming: Swimming
+      211-weight-lifting: Weight Lifting
+      212-yoga: Yoga
+
+      sep-insurance: Insurance
+      222-home-insurance-1: Home Insurance
+      225-vehicle-insurance-1: Vehicle Insurance
+      226-vision-insurance-1: Vision Insurance
+      226-vision-insurance-2: Vision Insurance
+      221-dental-insurance: Dental Insurance
+      223-medical-insurance-1: Medical Insurance
+      223-medical-insurance-2: Medical Insurance
+      224-pet-insurance: Pet Insurance
+
+      sep-health: Health
+      237-hospital-clinic: Hospital / Clinic
+      241-pharmacy: Pharmacy
+      242-urgent-care: Urgent Care
+      236-hospice: Hospice
+      233-allergist-1: Allergist
+      173-health-and-human-services-1: Health / Human Services
+      173-health-and-human-services: Health / Human Services
+      235-home-healthcare: Home Healthcare
+      238-nursing-home: Nursing Home
+      240-pediatrician: Pediatrician
+      243-womens-health: "Women's Health"
+      244-acupuncture: Acupuncture
+      272-vaccination: Vaccination
+      226-vision-insurance-1: Vision Insurance
+      226-vision-insurance-2: Vision Insurance
+      221-dental-insurance: Dental Insurance
+      223-medical-insurance-1: Medical Insurance
+      223-medical-insurance-2: Medical Insurance
+      224-pet-insurance: Pet Insurance
+      sep-beauty: Beauty / Personal Care
+      83-stylist-1: Stylist
+      83-stylist-2: Stylist
+      314-massage: Massage
+      316-pedicure: Pedicure
+      317-permanent-makeup: Permanent Makeup
+      320-threading: Threading
+      321-waxing: Waxing
+      323-hair-stylist: Hair Stylist
+      318-spa: Spa
+      319-teeth-whitening: Teeth Whitening
+      322-weight-loss: Weight Loss
+      332-weight-loss-2: Weight Loss
+      308-beauty-products: Beauty Products
+      309-beauty-treatments: Beauty Treatments
+      311-laser-hair-removal: Laser Hair Removal
+      312-makeover-1: Makeover
+      312-makeover-2: Makeover
+      313-manicure: Manicure
+      314-massage: Massage
+      99-lingerie-shop: Lingerie Shop
+      5-body-art: Body Art
+      8-cosmetic-sales: Cosmetics
+      18-jeweler-jewelry: Jeweler / Jewelry
+      sep-relationship: Relationship / Romance
+      101-matchmaking-service-1: Matchmaking
+      101-matchmaking-service-2: Matchmaking
+      101-matchmaking-service-3: Matchmaking
+      101-matchmaking-service-4: Matchmaking
+      84-bridal-services: Bridal Services
+      231-prenuptual: Prenuptual
+      230-divorce: Divorce
+      sep-animals: Animals / Pets
+      259-birds: Birds
+      262-fish: Fish
+      261-dogs: Dog
+      267-pet-food: Pet Food
+      257-animal-dentistry: Animal Dentistry
+      258-animal-surgery: Animal Surgery
+      260-dog-training: Dog Training
+      264-grooming: Grooming
+      265-horse-rental: Horse Rental
+      266-eletronic-tracking: Eletronic Tracking
+      268-pet-hotel: Pet Hotel
+      269-pet-store: Pet Store
+      270-petting-zoo: Petting-zoo
+      271-spay-neuter: Spay / Neuter
+      sep-activities: Activities
+      328-skydiving: Skydiving
+      333-camping: Camping
+      334-canoe-rental: Canoe Rental
+      339-hiking: Hiking
+      341-outdoor-activities: Outdoor Activities
+      342-rafting: Rafting
+      343-scuba-diving: Scuba Diving
+      sep-services: Services
+      104-nanny-services: Nanny Services
+      100-maid-services: Cleaning Service
+      112-steam-cleaning: Steam Cleaning
+      102-moving-services: Moving Service
+      218-landscaping: Landscaping
+      97-lawn-care: Lawn Care
+      therapy-1: Physical Therapy
+
+      sep-more-icons: More Icons
+      link: Link
+      articles: Articles
+      business-job-1: Job / Employment
+      business-job-2: Job / Employment
+      business-partners: Business Partners
+      guidelines: Guidelines
+      therapy-2: Therapy
+      1-apparel-clothing: Apparel / Cothing
+      10-departments-1: Departments
+      10-departments-2: Departments
+      103-music-shop: Music Shop
+      105-newsstand-1: Newsstand
+      105-newsstand-2: Newsstand
+      106-non-profit-1: Non-profit
+      106-tax-holiday: Tax Holiday
+      110-propane-dealer-1: Propane Dealer
+      116-video-rental-1: Video Rental
+      116-video-rental-2: Video Rental
+      118-website-design-1: Website Design
+      13-framing-art: Framing
+      14-gift-cards: Gift Cards
+      140-how-it-works-1: How It Works
+      140-how-it-works: How It Works
+      142-projects: Projects
+      143-shelter: Shelter
+      16-holiday-special-1: Holiday Special
+      16-holiday-special-2: Holiday Special
+      15-history-2: History
+      19-jobs: Jobs
+      20-login-register-1: Login / Register
+      20-login-register-2: Login / Register
+      200-campus-life: Campus Life
+      220-remodeling: Remodeling
+      222-home-security: Home Security
+      23-membership-1: Membership
+      23-membership-2: Membership
+      26-ngo: N.G.O.
+      27-organizational-chart: Organizational Chart
+      29-party-supplies-1: Party Supplies
+      29-party-supplies-2: Party Supplies
+      31-piano: Piano
+      33-play-1: Play
+      33-play-2: Play
+      349-bicycle: Bicycle
+      350-bicycle-rental-1: Bicycle Rental
+      350-bicycle-rental-2: Bicycle Rental
+      36-privacy: Privacy
+      37-product-catalog: Product aalog
+      38-staff: Staff
+      39-survey: Survey
+      4-birthday: Birthday
+      67-affilates: Affilates
+      69-directory: Directory
+      70-high-tech: Hightech
+      71-manufacturing: Manufacturing
+      77-shipping-1: Shipping
+      77-shipping-2: Shipping
+      77-shipping-3: Shipping
+      78-telecom-1: Telecom
+      78-telecom-2: Telecom
+      79-marketing-1: Marketing
+      79-marketing-2: Marketing
+      80-fair-trade-1: Fair Trade
+      80-fair-trade-2: Fair Trade
+      85-carpet-store-1: Carpet Store
+      86-daycare-child-care: Daycare / Child care
+      88-dry-cleaner-1: Dry Cleaner
+      88-dry-cleaner-2: Dry Cleaner
+      90-electronics-1: Electronics
+      90-electronics: Electronics
+      93-gift-shop: Gift Shop
+      95-internet-cafe-1: Internet Cafe
+      95-internet-cafe-2: Internet Cafe
+      96-laundromat: Laundromat
+      98-lighting-store: Lighting Store
+      121-shoes: Shoes / Shoe Store

@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   include UrlHelper
 
-  before_filter :ensure_domain
+  before_filter :ensure_domain, :set_locale
 
   def error(status = 400, reason)
     render :text => reason.to_json, :status => status
@@ -67,6 +67,10 @@ class ApplicationController < ActionController::Base
       url += '?' + request.env['QUERY_STRING'] if request.env['QUERY_STRING'].length > 0
       redirect_to url, :status => 301
     end
+  end
+
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
   end
 
 end
