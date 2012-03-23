@@ -13,7 +13,7 @@
       return false;
     },
 
-    validate: function (attrs) {
+    beforeSave: function (attrs) {
       if (attrs.url) attrs.url = util.ensureUrl(attrs.url);
     }
     

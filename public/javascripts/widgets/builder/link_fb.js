@@ -21,7 +21,7 @@
       return _.extend({},this.toJSON(),extraData);
     },
     
-    validate: function (attrs) {
+    beforeSave: function (attrs) {
       var urlRegex = new RegExp('^([^.\\/]+\\.)?'+this.get('basename')+'\\.com');
       if (attrs.userId && attrs.userId.match(urlRegex)) {
         util.log('NOT FULL LINK',attrs.userId);

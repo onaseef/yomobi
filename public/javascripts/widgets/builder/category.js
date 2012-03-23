@@ -196,7 +196,7 @@
       return false;
     },
 
-    validate: function (attrs) {
+    beforeSave: function (attrs) {
       traverseStruct(attrs.struct, validateOrder);
     },
 
