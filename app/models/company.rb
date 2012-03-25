@@ -1,6 +1,7 @@
 class Company < ActiveRecord::Base
   require 'couch_docs'
-  
+  require 'couch'
+
   belongs_to :user
   alias :owner :user
   alias :owner= :user=
@@ -13,7 +14,7 @@ class Company < ActiveRecord::Base
   has_many :followers
   has_many :wphotos
   has_one :company_settings
-  
+
   has_attached_file :logo,
     :styles => {
       :mobile => "100x75>",
@@ -27,16 +28,25 @@ class Company < ActiveRecord::Base
       :access_key_id => ENV['S3_KEY'],
       :secret_access_key => ENV['S3_SECRET']
     }
-  
+
+  # If this site is a replication of another, then this attribute
+  # should be set to the name of the couch database to replicate.
+  attr_accessor :source_db_name
+
   before_create :create_couch, :unless => Proc.new {|c| c.db_pass == 'n0n-_-exist@nt??' }
-  
+
   before_post_process :check_file_size
   validates_attachment_size :logo, :less_than => 3.megabytes, :unless => Proc.new {|c| c.logo.nil? }
-  
+
   def create_couch
     db = CouchRest.database(ApplicationController::couch_url self.db_name, :@admin)
     result = db.create!
-    if result == true
+
+    if result == true && self.source_db_name.present? && Couch::couchdb_exists?(source_db_name)
+      # replicate from another site instead of creating the default docs
+      source_db_url = ApplicationController::couch_url self.source_db_name, :@admin
+      db.replicate_from CouchRest.database(source_db_url)
+    elsif result == true
       default_docs = CouchDocs::default_docs(self.company_type.name, self.user.email)
 
       # compact to remove deadly nil-related errors. Better to discover later
@@ -45,7 +55,7 @@ class Company < ActiveRecord::Base
     end
     result
   end
-  
+
   def get_widget_doc(wsubtype,wname=nil)
     rows = CouchRest.database(self.couch_db_url).view('widgets/by_name', {
       :include_docs => true,
@@ -71,7 +81,7 @@ class Company < ActiveRecord::Base
   def email_followers
     followers.where(:company_id => self[:id], :active => true).select {|f| f.email.present? }
   end
-  
+
   def mobile_url
     "http://#{db_name}.yomobi.com"
   end

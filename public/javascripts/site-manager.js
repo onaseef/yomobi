@@ -247,15 +247,44 @@
   var NewSiteDialog = Backbone.View.extend({
     template: util.getTemplate('new-site-dialog'),
     events: {
-      'submit': 'submit'
+      'change [name=create_type]':   'changeSiteCreateType',
+      'change select.source':        'onSourceSelect',
+      'submit':                 'submit'
     },
     initialize: function () {
       _.bindAll(this, 'submit', 'render');
     },
 
+    changeSiteCreateType: function (e) {
+      var showType = $(e.target).val() == 'type';
+      e.preventDefault();
+      this.$('.site-type').toggle( showType );
+      this.$('.site-source').toggle( !showType );
+      this.$('[name="site[source_db_name]"]').val('');
+      this.toggleCreateButton(showType);
+    },
+
+    onSourceSelect: function (e) {
+      var selected = $(e.target).find('option:selected')[0]
+        , noop = $(e.target).find('option:first')[0]
+        , isBlank = (selected == noop)
+      ;
+      this.toggleCreateButton( !isBlank );
+    },
+
+    toggleCreateButton: function (enabled) {
+      $(this.el).parent()
+        .find('.ui-dialog-buttonset button:first')
+        .prop('disabled', !enabled)
+      ;
+    },
+
     render: function (errors) {
-      var templateData = this.model.toJSON();
-      _.extend(templateData, { errors:errors || {} });
+      var templateData = {
+        errors: errors || {},
+        sites: _.map(sman.sites.models, function (m) { return m.attributes; })
+      };
+      _.extend(templateData, this.model.toJSON());
 
       $(this.el)
         .html( this.template(templateData) )
