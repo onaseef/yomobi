@@ -24,13 +24,13 @@ en:
       url_taken: "URL is already taken."
 
   leave_a_message:
-    insructions: "Leave a message:"
+    instructions: "Leave a message:"
     subject: "Subject:"
     message: "Message:"
     confirmation: "Your message has been sent to %{company_name}. Thank you."
 
   call_back:
-    insructions: "Enter your call back information:"
+    instructions: "Enter your call back information:"
     confirmation: "Your call back request has been sent to %{company_name}. Thank you."
 
   tell_a_friend:
@@ -148,6 +148,7 @@ en:
 
       call-me-back:
         help: <p>Allow your mobile site visitors to request a call back from you.</p><br><p>Call back requests will be sent to this email address, so check your mail often.</p>
+        mobile-message: <p>REPLACE ME</p>
 
       call-us:
         help: <p>Allow your mobile site visitors to call you with a single click.</p>
@@ -187,9 +188,11 @@ en:
 
       keep-me-informed:
         help: <p>Allow your mobile site visitors to request to receive email and text notifications from you.</p><br><p>This widget allows visitors to your mobile site to become fans and follow your latest news via email and text notifications.</p><br><p>You can send email notifications and instant messages to your followers by clicking on the “Email your Followers” or "Send Text to Your Followers" link in the navigation column on the left.</p>
+        mobile-message: <p>REPLACE ME</p>
 
       leave-a-message:
         help: <p>Allow your mobile website visitors to easily leave you an email message.</p><br><p>Messages will be sent to this email address, so check your mail often.</p>
+        mobile-message: <p>REPLACE ME</p>
 
       link:
         help: <p>Add a link to a web page.</p>

@@ -17,7 +17,7 @@
       return _.extend({},this.toJSON(),extraData);
     },
 
-    validate: function (attrs) {
+    beforeSave: function (attrs) {
       if (attrs.city)
         attrs.city = util.capitalize(attrs.city);
       if (attrs.state)

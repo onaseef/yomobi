@@ -1,36 +1,36 @@
-// 
+//
 // BUILDER
-// 
+//
 (function ($) {
-  
+
   var Backbone_set = Backbone.Model.prototype.set;
 
   window.Widget = window.Widget.extend({
-    
+
     url: function () {
       var base = '/widgets';
       if (this.isNew()) return base;
       return base + (base.charAt(base.length - 1) == '/' ? '' : '/') + this.id;
     },
     sync: util.deleteSync,
-    
+
     isAvailable: function () {
       return this.get('available_') === true;
     },
-    
+
     onHomeViewClick: function () {
       return !!bapp.homeViewWidgetClick(this);
     },
-    
+
     getEditor: function () {
       this.editor = this.editor || util.newEditor(this);
       return this.editor;
     },
-    
+
     getEditData: function () {
       return this.toJSON();
     },
-    
+
     getEditAreaData: function () {
       var data = {}
         , wdata = util.getWidgetBData(this)
@@ -43,10 +43,10 @@
       data.editAreaContent = editAreaTemplate(editData);
       data.iconName = templateId;
       data.helpUrl = 'http://help.yomobi.com/Widgets/' + util.helpifyName(wdata.wsubtype);
-      
+
       return _.extend(data, this.toJSON());
     },
-    
+
     set: function(attributes, options) {
       if (attributes._id) {
         attributes.id = attributes._id;
@@ -57,7 +57,16 @@
       }
 
       return Backbone_set.call(this, attributes, options);
+    },
+
+    validate: function (attrs) {
+      for (var key in attrs) {
+        // check for strings
+        if (attrs[key].substring) attrs[key] = attrs[key].trim();
+      }
+      this.beforeSave && this.beforeSave(attrs);
     }
+
   });
-  
+
 })(jQuery);
