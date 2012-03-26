@@ -1,41 +1,41 @@
 .pagecorner
-	img src="/images/new_design/page-corner.png"
 .main-whitebg
   .innercontent-main
     .section5-main
       .section4-bluegradient
       	= form_for @user, :url => update_account_path do |f|
-		      .section4-heading Account Settings
-		      .section4-text
+		      .main-heading Account Settings
+		      .section-heading
 		      	strong CURRENT PASSWORD *
-		      .section4-field
+		      .main-field
 		        label
 		        	= f.password_field :current_password
-		      .section4-text
+		      .section-heading
 		      	strong CONTACT INFORMATION:
-		      .section4-caption First Name
-		      .section4-field
+		      h9 First Name
+		      .main-field
 		        label
-			        = f.text_field :first_name 
-		      .section4-caption Last Name
-		      .section4-field
+			        = f.text_field :first_name
+		      h9 Last Name
+		      .main-field
 		        label
-			        = f.text_field :last_name 
-		      .section4-caption Email
-		      .section4-field
+			        = f.text_field :last_name
+		      h9 Email
+		      .main-field
 		        label
 			        = f.text_field :email, :autocomplete => "off"
 
-		      .section4-text
+		      .section-heading
 		      	strong CHANGE PASSWORD (OPTIONAL):
-		      .section4-caption New Password:
-		      .section4-field
+		      h9 New Password:
+		      .main-field
 		        label
 			        = f.password_field :password
-		      .section4-caption Re-enter New Password:
-		      .section4-field
+		      h9 Re-enter New Password:
+		      .main-field
 		        label
-			        = f.password_field :password_confirmation 
-		      
-		      .section4-caption
-	      		input type="image" src="/images/new_design/savechanges.png" width="148" height="44" border="0" 
+			        = f.password_field :password_confirmation
+
+		      h9
+	      		input type="image" src="/images/new_design/savechanges.png" width="148" height="44" border="0"
+

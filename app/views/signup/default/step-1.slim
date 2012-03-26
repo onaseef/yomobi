@@ -1,70 +1,76 @@
-= render :partial => 'signup-step-arrows', :locals => { :step => 1 }
+.pagecorner
+	img src="/images/new_design/page-corner.png"
+.main-whitebg
+  .innercontent-main
+    .section5-main
+      .section4-bluegradient
+        = render :partial => 'signup-step-arrows', :locals => { :step => 1 }
+        = form_tag account_setup_path(1), :id => 'account-setup-box', :class => 'center-box' do
+          .content
+            .main-heading Website Information
 
-= form_tag account_setup_path(1), :id => 'account-setup-box', :class => 'center-box' do
-  .content
-    h2 Website Information
-    
-    h3
-      ' Site Name:
-      img.help-bubble src="/images/ui/help-bubble.png" title=t('account_setup.help.site_name')
-    
-    - if @errors['title']
-      p.error
-        ' Invalid Site Name. Site Name must be at least 2 characters and at most
-        = MAX_COMPANY_NAME_LENGTH
-        | &nbsp;characters.
-    input type="text" name="step_data[title]" value="#{@data['title'] }" maxlength=MAX_COMPANY_NAME_LENGTH
-    
-    hr
-    h3
-      ' Choose a Mobile Site URL:
-      img.help-bubble src="/images/ui/help-bubble.png" title=t('account_setup.help.site_url')
+            h9
+              ' Site Name:
+              img.help-bubble src="/images/ui/help-bubble.png" title=t('account_setup.help.site_name')
 
-    - if @errors['site_url'] == 'illegal'
-      p.error Invalid URL: the URL must be at least 3 characters long and contain only A-Z, a-z, 0-9, underscores (_), and dashes (-).
-    - elsif @errors['site_url'] == 'reserved'
-      p.error Sorry, that name is reserved. Please choose another.
-    - elsif @errors['site_url'] == 'taken'
-      p.error URL is already taken.
-    - elsif @errors['site_url'] == 'taken?'
-      p.error Name is already taken?
-    
-    .site-url
-      span.lfloat http://www.yomobi.com/
-      .site-url-input-wrap
-        input type="text" value="#{@data['site_url'] || 'my-site-name'}" name="step_data[site_url]"
-      .clearfix
-    
-    hr
-    h3 Tell your visitors who you are (optional):
-    - if @errors['desc']
-      p.error Description is too long. 2500 characters max.
-    textarea name="step_data[desc]" = @data['desc']
-  .action-bar
-    .rfloat.main-btn
-      input.content type="submit" value="Save & Continue"
-    .clearfix
+            - if @errors['title']
+              p.error
+                ' Invalid Site Name. Site Name must be at least 2 characters and at most
+                = MAX_COMPANY_NAME_LENGTH
+                | &nbsp;characters.
+            input type="text" name="step_data[title]" value="#{@data['title'] }" maxlength=MAX_COMPANY_NAME_LENGTH
 
-- content_for :js do
-  javascript:
-    $(function () {
-      $('.help-bubble').simpletooltip(undefined,'help');
-    })
-  erb:
-    <script type="text/javascript">
-    /* <![CDATA[ */
-    var google_conversion_id = 1016498762;
-    var google_conversion_language = "en";
-    var google_conversion_format = "3";
-    var google_conversion_color = "ffffff";
-    var google_conversion_label = "Rjg7CMbcoAIQypTa5AM";
-    var google_conversion_value = 0;
-    /* ]]> */
-    </script>
-    <script type="text/javascript" src="http://www.googleadservices.com/pagead/conversion.js">
-    </script>
-    <noscript>
-    <div style="display:inline;">
-    <img height="1" width="1" style="border-style:none;" alt="" src="http://www.googleadservices.com/pagead/conversion/1016498762/?label=Rjg7CMbcoAIQypTa5AM&amp;guid=ON&amp;script=0"/>
-    </div>
-    </noscript>
+            hr
+            h9
+              ' Choose a Mobile Site URL:
+              img.help-bubble src="/images/ui/help-bubble.png" title=t('account_setup.help.site_url')
+
+            - if @errors['site_url'] == 'illegal'
+              p.error Invalid URL: the URL must be at least 3 characters long and contain only A-Z, a-z, 0-9, underscores (_), and dashes (-).
+            - elsif @errors['site_url'] == 'reserved'
+              p.error Sorry, that name is reserved. Please choose another.
+            - elsif @errors['site_url'] == 'taken'
+              p.error URL is already taken.
+            - elsif @errors['site_url'] == 'taken?'
+              p.error Name is already taken?
+
+            .site-url
+              span.lfloat.margin-top http://www.yomobi.com/
+              .site-url-input-wrap
+                input type="text" value="#{@data['site_url'] || 'my-site-name'}" name="step_data[site_url]"
+              .clearfix
+
+            hr
+            h9 Tell your visitors who you are (optional):
+            - if @errors['desc']
+              p.error Description is too long. 2500 characters max.
+            textarea name="step_data[desc]" = @data['desc']
+          .action-bar
+            .rfloat.main-btn
+              input.content type="submit" value="Save & Continue"
+            .clearfix
+
+        - content_for :js do
+          javascript:
+            $(function () {
+              $('.help-bubble').simpletooltip(undefined,'help');
+            })
+          erb:
+            <script type="text/javascript">
+            /* <![CDATA[ */
+            var google_conversion_id = 1016498762;
+            var google_conversion_language = "en";
+            var google_conversion_format = "3";
+            var google_conversion_color = "ffffff";
+            var google_conversion_label = "Rjg7CMbcoAIQypTa5AM";
+            var google_conversion_value = 0;
+            /* ]]> */
+            </script>
+            <script type="text/javascript" src="http://www.googleadservices.com/pagead/conversion.js">
+            </script>
+            <noscript>
+            <div style="display:inline;">
+            <img height="1" width="1" style="border-style:none;" alt="" src="http://www.googleadservices.com/pagead/conversion/1016498762/?label=Rjg7CMbcoAIQypTa5AM&amp;guid=ON&amp;script=0"/>
+            </div>
+            </noscript>
+

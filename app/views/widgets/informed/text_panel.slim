@@ -13,18 +13,18 @@ h1 = @company.name
 #builder-container
   #builder
     .follower-section
-      h2 Text Message your Followers
+      h2.main-heading Text Message your Followers
       - if notice
         p.success = notice
       erb:
-        <p>You have <b><%= @company.text_followers.size %></b> text follower(s).</p>
-      p
-        | Your REPLY-TO email address is: 
+        <p class="section4-text">You have <b><%= @company.text_followers.size %></b> text follower(s).</p>
+      p.section4-text
+        | Your REPLY-TO email address is:
         = @company.informed_email || @company.user.email
       - if @errors[:message]
         p.error = "Error: #{ @errors[:message] }"
       = form_tag '', :method => :post do
-        label
+        h9
           span#chars-left = @max_text_chars
           = "/#{@max_text_chars} characters remaining."
         br

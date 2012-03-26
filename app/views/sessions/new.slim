@@ -5,14 +5,14 @@
     .section5-main
       .section4-bluegradient
 				= form_for resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => 'center-box', :id => 'signin-box' } do |f|
-		
+
 					h2 YoMobi Sign in
 					- if alert
 						.login-error
 							b Please re-enter your password
 							p The password you entered is incorrect. Please try again (make sure your caps lock is off).
 							p
-								| Forgot your password? 
+								| Forgot your password?
 								a href=new_password_path(:user) Request a new one.
 
 					#actual-signin-box.sign-in-form
@@ -22,7 +22,7 @@
 								  td
 								    = f.label 'Email:'
 								  td
-								    = f.text_field :email, :size => 30
+								    = f.text_field :email, :size => 30, :id => 'signin_email'
 								tr
 								  td
 								  td
@@ -33,7 +33,7 @@
 								  td
 								    = f.label 'Password:'
 								  td
-								    = f.password_field :password, :size => 30
+								    = f.password_field :password, :size => 30, :id => 'signin_password'
 								tr
 								  td
 								  td
@@ -42,9 +42,10 @@
 								tr
 								  td
 								  td
-								    input.pretty-button.lfloat type="submit" value="Sign In"
+								    input.pretty-button2.lfloat type="submit" value="Sign In"
 								    .sign-up-offer
-								      | or
+								      | or &nbsp
 								      a href=new_user_registration_path style="font-weight:bold" Sign Up for YoMobi
 						.clearfix
 					.clearfix
+

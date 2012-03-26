@@ -1,49 +1,57 @@
-= render :partial => 'signup-step-arrows', :locals => { :step => 3 }
+.pagecorner
+	img src="/images/new_design/page-corner.png"
+.main-whitebg
+  .innercontent-main
+    .section5-main
+      .section4-bluegradient
 
-- content_for :js do
-  = javascript_include_tag 'send_panel'
-  javascript:
-    if ($.browser.msie) {
-      $('input[type=file]').click(function () {
-        setTimeout(util.enableFileUploadButton, 0);
-      });
-      $('input:file').keypress(function () { return false; });
-    }
-    else {
-      $('input[type=file]').change(util.enableFileUploadButton);
-    }
+        = render :partial => 'signup-step-arrows', :locals => { :step => 3 }
 
-= form_tag account_setup_path(3), :multipart => true, :id => 'account-setup-box', :class => 'center-box' do
-  .content
-    h2
-      ' Select a Site Picture
-      img.help-bubble src="/images/ui/help-bubble.png" title=t('account_setup.help.site_pic')
-    
-    table
-      tr
-        td.logo-preview
-          - if @company.logo
-            = image_tag @company.logo.url :mobile
-          - else
-            = image_tag 'no-logo.png'
-        td
-          = file_field :step_data, :logo, :accept => "image/*"
-          input type="submit" value="Upload" disabled="disabled"
-          .load-box.rfloat.hide
-            span.success Working...
-            div.loader.rfloat style="margin:2px 4px 0 5px"
+        - content_for :js do
+          = javascript_include_tag 'send_panel'
+          javascript:
+            if ($.browser.msie) {
+              $('input[type=file]').click(function () {
+                setTimeout(util.enableFileUploadButton, 0);
+              });
+              $('input:file').keypress(function () { return false; });
+            }
+            else {
+              $('input[type=file]').change(util.enableFileUploadButton);
+            }
 
-    
-    = hidden_field_tag 'step_data[step]', 3
-    = hidden_field_tag 'account_setup', 3
-  .action-bar
-    .rfloat.main-btn
-      input.content type="submit" value="Save & Continue"
-    a.skip-link.rfloat href=builder_main_path Skip this step
-    .clearfix
+        = form_tag account_setup_path(3), :multipart => true, :id => 'account-setup-box', :class => 'center-box' do
+          .content
+            h2
+              ' Select a Site Picture
+              img.help-bubble src="/images/ui/help-bubble.png" title=t('account_setup.help.site_pic')
 
-- content_for :js do
-  javascript:
-    $(function () {
-      $('.help-bubble').simpletooltip(undefined,'help');
-    })
+            table
+              tr
+                td.logo-preview
+                  - if @company.logo
+                    = image_tag @company.logo.url :mobile
+                  - else
+                    = image_tag 'no-logo.png'
+                td
+                  = file_field :step_data, :logo, :accept => "image/*"
+                  input type="submit" value="Upload" disabled="disabled"
+                  .load-box.rfloat.hide
+                    span.success Working...
+                    div.loader.rfloat style="margin:2px 4px 0 5px"
+
+
+            = hidden_field_tag 'step_data[step]', 3
+            = hidden_field_tag 'account_setup', 3
+          .action-bar
+            .rfloat.main-btn
+              input.content type="submit" value="Save & Continue"
+            a.skip-link.rfloat.margin-right href=builder_main_path Skip this step
+            .clearfix
+
+        - content_for :js do
+          javascript:
+            $(function () {
+              $('.help-bubble').simpletooltip(undefined,'help');
+            })
+

@@ -17,7 +17,10 @@ div.wysiwyg ul.toolbar {
 #sidebar {
   float: left;
   width: 160px;
-  padding-right: 15px; }
+  padding-right: 15px;
+  background: url(../images/new_design/dottedline3.jpg) repeat-y right top;
+  }
+
   /*
   #sidebar ul {
     list-style: none;
@@ -50,11 +53,23 @@ div.wysiwyg ul.toolbar {
   #sidebar .option.active {
     background-color: #d8dfea; }
   #sidebar .home-icon {
-    width: 182px;
+    width: 156px;
+    height: 20px;
     height: auto;
-    padding: 1px 0 0px 5px;
+    padding: 5px 0 0px 2px;
     margin: 1px 0;
-    cursor: pointer; }
+    cursor: pointer;
+    background: url(/images/new_design/dottedline2.jpg) left bottom repeat-x;
+     }
+  #sidebar .home-icon1 {
+    width: 156px;
+    height: 20px;
+    height: auto;
+    padding: 5px 0 0px 2px;
+    margin: 1px 0;
+    cursor: pointer;
+     }
+
     #sidebar .home-icon .add {
       visibility: hidden;
       margin-top: 2px; }
@@ -66,13 +81,14 @@ div.wysiwyg ul.toolbar {
     #sidebar .home-icon .title {
       width: auto;
       margin-left: 0px;
-      padding: 2.5px 0 0 4px;
+      padding: 2.5px 0 0 3px;
       text-align: left;
       height: auto;
       font-weight: bold;
-      font-size: 110%;
+      font-size: 13px;
       float: left;
-      color: #333; }
+      font-family: Tahoma
+      color: black; }
     #sidebar .home-icon .icon {
       float: left;
       margin: 0;
@@ -128,7 +144,7 @@ div.wysiwyg ul.toolbar {
 	float:left;
 	width:160px;
 	padding-right:15px;
-	background:url(../images/new_design/dottedline3.jpg) repeat-y right top;
+	/*background:url(../images/new_design/dottedline3.jpg) repeat-y right top; */
 }
 .functions-heading {
 	float:left;
@@ -283,7 +299,7 @@ div.wysiwyg ul.toolbar {
 	background:-moz-linear-gradient(top, #fef1d0 0%, #ffffff 100%);
 	border:1px solid #ffc66e;
 	border-radius:4px; }
-  
+
   #builder .widget-editor .header {
     height: 55px;
     margin: 0 auto;
@@ -321,7 +337,7 @@ div.wysiwyg ul.toolbar {
     left: 4px; }
     #builder .widget-editor .widget-name-edit input[type=text] {
       font-size: 1.5em;
-      width: 250px;
+      width: 200px;
       margin-bottom: 0px;
       margin-left: -2px;
       padding-top: 2px;
@@ -343,7 +359,7 @@ div.wysiwyg ul.toolbar {
   #builder .widget-editor .logo {
     margin: 10px 0; }
   #builder .widget-editor .edit-area {
-    padding: 6px 0;
+    padding: 20px 0;
     margin: 0 auto; }
   #builder .widget-editor .action-bar {
     padding: 12px 0 0;
@@ -400,11 +416,11 @@ div.wysiwyg ul.toolbar {
 #builder .loader-overlay {
   position: absolute;
   z-index: 99;
-  width: 326px;
+  width: 322px;
   height: 482px;
   margin-top: 13px;
   background: url(/images/ui/overlay.png); }
-  
+
   #builder .loader-overlay .icon {
     width: 64px;
     height: 64px;
@@ -472,13 +488,13 @@ div.wysiwyg ul.toolbar {
   #builder .edit-area.edit-settings .site-settings input[type=text], #builder .edit-area.edit-settings .site-settings textarea,
   #builder .edit-area.edit-advanced-settings .site-settings input[type=text],
   #builder .edit-area.edit-advanced-settings .site-settings textarea {
-    width: 240px; }
+    width: 190px; }
   #builder .edit-area.edit-settings .site-settings textarea,
   #builder .edit-area.edit-advanced-settings .site-settings textarea {
     height: 4em; }
   #builder .edit-area.edit-settings select,
   #builder .edit-area.edit-advanced-settings select {
-    width: 245px; }
+    width: 190px; }
   #builder .edit-area.edit-settings .top,
   #builder .edit-area.edit-advanced-settings .top {
     vertical-align: top; }
@@ -490,7 +506,7 @@ div.wysiwyg ul.toolbar {
     padding-bottom: 10px; }
   #builder .edit-area.edit-settings .new-picture,
   #builder .edit-area.edit-advanced-settings .new-picture {
-    width: 100%; }
+    width: 260px; }
 
 .widget-editor .edit-area label {
   white-space: normal; }
@@ -600,18 +616,18 @@ div.wysiwyg ul.toolbar {
 #builder .edit-area.category .controls, #builder .edit-area.page_tree .controls {
   height: 28px;
   border: 1px solid #b3b3b3;
-  padding: 3px;
+  padding: 1px;
   background: silver; }
 #builder .edit-area.category .controls .button, #builder .edit-area.page_tree .controls .button {
   height: 22px;
-  padding: 6px 6px 0 22px;
-  margin: 0 4px 0 0;
+  padding: 6px 2px 0 21px;
+  margin: 0 2px 0 0;
   border: 1px outset transparent;
   background: url(/images/ui/plus.png) 3px 5px no-repeat;
   float: left;
   cursor: pointer; }
   #builder .edit-area.category .controls .button:empty, #builder .edit-area.page_tree .controls .button:empty {
-    padding-left: 24px;
+    padding-left: 9px;
     background-position: 50% 50%; }
 #builder .edit-area.category .controls .button:hover, #builder .edit-area.page_tree .controls .button:hover {
   border: 1px outset #e0e0e0; }
@@ -625,7 +641,9 @@ div.wysiwyg ul.toolbar {
   border: none;
   background: gray; }
 #builder .edit-area.category .button.add-cat, #builder .edit-area.page_tree .button.add-cat {
-  background-image: url(/images/ui/icon-folder-new.png); }
+  background-image: url(/images/ui/icon-folder-new.png);
+  font-size: 11px;
+   }
 #builder .edit-area.category .button.add-item, #builder .edit-area.page_tree .button.add-item {
   background-image: url(/images/ui/icon-item-new.png); }
 #builder .edit-area.category .button.rename, #builder .edit-area.page_tree .button.rename {
@@ -653,7 +671,7 @@ div.wysiwyg ul.toolbar {
 #builder .edit-area.category .nodes .name, #builder .edit-area.page_tree .nodes .name {
   padding: 6px 10px 6px 3px;
   float: left;
-  width: 265px;
+  width: 170px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: no-wrap;
@@ -861,8 +879,8 @@ button[disabled] {
 button[name=pick_files] {
   cursor: pointer;
   padding: 1px 3px 1px 3px; }
-  
-  
+
+
 /*******main content*******/
 
 .emulator {
@@ -965,7 +983,28 @@ button[name=pick_files] {
 	float:right;
 }
 
-/*************/  
+/*************/
 .edit-area1{
 	width: 265px !important;
 }
+
+.coupon textarea{
+  width: 264px;
+}
+
+.couponName{
+  margin-left: 25px;
+}
+
+.edit-area input[type="text"]{
+  width: 270px;
+  margin-top: 1px;
+  margin-bottom: 5px;
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+
+.controls .add-item {
+ font-size: 11px;
+}
+

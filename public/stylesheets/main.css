@@ -87,11 +87,11 @@ body {
 }
 .signin-field {
 	background:url(../images/new_design/textfield-bg.png);
-	width:120px !important; 
+	width:120px !important;
 	height:21px;
 	border:none !important;
 	padding:0px !important;
-		
+
 	margin-bottom: 0px !important;
 	color:#ffba00;
 }
@@ -200,7 +200,7 @@ body {
 }
     #header-slider ul{
 	    width:800px;
-	    height:300px; 
+	    height:300px;
             list-style:none;
     }
 
@@ -491,6 +491,7 @@ margin-top: 21px;
 	float:left;
 	width:950px;
 	height:16px;
+	background: url(/images/new_design/page-corner.png) center top repeat-x;
 }
 .topmenu-li {
 	float:right;
@@ -660,7 +661,7 @@ margin-top: 21px;
 	text-align:left;
 	margin-top:10px;
 }
-.section4-heading {
+.main-heading {
 	float:left;
 	width:700px;
 	font-size:18px;
@@ -668,7 +669,7 @@ margin-top: 21px;
 	text-transform:uppercase;
 	color:#000000;
 }
-.section4-text {
+.section-heading {
 	float:left;
 	width:700px;
 	color:#5f6366;
@@ -684,7 +685,7 @@ margin-top: 21px;
 	text-align:left;
 	margin-top:10px;
 }
-.section4-field {
+.main-field {
 	float:left;
 	width:700px;
 	color:#000000;
@@ -703,12 +704,10 @@ margin-top: 21px;
 
 
 
-.section4-field input{
-	width:695px;
+.main-field input{
 	height:30px;
-	border:1px solid #7bc9fd;
 	box-shadow:1px 1px #d7d7d7;
-} 
+}
 .textfields {
 	width:695px;
 	height:30px;
@@ -838,3 +837,59 @@ margin-top: 21px;
 }
 
 /**Social Share End***/
+
+/*****Sign Up ****/
+
+
+#step-arrows {
+  background: #eceef4;
+  width: 500px;
+  margin: 20px auto;
+  background: url(/images/ui/step-arrow-inactive-bg.png) repeat-x; }
+  #step-arrows .arrow {
+    float: left; }
+    #step-arrows .arrow .content {
+      height: 40px;
+      padding: 11px 10px 0 15px; }
+    #step-arrows .arrow .title {
+      font-size: 13px;
+      font-weight: bold; }
+    #step-arrows .arrow label {
+      font-size: 9px; }
+    #step-arrows .arrow .part {
+      height: 51px;
+      background: url(/images/ui/step-arrow-parts.png); }
+    #step-arrows .arrow .point {
+      width: 21px; }
+    #step-arrows .arrow .back {
+      width: 3px;
+      background-position: -24px 0; }
+  #step-arrows .arrow > * {
+    float: left; }
+  #step-arrows .arrow.active .content {
+    color: white;
+    background: url(/images/ui/step-arrow-active-bg.png) repeat-x; }
+  #step-arrows .arrow.inactive .point {
+    background-position: -30px 0; }
+  #step-arrows .arrow.just-active .point {
+    background-position: -51px 0; }
+  #step-arrows .arrow.active .back {
+    background-position: -21px 0; }
+
+.margin-top{
+    margin-top: 14px;
+}
+
+.margin-right{
+    margin-right: 25px;
+}
+
+.section4-text {
+float: left;
+width: 700px;
+color: #5F6366;
+font-size: 14px;
+text-align: left;
+margin-top: 10px;
+}
+

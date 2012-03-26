@@ -1,43 +1,51 @@
-= render :partial => 'signup-step-arrows', :locals => { :step => 2 }
+.pagecorner
+	img src="/images/new_design/page-corner.png"
+.main-whitebg
+  .innercontent-main
+    .section5-main
+      .section4-bluegradient
 
-= form_tag account_setup_path(2), :id => 'account-setup-box', :class => 'center-box' do
-  .content
-    h2 Contact Information
+        = render :partial => 'signup-step-arrows', :locals => { :step => 2 }
 
-    h3
-      ' Phone
-      img.help-bubble src="/images/ui/help-bubble.png" title=t('account_setup.help.phone')
-    
-    label Format: (XXX) XXX-XXXX
-    input type="text" name="step_data[phone]"
-    
-    hr
-    h3
-      ' Address
-      img.help-bubble src="/images/ui/help-bubble.png" title=t('account_setup.help.address')
-    
-    label Address 1:
-    input name="step_data[address][addr1]" type="text"
-    label Address 2:
-    input name="step_data[address][addr2]" type="text"
-    label City:
-    input name="step_data[address][city]" type="text"
-    label State / Province / Territory:
-    input name="step_data[address][state]" type="text"
-    label Zip / Postal Code:
-    input name="step_data[address][zip]" type="text"
-    label Country:
-    br
-    select name="step_data[address][country]"
-      = render 'builder/country-options'
-  .action-bar
-    .rfloat.main-btn
-      input.content type="submit" value="Save & Continue"
-    a.skip-link.rfloat href=account_setup_path(3) Skip this step
-    .clearfix
+        = form_tag account_setup_path(2), :id => 'account-setup-box', :class => 'center-box' do
+          .content
+            h2 Contact Information
 
-- content_for :js do
-  javascript:
-    $(function () {
-      $('.help-bubble').simpletooltip(undefined,'help');
-    })
+            h3
+              ' Phone
+              img.help-bubble src="/images/ui/help-bubble.png" title=t('account_setup.help.phone')
+
+            label Format: (XXX) XXX-XXXX
+            input type="text" name="step_data[phone]"
+
+            hr
+            h3
+              ' Address
+              img.help-bubble src="/images/ui/help-bubble.png" title=t('account_setup.help.address')
+
+            label Address 1:
+            input name="step_data[address][addr1]" type="text"
+            label Address 2:
+            input name="step_data[address][addr2]" type="text"
+            label City:
+            input name="step_data[address][city]" type="text"
+            label State / Province / Territory:
+            input name="step_data[address][state]" type="text"
+            label Zip / Postal Code:
+            input name="step_data[address][zip]" type="text"
+            label Country:
+            br
+            select name="step_data[address][country]"
+              = render 'builder/country-options'
+          .action-bar
+            .rfloat.main-btn
+              input.content type="submit" value="Save & Continue"
+            a.skip-link.rfloat.margin-right href=account_setup_path(3) Skip this step
+            .clearfix
+
+        - content_for :js do
+          javascript:
+            $(function () {
+              $('.help-bubble').simpletooltip(undefined,'help');
+            })
+

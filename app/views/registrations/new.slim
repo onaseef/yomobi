@@ -1,12 +1,11 @@
 .pagecorner
-	img src="/images/new_design/page-corner.png"
 .main-whitebg
   .innercontent-main
     .section5-main
       .section4-bluegradient
 
 				#signin-box.center-box
-		
+
 					h2 YoMobi Signup
 
 					- if @user.errors.present?
@@ -16,9 +15,9 @@
 								- @user.errors.each do |name,reason|
 								  li = "#{name.to_s.humanize.capitalize} #{reason}"
 							p
-								| Already a Member? 
+								| Already a Member?
 								a href=session_path(:user) Click here to sign in
-		
+
 					#actual-signin-box.signup-error
 						= render :partial => 'home/signup_form', :locals => {:hide_captcha => false}
 						.clearfix

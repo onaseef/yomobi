@@ -12,22 +12,22 @@ h1 = @company.name
 #builder-container
   #builder
     .follower-section
-      h2 Email Your Followers
+      h2.main-heading Email Your Followers
       - if notice
         p.success = notice
       erb:
-        <p>You have <b><%= @company.email_followers.size %></b> email follower(s).</p>
-      p
-        | Your REPLY-TO email address is: 
+        <p class="section4-text">You have <b><%= @company.email_followers.size %></b> email follower(s).</p>
+      p.section4-text
+        | Your REPLY-TO email address is:
         = @company.informed_email || @company.user.email
       - if @errors[:no_email]
         p.error = @errors[:no_email]
       = form_tag '', :method => :post do
-        label Subject
+        h9 Subject
         br
         input.textfields type="text" name="subject" value=@old_subject
         br
-        label Content
+        h9 Content
         br
         textarea.textfields1 rows=12 cols=70 name="content" = @old_content
         br
@@ -36,3 +36,4 @@ h1 = @company.name
           div.loader.lfloat style="margin:2px 4px 0 5px"
           span.success Sending. Please wait...
         .clearfix
+

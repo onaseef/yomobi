@@ -1,46 +1,39 @@
 = form_for @user, :url => registration_path(:user), :autocomplete => "off" do |f|
 
-  table
-    tbody
-      tr
-        td
-          label First Name:
-        td
-          = f.text_field :first_name
-      tr
-        td
-          label Last Name:
-        td
-          = f.text_field :last_name
-      tr
-        td
-          label Email:
-        td
-          = f.text_field :email, :autocomplete => "off"
-      tr
-        td
-          label Password:
-        td
-          = f.password_field :password, :autocomplete => "off"
-      tr
-        td
-          label Re-enter Password:
-        td
-          = f.password_field :password_confirmation, :autocomplete => "off"
-      - unless params[:sk]
-        tr
-          td
-            label Site Type:
-          td
-            = f.select :company_type_id, options_for_select(company_types, @user.company_type_id || 57)
-      - if params[:sk]
-        tr
-          td
-            label Signup Key:
-          td
-            = f.text_field :signup_key, :value => params[:sk], :readonly => "readonly"
-  
+  h9 First Name
+  .main-field
+    label
+      = f.text_field :first_name
+  h9 Last Name
+  .main-field
+    label
+      = f.text_field :last_name
+  h9 Email
+  .main-field
+    label
+      = f.text_field :email, :autocomplete => "off"
+
+  h9 Password:
+  .main-field
+    label
+      = f.password_field :password, :autocomplete => "off"
+  h9 Re-enter Re-enter Password:
+  .main-field
+    label
+      = f.password_field :password_confirmation, :autocomplete => "off"
+  - unless params[:sk]
+    h9 Site Type:
+    .main-field
+      label
+        = f.select :company_type_id, options_for_select(company_types, @user.company_type_id || 57)
+  - if params[:sk]
+    h9 Signup Key:
+    .main-field
+      label
+        = f.text_field :signup_key, :value => params[:sk], :readonly => "readonly"
+
   - unless hide_captcha
     = render 'shared/recaptcha'
-  
+
   = f.submit 'Sign Up', :class => 'pretty-button'
+
