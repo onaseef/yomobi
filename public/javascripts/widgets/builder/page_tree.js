@@ -33,7 +33,7 @@
 
     onSave: categoryBuilder.onSave,
 
-    beforeSave: categoryBuilder.validate
+    beforeSave: categoryBuilder.beforeSave
   });
 
 
