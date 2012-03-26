@@ -421,6 +421,9 @@ script.tell-a-friend-edit-area(type="text/template")
 script.booking-request-edit-area(type="text/template")
   label Your Email Address*:
   input(name="email" type="text" value="{{ _maybe.email }}")
+  label Message to Mobile Visitors:
+  img.help-bubble src="/images/ui/help-bubble.png" title=t('widgets.helpText.booking-request.mobile-message')
+  textarea name="message" == "<% print(_maybe.message || '#{ t'booking_request.instructions' }'); %>"
 
 script.rss-feed-edit-area(type="text/template")
   label

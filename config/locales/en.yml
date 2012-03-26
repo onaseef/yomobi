@@ -142,6 +142,7 @@ en:
 
       booking-request:
         help: <p>Allow your mobile site visitors to email you a booking request.</p><br><p>Booking requests will be sent to this email address, so check your mail often.</p>
+        mobile-message: <p>REPLACE ME</p>
 
       business-hours:
         help: <p>Let your mobile site visitors know when you are open for business.</p>

@@ -149,7 +149,12 @@
 
   script.booking-page(type="text/template")
     .input-wrap
+      | <% if (_maybe.message) { %>
+      p {{ message }}
+      | <% } else { %>
       p =t'booking_request.instructions'
+      | <% } %>
+
       = form_tag "/#{@company.db_name}/booking/submit", :method => 'post' do
         label =t'general.name'
         br
