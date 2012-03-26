@@ -148,7 +148,7 @@
         .site-source.hide
           h3 Copy Site:
           select.source name="site[source_db_name]"
-            option value="" -- Please Select a Site to Copy --
+            option value="www" -- Please Select a Site to Copy --
             | <% for (var i=0; i < sites.length; i++) { %>
             option value="{{ sites[i].url }}" [/{{ sites[i].url }}] {{ sites[i].name }}
             | <% } %>

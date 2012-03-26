@@ -47,7 +47,7 @@ class SiteManagerController < ApplicationController
           :db_name => data['url'].downcase,
           :db_pass => '123123',
           :company_type => company_type,
-          :source_db_name => data['source_db_name']
+          :source_db_name => (data['source_db_name'] if data['source_db_name'] != 'www')
         if result[:id].nil?
           @errors['url'] = 'taken?'
           render :json => { :status => :error, :reasons => @errors, :site => data }
