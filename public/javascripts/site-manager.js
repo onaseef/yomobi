@@ -313,6 +313,7 @@
           self.model.edit();
         },
         error: function (resp) {
+          self.model.set(resp.site);
           self.render(resp.reasons);
         }
       });
