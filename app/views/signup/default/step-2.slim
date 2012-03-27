@@ -2,38 +2,38 @@
 
 = form_tag account_setup_path(2), :id => 'account-setup-box', :class => 'center-box' do
   .content
-    h2 Contact Information
+    h2 =t'account_setup.contact_information'
 
     h3
-      ' Phone
+      =t'account_setup.phone.phone'
       img.help-bubble src="/images/ui/help-bubble.png" title=t('account_setup.help.phone')
     
-    label Format: (XXX) XXX-XXXX
+    label =t'account_setup.phone.number'
     input type="text" name="step_data[phone]"
     
     hr
     h3
-      ' Address
+      =t'account_setup.address.address'
       img.help-bubble src="/images/ui/help-bubble.png" title=t('account_setup.help.address')
     
-    label Address 1:
+    label =t'account_setup.address.address1'
     input name="step_data[address][addr1]" type="text"
-    label Address 2:
+    label =t'account_setup.address.address2'
     input name="step_data[address][addr2]" type="text"
-    label City:
+    label =t'account_setup.address.city'
     input name="step_data[address][city]" type="text"
-    label State / Province / Territory:
+    label =t'account_setup.address.state'
     input name="step_data[address][state]" type="text"
-    label Zip / Postal Code:
+    label =t'account_setup.address.zip'
     input name="step_data[address][zip]" type="text"
-    label Country:
+    label =t'account_setup.address.country'
     br
     select name="step_data[address][country]"
       = render 'builder/country-options'
   .action-bar
     .rfloat.main-btn
-      input.content type="submit" value="Save & Continue"
-    a.skip-link.rfloat href=account_setup_path(3) Skip this step
+      input.content type="submit" value=t'account_setup.button.save_and_continue'
+    a.skip-link.rfloat href=account_setup_path(3) =t'account_setup.button.skip_this_step'
     .clearfix
 
 - content_for :js do

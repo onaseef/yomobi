@@ -2,27 +2,27 @@
 
 #account-setup-box.center-box
   .content
-    h2 Congratulations!
-    p You've successfully built your mobile site and it's now online!
+    h2 =t'account_setup.final.title'
+    h3 =t'account_setup.final.site_online'
     br
     p 
-    	' You can see your new site at 
+    	=t'account_setup.final.site_url'
     	a target="preview-mobile-site" href=@company.mobile_url 
     		=@company.mobile_url
     	' .
     br
-    p With Yomobi, updating your site is easy. Any time you save changes, they're automatically published, so your mobile site is always up to date.
+    p =t'account_setup.final.auto_redirect'
     br
-    p 
-    	' If you need help, 
-    	a target="ym-help" href="http://help.yomobi.com" visit our help center.
+    p =t'account_setup.final.easy_update'
     br
-    p To continue customizing your site, click on the 'Start Customizing' button below. 
+    p =t'account_setup.final.help'
+    br
+    p =t'account_setup.final.customize'
     br
     br
 
   .action-bar
     .rfloat.main-btn
       a href=builder_main_path
-        input.content type="submit" value="Start Customizing"
+        input.content type="submit" value=t'account_setup.button.goto_builder'
     .clearfix

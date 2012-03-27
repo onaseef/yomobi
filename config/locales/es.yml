@@ -248,7 +248,7 @@ es:
 
     widget_icons:
       call: "Call"
-      information: "Information77"
+      information: "Information"
 
   mobile_tab_bar:
-    home: "Casa"
+    home: "Inicio"

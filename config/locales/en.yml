@@ -8,11 +8,12 @@ en:
     click_here_start: "Click here"
     click_here_middle: "click here"
     name: "Name:"
-    phone_number: "Phone Number:"
     your_name: "Your Name:"
     submitting: "Submitting..."
     error:
       incorrect_password: "Incorrect Password"
+    status:
+      working: "Working..."
 
   new_site:
     site_name: "Site Name:"
@@ -62,13 +63,67 @@ en:
       subtitle: "It's free."
   
   account_setup:
-    help:
-      site_name: "Input your name or business name. This will appear at the top of your mobile site."
-      site_url: "Select a URL for your mobile site. It cannot contains spaces or special characters."
-      site_pic: "Note: Large size pictures may take up to 1 minute to load."
 
-      phone: "Enter a number you would like your mobile site visitors to use to call you."
+    about_label: "Tell your visitors who you are (optional):"
+    choose_url: "Choose a Mobile Site URL:"
+    contact_informaton: "Contact Information"
+    select_site_picture: "Select a Site Picture"
+    site_information: "Website Information"
+    site_name: "Site Name:"
+
+    address:
+      address: "Address"
+      address1: "Address 1:"
+      address2: "Address 2:"
+      city: "City:"
+      country: "Country:"
+      state: "State / Province / Territory:"
+      zip: "Zip / Postal Code:"
+
+    button:
+      goto_builder: "Start Customizing"
+      resend_confirmation: "Resend Confirmation Email"
+      save_and_continue: "Save & Continue"
+      skip_this_step: "Skip this step"
+      upload: "Upload"
+
+    confirm:
+      title: "Confirm your Account"
+      check_email: "Please confirm your account to continue. A confirmation email was sent to: %{user_email}. "
+      no_confirmation: "Didn't get a confirmation email? Check your spam folder or click the button below: "
+      already_confirmed: Please <a href="/builder/main">click here</a> to begin building your site.
+
+    help:
       address: "Enter an address you would like your mobile site visitors to use to locate you."
+      phone: "Enter a number you would like your mobile site visitors to use to call you."
+      site_name: "Input your name or business name. This will appear at the top of your mobile site."
+      site_pic: "Note: Large size pictures may take up to 1 minute to load."
+      site_url: "Select a URL for your mobile site. It cannot contains spaces or special characters."
+
+    phone:
+      number: "Number:"
+      phone: "Phone"
+      phone_number: "Phone Number:"
+
+    progress_bar:
+      step1: "Step 1"
+      step2: "Step 2"
+      step3: "Step 3"
+      step4: "Step 4"
+      label1: "General Info"
+      label2: "Contact Info"
+      label3: "Site Picture"
+      label4: "Customize"
+
+    final:
+      title: "Congratulations!"
+      site_online: "You've successfully created your mobile site and it's now online!"
+      site_url: "You can see your new mobile site on your smart phone or tablet by browsing to "
+      auto_redirect: If you have a desktop site, give your visitors the best possible browsing experience by <a target="ym-help" href="http://help.yomobi.com/Account/MobileRedirectScript"> automatically redirecting your mobile visitors</a> from your desktop site to your mobile site.
+      easy_update: "Updating your mobile site is easy. All changes you make are automatically published, so your site is always up to date."
+      help: For additional information, <a target="ym-help" href="http://help.yomobi.com">please visit our help pages.</a> 
+      customize: "To start customizing your site, please click the button below."
+
 
   builder:
     mobile_phone_emulator: "Mobile Phone Emulator"
@@ -122,6 +177,7 @@ en:
       email_not_found: "Sorry, there is no YoMobi account associated with that email."
       no_self_admin: "You cannot add yourself as a Admin."
       already_owner: "You are already the owner of this site."
+      description_too_long: "Description is too long. 2500 characters max."
       
     help:
       signup_keys: "When you are ready to hand this site over to its owner, generate a signup key, then email the link to the site owner and have them click on the link to sign up to Yomobi and take ownership of their site.<br><b>Click ? for more information.</b>"
@@ -129,6 +185,9 @@ en:
       concede_site: Are you sure? You will lose ownership of this site.
     dialog:
       concede_site: Conceding your ownership of this site will give up your ownership rights. That means you will no longer have control over collaborators.
+
+  mobile_tab_bar:
+    home: "Home"
 
   widgets:
     helpText:
@@ -252,7 +311,4 @@ en:
 
     widget_icons:
       call: "Call"
-      information: "Information77"
-
-  mobile_tab_bar:
-    home: "Home"
+      information: "Information"

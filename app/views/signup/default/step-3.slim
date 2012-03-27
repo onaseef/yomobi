@@ -16,7 +16,7 @@
 = form_tag account_setup_path(3), :multipart => true, :id => 'account-setup-box', :class => 'center-box' do
   .content
     h2
-      ' Select a Site Picture
+      =t'account_setup.select_site_picture'
       img.help-bubble src="/images/ui/help-bubble.png" title=t('account_setup.help.site_pic')
     
     table
@@ -28,9 +28,9 @@
             = image_tag 'no-logo.png'
         td
           = file_field :step_data, :logo, :accept => "image/*"
-          input type="submit" value="Upload" disabled="disabled"
+          input type="submit" value=t'account_setup.button.upload' disabled="disabled"
           .load-box.rfloat.hide
-            span.success Working...
+            span.success =t'general.status.working'
             div.loader.rfloat style="margin:2px 4px 0 5px"
 
     
@@ -38,8 +38,8 @@
     = hidden_field_tag 'account_setup', 3
   .action-bar
     .rfloat.main-btn
-      input.content type="submit" value="Save & Continue"
-    a.skip-link.rfloat href=account_setup_path(4) Skip this step
+      input.content type="submit" value=t'account_setup.button.save_and_continue'
+    a.skip-link.rfloat href=account_setup_path(4) =t'account_setup.button.skip_this_step'
     .clearfix
 
 - content_for :js do

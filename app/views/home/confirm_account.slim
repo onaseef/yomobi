@@ -1,12 +1,13 @@
 #account-setup-box.center-box
   .content
-    h2 Confirm your Account
+    h2 =t'account_setup.confirm.title'
     erb:
-      <p>A confirmation was sent to <%= @email %>. Please confirm your account to continue.</p>
+      <p><%=t('account_setup.confirm.check_email', :user_email => @email) %> </p>
     br
-    p Didn't get a confirmation email? Check your spam folder or click the button below:
+    p =t'account_setup.confirm.no_confirmation'
+    br
     = form_tag resend_confirmation_path do
-      input type="submit" value="Resend Confirmation Email"
+      input type="submit" value=t'account_setup.button.resend_confirmation'
       - if flash[:notice]
         br
         br
@@ -14,4 +15,4 @@
       - if @already_confirmed
         .divider
         erb:
-          <p class="already-confirmed">Please <a href="/builder/main">click here</a> to begin building your site.</p>
+          <p class="already-confirmed"><%=t'account_setup.confirm.already_confirmed'%></p>

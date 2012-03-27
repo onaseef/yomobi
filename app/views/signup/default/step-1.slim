@@ -2,32 +2,30 @@
 
 = form_tag account_setup_path(1), :id => 'account-setup-box', :class => 'center-box' do
   .content
-    h2 Website Information
+    h2 =t'account_setup.site_information'
     
     h3
-      ' Site Name:
+      =t'account_setup.site_name'
       img.help-bubble src="/images/ui/help-bubble.png" title=t('account_setup.help.site_name')
     
     - if @errors['title']
       p.error
-        ' Invalid Site Name. Site Name must be at least 2 characters and at most
-        = MAX_COMPANY_NAME_LENGTH
-        | &nbsp;characters.
+        =t('new_site.error.invalid_site_name', :max_length => MAX_COMPANY_NAME_LENGTH)
     input type="text" name="step_data[title]" value="#{@data['title'] }" maxlength=MAX_COMPANY_NAME_LENGTH
     
     hr
     h3
-      ' Choose a Mobile Site URL:
+      =t'account_setup.choose_url'
       img.help-bubble src="/images/ui/help-bubble.png" title=t('account_setup.help.site_url')
 
     - if @errors['site_url'] == 'illegal'
-      p.error Invalid URL: the URL must be at least 3 characters long and contain only A-Z, a-z, 0-9, underscores (_), and dashes (-).
+      p.error =t'new_site.error.invalid_site_url'
     - elsif @errors['site_url'] == 'reserved'
-      p.error Sorry, that name is reserved. Please choose another.
+      p.error =t'new_site.error.name_reserved'
     - elsif @errors['site_url'] == 'taken'
-      p.error URL is already taken.
+      p.error =t'new_site.error.url_taken'
     - elsif @errors['site_url'] == 'taken?'
-      p.error Name is already taken?
+      p.error =t'new_site.error.url_taken'
     
     .site-url
       span.lfloat http://www.yomobi.com/
@@ -36,13 +34,13 @@
       .clearfix
     
     hr
-    h3 Tell your visitors who you are (optional):
+    h3 =t'account_setup.about_label'
     - if @errors['desc']
-      p.error Description is too long. 2500 characters max.
+      p.error =t'new_site.error.description_too_long'
     textarea name="step_data[desc]" = @data['desc']
   .action-bar
     .rfloat.main-btn
-      input.content type="submit" value="Save & Continue"
+      input.content type="submit" value=t'account_setup.button.save_and_continue'
     .clearfix
 
 - content_for :js do
