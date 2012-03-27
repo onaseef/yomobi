@@ -11,4 +11,10 @@
     }
   });
 
+
+  window.widgetPages.rss = window.widgetPages.rss.extend({
+    // Don't do anything on page refresh
+    refresh: _.identity
+  });
+
 })(jQuery);
