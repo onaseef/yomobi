@@ -212,7 +212,7 @@
   // // // // //
 
   function newBlankSite () {
-    return new Site({ title:'', url:'my-site-url', type:57 });
+    return new Site({ title:'', url:'my-site-url', type:57, source_db_name:null });
   }
 
   function submitForm (model, pathTemplate, options) {
@@ -286,9 +286,17 @@
       };
       _.extend(templateData, this.model.toJSON());
 
+      var isSourceSpecified = !!this.model.get('source_db_name')
+        , radioVal = isSourceSpecified ? 'source' : 'type'
+        , sourceVal = this.model.get('source_db_name') || 'www'
+      ;
       $(this.el)
         .html( this.template(templateData) )
-        .find('select').val(this.model.get('type'))
+        .find('select').val(this.model.get('type')).end()
+        .find('[name=create_type][value='+radioVal+']').prop('checked',true).end()
+        .find('[name="site[source_db_name]"]').val(sourceVal).end()
+        .find('.site-type').toggle( !isSourceSpecified ).end()
+        .find('.site-source').toggle( isSourceSpecified ).end()
       ;
       return this;
     },
@@ -344,6 +352,7 @@
       _.extend(templateData, extraData, data);
 
       $(this.el).html( template(templateData) );
+
       return this;
     },
 

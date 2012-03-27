@@ -21,6 +21,8 @@ class SiteManagerController < ApplicationController
   def create
     # TODO: refactor and move validation to company model
     data = params[:site]; @errors = {}
+    data['source_db_name'] = nil if data['source_db_name'] == 'www'
+
     @errors['title'] = true unless data['title'].length >= 2 &&
                                    data['title'].length < MAX_COMPANY_NAME_LENGTH
 
@@ -36,7 +38,6 @@ class SiteManagerController < ApplicationController
     if company_type.nil?
       @errors['type'] = 'invalid'
     end
-
     @errors['maxSiteCount'] = MAX_SITE_COUNT if current_user.companies.count >= MAX_SITE_COUNT
 
     if @errors.count == 0
@@ -47,7 +48,7 @@ class SiteManagerController < ApplicationController
           :db_name => data['url'].downcase,
           :db_pass => '123123',
           :company_type => company_type,
-          :source_db_name => (data['source_db_name'] if data['source_db_name'] != 'www')
+          :source_db_name => data['source_db_name']
         if result[:id].nil?
           @errors['url'] = 'taken?'
           render :json => { :status => :error, :reasons => @errors, :site => data }
