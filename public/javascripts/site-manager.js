@@ -1,5 +1,7 @@
 (function ($) {
 
+  var i18n = g.i18n.site_manager;
+
   window.Site = Backbone.Model.extend({
 
     initialize: function () {
@@ -240,7 +242,7 @@
   }
 
   function defaultErrorFunc (resp) {
-    alert('Something went wrong.');
+    alert(i18n.default_error);
     util.log('removeAdmin error response:', resp);
   }
 
@@ -308,7 +310,7 @@
             "Cancel": function () { $(this).dialog('close'); }
           }
       ;
-      this.dialog = util.dialog(dialogContent, buttons, 'Create New Site', {
+      this.dialog = util.dialog(dialogContent, buttons, i18n.new_site_dialog_title, {
         width: 484
       });
     },
@@ -358,8 +360,8 @@
 
     prompt: function () {
       var dialogContent = this.render().el
-        , title = 'Add Admin for YoMobi.com/' + this.model.get('url')
-        , title = this.options.mode == 'concede' ? 'Concede Site Ownership' : title
+        , title = i18n.add_admin_dialog_title + ' YoMobi.com/' + this.model.get('url')
+        , title = this.options.mode == 'concede' ? i18n.concede_ownership_dialog_title : title
 
         , buttons = {}
         , saveLabel = this.options.mode == 'concede' ? 'Continue' : 'Add'

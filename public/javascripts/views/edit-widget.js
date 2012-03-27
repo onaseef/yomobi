@@ -66,8 +66,7 @@
       if (!this.widget) return;
       if (!util.reserveWidget(this.widget)) return;
 
-      var yes = confirm('Are you sure you want to delete this widget?\n'+
-                        '(all data will be lost)');
+      var yes = confirm(g.i18n.delete_widget);
 
       if (yes) {
         bapp.removeWidget(this.widget);

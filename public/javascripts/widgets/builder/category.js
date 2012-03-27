@@ -3,7 +3,8 @@
 //
 (function ($) {
 
-  var $isSelected = function (idx,elem) { return $(elem).is(':selected') }
+  var i18n = g.i18n.category
+    , $isSelected = function (idx,elem) { return $(elem).is(':selected') }
     , downcase = function (str) { return str.toLowerCase() }
     , isSpecialKey = function (key) { return key.charAt(0) === '_' }
     , bulletTypes = {
@@ -136,9 +137,6 @@
     this.pageView.refresh();
   };
 
-  var deleteConfirmText = "Are you sure you want to delete? (Data will be lost)";
-
-
   // // // // // // // // // // // // // // // // // // // // // // // // //
   // // // // // // // // // // // // // // // // // // // // // // // // //
   //  Widget Class  // // // // // // // // // // // // // // // // // // //
@@ -171,7 +169,7 @@
       ;
 
       if (showData.stuff.length === 0) {
-        showData.stuff = [{ name:'--None (Click Add above)--' }];
+        showData.stuff = [{ name:i18n.empty_node_list }];
         isThereStuff = false;
       }
 
@@ -349,7 +347,7 @@
 
       // transition into subcat by emulating a click
       var node = this.getFirstSelectedNode();
-      if (!node) return alert('Please select an item to edit.');
+      if (!node) return alert(i18n.edit_nothing);
 
       if (_.include(this.treeTypes, node._data.type)) {
         this.widget.pageView.$('tr[data-id='+ node._data._id +']').click();
@@ -363,7 +361,7 @@
       if (!util.isUIFree()) return;
 
       var node = this.getFirstSelectedNode();
-      if (!node) return alert('Please select an item to rename.');
+      if (!node) return alert(i18n.rename_nothing);
 
       this.catDialog = this.catDialog || new AddCatDialog();
       this.catDialog.model = this.widget;
@@ -400,8 +398,8 @@
         , selectedIds = this.getSelectedNodeIds()
         , hasSomeSelected = selectedIds.length > 0
       ;
-      if (hasSomeSelected && !confirm(deleteConfirmText)) return;
-      else if (!hasSomeSelected) return alert('Please select an item to delete.');
+      if (hasSomeSelected && !confirm(i18n.delete_node)) return;
+      else if (!hasSomeSelected) return alert(i18n.delete_nothing);
 
       _.map(selectedIds, function (node_id) {
 
@@ -464,7 +462,7 @@
       var level = this.widget.getCurrentLevel(true)
         , item = level[item_id]._data
       ;
-      if (_.isEmpty(item)) return alert('Please select an item to edit.');
+      if (_.isEmpty(item)) return alert(i18n.edit_nothing);
 
       var dialog =  this.itemDialog || new this.AddItemDialog({ model: this.widget });
       this.itemDialog.options = {
@@ -850,11 +848,11 @@
         , existingNames = _.map(_.pluck(this.level._items,'name'), downcase)
       ;
   		if (_.isEmpty(name)) {
-  		  this.prompt({ error:'Name cannot be empty' },item,true);
+  		  this.prompt({ error:i18n.empty_name_error },item,true);
   		  return false;
   		}
       else if (nameCompare !== origNameCompare && _.include(existingNames,nameCompare)) {
-        this.prompt({ error:'Name is already in use' },item,true);
+        this.prompt({ error:i18n.name_in_use_error },item,true);
         return false;
       }
       return true;
@@ -901,7 +899,7 @@
         bapp.currentEditor.setChanged('something',true);
 
         if (addAnother === true)
-          this.prompt({ success:'Item added successfully' },undefined,true);
+          this.prompt({ success:i18n.add_node_success },undefined,true);
         else
           this.options.onClose && this.options.onClose();
       }
