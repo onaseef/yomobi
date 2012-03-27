@@ -2,9 +2,10 @@
   .content
     h2 =t'account_setup.confirm.title'
     erb:
-      <p><%=t('account_setup.confirm.check_email', :user_email => @email) %> </p>
+      <p><%==t('account_setup.confirm.check_email', :user_email => @email) %> </p>
     br
-    p =t'account_setup.confirm.no_confirmation'
+    br
+    p ==t'account_setup.confirm.no_confirmation'
     br
     = form_tag resend_confirmation_path do
       input type="submit" value=t'account_setup.button.resend_confirmation'
@@ -15,4 +16,4 @@
       - if @already_confirmed
         .divider
         erb:
-          <p class="already-confirmed"><%=t'account_setup.confirm.already_confirmed'%></p>
+          <p class="already-confirmed"><%==t'account_setup.confirm.already_confirmed'%></p>

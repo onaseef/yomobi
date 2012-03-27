@@ -89,8 +89,8 @@ en:
 
     confirm:
       title: "Confirm your Account"
-      check_email: "Please confirm your account to continue. A confirmation email was sent to: %{user_email}. "
-      no_confirmation: "Didn't get a confirmation email? Check your spam folder or click the button below: "
+      check_email: "Please confirm your account to continue.<br><br>A confirmation email was sent to: <b>%{user_email}</b>."
+      no_confirmation: <b>Didn't get a confirmation email?</b><br><br>If the email address shown above is correct, please check your spam folder or click the button below.<br><br>If the email address is not yours, please <a href="/users/sign_out">sign out and start the signup process again</a>.
       already_confirmed: Please <a href="/builder/main">click here</a> to begin building your site.
 
     help:
@@ -119,7 +119,7 @@ en:
       title: "Congratulations!"
       site_online: "You've successfully created your mobile site and it's now online!"
       site_url: "You can see your new mobile site on your smart phone or tablet by browsing to "
-      auto_redirect: If you have a desktop site, give your visitors the best possible browsing experience by <a target="ym-help" href="http://help.yomobi.com/Account/MobileRedirectScript"> automatically redirecting your mobile visitors</a> from your desktop site to your mobile site.
+      auto_redirect: If you have a desktop site, <a target="ym-help" href="http://help.yomobi.com/Account/MobileRedirectScript"> learn how to automatically redirect your mobile visitors from your desktop site to your mobile site</a>.
       easy_update: "Updating your mobile site is easy. All changes you make are automatically published, so your site is always up to date."
       help: For additional information, <a target="ym-help" href="http://help.yomobi.com">please visit our help pages.</a> 
       customize: "To start customizing your site, please click the button below."
