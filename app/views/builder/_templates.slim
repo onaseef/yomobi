@@ -9,18 +9,18 @@ script.sidebar-widget(type="text/template")
       | {{ name }}
 
 script.add-widget-dialog(type="text/template")
-  #dialog-confirm title="Please Rename your Widget"
+  #dialog-confirm title=t'dialog.rename_widget.title'
     p
       span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"
-      | Please rename your widget:
+      =t'dialog.rename_widget.instructions'
       input type="text" value="{{ defaultName }}" name="wname"
       | <% if(_maybe.error) { %>
-      p.error Error: {{ _maybe.error }}
+      p.error =t('dialog.error', :error_message => "{{ _maybe.error }}")
       | <% } %>
 
 script.add-subcat-dialog(type="text/template")
-  #dialog-confirm title="Add New {{ typeName }}"
-      label {{ typeName }} name:
+  #dialog-confirm title=t('dialog.add_new.title', :item_type => "{{ typeName }}")
+      label =t('dialog.add_new.instructions', :item_type => "{{ typeName }}")
       br
       input type="text" value="{{ _maybe.name }}" name="cat"
 
@@ -33,24 +33,24 @@ script.add-subcat-dialog(type="text/template")
               img src="{{ wphotoUrl }}"
             | <% } %>
             td
-              label Select a Picture...
+              label =t'dialog.add_new.select_picture'
               br
               .selected-file.lfloat &nbsp;
-              button name="pick_files" Browse...
+              button name="pick_files" =t'dialog.add_new.browse'
               .error
           | <% if (_maybe.wphotoUrl) { %>
           tr
             td
-              a.remove-wphoto-link href="#" Remove Picture
+              a.remove-wphoto-link href="#" =t'dialog.add_new.remove_picture'
             td
           | <% } %>
       input type="hidden" value="" name="wphotoUrl"
       | <% } %>
 
-      input name="add" type="button" value="Add"
+      input name="add" type="button" value=t'dialog.add_new.add'
 
       | <% if(_maybe.error) { %>
-      p.error Error: {{ _maybe.error }}
+      p.error =t('dialog.error', :error_message => "{{ _maybe.error }}")
       | <% } %>
       | <% if (addedCats.length > 0) { %>
       .divider
@@ -63,13 +63,13 @@ script.add-subcat-dialog(type="text/template")
       | <% } %>
 
 script.edit-subcat-dialog(type="text/template")
-  #dialog-confirm title="Rename"
+  #dialog-confirm title=t'dialog.rename_category.title'
     p
-      | New {{ typeName }} name:
+      =t('dialog.rename_category.instructions', :item_type => "{{ typeName }}")
       br
       input type="text" value="{{ _maybe.name }}" name="cat"
       | <% if(_maybe.error) { %>
-      p.error Error: {{ _maybe.error }}
+      p.error =t('dialog.error', :error_message => "{{ _maybe.error }}")
       | <% } %>
 
 script.edit-widget(type="text/template")
@@ -80,11 +80,11 @@ script.edit-widget(type="text/template")
     .widget-name
       span {{ name }}
     p.help-text
-      a.help-link href="{{ helpUrl }}" target="_blank" Help
+      a.help-link href="{{ helpUrl }}" target="_blank" =t'builder.widget_editor.help'
       span.dot.rename-link &nbsp;&middot;&nbsp;
-      a.rename-link href="#" Rename
+      a.rename-link href="#" =t'builder.widget_editor.rename'
       span.dot.edit-icon-link &nbsp;&middot;&nbsp;
-      a.edit-icon-link href="#" Change Icon
+      a.edit-icon-link href="#" =t'builder.widget_editor.change_icon'
   div class="edit-area {{ wtype }}"
     | <% if (!_maybe.hideHelpText) { %>
     .explanation {{ helpText }}
@@ -95,23 +95,23 @@ script.edit-widget(type="text/template")
   .action-bar
     | <% if (!_maybe.hideSaveButton) { %>
     .accept-btn.main-btn tabindex="100"
-      .content Save Changes
+      .content =t'builder.widget_editor.save'
     | <% } %>
     .checkmark
     .loader
     | <% if (!_maybe.hideCancelButton) { %>
     .cancel-btn.alt-btn
-      .content Discard Changes
+      .content =t'builder.widget_editor.cancel'
     | <% } if (!_maybe.hideRemoveLink) { %>
-    a.remove-link(href="#") Remove Widget
+    a.remove-link(href="#") =t'builder.widget_editor.delete'
     | <% } %>
     .clearfix style="padding-bottom: 10px"
   | <% } %>
 
 
 script.edit-icon-dialog(type="text/template")
-  #dialog-confirm.edit-icon title="Change Icon"
-    p Click on icon to select:
+  #dialog-confirm.edit-icon title=t'dialog.change_icon.title'
+    p t'dialog.change_icon.instructions'
     .icons
       | <% var first=1; %>
       | <% for (var i=0; i < icons.length; i++) { %>
@@ -138,7 +138,7 @@ script.edit-icon-dialog(type="text/template")
       | <% } %>
       | <% } %>
     .selected-display
-      div.selected-label Selected icon:
+      div.selected-label =t'dialog.change_icon.selected_icon'
       img src=""
       label
 
@@ -151,19 +151,19 @@ script.edit-tab-bar(type="text/template")
   .header.edit-tab-bar
     .icon{ style="background-image: url(/images/edit-tab-bar.png)" }
     .widget-name
-      | Edit Mobile Tab Bar
+      =t'builder.tab_bar_editor.title'
     p.help-text
-      a.help-link href="#" Help
+      a.help-link href="#" =t'builder.widget_editor.help'
   div class="edit-area"
-    .explanation == t 'builder.help.edit_tab_bar'
+    .explanation ==t'builder.edit_tab_bar.explanation'
     .wtab
-      h3 = "Tab #1"
-      h2 style="color:#696969" Home
+      h3 =t'builder.tab_bar_editor.tab_1'
+      h2 style="color:#696969" =t'mobile.tab_bar.home'
     - 3.times do |n|
       .wtab
-        h3 = "Tab \##{ n+2 }"
+        h3 =t('builder.tab_bar_editor.tab_n', :num => n+2)
         select name="wtab_1" data-idx="#{ n }"
-          option value="__none__" = "==None=="
+          option value="__none__" =t'builder.tab_bar_editor.none'
           | <%
           = "var tabIdx = #{ n };"
           | for (var i=0; i<widgetVals.length; i++) {
@@ -178,23 +178,23 @@ script.edit-settings(type="text/template")
   .header.edit-settings
     .icon{ style="background-image: url(/images/edit-settings.png)" }
     .widget-name
-      | General Settings
+      =t'builder.general_settings.title'
     p.help-text
-      a.help-link href="http://help.yomobi.com/Account/GeneralSettings" target="_blank" Help
+      a.help-link href="http://help.yomobi.com/Account/GeneralSettings" target="_blank" =t'builder.widget_editor.help'
   div class="edit-area edit-settings"
-    .explanation == t 'builder.help.edit_settings'
+    .explanation ==t'builder.general_settings.explanation'
 
     = form_tag '/builder/settings', :multipart => true, :class => 'box' do
       table.site-settings
         tbody
           tr
             td.top.site-name
-              label Site Name:
+              label =t'builder.general_settings.site_name'
             td.top colspan="2"
               input type="text" name="company_name" value=@company.name maxlength=MAX_COMPANY_NAME_LENGTH
           tr
             td.top
-              label Site Slogan:
+              label =t'builder.general_settings.site_slogan'
             td colspan="2"
               textarea name="company_slogan" maxlength=MAX_COMPANY_SLOGAN_LENGTH = @company.settings.slogan
           tr
@@ -202,7 +202,7 @@ script.edit-settings(type="text/template")
               .divider
           tr
             td
-              label Site Type:
+              label =t'builder.general_settings.site_type'
             td colspan="2"
               = select_tag :company_type, options_for_select(company_types,@company.company_type_id)
           tr
@@ -210,11 +210,11 @@ script.edit-settings(type="text/template")
               .divider
           tr
             td.top
-              label Site Picture:
+              label =t'builder.general_settings.site_picture'
             td
               img.logo{src=@company.logo.url(:mobile) }
             td
-              a.remove-logo href="#" class=(@company.logo.exists? ? '' : 'hide') Remove Picture
+              a.remove-logo href="#" class=(@company.logo.exists? ? '' : 'hide') =t'builder.general_settings.remove_picture'
               input type="hidden" name="destroy_logo" value="0"
 
       table.site-settings.new-picture
@@ -222,15 +222,15 @@ script.edit-settings(type="text/template")
           tr
             td
               label
-                ' Select a new picture:
+                =t'builder.general_settings.select_picture'
                 a href="http://help.yomobi.com/Mobile/ChangeSitePicture" target="ymhelp"
-                  img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.settings.help.site_pic')
+                  img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.general_settings.site_picture_help')
             td
           tr
             td
               input type="file" name="logo" accept="image/*"
             td
-              input.rfloat type="submit" value="Upload" disabled="disabled"
+              input.rfloat type="submit" value==t'builder.general_settings.upload' disabled="disabled"
           tr
             td colspan="3"
               .divider
@@ -238,14 +238,14 @@ script.edit-settings(type="text/template")
         tbody
           tr
             td
-              label Header Background:
+              label =t'builder.general_settings.header_background'
             td
               .color-picker data-color="{{ header_color }}" data-target="header_color"
                 div style="background-color:{{ header_color }}"
               input type="hidden" name="header_color" value="{{ header_color }}"
           tr
             td
-              label Header Text:
+              label =t'builder.general_settings.header_text'
             td
               .color-picker data-color="{{ header_text_color }}" data-target="header_text_color"
                 div style="background-color:{{ header_text_color }}"
@@ -256,7 +256,7 @@ script.edit-settings(type="text/template")
       .action-bar
         p.error.lfloat style="margin-top:2px"
         .accept-btn.main-btn
-          input.content type="submit" value="Save Settings"
+          input.content type="submit" value=t'builder.general_settings.save'
         .loader
         .clearfix
 
@@ -264,32 +264,32 @@ script.edit-advanced-settings(type="text/template")
   .header.edit-advanced-settings
     .icon{ style="background-image: url(/images/edit-advanced-settings.png)" }
     .widget-name
-      | Advanced Settings
+      =t'builder.advanced_settings.title'
     p.help-text
-      a.help-link href="http://help.yomobi.com/Account/AdvancedSettings" target="_blank" Help
+      a.help-link href="http://help.yomobi.com/Account/AdvancedSettings" target="_blank" =t'builder.widget_editor.help'
   div class="edit-area edit-advanced-settings"
-    .explanation == t 'builder.help.edit_advanced_settings'
+    .explanation ==t'builder.advanced_settings.explanation'
 
     .box style="margin-bottom:10px"
-      label Mobile Site URL:
+      label =t'builder.advanced_settings.mobile_url'
       br
       input.read-only readonly="readonly" type="text" value=@company.mobile_url data-orig-val=@company.mobile_url
       .divider
 
-      label class="help" Desktop Redirect Code:
+      label class="help" =t'builder.advanced_settings.redirect_code'
       a href="http://help.yomobi.com/Account/MobileRedirectScript#detailedinstructions" target="ymhelp"
-        img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.settings.help.redirect')
+        img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.advanced_settings.redirect_code_help')
       textarea.read-only readonly="readonly" data-orig-val=desktop_redirect_code(@company) = desktop_redirect_code @company
 
     .box
-      label Enter keywords that describe your website, separated by commas:
+      label =t'builder.advanced_settings.keywords'
       textarea name="keywords" {{ keywords }}
       br
 
     .action-bar style="padding-right: 0"
       p.error.lfloat style="margin-top:2px"
       .accept-btn.main-btn
-        input.content type="submit" value="Save Settings"
+        input.content type="submit" value==t'builder.advanced_settings.save'
       .checkmark
       .loader
 

@@ -142,12 +142,27 @@ en:
       help: For additional information, <a target="ym-help" href="http://help.yomobi.com">please visit our help pages.</a> 
       customize: "To start customizing your site, please click the button below."
 
+  navigation_bar:
+    help: "Help"
+    sign_out: "Sign Out"
+    site_manager: "Site Manager"
+    site_builder: "Website Builder"
+    account_settings: "Account Settings"
+
+
+  account_settings:
+    title: "Account Settings"
+    current_password: "Current Password*:"
+    contact_information: "Contact Information"
+    first_name: "First Name:"
+    last_name: "Last Name:"
+    email: "Email:"
+    change_password: "Change Password (Optional):"
+    new_password: "New Password:"
+    new_password_confirm: "Re-enter New Password:"
+    save: "Save Changes" 
 
   builder:
-    mobile_phone_emulator: "Mobile Phone Emulator"
-    widget_editor: "Widget Editor"
-    widget_editor_instructions: "Click on a widget in the Mobile Phone Emulator to edit it here."
-    mobile_redirect: " to learn how to auto-redirect mobile visitors from your desktop site to your mobile site."
 
     sidebar:
       view_mobile_site: "View Mobile Site"
@@ -158,21 +173,90 @@ en:
       edit_tab_bar: "Edit Mobile Tab Bar"
       mobile_site_builder: "Mobile Site Builder"
 
-    help:
-      edit_settings: "<p>Edit general settings.</p>"
-      edit_advanced_settings: "<p>Edit advanced settings.</p>"
-      edit_tab_bar: "<p>Edit the navigation tab bar at the top of your mobile site.</p><br><p>Highlight the widgets you want your mobile site visitors to see first by adding them to the navigation tab bar which appears at the top of your mobile site.</p>"
-    
-    settings:
-      help:
-        redirect: "To automatically redirect visitors to your mobile site when they visit your desktop site from a mobile phone, copy this code snippet and paste it into your desktop site’s home page, just before the closing &lt;head&gt; tag. <b>Click ? more help.</b>"
-        site_pic: "Note: Large size pictures may take up to 1 minute to load."
+    general_settings:
+      title: "General Settings"
+      explanation: "<p>Edit general settings.</p>"
+      site_name: "Site Name:"
+      site_slogan: "Site Slogan:"
+      site_type: "Site Type:"
+      site_picture: "Site Picture:"
+      site_picture_help: "Note: Large size pictures may take up to 1 minute to load."
+      select_picture: "Select a picture:"
+      remove_picture: "Remove Picture"
+      browse: "Browse..."
+      upload: "Upload"
+      header_background: "Header Background:"
+      header_text: "Header Text:" 
+      save: "Save Settings"    
+
+    advanced_settings:
+      title: "Advanced Settings"
+      explanation: "<p>Edit advanced settings.</p>"
+      mobile_url: "Mobile Site URL:"
+      redirect_code: "Desktop Redirect Code:"
+      redirect_code_help: "To automatically redirect visitors to your mobile site when they visit your desktop site from a mobile phone, copy this code snippet and paste it into your desktop site’s home page, just before the closing &lt;head&gt; tag. <b>Click ? more help.</b>"
+      keywords: "Enter keywords that describe your website, separated by commas:"
+      save: "Save Settings"    
 
     jeditor:
       help:
         thumb: "Set this picture as the preview thumbnail for this page.<br><b>Click ? for more information.</b>"
         url: "Make this picture a clickable URL.<br><b>Click ? for more information</b>"
         youtube: "Add a video to your page.<br><b>Click ? for more information.</b>"
+
+    mobile_emulator:
+      title: "Mobile Phone Emulator"
+      instructions: "Click on a widget in the Mobile Phone Emulator to edit it here."
+      mobile_redirect: " to learn how to auto-redirect mobile visitors from your desktop site to your mobile site."
+
+    tab_bar_editor:
+      title: "Edit Mobile Tab Bar"
+      explanation: "<p>Edit the navigation tab bar at the top of your mobile site.</p><br><p>Highlight the widgets you want your mobile site visitors to see first by adding them to the navigation tab bar which appears at the top of your mobile site.</p>"
+      tab_1: "Tab #1"
+      tab_n: "Tab #%{num}"
+      none: "== None ==" 
+    
+    widget_editor:
+      title: "Widget Editor"
+      instructions: "Click on a widget in the Mobile Phone Emulator to edit it here."
+      help: "Help"
+      rename: "Rename"
+      change_icon: "Change Icon"
+      save: "Save Changes"
+      cancel: "Discard Changes"
+      delete: "Remove Widget"
+      to_start: "To Start:"
+      drag_widget: "Drag a widget from the Mobile Website Builder into the Mobile Phone Emulator"
+      or: "OR"
+      edit_widget: "Click on a widget in the Mobile Phone Emulator to enter your information."
+
+      
+
+  dialog:
+    error: "Error: %{error_message}"
+    
+    change_icon:
+      title: "Change Icon"
+      instructions: "Click on icon to select:"
+      selected_icon: "Selected Icon:"
+
+    rename_category:
+      title: "Rename"
+      instructions: "New %{item_type} Name:"
+
+    rename_widget:
+      title: "Rename Widget"
+      instructions: "Please rename your widget:"
+    
+    add_new:
+      title: "Add New %{item_type}"
+      instructions: " %{item_type} name:"
+      select_picture: "Select a picture..."
+      browse: "Browse..."
+      remove_picture: "Remove Picture"
+      add: "Add"
+      added: "Added %{item}:"
+
 
   site_manager:
     active_site: "Active Site: %{site_name}"
@@ -204,8 +288,9 @@ en:
     dialog:
       concede_site: Conceding your ownership of this site will give up your ownership rights. That means you will no longer have control over collaborators.
 
-  mobile_tab_bar:
-    home: "Home"
+  mobile:
+    tab_bar:
+      home: "Home"
 
   widgets:
     helpText:

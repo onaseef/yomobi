@@ -15,12 +15,12 @@ h1 = @company.name
 #builder-container
   #builder
     .left.lfloat
-      .title =t'builder.mobile_phone_emulator'
+      .title =t'builder.mobile_emulator.title'
       .title-subtext
         a target="_blank" href="http://help.yomobi.com/Account/MobileRedirectScript" 
           img src="/images/redirect.png"
         a target="ymhelp" href="http://help.yomobi.com/Account/MobileRedirectScript" =t'general.click_here_start'
-        =t'builder.mobile_redirect'
+        =t'builder.mobile_emulator.mobile_redirect'
       .divider style="border-color:#E0E1E2;margin:0 10px 10px 0"
       #emulator-wrapper
         .loader-overlay
@@ -33,9 +33,9 @@ h1 = @company.name
             #mobile-container
               = render 'shared/mobile-render'
     .right.lfloat
-      .title =t'builder.widget_editor'
+      .title =t'builder.widget_editor.title'
       .title-subtext
-        em =t'builder.widget_editor_instructions'
+        em =t'builder.widget_editor.instructions'
       .divider style="border-color:#E0E1E2;margin:0 10px 10px 10px"
       .widget-editor
         = render 'builder/builder-help'

@@ -250,5 +250,6 @@ es:
       call: "Call"
       information: "Information"
 
-  mobile_tab_bar:
-    home: "Inicio"
+  mobile:
+    tab_bar:
+      home: "Inicio"
