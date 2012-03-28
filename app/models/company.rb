@@ -47,7 +47,8 @@ class Company < ActiveRecord::Base
       source_db_url = ApplicationController::couch_url self.source_db_name, :@admin
       db.replicate_from CouchRest.database(source_db_url)
     elsif result == true
-      default_docs = CouchDocs::default_docs(self.company_type.name, self.user.email)
+      default_docs = CouchDocs::default_docs(self.company_type.name, self.user.email,
+                                             I18n.t('widgets.names'))
 
       # compact to remove deadly nil-related errors. Better to discover later
       # than to tell user "we just died, sorry about that"

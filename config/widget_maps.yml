@@ -3,11 +3,11 @@ docs:
     types:
       - Airport
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
-      - [products, services, Services]
+      - [services, services.png]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -24,11 +24,11 @@ docs:
     types:
       - Arts / Entertainment / Nightlife
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
-      - [link, reviews, Reviews]
+      - [reviews, reviews.png]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -45,13 +45,13 @@ docs:
     types:
       - Automotive
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
-      - [products, services, Services]
+      - [services, services.png]
       - coupon
-      - [link, reviews, Reviews]
+      - [reviews, reviews.png]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -67,11 +67,11 @@ docs:
     types:
       - Bank / Financial Services
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
-      - [products, services, Services]
+      - [services, services.png]
       - locations
       - keep-me-informed
       - leave-a-message
@@ -88,11 +88,11 @@ docs:
     types:
       - Bar
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
-      - [link, reviews, Reviews]
+      - [reviews, reviews.png]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -109,12 +109,12 @@ docs:
     types:
       - Book Store
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
       - coupon
-      - [link, reviews, Reviews]
+      - [reviews, reviews.png]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -131,13 +131,13 @@ docs:
     types:
       - Business Services
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
-      - [products, services, Services]
+      - [services, services.png]
       - coupon
-      - [link, reviews, Reviews]
+      - [reviews, reviews.png]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -153,11 +153,11 @@ docs:
     types:
       - Church / Religious Organization
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
-      - [products, services, Services]
+      - [services, services.png]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -174,11 +174,11 @@ docs:
     types:
       - Club
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
-      - [link, reviews, Reviews]
+      - [reviews, reviews.png]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -195,11 +195,11 @@ docs:
     types:
       - Community / Government
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
-      - [products, services, Services]
+      - [services, services.png]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -215,12 +215,12 @@ docs:
     types:
       - Computers / Technology
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
-      - [products, services, Services]
-      - [link, reviews, Reviews]
+      - [services, services.png]
+      - [reviews, reviews.png]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -236,11 +236,11 @@ docs:
     types:
       - Concert Venue
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
-      - [link, reviews, Reviews]
+      - [reviews, reviews.png]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -257,12 +257,12 @@ docs:
     types:
       - Consulting / Business Services
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
-      - [products, services, Services]
-      - [link, reviews, Reviews]
+      - [services, services.png]
+      - [reviews, reviews.png]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -278,7 +278,7 @@ docs:
     types:
       - Education
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
@@ -298,11 +298,11 @@ docs:
     types:
       - Energy / Utility
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
-      - [products, services, Services]
+      - [services, services.png]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -319,12 +319,12 @@ docs:
     types:
       - Engineering / Construction
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
-      - [products, services, Services]
-      - [link, reviews, Reviews]
+      - [services, services.png]
+      - [reviews, reviews.png]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -340,12 +340,12 @@ docs:
     types:
       - Event Planning / Event Services
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
-      - [products, services, Services]
-      - [link, reviews, Reviews]
+      - [services, services.png]
+      - [reviews, reviews.png]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -362,12 +362,12 @@ docs:
     types:
       - Food / Grocery
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
       - locations
-      - [products, services, Services]
+      - [services, services.png]
       - coupon
       - keep-me-informed
       - leave-a-message
@@ -384,11 +384,11 @@ docs:
     types:
       - Government Organization
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
-      - [products, services, Services]
+      - [services, services.png]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -405,12 +405,12 @@ docs:
     types:
       - Health / Medical / Pharmacy
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
       - locations
-      - [products, services, Services]
+      - [services, services.png]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -426,12 +426,12 @@ docs:
     types:
       - Home Improvement
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
-      - [products, services, Services]
-      - [link, reviews, Reviews]
+      - [services, services.png]
+      - [reviews, reviews.png]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -447,13 +447,13 @@ docs:
     types:
       - Hospital / Clinic
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
       - locations
-      - [products, services, Services]
-      - [link, reviews, Reviews]
+      - [services, services.png]
+      - [reviews, reviews.png]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -469,14 +469,14 @@ docs:
     types:
       - Hotel
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
       - booking-request
       - locations
-      - [products, services, Services]
-      - [link, reviews, Reviews]
+      - [services, services.png]
+      - [reviews, reviews.png]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -493,7 +493,7 @@ docs:
     types:
       - Individual / Personal Site
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - keep-me-informed
@@ -510,12 +510,12 @@ docs:
     types:
       - Insurance Company
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
       - products
-      - [link, reviews, Reviews]
+      - [reviews, reviews.png]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -532,12 +532,12 @@ docs:
     types:
       - Internet / Software
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
-      - [products, services, Services]
-      - [link, reviews, Reviews]
+      - [services, services.png]
+      - [reviews, reviews.png]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -553,12 +553,12 @@ docs:
     types:
       - Legal / Law
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
-      - [products, services, Services]
-      - [link, reviews, Reviews]
+      - [services, services.png]
+      - [reviews, reviews.png]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -574,12 +574,12 @@ docs:
     types:
       - Library
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
       - locations
-      - [products, services, Services]
+      - [services, services.png]
       - event-calendar
       - keep-me-informed
       - leave-a-message
@@ -596,15 +596,15 @@ docs:
     types:
       - Local / Small Business
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
       - locations
-      - [products, services, Services]
+      - [services, services.png]
       - products
       - coupon
-      - [link, event-calendar, Event Calendar]
+      - [event-calendar, event-calendar.png]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -620,16 +620,16 @@ docs:
     types:
       - Media / News / Publishing
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
-      - [products, services, Services]
+      - [services, services.png]
       - keep-me-informed
       - leave-a-message
       - call-me-back
       - tell-a-friend
-      - [link, event-calendar, Event Calendar]
+      - [event-calendar, event-calendar.png]
       - facebook
       - twitter
       - full-website
@@ -641,7 +641,7 @@ docs:
     types:
       - Movie Theater
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
@@ -651,7 +651,7 @@ docs:
       - leave-a-message
       - call-me-back
       - tell-a-friend
-      - [link, event-calendar, Event Calendar]
+      - [event-calendar, event-calendar.png]
       - facebook
       - twitter
       - full-website
@@ -663,7 +663,7 @@ docs:
     types:
       - Museum / Art Gallery
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
@@ -673,7 +673,7 @@ docs:
       - leave-a-message
       - call-me-back
       - tell-a-friend
-      - [link, event-calendar, Event Calendar]
+      - [event-calendar, event-calendar.png]
       - facebook
       - twitter
       - full-website
@@ -685,7 +685,7 @@ docs:
     types:
       - Non-Governmental Organization (NGO)
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
@@ -693,7 +693,7 @@ docs:
       - leave-a-message
       - call-me-back
       - tell-a-friend
-      - [link, event-calendar, Event Calendar]
+      - [event-calendar, event-calendar.png]
       - facebook
       - twitter
       - full-website
@@ -705,7 +705,7 @@ docs:
     types:
       - Non-Profit Organization
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
@@ -713,7 +713,7 @@ docs:
       - leave-a-message
       - call-me-back
       - tell-a-friend
-      - [link, event-calendar, Event Calendar]
+      - [event-calendar, event-calendar.png]
       - facebook
       - twitter
       - full-website
@@ -725,16 +725,16 @@ docs:
     types:
       - Organization
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
-      - [products, services, Services]
+      - [services, services.png]
       - keep-me-informed
       - leave-a-message
       - call-me-back
       - tell-a-friend
-      - [link, event-calendar, Event Calendar]
+      - [event-calendar, event-calendar.png]
       - facebook
       - twitter
       - full-website
@@ -746,11 +746,11 @@ docs:
     types:
       - Pet Services
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
-      - [products, services, Services]
+      - [services, services.png]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -766,11 +766,11 @@ docs:
     types:
       - Political Party / Organization
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
-      - [link, event-calendar, Event Calendar]
+      - [event-calendar, event-calendar.png]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -786,11 +786,11 @@ docs:
     types:
       - Professional Services
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
-      - [products, services, Services]
+      - [services, services.png]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -806,11 +806,11 @@ docs:
     types:
       - Public Places
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
-      - [products, services, Services]
+      - [services, services.png]
       - event-calendar
       - keep-me-informed
       - leave-a-message
@@ -828,12 +828,12 @@ docs:
     types:
       - Real Estate
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
       - property-listings
-      - [products, services, Services]
+      - [services, services.png]
       - event-calendar
       - keep-me-informed
       - leave-a-message
@@ -850,14 +850,14 @@ docs:
     types:
       - Restaurant / Cafe
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
       - menu
       - coupon
       - booking-request
-      - [link, reviews, Reviews]
+      - [reviews, reviews.png]
       - event-calendar
       - keep-me-informed
       - leave-a-message
@@ -874,13 +874,13 @@ docs:
     types:
       - Retail and Consumer Merchandise
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
       - products
       - coupon
-      - [link, reviews, Reviews]
+      - [reviews, reviews.png]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -896,12 +896,12 @@ docs:
     types:
       - School
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
       - locations
-      - [link, reviews, Reviews]
+      - [reviews, reviews.png]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -917,14 +917,14 @@ docs:
     types:
       - Shopping / Retail
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
       - locations
       - products
       - coupon
-      - [link, reviews, Reviews]
+      - [reviews, reviews.png]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -940,14 +940,14 @@ docs:
     types:
       - Spas / Beauty / Personal Care
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
-      - [products, services, Services]
+      - [services, services.png]
       - products
       - coupon
-      - [link, reviews, Reviews]
+      - [reviews, reviews.png]
       - locations
       - booking-request
       - keep-me-informed
@@ -965,7 +965,7 @@ docs:
     types:
       - Sports Venue
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
@@ -985,7 +985,7 @@ docs:
     types:
       - Sports / Recreation / Activities
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
@@ -1005,13 +1005,13 @@ docs:
     types:
       - Tours / Sightseeing
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
-      - [products, services, Services]
+      - [services, services.png]
       - coupon
-      - [link, reviews, Reviews]
+      - [reviews, reviews.png]
       - event-calendar
       - keep-me-informed
       - leave-a-message
@@ -1028,12 +1028,12 @@ docs:
     types:
       - Transit Stop
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
       - coupon
-      - [link, reviews, Reviews]
+      - [reviews, reviews.png]
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -1049,7 +1049,7 @@ docs:
     types:
       - Transportation
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
@@ -1068,12 +1068,12 @@ docs:
     types:
       - Travel / Leisure
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
-      - [products, services, Services]
-      - [link, reviews, Reviews]
+      - [services, services.png]
+      - [reviews, reviews.png]
       - event-calendar
       - keep-me-informed
       - leave-a-message
@@ -1090,7 +1090,7 @@ docs:
     types:
       - University
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
@@ -1111,7 +1111,7 @@ docs:
     types:
       - Other
     widgets:
-      - [custom-page, about-us, About Us]
+      - [about-us, about-us.png]
       - call-us
       - find-us
       - business-hours
