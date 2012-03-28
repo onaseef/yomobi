@@ -30,6 +30,9 @@ module Yomobi
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :en
 
+    # rails will fallback to config.i18n.default_locale translation
+    config.i18n.fallbacks = true
+
     # JavaScript files you want as :defaults (application.js is always included).
     # config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
 
