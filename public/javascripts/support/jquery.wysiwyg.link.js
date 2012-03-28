@@ -35,22 +35,22 @@
 				reset : "Cancel"
 			};
 
-			formLinkHtml = 
+			formLinkHtml =
 				'<form class="wysiwyg addlink" title="{legend}" style="padding-top:30px">' +
-				'<table>' + 
-				'<tr>' + 
+				'<table>' +
+				'<tr>' +
 				'<td class="label"><label>{type}: </label></td>' +
 				'<td><select name="linktype">' +
-				  '<option value="url">URL</option>' +
-				  '<option value="email">Email</option>' +
-				  '<option value="phone">Phone</option>' +
-				  '<option value="address">Address</option>' +
-				'</select>' + 
+					'<option value="url">URL</option>' +
+					'<option value="email">Email</option>' +
+					'<option value="phone">Phone</option>' +
+					'<option value="address">Address</option>' +
+				'</select>' +
 				'<a href="http://help.yomobi.com/Wysiwyg/LinkTypes" target="ymhelp"><img class="help-bubble" src="/images/ui/help-bubble.png" title=""></a>' +
 				'</td></tr>' +
-				'<tr>' + 
+				'<tr>' +
 				'<td class="label"><label>{url}: </label></td>' +
-				'<td><input type="text" name="linkhref" value=""/></td>' + 
+				'<td><input type="text" name="linkhref" value=""/></td>' +
 				'</tr></table>' +
 				'<input type="text" name="linktitle" value="" style="display:none"/>' +
 				'<input type="text" name="linktarget" value="" style="display:none" />' +
@@ -61,7 +61,7 @@
 				if ($.wysiwyg.i18n) {
 					translation = $.wysiwyg.i18n.t(dialogReplacements[key], "dialogs.link");
 
-					if (translation === dialogReplacements[key]) { // if not translated search in dialogs 
+					if (translation === dialogReplacements[key]) { // if not translated search in dialogs
 						translation = $.wysiwyg.i18n.t(dialogReplacements[key], "dialogs");
 					}
 
@@ -105,82 +105,85 @@
 				} else {
 					dialog = elements.appendTo("body");
 				}
+
+
+				var buttons = {};
+				buttons[g.i18n.submit] = function (e,ui) {
+					e.preventDefault();
+
+					var type   = $('select[name="linktype"]', dialog).val(),
+						url    = $('input[name="linkhref"]', dialog).val(),
+						title  = $('input[name="linktitle"]', dialog).val(),
+						target = $('input[name="linktarget"]', dialog).val(),
+						baseUrl,
+						img;
+
+					if (Wysiwyg.options.controlLink.forceRelativeUrls) {
+						baseUrl = window.location.protocol + "//" + window.location.hostname;
+						if (0 === url.indexOf(baseUrl)) {
+							url = url.substr(baseUrl.length);
+						}
+					}
+
+					url = util.ensureUrl(url, type);
+
+					if (a.self) {
+						if ("string" === typeof (url)) {
+							if (url.length > 0) {
+								// to preserve all link attributes
+								$(a.self).attr("href", url).attr("title", title).attr("target", target);
+							} else {
+								$(a.self).replaceWith(a.self.innerHTML);
+							}
+						}
+					} else {
+						if ($.browser.msie) {
+							Wysiwyg.ui.returnRange();
+						}
+
+						//Do new link element
+						selection = Wysiwyg.getRangeText();
+						img = Wysiwyg.dom.getElement("img");
+
+						if ((selection && selection.length > 0) || img) {
+							if ($.browser.msie) {
+								Wysiwyg.ui.focus();
+							}
+
+							if ("string" === typeof (url)) {
+								if (url.length > 0) {
+									Wysiwyg.editorDoc.execCommand("createLink", false, url);
+								} else {
+									Wysiwyg.editorDoc.execCommand("unlink", false, null);
+								}
+							}
+
+							a.self = Wysiwyg.dom.getElement("a");
+
+							$(a.self).attr("href", url).attr("title", title);
+
+							/**
+							 * @url https://github.com/akzhan/jwysiwyg/issues/16
+							 */
+							$(a.self).attr("target", target);
+						} else if (Wysiwyg.options.messages.nonSelection) {
+							window.alert(Wysiwyg.options.messages.nonSelection);
+						}
+					}
+
+					Wysiwyg.saveContent();
+
+					$(dialog).dialog("close");
+				};
+
+				buttons[g.i18n.close] = function (e) {
+					e.preventDefault();
+					$(dialog).dialog("close");
+				};
+
 				dialog.dialog({
 					modal: true,
-					// open: function (ev, ui) {
-					buttons: {
-						"Submit": function (e,ui) {
-							e.preventDefault();
-
-							var type   = $('select[name="linktype"]', dialog).val(),
-								url    = $('input[name="linkhref"]', dialog).val(),
-								title  = $('input[name="linktitle"]', dialog).val(),
-								target = $('input[name="linktarget"]', dialog).val(),
-								baseUrl,
-								img;
-
-							if (Wysiwyg.options.controlLink.forceRelativeUrls) {
-								baseUrl = window.location.protocol + "//" + window.location.hostname;
-								if (0 === url.indexOf(baseUrl)) {
-									url = url.substr(baseUrl.length);
-								}
-							}
-
-							url = util.ensureUrl(url, type);
-
-							if (a.self) {
-								if ("string" === typeof (url)) {
-									if (url.length > 0) {
-										// to preserve all link attributes
-										$(a.self).attr("href", url).attr("title", title).attr("target", target);
-									} else {
-										$(a.self).replaceWith(a.self.innerHTML);
-									}
-								}
-							} else {
-								if ($.browser.msie) {
-									Wysiwyg.ui.returnRange();
-								}
-
-								//Do new link element
-								selection = Wysiwyg.getRangeText();
-								img = Wysiwyg.dom.getElement("img");
-
-								if ((selection && selection.length > 0) || img) {
-									if ($.browser.msie) {
-										Wysiwyg.ui.focus();
-									}
-
-									if ("string" === typeof (url)) {
-										if (url.length > 0) {
-											Wysiwyg.editorDoc.execCommand("createLink", false, url);
-										} else {
-											Wysiwyg.editorDoc.execCommand("unlink", false, null);
-										}
-									}
-
-									a.self = Wysiwyg.dom.getElement("a");
-
-									$(a.self).attr("href", url).attr("title", title);
-
-									/**
-									 * @url https://github.com/akzhan/jwysiwyg/issues/16
-									 */
-									$(a.self).attr("target", target);
-								} else if (Wysiwyg.options.messages.nonSelection) {
-									window.alert(Wysiwyg.options.messages.nonSelection);
-								}
-							}
-
-							Wysiwyg.saveContent();
-
-							$(dialog).dialog("close");
-						},
-						"Cancel": function (e) {
-							e.preventDefault();
-							$(dialog).dialog("close");
-						}
-					},
+					buttons: buttons,
 					close: function (ev, ui) {
 						dialog.dialog("destroy");
 						dialog.remove();

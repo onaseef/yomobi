@@ -305,11 +305,11 @@
 
     prompt: function () {
       var dialogContent = this.render().el
-        , buttons = {
-            "Create": this.submit,
-            "Cancel": function () { $(this).dialog('close'); }
-          }
+        , buttons = {}
       ;
+      buttons[g.i18n.create] = this.submit,
+      buttons[g.i18n.cancel] = function () { $(this).dialog('close'); }
+
       this.dialog = util.dialog(dialogContent, buttons, i18n.new_site_dialog_title, {
         width: 484
       });
@@ -366,8 +366,8 @@
         , buttons = {}
         , saveLabel = this.options.mode == 'concede' ? 'Continue' : 'Add'
       ;
-      buttons["Save"] = this.submit;
-      buttons["Cancel"] = function () { $(this).dialog('close'); };
+      buttons[g.i18n.save] = this.submit,
+      buttons[g.i18n.cancel] = function () { $(this).dialog('close'); }
 
       this.dialog = util.dialog(dialogContent, buttons, title, {
         width: 484

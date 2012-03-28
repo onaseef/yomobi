@@ -16,6 +16,12 @@ en:
       working: "Working..."
 
   javascript:
+
+    save: "Save"
+    submit: "Submit"
+    cancel: "Cancel"
+    close: "Close"
+
     delete_widget: "Are you sure you want to delete this widget?\n(all data will be lost)"
     category:
       delete_node: "Are you sure you want to delete? (Data will be lost)"

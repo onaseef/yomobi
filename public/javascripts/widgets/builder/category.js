@@ -633,12 +633,12 @@
       this.level = level;
       if (!error) this.origName = origName;
 
-      buttons["Save"] = makeSaveFunc(this, {
+      buttons[g.i18n.save] = makeSaveFunc(this, {
         onUpload: this.validateCategory,
         validator: this.isCategoryValid,
         skipUpload: this.options.hideUploader
       });
-      buttons["Cancel"] = makeCloseFunc(this);
+      buttons[g.i18n.cancel] = makeCloseFunc(this);
 
       // cache for use when user hits enter key
       this.addAnotherSaveFunc = makeSaveFunc(this, {
@@ -816,8 +816,8 @@
 
       var buttons = {};
 
-      buttons["Save"] = makeSaveFunc(this, { onUpload:this.saveItem, validator:this.isItemValid });
-      buttons["Cancel"] = makeCloseFunc(this);
+      buttons[g.i18n.save] = makeSaveFunc(this, { onUpload:this.saveItem, validator:this.isItemValid });
+      buttons[g.i18n.cancel] = makeCloseFunc(this);
 
       var dialog = util.dialog(dialogContent, buttons, dialogContent.title)
         .find('p.error').show('pulsate',{times:3}).end()
