@@ -151,6 +151,7 @@ GEM
     xml-simple (1.1.0)
 
 PLATFORMS
+  java
   ruby
 
 DEPENDENCIES

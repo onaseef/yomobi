@@ -1,12 +1,12 @@
 class CouchDocs
   require 'digest/sha1'
 
-  def self.default_docs(company_type_name,default_email)
+  def self.default_docs(company_type_name,default_email,i18n_names)
     docs = []
     wtabs = nil
     WMAPS['docs'].each do |spec|
       if spec['types'].include?(company_type_name)
-        docs.concat spec['widgets'].map {|wsubtype| self.by_wsubtype(wsubtype)}
+        docs.concat spec['widgets'].map {|wsubtype| self.by_wsubtype(wsubtype,i18n_names)}
         wtabs = spec['tabs']
         break
       end
@@ -109,12 +109,15 @@ class CouchDocs
     result
   end
 
-  def self.by_wsubtype(wsubtype)
+  def self.by_wsubtype(wsubtype,i18n_names)
     additional_specs = wsubtype.is_a? Array
-    wsubtype, icon, name = wsubtype if additional_specs
+    wsubtype, icon = wsubtype if additional_specs
+
     wdata = self.all.select {|doc| doc[:wsubtype] == wsubtype}.first
+    wdata[:name] = i18n_names[wsubtype.to_sym]
+
     if additional_specs
-      wdata = wdata.merge :iconName => icon.gsub(/\.png$/, ''), :name => name
+      wdata.merge! :iconName => icon.gsub(/\.png$/, '')
     end
     wdata
   end
