@@ -36,6 +36,13 @@ en:
       name_in_use_error: "Name is already in use"
       add_node_success: "Item added successfully"
 
+    side_bar:
+      singletonInUseTooltip: "You may only use <b>one</b> of this type of widget at a time.<br/><br/>This widget is already in your YoMobi mobile website."
+      unsavedChangesText: "You have unsaved changes. Click OK to go back and save changes. Click Cancel to discard your changes."
+
+    builder_app:
+      unsavedChangesText: "You have unsaved changes. Click OK to go back and save changes. Click Cancel to discard your changes."
+
     site_manager:
       default_error: "We're sorry, something went wrong."
       new_site_dialog_title: "Create New Site"
@@ -240,6 +247,46 @@ en:
       drag_widget: "Drag a widget from the Mobile Website Builder into the Mobile Phone Emulator"
       or: "OR"
       edit_widget: "Click on a widget in the Mobile Phone Emulator to enter your information."
+      url_type_label_required: "Your %{type} URL*:"
+      url_label_required: "URL*:"
+      current_link: "Current Link"
+      item_type_label_required: "Your %{type}*:"
+      phone_number_label_required: "Your phone number*:"
+      email_label_required: "Your email address*:"
+      custom_message_label: "Message to Mobile Visitors:"
+      rss_label_required: "RSS Feed*:"
+      rss_max_entries: "Max number of entries:"
+      select_at_least_one_label_required: "Please select at least one of the following*:"
+      email_opt_in_label: "Allow users to opt-in for emails."
+      sms_opt_in_label: "Allow users to opt-in for text messages."
+      two_times_per_day_label: "Specify two sets of hours for each day."
+      to_label: "to"
+      closed_label: "Closed"
+      address1_label_required: "Address 1*:"
+      address2_label: "Address 2:"
+      city_label_required: "City*:"
+      state_label: "State / Province / Territory:"
+      zip_label: "Zip / Postal Code:"
+      country_label_required: "Country*:"
+      deal_name_label_required: "Deal Name*:"
+      expiration_date_label: "Expiration Date:"
+      description_label_required: "Description*:"
+      current_calendar_link_label: "Current calendar link:"
+      calendar_link_label: "Paste your calendar link here:"
+      click_to_edit_label: "Click Here to Start Editing"
+      deactivate_label: "Deactivate"
+      editing_crumb: '<b>Editing: <span class="blue">%{breadcrumb}</span></b>'
+      select_picture: "Select a picture..."
+      browse: "Browse..."
+      remove_picture: "Remove Picture"
+      add_item: "Add %{item}"
+      go_back_icon: "Go Back"
+      rss_icon: "Add RSS Feed"
+      edit_icon: "Edit"
+      rename_icon: "Rename"
+      delete_icon: "Delete"
+
+
 
       
 
@@ -279,6 +326,7 @@ en:
     site_name: "Site Name:"
     site_details: "Site Details"
     select_site: "Please select a site on the left."
+    selected_site: "Selected: %{site_name}"
     edit_site: "Edit Site"
     generate_signup_key: "Generate Signup Key"
     site_access_list: "Sites you have access to:"

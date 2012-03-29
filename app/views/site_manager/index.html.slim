@@ -69,7 +69,7 @@
 
   script.site-details(type="text/template")
     h3.active-site
-      ' Selected: {{ url }}
+      =t('site_manager.selected_site', :site_name => "{{ url }}")
       | <% if (isOwnedByUser === true) { %>
       | *
       | <% } %>
