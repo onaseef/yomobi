@@ -34,22 +34,22 @@ html lang="en-US"
             ul.menu-bar
               li
                 div.menu-item
-                  a href=root_path Home
+                  a href=root_path =t'links.home'
               li
                 div.menu-item
-                  a href=about_path About
+                  a href=about_path =t'links.about'
               li
                 div.menu-item
-                  a href=why_mobile_path Mobile Matters
+                  a href=why_mobile_path =t'links.mobile_matters'
               li
                 div.menu-item
-                  a target="ym" href=help_url Help 
+                  a target="ym" href=help_url =t'links.help' 
             .clearfix
       - unless user_signed_in? || @hide_signup_bar
         .signup-bar
           .content
-            a.pretty-button href="/" Sign Up
-            .description = t 'signup_bar'
+            a.pretty-button href="/users/sign_up" =t'sign_up.sign_up'
+            .description =t'sign_up.sign_up_bar'
             .clearfix
       #page-container-wrapper class=@page_wrapper_class
         #page-container

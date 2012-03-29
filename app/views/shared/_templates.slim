@@ -80,11 +80,11 @@
       | <% } %>
 
       = form_tag "/#{@company.db_name}/leave_msg/submit", :method => 'post' do
-        label =t'general.name'
+        label =t'mobile.form.name'
         br
         input type="text" name="name"
         br
-        label =t'general.email'
+        label =t'mobile.form.email'
         br
         input type="text" name="email"
         br
@@ -96,7 +96,7 @@
         textarea name="feedback" rows=5
         .aritcaptcha-container
         p.response.error
-        input(type="submit" value="Send")
+        input(type="submit" value=t'mobile.form.send')
     .thanks-wrap style="display:none"
       h3 = t('leave_a_message.confirmation', :company_name => @company.name)
 
@@ -109,11 +109,11 @@
       | <% } %>
 
       = form_tag "/#{@company.db_name}/call_back/submit", :method => 'post' do
-        label =t'general.name'
+        label =t'mobile.form.name'
         br
         input type="text" name="name"
         br
-        label =t'general.phone_number'
+        label =t'mobile.form.phone_number'
         br
         input type="text" name="phone"
         br
@@ -124,7 +124,7 @@
         .aritcaptcha-container
         p.error.response
         br
-        input(type="submit" value="Send")
+        input(type="submit" value=t'mobile.form.send')
     .thanks-wrap style="display:none"
       h3 =t('call_back.confirmation', :company_name => @company.name)
 
@@ -137,13 +137,13 @@
         br
         input type="text" name="email_to"
         br
-        label =t'general.your_name'
+        label =t'mobile.form.your_name'
         br
         input type="text" name="name_from"
         br
         p.error.response
         br
-        input type="submit" value="Send"
+        input type="submit" value=t'mobile.form.send'
     .thanks-wrap style="display:none"
       h3 =t('tell_a_friend.confirmation', :company_name => @company.name)
 
@@ -156,11 +156,11 @@
       | <% } %>
 
       = form_tag "/#{@company.db_name}/booking/submit", :method => 'post' do
-        label =t'general.name'
+        label =t'mobile.form.name'
         br
         input name="name" type="text"
         br
-        label =t'general.phone'
+        label =t'mobile.form.phone_number'
         br
         input name="phone" type="text"
         br
@@ -188,7 +188,7 @@
         br
         .aritcaptcha-container
         p.error.response
-        input(type="submit" value="Send")
+        input(type="submit" value=t'mobile.form.send')
     .thanks-wrap style="display:none"
       h3 =t('booking_request.confirmation', :company_name => @company.name)
 
@@ -202,7 +202,7 @@
 
       = form_tag "/#{@company.db_name}/informed/submit", :method => 'post' do
         | <% if (_maybe.optForEmails) { %>
-        label =t'general.email'
+        label =t'mobile.form.email'
         br
         input type="text" name="email"
         br
@@ -218,7 +218,7 @@
         | <% } %>
         .aritcaptcha-container
         p.response.error
-        input(type="submit" value="Send")
+        input(type="submit" value=t'mobile.form.send')
     .thanks-wrap style="display:none"
       h3 =t('keep_me_informed.confirmation', :company_name => @company.name)
 
@@ -292,7 +292,7 @@
 
 
     | <% if (nodeType === 'loading') { %>
-    h2 Loading...
+    h2 =t'status.loading'
     | <% } else if (nodeType === 'item') {
     |     print( itemTemplate({ item:node }) );
     | } else { %>

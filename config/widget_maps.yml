@@ -7,7 +7,7 @@ docs:
       - call-us
       - find-us
       - business-hours
-      - [services, services.png]
+      - products
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -49,7 +49,7 @@ docs:
       - call-us
       - find-us
       - business-hours
-      - [services, services.png]
+      - products
       - coupon
       - [reviews, reviews.png]
       - keep-me-informed
@@ -71,7 +71,7 @@ docs:
       - call-us
       - find-us
       - business-hours
-      - [services, services.png]
+      - products
       - locations
       - keep-me-informed
       - leave-a-message
@@ -135,7 +135,7 @@ docs:
       - call-us
       - find-us
       - business-hours
-      - [services, services.png]
+      - products
       - coupon
       - [reviews, reviews.png]
       - keep-me-informed
@@ -157,7 +157,7 @@ docs:
       - call-us
       - find-us
       - business-hours
-      - [services, services.png]
+      - products
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -199,7 +199,7 @@ docs:
       - call-us
       - find-us
       - business-hours
-      - [services, services.png]
+      - products
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -219,7 +219,7 @@ docs:
       - call-us
       - find-us
       - business-hours
-      - [services, services.png]
+      - products
       - [reviews, reviews.png]
       - keep-me-informed
       - leave-a-message
@@ -261,7 +261,7 @@ docs:
       - call-us
       - find-us
       - business-hours
-      - [services, services.png]
+      - products
       - [reviews, reviews.png]
       - keep-me-informed
       - leave-a-message
@@ -302,7 +302,7 @@ docs:
       - call-us
       - find-us
       - business-hours
-      - [services, services.png]
+      - products
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -323,7 +323,7 @@ docs:
       - call-us
       - find-us
       - business-hours
-      - [services, services.png]
+      - products
       - [reviews, reviews.png]
       - keep-me-informed
       - leave-a-message
@@ -344,7 +344,7 @@ docs:
       - call-us
       - find-us
       - business-hours
-      - [services, services.png]
+      - products
       - [reviews, reviews.png]
       - keep-me-informed
       - leave-a-message
@@ -367,7 +367,7 @@ docs:
       - find-us
       - business-hours
       - locations
-      - [services, services.png]
+      - products
       - coupon
       - keep-me-informed
       - leave-a-message
@@ -388,7 +388,7 @@ docs:
       - call-us
       - find-us
       - business-hours
-      - [services, services.png]
+      - products
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -410,7 +410,7 @@ docs:
       - find-us
       - business-hours
       - locations
-      - [services, services.png]
+      - products
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -430,7 +430,7 @@ docs:
       - call-us
       - find-us
       - business-hours
-      - [services, services.png]
+      - products
       - [reviews, reviews.png]
       - keep-me-informed
       - leave-a-message
@@ -452,7 +452,7 @@ docs:
       - find-us
       - business-hours
       - locations
-      - [services, services.png]
+      - products
       - [reviews, reviews.png]
       - keep-me-informed
       - leave-a-message
@@ -475,7 +475,7 @@ docs:
       - business-hours
       - booking-request
       - locations
-      - [services, services.png]
+      - products
       - [reviews, reviews.png]
       - keep-me-informed
       - leave-a-message
@@ -536,7 +536,7 @@ docs:
       - call-us
       - find-us
       - business-hours
-      - [services, services.png]
+      - products
       - [reviews, reviews.png]
       - keep-me-informed
       - leave-a-message
@@ -557,7 +557,7 @@ docs:
       - call-us
       - find-us
       - business-hours
-      - [services, services.png]
+      - products
       - [reviews, reviews.png]
       - keep-me-informed
       - leave-a-message
@@ -579,7 +579,7 @@ docs:
       - find-us
       - business-hours
       - locations
-      - [services, services.png]
+      - products
       - event-calendar
       - keep-me-informed
       - leave-a-message
@@ -601,7 +601,6 @@ docs:
       - find-us
       - business-hours
       - locations
-      - [services, services.png]
       - products
       - coupon
       - [event-calendar, event-calendar.png]
@@ -624,7 +623,7 @@ docs:
       - call-us
       - find-us
       - business-hours
-      - [services, services.png]
+      - products
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -729,7 +728,7 @@ docs:
       - call-us
       - find-us
       - business-hours
-      - [services, services.png]
+      - products
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -750,7 +749,7 @@ docs:
       - call-us
       - find-us
       - business-hours
-      - [services, services.png]
+      - products
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -790,7 +789,7 @@ docs:
       - call-us
       - find-us
       - business-hours
-      - [services, services.png]
+      - products
       - keep-me-informed
       - leave-a-message
       - call-me-back
@@ -810,7 +809,7 @@ docs:
       - call-us
       - find-us
       - business-hours
-      - [services, services.png]
+      - products
       - event-calendar
       - keep-me-informed
       - leave-a-message
@@ -833,7 +832,7 @@ docs:
       - find-us
       - business-hours
       - property-listings
-      - [services, services.png]
+      - products
       - event-calendar
       - keep-me-informed
       - leave-a-message
@@ -944,7 +943,6 @@ docs:
       - call-us
       - find-us
       - business-hours
-      - [services, services.png]
       - products
       - coupon
       - [reviews, reviews.png]
@@ -1009,7 +1007,7 @@ docs:
       - call-us
       - find-us
       - business-hours
-      - [services, services.png]
+      - products
       - coupon
       - [reviews, reviews.png]
       - event-calendar
@@ -1072,7 +1070,7 @@ docs:
       - call-us
       - find-us
       - business-hours
-      - [services, services.png]
+      - products
       - [reviews, reviews.png]
       - event-calendar
       - keep-me-informed

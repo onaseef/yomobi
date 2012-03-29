@@ -155,7 +155,7 @@
             | <% } %>
 
       .loading
-        h3 =t'general.submitting'
+        h3 =t'status.submitting'
         img src="/images/ui/ajax-loader-small.gif"
   
   script.add-admin-dialog(type="text/template")
@@ -170,7 +170,7 @@
         | <% } %>
         input type="text" name="email" value="{{ email }}"
       .loading
-        h3 =t'general.submitting'
+        h3 =t'status.submitting'
         img src="/images/ui/ajax-loader-small.gif"
 
   script.concede-dialog(type="text/template")
@@ -181,7 +181,7 @@
 
         h3 =t'site_manager.enter_password'
         | <% if (errors.password) { %>
-        p.error =t'general.error.incorrect_password'
+        p.error =t'security.error.incorrect_password'
         | <% } %>
         | <% if (errors.self) { %>
         p.error =t'site_manager.error.already_owner'
@@ -189,5 +189,5 @@
         input type="password" name="password"
         input type="hidden" name="admin_id" value="{{ admin_id }}"
       .loading
-        h3 =t'general.submitting'
+        h3 =t'status.submitting'
         img src="/images/ui/ajax-loader-small.gif"

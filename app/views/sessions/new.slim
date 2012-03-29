@@ -1,20 +1,20 @@
 = form_for resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => 'center-box', :id => 'signin-box' } do |f|
   
-  h2 YoMobi Sign in
+  h2 =t'sign_in.title'
   - if alert
     .login-error
-      b Please re-enter your password
-      p The password you entered is incorrect. Please try again (make sure your caps lock is off).
+      b =t'sign_in.error.reenter_password'
+      p =t'sign_in.error.incorrect_password'
       p
-        | Forgot your password? 
-        a href=new_password_path(:user) Request a new one.
+        =t'sign_in.forgot_your_password' 
+        a href=new_password_path(:user) =t'sign_in.request_new_password'
 
   #actual-signin-box.sign-in-form
     table
       tbody
         tr
           td
-            = f.label 'Email:'
+            f.label =t'sign_in.email'
           td
             = f.text_field :email, :size => 30
         tr
@@ -22,23 +22,23 @@
           td
             .remember-me
               = f.check_box :remember_me
-              span.subtext Remember me
+              span.subtext =t'sign_in.remember_user'
         tr
           td
-            = f.label 'Password:'
+            f.label =t'sign_in.password'
           td
             = f.password_field :password, :size => 30
         tr
           td
           td
             .forgot-password
-              a href=new_password_path(:user) Forgot your password?
+              a href=new_password_path(:user) =t'sign_in.forgot_your_password'
         tr
           td
           td
-            input.pretty-button.lfloat type="submit" value="Sign In"
+            input.pretty-button.lfloat type="submit" value=t'sign_in.sign_in'
             .sign-up-offer
-              | or
-              a href=new_user_registration_path style="font-weight:bold" Sign Up for YoMobi
+              =t'sign_in.or'
+              a href=new_user_registration_path style="font-weight:bold" =t'sign_in.sign_up'
     .clearfix
   .clearfix

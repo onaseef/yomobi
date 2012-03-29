@@ -3,17 +3,32 @@
 
 en:
   general:
-    call: "Call:"
-    email: "Email Address:"
     click_here_start: "Click here"
     click_here_middle: "click here"
-    name: "Name:"
-    your_name: "Your Name:"
+  
+  status:
+    loading: "Loading..."
+    processing: "Processing..."
     submitting: "Submitting..."
+    uploading: "Uploading..."
+    working: "Working..."
+
+  security:
     error:
       incorrect_password: "Incorrect Password"
-    status:
-      working: "Working..."
+
+  legal:
+    rights_reserved: "All Right Reserved YoMobi © 2012"
+
+  links:
+    about: "About"
+    feedback: "Feedback"
+    help: "Help"
+    home: "Home"
+    mobile_matters: "Mobile Matters"
+    privacy: "Privacy"
+    terms: "Terms"
+
 
   javascript:
 
@@ -60,6 +75,42 @@ en:
       name_reserved: "Sorry, that name is reserved. Please choose another."
       url_taken: "URL is already taken."
 
+  sign_in:
+    title: "YoMobi Signin"
+    forgot_password: "Forgot password"
+    forgot_your_password: "Forgot your password?"
+    request_new_password: "Click here to request a new one."
+    email: "Email:"
+    password: "Password:"
+    remember_user: "Keep me logged in"
+    sign_in: "Sign In"
+    or: "or"
+    sign_up: "Sign Up for Yomobi"
+    error:
+      reenter_password: "Please re-enter your password"
+      incorrect_password: "The password you entered is incorrect. Please try again (make sure your caps lock is off)."
+
+  sign_up:
+    title: "YoMobi Signup"
+    first_name: "First Name:"
+    last_name: "Last Name:"
+    email: "Email:"
+    password: "Password:"
+    password_confirm: "Re-enter Password:"
+    site_type: "Site Type:"
+    signup_key: "Signup Key:"
+    sign_up: "Sign Up"
+    sign_up_bar: "YoMobi helps you reach more people with a mobile optimized website."
+    already_member: "Already a Member?"
+    click_to_signin: "Click here to sign in."
+    error:
+      general: "There was problem with your request:"
+      recaptcha: "There was an error with the recaptcha code below. Please re-enter the code and click submit."
+
+  recaptcha:
+    type_words: "Type the two words:  "
+    new_words: "(Get New Words)"
+
   leave_a_message:
     instructions: "Leave a message:"
     subject: "Subject:"
@@ -87,8 +138,6 @@ en:
     mobile_number: "Mobile Number:"
     mobile_carrier: "Mobile Service Carrier:"
     confirmation: "Thank you for following %{company_name}."
-
-  signup_bar: "YoMobi helps you reach more people with a mobile optimized website."
 
   home_page:
     banner:
@@ -235,57 +284,56 @@ en:
       none: "== None ==" 
     
     widget_editor:
-      title: "Widget Editor"
-      instructions: "Click on a widget in the Mobile Phone Emulator to edit it here."
-      help: "Help"
-      rename: "Rename"
-      change_icon: "Change Icon"
-      save: "Save Changes"
-      cancel: "Discard Changes"
-      delete: "Remove Widget"
-      to_start: "To Start:"
-      drag_widget: "Drag a widget from the Mobile Website Builder into the Mobile Phone Emulator"
-      or: "OR"
-      edit_widget: "Click on a widget in the Mobile Phone Emulator to enter your information."
-      url_type_label_required: "Your %{type} URL*:"
-      url_label_required: "URL*:"
-      current_link: "Current Link"
-      item_type_label_required: "Your %{type}*:"
-      phone_number_label_required: "Your phone number*:"
-      email_label_required: "Your email address*:"
-      custom_message_label: "Message to Mobile Visitors:"
-      rss_label_required: "RSS Feed*:"
-      rss_max_entries: "Max number of entries:"
-      select_at_least_one_label_required: "Please select at least one of the following*:"
-      email_opt_in_label: "Allow users to opt-in for emails."
-      sms_opt_in_label: "Allow users to opt-in for text messages."
-      two_times_per_day_label: "Specify two sets of hours for each day."
-      to_label: "to"
-      closed_label: "Closed"
+      add_item: "Add %{item}"
       address1_label_required: "Address 1*:"
       address2_label: "Address 2:"
-      city_label_required: "City*:"
-      state_label: "State / Province / Territory:"
-      zip_label: "Zip / Postal Code:"
-      country_label_required: "Country*:"
-      deal_name_label_required: "Deal Name*:"
-      expiration_date_label: "Expiration Date:"
-      description_label_required: "Description*:"
-      current_calendar_link_label: "Current calendar link:"
-      calendar_link_label: "Paste your calendar link here:"
-      click_to_edit_label: "Click Here to Start Editing"
-      deactivate_label: "Deactivate"
-      editing_crumb: '<b>Editing: <span class="blue">%{breadcrumb}</span></b>'
-      select_picture: "Select a picture..."
       browse: "Browse..."
-      remove_picture: "Remove Picture"
-      add_item: "Add %{item}"
-      go_back_icon: "Go Back"
-      rss_icon: "Add RSS Feed"
-      edit_icon: "Edit"
-      rename_icon: "Rename"
+      calendar_link_label: "Paste your calendar link here:"
+      cancel: "Discard Changes"
+      change_icon: "Change Icon"
+      city_label_required: "City*:"
+      click_to_edit_label: "Click Here to Start Editing"
+      closed_label: "Closed"
+      country_label_required: "Country*:"
+      current_calendar_link_label: "Current calendar link:"
+      current_link: "Current Link"
+      custom_message_label: "Message to Mobile Visitors:"
+      deactivate_label: "Deactivate"
+      deal_name_label_required: "Deal Name*:"
       delete_icon: "Delete"
-
+      delete: "Remove Widget"
+      description_label_required: "Description*:"
+      drag_widget: "Drag a widget from the Mobile Website Builder into the Mobile Phone Emulator"
+      edit_icon: "Edit"
+      edit_widget: "Click on a widget in the Mobile Phone Emulator to enter your information."
+      editing_crumb: '@@<b>Editing: <span class="blue">%{breadcrumb}</span></b>'
+      email_label_required: "Your email address*:"
+      email_opt_in_label: "Allow users to opt-in for emails."
+      expiration_date_label: "Expiration Date:"
+      go_back_icon: "Go Back"
+      help: "Help"
+      instructions: "Click on a widget in the Mobile Phone Emulator to edit it here."
+      item_type_label_required: "Your %{type}*:"
+      or: "OR"
+      phone_number_label_required: "Your phone number*:"
+      remove_picture: "Remove Picture"
+      rename_icon: "Rename"
+      rename: "Rename"
+      rss_icon: "Add RSS Feed"
+      rss_label_required: "RSS Feed*:"
+      rss_max_entries: "Max number of entries:"
+      save: "Save Changes"
+      select_at_least_one_label_required: "Please select at least one of the following*:"
+      select_picture: "Select a picture..."
+      sms_opt_in_label: "Allow users to opt-in for text messages."
+      state_label: "State / Province / Territory:"
+      title: "Widget Editor"
+      to_label: "to"
+      to_start: "To Start:"
+      two_times_per_day_label: "Specify two sets of hours for each day."
+      url_label_required: "URL*:"
+      url_type_label_required: "Your %{type} URL*:"
+      zip_label: "Zip / Postal Code:"
 
 
       
@@ -350,6 +398,12 @@ en:
   mobile:
     tab_bar:
       home: "Home"
+    form:
+      email: "Email Address:"
+      name: "Name:"
+      phone_number: "Phone Number:"
+      your_name: "Your Name:"
+      send: "Send"
 
   widgets:
     helpText:
