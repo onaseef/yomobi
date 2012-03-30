@@ -524,6 +524,7 @@ en:
 
       tell-a-friend:
         help: <p>Let your mobile site visitors tell their friends about you.</p>
+        explanation: "This widget appears as an icon on your mobile site and makes it easy for visitors to share your site with their friends."
 
       twitter:
         help: <p>Add a link to your twitter account on your mobile site to make it easy for visitors to follow you.</p><br><p><a target="ymhelp" href="http://support.twitter.com/articles/14609-how-to-change-your-username">Click here</a> to find your twitter uername.</p>

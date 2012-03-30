@@ -417,7 +417,7 @@ script.call-me-back-edit-area(type="text/template")
   textarea name="message" == "<% print(_maybe.message || '#{ t'call_back.instructions' }'); %>"
 
 script.tell-a-friend-edit-area(type="text/template")
-  p This widget appears as an icon on your mobile site and makes it easy for visitors to share your site with their friends.
+  p =t'widgets.helpText.tell-a-friend.explanation'
 
 script.booking-request-edit-area(type="text/template")
   label =t'builder.widget_editor.email_label_required'
