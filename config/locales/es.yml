@@ -10,6 +10,16 @@ es:
     welcome: "@@Welcome to YoMobi"
     message: '@@Reach more people with a <span class="hilite">free</span> mobile website. YoMobi makes building a mobile site easy. Go from sign up to online in minutes.<br/><br/> Being mobile is more important than ever.'
     why_mobile_matters: "@@See Why Mobile Matters"
+    get_mobilized: "@@Get Mobilized"
+    reach_more: "@@Reach more people with a mobile website. YoMobi makes building a mobile site easy. Go from sign up to online in minutes."
+    features_include: "@@Features Include"
+    feature1: "@@Completely Free Mobile Sites"
+    feature2: "@@Free Hosting & Mobile URL"
+    feature3: "@@One-click calling"
+    feature4: "@@Interactive maps"
+    feature5: "@@Social media integration"
+    feature6: "@@Easily customizable content"
+    feature7: "@@Subscriber notification"
 
   status:
     loading: "@@Loading..."

@@ -116,7 +116,8 @@ body {
 
 .signup-btn-top {
 	margin-top: 21px;
-  	background: #0290ee;	
+  	background: #0290ee;
+  	color: white;	
 }
 
 .signup-btn-body {
@@ -143,6 +144,12 @@ body {
 	margin-top:2px;
 	margin-left:13px;
 }
+
+.signin-section1 input { 
+	margin-left: 0px;
+	padding-left: 0px;
+}
+
 .signin-text {
 	font-size:11px;
 	text-transform:uppercase;

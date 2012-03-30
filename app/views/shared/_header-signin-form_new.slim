@@ -3,19 +3,17 @@
     .signin-section1
       span.signin-text =t'sign_in.email'
       br
-      label
-        = text_field_tag 'user[email]', '', :class => "signin-field"
+      = text_field_tag 'user[email]', '', :class => "signin-field"
       br
       .floatleft
-        label
-          = check_box_tag 'user[remember_me]'
+        = check_box_tag 'user[remember_me]'
+
       .signin-whitetext  =t'sign_in.remember_user'
 
     .signin-section2
       span.signin-text =t'sign_in.password'
       br
-      label
-        = password_field_tag 'user[password]', '', :class => "signin-field"
+      = password_field_tag 'user[password]', '', :class => "signin-field"
       br
       a.signin-whitetext  href="/users/password/new" =t'sign_in.forgot_password'
 
