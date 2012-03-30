@@ -6,6 +6,11 @@ es:
     click_here_start: "@@Click here"
     click_here_middle: "@@click here"
  
+  homepage:
+    welcome: "@@Welcome to YoMobi"
+    message: '@@Reach more people with a <span class="hilite">free</span> mobile website. YoMobi makes building a mobile site easy. Go from sign up to online in minutes.<br/><br/> Being mobile is more important than ever.'
+    why_mobile_matters: "@@See Why Mobile Matters"
+
   status:
     loading: "@@Loading..."
     processing: "@@Processing..."
