@@ -6,7 +6,7 @@ script.sidebar-widget(type="text/template")
     img.add.left src="/images/ui/plus.png"
     img.icon{ src="/images/widgets/{{ iconName }}.png" }
     .title
-      | {{ name }}
+      | <% print( g.i18n.wnames[wsubtype] ); %>
 
 script.add-widget-dialog(type="text/template")
   #dialog-confirm title=t'dialog.rename_widget.title'
