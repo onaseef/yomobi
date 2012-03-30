@@ -364,6 +364,16 @@ label {
 
 #account-settings-box {
   @extend #account-setup-box;
+  width: 900px;
+  padding: 10px;
+
+  .sidebar {
+    float: left;
+    width: 180px;
+  }
+  .content {
+    float: left;
+  }
 }
 
 .yomobi-info-page {

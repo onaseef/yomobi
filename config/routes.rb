@@ -1,5 +1,7 @@
 Yomobi::Application.routes.draw do
 
+  get "payments/index"
+
   constraints(Subdomain) do
     match '/' => 'mobile#index'
     post ':company/leave_msg/submit' => 'widgets/leave_msg#submit'
@@ -29,6 +31,11 @@ Yomobi::Application.routes.draw do
 
   get "account/edit", :as => :account
   put "account/update", :as => :update_account
+  get "account/upgrade(/:site)" => 'account#upgrade', :as => :upgrade
+
+  namespace :account do
+    resources :payments, :only => [:index, :show]
+  end
 
   match 'account-setup/:step_num' => 'signup#account_setup', :as => :account_setup
 

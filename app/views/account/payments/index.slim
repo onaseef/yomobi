@@ -1,0 +1,9 @@
+
+- content_for :title do
+  h1 Payment History
+
+ul
+- @payments.each do |p|
+  li
+    = "You paid $#{p.amount_paid} to upgrade "
+    b = p.company.url_and_name

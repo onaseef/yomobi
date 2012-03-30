@@ -7,7 +7,12 @@ module ApplicationHelper
   def widgets_dir(*path_ext)
     File.join Rails.root, 'public/javascripts/widgets', *path_ext
   end
-  
+
+  def parent_layout(layout)
+    @_content_for[:layout] = self.output_buffer
+    self.output_buffer = render(:file => "layouts/#{layout}")
+  end
+
   def company_types
     CompanyType.all.map {|t| [t.name, t[:id]]}.sort!
   end

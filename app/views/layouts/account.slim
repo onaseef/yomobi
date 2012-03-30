@@ -1,0 +1,20 @@
+- content_for :css do
+  = stylesheet_link_tag 'account'
+
+- content_for :sidebar do
+  ul
+    li
+      a class=active('password',@page) href=account_path Change Password
+    li
+      a class=active('contact',@page) href=account_path Update Contact Information
+    li
+      a class=active('upgrade',@page) href=upgrade_path Upgrade Mobile Site
+    li
+      a class=active('payment-history',@page) href=account_payments_path Payment History
+
+.title
+  = yield :title
+.inner-content
+  = yield
+
+- parent_layout 'application'

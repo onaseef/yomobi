@@ -314,6 +314,15 @@ label {
     font-size: 1.5em;
     margin-top: 20px; }
 
+#account-settings-box {
+  width: 900px;
+  padding: 10px; }
+  #account-settings-box .sidebar {
+    float: left;
+    width: 180px; }
+  #account-settings-box .content {
+    float: left; }
+
 .yomobi-info-page {
   margin: 40px; }
 

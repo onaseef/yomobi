@@ -1,0 +1,30 @@
+- content_for :title do
+  h1 =t'upgrade.title'
+
+- if @site.nil?
+
+  h2 Site Statuses
+
+  ul
+    - @sites.each do |site|
+      li = "#{site.upgrade_state} - #{site.url_and_name}"
+
+  h2 Choose a Site to Upgrade
+
+  = form_tag upgrade_path, :method => 'get' do
+    select name="site"
+      - @sites.each do |site|
+        option value=site.db_name = site.url_and_name
+    = submit_tag 'Next'
+
+- else
+  h2 = "Upgrading #{@site.url_and_name}"
+
+  #checkout
+
+  - content_for :js do
+    script type="text/javascript" src="https://www.wepay.com/js/iframe.wepay.js"
+    erb:
+      <script type="text/javascript">
+        WePay.iframe_checkout("checkout", "<%=raw @checkout.checkout_uri %>");
+      </script>

@@ -10,6 +10,7 @@ class Company < ActiveRecord::Base
   has_many :keys, :dependent => :delete_all
   has_many :admins, :through => :keys, :source => :user
   has_many :signup_keys, :dependent => :delete_all
+  has_many :payments
 
   has_many :followers
   has_many :wphotos
@@ -85,6 +86,14 @@ class Company < ActiveRecord::Base
 
   def mobile_url
     "http://#{db_name}.yomobi.com"
+  end
+
+  def url_and_name
+    "[#{db_name}] #{name}"
+  end
+
+  def upgrade_state
+    premium ? 'Professional' : 'Standard'
   end
 
   def couch_host

@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  company: 
+  wepay_checkout_record: 
+  expires: 2012-03-29
+  valid: false
+
+two:
+  company: 
+  wepay_checkout_record: 
+  expires: 2012-03-29
+  valid: false

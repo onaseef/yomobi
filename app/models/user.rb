@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_many :companies
   has_many :keys, :dependent => :delete_all
   has_many :shared_companies, :through => :keys, :source => :company
+  has_many :payments
 
   # only used for analytics purposes
   has_many :signup_keys, :dependent => :delete_all

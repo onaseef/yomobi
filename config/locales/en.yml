@@ -166,7 +166,10 @@ en:
     change_password: "Change Password (Optional):"
     new_password: "New Password:"
     new_password_confirm: "Re-enter New Password:"
-    save: "Save Changes" 
+    save: "Save Changes"
+
+  upgrade:
+    title: "Upgrade Mobile Site"
 
   builder:
 
