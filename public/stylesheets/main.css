@@ -189,9 +189,10 @@ body {
 	margin-left:5px;
 }
 .signin-button {
+	border: none;
 	float:left;
 	line-height:10px;
-	margin:20px 12px 0 4px;
+	margin:18px 12px 0 4px;
 }
 .menumain {
 	float:left;
