@@ -25,7 +25,6 @@ docs:
       - Arts / Entertainment / Nightlife
     widgets:
       - [custom-page, about-us, about-us.png]
-      - [custom-page, random-page, about-us.png]
       - call-us
       - find-us
       - business-hours
