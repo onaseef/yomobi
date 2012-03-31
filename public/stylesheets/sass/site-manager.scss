@@ -42,12 +42,13 @@ h2.active-site {
 
 .sites, .admins {
   img.site-pic {
+    max-width: 50px;
     vertical-align: middle;
   }
   td.site-pic {
     float: left;
     padding-right: 10px;  
-    width: 100px;
+    width: 50px;
     text-align: right; 
   }
   div.site-url {
@@ -67,7 +68,10 @@ h2.active-site {
     margin-top: 10px;
     margin-bottom: 6px;
     width: 500px;
-    img { vertical-align: middle }
+    img { 
+      max-width: 50px;
+      vertical-align: middle 
+    }
   }
 }
 
