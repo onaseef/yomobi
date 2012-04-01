@@ -782,7 +782,7 @@
       flash || (flash = {});
       item || (item = {});
       var itemTypeName = item.type || this.model.get('itemTypeName');
-      var title = (this.mode == 'add' ? "Add New " : "Edit ") + util.prettifyName(itemTypeName);
+      var title = (this.mode == 'add' ? i18n.dialog.add_new_item : i18n.dialog.edit_item) + util.prettifyName(itemTypeName);
 
       var templateData = _.extend({}, item, {
         flash: flash,

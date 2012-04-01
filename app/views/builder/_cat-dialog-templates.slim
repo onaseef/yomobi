@@ -14,30 +14,30 @@ script.item-dialog(type="text/template")
             img src="{{ wphotoUrl }}"
           | <% } %>
           td
-            label Select a Picture...
+            label =t'dialog.add_picture.select_picture'
             br
             .selected-file.lfloat &nbsp;
-            button name="pick_files" Browse...
+            button name="pick_files" =t'dialog.add_picture.browse'
             .error
         | <% if (_maybe.wphotoUrl) { %>
         tr
           td
-            a.remove-wphoto-link href="#" Remove Picture
+            a.remove-wphoto-link href="#" =t'dialog.add_picture.remove_picture'
           td
         | <% } %>
     input.item-input type="hidden" value="{{ _maybe.wphotoUrl }}" name="wphotoUrl"
     | <% if (mode == 'add') { %>
-    input.lfloat type="button" value="Add" name="add" style="margin:10px 15px 0 2px"
+    input.lfloat type="button" value=t'dialog.add' name="add" style="margin:10px 15px 0 2px"
     | <% } %>
 
     | <% if(flash.error) { %>
-    p.error Error: {{ flash.error }}
+    p.error =t('dialog.error', :error_message => "{{ flash.error }}")
     | <% } if(flash.success) { %>
     p.success {{ flash.success }}
     | <% } if (addedItems.length > 0) { %>
     .clearfix.divider style="margin-top: 15px"
     .other-names
-      b Added Items:
+      b =t'dialog.add_item.added_items'
       ul
         | <% for(var i=0; i < addedItems.length; i++) { %>
         |    <li> {{ addedItems[i] }} </li>
@@ -46,103 +46,103 @@ script.item-dialog(type="text/template")
 
 
 script.menu-item-dialog-content(type="text/template")
-  p Menu Item Information:
-  label Name*
+  p =t'dialog.add_item.menu_item_info'
+  label =t'dialog.add_item.name_required'
   br
   input.item-input type="text" value="{{ _maybe.name }}" name="name"
   br
-  label Price
+  label =t'dialog.add_item.price'
   br
   input.item-input type="text" value="{{ _maybe.price }}" name="price"
   br
-  label Description
+  label =t'dialog.add_item.description'
   br
   textarea.item-input name="desc" {{ _maybe.desc }}
   br
 
 script.services-item-dialog-content(type="text/template")
-  p Service Information:
-  label Name*
+  p =t'dialog.add_item.service_info'
+  label =t'dialog.add_item.name_required'
   br
   input.item-input type="text" value="{{ _maybe.name }}" name="name"
   br
-  label Price
+  label =t'dialog.add_item.price'
   br
   input.item-input type="text" value="{{ _maybe.price }}" name="price"
   br
-  label Description
+  label =t'dialog.add_item.description'
   br
   textarea.item-input name="desc" {{ _maybe.desc }}
   br
 
 script.products-item-dialog-content(type="text/template")
-  p Item Information:
-  label Name*
+  p =t'dialog.add_item.item_info'
+  label =t'dialog.add_item.name_required'
   br
   input.item-input type="text" value="{{ _maybe.name }}" name="name"
   br
-  label Price
+  label =t'dialog.add_item.price'
   br
   input.item-input type="text" value="{{ _maybe.price }}" name="price"
   br
-  label Description
+  label =t'dialog.add_item.description'
   br
   textarea.item-input name="desc" {{ _maybe.desc }}
   br
 
 script.property-listings-item-dialog-content(type="text/template")
-  p Listing Information:
-  label Title*
+  p =t'dialog.add_item.listing_info'
+  label =t'dialog.add_item.title_required'
   br
   input.item-input type="text" value="{{ _maybe.name }}" name="name"
   br
-  label MLS #
+  label =t'dialog.add_item.mls_num'
   br
   input.item-input type="text" value="{{ _maybe.mls }}" name="mls"
   br
-  label Price
+  label =t'dialog.add_item.price'
   br
   input.item-input type="text" value="{{ _maybe.price }}" name="price"
   br
-  label Address
+  label =t'dialog.add_item.address'
   br
   input.item-input type="text" value="{{ _maybe.address }}" name="address"
   br
-  label Photo URL
+  label =t'dialog.add_item.photo_url'
   br
   input.item-input type="text" value="{{ _maybe.photo_url }}" name="photo_url"
   br
-  label Description
+  label =t'dialog.add_item.description'
   br
   textarea.item-input name="desc" {{ _maybe.desc }}
   br
 
 script.locations-item-dialog-content(type="text/template")
-  p Location Information:
-  label Name*
+  p =t'dialog.add_item.location_info'
+  label =t'dialog.add_item.name_required'
   br
   input.item-input type="text" value="{{ _maybe.name }}" name="name"
   br
-  label Phone Number
+  label =t'dialog.add_item.phone'
   br
   input.item-input type="text" value="{{ _maybe.phone }}" name="phone"
   br
-  label Address
+  label =t'dialog.add_item.address'
   br
   input.item-input type="text" value="{{ _maybe.address }}" name="address"
   br
-  label Additional Information
+  label =t'dialog.add_item.additional_info'
   br
   textarea.item-input name="desc" {{ _maybe.desc }}
   br
 
 script.rss-feed-item-dialog-content(type="text/template")
-  p RSS Feed Information:
-  label Feed Title*
+  p =t'dialog.add_item.rss_feed_info'
+  label =t'dialog.add_item.rss_title_required'
   br
   input.item-input type="text" value="{{ _maybe.name }}" name="name"
   br
-  label Feed URL*:
+  label =t'dialog.add_item.rss_url_required'
   br
   input.item-input type="text" value="{{ _maybe.url }}" name="url"
   br

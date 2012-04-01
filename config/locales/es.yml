@@ -66,6 +66,53 @@ es:
       name_in_use_error: "@@Name is already in use"
       add_node_success: "@@Item added successfully"
 
+      dialog:
+        add_new_item: "@@Add New: "
+        edit_item: "@@Edit: "
+        upload_image: "@@Upload Image"
+        edit_image: "@@Edit Image"
+        uploading: "@@Uploading..."
+        processing: "@@Processing..."
+
+      error:
+        photo_upload_failed: "Photo upload failed (%{error_msg})"
+
+    page_editor:
+      tooltip:
+        add_picture: "@@Add a Picture"
+        add_video: "@@Add a Video"
+        bold: "@@Bold"
+        copy: "@@Copy"
+        code: "@@Code snippet"
+        css_wrap: "@@CSS Wrapper"
+        cut: "@@Cut"
+        h1: "@@Header 1"
+        h2: "@@Header 2"
+        h3: "@@Header 3"
+        hr_line: "@@Insert Horizontal Rule"
+        indent: "@@Indent"
+        insert_image: "@@Insert Image"
+        insert_ol: "@@Insert Ordered List"
+        insert_ul: "@@Insert Unordered List"
+        insert_table: "@@Insert Table"
+        italic: "@@Italic"
+        justify_center: "@@Justify Center"
+        justify_left: "@@Justify Left"
+        justify_right: "@@Justify Right"
+        increase_font: "@@Increase font size"
+        link: "@@Create a Link"
+        ltr: "@@Left to Right"
+        rtl: "@@Right to Left"
+        outdent: "@@Outdent"
+        paragraphc: "@@Paragraph"
+        paste: "@@Paste"
+        redo: "@@Redo"
+        subscript: "@@Subscript"
+        superscript: "@@Superscript"
+        underline: "@@Underline"
+        undo: "@@Undo"
+        view_source: "@@View source code"
+
     side_bar:
       singletonInUseTooltip: "@@You may only use <b>one</b> of this type of widget at a time.<br/><br/>This widget is already in your YoMobi mobile website."
       unsavedChangesText: "@@You have unsaved changes. Click OK to go back and save changes. Click Cancel to discard your changes."
@@ -352,6 +399,7 @@ es:
 
   dialog:
     error: "@@Error: %{error_message}"
+    add: "@@Add"
     
     change_icon:
       title: "@@Change Icon"
@@ -374,6 +422,56 @@ es:
       remove_picture: "@@Remove Picture"
       add: "@@Add"
       added: "@@Added %{item}:"
+
+    add_picture:
+      title: "@@Select a Picture"
+      browse: "@@Browse..."
+      delete: "@@Delete"
+      upload_picture: "@@Upload an image..."
+      select_picture: "@@Select a picture..."
+      browse: "@@Browse..."
+      remove_picture: "@@Remove Picture"
+      alignment: "@@Alignment:"
+      left: "@@Left"
+      right: "@@Right"
+      inline: "@@Inline with text"
+      image_size: "@@Image Size:"
+      percent_sign: "@@%"
+      clickable_url: "@@Clickable URL (optional):"
+      set_as_preview: "@@Set as thumbnail preview"
+
+    add_item:
+      added_items: "@@Added Items"
+      item_info: "@@Item Information:"
+      listing_info: "@@Listing Information:"
+      location_info: "@@Location Information:"
+      menu_item_info: "@@Menu Item Information:"
+      service_item_info: "@@Service Information:"
+      rss_feed_info: "@@RSS Feed Information:"
+      name_required: "@@Name*:"
+      price: "@@Price:"
+      description: "@@Description:"
+      title_required: "@@Title*:"
+      mls_num: "@@MLS #:"
+      address: "@@Address:"
+      photo_url: "@@Photo URL:"
+      phone: "@@Phone Number:"
+      additional_info: "@@Additional Information:"
+      rss_title_required: "@@RSS Feed Title*:"
+      rss_url_required: "@@RSS URL*:"
+
+    add_video:
+      title: "@@Add Video"
+      url: "@@Video URL:"
+      invalid_url: "@@Invalid Video URL."
+
+    add_url:
+      title: "@@Add URL"
+
+    widget_add_error:
+      title: "@@Oops"
+      msg: "@@&nbsp;New widgets can only be added from the mobile home screen.<p><br></p><p>Please click on Home in the Mobile Tab Bar to return to the mobile home screen and try adding again.</p>"
+
 
 
   site_manager:
@@ -415,6 +513,7 @@ es:
       name: "@@Name:"
       phone_number: "@@Phone Number:"
       your_name: "@@Your Name:"
+      security: "@@Please solve this security question:"
       send: "@@Send"
 
   widgets:

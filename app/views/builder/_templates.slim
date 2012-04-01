@@ -111,7 +111,7 @@ script.edit-widget(type="text/template")
 
 script.edit-icon-dialog(type="text/template")
   #dialog-confirm.edit-icon title=t'dialog.change_icon.title'
-    p t'dialog.change_icon.instructions'
+    p =t'dialog.change_icon.instructions'
     .icons
       | <% var first=1; %>
       | <% for (var i=0; i < icons.length; i++) { %>
@@ -294,7 +294,7 @@ script.edit-advanced-settings(type="text/template")
       .loader
 
 script.jeditor-image-dialog(type="text/template")
-  #dialog-confirm.jeditor-image title="Select an Image"
+  #dialog-confirm.jeditor-image title=t'dialog.add_picture.title'
     | <% if (!_maybe.src) { %>
 
     table.wphoto-wrap
@@ -303,10 +303,10 @@ script.jeditor-image-dialog(type="text/template")
           td
             img src="<% print(g.noPhotoPath); %>"
           td
-            label Upload an Image...
+            label =t'dialog.add_picture.upload_picture'
             br
             .selected-file.lfloat &nbsp;
-            button name="pick_files" Browse...
+            button name="pick_files" =t'dialog.add_picture.browse'
             .error
 
     | <% } else { %>
@@ -318,28 +318,28 @@ script.jeditor-image-dialog(type="text/template")
           td
             img src="{{ _maybe.src }}"
           td
-            button name="delete" Delete
+            button name="delete" =t'dialog.add_picture.delete'
 
     p
-      label Alignment:
+      label =t'dialog.add_picture.alignment'
       select name="float"
-        option value="left" Left
-        option value="right" Right
-        option value="none" Inline with Text
+        option value="left" =t'dialog.add_picture.left'
+        option value="right" =t'dialog.add_picture.right'
+        option value="none" =t'dialog.add_picture.inline'
     p
-      label Image Size:
+      label =t'dialog.add_picture.image_size'
       input type="text" name="size" size="3" value="{{ size }}"
-      span.percent-sign %
+      span.percent-sign =t'dialog.add_picture.percent_sign'
 
     p
-      label Clickable URL (optional):
+      label =t'dialog.add_picture.clickable_url'
       a href="http://help.yomobi.com/Wysiwyg/Url" target="_blank"
         img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.jeditor.help.url')
       input type="text" name="href" value="{{ _maybe.href }}"
 
     .default-enabled class="<% print(isThumbEnabled ? '' : 'hide'); %>"
       input type="checkbox" name="is_default"
-      ' Set as Thumbnail Preview
+      =t'dialog.add_picture.set_as_preview'
       a href="http://help.yomobi.com/Wysiwyg/Thumbnail" target="_blank"
         img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.jeditor.help.thumb')
 
@@ -347,21 +347,19 @@ script.jeditor-image-dialog(type="text/template")
     input type="hidden" name="src" value="_maybe.src"
 
 script.jeditor-youtube-dialog(type="text/template")
-  #dialog-confirm.jeditor-image title="Add Video"
+  #dialog-confirm.jeditor-image title=t'dialog.add_video.title'
     p
-      label Video URL:
+      label =t'dialog.add_video.url'
       a href="http://help.yomobi.com/Wysiwyg/YouTube" target="_blank"
         img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.jeditor.help.youtube')
       input type="text" name="url" value=""
     p.error.hide
-      | Invalid Video URL.
+      | =t'dialog.add_video.invalid_url'
 
-#dialog-invalid-drag title="Oops"
+#dialog-invalid-drag title=t'dialog.widget_add_error.title'
   p
     span.ui-icon.ui-icon-alert style="float:left"
-    | &nbsp; New widgets can only be added from the mobile home screen.
-  p <br>
-  p Please click on Home in the Mobile Tab Bar to return to the mobile home screen and try adding again.
+    ==t'dialog.widget_add_error.msg'
 
 script.youtube-embed-html(type="text/template")
   iframe class="youtube-player" type="text/html" src="http://www.youtube.com/embed/{{ vid }}?wmode=transparent" frameborder="0"
