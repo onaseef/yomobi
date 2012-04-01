@@ -1,39 +1,39 @@
 es:
   errors:
     messages:
-      not_found: "@@not found"
-      already_confirmed: "@@was already confirmed"
-      not_locked: "@@was not locked"
+      not_found: "no encontrado"
+      already_confirmed: "ha sido confirmado"
+      not_locked: "no fue bloqueado"
 
   devise:
     failure:
-      unauthenticated: '@@You need to sign in or sign up before continuing.'
-      unconfirmed: '@@You have to confirm your account before continuing.'
-      locked: '@@Your account is locked.'
-      invalid: '@@Invalid email or password.'
-      invalid_token: '@@Invalid authentication token.'
-      timeout: '@@Your session expired, please sign in again to continue.'
-      inactive: '@@Your account was not activated yet.'
+      unauthenticated: 'Necesitas entrar o registrarte como usuario para poder continuar.'
+      unconfirmed: 'Debes de confirmar tu cuenta para poder continuar.'
+      locked: 'Tu cuenta está bloqueada.'
+      invalid: 'Email o contraseña inválido.'
+      invalid_token: 'Ficha de autenticidad inválida.'
+      timeout: 'Tu sesión expiró, entra nuevamente por favor para continuar.'
+      inactive: 'Tu cuenta aún no ha sido activada.'
     sessions:
-      signed_in: '@@Signed in successfully.'
-      signed_out: '@@Signed out successfully.'
+      signed_in: 'Inicio de sesión exitoso.'
+      signed_out: 'Cierre de sesión exitoso.'
     passwords:
-      send_instructions: '@@You will receive an email with instructions about how to reset your password in a few minutes.'
-      updated: '@@Your password was changed successfully. You are now signed in.'
+      send_instructions: 'Recibirás en pocos minutos un email con las instrucciones a seguir para cambiar tu contraseña.'
+      updated: 'Tu contraseña ha sido cambiada con éxito. Tu sesión ha iniciado.'
     confirmations:
-      send_instructions: '@@You will receive an email with instructions about how to confirm your account in a few minutes.'
-      confirmed: '@@Your account was successfully confirmed. You are now signed in.'
+      send_instructions: 'Recibirás un email en pocos minutos con las instrucciones para confirmar tu cuenta.'
+      confirmed: 'Tu cuenta ha sido confirmada con éxito. Tu sesión ha iniciado.'
     registrations:
-      signed_up: '@@You have signed up successfully. A confirmation was sent to your e-mail.'
-      updated: '@@You updated your account successfully.'
-      destroyed: '@@Bye! Your account was successfully cancelled. We hope to see you again soon.'
+      signed_up: 'Te has registrado con éxito. Se te ha enviado una confirmación por e-mail.'
+      updated: 'Has actualizado tu cuenta con éxito.'
+      destroyed: '¡Adiós! Tu cuenta ha sido cancelada con éxito. Esperamos verte pronto de nuevo.'
     unlocks:
-      send_instructions: '@@You will receive an email with instructions about how to unlock your account in a few minutes.'
-      unlocked: '@@Your account was successfully unlocked. You are now signed in.'
+      send_instructions: 'Recibirás en pocos minutos un email con las instrucciones para desbloquear tu cuenta.'
+      unlocked: 'Tu cuenta ha sido desbloqueada con éxito. Tu sesión ha iniciado.'
     mailer:
       confirmation_instructions:
-        subject: '@@Confirmation instructions'
+        subject: 'Instrucciones para confirmar'
       reset_password_instructions:
-        subject: '@@Reset password instructions'
+        subject: 'Instrucciones para cambio de contraseña'
       unlock_instructions:
-        subject: '@@Unlock Instructions'
+        subject: 'Desbloquear Instrucciones'
