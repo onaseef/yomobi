@@ -119,6 +119,9 @@ es:
 
     builder_app:
       unsavedChangesText: "@@You have unsaved changes. Click OK to go back and save changes. Click Cancel to discard your changes."
+      invalid_widget: "@@This widget will <b>NOT</b> appear on your mobile site because required information is missing.<br /><br />Please click on this widget to edit. Remember to <b>Save Changes</b> when you are done."
+      deactivated_widget: "@@You have deactivated this widget; it <b>WILL NOT</b> appear on your mobile site.<br /><br />To undo this, please click this widget and uncheck the \"Deactivate\" checkbox."
+
 
     site_manager:
       default_error: "@@We're sorry, something went wrong."
