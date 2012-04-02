@@ -109,7 +109,7 @@
       var elem = $(targetedElem)
         , wtype = elem.data('wtype')
         , wsubtype = elem.data('wsubtype')
-        , name = util.prettifyName(wsubtype)
+        , name = g.i18n.wnames[wsubtype]
         , isSingleton = elem.hasClass('singleton')
       ;
       if(!elem.hasClass('sidebar')) return;
