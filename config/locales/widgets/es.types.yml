@@ -1,6 +1,7 @@
-en:
+es:
   widgets:
     types:
+      "Airport": "@@Airport"
       "Arts / Entertainment / Nightlife": "@@Arts / Entertainment / Nightlife"
       "Attractions / Things to Do": "@@Attractions / Things to Do"
       "Automotive": "@@Automotive"
