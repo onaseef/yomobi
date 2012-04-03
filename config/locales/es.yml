@@ -120,7 +120,7 @@ es:
   sign_in:
     title: "@@YoMobi Signin"
     forgot_password: "@@Forgot password"
-    forgot_your_password: "@@Forgot your password?"
+    forgot_your_password: "@@Forgot your password? "
     request_new_password: "@@Click here to request a new one."
     email: "@@Email:"
     password: "@@Password:"
