@@ -131,7 +131,7 @@
 
     // this callback is triggered after the page content is generated,
     // but before the page is added to the dom
-    beforePageRender: function ($pageContent) {},
+    beforePageRender: function ($pageContent) {}
 
   });
 

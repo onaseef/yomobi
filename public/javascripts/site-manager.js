@@ -360,11 +360,11 @@
 
     prompt: function () {
       var dialogContent = this.render().el
-        , title = i18n.add_admin_dialog_title + ' YoMobi.com/' + this.model.get('url')
+        , title = i18n.add_admin_dialog_title + this.model.get('url') + '.yomobi.com'
         , title = this.options.mode == 'concede' ? i18n.concede_ownership_dialog_title : title
 
         , buttons = {}
-        , saveLabel = this.options.mode == 'concede' ? 'Continue' : 'Add'
+        , saveLabel = this.options.mode == 'concede' ? i18n.continue : i18n.add
       ;
       buttons[g.i18n.save] = this.submit,
       buttons[g.i18n.cancel] = function () { $(this).dialog('close'); }

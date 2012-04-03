@@ -14,7 +14,7 @@ class RegistrationsController < Devise::RegistrationsController
       super
       check_for_signup_key params[:user][:signup_key], resource
     else
-      flash.now[:alert] = "There was an error with the recaptcha code below. Please re-enter the code and click submit."
+      flash.now[:alert] =t'sign_up.error.recaptcha'
       flash.discard :recaptcha_error
 
       build_resource

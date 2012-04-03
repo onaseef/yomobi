@@ -47,7 +47,7 @@ div.wysiwyg ul.toolbar {
   #sidebar .option.active {
     background-color: #d8dfea; }
   #sidebar .home-icon {
-    width: 182px;
+    width: 200px;
     height: auto;
     padding: 1px 0 0px 5px;
     margin: 1px 0;
@@ -67,7 +67,7 @@ div.wysiwyg ul.toolbar {
       text-align: left;
       height: auto;
       font-weight: bold;
-      font-size: 110%;
+      font-size: 12px;
       float: left;
       color: #333; }
     #sidebar .home-icon .icon {

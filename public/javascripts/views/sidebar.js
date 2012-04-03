@@ -1,7 +1,9 @@
 (function ($) {
-  
-  var singletonInUseTooltip = "You may only use <b>one</b> of this type of widget at a time.<br /><br />This widget is already in your YoMobi mobile website.";
-  var unsavedChangesText = "You have unsaved changes. Click OK to go back and save changes. Click Cancel to discard your changes.";
+ 
+  var i18n = g.i18n.side_bar;
+ 
+  var singletonInUseTooltip = i18n.singletonInUseTooltip;
+  var unsavedChangesText = i18n.unsavedChangesText;
 
   SidebarView = Backbone.View.extend({
     
@@ -107,7 +109,7 @@
       var elem = $(targetedElem)
         , wtype = elem.data('wtype')
         , wsubtype = elem.data('wsubtype')
-        , name = util.prettifyName(wsubtype)
+        , name = g.i18n.wnames[wsubtype]
         , isSingleton = elem.hasClass('singleton')
       ;
       if(!elem.hasClass('sidebar')) return;

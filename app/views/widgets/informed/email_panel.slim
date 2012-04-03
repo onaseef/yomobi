@@ -12,27 +12,26 @@ h1 = @company.name
 #builder-container
   #builder
     .follower-section
-      h2 Email Your Followers
+      h2 =t'builder.email_panel.title'
       - if notice
         p.success = notice
       erb:
-        <p>You have <b><%= @company.email_followers.size %></b> email follower(s).</p>
+        <%==t('builder.email_panel.num_followers', :num =>@company.email_followers.size)%>
       p
-        | Your REPLY-TO email address is: 
-        = @company.informed_email || @company.user.email
+        =t('builder.email_panel.reply_to_address', :email => (@company.informed_email || @company.user.email))
       - if @errors[:no_email]
         p.error = @errors[:no_email]
       = form_tag '', :method => :post do
-        label Subject
+        label =t'builder.email_panel.subject'
         br
         input type="text" name="subject" value=@old_subject
         br
-        label Content
+        label =t'builder.email_panel.content'
         br
         textarea rows=12 cols=70 name="content" = @old_content
         br
-        = submit_tag 'Send Email', :class => 'lfloat'
+        = submit_tag t'builder.email_panel.send', :class => 'lfloat'
         .load-box style="padding-top: 3px; display:none"
           div.loader.lfloat style="margin:2px 4px 0 5px"
-          span.success Sending. Please wait...
+          span.success =t'builder.email_panel.sending'
         .clearfix

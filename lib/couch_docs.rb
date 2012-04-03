@@ -111,10 +111,14 @@ class CouchDocs
 
   def self.by_wsubtype(wsubtype,i18n_names)
     additional_specs = wsubtype.is_a? Array
-    wsubtype, icon = wsubtype if additional_specs
+    if additional_specs
+      wsubtype, i18n_ref, icon = wsubtype
+    else
+      i18n_ref = wsubtype
+    end
 
-    wdata = self.all.select {|doc| doc[:wsubtype] == wsubtype}.first
-    wdata[:name] = i18n_names[wsubtype.to_sym]
+    wdata = self.all.select {|doc| doc[:wsubtype] == wsubtype}.first.clone
+    wdata[:name] = i18n_names[i18n_ref.to_sym]
 
     if additional_specs
       wdata.merge! :iconName => icon.gsub(/\.png$/, '')

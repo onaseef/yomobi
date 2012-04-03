@@ -14,7 +14,7 @@ module ApplicationHelper
   end
 
   def company_types
-    CompanyType.all.map {|t| [t.name, t[:id]]}.sort!
+    CompanyType.all.map {|t| [I18n.t("widgets.types.#{t.name}"), t[:id]]}.sort!
   end
 
   def carrier_names

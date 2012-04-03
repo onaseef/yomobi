@@ -44,8 +44,8 @@
   });
 
   // ==================================
-  var invalidWidgetTooltip = "This widget will <b>NOT</b> appear on your mobile site because required information is missing.<br /><br />Please click on this widget to edit. Remember to <b>Save Changes</b> when you are done.";
-  var deactivatedWidgetTooltip = "You have deactivated this widget; it <b>WILL NOT</b> appear on your mobile site.<br /><br />To undo this, please click this widget and uncheck the \"Deactivate\" checkbox.";
+  var invalidWidgetTooltip = g.i18n.builder_app.invalid_widget;
+  var deactivatedWidgetTooltip = g.i18n.builder_app.deactivated_widget;
   WidgetHomeView = Backbone.View.extend({
     tagName: 'div',
     className: 'home-icon dbx-box',

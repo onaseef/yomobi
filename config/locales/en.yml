@@ -3,17 +3,56 @@
 
 en:
   general:
-    call: "Call:"
-    email: "Email Address:"
     click_here_start: "Click here"
     click_here_middle: "click here"
-    name: "Name:"
-    your_name: "Your Name:"
+
+  days:
+    Sunday: "Sunday"
+    Monday: "Monday"
+    Tuesday: "Tuesday"
+    Wednesday: "Wednesday"
+    Thursday: "Thursday"
+    Friday: "Friday"
+    Saturday: "Saturday"
+
+  homepage:
+    welcome: "Welcome to YoMobi"
+    message: 'Reach more people with a <span class="hilite">free</span> mobile website. YoMobi makes building a mobile site easy. Go from sign up to online in minutes.<br/><br/> Being mobile is more important than ever.'
+    why_mobile_matters: "See Why Mobile Matters"
+    get_mobilized: "Get Mobilized!"
+    reach_more: "Reach more people with a mobile website. YoMobi makes building a mobile site easy. Go from sign up to online in minutes."
+    features_include: "Features Include"
+    feature1: "Completely Free Mobile Sites"
+    feature2: "Free Hosting & Mobile URL"
+    feature3: "One-click calling"
+    feature4: "Interactive maps"
+    feature5: "Social media integration"
+    feature6: "Easily customizable content"
+    feature7: "Subscriber notification"
+
+  status:
+    loading: "Loading..."
+    processing: "Processing..."
     submitting: "Submitting..."
+    uploading: "Uploading..."
+    working: "Working..."
+
+  security:
     error:
       incorrect_password: "Incorrect Password"
-    status:
-      working: "Working..."
+
+  legal:
+    rights_reserved: "All Right Reserved YoMobi © 2012"
+
+  links:
+    about: "About"
+    feedback: "Feedback"
+    help: "Help"
+    home: "Home"
+    mobile_matters: "Mobile Matters"
+    privacy: "Privacy"
+    terms: "Terms"
+
 
   javascript:
 
@@ -21,8 +60,14 @@ en:
     submit: "Submit"
     cancel: "Cancel"
     close: "Close"
+    create: "Create"
 
     delete_widget: "Are you sure you want to delete this widget?\n(all data will be lost)"
+
+    wysiwyg:
+      add_picture: "Add a Picture"
+      add_video: "Add a Video"
+
     category:
       delete_node: "Are you sure you want to delete? (Data will be lost)"
       delete_nothing: "Please select an item to delete."
@@ -33,11 +78,35 @@ en:
       empty_name_error: "Name cannot be empty"
       name_in_use_error: "Name is already in use"
       add_node_success: "Item added successfully"
+
+      dialog:
+        add_new_item: "Add New: "
+        edit_item: "Edit: "
+        upload_image: "Upload Image"
+        edit_image: "Edit Image"
+        uploading: "Uploading..."
+        processing: "Processing..."
+
+      error:
+        photo_upload_failed: "Photo upload failed (%{error_msg})"
+
+    side_bar:
+      singletonInUseTooltip: "You may only use <b>one</b> of this type of widget at a time.<br/><br/>This widget is already in your YoMobi mobile website."
+      unsavedChangesText: "You have unsaved changes. Click OK to go back and save changes. Click Cancel to discard your changes."
+
+    builder_app:
+      unsavedChangesText: "You have unsaved changes. Click OK to go back and save changes. Click Cancel to discard your changes."
+      invalid_widget: "This widget will <b>NOT</b> appear on your mobile site because required information is missing.<br /><br />Please click on this widget to edit. Remember to <b>Save Changes</b> when you are done."
+      deactivated_widget: "You have deactivated this widget; it <b>WILL NOT</b> appear on your mobile site.<br /><br />To undo this, please click this widget and uncheck the \"Deactivate\" checkbox."
+ 
+
     site_manager:
       default_error: "We're sorry, something went wrong."
       new_site_dialog_title: "Create New Site"
-      add_admin_dialog_title: "Add Admin for"
+      add_admin_dialog_title: "Add Admin for "
       concede_ownership_dialog_title: "Concede Site Ownership"
+      add: "Add"
+      continue: "Continue"
 
   new_site:
     site_name: "Site Name:"
@@ -47,6 +116,42 @@ en:
       invalid_site_url: "Invalid URL: the URL must be at least 3 characters long and contain only A-Z, a-z, 0-9, underscores (_), and dashes (-)."
       name_reserved: "Sorry, that name is reserved. Please choose another."
       url_taken: "URL is already taken."
+
+  sign_in:
+    title: "YoMobi Signin"
+    forgot_password: "Forgot password"
+    forgot_your_password: "Forgot your password? "
+    request_new_password: "Click here to request a new one."
+    email: "Email:"
+    password: "Password:"
+    remember_user: "Keep me logged in"
+    sign_in: "Sign In"
+    or: "or"
+    sign_up: "Sign Up for Yomobi"
+    error:
+      reenter_password: "Please re-enter your password"
+      incorrect_password: "The password you entered is incorrect. Please try again (make sure your caps lock is off)."
+
+  sign_up:
+    title: "YoMobi Signup"
+    first_name: "First Name:"
+    last_name: "Last Name:"
+    email: "Email:"
+    password: "Password:"
+    password_confirm: "Re-enter Password:"
+    site_type: "Site Type:"
+    signup_key: "Signup Key:"
+    sign_up: "Sign Up"
+    sign_up_bar: "YoMobi helps you reach more people with a mobile optimized website."
+    already_member: "Already a Member?"
+    click_to_signin: "Click here to sign in."
+    error:
+      general: "There was problem with your request:"
+      recaptcha: "There was an error with the recaptcha code below. Please re-enter the code and click submit."
+
+  recaptcha:
+    type_words: "Type the two words:  "
+    new_words: "(Get New Words)"
 
   leave_a_message:
     instructions: "Leave a message:"
@@ -75,8 +180,6 @@ en:
     mobile_number: "Mobile Number:"
     mobile_carrier: "Mobile Service Carrier:"
     confirmation: "Thank you for following %{company_name}."
-
-  signup_bar: "YoMobi helps you reach more people with a mobile optimized website."
 
   home_page:
     banner:
@@ -182,6 +285,29 @@ en:
       edit_tab_bar: "Edit Mobile Tab Bar"
       mobile_site_builder: "Mobile Site Builder"
 
+    email_panel:
+      title: "Email your Followers"
+      num_followers: "You have %{num} email follower(s)."
+      reply_to_address: "Your REPLY-TO email address is: %{email}"
+      subject: "Subject"
+      content: "Content"
+      send: "Send Email"
+      sending: "Sending. Please wait..."
+      missing_info: "Please enter both a subject and message."
+      success: "Email successfully sent."  
+
+    text_panel:
+      title: "Text Message your Followers"
+      num_followers: "You have %{num} text follower(s)."
+      reply_to_address: "Your REPLY-TO email address is: %{email}"
+      chars_remaining: " of %{max} charaters remaining."
+      send: "Send Text"
+      sending: "Sending. Please wait..."
+      error: "Error: %{errors}"
+      missing_info: "Please enter a message."
+      msg_too_long: "Message is too long. It must be less than %{max} characters."
+      success: "Texts successfully sent."
+
     general_settings:
       title: "General Settings"
       explanation: "<p>Edit general settings.</p>"
@@ -207,6 +333,9 @@ en:
       keywords: "Enter keywords that describe your website, separated by commas:"
       save: "Save Settings"    
 
+    edit_tab_bar:
+      explanation: "Select the pages you want to be most visible to your mobile visitors."
+
     jeditor:
       help:
         thumb: "Set this picture as the preview thumbnail for this page.<br><b>Click ? for more information.</b>"
@@ -226,23 +355,63 @@ en:
       none: "== None ==" 
     
     widget_editor:
-      title: "Widget Editor"
-      instructions: "Click on a widget in the Mobile Phone Emulator to edit it here."
-      help: "Help"
-      rename: "Rename"
-      change_icon: "Change Icon"
-      save: "Save Changes"
+      add_item: "Add %{item}"
+      address1_label_required: "Address 1*:"
+      address2_label: "Address 2:"
+      browse: "Browse..."
+      calendar_link_label: "Paste your calendar link here:"
       cancel: "Discard Changes"
+      change_icon: "Change Icon"
+      city_label_required: "City*:"
+      click_to_edit_label: "Click Here to Start Editing"
+      closed_label: "Closed"
+      country_label_required: "Country*:"
+      current_calendar_link_label: "Current calendar link:"
+      current_link: "Current Link"
+      custom_message_label: "Message to Mobile Visitors:"
+      deactivate_label: "Deactivate"
+      deal_name_label_required: "Deal Name*:"
+      delete_icon: "Delete"
       delete: "Remove Widget"
-      to_start: "To Start:"
+      description_label_required: "Description*:"
       drag_widget: "Drag a widget from the Mobile Website Builder into the Mobile Phone Emulator"
-      or: "OR"
+      edit_icon: "Edit"
       edit_widget: "Click on a widget in the Mobile Phone Emulator to enter your information."
+      editing_crumb: '@@<b>Editing: <span class="blue">%{breadcrumb}</span></b>'
+      email_label_required: "Your email address*:"
+      email_opt_in_label: "Allow users to opt-in for emails."
+      expiration_date_label: "Expiration Date:"
+      go_back_icon: "Go Back"
+      help: "Help"
+      instructions: "Click on a widget in the Mobile Phone Emulator to edit it here."
+      item_type_label_required: "Your %{type}*:"
+      or: "OR"
+      phone_number_label_required: "Your phone number*:"
+      remove_picture: "Remove Picture"
+      rename_icon: "Rename"
+      rename: "Rename"
+      rss_icon: "Add RSS Feed"
+      rss_label_required: "RSS Feed*:"
+      rss_max_entries: "Max number of entries:"
+      save: "Save Changes"
+      select_at_least_one_label_required: "Please select at least one of the following*:"
+      select_picture: "Select a picture..."
+      sms_opt_in_label: "Allow users to opt-in for text messages."
+      state_label: "State / Province / Territory:"
+      title: "Widget Editor"
+      to_label: "to"
+      to_start: "To Start:"
+      two_times_per_day_label: "Specify two sets of hours for each day."
+      url_label_required: "URL*:"
+      url_type_label_required: "Your %{type} URL*:"
+      zip_label: "Zip / Postal Code:"
+
 
       
 
   dialog:
     error: "Error: %{error_message}"
+    add: "Add"
     
     change_icon:
       title: "Change Icon"
@@ -260,11 +429,57 @@ en:
     add_new:
       title: "Add New %{item_type}"
       instructions: " %{item_type} name:"
+      add: "Add"
+      added: "Added %{item}:"
+
+    add_picture:
+      title: "Select a Picture"
+      browse: "Browse..."
+      delete: "Delete"
+      upload_picture: "Upload an image..."
       select_picture: "Select a picture..."
       browse: "Browse..."
       remove_picture: "Remove Picture"
-      add: "Add"
-      added: "Added %{item}:"
+      alignment: "Alignment:"
+      left: "Left"
+      right: "Right"
+      inline: "Inline with text"
+      image_size: "Image Size:"
+      percent_sign: "%"
+      clickable_url: "Clickable URL (optional):"
+      set_as_preview: "Set as thumbnail preview"
+
+    add_item:
+      added_items: "Added Items"
+      item_info: "Item Information:"
+      listing_info: "Listing Information:"
+      location_info: "Location Information:"
+      menu_item_info: "Menu Item Information:"
+      service_item_info: "Service Information:"
+      rss_feed_info: "RSS Feed Information:"
+      name_required: "Name*:"
+      price: "Price:"
+      description: "Description:"
+      title_required: "Title*:"
+      mls_num: "MLS #:"
+      address: "Address:"
+      photo_url: "Photo URL:"
+      phone: "Phone Number:"
+      additional_info: "Additional Information:"
+      rss_title_required: "RSS Feed Title*:"
+      rss_url_required: "RSS URL*:"
+
+    add_video:
+      title: "Add Video"
+      url: "Video URL:"
+      invalid_url: "Invalid Video URL."
+
+    add_url:
+      title: "Add URL"
+
+    widget_add_error:
+      title: "Oops"
+      msg: "&nbsp;New widgets can only be added from the mobile home screen.<p><br></p><p>Please click on Home in the Mobile Tab Bar to return to the mobile home screen and try adding again.</p>"
 
 
   site_manager:
@@ -277,6 +492,7 @@ en:
     site_name: "Site Name:"
     site_details: "Site Details"
     select_site: "Please select a site on the left."
+    selected_site: "Selected: %{site_name}"
     edit_site: "Edit Site"
     generate_signup_key: "Generate Signup Key"
     site_access_list: "Sites you have access to:"
@@ -300,6 +516,13 @@ en:
   mobile:
     tab_bar:
       home: "Home"
+    form:
+      email: "Email Address:"
+      name: "Name:"
+      phone_number: "Phone Number:"
+      your_name: "Your Name:"
+      security: "Please solve this security question:"
+      send: "Send"
 
   widgets:
     helpText:
@@ -405,6 +628,7 @@ en:
 
       tell-a-friend:
         help: <p>Let your mobile site visitors tell their friends about you.</p>
+        explanation: "This widget appears as an icon on your mobile site and makes it easy for visitors to share your site with their friends."
 
       twitter:
         help: <p>Add a link to your twitter account on your mobile site to make it easy for visitors to follow you.</p><br><p><a target="ymhelp" href="http://support.twitter.com/articles/14609-how-to-change-your-username">Click here</a> to find your twitter uername.</p>

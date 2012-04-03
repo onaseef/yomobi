@@ -4,19 +4,19 @@
     tbody
       tr
         td
-          label Email
+          label =t'sign_in.email'
         td
-          label Password
+          label =t'sign_in.password'
       tr
         td
           = text_field_tag 'user[email]', ''
         td
           = password_field_tag 'user[password]', ''
         td
-          input.content.main-btn type="submit" value="Sign In"
+          input.content.main-btn type="submit" value=t'sign_in.sign_in'
       tr
         td.login_form_label_field
           = check_box_tag 'user[remember_me]'
-          label#label_persistent for="persistent" Keep me logged in
+          label#label_persistent for="persistent" =t'sign_in.remember_user'
         td
-          a.subtext href="/users/password/new" Forgot your password?
+          a.subtext href="/users/password/new" =t'sign_in.forgot_password'

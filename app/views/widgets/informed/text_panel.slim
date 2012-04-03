@@ -13,25 +13,24 @@ h1 = @company.name
 #builder-container
   #builder
     .follower-section
-      h2 Text Message your Followers
+      h2 =t'builder.text_panel.title'
       - if notice
         p.success = notice
       erb:
-        <p>You have <b><%= @company.text_followers.size %></b> text follower(s).</p>
+        <%==t('builder.text_panel.num_followers', :num =>@company.text_followers.size)%>
       p
-        | Your REPLY-TO email address is: 
-        = @company.informed_email || @company.user.email
+        =t('builder.email_panel.reply_to_address', :email => (@company.informed_email || @company.user.email))
       - if @errors[:message]
-        p.error = "Error: #{ @errors[:message] }"
+        p.error =t('builder.email_panel.error', :errors => @errors[:message])
       = form_tag '', :method => :post do
         label
           span#chars-left = @max_text_chars
-          = "/#{@max_text_chars} characters remaining."
+          =t('builder.text_panel.chars_remaining', :max=> @max_text_chars)
         br
         textarea rows=5 cols=40 name="message" = @old_message
         br
-        = submit_tag 'Send Text', :class => 'lfloat'
+        = submit_tag t'builder.text_panel.send', :class => 'lfloat'
         .load-box style="padding-top: 3px; display:none"
           div.loader.lfloat style="margin:2px 4px 0 5px"
-          span.success Sending. Please wait...
+          span.success =t'builder.email_panel.sending'
         .clearfix

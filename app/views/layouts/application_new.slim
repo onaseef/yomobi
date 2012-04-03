@@ -20,8 +20,8 @@ html lang="en-US"
       .topheader
         a href=root_path
           .companylogo
-        a href=new_user_registration_path
-          .topsignup
+        a.signup-btn.signup-btn-top href=new_user_registration_path =t'sign_up.sign_up'
+ 
         - if current_user.nil? && @hide_header_signin_form != true
           = render :partial => 'shared/header-signin-form_new'
       = yield

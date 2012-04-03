@@ -6,13 +6,13 @@ script type="text/javascript" src="http://www.yomobi.com/javascripts/mobile-redi
   .menu-bg
     ul.menu-ul
       li.menu-li
-        a.menulink href=root_path Home
+        a.menulink href=root_path =t'links.home'
       li.menu-li
-        a.menulink href=about_path About
+        a.menulink href=about_path =t'links.about'
       li.menu-li
-        a.menulink href=why_mobile_path Mobile Matters
+        a.menulink href=why_mobile_path =t'links.mobile_matters'
       li.menu-li
-        a.menulink target="ym" href="http://help.yomobi.com" Help
+        a.menulink target="ym" href="http://help.yomobi.com" =t'links.help'
 
     = render :partial => 'builder/social-share-new'
 
@@ -27,21 +27,20 @@ script type="text/javascript" src="http://www.yomobi.com/javascripts/mobile-redi
   .devider-line
   .main-content
     .content-heading
-      span.blue-text Get mobilized!
+      span.blue-text =t'homepage.get_mobilized'
     .content-image
       img src="images/new_design/iphone.png"
-    .content-text Reach more people with a mobile website. YoMobi makes building a mobile site easy. Go from sign up to online in minutes.
+    .content-text =t'homepage.reach_more'
     .content-list
-      strong.blue-text Features include
+      strong.blue-text =t'homepage.features_include'
       ul.content-ul
-        li Completely Free Mobile Sites
-        li Free Hosting & Mobile URL
-        li One-click calling
-        li Interactive maps
-        li Social media integration
-        li Easily customizable content
-        li Subscriber notification
+        li =t'homepage.feature1'
+        li =t'homepage.feature2'
+        li =t'homepage.feature3'
+        li =t'homepage.feature4'
+        li =t'homepage.feature5'
+        li =t'homepage.feature6'
+        li =t'homepage.feature7'
     .content-signup
-      a href=new_user_registration_path
-        img src="images/new_design/signup-button1.png" border="0"
+      a.signup-btn.signup-btn-body href=new_user_registration_path =t'sign_up.sign_up'
 

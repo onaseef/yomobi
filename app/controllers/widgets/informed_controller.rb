@@ -50,13 +50,13 @@ class Widgets::InformedController < ApplicationController
     @max_text_chars = max_message_length
 
     if !params[:message].present? || params[:message].length == 0
-      @errors[:message] = "Please enter a message."
+      @errors[:message] = t'builder.text_panel.missing_info'
       @old_message = params[:message]
     elsif valid_text_message? params[:message]
       @company.text_followers.each {|f| f.send_text params[:message]}
-      flash.now[:notice] = 'Texts successfully sent'
+      flash.now[:notice] = t'builder.text_panel.success'
     else
-      @errors[:message] = "Message length is too long (must be less than #{max_message_length} characters long)"
+      @errors[:message] = t('builder.text_panel.msg_too_long', {:max => max_message_length})
       @old_message = params[:message]
     end
 
@@ -76,12 +76,12 @@ class Widgets::InformedController < ApplicationController
 
     if !params[:subject].present? || params[:subject].length == 0 ||
        !params[:content].present? || params[:content].length == 0
-      @errors[:no_email] = "Please enter both a subject and message."
+      @errors[:no_email] = t'builder.email_panel.missing_info'
       @old_subject = params[:subject]
       @old_content = params[:content]
     else
       @company.email_followers.each {|f| f.send_email params[:subject], params[:content]}
-      flash.now[:notice] = "Email successfully sent."
+      flash.now[:notice] = t'builder.email_panel.success'
     end
 
     return render 'email_panel'

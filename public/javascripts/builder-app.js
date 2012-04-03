@@ -1,8 +1,9 @@
 (function ($) {
 
+  var i18n = g.i18n.builder_app;
   var pluckName = function (w) { return w.get('name'); };
 
-  window.unsavedChangesText = "You have unsaved changes. Click OK to go back and save changes. Click Cancel to discard your changes.";
+  window.unsavedChangesText = i18n.unsavedChangesText;
 
   // ----------------------------
   window.BuilderWidgets = Widgets.extend({

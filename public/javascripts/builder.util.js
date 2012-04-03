@@ -94,16 +94,21 @@ var builderUtil = {
           groupIndex: 9,
           exec: util.jeditorImageDialog,
           className: 'uploadImage',
-          tooltip: "Add a Picture"
+          tooltip: g.i18n.wysiwyg.add_picture
         },
         embedYoutube: {
           visible: true,
           groupIndex: 9,
           exec: util.jeditorYoutubeDialog,
           className: 'embedYoutube',
-          tooltip: 'Add a Video'
+          tooltip: g.i18n.wysiwyg.add_video
         }
+      },
+
+      plugins: {
+        i18n: { lang:g.i18n_locale }
       }
+
     });
     // $('.wysiwyg iframe').css('height',250).css('width',320);
   },
@@ -244,7 +249,7 @@ var builderUtil = {
         }
         dialogCloseFunc.call(this, e);
       }
-    }, isNew ? 'Upload Image' : 'Edit Image');
+    }, isNew ? g.i18n.category.dialog.upload_image : g.i18n.category.dialog.edit_image);
 
     dialog.find('[name=size]').change(function () {
       var isCustom = !!$(this).find('option:selected').data('custom');

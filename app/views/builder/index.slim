@@ -10,6 +10,12 @@
   = javascript_include_tag 'support/jquery.wysiwyg'
   = javascript_include_tag 'support/jquery.wysiwyg.link'
   = javascript_include_tag 'support/jquery.wysiwyg.image'
+  = javascript_include_tag 'support/jquery.wysiwyg.i18n'
+  - if I18n.locale != :en
+    erb:
+      <script type="text/javascript">
+        $.wysiwyg.i18n.lang[g.i18n_locale] = <%=raw t("jwysiwyg").to_json %>;
+      </script>
 
 h1 = @company.name
 #builder-container

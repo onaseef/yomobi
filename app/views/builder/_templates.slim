@@ -6,7 +6,7 @@ script.sidebar-widget(type="text/template")
     img.add.left src="/images/ui/plus.png"
     img.icon{ src="/images/widgets/{{ iconName }}.png" }
     .title
-      | {{ name }}
+      | <% print( g.i18n.wnames[wsubtype] ); %>
 
 script.add-widget-dialog(type="text/template")
   #dialog-confirm title=t'dialog.rename_widget.title'
@@ -111,7 +111,7 @@ script.edit-widget(type="text/template")
 
 script.edit-icon-dialog(type="text/template")
   #dialog-confirm.edit-icon title=t'dialog.change_icon.title'
-    p t'dialog.change_icon.instructions'
+    p =t'dialog.change_icon.instructions'
     .icons
       | <% var first=1; %>
       | <% for (var i=0; i < icons.length; i++) { %>
@@ -294,7 +294,7 @@ script.edit-advanced-settings(type="text/template")
       .loader
 
 script.jeditor-image-dialog(type="text/template")
-  #dialog-confirm.jeditor-image title="Select an Image"
+  #dialog-confirm.jeditor-image title=t'dialog.add_picture.title'
     | <% if (!_maybe.src) { %>
 
     table.wphoto-wrap
@@ -303,10 +303,10 @@ script.jeditor-image-dialog(type="text/template")
           td
             img src="<% print(g.noPhotoPath); %>"
           td
-            label Upload an Image...
+            label =t'dialog.add_picture.upload_picture'
             br
             .selected-file.lfloat &nbsp;
-            button name="pick_files" Browse...
+            button name="pick_files" =t'dialog.add_picture.browse'
             .error
 
     | <% } else { %>
@@ -318,28 +318,28 @@ script.jeditor-image-dialog(type="text/template")
           td
             img src="{{ _maybe.src }}"
           td
-            button name="delete" Delete
+            button name="delete" =t'dialog.add_picture.delete'
 
     p
-      label Alignment:
+      label =t'dialog.add_picture.alignment'
       select name="float"
-        option value="left" Left
-        option value="right" Right
-        option value="none" Inline with Text
+        option value="left" =t'dialog.add_picture.left'
+        option value="right" =t'dialog.add_picture.right'
+        option value="none" =t'dialog.add_picture.inline'
     p
-      label Image Size:
+      label =t'dialog.add_picture.image_size'
       input type="text" name="size" size="3" value="{{ size }}"
-      span.percent-sign %
+      span.percent-sign =t'dialog.add_picture.percent_sign'
 
     p
-      label Clickable URL (optional):
+      label =t'dialog.add_picture.clickable_url'
       a href="http://help.yomobi.com/Wysiwyg/Url" target="_blank"
         img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.jeditor.help.url')
       input type="text" name="href" value="{{ _maybe.href }}"
 
     .default-enabled class="<% print(isThumbEnabled ? '' : 'hide'); %>"
       input type="checkbox" name="is_default"
-      ' Set as Thumbnail Preview
+      =t'dialog.add_picture.set_as_preview'
       a href="http://help.yomobi.com/Wysiwyg/Thumbnail" target="_blank"
         img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.jeditor.help.thumb')
 
@@ -347,21 +347,19 @@ script.jeditor-image-dialog(type="text/template")
     input type="hidden" name="src" value="_maybe.src"
 
 script.jeditor-youtube-dialog(type="text/template")
-  #dialog-confirm.jeditor-image title="Add Video"
+  #dialog-confirm.jeditor-image title=t'dialog.add_video.title'
     p
-      label Video URL:
+      label =t'dialog.add_video.url'
       a href="http://help.yomobi.com/Wysiwyg/YouTube" target="_blank"
         img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.jeditor.help.youtube')
       input type="text" name="url" value=""
     p.error.hide
-      | Invalid Video URL.
+      =t'dialog.add_video.invalid_url'
 
-#dialog-invalid-drag title="Oops"
+#dialog-invalid-drag title=t'dialog.widget_add_error.title'
   p
     span.ui-icon.ui-icon-alert style="float:left"
-    | &nbsp; New widgets can only be added from the mobile home screen.
-  p <br>
-  p Please click on Home in the Mobile Tab Bar to return to the mobile home screen and try adding again.
+    ==t'dialog.widget_add_error.msg'
 
 script.youtube-embed-html(type="text/template")
   iframe class="youtube-player" type="text/html" src="http://www.youtube.com/embed/{{ vid }}?wmode=transparent" frameborder="0"
@@ -373,22 +371,23 @@ script.vimeo-embed-html(type="text/template")
 / = Widget Edit Pages =
 / =====================
 script.video-edit-area.full-website-edit-area.news-edit-area.photo-bucket-edit-area.blog-edit-area.donate-edit-area.reviews-edit-area(type="text/template")
-  label Your {{ subHelpText }} URL*:
+  label =t('builder.widget_editor.url_type_label_required', :type => "{{ subHelpText }}")
   input(name="url" type="text" value="{{ _maybe.url }}")
 
 script.link-edit-area(type="text/template")
-  label URL*:
+  label =t'builder.widget_editor.url_label_required'
   input(name="url" type="text" value="{{ _maybe.url }}")
 
 script.event-calendar-edit-area(type="text/template")
-  label Your {{ subHelpText }} URL*:
+  label =t('builder.widget_editor.url_type_label_required', :type => "{{ subHelpText }}")
   textarea name="url" type="text" rows="5" cols="30" {{ _maybe.url }}
 
 script.facebook-edit-area.twitter-edit-area.picasa-edit-area.flickr-edit-area(type="text/template")
-  b.current_link_label Current Link
+  b.current_link_label =t'builder.widget_editor.current_link'
   p
     a href="{{ url }}" target="_blank" {{ anchorText }}
-  label Your {{ subHelpText }}*:
+  br
+  label =t('builder.widget_editor.item_type_label_required', :type => "{{ subHelpText }}")
   input(name="userId" type="text" value="{{ _maybe.userId }}")
 
 script.custom-page-edit-area.about-us-edit-area(type="text/template")
@@ -396,75 +395,75 @@ script.custom-page-edit-area.about-us-edit-area(type="text/template")
     textarea#jeditor rows=8 cols=8 {{ _maybe.content }}
 
 script.call-us-edit-area(type="text/template")
-  label Your phone number*:
+  label =t'builder.widget_editor.phone_number_label_required'
   input(name="phone" type="text" value="{{ _maybe.phone }}")
 
 script.leave-a-message-edit-area(type="text/template")
-  label Your Email Address*:
+  label =t'builder.widget_editor.email_label_required'
   input(name="email" type="text" value="{{ _maybe.email }}")
   br
-  label Message to Mobile Visitors:
+  label =t'builder.widget_editor.custom_message_label'
   img.help-bubble src="/images/ui/help-bubble.png" title=t('widgets.helpText.keep-me-informed.mobile-message')
   textarea name="message" == "<% print(_maybe.message || '#{ t'leave_a_message.instructions' }'); %>"
 
 script.call-me-back-edit-area(type="text/template")
-  label Your Email Address*:
+  label =t'builder.widget_editor.email_label_required'
   input(name="email" type="text" value="{{ _maybe.email }}")
   br
-  label Message to Mobile Visitors:
+  label =t'builder.widget_editor.custom_message_label'
   img.help-bubble src="/images/ui/help-bubble.png" title=t('widgets.helpText.keep-me-informed.mobile-message')
   textarea name="message" == "<% print(_maybe.message || '#{ t'call_back.instructions' }'); %>"
 
 script.tell-a-friend-edit-area(type="text/template")
-  p This widget appears as an icon on your mobile site and makes it easy for visitors to share your site with their friends.
+  p =t'widgets.helpText.tell-a-friend.explanation'
 
 script.booking-request-edit-area(type="text/template")
-  label Your Email Address*:
+  label =t'builder.widget_editor.email_label_required'
   input(name="email" type="text" value="{{ _maybe.email }}")
-  label Message to Mobile Visitors:
+  label =t'builder.widget_editor.custom_message_label'
   img.help-bubble src="/images/ui/help-bubble.png" title=t('widgets.helpText.booking-request.mobile-message')
   textarea name="message" == "<% print(_maybe.message || '#{ t'booking_request.instructions' }'); %>"
 
 script.rss-feed-edit-area(type="text/template")
   label
-    | RSS Feed URL*:
+    =t'builder.widget_editor.rss_label_required'
   input(name="url" type="text" value="{{ _maybe.url }}")
   br
   label
-    | Max number of entries:
+    =t'builder.widget_editor.rss_max_entries'
   select name="postCount" type="text" value="{{ _maybe.postCount }}"
     - 50.times do |i|
       option value=i+1 = i+1
 
 script.keep-me-informed-edit-area(type="text/template")
-  label Your Email Address*:
+  label =t'builder.widget_editor.email_label_required'
   input name="email" type="text" value="{{ _maybe.email }}"
   br
-  label Message to Mobile Visitors:
+  label =t'builder.widget_editor.custom_message_label'
   img.help-bubble src="/images/ui/help-bubble.png" title=t('widgets.helpText.keep-me-informed.mobile-message')
   textarea name="message" == "<% print(_maybe.message || '#{ t'keep_me_informed.instructions', :company_name => @company.name }'); %>"
   br
   .opt-in-select
-    label Please select at least one of the following*:
+    label =t'builder.widget_editor.select_at_least_one_label_required'
     br
     | <% if (_maybe.optForEmails) { %>
     input name="optForEmails" type="checkbox" checked="checked"
     | <% } else { %>
     input name="optForEmails" type="checkbox"
     | <% } %>
-    label Allow users to opt-in for emails.
+    label =t'builder.widget_editor.email_opt_in_label'
     br
     | <% if (_maybe.optForTexts) { %>
     input name="optForTexts" type="checkbox" checked="checked"
     | <% } else { %>
     input name="optForTexts" type="checkbox"
     | <% } %>
-    label Allow users to opt-in for text messages.
+    label =t'builder.widget_editor.sms_opt_in_label'
 
 script.business-hours-edit-area(type="text/template")
   .double-time-input
     input type="checkbox" name="doubleTime"
-    b Specify two sets of hours for each day.
+    b =t'builder.widget_editor.two_times_per_day_label'
 
   .input-area class="{{ _maybe.doubleTimeChecked }}"
     - %w(mon tue wed thu fri sat sun).each do |day|
@@ -476,67 +475,67 @@ script.business-hours-edit-area(type="text/template")
           - 2.times do |i|
             div class="t#{i}"
               input.hour.from type="text" value="{{ #{day}FromHours[#{i}] }}"
-              label to
+              label =t'builder.widget_editor.to_label'
               input.hour.to type="text" value="{{ #{day}ToHours[#{i}] }}"
-          div class="closed" Closed
+          div class="closed" =t'builder.widget_editor.closed_label'
         .clearfix
   .clearfix
 
 script.find-us-edit-area(type="text/template")
-  label Address 1*:
+  label =t'builder.widget_editor.address1_label_required'
   input name="addr1" type="text" value="{{ _maybe.addr1 }}"
   br
-  label Address 2:
+  label =t'builder.widget_editor.address2_label'
   input name="addr2" type="text" value="{{ _maybe.addr2 }}"
   br
-  label City*:
+  label =t'builder.widget_editor.city_label_required'
   input name="city" type="text" value="{{ _maybe.city }}"
   br
-  label State / Province / Territory:
+  label =t'builder.widget_editor.state_label'
   input name="state" type="text" value="{{ _maybe.state }}"
   br
-  label Zip / Postal Code:
+  label =t'builder.widget_editor.zip_label'
   input name="zip" type="text" value="{{ _maybe.zip }}"
   br
-  label Country*:
+  label =t'builder.widget_editor.country_label_required'
   br
   select name="country"
     = render 'builder/country-options'
   br
 
 script.coupon-edit-area(type="text/template")
-  label Deal Name*:
+  label =t'builder.widget_editor.deal_name_label_required'
   input(name="couponName" type="text" value="{{ _maybe.couponName }}")
   br
-  label Expiration Date:
+  label =t'builder.widget_editor.expiration_date_label'
   input(name="expire" type="text" value="{{ _maybe.expire }}")
   br
-  label Description*:
+  label =t'builder.widget_editor.description_label_required'
   textarea(name="description" type="text") {{ _maybe.description }}
 
 script.calendar-edit-area(type="text/template")
-  label Current calendar link:
+  label =t'builder.widget_editor.current_calendar_link_label'
   .url
     a href="{{ showUrl }}" target="_blank" {{ showUrl }}
   input(type="hidden" name="url" value="{{ _maybe.url }}")
 
-  label Paste your "Embed this Calendar" link here:
+  label =t'builder.widget_editor.calendar_link_label'
   textarea(name="paste" type="text") {{ _maybe.description }}
 
 script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.property-listings-edit-area.locations-edit-area(type="text/template")
     | <% if (onHomePage === true) { %>
-    input type="button" name="beginEditing" value="Click Here to Start Editing"
+    input type="button" name="beginEditing" value=t'builder.widget_editor.click_to_edit_label'
     br
     br
 
     input type="checkbox" name="hideWidget"
-    label for="hide" Deactivate
+    label for="hide" =t'builder.widget_editor.deactivate_label'
     img.help-bubble src="/images/ui/help-bubble.png" title=t('widgets.helpText.category.hide')
     | <% } else if (currentNodeType !== 'page') { %>
 
     .crumb-wrap
       erb:
-        <b>Editing: <span class="blue">{{ catCrumbs }}</span></b>
+        <%==t('builder.widget_editor.editing_crumb', :breadcrumb => "{{ catCrumbs }}")%>
 
     table.wphoto-wrap
       tbody
@@ -544,33 +543,33 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
           td
             img src="{{ wphotoPreviewPath }}"
           td
-            label Select a Picture...
+            label =t'builder.widget_editor.select_picture'
             br
             .selected-file.lfloat &nbsp;
-            button name="pick_files" Browse...
+            button name="pick_files" =t'builder.widget_editor.browse'
             .error
         | <% if (wphotoPreviewPath !== '/images/no-wphoto.png') { %>
         tr
           td
-            a.remove-wphoto-link href="#" Remove Picture
+            a.remove-wphoto-link href="#" =t'builder.widget_editor.remove_picture'
           td
         | <% } %>
 
     .controls
       / For icon-only buttons, you need = ""
-      .button.back title="Go Back" = ""
+      .button.back title=t'builder.widget_editor.go_back_icon' = ""
       .button-separator
-      .button.add-cat Add {{ catLabel }}
-      .button.add-item Add {{ itemLabel }}
+      .button.add-cat =t('builder.widget_editor.add_item', :item => "{{ catLabel }}")
+      .button.add-item =t('builder.widget_editor.add_item', :item => "{{ itemLabel }}")
       | <% if (wtype === 'page_tree') { %>
-      .button.add-rss-feed title="Add RSS Feed" = ""
+      .button.add-rss-feed title=t'builder.widget_editor.rss_icon' = ""
       | <% } %>
 
       | <% if (isThereStuff == true) { %>
       .button-separator
-      .button.edit title="Edit" &nbsp;
-      .button.rename title="Rename" &nbsp;
-      .button.delete title="Delete" &nbsp;
+      .button.edit title=t'builder.widget_editor.edit_icon' &nbsp;
+      .button.rename title=t'builder.widget_editor.rename_icon' &nbsp;
+      .button.delete title=t'builder.widget_editor.delete_icon' &nbsp;
       | <% } %>
 
       .clearfix
@@ -588,11 +587,11 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
 
     | <% } else { %>
     .controls
-      .button.back title="Go Back" = ""
+      .button.back title=t'builder.widget_editor.go_back_icon' = ""
       .button-separator
       .crumb-wrap
         erb:
-          <b>Editing: <span class="blue">{{ catCrumbs }}</span></b>
+          <%==t('builder.widget_editor.editing_crumb', :breadcrumb => "{{ catCrumbs }}")%>
     #jeditor-wrapper
       textarea#jeditor {{ content }}
     | <% } %>

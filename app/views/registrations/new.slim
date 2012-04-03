@@ -1,16 +1,16 @@
 #signin-box.center-box
   
-  h2 YoMobi Signup
+  h2 =t'sign_up.title'
 
   - if @user.errors.present?
     .login-error
-      h3 There was problem with your request:
+      h3 =t'sign_up.error.general'
       ul
         - @user.errors.each do |name,reason|
           li = "#{name.to_s.humanize.capitalize} #{reason}"
       p
-        | Already a Member? 
-        a href=session_path(:user) Click here to sign in
+        =t'sign_up.already_member' 
+        a href=session_path(:user) =t'sign_up.click_to_signin'
   
   #actual-signin-box.signup-error
     = render :partial => 'home/signup_form', :locals => {:hide_captcha => false}

@@ -2,6 +2,8 @@
 
 // global variables
 window.g = {
+  i18n: <%=raw (t("javascript").merge :wnames => t("widgets.names")).to_json %>,
+  i18n_locale: "<%= I18n.locale.to_s %>",
   width: 320,
   height: 480,
   topBarHeight: 0,

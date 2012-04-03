@@ -4,43 +4,43 @@
     tbody
       tr
         td
-          label First Name:
+          label =t'sign_up.first_name'
         td
           = f.text_field :first_name
       tr
         td
-          label Last Name:
+          label =t'sign_up.last_name'
         td
           = f.text_field :last_name
       tr
         td
-          label Email:
+          label =t'sign_up.email'
         td
           = f.text_field :email, :autocomplete => "off"
       tr
         td
-          label Password:
+          label =t'sign_up.password'
         td
           = f.password_field :password, :autocomplete => "off"
       tr
         td
-          label Re-enter Password:
+          label =t'sign_up.password_confirm'
         td
           = f.password_field :password_confirmation, :autocomplete => "off"
       - unless params[:sk]
         tr
           td
-            label Site Type:
+            label =t'sign_up.site_type'
           td
             = f.select :company_type_id, options_for_select(company_types, @user.company_type_id || 57)
       - if params[:sk]
         tr
           td
-            label Signup Key:
+            label =t'sign_up.signup_key'
           td
             = f.text_field :signup_key, :value => params[:sk], :readonly => "readonly"
   
   - unless hide_captcha
     = render 'shared/recaptcha'
   
-  = f.submit 'Sign Up', :class => 'pretty-button'
+  = f.submit t'sign_up.sign_up' , :class => 'pretty-button'
