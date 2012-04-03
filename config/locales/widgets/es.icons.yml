@@ -2,17 +2,17 @@ es:
   widgets:
     icons:
       sep-general: General
-      about-us: Información
+      about-us: Quienes Somos
       call-us: Llámanos
       business-hours: Horas Hábiles
-      find-us: Mapa
+      find-us: Dirección
       full-website: Sitio Completo
       faq: Preguntas Frecuentes
-      book: Información
+      book: Reservas
       time: Hora
       coupon: Cupón
       9-deals-specials: Ofertas / Especiales
-      custom-page: Página
+      custom-page: Página Simple
       category: Categoría
       products: Productos
       75-products-1: Productos
@@ -28,7 +28,7 @@ es:
       calendar-event-2: Eventos / Reservaciones
       255-upcoming-events: Próximos Eventos
       249-entertainment-schedule: Horario de Entretenimientos
-      locations: Mapa
+      locations: Ubicaciónes
       history-1: Historia
       history-2: Historia
       15-history-1: Historia
@@ -42,26 +42,26 @@ es:
       award-1: Reconocimientos
       award-2: Reconocimientos
 
-      sep-building: Construcción
-      building-1: Construcción
-      building-2: Construcción
-      building-3: Construcción
-      building-4: Construcción
-      219-leed-green-building: LEED / Construcción Verde
+      sep-building: Edificio
+      building-1: Edificio
+      building-2: Edificio
+      building-3: Edificio
+      building-4: Edificio
+      219-leed-green-building: LEED / Edificio Verde
       217-construction: Construcción
 
       sep-interactive: Interactivo / Redes Sociales
-      call-us: Llama
+      call-us: Llámenos
       call-me-back: Responde Mi Llamada
       keep-me-informed: Mantenerme Informado
       leave-a-message: Mensaje
-      booking-request: Agregar en Agenda
+      booking-request: Reservas
       facebook: facebook
       twitter: twitter
       share: Compartir
-      tell-a-friend: Comentar Con Un Amigo
-      reviews: Revisiones
-      reviews-2: Revisiones
+      tell-a-friend: Comentar Con Amigos
+      reviews: Críticas
+      reviews-2: Críticas
       feedback-1: Mensaje
       feedback-2: Mensaje
       feedback-3: Mensaje
@@ -95,7 +95,7 @@ es:
       188-electric-utility: Instalación Eléctrica
       188-water-utility-1: Instalaciones de Agua
       188-water-utility-2: Instalaciones de Agua
-      189-road-work: Viaje de Trabajo
+      189-road-work: Construcción de Carreteras
       180-recreation: Recreación
       28-park: Parque
       34-playground-1: Área de Juego
@@ -109,12 +109,12 @@ es:
       199-offices: Oficinas
       2-apply-for-job: Solicita Empleo
       166-airport: Aeropuerto
-      167-code-compliance: Código de Queja
+      167-code-compliance: Código de Cumplimiento
       168-convention-center-1: Centro de Convenciones
       168-convention-center-2: Centro de Convenciones
       169-courts: Cortes
       74-parking: Estacionamiento
-      11-disabled-access: Acceso Inhabilitado
+      11-disabled-access: Acceso para Minusválidos
       72-media-public-relations: Relaciones Públicas / Mediáticas
 
       sep-people: Gente
@@ -263,10 +263,10 @@ es:
       300-sandwich-shop: Tienda de Sandwiches
       289-burger-shop: Tienda de Hamburguesas
       305-smoothie: Malteada
-      301-shaved-ice: Hielo Picado
+      301-shaved-ice: Hielo Raspado
       119-wedding-cakes: Pastel/Torta de Bodas
-      82-bakery-1: Panificadora / Productos Horneados
-      82-bakery-2: Panificadora / Productos Horneados
+      82-bakery-1: Panadería
+      82-bakery-2: Panadería
       290-cake: Torta / Pastel
       291-coffee: Café / Cafetería
       292-donuts-pastries: Donas / Pastas
@@ -289,7 +289,7 @@ es:
       147-easter: Pascua
       153-jewish: Judía
       150-hannukah: Janucá
-      156-passover: Pésaj
+      156-passover: Judía
       151-hindu: Hindú
       155-muslim-1: Musulmana
       155-muslim-2: Musulmana
@@ -406,7 +406,7 @@ es:
       sep-hotel: Hotel / Alojamiento
       94-hotel: Hotel
       216-room-service: Servicio a la Habitación
-      213-concierge: Encargado / Administrador
+      213-concierge: Encargado / Conserje
       214-front-desk: Recepción
       215-rates-1: Precios
 
@@ -458,11 +458,11 @@ es:
       314-massage: Masaje
       316-pedicure: Pedicure
       317-permanent-makeup: Maquillaje Permanente
-      320-threading: Tendencias
-      321-waxing: Aplicación de Cera
+      320-threading: Depilación con hilo
+      321-waxing: Depilación con Cera
       323-hair-stylist: Estilista de Cabello
       318-spa: Spa
-      319-teeth-whitening: Aclarado de Dientes
+      319-teeth-whitening: Blanqueamiento de Dientes
       322-weight-loss: Pérdida de Peso
       332-weight-loss-2: Pérdida de Peso
       308-beauty-products: Productos de Belleza
@@ -508,7 +508,7 @@ es:
       342-rafting: Descenso de Ríos
       343-scuba-diving: Buceo con Equipo
       sep-services: Servicios
-      104-nanny-services: Servicios de Nana
+      104-nanny-services: Servicios de Niñera
       100-maid-services: Servicio de Limpieza
       112-steam-cleaning: Limpieza a Vapor
       102-moving-services: Mudanzas
@@ -530,7 +530,7 @@ es:
       103-music-shop: Tienda de Música
       105-newsstand-1: Puesto de Periódicos
       105-newsstand-2: Puesto de Periódicos
-      106-non-profit-1: No Lucrativo
+      106-non-profit-1: Organización sin Fin de Lucro
       106-tax-holiday: Impuesto por Día Festivo
       110-propane-dealer-1: Distribuidor de Propano
       116-video-rental-1: Renta de Videos
