@@ -243,6 +243,7 @@ en:
     instructions: "Enter your call back information:"
     confirmation: "Your call back request has been sent to %{company_name}. Thank you."
     email:
+      subject: "You have a call back request."
       body: "A visitor sent you a call back request from: %{site_url}"
 
   tell_a_friend:
@@ -260,6 +261,7 @@ en:
     date: "Date:"
     confirmation: "Your booking request has been sent to %{company_name}."
     email:
+      subject: "You have a booking request."
       body: "A visitor sent you a booking request from: %{site_url}"
 
   keep_me_informed:
