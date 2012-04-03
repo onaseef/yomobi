@@ -1,23 +1,24 @@
-Thank you for signing up with YoMobi. You're one step closer to expanding your fan base and making it easier for visitors to find you wherever they are.
+<%==t('account.welcome_email.thank_you')%>
 <br />
 <br />
 
-Your mobile site URL is: <a href="<%= URI.encode @mobile_url %>"><%= @mobile_url %></a>
+<%==t('account.welcome_email.mobile_site_url')%>
+<a href="<%= URI.encode @mobile_url %>"><%= @mobile_url %></a>
 <br />
 <br />
-
-Use your YoMobi mobile site to complement your existing desktop site. <a href="http://help.yomobi.com/Account/MobileRedirectScript">Click here for instructions</a> on how to seamlessly direct visitors to your new mobile site whenever they visit from a mobile device.
+<%==t('account.welcome_email.mobile_redirect')%>
 <br />
 <br />
-
-Now that you're mobilized, <a href="http://www.sharethis.com/share?publisher=780260b0-560d-4d66-b09d-ebf049f3edb5&title=Check%20out%20my%20YoMobi%20mobile%20site.&url=<%= URI.encode @mobile_url %>">share the news with your friends</a>.
+<a href="http://www.sharethis.com/share?publisher=780260b0-560d-4d66-b09d-ebf049f3edb5&title=Check%20out%20my%20YoMobi%20mobile%20site.&url=<%= URI.encode @mobile_url %>"><%==t('account.welcome_email.share')%></a>.
 <br />
 <br />
-
-To access your YoMobi account, <a href="http://www.yomobi.com/">click here</a> and sign in.
+<a href="http://www.yomobi.com/"><%==t('account.welcome_email.share')%></a>
 <br />
 <br />
-
-Best Wishes,<br />
-YoMobi Team<br />
-<a href="mailto:support@yomobi.com">support@yomobi.com</a>
+<p>
+<%==t'account.welcome_email.closing'%>
+<br />
+<%==t'account.welcome_email.signature'%>
+<br />
+<%==t'account.welcome_email.contact'%>
+</p>

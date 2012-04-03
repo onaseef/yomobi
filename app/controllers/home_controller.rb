@@ -21,14 +21,14 @@ class HomeController < ApplicationController
 
   def resend_confirmation
     if current_user.confirmed?
-      flash.now[:notice] = 'Your account has already been confirmed'
+      flash.now[:notice] = t'confirm_account.already_confirmed'
       @already_confirmed = true
       @email = current_user.email
       return render 'home/confirm_account'
     end
 
     Devise::Mailer.confirmation_instructions(current_user).deliver
-    flash[:notice] = 'The confirmation email was resent. Please check your mailbox.'
+    flash[:notice] = t'confirm_account.email_resent'
     return redirect_to confirm_account_path
   end
 

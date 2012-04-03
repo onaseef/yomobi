@@ -15,6 +15,13 @@ es:
     Friday: "@@Friday"
     Saturday: "@@Saturday"
 
+  helpers:
+    label:
+      user:
+        email: "@@Email:"
+        password: "@@Password:"
+        password_confirmation: "@@Password confirmation:"
+
   homepage:
     welcome: "@@Welcome to YoMobi"
     message: '@@Reach more people with a <span class="hilite">free</span> mobile website. YoMobi makes building a mobile site easy. Go from sign up to online in minutes.<br/><br/> Being mobile is more important than ever.'
@@ -128,6 +135,7 @@ es:
     sign_in: "@@Sign In"
     or: "@@or"
     sign_up: "@@Sign Up for Yomobi"
+    unlock_not_received: "@@Didn't receive unlock instructions?"
     error:
       reenter_password: "@@Please re-enter your password"
       incorrect_password: "@@The password you entered is incorrect. Please try again (make sure your caps lock is off)."
@@ -153,6 +161,62 @@ es:
     type_words: "@@Type the two words:  "
     new_words: "@@(Get New Words)"
 
+  confirm_account:
+    already_confirmed: "@@Your account has already been confirmed"
+    email_resent: "@@The confirmation email was resent. Please check your mailbox."
+    confirm_not_received: "@@Didn't receive confirmation instructions?"
+    email:
+      greeting: "@@Hello %{first_name},"
+      thank_you: "@@Thank you for registering with YoMobi."
+      confirm_msg: "@@Please confirm your email address to continue the registration: "
+      click_to_confirm: "@@Click here to confirm"
+      closing: "@@Sincerely,"
+      signature: "@@Yomobi Support"
+      contact: '@@<a href="mailto:support@yomobi.com">support@yomobi.com</a>'
+
+  resend_confirmation:
+    title: "@@Resend confirmation instructions"
+    resend_confirmation: "@@Resend confirmation instructions"
+
+  forgot_password:
+    title: "@@Forgot your password?"
+    forgot_password: "@@Forgot your password?"
+    reset_password: "@@Send me reset password instructions"
+
+  change_password:
+    title: "@@Change your password"
+    change_password: "@@Change my password"
+    email:
+      greeting: "@@Hello %{email},"
+      password_change_request_msg: "@@You received this email because a request was made to change your password."
+      change_password: "@@Click here to change your password."
+      no_user_request: "@@If you didn't request to change your password, please ignore this email. Your password won't change until you access the link above and create a new one."
+      closing: "@@Thank you,"
+      signature: "@@Yomobi Support"
+      contact: '@@<a href="mailto:support@yomobi.com">support@yomobi.com</a>'
+
+  account:
+    enter_current_password: "@@Please enter your current password to update your account."
+    updated_success: "@@Account updated successfully."
+
+    welcome_email:
+      subject: "@@Welcome to YoMobi"
+      thank_you: "@@Thank you for signing up with YoMobi. You're one step closer to expanding your fan base and making it easier for visitors to find you wherever they are."
+      mobile_site_url: "@@Your mobile site URL is: "
+      mobile_redirect: '@@Use your YoMobi mobile site to complement your existing desktop site. <a href="http://help.yomobi.com/Account/MobileRedirectScript">Click here for instructions</a> on how to seamlessly direct visitors to your new mobile site whenever they visit from a mobile device.'
+      share: "@@Click here to share the news with your friends."
+      access_account: "@@Click here to sign in to your YoMobi account."
+      closing: "@@Thank you,"
+      signature: "@@Yomobi Support"
+      contact: '@@<a href="mailto:support@yomobi.com">support@yomobi.com</a>'
+
+    username_changed_email:
+      subject: "@@Your YoMobi account username has changed."
+      message: "@@The email associated with %{mobile_url} has been changed from %{old_email} to %{new_email}. Next time you log in to YoMobi, your login email will be %{new_email}."
+      closing: "@@Thank you,"
+      signature: "@@Yomobi Support"
+      contact: '@@<a href="mailto:support@yomobi.com">support@yomobi.com</a>'
+
   leave_a_message:
     instructions: "@@Leave a message:"
     subject: "@@Subject:"
@@ -167,6 +231,8 @@ es:
     instructions: "@@Share %{company_name} with a friend. A short email will be sent to your friend with a link to this mobile site."
     friend_email: "@@Your Friend's Email:"
     confirmation: "@@Thank you for sharing %{company_name} with your friend."
+    email:
+      subject: "@@%{friend_name} wants to share %{site_name} with you."
 
   booking_request:
     instructions: "@@Send a Booking Request:"

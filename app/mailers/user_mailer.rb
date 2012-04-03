@@ -8,7 +8,7 @@ class UserMailer < ActionMailer::Base
   def send_welcome_email(user)
     @mobile_url = user.company.mobile_url
     mail({
-      :subject => "Welcome to YoMobi",
+      :subject => t('account.welcome_email.subject'),
       :to => user.email,
       :from => 'support@yomobi.com'
     })
@@ -19,7 +19,7 @@ class UserMailer < ActionMailer::Base
     @new_email = user.email
     @mobile_url = user.company.mobile_url
     mail({
-      :subject => "Your YoMobi account username has changed.",
+      :subject => t('account.username_changed_email.subject'),
       :to => [old_email, user.email],
       :from => 'support@yomobi.com'
     })
