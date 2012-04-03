@@ -260,7 +260,7 @@ en:
     date: "Date:"
     confirmation: "Your booking request has been sent to %{company_name}."
     email:
-      body: "@@A visitor sent you a booking request from: %{site_url}"
+      body: "A visitor sent you a booking request from: %{site_url}"
 
   keep_me_informed:
     instructions: "Enter your information to follow the latest news from %{company_name}. You can opt out at any time and your information will remain private."
