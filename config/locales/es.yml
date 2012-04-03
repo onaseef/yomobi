@@ -217,15 +217,35 @@ es:
       signature: "@@Yomobi Support"
       contact: '@@<a href="mailto:support@yomobi.com">support@yomobi.com</a>'
 
+  mobile:
+    email:
+      name: "@@Name: "
+      email: "@@Email: "
+      subject: "@@Subject: "
+      phone: "@@Phone: "
+      num_people: "@@Number of people: "
+      time: "@@Time: "
+      date: "@@Date: "
+      message: "@@Message: "
+      closing: "@@Thank You"
+      signature: '@@<a href="http://www.yomobi.com">YoMobi</a>'
+      create_site: '@@Create your own free mobile site at: <a href="http://www.yomobi.com">YoMobi.com</a>'
+
+
   leave_a_message:
     instructions: "@@Leave a message:"
     subject: "@@Subject:"
     message: "@@Message:"
     confirmation: "@@Your message has been sent to %{company_name}. Thank you."
+    email:
+      body: "@@A visitor sent you a message from: %{site_url}"
+
 
   call_back:
     instructions: "@@Enter your call back information:"
     confirmation: "@@Your call back request has been sent to %{company_name}. Thank you."
+    email:
+      body: "@@A visitor sent you a call back request from: %{site_url}"
 
   tell_a_friend:
     instructions: "@@Share %{company_name} with a friend. A short email will be sent to your friend with a link to this mobile site."
@@ -233,6 +253,7 @@ es:
     confirmation: "@@Thank you for sharing %{company_name} with your friend."
     email:
       subject: "@@%{friend_name} wants to share %{site_name} with you."
+      body: "@@Your friend, %{friend_name}, recommends this mobile site to you: "
 
   booking_request:
     instructions: "@@Send a Booking Request:"
@@ -240,6 +261,8 @@ es:
     time: "@@Time:"
     date: "@@Date:"
     confirmation: "@@Your booking request has been sent to %{company_name}."
+    email:
+      body: "@@A visitor sent you a booking request from: %{site_url}"
 
   keep_me_informed:
     instructions: "@@Enter your information to follow the latest news from %{company_name}. You can opt out at any time and your information will remain private."

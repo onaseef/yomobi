@@ -1,10 +1,11 @@
-Your friend, <%= @params[:name_from] %>, recommends this mobile site to you: <a href="<%= @params[:company_mobile_url] %>"><%= @params[:company_mobile_url] %></a>
+<%=t'tell_a_friend.email.body', :friend_name => @params[:name_from] %> 
+<a href="<%= @params[:company_mobile_url] %>"><%= @params[:company_mobile_url] %></a>
 <br />
 <br />
 
-Thank You,
+<%==t'mobile.email.thank_you'%>
 <br />
-Yomobi
+<%==t'mobile.email.signature'%>
 <br />
 <br />
-Create your own free mobile site at: <a href="http://www.yomobi.com">YoMobi.com</a>
+<%==t'mobile.email.create_site'%>

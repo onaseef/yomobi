@@ -1,4 +1,4 @@
-A visitor to <a href="<%= @params[:company_mobile_url] %>">your YoMobi site</a> left you a call back request:
+<%==t'call_back.email.body', :site_url => @params[:company_mobile_url]) %>
 <br />
 <br />
 
@@ -11,6 +11,6 @@ Message: <%= @params[:customer_message] %>
 <br />
 <br />
 
-Thank You,
+<%==t'mobile.email.thank_you'%>
 <br />
-YoMobi
+<%==t'mobile.email.signature'%>
