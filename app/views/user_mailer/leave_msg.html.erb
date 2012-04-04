@@ -4,13 +4,13 @@
 
 <%=t('mobile.email.name') %> <%= @params[:customer_name] %>
 <br />
-Email: <%= @params[:customer_email] %>
+<%=t('mobile.email.email') %>  <%= @params[:customer_email] %>
 <br />
-Subject: <%= @params[:customer_subject] %>
+<%=t('mobile.email.subject') %>  <%= @params[:customer_subject] %>
 <br />
 <br />
 
-Message: <%= @params[:customer_feedback] %>
+<%=t('mobile.email.message') %> <%= @params[:customer_feedback] %>
 <br />
 <br />
 <%==t('mobile.email.closing')%>
