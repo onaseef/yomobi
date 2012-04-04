@@ -308,7 +308,7 @@
         , buttons = {}
       ;
       buttons[g.i18n.create] = this.submit;
-      buttons[g.i18n.cancel] = function () { $(this).dialog('close'); }
+      buttons[g.i18n.cancel] = function () { $(this).dialog('close'); };
 
       this.dialog = util.dialog(dialogContent, buttons, i18n.new_site_dialog_title, {
         width: 484
@@ -364,10 +364,10 @@
         , title = this.options.mode == 'concede' ? i18n.concede_ownership_dialog_title : title
 
         , buttons = {}
-        , saveLabel = this.options.mode == 'concede' ? i18n.continue : i18n.add
+        , saveLabel = this.options.mode == 'concede' ? i18n['continue'] : i18n.add
       ;
       buttons[g.i18n.save] = this.submit;
-      buttons[g.i18n.cancel] = function () { $(this).dialog('close'); }
+      buttons[g.i18n.cancel] = function () { $(this).dialog('close'); };
 
       this.dialog = util.dialog(dialogContent, buttons, title, {
         width: 484
