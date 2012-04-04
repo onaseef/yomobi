@@ -209,6 +209,7 @@ en:
       contact: '<a href="mailto:support@yomobi.com">support@yomobi.com</a>'
 
   account:
+    already_setup: "Your account has already been setup."
     enter_current_password: "Please enter your current password to update your account."
     updated_success: "Account updated successfully."
 
