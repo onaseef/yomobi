@@ -51,6 +51,8 @@ h2.active-site {
   width: 540px;
   padding: 10px;
   border-left: 1px solid #b3b3b3; }
+  .accordian .site-details {
+    padding-bottom: 10px; }
   .accordian .content-header {
     border: 1px solid transparent;
     border-top: 1px solid #b3b3b3;
@@ -67,8 +69,6 @@ h2.active-site {
   .accordian .content-header:hover {
     cursor: pointer;
     background: #d8dfea; }
-  .accordian .signup-keys .content-header {
-    border-top-color: transparent; }
   .accordian .content-body {
     padding: 0 10px;
     display: none;

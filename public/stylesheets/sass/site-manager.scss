@@ -62,6 +62,8 @@ h2.active-site {
   padding: 10px;
   border-left: 1px solid $light-border;
 
+  .site-details { padding-bottom: 10px; }
+
   .content-header {
     border: 1px solid transparent;
     border-top: 1px solid $light-border;
@@ -76,7 +78,6 @@ h2.active-site {
     cursor: pointer;
     background: $highlight-color;
   }
-  .signup-keys .content-header { border-top-color: transparent; }
   .content-body {
     padding: 0 10px;
     display: none;

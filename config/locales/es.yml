@@ -491,7 +491,7 @@ es:
     site_name: "@@Site Name:"
     site_details: "@@Site Details"
     select_site: "@@Please select a site on the left."
-    selected_site: "@@Selected: %{site_name}"
+    selected_site: "@@Manage: %{site_name}"
     edit_site: "@@Edit Site"
     generate_signup_key: "@@Generate Signup Key"
     site_access_list: "@@Sites you have access to:"

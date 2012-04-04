@@ -35,8 +35,6 @@
 
   .accordian
     .site-details
-      button.edit =t'site_manager.edit_site'
-      button.make-default =t'site_manager.make_default'
     .signup-keys
     .site-grade
     .merchant-account
@@ -71,6 +69,8 @@
       | <% if (isOwnedByUser === true) { %>
       | *
       | <% } %>
+    button.edit =t'site_manager.edit_site'
+    button.make-default =t'site_manager.make_default'
 
   script.signup-keys(type="text/template")
     .content-header
