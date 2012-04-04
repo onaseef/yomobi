@@ -184,7 +184,7 @@
         | &nbsp;&frasl;&nbsp;
         = select_tag 'date_d', options_for_select(1..31,Date.today.day)
         | &nbsp;&frasl;&nbsp;
-        = select_tag 'date_y', options_for_select(2011..2012,Date.today.year)
+        = select_tag 'date_y', options_for_select(Date.today.year..Date.today.year+5,Date.today.year)
         br
         .aritcaptcha-container
         p.error.response
