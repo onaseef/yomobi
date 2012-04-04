@@ -44,8 +44,6 @@
   });
 
   // ==================================
-  var invalidWidgetTooltip = g.i18n.builder_app.invalid_widget;
-  var deactivatedWidgetTooltip = g.i18n.builder_app.deactivated_widget;
   WidgetHomeView = Backbone.View.extend({
     tagName: 'div',
     className: 'home-icon dbx-box',
@@ -75,7 +73,7 @@
       if (mapp.homeView.showInvalidWidgets && !this.model.validForShowing()) {
 
         var className = 'invalid' + (this.model.get('hide') ? ' deactivated' : '');
-        var tip = this.model.get('hide') ? deactivatedWidgetTooltip : invalidWidgetTooltip;
+        var tip = this.model.get('hide') ? g.i18n.builder_app.deactivated_widget : g.i18n.builder_app.invalid_widget;
         $(this.el).addClass(className).simpletooltip(tip);
       }
       return this;

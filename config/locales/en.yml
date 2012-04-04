@@ -61,7 +61,7 @@ en:
     terms: "Terms"
 
 
-  javascript:
+  javascript_builder:
 
     save: "Save"
     submit: "Submit"
@@ -105,7 +105,7 @@ en:
       unsavedChangesText: "You have unsaved changes. Click OK to go back and save changes. Click Cancel to discard your changes."
       invalid_widget: "This widget will <b>NOT</b> appear on your mobile site because required information is missing.<br /><br />Please click on this widget to edit. Remember to <b>Save Changes</b> when you are done."
       deactivated_widget: "You have deactivated this widget; it <b>WILL NOT</b> appear on your mobile site.<br /><br />To undo this, please click this widget and uncheck the \"Deactivate\" checkbox."
- 
+
 
     site_manager:
       default_error: "We're sorry, something went wrong."
@@ -114,6 +114,19 @@ en:
       concede_ownership_dialog_title: "Concede Site Ownership"
       add: "Add"
       continue: "Continue"
+
+
+  javascript_mobile:
+
+    email: "Email"
+    phone: "Mobile Number"
+
+    all_fields_required: "You must fill in all fields."
+    invalid_captcha: "Incorrect math answer. Please try again."
+    invalid_email: "Invalid email address."
+    invalid_phone: "Invalid mobile number."
+    email_or_phone_required: "You must provide an email or phone number."
+
 
   new_site:
     site_name: "Site Name:"
@@ -182,7 +195,7 @@ en:
     title: "Forgot your password?"
     forgot_password: "Forgot your password?"
     reset_password: "Send me reset password instructions"
-  
+
   change_password:
     title: "Change your password"
     change_password: "Change my password"
@@ -277,7 +290,7 @@ en:
     form:
       title: "Sign Up"
       subtitle: "It's free."
-  
+
   account_setup:
 
     about_label: "Tell your visitors who you are (optional):"
@@ -337,7 +350,7 @@ en:
       site_url: "You can see your new mobile site on your smart phone or tablet by browsing to "
       auto_redirect: If you have a desktop site, <a target="ym-help" href="http://help.yomobi.com/Account/MobileRedirectScript"> learn how to automatically redirect your mobile visitors from your desktop site to your mobile site</a>.
       easy_update: "Updating your mobile site is easy. All changes you make are automatically published, so your site is always up to date."
-      help: For additional information, <a target="ym-help" href="http://help.yomobi.com">please visit our help pages.</a> 
+      help: For additional information, <a target="ym-help" href="http://help.yomobi.com">please visit our help pages.</a>
       customize: "To start customizing your site, please click the button below."
 
   navigation_bar:
@@ -358,7 +371,7 @@ en:
     change_password: "Change Password (Optional):"
     new_password: "New Password:"
     new_password_confirm: "Re-enter New Password:"
-    save: "Save Changes" 
+    save: "Save Changes"
 
   builder:
 
@@ -380,7 +393,7 @@ en:
       send: "Send Email"
       sending: "Sending. Please wait..."
       missing_info: "Please enter both a subject and message."
-      success: "Email successfully sent."  
+      success: "Email successfully sent."
 
     text_panel:
       title: "Text Message your Followers"
@@ -407,8 +420,8 @@ en:
       browse: "Browse..."
       upload: "Upload"
       header_background: "Header Background:"
-      header_text: "Header Text:" 
-      save: "Save Settings"    
+      header_text: "Header Text:"
+      save: "Save Settings"
 
     advanced_settings:
       title: "Advanced Settings"
@@ -417,7 +430,7 @@ en:
       redirect_code: "Desktop Redirect Code:"
       redirect_code_help: "To automatically redirect visitors to your mobile site when they visit your desktop site from a mobile phone, copy this code snippet and paste it into your desktop site’s home page, just before the closing &lt;head&gt; tag. <b>Click ? more help.</b>"
       keywords: "Enter keywords that describe your website, separated by commas:"
-      save: "Save Settings"    
+      save: "Save Settings"
 
     edit_tab_bar:
       explanation: "Select the pages you want to be most visible to your mobile visitors."
@@ -438,8 +451,8 @@ en:
       explanation: "<p>Edit the navigation tab bar at the top of your mobile site.</p><br><p>Highlight the widgets you want your mobile site visitors to see first by adding them to the navigation tab bar which appears at the top of your mobile site.</p>"
       tab_1: "Tab #1"
       tab_n: "Tab #%{num}"
-      none: "== None ==" 
-    
+      none: "== None =="
+
     widget_editor:
       add_item: "Add %{item}"
       address1_label_required: "Address 1*:"
@@ -493,12 +506,12 @@ en:
       zip_label: "Zip / Postal Code:"
 
 
-      
+
 
   dialog:
     error: "Error: %{error_message}"
     add: "Add"
-    
+
     change_icon:
       title: "Change Icon"
       instructions: "Click on icon to select:"
@@ -511,7 +524,7 @@ en:
     rename_widget:
       title: "Rename Widget"
       instructions: "Please rename your widget:"
-    
+
     add_new:
       title: "Add New %{item_type}"
       instructions: " %{item_type} name:"
@@ -591,7 +604,7 @@ en:
       no_self_admin: "You cannot add yourself as a Admin."
       already_owner: "You are already the owner of this site."
       description_too_long: "Description is too long. 2500 characters max."
-      
+
     help:
       signup_keys: "When you are ready to hand this site over to its owner, generate a signup key, then email the link to the site owner and have them click on the link to sign up to Yomobi and take ownership of their site.<br><b>Click ? for more information.</b>"
     confirm:

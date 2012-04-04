@@ -61,7 +61,7 @@ es:
   legal:
     rights_reserved: "@@All Right Reserved YoMobi © 2012"
 
-  javascript:
+  javascript_builder:
 
     save: "@@Save"
     submit: "@@Submit"
@@ -114,6 +114,19 @@ es:
       concede_ownership_dialog_title: "@@Concede Site Ownership"
       add: "@@Add"
       continue: "@@Continue"
+
+
+  javascript_mobile:
+
+    email: "@@Email"
+    phone: "@@Mobile Number"
+
+    all_fields_required: "@@You must fill in all fields."
+    invalid_captcha: "@@Incorrect math answer. Please try again."
+    invalid_email: "@@Invalid email address."
+    invalid_phone: "@@Invalid mobile number."
+    email_or_phone_required: "@@You must provide an email or phone number."
+
 
   new_site:
     site_name: "@@Site Name:"

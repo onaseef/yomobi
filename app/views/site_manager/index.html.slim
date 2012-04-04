@@ -7,7 +7,7 @@
     <script type="text/javascript">
     window._sitesData = <%=raw @companies.to_json %>;
     window.g = {
-      i18n: <%=raw t("javascript").to_json %>,
+      i18n: <%=raw t("javascript_builder").to_json %>,
       activateSitePath: _.template( unescape("<%=raw activate_site_path('{{ id }}') %>") ),
       createSitePath: _.template( unescape("<%=raw create_site_path %>") ),
       addAdminPath: _.template( unescape("<%=raw add_admin_path '{{ id }}' %>") ),
