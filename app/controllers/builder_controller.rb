@@ -140,17 +140,13 @@ class BuilderController < ApplicationController
 
     case widget[:wtype]
     when 'informed'
-      current_user.company.informed_email = email
-      current_user.company.save
+      current_user.company.update_attribute :informed_email, email
     when 'leave_msg'
-      current_user.company.leave_msg_email = email
-      current_user.company.save
+      current_user.company.update_attribute :leave_msg_email, email
     when 'call_back'
-      current_user.company.call_back_email = email
-      current_user.company.save
+      current_user.company.update_attribute :call_back_email, email
     when 'booking'
-      current_user.company.booking_email = email
-      current_user.company.save
+      current_user.company.update_attribute :booking_email, email
     else
       true
     end
