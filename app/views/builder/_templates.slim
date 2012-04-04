@@ -499,8 +499,7 @@ script.find-us-edit-area(type="text/template")
   br
   label =t'builder.widget_editor.country_label_required'
   br
-  select name="country"
-    = render 'builder/country-options'
+  = localized_country_select_tag 'country', "US"
   br
 
 script.coupon-edit-area(type="text/template")
