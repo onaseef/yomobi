@@ -40,28 +40,126 @@
   });
 
 
-  SiteDetailsView = Backbone.View.extend({
-    el: $('#manager-container .site-details-wrap'),
-    template: util.getTemplate('site-details'),
+  ManageSiteView = Backbone.View.extend({
+    el: $('#manager-container .accordian'),
+
     events: {
-      'click .signup-key':            'selectKey'
+      'click .content-header':  'viewAccordianSection'
+    },
+
+    initialize: function () {
+      this.siteDetailsView = new SiteDetailsView();
+      this.signupKeys = new SignupKeyView();
+      this.siteGrade = new SiteGradeView();
+      this.merchant = new MerchantAccountView();
+      this.siteAdmins = new SiteAdminsView();
+
+      this.sections = [this.siteDetailsView, this.signupKeys,
+                       this.siteGrade, this.merchant, this.siteAdmins];
     },
 
     render: function (site) {
-      this.$('.details').html( this.template(site.toJSON()) );
-      this.$('.help-bubble').simpletooltip(undefined,'help');
-      this.$('.gen-signup-key, .add-admin')
-        .prop('disabled', !site.get('isOwnedByUser'));
-      this.$('.remove-admin, .concede').prop('disabled', true);
+      _.each(this.sections, function (v) { v.render(site); });
     },
 
-    setSignupKey: function (key) {
-      this.$('.signup-key').val(key).show();
-    },
-
-    selectKey: function () {
-      this.$('.signup-key').select();
+    viewAccordianSection: function (e) {
+      _.each(this.sections, function (v) {
+        v.el
+          .find('.content-header').removeClass('active').end()
+          .find('.content-body').hide().end();
+      });
+      var $header = util.ensureClassAncestor(e.target, 'content-header');
+      $header.addClass('active').siblings('.content-body').show();
     }
+  });
+
+
+  SiteDetailsView = Backbone.View.extend({
+    el: $('#manager-container .accordian > .site-details'),
+    template: util.getTemplate('site-details'),
+    render: function (site) {
+      $(this.el).html( this.template(site.toJSON()) );
+    }
+  });
+
+
+  SignupKeyView = Backbone.View.extend({
+    el: $('#manager-container .accordian > .signup-keys'),
+    template: util.getTemplate('signup-keys'),
+    events: {
+      'click .signup-key':            'selectKey',
+      'click button.gen-signup-key': 'genSignupKey'
+    },
+    render: function (site) {
+      $(this.el).html( this.template() );
+      this.$('.gen-signup-key').prop('disabled', !site.get('isOwnedByUser'));
+    },
+    // Generate signup key
+    genSignupKey: function () {
+      var self = this
+        , site = sman.getSelectedSite()
+        , button = this.$('.gen-signup-key').prop('disabled',true)
+      ;
+      this.$('.signup-key-input').hide();
+
+      submitForm(site, g.genSignupKey, {
+        params: {},
+        success: function (resp) {
+          self.setSignupKey( resp.key );
+          button.prop('disabled',false);
+        }
+      });
+    },
+    setSignupKey: function (key) {
+      this.$('.signup-key-input').val(key).show();
+    },
+    selectKey: function () {
+      this.$('.signup-key-input').select();
+    }
+  });
+
+
+  MerchantAccountView = Backbone.View.extend({
+    el: $('#manager-container .accordian > .merchant-account'),
+    template: util.getTemplate('merchant-account'),
+    render: function (site) {
+      $(this.el).html( this.template() );
+    }
+  });
+
+
+  SiteGradeView = Backbone.View.extend({
+    el: $('#manager-container .accordian > .site-grade'),
+    template: util.getTemplate('site-grade'),
+    render: function (site) {
+      var extraData = {
+        actionLabel: site.get('isPremium') ? 'Manage' : 'Upgrade',
+        grade: site.get('isPremium') ? 'Professional' : 'Standard'
+      };
+      var templateData = _.extend(site.toJSON(), extraData);
+      $(this.el).html( this.template(templateData) );
+    }
+  });
+
+
+  SiteAdminsView = Backbone.View.extend({
+    el: $('#manager-container .site-admins'),
+    template: util.getTemplate('site-admins'),
+    adminsTemplate: util.getTemplate('admin-list'),
+
+    render: function (site) {
+      var isSelected = this.$('.content-header').hasClass('active');
+
+      this.el.html( this.template(site.toJSON()) );
+      this.$('.help-bubble').simpletooltip(undefined,'help');
+
+      this.$('.add-admin').prop('disabled', !site.get('isOwnedByUser'));
+      this.$('.remove-admin, .concede').prop('disabled', true);
+      this.$('ul.admins').html( this.adminsTemplate(site.toJSON()) );
+
+      this.$('.content-body').toggle(isSelected);
+      this.$('.content-header').toggleClass('active',isSelected);
+    },
   });
 
 
@@ -76,16 +174,14 @@
       'click .admins li':            'selectAdmin',
       'click button.add-admin':      'addAdmin',
       'click button.remove-admin':   'removeAdmin',
-      'click button.concede':        'concedeSite',
-
-      'click button.gen-signup-key': 'genSignupKey'
+      'click button.concede':        'concedeSite'
     },
 
     initialize: function () {
       _.bindAll(this, 'getSelectedSite');
 
       this.sites = new Sites(window._sitesData);
-      this.siteDetailsView = new SiteDetailsView();
+      this.accordian = new ManageSiteView();
       this.renderInit();
     },
 
@@ -114,7 +210,7 @@
       $(e.currentTarget).addClass('ui-selected');
 
       var site = this.getSelectedSite();
-      this.siteDetailsView.render(site);
+      this.accordian.render(site);
     },
 
     getSelectedSite: function () {
@@ -155,7 +251,7 @@
         params: { admin_id:admin_id },
         success: function (resp) {
           site.set(resp.site);
-          sman.siteDetailsView.render( site );
+          sman.accordian.siteAdmins.render( site );
         }
       });
     },
@@ -167,22 +263,6 @@
       this.openAdminDialog('concede', admin_id);
     },
 
-    // Generate signup key
-    genSignupKey: function () {
-      var site = this.getSelectedSite();
-      var button = this.$('.gen-signup-key').prop('disabled',true);
-      sman.siteDetailsView.$('.signup-key').hide();
-
-      submitForm(site, g.genSignupKey, {
-        params: {},
-        success: function (resp) {
-          sman.siteDetailsView.render( site );
-          sman.siteDetailsView.setSignupKey( resp.key );
-          button.prop('disabled',false);
-        }
-      });
-    },
-
     renderInit: function () {
       var list = this.el.find('.sites').empty();
       this.sites.each(function (site) {
@@ -192,7 +272,7 @@
 
       var activeSite = this.sites.get(g.activeSite_id);
       $(activeSite.view.el).addClass('ui-selected');
-      this.siteDetailsView.render(activeSite);
+      this.accordian.render(activeSite);
 
       return this;
     },
@@ -382,7 +462,7 @@
           self.model.set(resp.site);
           self.model.updateDependentAttrs();
 
-          sman.siteDetailsView.render( self.model );
+          sman.accordian.siteAdmins.render( self.model );
           sman.render();
           $(self.el).dialog('close');
         },

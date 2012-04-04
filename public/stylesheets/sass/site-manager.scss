@@ -2,13 +2,13 @@
 
 ul.fancy-selectable {
   background: #fff;
-  border: 1px solid #b3b3b3;
+  border: 1px solid $light-border;
   list-style: none;
   margin: 0;
   padding: 10px;
   li {
     padding: 6px 10px;
-    border: 1px solid #b3b3b3;
+    border: 1px solid $light-border;
     margin-bottom: 4px;
     cursor: pointer;
     overflow: auto;
@@ -19,14 +19,14 @@ ul.fancy-selectable {
 
 #manager-container {
   background: $light-bg-color;
-  border: 1px solid #b3b3b3;
+  border: 1px solid $light-border;
   border-top: none;
 }
 
 h2.active-site {
   margin: 0;
   padding: 10px 10px 10px 20px;
-  border-bottom: 1px solid #b3b3b3;
+  border-bottom: 1px solid $light-border;
 }
 
 .site-list-wrap {
@@ -56,21 +56,47 @@ h2.active-site {
   }
 }
 
-.site-details-wrap {
+.accordian {
   float: left;
-  padding: 20px;
-  padding-left: 20px;
-  border-left: 1px solid #B3B3B3;  
-  .signup-key {}
+  width: 540px;
+  padding: 10px;
+  border-left: 1px solid $light-border;
+
+  .content-header {
+    border: 1px solid transparent;
+    border-top: 1px solid $light-border;
+    padding: 10px;
+    .title { float: left; width: 175px; margin: 0; }
+    .status { float: left; width: 225px; }
+    .action { float: right; }
+  }
+  .content-header.active {
+  }
+  .content-header:hover {
+    cursor: pointer;
+    background: $highlight-color;
+  }
+  .signup-keys .content-header { border-top-color: transparent; }
+  .content-body {
+    padding: 0 10px;
+    display: none;
+    overflow: hidden;
+    clear: both;
+    margin-bottom: 20px;
+  }
+
+  .signup-keys {
+    .signup-key-input { width: 510px; }
+  }
   ul.admins {
-    height: 337px;
+    height: 258px;
     overflow: auto;
     margin-top: 10px;
     margin-bottom: 6px;
     width: 500px;
-    img { 
+    img {
       max-width: 50px;
-      vertical-align: middle 
+      vertical-align: middle
     }
   }
 }

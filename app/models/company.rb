@@ -122,7 +122,8 @@ class Company < ActiveRecord::Base
       url: self.db_name,
       logo: self.logo.url(:mobile),
       owner: self.user,
-      admins: self.admins
+      admins: self.admins,
+      isPremium: self.premium,
     }
   end
 

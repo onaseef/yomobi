@@ -46,18 +46,44 @@ h2.active-site {
 .sites div.site-url, .admins div.site-url {
   font-weight: bold; }
 
-.site-details-wrap {
+.accordian {
   float: left;
-  padding: 20px;
-  padding-left: 20px;
-  border-left: 1px solid #B3B3B3; }
-  .site-details-wrap ul.admins {
-    height: 337px;
+  width: 540px;
+  padding: 10px;
+  border-left: 1px solid #b3b3b3; }
+  .accordian .content-header {
+    border: 1px solid transparent;
+    border-top: 1px solid #b3b3b3;
+    padding: 10px; }
+    .accordian .content-header .title {
+      float: left;
+      width: 175px;
+      margin: 0; }
+    .accordian .content-header .status {
+      float: left;
+      width: 225px; }
+    .accordian .content-header .action {
+      float: right; }
+  .accordian .content-header:hover {
+    cursor: pointer;
+    background: #d8dfea; }
+  .accordian .signup-keys .content-header {
+    border-top-color: transparent; }
+  .accordian .content-body {
+    padding: 0 10px;
+    display: none;
+    overflow: hidden;
+    clear: both;
+    margin-bottom: 20px; }
+  .accordian .signup-keys .signup-key-input {
+    width: 510px; }
+  .accordian ul.admins {
+    height: 258px;
     overflow: auto;
     margin-top: 10px;
     margin-bottom: 6px;
     width: 500px; }
-    .site-details-wrap ul.admins img {
+    .accordian ul.admins img {
       max-width: 50px;
       vertical-align: middle; }
 
