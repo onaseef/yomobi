@@ -289,11 +289,11 @@
 
       var dialogContent = this.render().el
         , self = this
+        , buttons = {}
       ;
-      var buttons = {
-        Save: function () { $(this).dialog('close'); self.saveIcon(); },
-        Cancel: closeFunc
-      };
+      buttons[g.i18n.save] = function () { $(this).dialog('close'); self.saveIcon(); };
+      buttons[g.i18n.cancel] = closeFunc;
+
       util.dialog(dialogContent, buttons, dialogContent.title)
         .dialog('option','width', 500)
       ;
