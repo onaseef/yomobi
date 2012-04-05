@@ -55,7 +55,7 @@ script.add-subcat-dialog(type="text/template")
       | <% if (addedCats.length > 0) { %>
       .divider
       .other-names
-        b Added <% print( util.pluralize(typeName) ); %>:
+        b == t 'dialog.add_page.added', :type_plural => "<% print( util.pluralize(typeName) ); %>"
         ul
           | <% for(var i=0; i < addedCats.length; i++) { %>
           |    <li> {{ addedCats[i] }} </li>
