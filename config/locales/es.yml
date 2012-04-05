@@ -106,6 +106,13 @@ es:
       unsavedChangesText: "Tienes cambios sin guardar. Haz Click \"OK\" para volver y guardarlos. Haz Click en Cancelar para descartar tus cambios."
       invalid_widget: "Esta función <b>NO</b> aparecerá en tu sitio móvil debido a que la información necesaria se ha perdido.<br /><br />Por favor haz click en esta función para editar. Recuerda <b>Guardar los Cambios</b> cuando hayas terminado."
       deactivated_widget: "Has desactivado esta función; <b>YA NO</b> aparecerá en tu sitio móvil.<br /><br />Para deshacer esto, por favor haz click en esta función y deja en blanco la casilla \"Desactivar\"."
+      name_already_in_use: "Nombre ya está en uso."
+      name_too_short: "El nombre es demasiado corto (mínimo de 2 caracteres)."
+      name_too_long: "El nombre es demasiado largo."
+      name_reserved: "Ese nombre se reserva."
+      save_name: "Guardar el nombre"
+      add_new_widget: "agregar nuevo función"
+      cancel: "Cancelar"
  
 
     site_manager:

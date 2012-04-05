@@ -311,11 +311,11 @@
 
         , exception = options.exception || '_'
         , isSameName = function (w) { var n=w.cname; return n == cname && n != exception; }
-        , isValid = error || !mapp.widgets.find(isSameName) || (error = 'Name already in use.')
-        , isValid = error || name.length >= 2 || (error = 'Name is too short (minimum 2 characters).')
-        , isValid = error || name.length <= 22 || (error = 'Name is too long (22 characters max).')
+        , isValid = error || !mapp.widgets.find(isSameName) || (error = i18n.name_already_in_use)
+        , isValid = error || name.length >= 2 || (error = i18n.name_too_short)
+        , isValid = error || name.length <= 22 || (error = i18n.name_too_long)
         , singletonNames = error || (isSingleton && []) || bapp.sidebar.getSingletons()
-        , isValid = error || !_.include(singletonNames,name) || (error = 'Sorry, that name is reserved.')
+        , isValid = error || !_.include(singletonNames,name) || (error = i18n.name_reserved)
       ;
 
       if (isValid === true) return options.onValid(name);
@@ -342,7 +342,7 @@
 
       var buttons = {};
 
-      var actionName = options.mode === 'rename' ? 'Save Name' : 'Add New Widget';
+      var actionName = options.mode === 'rename' ? i18n.save_name : i18n.add_new_widget;
       buttons[actionName] = function () {
         var newName = $(this).find('input[name=wname]').val()
           , newName = $.trim(newName)
@@ -352,7 +352,7 @@
         self.validateWidgetName(newName,wtype,isSingleton,options);
       };
 
-      buttons['Cancel'] = function() {
+      buttons[i18n.cancel] = function() {
         $(this).dialog("close");
         options.onCancel && options.onCancel();
       };

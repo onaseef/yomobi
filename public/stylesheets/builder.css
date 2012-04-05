@@ -529,8 +529,7 @@ div.wysiwyg ul.toolbar {
   border: 1px outset #e0e0e0; }
 #builder .edit-area.category .button.back, #builder .edit-area.page_tree .button.back {
   height: 58px;
-  background-image: url(/images/ui/back-btn.png);
-  background-position: center; }
+  background-image: url(/images/ui/back-btn.png); }
 #builder .edit-area.category .button.back.page, #builder .edit-area.page_tree .button.back.page {
   height: 22px; }
 #builder .edit-area.category .button-separator, #builder .edit-area.page_tree .button-separator {
@@ -582,7 +581,7 @@ div.wysiwyg ul.toolbar {
 #builder .edit-area.category .nodes .name, #builder .edit-area.page_tree .nodes .name {
   padding: 6px 10px 6px 3px;
   float: left;
-  width: 265px;
+  width: 260px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: no-wrap;
