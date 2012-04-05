@@ -277,8 +277,11 @@ p {
 .page > .content.hours .all-day {
   color: #000099; }
 
-.page > .content.gmap h1, .page > .content.gmap p {
+.page > .content.gmap h1 {
   padding-left: 4px; }
+.page > .content.gmap p {
+  font-weight: bold;
+  padding-bottom: 6px; }
 .page > .content.gmap .maps {
   height: 305px;
   text-align: center; }

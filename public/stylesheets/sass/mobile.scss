@@ -318,8 +318,11 @@ p {
     color: #000099; } }
 
 .page > .content.gmap {
-  h1, p {
-    padding-left: 4px; }
+  h1 {padding-left: 4px; }
+  p {
+    font-weight: bold;
+    padding-bottom: 6px;
+  }
   .maps {
     height: 305px;
     text-align: center;

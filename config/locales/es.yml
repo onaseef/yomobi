@@ -231,21 +231,6 @@ es:
       signature: "@@Yomobi Support"
       contact: '@@<a href="mailto:support@yomobi.com">support@yomobi.com</a>'
 
-  mobile:
-    email:
-      name: "@@Name: "
-      email: "@@Email: "
-      subject: "@@Subject: "
-      phone: "@@Phone: "
-      num_people: "@@Number of people: "
-      time: "@@Time: "
-      date: "@@Date: "
-      message: "@@Message: "
-      closing: "@@Thank You"
-      signature: '@@<a href="http://www.yomobi.com">YoMobi</a>'
-      create_site: '@@Create your own free mobile site at: <a href="http://www.yomobi.com">YoMobi.com</a>'
-
-
   leave_a_message:
     instructions: "@@Leave a message:"
     subject: "@@Subject:"
@@ -622,11 +607,29 @@ es:
       home: "@@Home"
     form:
       email: "@@Email Address:"
+      address: "@@Address:"
       name: "@@Name:"
       phone_number: "@@Phone Number:"
       your_name: "@@Your Name:"
       security: "@@Please solve this security question:"
       send: "@@Send"
+      get_directions: "@@Get Directions: "
+      starting_address: "@@Starting Address: "
+      view_in_map: "@@View in Map"
+      map_it: "@@Map It"
+
+    email:
+      name: "@@Name: "
+      email: "@@Email: "
+      subject: "@@Subject: "
+      phone: "@@Phone: "
+      num_people: "@@Number of people: "
+      time: "@@Time: "
+      date: "@@Date: "
+      message: "@@Message: "
+      closing: "@@Thank You"
+      signature: '@@<a href="http://www.yomobi.com">YoMobi</a>'
+      create_site: '@@Create your own free mobile site at: <a href="http://www.yomobi.com">YoMobi.com</a>'
 
   widgets:
     helpText:
