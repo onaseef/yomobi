@@ -506,11 +506,13 @@ div.wysiwyg ul.toolbar {
   word-wrap: break-word; }
 
 #builder .edit-area.category .controls, #builder .edit-area.page_tree .controls {
-  height: 66px;
+  height: 28px;
   border: 1px solid #b3b3b3;
   padding: 3px;
   background: silver; }
-  #builder .edit-area.category .controls hr, #builder .edit-area.page_tree .controls hr {
+#builder .edit-area.category .controls.category, #builder .edit-area.page_tree .controls.category {
+  height: 66px; }
+  #builder .edit-area.category .controls.category hr, #builder .edit-area.page_tree .controls.category hr {
     margin-top: 31px; }
 #builder .edit-area.category .controls .button, #builder .edit-area.page_tree .controls .button {
   height: 22px;
@@ -526,8 +528,11 @@ div.wysiwyg ul.toolbar {
 #builder .edit-area.category .controls .button:hover, #builder .edit-area.page_tree .controls .button:hover {
   border: 1px outset #e0e0e0; }
 #builder .edit-area.category .button.back, #builder .edit-area.page_tree .button.back {
+  height: 58px;
   background-image: url(/images/ui/back-btn.png);
-  height: 58px; }
+  background-position: center; }
+#builder .edit-area.category .button.back.page, #builder .edit-area.page_tree .button.back.page {
+  height: 22px; }
 #builder .edit-area.category .button-separator, #builder .edit-area.page_tree .button-separator {
   float: left;
   height: 22px;
@@ -537,6 +542,15 @@ div.wysiwyg ul.toolbar {
   background: gray; }
 #builder .edit-area.category .button-separator.back, #builder .edit-area.page_tree .button-separator.back {
   height: 60px; }
+#builder .edit-area.category .button-separator.back.page, #builder .edit-area.page_tree .button-separator.back.page {
+  height: 22px; }
+#builder .edit-area.category .row-separator, #builder .edit-area.page_tree .row-separator {
+  height: 0px;
+  border: 1px;
+  border-style: inset;
+  margin: 3px 0px;
+  width: 324px;
+  float: left; }
 #builder .edit-area.category .button.add-cat, #builder .edit-area.page_tree .button.add-cat {
   background-image: url(/images/ui/icon-folder-new.png); }
 #builder .edit-area.category .button.add-item, #builder .edit-area.page_tree .button.add-item {

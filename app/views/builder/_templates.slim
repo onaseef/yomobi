@@ -554,7 +554,7 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
           td
         | <% } %>
 
-    .controls
+    .controls.category
       / For icon-only buttons, you need = ""
       .button.back title=t'builder.widget_editor.go_back_icon' = ""
       .button-separator.back
@@ -563,7 +563,7 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
       | <% if (wtype === 'page_tree') { %>
       .button.add-rss-feed title=t'builder.widget_editor.rss_icon' = t'builder.widget_editor.add_rss' 
       | <% } %>
-      hr
+      .row-separator
       | <% if (isThereStuff == true | true) { %>
       .button.edit title=t'builder.widget_editor.edit_icon' &nbsp;
       .button.rename title=t'builder.widget_editor.rename_icon' &nbsp;
@@ -585,8 +585,8 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
 
     | <% } else { %>
     .controls
-      .button.back title=t'builder.widget_editor.go_back_icon' = ""
-      .button-separator
+      .button.back.page title=t'builder.widget_editor.go_back_icon' = ""
+      .button-separator.back.page
       .crumb-wrap
         erb:
           <%==t('builder.widget_editor.editing_crumb', :breadcrumb => "{{ catCrumbs }}")%>
