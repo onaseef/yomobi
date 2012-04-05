@@ -579,7 +579,7 @@ div.wysiwyg ul.toolbar {
   float: left;
   background: transparent 50% 50% no-repeat; }
 #builder .edit-area.category .nodes .name, #builder .edit-area.page_tree .nodes .name {
-  padding: 6px 10px 6px 3px;
+  margin: 6px 0px 6px 3px;
   float: left;
   width: 260px;
   overflow: hidden;
