@@ -537,6 +537,9 @@ es:
       clickable_url: "URL Cliqueable (opcional):"
       set_as_preview: "Fijar como miniatura de vista previa"
 
+    add_page:
+      added: "%{type_plural} Agregados"
+
     add_item:
       added_items: "Elementos Agregados"
       item_info: "Información del Elemento:"

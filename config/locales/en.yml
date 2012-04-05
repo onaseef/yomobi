@@ -148,7 +148,7 @@ en:
     sign_in: "Sign In"
     or: "or"
     sign_up: "Sign Up for Yomobi"
-    unlock_not_received: "@@Didn't receive unlock instructions?"
+    unlock_not_received: "Didn't receive unlock instructions?"
     error:
       reenter_password: "Please re-enter your password"
       incorrect_password: "The password you entered is incorrect. Please try again (make sure your caps lock is off)."
@@ -177,7 +177,7 @@ en:
   confirm_account:
     already_confirmed: "Your account has already been confirmed"
     email_resent: "The confirmation email was resent. Please check your mailbox."
-    confirm_not_received: "@@Didn't receive confirmation instructions?"
+    confirm_not_received: "Didn't receive confirmation instructions?"
     email:
       greeting: "Hello %{first_name},"
       thank_you: "Thank you for registering with YoMobi."
@@ -464,7 +464,7 @@ en:
       drag_widget: "Drag a widget from the Mobile Website Builder into the Mobile Phone Emulator"
       edit_icon: "Edit"
       edit_widget: "Click on a widget in the Mobile Phone Emulator to enter your information."
-      editing_crumb: '@@<b>Editing: <span class="blue">%{breadcrumb}</span></b>'
+      editing_crumb: '<b>Editing: <span class="blue">%{breadcrumb}</span></b>'
       email_label_required: "Your email address*:"
       email_opt_in_label: "Allow users to opt-in for emails."
       expiration_date_label: "Expiration Date:"
@@ -535,6 +535,9 @@ en:
       percent_sign: "%"
       clickable_url: "Clickable URL (optional):"
       set_as_preview: "Set as thumbnail preview"
+
+    add_page:
+      added: "Added %{type_plural}"
 
     add_item:
       added_items: "Added Items"
