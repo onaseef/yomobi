@@ -1,5 +1,4 @@
 class AccountController < ApplicationController
-  include WepayRails::Payments
 
   before_filter :authenticate_user!
   layout 'account'
@@ -26,23 +25,6 @@ class AccountController < ApplicationController
       flash[:alert] = "Error: #{error[0].to_s.humanize} #{error[1]}"
     end
     redirect_to account_path
-  end
-
-  def upgrade
-    if params[:site]
-      @site = Company.find_by_db_name params[:site]
-      redirect_to upgrade_path if @site.nil?
-
-      checkout_params = {
-        :amount => 499,
-        :short_description => "YoMobi - [#{@site.db_name}]: Professional Site Payment",
-        :long_description => "YoMobi - #{@site.url_and_name}: Professional Site Payment ",
-        :mode => 'iframe',
-        :reference_id => "#{current_user.id}|#{@site.id}"
-      }
-      @checkout = init_checkout(checkout_params)
-    end
-    @sites = current_user.companies
   end
 
 end

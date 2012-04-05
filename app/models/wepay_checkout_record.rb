@@ -1,4 +1,4 @@
 class WepayCheckoutRecord < ActiveRecord::Base
-  # ignore the mode parameter
-  attr_writer :mode
+  # ignore some parameters
+  attr_writer :mode, :prefill_info
 end

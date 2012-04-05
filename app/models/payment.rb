@@ -1,4 +1,5 @@
 class Payment < ActiveRecord::Base
+  belongs_to :user
   belongs_to :company
   belongs_to :wepay_checkout_record
 

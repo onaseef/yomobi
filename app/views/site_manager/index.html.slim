@@ -2,7 +2,10 @@
   = stylesheet_link_tag 'site-manager'
 
 - content_for :js do
-  = render 'layouts/js-base'
+
+  / Used for remote forms
+  = javascript_include_tag 'rails'
+
   erb:
     <script type="text/javascript">
     window._sitesData = <%=raw @companies.to_json %>;
@@ -15,6 +18,7 @@
       genSignupKey: _.template( unescape("<%=raw gen_signup_key_path '{{ id }}' %>") ),
       concedeSitePath: _.template( unescape("<%=raw concede_site_path '{{ id }}' %>") ),
       makeDefaultSitePath: _.template( unescape("<%=raw make_default_site_path '{{ id }}' %>") ),
+      upgradeSitePath: _.template( unescape("<%=raw upgrade_path '{{ id }}' %>") ),
 
       user_id: <%= current_user.id %>,
       defaultSite_id: <%= current_user.default_company.id %>,
@@ -24,6 +28,7 @@
     };
     </script>
   = javascript_include_tag 'site-manager'
+  script type="text/javascript" src="https://www.wepay.com/js/iframe.wepay.js"
 
 #manager-container
   h2.active-site =t('site_manager.active_site', :site_name => current_user.company.db_name)
@@ -92,7 +97,16 @@
       .status {{ grade }}
       .clearfix
     .content-body
-      p Upgrade today!
+      h3 Select a thing:
+      form action="{{ actionPath }}" method="POST" data-remote="true"
+        h3 One Month - $12
+        input type="hidden" name="months" value="1"
+        input type="submit" value="One Month"
+      form action="{{ actionPath }}" method="POST" data-remote="true"
+        h3 One Year - $144
+        input type="hidden" name="months" value="12"
+        input type="submit" value="One Year"
+      .error.hide
 
   script.merchant-account(type="text/template")
     .content-header

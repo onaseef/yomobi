@@ -89,7 +89,7 @@ class Company < ActiveRecord::Base
   end
 
   def url_and_name
-    "[#{db_name}] #{name}"
+    "[/#{db_name}] #{name}"
   end
 
   def upgrade_state

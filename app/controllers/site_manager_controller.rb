@@ -1,4 +1,5 @@
 class SiteManagerController < ApplicationController
+  include WepayRails::Payments
   require 'couch'
 
   before_filter :authenticate_user!
@@ -142,6 +143,35 @@ class SiteManagerController < ApplicationController
     else
       render :json => { :status => :error }
     end
+  end
+
+  def upgrade
+    months = params[:months].to_i
+    return 'Bad request' if (months <= 0 || months > 12) && !params[:recurring]
+
+    if params[:id] && (@site = Company.find_by_id params[:id])
+
+      @time = "#{months} months"
+      @time = "1 year" if months == 12
+      user = current_user
+
+      checkout_params = {
+        :amount => 12 * months,
+        :short_description => "YoMobi - [#{@site.db_name}]: Professional Site Payment (#{@time})",
+        :long_description => "YoMobi - #{@site.url_and_name}: Professional Site Payment (#{@time})",
+        :mode => 'iframe',
+        :reference_id => "#{user.id}|#{@site.id}",
+        :prefill_info => { email:user.email, name:"#{user.first_name} #{user.last_name}" },
+      }
+      @checkout = init_checkout(checkout_params)
+      render :layout => false
+    else
+      return error 'site_not_specified'
+    end
+  end
+
+  def thanks
+    render :layout => false
   end
 
   private

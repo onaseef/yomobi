@@ -28,7 +28,7 @@ h2.active-site {
 
 .site-list-wrap {
   float: left;
-  width: 360px;
+  width: 320px;
   margin: 20px 20px 0px 20px; }
   .site-list-wrap ul.sites {
     height: 400px;
@@ -48,7 +48,7 @@ h2.active-site {
 
 .accordian {
   float: left;
-  width: 540px;
+  width: 625px;
   padding: 10px;
   border-left: 1px solid #b3b3b3; }
   .accordian .site-details {
@@ -75,6 +75,8 @@ h2.active-site {
     overflow: hidden;
     clear: both;
     margin-bottom: 20px; }
+    .accordian .content-body .error {
+      margin-top: 10px; }
   .accordian .signup-keys .signup-key-input {
     width: 510px; }
   .accordian ul.admins {
@@ -82,7 +84,7 @@ h2.active-site {
     overflow: auto;
     margin-top: 10px;
     margin-bottom: 6px;
-    width: 500px; }
+    width: 585px; }
     .accordian ul.admins img {
       max-width: 50px;
       vertical-align: middle; }
@@ -94,3 +96,6 @@ form#account-setup-box.dialog.submitting .fields {
   display: none; }
 form#account-setup-box.dialog.submitting .loading {
   display: block; }
+
+.error {
+  color: #800; }

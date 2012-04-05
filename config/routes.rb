@@ -31,7 +31,6 @@ Yomobi::Application.routes.draw do
 
   get "account/edit", :as => :account
   put "account/update", :as => :update_account
-  get "account/upgrade(/:site)" => 'account#upgrade', :as => :upgrade
 
   namespace :account do
     resources :payments, :only => [:index, :show]
@@ -55,6 +54,7 @@ Yomobi::Application.routes.draw do
   delete  "sites/:id" => 'site_manager#delete'
   post    "sites/:id/make-default" => 'site_manager#make_default', :as => :make_default_site
   post    "sites/:id/concede"      => 'site_manager#concede', :as => :concede_site
+  post    "sites/:id/upgrade"      => 'site_manager#upgrade', :as => :upgrade
 
   post "sites/:id/admins"           => 'site_manager#add_admin', :as => :add_admin
   post "sites/:id/admins/:admin_id/delete" => 'site_manager#remove_admin', :as => :remove_admin

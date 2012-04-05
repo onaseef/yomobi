@@ -134,11 +134,31 @@
     render: function (site) {
       var extraData = {
         actionLabel: site.get('isPremium') ? 'Manage' : 'Upgrade',
-        grade: site.get('isPremium') ? 'Professional' : 'Standard'
+        grade: site.get('isPremium') ? 'Professional' : 'Standard',
+        actionPath: g.upgradeSitePath(site.toJSON())
       };
       var templateData = _.extend(site.toJSON(), extraData);
       $(this.el).html( this.template(templateData) );
-    }
+
+      // bind button forms' ajax callbacks
+      var self = this;
+      this.$('form').bind('ajax:error', function (e, xhr, status, error) {
+        if (xhr.status === 500) {
+          util.log('Unknown Error', xhr, status, error);
+          xhr.responseText = '"unknown_error"';
+        }
+        var msg = g.i18n.error + ': ' + $.parseJSON(xhr.responseText);
+        self.$('.error').text( msg ).show('pulsate', { times:3 });
+      })
+      .bind('ajax:success', function (e, data, status, xhr) {
+        self.renderBody(data);
+      })
+      ;
+    },
+
+    renderBody: function (content) {
+      this.el.find('.content-body').html(content);
+    },
   });
 
 
