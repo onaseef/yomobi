@@ -557,15 +557,14 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
     .controls
       / For icon-only buttons, you need = ""
       .button.back title=t'builder.widget_editor.go_back_icon' = ""
-      .button-separator
+      .button-separator.back
       .button.add-cat =t('builder.widget_editor.add_item', :item => "{{ catLabel }}")
       .button.add-item =t('builder.widget_editor.add_item', :item => "{{ itemLabel }}")
       | <% if (wtype === 'page_tree') { %>
-      .button.add-rss-feed title=t'builder.widget_editor.rss_icon' = ""
+      .button.add-rss-feed title=t'builder.widget_editor.rss_icon' = t'builder.widget_editor.add_rss' 
       | <% } %>
-
-      | <% if (isThereStuff == true) { %>
-      .button-separator
+      hr
+      | <% if (isThereStuff == true | true) { %>
       .button.edit title=t'builder.widget_editor.edit_icon' &nbsp;
       .button.rename title=t'builder.widget_editor.rename_icon' &nbsp;
       .button.delete title=t'builder.widget_editor.delete_icon' &nbsp;

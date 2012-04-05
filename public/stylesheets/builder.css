@@ -26,7 +26,6 @@ div.wysiwyg ul.toolbar {
     border-top: 1px solid #dddddd;
     margin: 5px 0; }
   #sidebar .option {
-    height: 16px;
     padding: 3px 0 2px 4px;
     clear: left; }
     #sidebar .option .icon {
@@ -89,7 +88,6 @@ div.wysiwyg ul.toolbar {
       visibility: hidden !important; }
 
 #sidebar .widgets {
-  height: 515px;
   padding-left: 2px;
   overflow: auto; }
 
@@ -137,7 +135,7 @@ div.wysiwyg ul.toolbar {
   font-weight: bold;
   color: #000066; }
 #builder .left > .title-subtext, #builder .right > .title-subtext {
-  height: 30px;
+  min-height: 30px;
   padding: 0 10px 5px 0; }
 #builder .left {
   width: 390px;
@@ -508,10 +506,12 @@ div.wysiwyg ul.toolbar {
   word-wrap: break-word; }
 
 #builder .edit-area.category .controls, #builder .edit-area.page_tree .controls {
-  height: 28px;
+  height: 66px;
   border: 1px solid #b3b3b3;
   padding: 3px;
   background: silver; }
+  #builder .edit-area.category .controls hr, #builder .edit-area.page_tree .controls hr {
+    margin-top: 31px; }
 #builder .edit-area.category .controls .button, #builder .edit-area.page_tree .controls .button {
   height: 22px;
   padding: 6px 2px 0 22px;
@@ -526,7 +526,8 @@ div.wysiwyg ul.toolbar {
 #builder .edit-area.category .controls .button:hover, #builder .edit-area.page_tree .controls .button:hover {
   border: 1px outset #e0e0e0; }
 #builder .edit-area.category .button.back, #builder .edit-area.page_tree .button.back {
-  background-image: url(/images/ui/back-btn.png); }
+  background-image: url(/images/ui/back-btn.png);
+  height: 58px; }
 #builder .edit-area.category .button-separator, #builder .edit-area.page_tree .button-separator {
   float: left;
   height: 22px;
@@ -534,13 +535,14 @@ div.wysiwyg ul.toolbar {
   padding: 3px 1px;
   border: none;
   background: gray; }
+#builder .edit-area.category .button-separator.back, #builder .edit-area.page_tree .button-separator.back {
+  height: 60px; }
 #builder .edit-area.category .button.add-cat, #builder .edit-area.page_tree .button.add-cat {
   background-image: url(/images/ui/icon-folder-new.png); }
 #builder .edit-area.category .button.add-item, #builder .edit-area.page_tree .button.add-item {
   background-image: url(/images/ui/icon-item-new.png); }
 #builder .edit-area.category .button.add-rss-feed, #builder .edit-area.page_tree .button.add-rss-feed {
-  background-image: url(/images/ui/icon-rss-new.png);
-  padding: 6px 2px 0 18px; }
+  background-image: url(/images/ui/icon-rss-new.png); }
 #builder .edit-area.category .button.rename, #builder .edit-area.page_tree .button.rename {
   background-image: url(/images/ui/icon-rename.png);
   background-position: center; }

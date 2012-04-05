@@ -442,6 +442,7 @@ en:
 
     widget_editor:
       add_item: "Add %{item}"
+      add_rss: "Add RSS"
       address1_label_required: "Address 1*:"
       address2_label: "Address 2:"
       browse: "Browse..."

@@ -3,758 +3,756 @@
 
 es:
   general:
-    click_here_start: "@@Click here"
-    click_here_middle: "@@click here"
+    click_here_start: "Haz click aquí"
+    click_here_middle: "haz click aquí"
 
   days:
-    Sunday: "@@Sunday"
-    Monday: "@@Monday"
-    Tuesday: "@@Tuesday"
-    Wednesday: "@@Wednesday"
-    Thursday: "@@Thursday"
-    Friday: "@@Friday"
-    Saturday: "@@Saturday"
+    Sunday: "Domingo"
+    Monday: "Lunes"
+    Tuesday: "Martes"
+    Wednesday: "Miércoles"
+    Thursday: "Jueves"
+    Friday: "Viernes"
+    Saturday: "Sábado"
 
   helpers:
     label:
       user:
-        email: "@@Email:"
-        password: "@@Password:"
-        password_confirmation: "@@Password confirmation:"
+        email: "Email:"
+        password: "Contraseña:"
+        password_confirmation: "Confirmación de contraseña:"
 
   homepage:
-    welcome: "@@Welcome to YoMobi"
-    message: '@@Reach more people with a <span class="hilite">free</span> mobile website. YoMobi makes building a mobile site easy. Go from sign up to online in minutes.<br/><br/> Being mobile is more important than ever.'
-    why_mobile_matters: "@@See Why Mobile Matters"
-    get_mobilized: "@@Get Mobilized"
-    reach_more: "@@Reach more people with a mobile website. YoMobi makes building a mobile site easy. Go from sign up to online in minutes."
-    features_include: "@@Features Include"
-    feature1: "@@Completely Free Mobile Sites"
-    feature2: "@@Free Hosting & Mobile URL"
-    feature3: "@@One-click calling"
-    feature4: "@@Interactive maps"
-    feature5: "@@Social media integration"
-    feature6: "@@Easily customizable content"
-    feature7: "@@Subscriber notification"
+    welcome: "Bienvenido a YoMobi"
+    message: 'Alcanza fácilmente a más gente con un sitio web móvil <span class="hilite">gratuito</span>. YoMobi hace que el construir un sitio web sea fácil. Desde suscribirte a tener presencia en línea en minutos.<br/><br/> Ser móvil es más importante que nunca.'
+    why_mobile_matters: "Mira Por qué es importante tener un Sitio Móvil"
+    get_mobilized: "¡Movilízate!"
+    reach_more: "Alcanza más gente con tu sitio web móvil. YoMobi hace que el armar un sitio móvil sea fácil. Desde suscribirte a tener presencia en línea en minutos."
+    features_include: "Características Incluidas:"
+    feature1: "Sitios Móviles Completamente Gratis"
+    feature2: "Hospedaje y URL Móvil gratuitos"
+    feature3: "Llamada con un click"
+    feature4: "Mapas interactivos"
+    feature5: "Integración a redes sociales"
+    feature6: "Contenido fácil de personalizar"
+    feature7: "Notificación de Suscriptores"
 
   status:
-    loading: "@@Loading..."
-    processing: "@@Processing..."
-    submitting: "@@Submitting..."
-    uploading: "@@Uploading..."
-    working: "@@Working..."
+    loading: "Cargando..."
+    processing: "Procesando..."
+    submitting: "Enviando..."
+    uploading: "Cargando a servidor..."
+    working: "Trabajando..."
 
 
   security:
     error:
-      incorrect_password: "@@Incorrect Password"
+      incorrect_password: "Contraseña Incorrecta"
 
   links:
-    about: "@@About"
-    feedback: "@@Feedback"
-    help: "@@Help"
-    home: "@@Home"
-    mobile_matters: "@@Mobile Matters"
-    privacy: "@@Privacy"
-    terms: "@@Terms"
+    about: "Quienes Somos"
+    feedback: "Contacto"
+    help: "Ayuda"
+    home: "Inicio"
+    mobile_matters: "La Movilidad Importa"
+    privacy: "Privacidad"
+    terms: "Términos"
 
   legal:
-    rights_reserved: "@@All Right Reserved YoMobi © 2012"
+    rights_reserved: "Todos los Derechos Reservados YoMobi © 2012"
+
 
   javascript_builder:
 
-    save: "@@Save"
-    submit: "@@Submit"
-    cancel: "@@Cancel"
-    close: "@@Close"
-    create: "@@Create"
+    save: "Guardar"
+    submit: "Enviar"
+    cancel: "Cancelar"
+    close: "Cerrar"
+    create: "Crear"
 
-    delete_widget: "@@Are you sure you want to delete this widget?\n(all data will be lost)"
+    delete_widget: "¿En verdad quieres borrar esta función?\n(todos los datos se perderán)"
 
     wysiwyg:
-      add_picture: "@@Add a Picture"
-      add_video: "@@Add a Video"
+      add_picture: "Agrega una Imagen"
+      add_video: "Agrega un Video"
 
     category:
-      delete_node: "@@Are you sure you want to delete? (Data will be lost)"
-      delete_nothing: "@@Please select an item to delete."
-      edit_nothing: "@@Please select an item to edit."
-      rename_nothing: "@@Please select an item to rename."
+      delete_node: "¿En verdad quieres borrarlo? (Los datos se perderán)"
+      delete_nothing: "Favor de seleccionar el elemento a borrar."
+      edit_nothing: "Favor de seleccionar el elemento a editar."
+      rename_nothing: "Favor de seleccionar el elemento al que se cambiará nombre."
 
-      empty_node_list: "@@--None (Click Add above)--"
-      empty_name_error: "@@Name cannot be empty"
-      name_in_use_error: "@@Name is already in use"
-      add_node_success: "@@Item added successfully"
+      empty_node_list: "--Ninguno (Oprime Agregar Arriba)--"
+      empty_name_error: "El nombre no puede estar en blanco"
+      name_in_use_error: "El nombre ya está en uso"
+      add_node_success: "Se agregó con éxito"
 
       dialog:
-        add_new_item: "@@Add New: "
-        edit_item: "@@Edit: "
-        upload_image: "@@Upload Image"
-        edit_image: "@@Edit Image"
-        uploading: "@@Uploading..."
-        processing: "@@Processing..."
+        add_new_item: "Agregar Nuevo: "
+        edit_item: "Editar: "
+        upload_image: "Subir Imagen"
+        edit_image: "Editar Imagen"
+        uploading: "Cargando a servidor..."
+        processing: "Procesando..."
 
       error:
-        photo_upload_failed: "Photo upload failed (%{error_msg})"
+        photo_upload_failed: "Ha fallado el intento de subir la foto (%{error_msg})"
 
     side_bar:
-      singletonInUseTooltip: "@@You may only use <b>one</b> of this type of widget at a time.<br/><br/>This widget is already in your YoMobi mobile website."
-      unsavedChangesText: "@@You have unsaved changes. Click OK to go back and save changes. Click Cancel to discard your changes."
+      singletonInUseTooltip: "Sólo puedes usar <b>una</b> función de este tipo a la vez.<br/><br/>Esta función ya se encuentra en tu Sitio Web móvil YoMobi."
+      unsavedChangesText: "Tienes cambios sin guardar. Haz Click \"OK\" para volver y guardarlos. Haz Click en Cancelar para descartar tus cambios."
 
     builder_app:
-      unsavedChangesText: "@@You have unsaved changes. Click OK to go back and save changes. Click Cancel to discard your changes."
-      invalid_widget: "@@This widget will <b>NOT</b> appear on your mobile site because required information is missing.<br /><br />Please click on this widget to edit. Remember to <b>Save Changes</b> when you are done."
-      deactivated_widget: "@@You have deactivated this widget; it <b>WILL NOT</b> appear on your mobile site.<br /><br />To undo this, please click this widget and uncheck the \"Deactivate\" checkbox."
-
+      unsavedChangesText: "Tienes cambios sin guardar. Haz Click \"OK\" para volver y guardarlos. Haz Click en Cancelar para descartar tus cambios."
+      invalid_widget: "Esta función <b>NO</b> aparecerá en tu sitio móvil debido a que la información necesaria se ha perdido.<br /><br />Por favor haz click en esta función para editar. Recuerda <b>Guardar los Cambios</b> cuando hayas terminado."
+      deactivated_widget: "Has desactivado esta función; <b>YA NO</b> aparecerá en tu sitio móvil.<br /><br />Para deshacer esto, por favor haz click en esta función y deja en blanco la casilla \"Desactivar\"."
+ 
 
     site_manager:
-      default_error: "@@We're sorry, something went wrong."
-      new_site_dialog_title: "@@Create New Site"
-      add_admin_dialog_title: "@@Add Admin for "
-      concede_ownership_dialog_title: "@@Concede Site Ownership"
-      add: "@@Add"
-      continue: "@@Continue"
+      default_error: "Lo sentimos, algo salió mal."
+      new_site_dialog_title: "Crear un Sitio Nuevo"
+      add_admin_dialog_title: "Agregar Administrador para "
+      concede_ownership_dialog_title: "Otorgar Propiedad del Sitio"
+      add: "Agregar"
+      continue: "Continuar"
 
 
   javascript_mobile:
 
-    email: "@@Email"
-    phone: "@@Mobile Number"
+    email: "Email"
+    phone: "Número de Móvil/Celular"
 
-    all_fields_required: "@@You must fill in all fields."
-    invalid_captcha: "@@Incorrect math answer. Please try again."
-    invalid_email: "@@Invalid email address."
-    invalid_phone: "@@Invalid mobile number."
-    email_or_phone_required: "@@You must provide an email or phone number."
+    all_fields_required: "Debes de llenar todos los campos."
+    invalid_captcha: "Respuesta incorrecta. Favor de intentar de nuevo."
+    invalid_email: "Dirección de email inválida."
+    invalid_phone: "Número de móvil/celular inválido."
+    email_or_phone_required: "Debes proporcionar un email o número de teléfono."
 
 
   new_site:
-    site_name: "@@Site Name:"
-    site_url: "@@Mobile Site URL:"
+    site_name: "Nombre del Sitio:"
+    site_url: "URL del Sitio Móvil:"
     error:
-      invalid_site_name: "@@Invalid Site Name. Site name must be 2 - %{max_length} characters long."
-      invalid_site_url: "@@Invalid URL: the URL must be at least 3 characters long and contain only A-Z, a-z, 0-9, underscores (_), and dashes (-)."
-      name_reserved: "@@Sorry, that name is reserved. Please choose another."
-      url_taken: "@@URL is already taken."
+      invalid_site_name: "Nombre de Sitio Inválido. El nombre del sitio debe ser de 2 a %{max_length} caracteres."
+      invalid_site_url: "URL Inválida: La URL debe ser de al menos 3 caracteres de largo y contener sólo A-Z, a-z, 0-9, guión bajo (_), y guiones (-)."
+      name_reserved: "Lo sentimos, ese nombre está reservado. Favor de elegir otro."
+      url_taken: "Esa URL ya ha sido elegida."
 
   sign_in:
-    title: "@@YoMobi Signin"
-    forgot_password: "@@Forgot password"
-    forgot_your_password: "@@Forgot your password? "
-    request_new_password: "@@Click here to request a new one."
-    email: "@@Email:"
-    password: "@@Password:"
-    remember_user: "@@Keep me logged in"
-    sign_in: "@@Sign In"
-    or: "@@or"
-    sign_up: "@@Sign Up for Yomobi"
-    unlock_not_received: "@@Didn't receive unlock instructions?"
+    title: "Entrar a YoMobi"
+    forgot_password: "Contraseña olvidada"
+    forgot_your_password: "¿Olvidaste tu contraseña? "
+    request_new_password: "Haz Click aquí para solicitar una nueva."
+    email: "Email:"
+    password: "Contraseña:"
+    remember_user: "Mantener sesión abierta"
+    sign_in: "Entrar"
+    or: "o"
+    sign_up: "Registrarse en Yomobi"
+    unlock_not_received: "¿No recibiste las instrucciones para desbloquear?"
     error:
-      reenter_password: "@@Please re-enter your password"
-      incorrect_password: "@@The password you entered is incorrect. Please try again (make sure your caps lock is off)."
+      reenter_password: "Favor de reingresar tu contraseña"
+      incorrect_password: "La contraseña que ingresaste es incorrecta. Favor de intentar de nuevo (asegúrate que tu teclado no esté bloqueado en mayúsculas)."
 
   sign_up:
-    title: "@@YoMobi Signup"
-    first_name: "@@First Name:"
-    last_name: "@@Last Name:"
-    email: "@@Email:"
-    password: "@@Password:"
-    password_confirm: "@@Re-enter Password:"
-    site_type: "@@Site Type:"
-    signup_key: "@@Signup Key:"
-    sign_up: "@@Sign Up"
-    sign_up_bar: "@@YoMobi helps you reach more people with a mobile optimized website."
-    already_member: "@@Already a Member?  "
-    click_to_signin: "@@Click here to sign in."
+    title: "Registro en YoMobi"
+    first_name: "Nombre:"
+    last_name: "Apellido:"
+    email: "Email:"
+    password: "Contraseña:"
+    password_confirm: "Repetir/ confirmar contraseña:"
+    site_type: "Tipo de Sitio:"
+    signup_key: "Clave de Registro:"
+    sign_up: "Registro"
+    sign_up_bar: "YoMobi te ayuda a alcanzar más gente con un sitio móvil optimizado."
+    already_member: "¿Ya eres Miembro?"
+    click_to_signin: "Haz click aquí para entrar."
     error:
-      general: "@@There was problem with your request:"
-      recaptcha: "@@There was an error with the recaptcha code below. Please re-enter the code and click submit."
+      general: "Hubo un problema con tu solicitud:"
+      recaptcha: "Hubo un error con el código re-captcha de abajo. Favor de re-ingresar el código y hacer click en submit/enviar."
 
   recaptcha:
-    type_words: "@@Type the two words:  "
-    new_words: "@@(Get New Words)"
+    type_words: "Escribe las dos palabras:  "
+    new_words: "(Cambiar de Palabras)"
 
   confirm_account:
-    already_confirmed: "@@Your account has already been confirmed"
-    email_resent: "@@The confirmation email was resent. Please check your mailbox."
-    confirm_not_received: "@@Didn't receive confirmation instructions?"
+    already_confirmed: "Tu cuenta ha sido confirmada"
+    email_resent: "El email de confirmación se te ha enviado. Favor de revisar tu cuenta de email."
+    confirm_not_received: "¿No has recibido las instrucciones de confirmación?"
     email:
-      greeting: "@@Hello %{first_name},"
-      thank_you: "@@Thank you for registering with YoMobi."
-      confirm_msg: "@@Please confirm your email address to continue the registration: "
-      click_to_confirm: "@@Click here to confirm"
-      closing: "@@Sincerely,"
-      signature: "@@Yomobi Support"
-      contact: '@@<a href="mailto:support@yomobi.com">support@yomobi.com</a>'
+      greeting: "Hola %{first_name},"
+      thank_you: "Gracias por registrarte con YoMobi."
+      confirm_msg: "Favor de confirmar tu dirección email para continuar con el registro: "
+      click_to_confirm: "Haz click aquí para confirmar"
+      closing: "Atentamente,"
+      signature: "Soporte Yomobi"
+      contact: '<a href="mailto:support@yomobi.com">support@yomobi.com</a>'
 
   resend_confirmation:
-    title: "@@Resend confirmation instructions"
-    resend_confirmation: "@@Resend confirmation instructions"
+    title: "Re-enviar instrucciones de confirmación"
+    resend_confirmation: "Re-enviar instrucciones de confirmación"
 
   forgot_password:
-    title: "@@Forgot your password?"
-    forgot_password: "@@Forgot your password?"
-    reset_password: "@@Send me reset password instructions"
+    title: "¿Olvidaste tu contraseña?"
+    forgot_password: "¿Olvidaste tu contraseña?"
+    reset_password: "Enviarme instrucciones para cambio de contraseña"
 
   change_password:
-    title: "@@Change your password"
-    change_password: "@@Change my password"
+    title: "Cambia tu contraseña"
+    change_password: "Cambiar mi contraseña"
     email:
-      greeting: "@@Hello %{email},"
-      password_change_request_msg: "@@You received this email because a request was made to change your password."
-      change_password: "@@Click here to change your password."
-      no_user_request: "@@If you didn't request to change your password, please ignore this email. Your password won't change until you access the link above and create a new one."
-      closing: "@@Thank you,"
-      signature: "@@Yomobi Support"
-      contact: '@@<a href="mailto:support@yomobi.com">support@yomobi.com</a>'
+      greeting: "Hola %{email},"
+      password_change_request_msg: "Has recibido este email debido a la solicitud para cambiar tu contraseña."
+      change_password: "Haz click aquí para cambiar tu contraseña."
+      no_user_request: "Si no solicitaste el cambio de tu contraseña, por favor ignora este email. Tu contraseña no cambiará hasta que hayas ingresado al enlace de abajo y hayas creado una nueva."
+      closing: "Gracias,"
+      signature: "Soporte Yomobi"
+      contact: '<a href="mailto:support@yomobi.com">support@yomobi.com</a>'
 
   account:
-    already_setup: "@@Your account has already been setup."
-    enter_current_password: "@@Please enter your current password to update your account."
-    updated_success: "@@Account updated successfully."
+    already_setup: "Tu cuenta ya ha sido activada."
+    enter_current_password: "Favor de ingresar tu contraseña actual para actualizar tu cuenta."
+    updated_success: "Tu cuenta ha sido actualizada con éxito."
 
     welcome_email:
-      subject: "@@Welcome to YoMobi"
-      thank_you: "@@Thank you for signing up with YoMobi. You're one step closer to expanding your fan base and making it easier for visitors to find you wherever they are."
-      mobile_site_url: "@@Your mobile site URL is: "
-      mobile_redirect: '@@Use your YoMobi mobile site to complement your existing desktop site. <a href="http://help.yomobi.com/Account/MobileRedirectScript">Click here for instructions</a> on how to seamlessly direct visitors to your new mobile site whenever they visit from a mobile device.'
-      share: "@@Click here to share the news with your friends."
-      access_account: "@@Click here to sign in to your YoMobi account."
-      closing: "@@Thank you,"
-      signature: "@@Yomobi Support"
-      contact: '@@<a href="mailto:support@yomobi.com">support@yomobi.com</a>'
+      subject: "Bienvenido(a) a YoMobi"
+      thank_you: "Gracias por registrarte en YoMobi. Estás a tan sólo un paso de ampliar tu número de fans y hacer que tus visitantes te encuentren con mayor facilidad, desde donde quiera que ellos se encuentren."
+      mobile_site_url: "La URL de tu sitio móvil es: "
+      mobile_redirect: 'Usa tu sitio móvil YoMobi para complementar tu sitio tradicional ya existente. <a href="http://help.yomobi.com/Account/MobileRedirectScript">>Haz click aquí para las instrucciones</a> de cómo re-dirigir automáticamente a todos tus visitantes a tu nuevo sitio móvil siempre que ellos te visiten desde un dispositivo móvil.'
+      share: "Haz clik aquí para compartir las noticias con tus amigos."
+      access_account: "Haz click aquí para iniciar sesión en tu cuenta YoMobi."
+      closing: "Gracias,"
+      signature: "Soporte Yomobi"
+      contact: '<a href="mailto:support@yomobi.com">support@yomobi.com</a>'
 
     username_changed_email:
-      subject: "@@Your YoMobi account username has changed."
-      message: "@@The email associated with %{mobile_url} has been changed from %{old_email} to %{new_email}. Next time you log in to YoMobi, your login email will be %{new_email}."
-      closing: "@@Thank you,"
-      signature: "@@Yomobi Support"
-      contact: '@@<a href="mailto:support@yomobi.com">support@yomobi.com</a>'
+      subject: "El nombre de usuario de tu cuenta YoMobi ha cambiado."
+      message: "El email asociado a %{mobile_url} ha sido cambiado de %{old_email} a %{new_email}. La próxima vez que tu entres a  YoMobi, tu email de ingreso será %{new_email}."
+      closing: "Gracias,"
+      signature: "Soporte Yomobi"
+      contact: '<a href="mailto:support@yomobi.com">support@yomobi.com</a>'
 
   leave_a_message:
-    instructions: "@@Leave a message:"
-    subject: "@@Subject:"
-    message: "@@Message:"
-    confirmation: "@@Your message has been sent to %{company_name}. Thank you."
+    instructions: "Deja un mensaje:"
+    subject: "Asunto:"
+    message: "Mensaje:"
+    confirmation: "Tu mensaje ha sido enviado a %{company_name}. Gracias."
     email:
-      body: "@@A visitor sent you a message from: %{site_url}"
-
+      body: "Un visitante te envió un mensaje desde: %{site_url}"
 
   call_back:
-    instructions: "@@Enter your call back information:"
-    confirmation: "@@Your call back request has been sent to %{company_name}. Thank you."
+    instructions: "Ingresa tu información de respuesta:"
+    confirmation: "Tu solicitud de respuesta ha sido enviado a %{company_name}. Gracias."
     email:
-      subject: "@@You have a call back request."
-      body: "@@A visitor sent you a call back request from: %{site_url}"
+      subject: "Se te solicita una llamada de contestación."
+      body: "Un visitante te envió una solicitud de respuesta desde: %{site_url}"
 
   tell_a_friend:
-    instructions: "@@Share %{company_name} with a friend. A short email will be sent to your friend with a link to this mobile site."
-    friend_email: "@@Your Friend's Email:"
-    confirmation: "@@Thank you for sharing %{company_name} with your friend."
+    instructions: "Comparte %{company_name} con un amigo. Un breve email será enviado a tu amigo con un enlace a este sitio móvil."
+    friend_email: "Email de tu Amigo:"
+    confirmation: "Gracias por compartir %{company_name} con tu amigo."
     email:
-      subject: "@@%{friend_name} wants to share %{site_name} with you."
-      body: "@@Your friend, %{friend_name}, recommends this mobile site to you: "
+      subject: "%{friend_name} quiere compartir %{site_name} contigo."
+      body: "Tu amigo, %{friend_name}, te recomienda este sitio móvil: "
 
   booking_request:
-    instructions: "@@Send a Booking Request:"
-    number_of_people: "@@Number of People:"
-    time: "@@Time:"
-    date: "@@Date:"
-    confirmation: "@@Your booking request has been sent to %{company_name}."
+    instructions: "Envía una solicitud de Reservación:"
+    number_of_people: "Número de personas:"
+    time: "Hora:"
+    date: "Fecha:"
+    confirmation: "Tu solicitud de reservación ha sido enviada a %{company_name}."
     email:
-      subject: "@@You have a booking request."
-      body: "@@A visitor sent you a booking request from: %{site_url}"
+      subject: "Tienes una solicitud de reservación."
+      body: "Un visitante te ha enviado una solicitud de reservación desde: %{site_url}"
 
   keep_me_informed:
-    instructions: "@@Enter your information to follow the latest news from %{company_name}. You can opt out at any time and your information will remain private."
-    mobile_number: "@@Mobile Number:"
-    mobile_carrier: "@@Mobile Service Carrier:"
-    confirmation: "@@Thank you for following %{company_name}."
+    instructions: "Ingresa tus datos para recibir las últimas noticias de %{company_name}. Puedes darte de baja en cualquier momento y tus datos permanecerán privados."
+    mobile_number: "Número de Móvil/Celular:"
+    mobile_carrier: "Compañía operadora del servicio:"
+    confirmation: "Gracias por seguir a %{company_name}."
 
   home_page:
     banner:
-      title: "@@Get Mobilized!"
-      subtitle: "@@Reach more people with a mobile website."
+      title: "¡Movilízate!"
+      subtitle: "Alcanza más gente con un sitio móvil."
     form:
-      title: "@@Sign Up"
-      subtitle: "@@It's free."
+      title: "Regístrate"
+      subtitle: "Es gratis."
   
   account_setup:
 
-    about_label: "@@Tell your visitors who you are (optional):"
-    choose_url: "@@Choose a Mobile Site URL:"
-    contact_informaton: "@@Contact Information"
-    select_site_picture: "@@Select a Site Picture"
-    site_information: "@@Website Information"
-    site_name: "@@Site Name:"
+    about_label: "Dile a tus visitantes quien eres tú (opcional):"
+    choose_url: "Elige la URL para tu Sitio Móvil:"
+    contact_informaton: "Información de Contacto"
+    select_site_picture: "Selecciona una Imagen para el Sitio"
+    site_information: "Información del Sitio Web"
+    site_name: "Nombre del Sitio:"
 
     address:
-      address: "@@Address"
-      address1: "@@Address 1:"
-      address2: "@@Address 2:"
-      city: "@@City:"
-      country: "@@Country:"
-      state: "@@State / Province / Territory:"
-      zip: "@@Zip / Postal Code:"
+      address: "Dirección"
+      address1: "Dirección 1:"
+      address2: "Dirección 2:"
+      city: "Ciudad:"
+      country: "País:"
+      state: "Estado / Provincia / Territorio / Departamento:"
+      zip: " Código Postal:"
 
     button:
-      goto_builder: "@@Start Customizing"
-      resend_confirmation: "@@Resend Confirmation Email"
-      save_and_continue: "@@Save & Continue"
-      skip_this_step: "@@Skip this step"
-      upload: "@@Upload"
+      goto_builder: "Comenzar Personalización"
+      resend_confirmation: "Re-enviar Email de confirmación"
+      save_and_continue: "Guardar y Continuar"
+      skip_this_step: "Saltar esta etapa"
+      upload: "Subir a servidor"
 
     confirm:
-      title: "@@Confirm your Account"
-      check_email: "@@Please confirm your account to continue.<br><br>A confirmation email was sent to: <b>%{user_email}</b>."
-      no_confirmation: <b>@@Didn't get a confirmation email?</b><br><br>If the email address shown above is correct, please check your spam folder or click the button below.<br><br>If the email address is not yours, please <a href="/users/sign_out">sign out and start the signup process again</a>.
-      already_confirmed: Please@@ <a href="/builder/main">click here</a> to begin building your site.
+      title: "Confirma tu Cuenta"
+      check_email: "Para continuar, favor de confirmar tu cuenta.<br><br>Un email de confirmación ha sido enviado a: <b>%{user_email}</b>."
+      no_confirmation: <b>¿No te ha llegado el email de confirmación?</b><br><br>Si la dirección de email que aquí aparece es correcta, favor de revisar tu carpeta de correo no deseado / correo basura, o haz click en el botón de abajo.<br><br>Si la dirección de email no es la tuya, favor de<a href="/users/sign_out">salir y comenzar un nuevo proceso de registro</a>.
+      already_confirmed: Por favor <a href="/builder/main">haz click aquí</a> para iniciar la construcción de tu sitio.
 
     help:
-      address: "@@Enter an address you would like your mobile site visitors to use to locate you."
-      phone: "@@Enter a number you would like your mobile site visitors to use to call you."
-      site_name: "@@Input your name or business name. This will appear at the top of your mobile site."
-      site_pic: "@@Note: Large size pictures may take up to 1 minute to load."
-      site_url: "@@Select a URL for your mobile site. It cannot contains spaces or special characters."
+      address: "Ingresa la dirección en la que quieres que los visitantes de tu sitio móvil te localicen."
+      phone: "Ingresa un número al cual quieres que los visitantes de tu sitio móvil te llamen."
+      site_name: "Ingresa tu nombre o el nombre de tu negocio. Esto aparecerá en la parte superior de tu sitio móvil."
+      site_pic: "Nota: Las imágenes de gran tamaño pueden tardar más de 1 minuto en subir."
+      site_url: "Selecciona una URL para tu sitio móvil. No podrá contener espacios ni caracteres especiales."
 
     phone:
-      number: "@@Number:"
-      phone: "@@Phone"
-      phone_number: "@@Phone Number:"
+      number: "Número:"
+      phone: "Teléfono"
+      phone_number: "Número de Teléfono:"
 
     progress_bar:
-      step1: "@@Step 1"
-      step2: "@@Step 2"
-      step3: "@@Step 3"
-      step4: "@@Step 4"
-      label1: "@@General Info"
-      label2: "@@Contact Info"
-      label3: "@@Site Picture"
-      label4: "@@Customize"
+      step1: "Paso 1"
+      step2: "Paso 2"
+      step3: "Paso 3"
+      step4: "Paso 4"
+      label1: "Información General"
+      label2: "Información de Contacto"
+      label3: "Imagen del Sito"
+      label4: "Personalizar"
 
     final:
-      title: "@@Congratulations!"
-      site_online: "@@You've successfully created your mobile site and it's now online!"
-      site_url: "@@You can see your new mobile site on your smart phone or tablet by browsing to "
-      auto_redirect: If you have a desktop site, <a target="ym-help" href="http://help.yomobi.com/Account/MobileRedirectScript"> learn how to automatically redirect your mobile visitors from your desktop site to your mobile site</a>.
-      easy_update: "@@Updating your mobile site is easy. All changes you make are automatically published, so your site is always up to date."
-      help: For additional information, <a target="ym-help" href="http://help.yomobi.com">please visit our help pages.</a> 
-      customize: "@@To start customizing your site, please click the button below."
+      title: "¡Felicidades!"
+      site_online: "Has creado con éxito tu sitio móvil y ya se encuentra en línea!"
+      site_url: "Puedes ver tu nuevo sitio móvil desde tu smart phone o tablet al dirigir tu navegación hacia "
+      auto_redirect: 'Si tienes un sitio web tradicional, <a target="ym-help" href="http://help.yomobi.com/Account/MobileRedirectScript"> entérate de cómo re-dirigir de manera automática a tus visitantes móviles desde tu sitio web tradicional hacia tu sitio móvil</a>.'
+      easy_update: "Es muy fácil actualizar tu sitio móvil. Todos los cambios que realices son automáticamente publicados, de modo que tu sitio siempre se encuentre actualizado."
+      help: 'Para mayor información, <a target="ym-help" href="http://help.yomobi.com">favor de visitar nuestras páginas de ayuda.</a>' 
+      customize: "Para iniciar la personalización de tu sitio, favor de hacer click en el botón de abajo."
 
   navigation_bar:
-    help: "@@Help"
-    sign_out: "@@Sign Out"
-    site_manager: "@@Site Manager"
-    site_builder: "@@Website Builder"
-    account_settings: "@@Account Settings"
+    help: "Ayuda"
+    sign_out: "Cerrar Sesión"
+    site_manager: "Administrador de Sito"
+    site_builder: "Constructor de Sitio Web"
+    account_settings: "Opciones de la Cuenta"
 
 
   account_settings:
-    title: "@@Account Settings"
-    current_password: "@@Current Password*:"
-    contact_information: "@@Contact Information"
-    first_name: "@@First Name:"
-    last_name: "@@Last Name:"
-    email: "@@Email:"
-    change_password: "@@Change Password (Optional):"
-    new_password: "@@New Password:"
-    new_password_confirm: "@@Re-enter New Password:"
-    save: "@@Save Changes" 
+    title: "Opciones de la Cuenta"
+    current_password: "Contraseña Actual*:"
+    contact_information: "Información de Contacto"
+    first_name: "Nombre:"
+    last_name: "Apellido:"
+    email: "Email:"
+    change_password: "Cambiar Contraseña (Opcional):"
+    new_password: "Nueva Contraseña:"
+    new_password_confirm: "Repetir Contraseña:"
+    save: "Guardar Cambios" 
 
   builder:
 
     sidebar:
-      view_mobile_site: "@@View Mobile Site"
-      email_followers: "@@Email Your Followers"
-      text_followers: "@@Text Your Followers"
-      general_settings: "@@General Settings"
-      advanced_settings: "@@Advanced Settings"
-      edit_tab_bar: "@@Edit Mobile Tab Bar"
-      mobile_site_builder: "@@Mobile Site Builder"
+      view_mobile_site: "Ver Sitio Móvil"
+      email_followers: "Envía un Email a Tus Seguidores"
+      text_followers: "Envía un mensaje de Texto a Tus Seguidores"
+      general_settings: "Opciones Generales"
+      advanced_settings: "Opciones Avanzadas"
+      edit_tab_bar: "Editar Barra Móvil de funciones"
+      mobile_site_builder: "Constructor de Sitio Móvil"
 
     email_panel:
-      title: "@@Email your Followers"
-      num_followers: "@@You have %{num} email follower(s)."
-      reply_to_address: "@@Your REPLY-TO email address is: %{email}"
-      subject: "@@Subject"
-      content: "@@Content"
-      send: "@@Send Email"
-      sending: "@@Sending. Please wait..."
-      missing_info: "@@Please enter both a subject and message."
-      success: "@@Email successfully sent."  
+      title: "Envía un Email a tus Seguidores"
+      num_followers: "Tienes %{num} seguidor(es) por email."
+      reply_to_address: "Tu dirección de email para RESPONDERTE es: %{email}"
+      subject: "Asunto"
+      content: "Contenido"
+      send: "Enviar Email"
+      sending: "Enviando. Favor de esperar..."
+      missing_info: "Favor de ingresar tanto el asunto como el mensaje."
+      success: "Email enviado con éxito."  
 
     text_panel:
-      title: "@@Text Message your Followers"
-      num_followers: "@@You have %{num} text follower(s)."
-      reply_to_address: "@@Your REPLY-TO email address is: %{email}"
-      chars_remaining: "@@ of %{max} charaters remaining."
-      send: "@@Send Text"
-      sending: "@@Sending. Please wait..."
-      error: "@@Error: %{errors}"
-      missing_info: "@@Please enter a message."
-      msg_too_long: "@@Message is too long. It must be less than %{max} characters."
-      success: "@@Texts successfully sent."
-    
+      title: "Envía un Mensaje de Texto a tus Seguidores"
+      num_followers: "Tienes %{num} seguidor(es) de Mensajes de Texto."
+      reply_to_address: "Tu dirección de email para RESPONDERTE es: %{email}"
+      chars_remaining: " caracteres restantes de un máximo de %{max}."
+      send: "Enviar Texto"
+      sending: "Enviando. Favor de esperar..."
+      error: "Error: %{errors}"
+      missing_info: "Favor de ingresar un mensaje."
+      msg_too_long: "El mensaje es muy largo. Debe tener menos de %{max} caracteres."
+      success: "El Texto ha sido enviado con éxito."
 
     general_settings:
-      title: "@@General Settings"
-      explanation: "@@<p>Edit general settings.</p>"
-      site_name: "@@Site Name:"
-      site_slogan: "@@Site Slogan:"
-      site_type: "@@Site Type:"
-      site_picture: "@@Site Picture:"
-      site_picture_help: "@@Note: Large size pictures may take up to 1 minute to load."
-      select_picture: "@@Select a picture:"
-      remove_picture: "@@Remove Picture"
-      browse: "@@Browse..."
-      upload: "@@Upload"
-      header_background: "@@Header Background:"
-      header_text: "@@Header Text:" 
-      save: "@@Save Settings"    
+      title: "Opciones Generales"
+      explanation: "<p>Editar opciones generales.</p>"
+      site_name: "Nombre del Sitio:"
+      site_slogan: "Lema / Eslogan del Sitio:"
+      site_type: "Tipo de Sitio:"
+      site_picture: "Imagen para el Sitio:"
+      site_picture_help: "Nota: Las imágenes de gran tamaño pueden tardar más de 1 minuto en subir."
+      select_picture: "Selecciona una imagen:"
+      remove_picture: "Eliminar Imagen"
+      browse: "Explorar..."
+      upload: "Subir"
+      header_background: "Fondo del Encabezado:"
+      header_text: "Texto del Encabezado:" 
+      save: "Guardar Opciones seleccionadas"    
 
     advanced_settings:
-      title: "@@Advanced Settings"
-      explanation: "@@<p>Edit advanced settings.</p>"
-      mobile_url: "@@Mobile Site URL:"
-      redirect_code: "@@Desktop Redirect Code:"
-      redirect_code_help: "@@To automatically redirect visitors to your mobile site when they visit your desktop site from a mobile phone, copy this code snippet and paste it into your desktop site’s home page, just before the closing &lt;head&gt; tag. <b>Click ? more help.</b>"
-      keywords: "@@Enter keywords that describe your website, separated by commas:"
-      save: "@@Save Settings"    
+      title: "Opciones Avanzadas"
+      explanation: "<p>Editar opciones avanzadas.</p>"
+      mobile_url: "URL del Sitio Móvil:"
+      redirect_code: "Código de Re-dirección desde Sitio Tradicional:"
+      redirect_code_help: "Para redirigir visitantes hacia tu sitio móvil cuando accedan hacia tu sitio tradicional usando un teléfono móvil/celular, copia esta pieza de código para pegarlo en la página de inicio de tu sitioâ€™s tradicional, justo antes del símbolo de cierre de la etiqueta (tag)&lt;head&gt;. <b>Para más ayuda, Haz Click en ?.</b>"
+      keywords: "Ingresa las palabras clave que describen a tu sitio web, separadas por comas:"
+      save: "Guardar Opciones Seleccionadas"    
 
     edit_tab_bar:
-      explanation: "@@Select the pages you want to be most visible to your mobile visitors."
+      explanation: "Selecciona las páginas que quieres que sean más visibles para tus visitantes móviles."
 
     jeditor:
       help:
-        thumb: "@@Set this picture as the preview thumbnail for this page.<br><b>Click ? for more information.</b>"
-        url: "@@Make this picture a clickable URL.<br><b>Click ? for more information</b>"
-        youtube: "@@Add a video to your page.<br><b>Click ? for more information.</b>"
+        thumb: "Fija esta imagen como miniatura de vista previa para esta página.<br><b>Para mayor información, Haz Click en ?</b>"
+        url: "Haz de esta imagen un enlace para URL cliqueable.<br><b>Para mayor información, Haz Click en ?</b>"
+        youtube: "Agrega un video para tu página.<br><b>Para mayor información, Haz Click en ?</b>"
 
     mobile_emulator:
-      title: "@@Mobile Phone Emulator"
-      instructions: "@@Click on a widget in the Mobile Phone Emulator to edit it here."
-      mobile_redirect: "@@ to learn how to auto-redirect mobile visitors from your desktop site to your mobile site."
+      title: "Emulador de Teléfono Móvil"
+      instructions: "Haz click en una función del Emulador de Teléfono Móvil para editarla."
+      mobile_redirect: " para saber como redirigir automáticamente tus visitantes móviles desde tu sitio tradicional a tu sitio móvil."
 
     tab_bar_editor:
-      title: "@@Edit Mobile Tab Bar"
-      explanation: "@@<p>Edit the navigation tab bar at the top of your mobile site.</p><br><p>Highlight the widgets you want your mobile site visitors to see first by adding them to the navigation tab bar which appears at the top of your mobile site.</p>"
-      tab_1: "@@Tab #1"
-      tab_n: "@@Tab #%{num}"
-      none: "@@== None ==" 
+      title: "Editar Barra de Funciones Móvil"
+      explanation: "<p>Edita la barra de navegación en la parte superior de tu sitio móvil.</p><br><p>Selecciona las funciones de tu sitio móvil que quieras que tus visitantes vean primero, agregándolas a la barra de navegación que aparece en la parte superior de tu sitio móvil.</p>"
+      tab_1: "Barra #1"
+      tab_n: "Barra #%{num}"
+      none: "== Ninguna ==" 
     
     widget_editor:
-      add_item: "@@Add %{item}"
-      address1_label_required: "@@Address 1*:"
-      address2_label: "@@Address 2:"
-      browse: "@@Browse..."
-      calendar_link_label: "@@Paste your calendar link here:"
-      cancel: "@@Discard Changes"
-      change_icon: "@@Change Icon"
-      city_label_required: "@@City*:"
-      click_to_edit_label: "@@Click Here to Start Editing"
-      closed_label: "@@Closed"
-      country_label_required: "@@Country*:"
-      current_calendar_link_label: "@@Current calendar link:"
-      current_link: "@@Current Link"
-      custom_message_label: "@@Message to Mobile Visitors:"
-      deactivate_label: "@@Deactivate"
-      deal_name_label_required: "@@Deal Name*:"
-      delete_icon: "@@Delete"
-      delete: "@@Remove Widget"
-      description_label_required: "@@Description*:"
-      drag_widget: "@@Drag a widget from the Mobile Website Builder into the Mobile Phone Emulator"
-      edit_icon: "@@Edit"
-      edit_widget: "@@Click on a widget in the Mobile Phone Emulator to enter your information."
-      editing_crumb: '@@<b>Editing: <span class="blue">%{breadcrumb}</span></b>'
-      email_label_required: "@@Your email address*:"
-      email_opt_in_label: "@@Allow users to opt-in for emails."
-      expiration_date_label: "@@Expiration Date:"
-      go_back_icon: "@@Go Back"
-      help: "@@Help"
-      instructions: "@@Click on a widget in the Mobile Phone Emulator to edit it here."
-      item_type_label_required: "@@Your %{type}*:"
-      or: "@@OR"
-      phone_number_label_required: "@@Your phone number*:"
-      remove_picture: "@@Remove Picture"
-      rename_icon: "@@Rename"
-      rename: "@@Rename"
-      rss_icon: "@@Add RSS Feed"
-      rss_label_required: "@@RSS Feed*:"
-      rss_max_entries: "@@Max number of entries:"
-      save: "@@Save Changes"
-      select_at_least_one_label_required: "@@Please select at least one of the following*:"
-      select_picture: "@@Select a picture..."
-      sms_opt_in_label: "@@Allow users to opt-in for text messages."
-      state_label: "@@State / Province / Territory:"
-      title: "@@Widget Editor"
-      to_label: "@@to"
-      to_start: "@@To Start:"
-      two_times_per_day_label: "@@Specify two sets of hours for each day."
-      url_label_required: "@@URL*:"
-      url_type_label_required: "@@Your %{type} URL*:"
-      zip_label: "@@Zip / Postal Code:"
+      add_item: "Agregar %{item}"
+      add_rss: "Agregar RSS"
+      address1_label_required: "Dirección 1*:"
+      address2_label: "Dirección 2:"
+      browse: "Explorar..."
+      calendar_link_label: "Pega el enlace de tu calendario aquí:"
+      cancel: "Cancelar Cambios"
+      change_icon: "Cambiar Icono"
+      city_label_required: "Ciudad*:"
+      click_to_edit_label: "Haz Click Aquí Para Iniciar Edición"
+      closed_label: "Cerrado"
+      country_label_required: "País*:"
+      current_calendar_link_label: "Enlace de calendario actual:"
+      current_link: "Enlace Actual"
+      custom_message_label: "Mensaje a los Visitantes Móviles:"
+      deactivate_label: "Desactivar"
+      deal_name_label_required: "Nombre de la Promoción/Oferta*:"
+      delete_icon: "Borrar"
+      delete: "Eliminar Función"
+      description_label_required: "Descripción*:"
+      drag_widget: "Arrastra una función desde el Constructor de Sitio Web Móvil hacia el Emulador de Teléfono Móvil"
+      edit_icon: "Editar"
+      edit_widget: "Haz click en una función en el Emulador de Teléfono Móvil para ingresar tus datos."
+      editing_crumb: '<b>Editando: <span class="blue">%{breadcrumb}</span></b>'
+      email_label_required: "Tu dirección de email*:"
+      email_opt_in_label: "permitir a usuarios suscribirse a listas de distribución de emails."
+      expiration_date_label: "Fecha de Caducidad / Terminación:"
+      go_back_icon: "Regresar"
+      help: "Ayuda"
+      instructions: "Haz click en una función del Emulador de Teléfono Móvil para editarla aquí."
+      item_type_label_required: "Tu %{type}*:"
+      or: "O"
+      phone_number_label_required: "Tu número de teléfono*:"
+      remove_picture: "Quitar Imagen"
+      rename_icon: "Renombrar"
+      rename: "Renombrar"
+      rss_icon: "Agregar Suscriptor RSS"
+      rss_label_required: "Suscriptor RSS*:"
+      rss_max_entries: "Número máximo de entradas/ingresos:"
+      save: "Guardar Cambios"
+      select_at_least_one_label_required: "Favor de seleccionar por lo menos uno(a) de los(as) siguientes*:"
+      select_picture: "Seleccionar una imagen..."
+      sms_opt_in_label: "Permitir a usuarios que se suscriban a lista de distribución para mensajes de texto."
+      state_label: "Estado / Provincia / Territorio / Departamento:"
+      title: "Editor de Funciones"
+      to_label: "para"
+      to_start: "Para Iniciar:"
+      two_times_per_day_label: "Especificar dos horarios para cada día."
+      url_label_required: "URL*:"
+      url_type_label_required: "Tu URL %{type}*:"
+      zip_label: "Código Postal:"
 
   dialog:
-    error: "@@Error: %{error_message}"
-    add: "@@Add"
+    error: "Error: %{error_message}"
+    add: "Agregar"
     
     change_icon:
-      title: "@@Change Icon"
-      instructions: "@@Click on icon to select:"
-      selected_icon: "@@Selected Icon:"
+      title: "Cambiar Icono"
+      instructions: "Haz click en el icono a elegir:"
+      selected_icon: "Icono Seleccionado:"
 
     rename_category:
-      title: "@@Rename"
-      instructions: "@@New %{item_type} Name:"
+      title: "Renombrar"
+      instructions: "Nuevo Nombre de %{item_type}:"
 
     rename_widget:
-      title: "@@Rename Widget"
-      instructions: "@@Please rename your widget:"
-    
+      title: "Renombrar Función"
+      instructions: "Favor de renombrar tu función:"
+
     add_new:
-      title: "@@Add New %{item_type}"
-      instructions: "@@ %{item_type} name:"
-      select_picture: "@@Select a picture..."
-      browse: "@@Browse..."
-      remove_picture: "@@Remove Picture"
-      add: "@@Add"
-      added: "@@Added %{item}:"
+      title: "Agregar un(a) Nuevo(a) %{item_type}"
+      instructions: " Nombre de %{item_type}:"
+      select_picture: "Selecciona una imagen..."
+      browse: "Explorar..."
+      remove_picture: "Eliminar Imagen"
+      add: "Agregar"
+      added: "%{item} agregado:"
 
     add_picture:
-      title: "@@Select a Picture"
-      browse: "@@Browse..."
-      delete: "@@Delete"
-      upload_picture: "@@Upload an image..."
-      select_picture: "@@Select a picture..."
-      browse: "@@Browse..."
-      remove_picture: "@@Remove Picture"
-      alignment: "@@Alignment:"
-      left: "@@Left"
-      right: "@@Right"
-      inline: "@@Inline with text"
-      image_size: "@@Image Size:"
-      percent_sign: "@@%"
-      clickable_url: "@@Clickable URL (optional):"
-      set_as_preview: "@@Set as thumbnail preview"
+      title: "Seleccionar una Imagen"
+      browse: "Explorar..."
+      delete: "Borrar"
+      upload_picture: "Subir una imagen..."
+      select_picture: "Seleccionar una imagen..."
+      browse: "Explorar..."
+      remove_picture: "Quitar Imagen"
+      alignment: "Alineado:"
+      left: "Izquierda"
+      right: "Derecha"
+      inline: "En línea con texto"
+      image_size: "Tamaño de la Imagen:"
+      percent_sign: "%"
+      clickable_url: "URL Cliqueable (opcional):"
+      set_as_preview: "Fijar como miniatura de vista previa"
 
     add_item:
-      added_items: "@@Added Items"
-      item_info: "@@Item Information:"
-      listing_info: "@@Listing Information:"
-      location_info: "@@Location Information:"
-      menu_item_info: "@@Menu Item Information:"
-      service_item_info: "@@Service Information:"
-      rss_feed_info: "@@RSS Feed Information:"
-      name_required: "@@Name*:"
-      price: "@@Price:"
-      description: "@@Description:"
-      title_required: "@@Title*:"
-      mls_num: "@@MLS #:"
-      address: "@@Address:"
-      photo_url: "@@Photo URL:"
-      phone: "@@Phone Number:"
-      additional_info: "@@Additional Information:"
-      rss_title_required: "@@RSS Feed Title*:"
-      rss_url_required: "@@RSS URL*:"
+      added_items: "Elementos Agregados"
+      item_info: "Información del Elemento:"
+      listing_info: "Información del Listado:"
+      location_info: "Información de la Ubicación:"
+      menu_item_info: "Información del Menú de Elementos:"
+      service_item_info: "Información de Servicio:"
+      rss_feed_info: "Información del Suscriptor RSS:"
+      name_required: "Nombre*:"
+      price: "Precio:"
+      description: "Descripción:"
+      title_required: "Título*:"
+      mls_num: "Número MLS:"
+      address: "Dirección:"
+      photo_url: "Foto URL:"
+      phone: "Número de Teléfono:"
+      additional_info: "Información Adicional:"
+      rss_title_required: "Título de Suscriptor RSS*:"
+      rss_url_required: "URL del RSS*:"
 
     add_video:
-      title: "@@Add Video"
-      url: "@@Video URL:"
-      invalid_url: "@@Invalid Video URL."
+      title: "Agregar Video"
+      url: "URL de Video:"
+      invalid_url: "URL de Video Inválida."
 
     add_url:
-      title: "@@Add URL"
+      title: "Agregar URL"
 
     widget_add_error:
-      title: "@@Oops"
-      msg: "@@&nbsp;New widgets can only be added from the mobile home screen.<p><br></p><p>Please click on Home in the Mobile Tab Bar to return to the mobile home screen and try adding again.</p>"
-
-
+      title: "¡Caramba!"
+      msg: "&nbsp;Las nuevas funciones sólo se pueden agregar desde la pantalla de Inicio del sitio móvil.<p><br></p><p>Favor de Hacer click hacia Inicio (Home) en la Barra de Funciones Móviles para regresar a la pantalla de inicio e intenta agregar nuevamente.</p>"
 
   site_manager:
-    active_site: "@@Active Site: %{site_name}"
-    add_admin: "@@Add Admin"
-    revoke_access: "@@Revoke Access"
-    make_owner: "@@Make Owner"
-    create_new_site: "@@Create New Site"
-    make_default: "@@Make Default"
-    site_name: "@@Site Name:"
-    site_details: "@@Site Details"
-    select_site: "@@Please select a site on the left."
-    selected_site: "@@Selected: %{site_name}"
-    edit_site: "@@Edit Site"
-    generate_signup_key: "@@Generate Signup Key"
-    site_access_list: "@@Sites you have access to:"
-    admin_email: "@@Admin's Email:"
-    enter_password: "@@Enter your password to continue:"
+    active_site: "Sitio Activo: %{site_name}"
+    add_admin: "Agregar Administrador"
+    revoke_access: "Revocar Permiso de Acceso"
+    make_owner: "Crear Propietario"
+    create_new_site: "Crear un Nuevo Sitio"
+    make_default: "Definir Opción por Omisión (predefinida)"
+    site_name: "Nombre del Sitio:"
+    site_details: "Detalles del Sitio"
+    select_site: "Favor de seleccionar un sitio de la izquierda."
+    selected_site: "Seleccionado: %{site_name}"
+    edit_site: "Editar Sitio"
+    generate_signup_key: "Generar Clave de Registro"
+    site_access_list: "Sitios a los que tienes acceso:"
+    admin_email: "Email del Administrador:"
+    enter_password: "Ingresa tu contraseña para continuar:"
     error:
-      are_you_sure: "@@Are you sure?"
-      site_limit: "@@You have reached the site count limit of %{max_site_count}."
-      email_not_found: "@@Sorry, there is no YoMobi account associated with that email."
-      no_self_admin: "@@You cannot add yourself as a Admin."
-      already_owner: "@@You are already the owner of this site."
-      description_too_long: "@@Description is too long. 2500 characters max."
+      are_you_sure: "¿Estás seguro(a)?"
+      site_limit: "Has alcanzado el límite de %{max_site_count}."
+      email_not_found: "Lo sentimos, no existe ninguna cuenta YoMobi asociada con ese email."
+      no_self_admin: "No te puedes agregar a ti mismo(a) como un(a) Administrador(a)."
+      already_owner: "Tu ya apareces como propietario de este sitio."
+      description_too_long: "La Descripción es demasiado larga. El máximo es de 2500 caracteres."
       
     help:
-      signup_keys: "@@When you are ready to hand this site over to its owner, generate a signup key, then email the link to the site owner and have them click on the link to sign up to Yomobi and take ownership of their site.<br><b>Click ? for more information.</b>"
+      signup_keys: "Cuando estés listo para entregar este sitio a su propietario, genera una clave de registro, luego envía por email el enlace al propietario del sitio. Asegúrate que haga click en el enlace para que se registre ante Yomobi y tome posesión de su sitio.<br><b>Para mayor información, Haz Click en ?</b>"
     confirm:
-      concede_site: Are you sure? You will lose ownership of this site.
+      concede_site: ¿Estás seguro(a)? Cederás / Perderás la propiedad de este sitio.
     dialog:
-      concede_site: Conceding your ownership of this site will give up your ownership rights. That means you will no longer have control over collaborators.
+      concede_site: Al ceder la propiedad de este sitio, renuncias a tus derechos de propiedad. Lo que significa que ya no podrás tener control sobre los colaboradores.
 
   mobile:
     tab_bar:
-      home: "@@Home"
-    form:
-      email: "@@Email Address:"
-      address: "@@Address:"
-      name: "@@Name:"
-      phone_number: "@@Phone Number:"
-      your_name: "@@Your Name:"
-      security: "@@Please solve this security question:"
-      send: "@@Send"
-      get_directions: "@@Get Directions: "
-      starting_address: "@@Starting Address: "
-      view_in_map: "@@View in Map"
-      map_it: "@@Map It"
+      home: "Inicio"
+    form:      
+      email: "Dirección de Email:"
+      address: "Dirección:"
+      name: "Nombre:"
+      phone_number: "Número de Teléfono:"
+      your_name: "Tu Nombre:"
+      security: "Favor de contestar esta pregunta de seguridad:"
+      send: "Enviar"
+      get_directions: "Obtener direcciones: "
+      starting_address: "Dirección de Inicio: "
+      view_in_map: "Ver en el Mapa"
+      map_it: "Colocar en el Mapa"
 
     email:
-      name: "@@Name: "
-      email: "@@Email: "
-      subject: "@@Subject: "
-      phone: "@@Phone: "
-      num_people: "@@Number of people: "
-      time: "@@Time: "
-      date: "@@Date: "
-      message: "@@Message: "
-      closing: "@@Thank You"
-      signature: '@@<a href="http://www.yomobi.com">YoMobi</a>'
-      create_site: '@@Create your own free mobile site at: <a href="http://www.yomobi.com">YoMobi.com</a>'
+      name: "Nombre: "
+      email: "Email: "
+      subject: "Asunto: "
+      phone: "Teléfono: "
+      num_people: "Número de personas: "
+      time: "Hora: "
+      date: "Fecha: "
+      message: "Mensaje: "
+      closing: "Gracias"
+      signature: '<a href="http://www.yomobi.com">YoMobi</a>'
+      create_site: 'Crea tu propio sitio móvil en: <a href="http://www.yomobi.com">YoMobi.com</a>'
 
   widgets:
     helpText:
       about-us:
-        pname: "@@About Us"
-        help: <p>@@Tell your mobile site visitors about you.</p>
+        pname: "Quienes Somos"
+        help: <p>Cuenta acerca de ti a los que visitan tu sitio móvil.</p>
 
       blog:
-        help: <p>@@Add a link to your blog on your mobile site.</p>
+        help: <p>Agrega un enlace hacia el blog de tu sitio móvil.</p>
         subHelp: Blog
 
       booking-request:
-        help: <p>@@Allow your mobile site visitors to email you a booking request.</p><br><p>Booking requests will be sent to this email address, so check your mail often.</p>
-        mobile-message: <p>@@Use this field to create a custom message for your mobile visitors.</p>
+        help: <p>Permite que los visitantes a tu sitio móvil te envíen un email para solicitar una reservación.</p><br><p>Las solicitudes de reservación serán enviadas a esta dirección de  email, así que revisa tu correo con frecuencia.</p>
+        mobile-message: <p>Usa este campo/espacio para crear un mensaje personalizado para tus visitantes móviles.</p>
 
       business-hours:
-        help: <p>@@Let your mobile site visitors know when you are open for business.</p>
+        help: <p>Deja que los visitantes a tu sitio móvil se enteren de cual es tu horario de servicio (horas hábiles).</p>
 
       call-me-back:
-        help: <p>@@Allow your mobile site visitors to request a call back from you.</p><br><p>Call back requests will be sent to this email address, so check your mail often.</p>
-        mobile-message: <p>@@Use this field to create a custom message for your mobile visitors.</p>
+        help: <p>Permite a los visitantes de tu sitio móvil el solicitar que les devuelvas la llamada.</p><br><p>Las solicitudes de devolución de llamadas serán enviadas a esta dirección de email, así que revisa tu correo con frecuencia.</p>
+        mobile-message: <p>Usa este campo/espacio para crear un mensaje personalizado para tus visitantes móviles.</p>
 
       call-us:
-        help: <p>@@Allow your mobile site visitors to call you with a single click.</p>
+        help: <p>Permite que los visitantes a tu sitio móvil te puedan llamar con un simple click.</p>
 
       category:
-        help: <p>@@Use this widget to create and organize web pages on your mobile site.</p>
-        hide: <p>@@Hide this widget from your mobile site.</p>
+        help: <p>Usa esta función para crear y organizar páginas web de tu sitio móvil.</p>
+        hide: <p>Oculta esta función en tu sitio móvil.</p>
 
       coupon:
-        help: <p>@@Add a coupon to your mobile site.</p>
+        help: <p>Agrega un cupón/oferta a tu sitio móvil.</p>
 
       custom-page:
-        help: <p>@@Add a web page to your mobile site.</p>
+        help: <p>Agrega una página web a tu sitio móvil.</p>
 
       donate:
-        help: <p>@@Use this widget to direct visitors to the online site that allows them to donate to your cause.</p>
+        help: <p>Usa esta función para dirigir a tus visitantes al sitio en línea que les permite el donar en favor de tu causa.</p>
         subHelp: online donation site
 
       event-calendar:
-        help: <p>@@Add a link to your online calendar on your mobile site.</p>
-        subHelp: online calendar
+        help: <p>Agrega un enlace hacia el calendario en línea de tu sitio móvil.</p>
+        subHelp: calendario en línea
 
       facebook:
-        help: <p>@@Add a link to your Facebook page on your mobile site to make it easy for visitors to friend you.</p><br><p><a target="ymhelp" href="http://www.facebook.com/username">Click here</a> to find your facebook username.</p>
-        subHelp: Facebook username
+        help: <p>Agrega un enlace hacia tu página de Facebook para facilitar que tus visitantes te hagan su amigo.</p><br><p><a target="ymhelp" href="http://www.facebook.com/username">Haz click aquí</a> para encontrar tu nombre de usuario facebook.</p>
+        subHelp: nombre de usuario Facebook
 
       find-us:
-        help: <p>@@Allow your mobile site visitors to easily find you.</p>
+        help: <p>Permite que los visitantes de tu sitio móvil te encuentren fácilmente.</p>
 
       flickr:
-        help: <p>@@Add a link to your Flickr album on your mobile site.</p><br><p><a target="ymhelp" href="http://www.flickr.com/profile_url.gne">Click here</a> to find your flickr URL.</p>
-        subHelp: Flickr alias or custom URL
+        help: <p>Agrega un enlace en tu sitio móvil hacia tu álbum Flickr.</p><br><p><a target="ymhelp" href="http://www.flickr.com/profile_url.gne">Haz Click</a> para encontrar tu URL flickr.</p>
+        subHelp: Alias o URL completa de Flickr
 
       full-website:
-        help: <p>@@Add a link to your full website on your mobile site.</p>
-        subHelp: full website
+        help: <p>Agrega un enlace en tu sitio móvil hacia tu sitio completo.</p>
+        subHelp: sitio web completo
 
       keep-me-informed:
-        help: <p>@@Allow your mobile site visitors to subscribe to receive email and text notifications from you.</p><br><p>You can send email notifications and instant messages to your followers by clicking on the “Email your Followers” or "Send Text to Your Followers" link in the navigation column on the left.</p>
-        mobile-message: <p>@@Use this field to create a custom message for your mobile visitors.</p>
+        help: <p>Permite que los visitantes a tu sitio móvil se suscriban para recibir notificaciones por email y por mensaje de texto de ti.</p><br><p>Puedes enviar notificaciones por email y por mensajes instantáneos con sólo hacer click en el "Email de tus Seguidores" o en el enlace "Envía Mensajes de Texto a tus Seguidores" en la columna de navegación de la izquierda.</p>
+        mobile-message: <p>Usa este campo/espacio para crear un mensaje personalizado para tus visitantes móviles.</p>
 
       leave-a-message:
-        help: <p>@@Allow your mobile website visitors to easily leave you an email message.</p><br><p>Messages will be sent to this email address, so check your mail often.</p>
-        mobile-message: <p>@@Use this field to create a custom message for your mobile visitors.</p>
+        help: <p>Permite que los visitantes a tu sitio móvil puedan dejarte fácilmente un mensaje por email.</p><br><p>Los mensajes serán enviados a esta dirección de email, así que revisa tu correo con frecuencia.</p>
+        mobile-message: <p>Usa este campo/espacio para crear un mensaje personalizado para tus visitantes móviles.</p>
 
       link:
-        help: <p>@@Add a link to a web page.</p>
+        help: <p>Agrega un enlace hacia una página web.</p>
 
       locations:
-        help: <p>@@Give your mobile site visitors easy access to a directory of your business locations.</p><br><p>Use this widget to create a directory of your business locations.</p>
+        help: <p>Ofrece a los visitantes de tu sitio móvil un fácil acceso al directorio de ubicaciones de tu negocio.</p><br><p>Usa esta función para crear un directorio de las ubicaciones de tu negocio.</p>
 
       menu:
-        help: <p>@@Use this widget to create a mobile optimized version of your menu.</p>
+        help: <p>Usa esta función para crear una versión móvil optimizada de tu menú.</p>
 
       news:
-        help: <p>@@Add a link to your online news site on your mobile site.</p>
-        subHelp: online news site
+        help: <p>Agrega un enlace a tu sitio móvil hacia tu sitio de noticias en línea.</p>
+        subHelp: sitio de noticias en línea
 
       photo-bucket:
-        help: <p>@@Add a link to your PhotoBucket album on your mobile site.</p><br><p><a target="ymhelp" href="http://support.photobucket.com/app/answers/detail/a_id/184/kw/custom%20url">Click here</a> to find your photobucket URL.</p>
-        subHelp: Photobucket album custom
+        help: <p>Agrega un enlace en tu sitio móvil hacia tu álbum PhotoBucket.</p><br><p><a target="ymhelp" href="http://support.photobucket.com/app/answers/detail/a_id/184/kw/custom%20url">Haz click aquí</a> para encontrar tu URL de  Photobucket.</p>
+        subHelp: Personalización de álbum photobucket
 
       picasa:
-        help: <p>@@Add a link to your Picasa album on your mobile site.</p><br><p><a target="ymhelp" href="http://picasa.google.com/support/bin/answer.py?answer=39510">Click here</a> to find your Picasa album URL.</p>
-        subHelp: Picasa album URL
+        help: <p>Agrega un enlace a tu sitio móvil hacia tu álbum Picasa.</p><br><p><a target="ymhelp" href="http://picasa.google.com/support/bin/answer.py?answer=39510">Haz click aquí</a> para encontrar la URL de tu álbum Picasa.</p>
+        subHelp: URL de álbum Picasa
 
       products:
-        help: <p>@@Use this widget to create a mobile optimized catalog of your products or services.</p>
+        help: <p>Usa esta función para crear un catálogo móvil optimizado de tus productos y servicios.</p>
 
       property-listings:
-        help: <p>@@Use this widget to create a mobile optimized list of properties for lease or sale.</p>
+        help: <p>Usa esta función para crear un listado optimizado de avisos de propiedades en renta o venta.</p>
 
       reviews:
-        help: <p>@@Show visitors how great you are by adding a link to your online reviews page on your mobile site.</p>
-        subHelp: reviews page
+        help: <p>Muestra a tus visitantes que tan excelente eres agregando un enlace a la página de revisiones / comentarios de tu sitio móvil.</p>
+        subHelp: página de revisiones
 
       rss-feed:
-        help: <p>@@Display a nicely formatted rss feed on your mobile site.</p>
+        help: <p>Muestra un suscriptor rss agradablemente presentado en tu sitio móvil.</p>
 
       services:
-        help: <p>@@Give your mobile site visitors easy access to your catalog of services.</p><br><p>Use this widget to create a mobile optimized catalog of your services.</p>
+        help: <p>Brinda a los visitantes de tu sitio móvil un fácil acceso hacia tu catálogo de servicios.</p><br><p>Usa esta función para crear un catálogo móvil optimizado de tus servicios.</p>
 
       tell-a-friend:
-        help: <p>@@Let your mobile site visitors tell their friends about you.</p>
-        explanation: "@@This widget appears as an icon on your mobile site and makes it easy for visitors to share your site with their friends."
+        help: <p>Permite que los visitantes de tu sitio móvil te recomienden con sus amigos.</p>
+        explanation: "Esta función aparece como un icono de tu sitio móvil y facilita a tus visitantes el compartir tu sitio con sus amigos."
 
       twitter:
-        help: <p>@@Add a link to your twitter account on your mobile site to make it easy for visitors to follow you.</p><br><p><a target="ymhelp" href="http://support.twitter.com/articles/14609-how-to-change-your-username">Click here</a> to find your twitter uername.</p>
-        subHelp: Twitter username
+        help: <p>Agrega un enlace a tu sitio móvil hacia tu cuenta de twitter para facilitar que tus visitantes te sigan.</p><br><p><a target="ymhelp" href="http://support.twitter.com/articles/14609-how-to-change-your-username">Haz click aquí</a> para encontrar tu nombre de usuario en twitter.</p>
+        subHelp: Nombre de usuario en Twitter
 
       video:
-        help: <p>@@Add a link to a video on your mobile site.</p>
+        help: <p>Agrega un enlace en tu sitio móvil hacia un video.</p>
         subHelp: video
 
     hoverHelpText:
-      tabBar: "@@<p>Click here to edit the <b>tab bar</b>.</p>"
+      tabBar: "<p>Haz click aquí para editar la <b>barra de funciones</b>.</p>"
 
-      companyLogo: "@@<p>Click here to change your <b>site photo</b>.</p>"
-      companyName: "@@<p>Click here to change your <b>site title</b>.</p>"
-      companySlogan: "@@<p>Click here to change your <b>site slogan</b>.</p>"
+      companyLogo: "<p>Haz click aquí para cambiar la <b>foto de tu sitio</b>.</p>"
+      companyName: "<p>Haz click aquí para cambiar el <b>título de tu sitio</b>.</p>"
+      companySlogan: "<p>Haz click aquí para cambiar el <b>eslogan/lema de tu sitio</b>.</p>"
 
     widget_icons:
-      call: "@@Call"
-      information: "@@Information"
+      call: "Llamar"
+      information: "Información"
 
   jwysiwyg:
     controls:

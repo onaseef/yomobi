@@ -36,7 +36,7 @@ div.wysiwyg ul.toolbar {
     border-top: 1px solid #dddddd;
     margin: 5px 0; }
   .option {
-    height: 16px;
+    //height: 16px;
     padding: 3px 0 2px 4px;
     clear: left;
     .icon {
@@ -103,7 +103,7 @@ div.wysiwyg ul.toolbar {
 }
 
 #sidebar .widgets {
-  height: $sidebar-widgets-height;
+  //height: $sidebar-widgets-height;
   padding-left: 2px;
   overflow: auto; }
 
@@ -160,7 +160,7 @@ div.wysiwyg ul.toolbar {
       font-weight: bold;
       color: #000066; }
     & > .title-subtext {
-      height: 30px;
+      min-height: 30px;
       padding: 0 10px 5px 0; } 
     }
   .left {
@@ -555,10 +555,13 @@ div.wysiwyg ul.toolbar {
 #builder .edit-area.category, #builder .edit-area.page_tree {
 
   .controls {
-    height: 28px;
+    height: 66px;
     border: 1px solid #b3b3b3;
     padding: 3px;
     background: rgb(192, 192, 192);
+    hr {
+      margin-top: 31px;
+    }
   }
   .controls .button {
     height: 22px;
@@ -575,8 +578,10 @@ div.wysiwyg ul.toolbar {
   }
   
   .button.back { 
-    background-image: url(/images/ui/back-btn.png); 
+    background-image: url(/images/ui/back-btn.png);
+    height: 58px;
   }
+
   .button-separator {
     float: left;
     height: 22px;
@@ -585,6 +590,11 @@ div.wysiwyg ul.toolbar {
     border: none;
     background: gray;
   }
+
+  .button-separator.back {
+    height: 60px;
+  }
+
   .button.add-cat {
     background-image: url(/images/ui/icon-folder-new.png);
   }
@@ -593,7 +603,6 @@ div.wysiwyg ul.toolbar {
   }
   .button.add-rss-feed {
     background-image: url(/images/ui/icon-rss-new.png);
-    padding: 6px 2px 0 18px;
   }
   .button.rename {
     background-image: url(/images/ui/icon-rename.png);
