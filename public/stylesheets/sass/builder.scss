@@ -573,14 +573,11 @@ div.wysiwyg ul.toolbar {
     padding: 6px 2px 0 22px;
     margin: 0 4px 0 0;
     border: 1px outset transparent;
-    background: url(/images/ui/plus.png) 3px 5px no-repeat;
+    background-position: 3px 5px;
+    background-repeat: no-repeat;
+    vertical-align: center; 
     float: left;
     cursor: pointer;
-    &:empty { 
-      padding-left: 24px; 
-      background-position: 50% 50%; 
-      background-position: center;
-    }
   }
 
   .controls .button:hover {
@@ -588,29 +585,34 @@ div.wysiwyg ul.toolbar {
   }
   
   .button.back { 
-    height: 58px;
-    background-image: url(/images/ui/back-btn.png);
+    font-size: 30px;
+    font-weight: bold;
+    height: 64px;
+    line-height: 58px;
+    padding: 0px 6px;
   }
 
   .button.back.page { 
-    height: 22px;
+    height: 26px;
+    line-height: 22px;
+    padding: 0px 6px;
   }
 
   .button-separator {
     float: left;
-    height: 22px;
+    height: 28px;
     margin: 0 4px 0 0;
-    padding: 3px 1px;
+    padding: 0px 1px;
     border: none;
     background: gray;
   }
 
   .button-separator.back {
-    height: 60px;
+    height: 66px;
   }
 
   .button-separator.back.page {
-    height: 22px;
+    height: 28px;
   }
 
   .row-separator {
