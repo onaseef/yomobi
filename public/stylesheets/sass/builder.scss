@@ -576,7 +576,11 @@ div.wysiwyg ul.toolbar {
     background: url(/images/ui/plus.png) 3px 5px no-repeat;
     float: left;
     cursor: pointer;
-    &:empty { padding-left: 24px; background-position: 50% 50%; }
+    &:empty { 
+      padding-left: 24px; 
+      background-position: 50% 50%; 
+      background-position: center;
+    }
   }
 
   .controls .button:hover {

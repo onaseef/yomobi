@@ -584,6 +584,7 @@ en:
     add_admin: "Add Admin"
     revoke_access: "Revoke Access"
     make_owner: "Make Owner"
+    owner: "(Owner)"
     create_new_site: "Create New Site"
     make_default: "Make Default"
     site_name: "Site Name:"

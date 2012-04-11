@@ -89,7 +89,7 @@
               td
                 span.name
                   ' {{ owner.firstName }} {{ owner.lastName }}
-                  span.is-owner (Owner)
+                  span.is-owner =t'site_manager.owner'
         | <% for (var i=0; i < admins.length; i++) { %>
         li.admin data-id="{{ admins[i].id }}"
           table

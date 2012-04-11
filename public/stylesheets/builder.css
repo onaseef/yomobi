@@ -524,7 +524,8 @@ div.wysiwyg ul.toolbar {
   cursor: pointer; }
   #builder .edit-area.category .controls .button:empty, #builder .edit-area.page_tree .controls .button:empty {
     padding-left: 24px;
-    background-position: 50% 50%; }
+    background-position: 50% 50%;
+    background-position: center; }
 #builder .edit-area.category .controls .button:hover, #builder .edit-area.page_tree .controls .button:hover {
   border: 1px outset #e0e0e0; }
 #builder .edit-area.category .button.back, #builder .edit-area.page_tree .button.back {

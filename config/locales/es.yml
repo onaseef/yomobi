@@ -584,6 +584,7 @@ es:
     add_admin: "Agregar Administrador"
     revoke_access: "Revocar Permiso de Acceso"
     make_owner: "Crear Propietario"
+    owner: "(Propietario)"
     create_new_site: "Crear un Nuevo Sitio"
     make_default: "Definir Opción por Omisión (predefinida)"
     site_name: "Nombre del Sitio:"
