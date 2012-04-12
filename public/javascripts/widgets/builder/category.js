@@ -700,9 +700,9 @@
       if (_.isEmpty(name) && this.addedCats.length > 0 && addAnother !== true)
         this.options.onClose && this.options.onClose();
   		else if (_.isEmpty(name))
-  		  this.prompt('Name cannot be empty',undefined,true);
+  		  this.prompt({error:i18n.empty_name_error},undefined,true);
       else if ( nameCompare !== origNameCompare && _.contains(existingNames,nameCompare) )
-        this.prompt('Name is already in use',name,true);
+        this.prompt({error:i18n.name_in_use_error},name,true);
       else if (this.mode == 'add') {
         this.addNodeToStruct({
           type: this.type,
