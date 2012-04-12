@@ -172,7 +172,7 @@ es:
     signup_key: "Clave de Registro:"
     sign_up: "Registro"
     sign_up_bar: "YoMobi te ayuda a alcanzar más gente con un sitio móvil optimizado."
-    already_member: "¿Ya eres Miembro?"
+    already_member: "¿Ya eres Miembro? "
     click_to_signin: "Haz click aquí para entrar."
     error:
       general: "Hubo un problema con tu solicitud:"
@@ -225,7 +225,7 @@ es:
       subject: "Bienvenido(a) a YoMobi"
       thank_you: "Gracias por registrarte en YoMobi. Estás a tan sólo un paso de ampliar tu número de fans y hacer que tus visitantes te encuentren con mayor facilidad, desde donde quiera que ellos se encuentren."
       mobile_site_url: "La URL de tu sitio móvil es: "
-      mobile_redirect: 'Usa tu sitio móvil YoMobi para complementar tu sitio tradicional ya existente. <a href="http://help.yomobi.com/Account/MobileRedirectScript">>Haz click aquí para las instrucciones</a> de cómo re-dirigir automáticamente a todos tus visitantes a tu nuevo sitio móvil siempre que ellos te visiten desde un dispositivo móvil.'
+      mobile_redirect: 'Usa tu sitio móvil YoMobi para complementar tu sitio tradicional ya existente. <a href="http://help.yomobi.com/Account/MobileRedirectScript">Haz click aquí para las instrucciones</a> de cómo re-dirigir automáticamente a todos tus visitantes a tu nuevo sitio móvil siempre que ellos te visiten desde un dispositivo móvil.'
       share: "Haz clik aquí para compartir las noticias con tus amigos."
       access_account: "Haz click aquí para iniciar sesión en tu cuenta YoMobi."
       closing: "Gracias,"
@@ -314,7 +314,7 @@ es:
     confirm:
       title: "Confirma tu Cuenta"
       check_email: "Para continuar, favor de confirmar tu cuenta.<br><br>Un email de confirmación ha sido enviado a: <b>%{user_email}</b>."
-      no_confirmation: <b>¿No te ha llegado el email de confirmación?</b><br><br>Si la dirección de email que aquí aparece es correcta, favor de revisar tu carpeta de correo no deseado / correo basura, o haz click en el botón de abajo.<br><br>Si la dirección de email no es la tuya, favor de<a href="/users/sign_out">salir y comenzar un nuevo proceso de registro</a>.
+      no_confirmation: <b>¿No te ha llegado el email de confirmación?</b><br><br>Si la dirección de email que aquí aparece es correcta, favor de revisar tu carpeta de correo no deseado / correo basura, o haz click en el botón de abajo.<br><br>Si la dirección de email no es la tuya, favor de <a href="/users/sign_out">salir y comenzar un nuevo proceso de registro</a>.
       already_confirmed: Por favor <a href="/builder/main">haz click aquí</a> para iniciar la construcción de tu sitio.
 
     help:
