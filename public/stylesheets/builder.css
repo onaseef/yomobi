@@ -473,8 +473,7 @@ div.wysiwyg ul.toolbar {
     padding-left: 5px; }
     #builder .edit-area.hours .day-hours .times label {
       float: left;
-      width: 24px;
-      margin-top: 4px;
+      margin: 2px 4px 0px 4px;
       color: #7e7e7e;
       text-align: center; }
     #builder .edit-area.hours .day-hours .times .t1 {
