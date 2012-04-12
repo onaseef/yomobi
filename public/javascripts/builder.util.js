@@ -402,7 +402,7 @@ var builderUtil = {
       , file = fileInput.val()
     ;
     if (file && file.length > 0) {
-      $('input[value=Upload]').prop('disabled',false);
+      $('[name=upload_submit]').prop('disabled',false);
     }
   },
 
