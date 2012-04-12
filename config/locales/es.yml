@@ -474,7 +474,7 @@ es:
       edit_widget: "Haz click en una función en el Emulador de Teléfono Móvil para ingresar tus datos."
       editing_crumb: '<b>Editando: <span class="blue">%{breadcrumb}</span></b>'
       email_label_required: "Tu dirección de email*:"
-      email_opt_in_label: "permitir a usuarios suscribirse a listas de distribución de emails."
+      email_opt_in_label: "Permitir a usuarios suscribirse a listas de distribución de emails."
       expiration_date_label: "Fecha de Caducidad / Terminación:"
       go_back_icon: "Regresar"
       help: "Ayuda"

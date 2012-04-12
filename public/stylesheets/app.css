@@ -57,7 +57,12 @@ button[type=button] {
   padding: 6px; }
 
 input[type=checkbox] {
-  margin-left: 0px; }
+  margin-left: 0px;
+  vertical-align: top; }
+
+.opt-in-select label {
+  margin-bottom: 6px;
+  max-width: 90%; }
 
 .explanation {
   background: #e4edf8;
