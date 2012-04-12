@@ -5,7 +5,7 @@ class WepayCheckoutRecordObserver < ActiveRecord::Observer
     puts "UPDATING WEPAY RECORD #{wcr.id}: #{wcr.state} #{wcr.reference_id}"
 
     payment = Payment.find_or_create_by_wepay_checkout_record_id(wcr.id)
-    if wcr.state == 'authorized'
+    if wcr.state == 'authorized' || wcr.state == 'approved'
       payment.user_id, payment.company_id = wcr.reference_id.split('|').map(&:to_i)
       payment.currency = wcr.currency
       payment.amount_paid = wcr.amount.to_s('F')

@@ -1,6 +1,7 @@
 class SiteManagerController < ApplicationController
   include WepayRails::Payments
   require 'couch'
+  require 'SecureRandom'
 
   before_filter :authenticate_user!
   before_filter :ensure_user_owns_company,
@@ -147,12 +148,14 @@ class SiteManagerController < ApplicationController
 
   def upgrade
     months = params[:months].to_i
-    return 'Bad request' if (months <= 0 || months > 12) && !params[:recurring]
+    months = 1 if params[:recur]
+    return 'Bad request' if (months <= 0 || months > 12)
 
     if params[:id] && (@site = Company.find_by_id params[:id])
 
       @time = "#{months} months"
       @time = "1 year" if months == 12
+      @time = "monthly" if params[:recur]
       user = current_user
 
       checkout_params = {
@@ -160,9 +163,17 @@ class SiteManagerController < ApplicationController
         :short_description => "YoMobi - [#{@site.db_name}]: Professional Site Payment (#{@time})",
         :long_description => "YoMobi - #{@site.url_and_name}: Professional Site Payment (#{@time})",
         :mode => 'iframe',
-        :reference_id => "#{user.id}|#{@site.id}",
+        :reference_id => "#{user.id}|#{@site.id}|#{SecureRandom.uuid}",
         :prefill_info => { email:user.email, name:"#{user.first_name} #{user.last_name}" },
       }
+      if params[:recur]
+        checkout_params[:period] = 'monthly'
+        checkout_params[:end_time] = (DateTime.now + 1.year).to_time.to_i
+        checkout_params[:auto_recur] = true
+        checkout_params[:api_url] = '/preapproval/create'
+      else
+        checkout_params[:type] = 'SERVICE'
+      end
       @checkout = init_checkout(checkout_params)
       render :layout => false
     else

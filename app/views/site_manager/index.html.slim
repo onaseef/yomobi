@@ -106,6 +106,10 @@
         h3 One Year - $144
         input type="hidden" name="months" value="12"
         input type="submit" value="One Year"
+      form action="{{ actionPath }}" method="POST" data-remote="true"
+        h3 Autopay Monthly - $12/month
+        input type="hidden" name="recur" value="true"
+        input type="submit" value="Monthly"
       .error.hide
 
   script.merchant-account(type="text/template")

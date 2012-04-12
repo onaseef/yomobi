@@ -173,11 +173,21 @@ ActiveRecord::Schema.define(:version => 20120329214634) do
     t.decimal  "tax"
     t.string   "security_token"
     t.string   "access_token"
+    t.string   "mode"
+    t.integer  "create_time"
+    t.integer  "preapproval_id"
+    t.string   "preapproval_uri"
+    t.string   "period"
+    t.boolean  "auto_recur",        :default => false
+    t.integer  "start_time"
+    t.integer  "end_time"
+    t.integer  "frequency"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "wepay_checkout_records", ["checkout_id"], :name => "index_wepay_checkout_records_on_checkout_id"
+  add_index "wepay_checkout_records", ["preapproval_id"], :name => "index_wepay_checkout_records_on_preapproval_id"
 
   create_table "wphotos", :force => true do |t|
     t.string   "wid"

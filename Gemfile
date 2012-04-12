@@ -22,6 +22,7 @@ gem 'validates_as_email_address'
 gem 'aritcaptcha', :git => 'https://github.com/mindeavor/aritcaptcha.git'
 
 gem 'wepay-rails', :git => 'https://github.com/mindeavor/wepay-rails'
+# gem 'wepay-rails', :path => '/Users/tapwater/p/src/wepay-rails'
 gem 'money'
 gem 'newrelic_rpm', '~> 3.3'
 
