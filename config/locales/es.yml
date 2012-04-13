@@ -309,7 +309,7 @@ es:
       resend_confirmation: "Re-enviar Email de confirmación"
       save_and_continue: "Guardar y Continuar"
       skip_this_step: "Saltar esta etapa"
-      upload: "Subir a servidor"
+      upload: "Subir"
 
     confirm:
       title: "Confirma tu Cuenta"
@@ -342,10 +342,15 @@ es:
     final:
       title: "¡Felicidades!"
       site_online: "Has creado con éxito tu sitio móvil y ya se encuentra en línea!"
+      site_url_header: "URL del Sitio Móvil"
       site_url: "Puedes ver tu nuevo sitio móvil desde tu smart phone o tablet al dirigir tu navegación hacia "
+      auto_redirect_header: "Redirigir Automáticamente"
       auto_redirect: 'Si tienes un sitio web tradicional, <a target="ym-help" href="http://help.yomobi.com/Account/MobileRedirectScript"> entérate de cómo re-dirigir de manera automática a tus visitantes móviles desde tu sitio web tradicional hacia tu sitio móvil</a>.'
+      easy_update_header: "Actualización de sitio con facilidad"
       easy_update: "Es muy fácil actualizar tu sitio móvil. Todos los cambios que realices son automáticamente publicados, de modo que tu sitio siempre se encuentre actualizado."
+      help_header: "¿Necesita ayuda?"
       help: 'Para mayor información, <a target="ym-help" href="http://help.yomobi.com">favor de visitar nuestras páginas de ayuda.</a>' 
+      customize_header: "Comenzar Personalización"
       customize: "Para iniciar la personalización de tu sitio, favor de hacer click en el botón de abajo."
 
   navigation_bar:
