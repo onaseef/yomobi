@@ -127,7 +127,8 @@ body {
 
 .signin-bg {
 	float: right;
-	height: 65px;
+	min-height: 65px;
+	max-height: 75px;
   	background: #ff9f02;
   	border-radius: 4px;
   	-moz-border-radius: 10px;
