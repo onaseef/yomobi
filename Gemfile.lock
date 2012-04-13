@@ -15,6 +15,13 @@ GIT
     aritcaptcha (2.0.5)
 
 GIT
+  remote: https://github.com/mindeavor/wepay-rails
+  revision: 88fab525bd762c733f58e15537462e953fe48fd7
+  specs:
+    wepay-rails (2.2.5)
+      httparty
+
+GIT
   remote: https://github.com/thoughtbot/paperclip
   revision: 7db7ce8eea292605be29d99d6a7a3d39ac833361
   tag: v2.3.14
@@ -24,12 +31,6 @@ GIT
       activesupport (>= 2.3.2)
       cocaine (>= 0.0.2)
       mime-types
-
-PATH
-  remote: /Users/tapwater/p/src/wepay-rails
-  specs:
-    wepay-rails (2.2.5)
-      httparty
 
 GEM
   remote: http://rubygems.org/

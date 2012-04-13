@@ -4,7 +4,7 @@ class CreatePayments < ActiveRecord::Migration
       t.references :user
       t.references :company
       t.references :wepay_checkout_record
-      t.date :expires
+      t.date :expire_date
       t.boolean :is_valid,   :default => true
 
       t.integer :cents, :default => 0, :null => false

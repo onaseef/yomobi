@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(:version => 20120329214634) do
     t.integer  "user_id"
     t.integer  "company_id"
     t.integer  "wepay_checkout_record_id"
-    t.date     "expires"
+    t.date     "expire_date"
     t.boolean  "is_valid",                 :default => true
     t.integer  "cents",                    :default => 0,    :null => false
     t.string   "currency"

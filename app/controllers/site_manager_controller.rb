@@ -163,7 +163,7 @@ class SiteManagerController < ApplicationController
         :short_description => "YoMobi - [#{@site.db_name}]: Professional Site Payment (#{@time})",
         :long_description => "YoMobi - #{@site.url_and_name}: Professional Site Payment (#{@time})",
         :mode => 'iframe',
-        :reference_id => "#{user.id}|#{@site.id}|#{SecureRandom.uuid}",
+        :reference_id => "#{user.id}|#{@site.id}|#{months}|#{SecureRandom.uuid}",
         :prefill_info => { email:user.email, name:"#{user.first_name} #{user.last_name}" },
       }
       if params[:recur]

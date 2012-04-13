@@ -9,4 +9,10 @@ class Payment < ActiveRecord::Base
     :constructor => Proc.new { |cents, currency| Money.new(cents || 0, currency || Money.default_currency) },
     :converter => Proc.new { |value| value.respond_to?(:to_money) ? value.to_money : raise(ArgumentError, "Can't convert #{value.class} to Money") }
 
+
+  def self.most_recent_for_company(company_or_id)
+    cid = company_or_id.is_a?(Company) ? company_or_id.id : company_or_id
+    Payment.where(:company_id => cid).order('created_at DESC').first
+  end
+
 end

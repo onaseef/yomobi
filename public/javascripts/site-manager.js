@@ -135,7 +135,8 @@
       var extraData = {
         actionLabel: site.get('isPremium') ? 'Manage' : 'Upgrade',
         grade: site.get('isPremium') ? 'Professional' : 'Standard',
-        actionPath: g.upgradeSitePath(site.toJSON())
+        actionPath: g.upgradeSitePath(site.toJSON()),
+        expireDate: site.get('expireDate')
       };
       var templateData = _.extend(site.toJSON(), extraData);
       $(this.el).html( this.template(templateData) );

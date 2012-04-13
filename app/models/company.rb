@@ -115,6 +115,11 @@ class Company < ActiveRecord::Base
     self.premium == true
   end
 
+  def expire_date
+    last_payment = Payment.most_recent_for_company(self)
+    last_payment && last_payment.expire_date
+  end
+
   def as_json(options=nil)
     {
       id: self.id,
@@ -124,6 +129,7 @@ class Company < ActiveRecord::Base
       owner: self.user,
       admins: self.admins,
       isPremium: self.premium,
+      expireDate: self.expire_date.to_s,
     }
   end
 

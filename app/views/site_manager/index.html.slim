@@ -94,7 +94,12 @@
     .content-header
       .action {{ actionLabel }}
       h3.title Site Grade
-      .status {{ grade }}
+      .status
+        | <% if (isPremium) { %>
+        | {{ grade }} (expires {{expireDate}})
+        | <% } else { %>
+        | {{ grade }}
+        | <% } %>
       .clearfix
     .content-body
       h3 Select a thing:
