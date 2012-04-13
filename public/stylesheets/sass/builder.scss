@@ -436,6 +436,10 @@ div.wysiwyg ul.toolbar {
   label {
     white-space: normal;
   }
+  input[name=hideWidget] {
+    margin-top: 5px;
+    margin-right: -2px;
+  }
 }
 
 .wphoto-wrap {

@@ -402,6 +402,9 @@ div.wysiwyg ul.toolbar {
 
 .widget-editor .edit-area label {
   white-space: normal; }
+.widget-editor .edit-area input[name=hideWidget] {
+  margin-top: 5px;
+  margin-right: -2px; }
 
 .wphoto-wrap {
   width: 100%;
