@@ -127,7 +127,7 @@ body {
 
 .signin-bg {
 	float: right;
-	height: 65px;
+	min-height: 65px;
   	background: #ff9f02;
   	border-radius: 4px;
   	-moz-border-radius: 10px;
@@ -183,6 +183,7 @@ td.signin-text {
 	border: none;
 	float:left;
 	line-height:12px;
+	padding: 0px 6px;
 	margin: -1px 6px 0px 0px;
 }
 .menumain {
