@@ -24,13 +24,17 @@
   <% end %>
 }
 
-#top-bar .tab-bar {
+#top-bar .tab-bar, .mobile-footer, .ad-bar {
   <% if @company.settings.tab_bar_color %>
   background: <%= @company.settings.tab_bar_color %>;
   <% end %>
+
+  <% if @company.settings.tab_bar_text_color %>
+  border-color: <%= @company.settings.tab_bar_text_color %> !important;
+  <% end %>
 }
 
-#top-bar .tab-bar td, #top-bar .tab-bar td a {
+#top-bar .tab-bar td, #top-bar .tab-bar td a, .mobile-footer {
   <% if @company.settings.tab_bar_text_color %>
   color: <%= @company.settings.tab_bar_text_color %>;
   <% end %>

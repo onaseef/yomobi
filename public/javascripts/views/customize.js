@@ -5,10 +5,12 @@
     tab_bar_color: function (color) {
       color || (color = g.settings.tab_bar_color || util.defaultTabBarBackgroundColor);
       $('#top-bar .tab-bar').css({ background:color });
+      $('#canvas .mobile-footer').css({ background:color });
     },
     tab_bar_text_color: function (color) {
       color || (color = g.settings.tab_bar_text_color || util.defaultTabBarTextColor);
       $('#top-bar .tab-bar td, #top-bar .tab-bar td a').css({ color:color });
+      $('#canvas .mobile-footer').css({ color:color });
     },
     icon_text_color: function (color) {
       color || (color = g.settings.icon_text_color || util.defaultIconTextColor);
