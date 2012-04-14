@@ -4,6 +4,7 @@
 window.g = {
   i18n: <%=raw (t("javascript_builder").merge :wnames => t("widgets.names")).to_json %>,
   i18n_locale: "<%= I18n.locale.to_s %>",
+  settings: <%=raw @company.settings.to_json %>,
   width: 320,
   height: 480,
   topBarMaxHeight: 127,

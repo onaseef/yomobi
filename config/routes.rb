@@ -66,6 +66,7 @@ Yomobi::Application.routes.draw do
   post 'builder/email'    => 'widgets/informed#send_email'
 
   post 'builder/adv-settings'   => 'builder#change_advanced_settings'
+  post 'builder/customize'      => 'builder#customize'
 
   put    'widgets/:id' => 'builder#update_widget'
   post   'widgets'     => 'builder#new_widget'

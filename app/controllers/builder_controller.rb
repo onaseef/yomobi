@@ -117,6 +117,18 @@ class BuilderController < ApplicationController
     end
   end
 
+  def customize
+    settings = current_user.company.settings
+    settings.tab_bar_color = params[:tab_bar_color]
+    settings.tab_bar_text_color = params[:tab_bar_text_color]
+    settings.icon_font_family = params[:icon_font_family]
+    settings.icon_text_color = params[:icon_text_color]
+    settings.footer_color = params[:footer_color]
+    settings.footer_text_color = params[:footer_text_color]
+    settings.save
+    success(settings)
+  end
+
   def upload_wphoto
     params[:file].content_type = MIME::Types.type_for(params[:file].original_filename).to_s
 
