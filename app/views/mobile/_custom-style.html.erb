@@ -24,4 +24,26 @@
   <% end %>
 }
 
+#top-bar .tab-bar {
+  <% if @company.settings.tab_bar_color %>
+  background: <%= @company.settings.tab_bar_color %>;
+  <% end %>
+}
+
+#top-bar .tab-bar td, #top-bar .tab-bar td a {
+  <% if @company.settings.tab_bar_text_color %>
+  color: <%= @company.settings.tab_bar_text_color %>;
+  <% end %>
+}
+
+#canvas .home-icon .title {
+  <% if @company.settings.icon_font_family %>
+  font-family: <%= @company.settings.icon_font_family %>;
+  <% end %>
+
+  <% if @company.settings.icon_text_color %>
+  color: <%= @company.settings.icon_text_color %>;
+  <% end %>
+}
+
 </style>
