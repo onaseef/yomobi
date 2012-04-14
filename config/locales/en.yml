@@ -381,6 +381,7 @@ en:
       general_settings: "General Settings"
       advanced_settings: "Advanced Settings"
       edit_tab_bar: "Edit Mobile Tab Bar"
+      customize: "Advanced Customization"
       mobile_site_builder: "Mobile Site Builder"
 
     email_panel:
@@ -430,6 +431,10 @@ en:
       redirect_code_help: "To automatically redirect visitors to your mobile site when they visit your desktop site from a mobile phone, copy this code snippet and paste it into your desktop site’s home page, just before the closing &lt;head&gt; tag. <b>Click ? more help.</b>"
       keywords: "Enter keywords that describe your website, separated by commas:"
       save: "Save Settings"
+
+    customize:
+      title: "Advanced Customization"
+      explanation: "<p>Customize the look and feel of your site.</p>"
 
     edit_tab_bar:
       explanation: "Select the pages you want to be most visible to your mobile visitors."

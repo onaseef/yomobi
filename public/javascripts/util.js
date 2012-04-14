@@ -11,7 +11,7 @@ var util = {
   linkTypeURL:     "url",
   linkTypePhone:   "phone",
   linkTypeAddress: "address",
-  linkTypeEmail:   "email", 
+  linkTypeEmail:   "email",
   linkTypeUnknown: "unknown",
 
   linkURLProtocol:     "http://",
@@ -20,6 +20,10 @@ var util = {
   linkEmailProtocol:   "mailto:",
   defaultHeaderBackgroundColor:  "#2a426a",
   defaultHeaderTextColor: "#ffffff",
+  defaultTabBarBackgroundColor:  "#C4CDE0",
+  defaultTabBarTextColor: "#3B59A0",
+  defaultFontFamily: "Arial, Helvetica, sans-serif",
+  defaultIconTextColor: "#000",
 
   // namespace for shared widget functions
   widget: {},

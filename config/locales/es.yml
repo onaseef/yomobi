@@ -382,6 +382,7 @@ es:
       general_settings: "Opciones Generales"
       advanced_settings: "Opciones Avanzadas"
       edit_tab_bar: "Editar Barra Móvil de funciones"
+      customize: "@@Advanced Customization"
       mobile_site_builder: "Constructor de Sitio Móvil"
 
     email_panel:

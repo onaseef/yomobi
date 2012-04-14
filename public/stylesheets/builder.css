@@ -352,53 +352,70 @@ div.wysiwyg ul.toolbar {
   margin: 10px 0; }
 
 #builder .edit-area.edit-settings,
-#builder .edit-area.edit-advanced-settings {
+#builder .edit-area.edit-advanced-settings,
+#builder .edit-area.customize {
   padding-top: 8px; }
   #builder .edit-area.edit-settings .box,
-  #builder .edit-area.edit-advanced-settings .box {
+  #builder .edit-area.edit-advanced-settings .box,
+  #builder .edit-area.customize .box {
     margin: 10px 0px 0px 0px;
     border: 2px solid #d0d7e3;
     padding: 8px; }
     #builder .edit-area.edit-settings .box input[type=text],
-    #builder .edit-area.edit-advanced-settings .box input[type=text] {
+    #builder .edit-area.edit-advanced-settings .box input[type=text],
+    #builder .edit-area.customize .box input[type=text] {
       width: 274px;
       margin-bottom: 5px; }
     #builder .edit-area.edit-settings .box textarea,
-    #builder .edit-area.edit-advanced-settings .box textarea {
+    #builder .edit-area.edit-advanced-settings .box textarea,
+    #builder .edit-area.customize .box textarea {
       width: 326px;
       margin: 0; }
   #builder .edit-area.edit-settings .divider,
-  #builder .edit-area.edit-advanced-settings .divider {
+  #builder .edit-area.edit-advanced-settings .divider,
+  #builder .edit-area.customize .divider {
     border-color: #d0d7e3;
     margin: 5px 0px; }
   #builder .edit-area.edit-settings form .action-bar,
-  #builder .edit-area.edit-advanced-settings form .action-bar {
+  #builder .edit-area.edit-advanced-settings form .action-bar,
+  #builder .edit-area.customize form .action-bar {
     border-top: 2px solid #d0d7e3;
     padding-right: 0;
     padding-top: 8px;
     margin-top: 15px; }
   #builder .edit-area.edit-settings .site-settings input[type=text], #builder .edit-area.edit-settings .site-settings textarea,
   #builder .edit-area.edit-advanced-settings .site-settings input[type=text],
-  #builder .edit-area.edit-advanced-settings .site-settings textarea {
+  #builder .edit-area.edit-advanced-settings .site-settings textarea,
+  #builder .edit-area.customize .site-settings input[type=text],
+  #builder .edit-area.customize .site-settings textarea {
     width: 240px; }
   #builder .edit-area.edit-settings .site-settings textarea,
-  #builder .edit-area.edit-advanced-settings .site-settings textarea {
+  #builder .edit-area.edit-advanced-settings .site-settings textarea,
+  #builder .edit-area.customize .site-settings textarea {
     height: 4em; }
   #builder .edit-area.edit-settings select,
-  #builder .edit-area.edit-advanced-settings select {
+  #builder .edit-area.edit-advanced-settings select,
+  #builder .edit-area.customize select {
     width: 245px; }
   #builder .edit-area.edit-settings .top,
-  #builder .edit-area.edit-advanced-settings .top {
+  #builder .edit-area.edit-advanced-settings .top,
+  #builder .edit-area.customize .top {
     vertical-align: top; }
   #builder .edit-area.edit-settings .logo,
-  #builder .edit-area.edit-advanced-settings .logo {
+  #builder .edit-area.edit-advanced-settings .logo,
+  #builder .edit-area.customize .logo {
     margin: 3px 0px; }
   #builder .edit-area.edit-settings .site-name,
-  #builder .edit-area.edit-advanced-settings .site-name {
+  #builder .edit-area.edit-advanced-settings .site-name,
+  #builder .edit-area.customize .site-name {
     padding-bottom: 10px; }
   #builder .edit-area.edit-settings .new-picture,
-  #builder .edit-area.edit-advanced-settings .new-picture {
+  #builder .edit-area.edit-advanced-settings .new-picture,
+  #builder .edit-area.customize .new-picture {
     width: 100%; }
+
+#builder .edit-area.customize .subpanels > * {
+  display: none; }
 
 .widget-editor .edit-area label {
   white-space: normal; }

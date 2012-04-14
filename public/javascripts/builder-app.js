@@ -139,7 +139,8 @@
     routes: {
       'edit-tab-bar':  'editTabBar',
       'edit-settings': 'editSettings',
-      'edit-advanced-settings': 'editAdvancedSettings'
+      'edit-advanced-settings': 'editAdvancedSettings',
+      'customize': 'customize'
     },
     editTabBar: function () {
       bapp.startEditingPanel('tabBar');
@@ -149,6 +150,9 @@
     },
     editAdvancedSettings: function () {
       bapp.startEditingPanel('advancedSettings');
+    },
+    customize: function () {
+      bapp.startEditingPanel('customize');
     }
   });
 
@@ -162,6 +166,7 @@
     tabBarEditor: new window.EditTabBarView(),
     settingsEditor: new window.EditSettingsView(),
     advancedSettingsEditor: new window.EditAdvancedSettingsView(),
+    customizeEditor: new window.CustomizeView(),
 
     widgetsAvailable: new Widgets(),
     

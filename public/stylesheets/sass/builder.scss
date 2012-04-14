@@ -397,7 +397,8 @@ div.wysiwyg ul.toolbar {
   margin: 10px 0; }
 
 #builder .edit-area.edit-settings, 
-#builder .edit-area.edit-advanced-settings {
+#builder .edit-area.edit-advanced-settings,
+#builder .edit-area.customize {
   padding-top: 8px;
   .box {
     margin: 10px 0px 0px 0px;
@@ -429,6 +430,10 @@ div.wysiwyg ul.toolbar {
   .logo { margin: 3px 0px; }
   .site-name { padding-bottom: 10px; }
   .new-picture { width: 100%; }
+}
+
+#builder .edit-area.customize {
+  .subpanels > * { display: none }
 }
 
 
