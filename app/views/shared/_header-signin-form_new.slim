@@ -6,13 +6,13 @@
           =t'sign_in.email'
         td.signin-text 
           =t'sign_in.password'
+        td rowspan=3
+          input.signin-button type="submit" value=t'sign_in.sign_in' tabindex="3"
       tr
         td
           = text_field_tag 'user[email]', '', :class => "signin-field", :tabindex => 1
         td
           = password_field_tag 'user[password]', '', :class => "signin-field", :tabindex => 2
-        td
-          input.pretty-button.signin-button type="submit" value=t'sign_in.sign_in' tabindex="3"
       tr
         td.signin-lighttext
           .checkbox.floatleft
