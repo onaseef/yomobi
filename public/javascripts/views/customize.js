@@ -109,6 +109,7 @@
     onUpload: function (res) {
       if (res.banner) {
         g.banner = res.banner;
+        mapp.render();
         this.startEditing( this.$('[name=area_select]').val() );
       }
       util.releaseUI();
@@ -117,6 +118,7 @@
     removeBanner: function (e) {
       e.preventDefault();
       g.banner = undefined;
+      mapp.render();
       this.startEditing( this.$('[name=area_select]').val() );
       $.post(g.bannerUploadPath, { destroy:1 });
     },
