@@ -435,6 +435,8 @@ en:
     customize:
       title: "Advanced Customization"
       explanation: "<p>Customize the look and feel of your site.</p>"
+      banner: "Banner"
+      banner_help: "<p>A banner will override all other header settings.</p>"
 
     edit_tab_bar:
       explanation: "Select the pages you want to be most visible to your mobile visitors."

@@ -416,6 +416,8 @@ div.wysiwyg ul.toolbar {
 
 #builder .edit-area.customize .subpanels > * {
   display: none; }
+#builder .edit-area.customize img.banner.default {
+  border: 1px dashed; }
 
 .widget-editor .edit-area label {
   white-space: normal; }

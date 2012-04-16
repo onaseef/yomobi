@@ -13,6 +13,7 @@ window.g = {
   company: "<%=escape_javascript @company.name %>",
   slogan: "<%=escape_javascript @company.settings.slogan %>",
   logo: "<%=escape_javascript @company.logo.url(:mobile) %>",
+  banner: "<%=escape_javascript @company.banner.url(:mobile) %>",
   id_counter: <%=@company.id_counter %>,
   userEmails: {
     yomobi: "<%=escape_javascript @company.user.email %>",
@@ -27,6 +28,7 @@ window.g = {
   openEditSettings: <%= @open_edit_settings || false %>,
 
   wphotoUploadPath: "<%= wphoto_upload_path %>",
+  bannerUploadPath: "<%= banner_upload_path %>",
 
 <%- if @is_builder %>
   <% arr = [] %>

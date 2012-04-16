@@ -20,7 +20,7 @@ class Company < ActiveRecord::Base
       :mobile => "100x75>",
       :original => "1x1#"
     },
-    :default_url => 'http://www.yomobi.com/images/default-logo_:style.png',
+    :default_url => '/images/default-logo_:style.png',
     :storage => :s3,
     :bucket => Rails.application.config.logo_s3_bucket,
     :path => 'logos/:company_:style',
@@ -28,6 +28,21 @@ class Company < ActiveRecord::Base
       :access_key_id => ENV['S3_KEY'],
       :secret_access_key => ENV['S3_SECRET']
     }
+
+  has_attached_file :banner,
+    :styles => {
+      :mobile => "320x320>",
+      :original => "1x1#"
+    },
+    :default_url => '',
+    :storage => :s3,
+    :bucket => Rails.application.config.logo_s3_bucket,
+    :path => 'banners/:company_:style',
+    :s3_credentials => {
+      :access_key_id => ENV['S3_KEY'],
+      :secret_access_key => ENV['S3_SECRET']
+    }
+
 
   # If this site is a replication of another, then this attribute
   # should be set to the name of the couch database to replicate.

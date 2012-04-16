@@ -313,31 +313,52 @@ script.customize(type="text/template")
     form.subpanels
       .head
         h3 Customizing Header
-        b Backgound Color
+        label Backgound Color
         .color-picker data-color="{{ header_color }}" data-target="header_color"
           div style="background-color:{{ header_color }}"
         input type="hidden" name="header_color" value="{{ header_color }}"
         br
-        b Text Color
+        label Text Color
         .color-picker data-color="{{ header_text_color }}" data-target="header_text_color"
           div style="background-color:{{ header_text_color }}"
         input type="hidden" name="header_text_color" value="{{ header_text_color }}"
+        br
+        table.banner.wphoto-wrap
+          tbody
+            tr
+              td colspan="2"
+                label
+                  =t'builder.customize.banner'
+                  a href="http://help.yomobi.com/Mobile/ChangeSiteBanner" target="ymhelp"
+                    img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.customize.banner_help')
+                | <% if (banner_src) { %>
+                img.banner src="{{ banner_src }}"
+                | <% } %>
+            tr
+              td
+                .selected-file.lfloat &nbsp;
+                button name="pick_files" =t'dialog.add_new.browse'
+                .error
+              | <% if (banner_src) { %>
+              td
+                a.remove-banner-link href="#" =t'dialog.add_new.remove_picture'
+              | <% } %>
 
       .tab_bar
         h3 Customizing Tab Bar & Footer
-        b Backgound Color
+        label Backgound Color
         .color-picker data-color="{{ tab_bar_color }}" data-target="tab_bar_color"
           div style="background-color:{{ tab_bar_color }}"
         input type="hidden" name="tab_bar_color" value="{{ tab_bar_color }}"
         br
-        b Text Color
+        label Text Color
         .color-picker data-color="{{ tab_bar_text_color }}" data-target="tab_bar_text_color"
           div style="background-color:{{ tab_bar_text_color }}"
         input type="hidden" name="tab_bar_text_color" value="{{ tab_bar_text_color }}"
 
       .widget_icons
         h3 Customizing Widget Icons
-        b Icon Font
+        label Icon Font
         br
         select name="icon_font_family"
           option value="Arial, Helvetica, sans-serif" Arial
@@ -346,7 +367,7 @@ script.customize(type="text/template")
           option value="Times New Roman, Times, serif" Times New Roman
           option value="Verdana, Geneva, sans-serif" Verdana
         br
-        b Icon Text Color
+        label Icon Text Color
         .color-picker data-color="{{ icon_text_color }}" data-target="icon_text_color"
           div style="background-color:{{ icon_text_color }}"
         input type="hidden" name="icon_text_color" value="{{ icon_text_color }}"

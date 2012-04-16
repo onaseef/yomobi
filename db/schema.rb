@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120414210711) do
+ActiveRecord::Schema.define(:version => 20120416151330) do
 
   create_table "carriers", :force => true do |t|
     t.string   "name"
@@ -35,11 +35,15 @@ ActiveRecord::Schema.define(:version => 20120414210711) do
     t.string   "informed_email"
     t.string   "leave_msg_email"
     t.string   "booking_email"
-    t.text     "keywords",          :limit => 255
+    t.text     "keywords",            :limit => 255
     t.string   "call_back_email"
     t.integer  "company_type_id"
-    t.integer  "id_counter",                       :default => 1,     :null => false
-    t.boolean  "premium",                          :default => false
+    t.integer  "id_counter",                         :default => 1,     :null => false
+    t.boolean  "premium",                            :default => false
+    t.string   "banner_file_name"
+    t.string   "banner_content_type"
+    t.integer  "banner_file_size"
+    t.datetime "banner_updated_at"
   end
 
   add_index "companies", ["db_name"], :name => "index_companies_on_db_name", :unique => true
@@ -91,6 +95,20 @@ ActiveRecord::Schema.define(:version => 20120414210711) do
     t.datetime "updated_at"
   end
 
+  create_table "payments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "company_id"
+    t.integer  "wepay_checkout_record_id"
+    t.date     "expire_date"
+    t.boolean  "is_valid",                 :default => true
+    t.integer  "cents",                    :default => 0,    :null => false
+    t.string   "currency"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "payments", ["wepay_checkout_record_id"], :name => "index_payments_on_wepay_checkout_record_id", :unique => true
+
   create_table "signup_keys", :force => true do |t|
     t.integer  "company_id"
     t.string   "key"
@@ -138,6 +156,48 @@ ActiveRecord::Schema.define(:version => 20120414210711) do
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "wepay_checkout_records", :force => true do |t|
+    t.integer  "checkout_id"
+    t.integer  "account_id"
+    t.string   "state"
+    t.string   "short_description"
+    t.text     "long_description"
+    t.string   "currency"
+    t.decimal  "amount"
+    t.decimal  "app_fee"
+    t.string   "fee_payer"
+    t.decimal  "gross"
+    t.decimal  "fee"
+    t.string   "reference_id"
+    t.text     "redirect_uri"
+    t.text     "callback_uri"
+    t.text     "checkout_uri"
+    t.string   "payer_email"
+    t.string   "payer_name"
+    t.text     "cancel_reason"
+    t.text     "refund_reason"
+    t.boolean  "auto_capture"
+    t.boolean  "require_shipping"
+    t.text     "shipping_address"
+    t.decimal  "tax"
+    t.string   "security_token"
+    t.string   "access_token"
+    t.string   "mode"
+    t.integer  "create_time"
+    t.integer  "preapproval_id"
+    t.string   "preapproval_uri"
+    t.string   "period"
+    t.boolean  "auto_recur",        :default => false
+    t.integer  "start_time"
+    t.integer  "end_time"
+    t.integer  "frequency"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "wepay_checkout_records", ["checkout_id"], :name => "index_wepay_checkout_records_on_checkout_id"
+  add_index "wepay_checkout_records", ["preapproval_id"], :name => "index_wepay_checkout_records_on_preapproval_id"
 
   create_table "wphotos", :force => true do |t|
     t.string   "wid"

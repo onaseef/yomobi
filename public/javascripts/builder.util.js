@@ -435,7 +435,7 @@ var builderUtil = {
 
     uploader = this._uploaders[options.instanceId] = new plupload.Uploader(_.extend({
       runtimes: 'html5,flash,html4',
-      url: g.wphotoUploadPath,
+      url: options.uploadPath || g.wphotoUploadPath,
       max_file_size: '10mb',
       multiple_queues: false,
       multi_selection: false,

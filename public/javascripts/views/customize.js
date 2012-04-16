@@ -15,8 +15,8 @@
     },
     tab_bar_color: function (color) {
       color || (color = getSetting('tab_bar_color'));
-      $('#top-bar .tab-bar').css({ background:color });
-      $('#canvas .mobile-footer').css({ background:color });
+      $('#top-bar .tab-bar').css({ background:color, borderColor:color });
+      $('#canvas .mobile-footer').css({ background:color, borderColor:color });
     },
     tab_bar_text_color: function (color) {
       color || (color = getSetting('tab_bar_text_color'));
@@ -27,6 +27,23 @@
       color || (color = getSetting('icon_text_color'));
       $('#canvas .home-icon .title').css({ color:color });
     }
+  };
+
+  var initDialogUploader = function (type, $el, onDone) {
+    // configure uploader; callback will be configured later in makeSaveFunc()
+
+    // This delay is needed because the flash object is present for a
+    // split second, just enough time for a double click to catch it (bad)
+    setTimeout(function () {
+      util.initUploader( $el.find('.' +type+ ' .wphoto-wrap'), {
+        uploadPath: g.bannerUploadPath,
+        instanceId: 'customize',
+        auto: true,
+        emptyQueue: true,
+        uploadType: type,
+        onDone: onDone
+      });
+    }, 300);
   };
 
 
@@ -42,14 +59,21 @@
       'click input[type=file]':           'enableUploadButton',
       'change [name=icon_font_family]':   'updateIconFont',
       'click .accept-btn':                'saveChanges',
-      'click .cancel-btn':                'discardChanges'
+      'click .cancel-btn':                'discardChanges',
+      'click .remove-banner-link':        'removeBanner'
+    },
+
+    initialize: function () {
+      _.bindAll(this, 'onUpload');
     },
 
     startEditing: function (targetArea) {
       util.log('Editing Settings');
 
       var extraData = {
-        wnames: _.keys(mapp.metaDoc.worder)
+        wnames: _.keys(mapp.metaDoc.worder),
+        banner_src: g.banner,
+        isDefaultBanner: false
       };
       _.extend(extraData, g.settings, util.defaultSetting);
 
@@ -72,12 +96,29 @@
       targetArea || (targetArea = 'head');
       this.$('[name=area_select]').val(targetArea);
       this.$('.subpanels .' + targetArea).show();
+
+      initDialogUploader('head', this.el, this.onUpload);
     },
 
     viewArea: function (e) {
       var targetArea = $(e.target).val();
       this.$('.subpanels > *').hide();
       this.$('.subpanels .' + targetArea).show();
+    },
+
+    onUpload: function (res) {
+      if (res.banner) {
+        g.banner = res.banner;
+        this.startEditing( this.$('[name=area_select]').val() );
+      }
+      util.releaseUI();
+    },
+
+    removeBanner: function (e) {
+      e.preventDefault();
+      g.banner = undefined;
+      this.startEditing( this.$('[name=area_select]').val() );
+      $.post(g.bannerUploadPath, { destroy:1 });
     },
 
     updateIconFont: function () {

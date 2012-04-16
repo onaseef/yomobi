@@ -139,6 +139,9 @@ p {
     padding: 6px 8px;
     font-style: italic;
     line-height: 1em; }
+  .company-info img.banner {
+    width: 100%;
+    max-width: 100%; }
 
 .tab-bar {
   background: #c4cde0;

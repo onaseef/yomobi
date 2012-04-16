@@ -32,7 +32,6 @@
       // wrap in function for code reuse
       var dialogElem = util.ensureClassAncestor(this,'ui-dialog-content');
       var cb = function (data) {
-        util.log('wut', data);
         util.releaseUI();
 
         if (data.result !== 'success' && data.result !== 'noupload') {

@@ -131,6 +131,23 @@ class BuilderController < ApplicationController
     success(settings)
   end
 
+  def upload_banner
+    company = current_user.company
+
+    if params[:destroy] == "1"
+      company.update_attribute :banner, nil
+      success :banner => company.banner.url(:mobile)
+    else
+      save_success = company.update_attributes :banner => params[:file]
+
+      if save_success == false && company.errors[:logo_file_size]
+        error 'file_size_too_large'
+      elsif save_success
+        success :banner => company.banner.url(:mobile)
+      end
+    end
+  end
+
   def upload_wphoto
     params[:file].content_type = MIME::Types.type_for(params[:file].original_filename).to_s
 

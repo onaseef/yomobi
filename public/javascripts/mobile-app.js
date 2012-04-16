@@ -199,7 +199,7 @@
         logo: g.logo.match(/default-logo_mobile.png$/) ? null : g.logo
       }))
       .find('img').load(function (e,elem) {
-        g.topBarHeight = Math.max(g.topBarHeight,$('#top-bar').height());
+        g.topBarHeight = Math.max(g.topBarHeight || 0,$('#top-bar').height());
       });
 
       this.trigger('render');
@@ -369,7 +369,8 @@
 
     // overridden in builder-app.js
     resize: function (height) {
-      height = ( height || mapp.getActivePage().height() ) + g.topBarMaxHeight;
+      height = ( height || mapp.getActivePage().height() ) +
+                Math.max(g.topBarMaxHeight,g.topBarHeight) + 20;
       $('#mobile-container').height(height);
       return height;
     },
