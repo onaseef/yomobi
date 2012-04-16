@@ -699,10 +699,11 @@
       ;
       if (_.isEmpty(name) && this.addedCats.length > 0 && addAnother !== true)
         this.options.onClose && this.options.onClose();
-  		else if (_.isEmpty(name))
-  		  this.prompt({error:i18n.empty_name_error},undefined,true);
+  		else if (_.isEmpty(name)) {
+  		  this.prompt(i18n.empty_name_error,undefined,true);
+      }
       else if ( nameCompare !== origNameCompare && _.contains(existingNames,nameCompare) )
-        this.prompt({error:i18n.name_in_use_error},name,true);
+        this.prompt(i18n.name_in_use_error,name,true);
       else if (this.mode == 'add') {
         this.addNodeToStruct({
           type: this.type,
