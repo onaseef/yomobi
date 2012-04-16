@@ -55,6 +55,7 @@ Yomobi::Application.routes.draw do
   post    "sites/:id/make-default" => 'site_manager#make_default', :as => :make_default_site
   post    "sites/:id/concede"      => 'site_manager#concede', :as => :concede_site
   post    "sites/:id/upgrade"      => 'site_manager#upgrade', :as => :upgrade
+  post    "sites/:id/cancel_sub"   => 'site_manager#cancel_subscription', :as => :cancel_sub
 
   post "sites/:id/admins"           => 'site_manager#add_admin', :as => :add_admin
   post "sites/:id/admins/:admin_id/delete" => 'site_manager#remove_admin', :as => :remove_admin

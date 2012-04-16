@@ -181,6 +181,29 @@ class SiteManagerController < ApplicationController
     end
   end
 
+  def cancel_subscription
+    return error('no_site_id') unless params[:site_id].present?
+
+    company = Company.find_by_id params[:site_id]
+    return error('bad_site_id') unless company.present?
+
+    record = WepayCheckoutRecord.last_preapproval_for_company(company)
+    return error('no_subscription') unless company.present?
+
+    begin
+      cancel_preapproval record.preapproval_id
+    rescue WepayRails::Exceptions::WepayCheckoutError => e
+      if e.message =~ /already been cancelled/
+        WepayCheckoutRecord.find(record.id).update_attribute :state, 'cancelled'
+        return success :cancelSubscription => company.id
+      else
+        return error 'cancel_error'
+      end
+    else
+      return success :cancelSubscription => company.id
+    end
+  end
+
   def thanks
     render :layout => false
   end

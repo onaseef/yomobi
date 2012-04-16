@@ -19,6 +19,7 @@
       concedeSitePath: _.template( unescape("<%=raw concede_site_path '{{ id }}' %>") ),
       makeDefaultSitePath: _.template( unescape("<%=raw make_default_site_path '{{ id }}' %>") ),
       upgradeSitePath: _.template( unescape("<%=raw upgrade_path '{{ id }}' %>") ),
+      cancelSubPath: _.template( unescape("<%=raw cancel_sub_path '{{ id }}' %>") ),
 
       user_id: <%= current_user.id %>,
       defaultSite_id: <%= current_user.default_company.id %>,
@@ -95,26 +96,39 @@
       .action {{ actionLabel }}
       h3.title Site Grade
       .status
-        | <% if (isPremium) { %>
+        | <% if (isPremium && subscriptionEndDate) { %>
+        | {{ grade }} (next charge: {{expireDate}})
+        | <% } else if (isPremium) { %>
         | {{ grade }} (expires {{expireDate}})
         | <% } else { %>
         | {{ grade }}
         | <% } %>
       .clearfix
     .content-body
+      | <% if (subscriptionEndDate === 'cancelled') { %>
+      label Monthly subscription cancelled sucessfully.
+      | <% } %>
+
+      | <% if (subscriptionEndDate && subscriptionEndDate !== 'cancelled') { %>
+      form.cancel action="{{ cancelPath }}" method="POST" data-remote="true"
+        label You are on a monthly subscription until {{ subscriptionEndDate }}
+        input type="hidden" name="site_id" value="{{ id }}"
+        input type="submit" value="Cancel Subscription"
+      | <% } else { %>
       h3 Select a thing:
-      form action="{{ actionPath }}" method="POST" data-remote="true"
+      form.pay action="{{ actionPath }}" method="POST" data-remote="true"
         h3 One Month - $12
         input type="hidden" name="months" value="1"
         input type="submit" value="One Month"
-      form action="{{ actionPath }}" method="POST" data-remote="true"
+      form.pay action="{{ actionPath }}" method="POST" data-remote="true"
         h3 One Year - $144
         input type="hidden" name="months" value="12"
         input type="submit" value="One Year"
-      form action="{{ actionPath }}" method="POST" data-remote="true"
+      form.pay action="{{ actionPath }}" method="POST" data-remote="true"
         h3 Autopay Monthly - $12/month
         input type="hidden" name="recur" value="true"
         input type="submit" value="Monthly"
+      | <% } %>
       .error.hide
 
   script.merchant-account(type="text/template")

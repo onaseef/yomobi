@@ -115,9 +115,19 @@ class Company < ActiveRecord::Base
     self.premium == true
   end
 
+  def last_payment
+    @last_payment ||= Payment.most_recent_for_company(self)
+  end
+
   def expire_date
-    last_payment = Payment.most_recent_for_company(self)
-    last_payment && last_payment.expire_date
+    payment = self.last_payment
+    payment && payment.expire_date
+  end
+
+  def subscription_end_date
+    payment = self.last_payment
+    record = payment && payment.wepay_checkout_record
+    record && record.state != 'cancelled' && record.end_time
   end
 
   def as_json(options=nil)
@@ -128,8 +138,9 @@ class Company < ActiveRecord::Base
       logo: self.logo.url(:mobile),
       owner: self.user,
       admins: self.admins,
-      isPremium: self.premium,
+      isPremium: self.premium?,
       expireDate: self.expire_date.to_s,
+      subscriptionEndDate: (Time.at(self.subscription_end_date).to_date if self.subscription_end_date),
     }
   end
 

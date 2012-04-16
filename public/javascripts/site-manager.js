@@ -136,6 +136,7 @@
         actionLabel: site.get('isPremium') ? 'Manage' : 'Upgrade',
         grade: site.get('isPremium') ? 'Professional' : 'Standard',
         actionPath: g.upgradeSitePath(site.toJSON()),
+        cancelPath: g.cancelSubPath(site.toJSON()),
         expireDate: site.get('expireDate')
       };
       var templateData = _.extend(site.toJSON(), extraData);
@@ -150,11 +151,16 @@
         }
         var msg = g.i18n.error + ': ' + $.parseJSON(xhr.responseText);
         self.$('.error').text( msg ).show('pulsate', { times:3 });
-      })
-      .bind('ajax:success', function (e, data, status, xhr) {
+      });
+      this.$('form.pay').bind('ajax:success', function (e, data, status, xhr) {
         self.renderBody(data);
-      })
-      ;
+      });
+      this.$('form.cancel').bind('ajax:success', function (e, data, status, xhr) {
+        var site = sman.getSelectedSite();
+        site.set({ subscriptionEndDate:'cancelled' });
+        self.render(site);
+        self.$('.content-header').click();
+      });
     },
 
     renderBody: function (content) {
