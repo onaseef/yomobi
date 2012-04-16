@@ -53,8 +53,9 @@ html lang="en-US"
             .clearfix
       #page-container-wrapper class=@page_wrapper_class
         #page-container
-          #sidebar
-            = yield :sidebar
+          - unless @hide_sidebar
+            #sidebar
+              = yield :sidebar
           #content
             = yield
           .clearfix
