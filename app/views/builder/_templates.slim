@@ -306,10 +306,23 @@ script.customize(type="text/template")
     .explanation ==t'builder.customize.explanation'
 
     select name="area_select"
+      option value="head" Header
       option value="tab_bar" Mobile Tab Bar & Footer
       option value="widget_icons" Widget Icons
 
     form.subpanels
+      .head
+        h3 Customizing Header
+        b Backgound Color
+        .color-picker data-color="{{ header_color }}" data-target="header_color"
+          div style="background-color:{{ header_color }}"
+        input type="hidden" name="header_color" value="{{ header_color }}"
+        br
+        b Text Color
+        .color-picker data-color="{{ header_text_color }}" data-target="header_text_color"
+          div style="background-color:{{ header_text_color }}"
+        input type="hidden" name="header_text_color" value="{{ header_text_color }}"
+
       .tab_bar
         h3 Customizing Tab Bar & Footer
         b Backgound Color

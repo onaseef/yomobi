@@ -18,12 +18,15 @@ var util = {
   linkPhoneProtocol:   "tel:",
   linkAddressProtocol: "http://maps.google.com/?q=",
   linkEmailProtocol:   "mailto:",
-  defaultHeaderBackgroundColor:  "#2a426a",
-  defaultHeaderTextColor: "#ffffff",
-  defaultTabBarBackgroundColor:  "#C4CDE0",
-  defaultTabBarTextColor: "#3B59A0",
-  defaultFontFamily: "Arial, Helvetica, sans-serif",
-  defaultIconTextColor: "#000",
+
+  defaultSettings: {
+    header_color:  "#2a426a",
+    header_text_color: "#ffffff",
+    tab_bar_color:  "#C4CDE0",
+    tab_bar_text_color: "#3B59A0",
+    icon_text_color: "#000",
+    icon_font_family: "Arial, Helvetica, sans-serif"
+  },
 
   // namespace for shared widget functions
   widget: {},

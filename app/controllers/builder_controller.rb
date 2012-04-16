@@ -119,6 +119,8 @@ class BuilderController < ApplicationController
 
   def customize
     settings = current_user.company.settings
+    settings.header_color = params[:header_color]
+    settings.header_text_color = params[:header_text_color]
     settings.tab_bar_color = params[:tab_bar_color]
     settings.tab_bar_text_color = params[:tab_bar_text_color]
     settings.icon_font_family = params[:icon_font_family]
