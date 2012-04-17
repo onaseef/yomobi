@@ -15,6 +15,20 @@ class CompanySettings < ActiveRecord::Base
 
   before_validation :format_color
 
+  has_attached_file :body_bg,
+    :styles => {
+      :mobile => "320x320>",
+      :original => "1x1#"
+    },
+    :default_url => '',
+    :storage => :s3,
+    :bucket => Rails.application.config.logo_s3_bucket,
+    :path => 'body_bgs/:id_:style',
+    :s3_credentials => {
+      :access_key_id => ENV['S3_KEY'],
+      :secret_access_key => ENV['S3_SECRET']
+    }
+
   def as_json(options=nil)
     {
       slogan: self.slogan,
@@ -26,6 +40,7 @@ class CompanySettings < ActiveRecord::Base
       icon_text_color: self.icon_text_color,
       footer_color: self.footer_color,
       footer_text_color: self.footer_text_color,
+      body_bg_repeat: self.body_bg_repeat,
     }
   end
 

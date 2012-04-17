@@ -38,12 +38,12 @@
     // split second, just enough time for a double click to catch it (bad)
     setTimeout(function () {
       util.initUploader( $el.find('.' +type+ ' .wphoto-wrap'), {
-        uploadPath: g.bannerUploadPath,
-        instanceId: 'customize',
+        uploadPath: g.customizeUploadPath,
+        instanceId: 'customize_' + type,
         auto: true,
         emptyQueue: true,
-        uploadType: type,
-        onDone: onDone
+        onDone: onDone,
+        extraParams: { targetType: type }
       });
     }, 300);
   };
@@ -60,9 +60,11 @@
       'change input[type=file]':          'enableUploadButton',
       'click input[type=file]':           'enableUploadButton',
       'change [name=icon_font_family]':   'updateIconFont',
+      'change [name=body_bg_repeat]':     'updateRepeat',
       'click .accept-btn':                'saveChanges',
       'click .cancel-btn':                'discardChanges',
-      'click .remove-banner-link':        'removeBanner'
+      'click .remove-banner-link':        'removeBanner',
+      'click .remove-body_bg-link':       'removeBodyBg'
     },
 
     initialize: function () {
@@ -75,6 +77,7 @@
       var extraData = {
         wnames: _.keys(mapp.metaDoc.worder),
         banner_src: g.banner,
+        body_bg_src: g.body_bg,
         isDefaultBanner: false
       };
       _.extend(extraData, g.settings, util.defaultSetting);
@@ -83,6 +86,7 @@
         .find('.help-bubble').simpletooltip(undefined,'help').end()
         .find('input:file').keypress(function () { return false; }).end()
         .find('[name=icon_font_family]').val(extraData.icon_font_family).end()
+        .find('[name=body_bg_repeat]').val(extraData.body_bg_repeat).end()
       ;
       this.delegateEvents();
 
@@ -100,6 +104,7 @@
       this.$('.subpanels .' + targetArea).show();
 
       initDialogUploader('head', this.el, this.onUpload);
+      initDialogUploader('body_bg', this.el, this.onUpload);
     },
 
     viewArea: function (e) {
@@ -114,20 +119,44 @@
         mapp.render();
         this.startEditing( this.$('[name=area_select]').val() );
       }
+      else if (res.body_bg) {
+        g.body_bg = res.body_bg;
+        $('#canvas .page').css({
+          backgroundImage: 'url('+ g.body_bg +')',
+          backgroundRepeat: 'no-repeat'
+        });
+        this.startEditing( this.$('[name=area_select]').val() );
+      }
       util.releaseUI();
     },
 
     removeBanner: function (e) {
       e.preventDefault();
-      g.banner = undefined;
+      g.banner = '';
       mapp.render();
       this.startEditing( this.$('[name=area_select]').val() );
-      $.post(g.bannerUploadPath, { destroy:1 });
+      $.post(g.customizeUploadPath, { destroy:1, targetType:'head' });
+    },
+
+    removeBodyBg: function (e) {
+      e.preventDefault();
+      g.body_bg = '';
+      $('#canvas .page').css({
+        backgroundImage: 'none',
+        backgroundRepeat: 'none'
+      });
+      this.startEditing( this.$('[name=area_select]').val() );
+      $.post(g.customizeUploadPath, { destroy:1, targetType:'body_bg' });
     },
 
     updateIconFont: function () {
       var font = this.$('[name=icon_font_family]').val();
       $('#canvas .home-icon .title').css({ fontFamily:font });
+    },
+
+    updateRepeat: function () {
+      var repeat = this.$('[name=body_bg_repeat]').val();
+      $('#canvas .page').css({ backgroundRepeat:repeat });
     },
 
     saveChanges: function () {
@@ -149,7 +178,10 @@
       for (var area in updateColor) updateColor[area]();
       this.$('[name=icon_font_family]')
         .val( getSetting('icon_font_family') );
+      this.$('[name=body_bg_repeat]')
+        .val( getSetting('body_bg_repeat') );
       this.updateIconFont();
+      this.updateRepeat();
       this.startEditing( this.$('[name=area_select]').val() );
     },
 

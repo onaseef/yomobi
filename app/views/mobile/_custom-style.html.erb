@@ -50,4 +50,11 @@
   <% end %>
 }
 
+#canvas .page {
+  <% if @company.settings.body_bg.url(:mobile) != '' %>
+  background-image: url(<%= @company.settings.body_bg.url(:mobile) %>);
+  background-repeat: <%= @company.settings.body_bg_repeat %>;
+  <% end %>
+}
+
 </style>

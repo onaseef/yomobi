@@ -127,23 +127,39 @@ class BuilderController < ApplicationController
     settings.icon_text_color = params[:icon_text_color]
     settings.footer_color = params[:footer_color]
     settings.footer_text_color = params[:footer_text_color]
+    settings.body_bg_repeat = params[:body_bg_repeat]
     settings.save
     success(settings)
   end
 
-  def upload_banner
+  def upload_customize
     company = current_user.company
 
-    if params[:destroy] == "1"
+    if params[:destroy] == "1" && params[:targetType] == 'head'
       company.update_attribute :banner, nil
       success :banner => company.banner.url(:mobile)
-    else
+    elsif params[:destroy] == "1" && params[:targetType] == 'body_bg'
+      settings = company.settings
+      settings.update_attribute :body_bg, nil
+      success :body_bg => settings.banner.url(:mobile)
+    elsif params[:targetType] == 'head'
       save_success = company.update_attributes :banner => params[:file]
 
       if save_success == false && company.errors[:logo_file_size]
         error 'file_size_too_large'
       elsif save_success
         success :banner => company.banner.url(:mobile)
+      end
+    elsif params[:targetType] == 'body_bg'
+      settings = company.settings
+      save_success = settings.update_attributes\
+        :body_bg => params[:file],
+        :body_bg_repeat => 'no-repeat'
+
+      if save_success == false && settings.errors[:logo_file_size]
+        error 'file_size_too_large'
+      elsif save_success
+        success :body_bg => settings.body_bg.url(:mobile)
       end
     end
   end

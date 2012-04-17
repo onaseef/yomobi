@@ -67,7 +67,7 @@ Yomobi::Application.routes.draw do
 
   post 'builder/adv-settings'     => 'builder#change_advanced_settings'
   post 'builder/customize'        => 'builder#customize'
-  post 'builder/customize/banner' => 'builder#upload_banner', :as => :banner_upload
+  post 'builder/customize/upload' => 'builder#upload_customize', :as => :customize_upload
 
   put    'widgets/:id' => 'builder#update_widget'
   post   'widgets'     => 'builder#new_widget'

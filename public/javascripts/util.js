@@ -25,7 +25,8 @@ var util = {
     tab_bar_color:  "#C4CDE0",
     tab_bar_text_color: "#3B59A0",
     icon_text_color: "#000",
-    icon_font_family: "Arial, Helvetica, sans-serif"
+    icon_font_family: "Arial, Helvetica, sans-serif",
+    body_bg_repeat: "none"
   },
 
   // namespace for shared widget functions

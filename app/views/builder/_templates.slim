@@ -309,6 +309,7 @@ script.customize(type="text/template")
       option value="head" Header
       option value="tab_bar" Mobile Tab Bar & Footer
       option value="widget_icons" Widget Icons
+      option value="body_bg" Content Background
 
     form.subpanels
       .head
@@ -371,6 +372,37 @@ script.customize(type="text/template")
         .color-picker data-color="{{ icon_text_color }}" data-target="icon_text_color"
           div style="background-color:{{ icon_text_color }}"
         input type="hidden" name="icon_text_color" value="{{ icon_text_color }}"
+
+      .body_bg
+        table.body_bg.wphoto-wrap
+          tbody
+            tr
+              td colspan="2"
+                label
+                  =t'builder.customize.body_bg'
+                  a href="http://help.yomobi.com/Mobile/ChangeSiteBackground" target="ymhelp"
+                    img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.customize.body_bg_help')
+                | <% if (body_bg_src) { %>
+                img.banner src="{{ body_bg_src }}"
+                | <% } %>
+            tr
+              td
+                .selected-file.lfloat &nbsp;
+                button name="pick_files" =t'dialog.add_new.browse'
+                .error
+              | <% if (body_bg_src) { %>
+              td
+                a.remove-body_bg-link href="#" =t'dialog.add_new.remove_picture'
+              | <% } %>
+            | <% if (body_bg_src) { %>
+            tr
+              td colspan="2"
+                select name="body_bg_repeat"
+                  option value="no-repeat" Don't Repeat
+                  option value="repeat-x" Repeat Horizontally
+                  option value="repeat-y" Repeat Vertically
+                  option value="repeat" Repeat Both
+            | <% } %>
 
     br
     .action-bar

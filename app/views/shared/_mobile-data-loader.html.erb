@@ -14,6 +14,7 @@ window.g = {
   slogan: "<%=escape_javascript @company.settings.slogan %>",
   logo: "<%=escape_javascript @company.logo.url(:mobile) %>",
   banner: "<%=escape_javascript @company.banner.url(:mobile) %>",
+  body_bg: "<%=escape_javascript @company.settings.body_bg.url(:mobile) %>",
   isPreview: <%= @is_preview_mode.present? %>,
   isBuilder: <%= @is_builder.present? %>,
   isTablet: /<%= tablet_devices %>/i.test( navigator.userAgent.toLowerCase() ),
