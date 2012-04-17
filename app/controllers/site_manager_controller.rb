@@ -4,6 +4,7 @@ class SiteManagerController < ApplicationController
   require 'SecureRandom'
 
   before_filter :authenticate_user!
+  before_filter :ensure_user_has_already_setup
   before_filter :ensure_user_owns_company,
                 :only => [:add_admin, :remove_admin, :gen_signup_key,
                           :concede, :delete]
