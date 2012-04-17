@@ -44,7 +44,8 @@
     el: $('#manager-container .accordian'),
 
     events: {
-      'click .content-header':  'viewAccordianSection'
+      'click .content-header':  'viewAccordianSection',
+      'click .close-btn':       'closeAccordian'
     },
 
     initialize: function () {
@@ -70,6 +71,16 @@
       });
       var $header = util.ensureClassAncestor(e.target, 'content-header');
       $header.addClass('active').siblings('.content-body').show();
+    },
+
+    closeAccordian: function () {
+      _.each(this.sections, function (v) {
+        var body = v.$('.content-body');
+        if ( body.is(':visible') ) {
+          body.hide().removeClass('active');
+          v.render(sman.getSelectedSite());
+        }
+      })
     }
   });
 
