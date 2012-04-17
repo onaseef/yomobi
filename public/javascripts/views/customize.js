@@ -15,13 +15,15 @@
     },
     tab_bar_color: function (color) {
       color || (color = getSetting('tab_bar_color'));
-      $('#top-bar .tab-bar').css({ background:color, borderColor:color });
-      $('#canvas .mobile-footer').css({ background:color, borderColor:color });
+      $('#top-bar .tab-bar').css({ background:color});
+      $('#canvas .mobile-footer').css({ background:color });
     },
     tab_bar_text_color: function (color) {
       color || (color = getSetting('tab_bar_text_color'));
       $('#top-bar .tab-bar td, #top-bar .tab-bar td a').css({ color:color });
       $('#canvas .mobile-footer').css({ color:color });
+      $('#top-bar .tab-bar').css({ borderColor:color });
+      $('#canvas .mobile-footer').css({ borderColor:color });
     },
     icon_text_color: function (color) {
       color || (color = getSetting('icon_text_color'));
