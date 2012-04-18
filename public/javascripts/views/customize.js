@@ -41,7 +41,7 @@
     // This delay is needed because the flash object is present for a
     // split second, just enough time for a double click to catch it (bad)
     setTimeout(function () {
-      util.initUploader( $el.find('.' +type+ ' .wphoto-wrap'), {
+      util.initUploader( $el.find('.' +type+ '.wphoto-wrap'), {
         uploadPath: g.customizeUploadPath,
         instanceId: 'customize_' + type,
         auto: true,
@@ -111,7 +111,7 @@
       this.$('[name=area_select]').val(targetArea);
       this.$('.subpanels .' + targetArea).show();
 
-      initDialogUploader('head', this.el, this.onUpload);
+      initDialogUploader('banner', this.el, this.onUpload);
       initDialogUploader('body_bg', this.el, this.onUpload);
     },
 

@@ -136,14 +136,14 @@ class BuilderController < ApplicationController
   def upload_customize
     company = current_user.company
 
-    if params[:destroy] == "1" && params[:targetType] == 'head'
+    if params[:destroy] == "1" && params[:targetType] == 'banner'
       company.update_attribute :banner, nil
       success :banner => company.banner.url(:mobile)
     elsif params[:destroy] == "1" && params[:targetType] == 'body_bg'
       settings = company.settings
       settings.update_attribute :body_bg, nil
       success :body_bg => settings.banner.url(:mobile)
-    elsif params[:targetType] == 'head'
+    elsif params[:targetType] == 'banner'
       save_success = company.update_attributes :banner => params[:file]
 
       if save_success == false && company.errors[:logo_file_size]
