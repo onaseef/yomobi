@@ -1,5 +1,7 @@
 (function ($) {
 
+  var hasChanges = false;
+
   var getSetting = function (name) {
     return g.settings[name] || util.defaultSettings[name];
   };
@@ -76,7 +78,7 @@
     },
 
     startEditing: function (targetArea) {
-      util.log('Editing Settings');
+      hasChanges = false;
 
       var extraData = {
         wnames: _.keys(mapp.metaDoc.worder),
@@ -104,6 +106,7 @@
           var targetName = $(elem).data('target');
           self.el.find('[name='+targetName+']').val(color);
           updateColor[targetName](color);
+          hasChanges || (hasChanges = true);
         }
       });
 
@@ -194,6 +197,8 @@
       this.updateRepeat();
       this.startEditing( this.$('[name=area_select]').val() );
     },
+
+    hasChanges: function () { return hasChanges; },
 
     stopEditing: function () {
       this.el.html(bapp.idleTemplate());

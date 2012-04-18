@@ -63,7 +63,10 @@
       e.preventDefault();
       $(e.target).siblings('input[type=hidden]').val(1);
       this.el.find('form').submit();
-    }
+    },
+
+    hasChanges: function () { return false; },
+    discardChanges: function () {}
 
   });
 

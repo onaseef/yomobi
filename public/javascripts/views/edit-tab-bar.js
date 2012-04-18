@@ -84,7 +84,10 @@
       }) );
       this.delegateEvents();
     },
-    
+
+    hasChanges: function () { return false; },
+    discardChanges: function () {},
+
     stopEditing: function () {
       this.el.html(bapp.idleTemplate());
     }

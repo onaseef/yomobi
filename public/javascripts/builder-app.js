@@ -123,9 +123,14 @@
       $('#emulator').width(emulatorWidth);
     },
 
-    editSettings: function () { bapp.startEditingPanel('settings'); },
+    editSettings: function () {
+      if (bapp.panelHasUnsavedChanges()) return false;
+      bapp.startEditingPanel('settings');
+    },
     editTabBar:   function (e) {
       e && e.preventDefault();
+      if (bapp.panelHasUnsavedChanges()) return false;
+
       if (window.location.href.indexOf('#edit-tab-bar') === -1) {
         window.location.href = '#edit-tab-bar';
       } else {
@@ -143,15 +148,19 @@
       'customize': 'customize'
     },
     editTabBar: function () {
+      if (bapp.panelHasUnsavedChanges()) return false;
       bapp.startEditingPanel('tabBar');
     },
     editSettings: function () {
+      if (bapp.panelHasUnsavedChanges()) return false;
       bapp.startEditingPanel('settings');
     },
     editAdvancedSettings: function () {
+      if (bapp.panelHasUnsavedChanges()) return false;
       bapp.startEditingPanel('advancedSettings');
     },
     customize: function () {
+      if (bapp.panelHasUnsavedChanges()) return false;
       bapp.startEditingPanel('customize');
     }
   });
@@ -254,6 +263,7 @@
     
     homeViewWidgetClick: function (widget) {
       if(this.mode == 'emulate') return true;
+      if (bapp.panelHasUnsavedChanges()) return false;
 
       var editor = this.currentEditor;
       var isSameWidget = editor && editor.widget === widget;
@@ -428,8 +438,10 @@
         editor.stopEditing();
         delete bapp.currentEditor;
       }
+      if (bapp.panelHasUnsavedChanges()) return false;
       mapp.goHome();
-      this[panelType + 'Editor'].startEditing();
+      this.currentPanel = this[panelType + 'Editor'];
+      this.currentPanel.startEditing();
     },
 
     bindHoverTooltips: function () {
@@ -439,8 +451,17 @@
         .find('.slogan').simpletooltip(bhelp.hoverHelpText.companySlogan, 'help').end()
       ;
       $('#top-bar .tab-bar').simpletooltip(bhelp.hoverHelpText.tabBar, 'help');
+    },
+
+    panelHasUnsavedChanges: function () {
+      if (this.currentPanel && this.currentPanel.hasChanges()) {
+        var throwaway = confirm('You have unsaved changes. Discard them?');
+        throwaway && this.currentPanel.discardChanges();
+        return !throwaway;
+      }
+      return false;
     }
-    
+
   });
 
   // make stuff (dragg|dropp)able
