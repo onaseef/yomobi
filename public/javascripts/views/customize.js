@@ -28,6 +28,10 @@
     icon_text_color: function (color) {
       color || (color = getSetting('icon_text_color'));
       $('#canvas .home-icon .title').css({ color:color });
+    },
+    body_bg_color: function (color) {
+      color || (color = getSetting('body_bg_color'));
+      $('#canvas #home.page').css({ backgroundColor:color });
     }
   };
 

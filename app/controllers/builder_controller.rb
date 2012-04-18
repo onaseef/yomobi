@@ -128,6 +128,7 @@ class BuilderController < ApplicationController
     settings.footer_color = params[:footer_color]
     settings.footer_text_color = params[:footer_text_color]
     settings.body_bg_repeat = params[:body_bg_repeat]
+    settings.body_bg_color = params[:body_bg_color]
     settings.save
     success(settings)
   end

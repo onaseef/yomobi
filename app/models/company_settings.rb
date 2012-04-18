@@ -3,6 +3,7 @@ class CompanySettings < ActiveRecord::Base
 
   validates :header_color, :header_text_color,
             :tab_bar_color, :tab_bar_text_color,
+            :body_bg_color,
             :icon_text_color,
             :footer_color, :footer_text_color,
             :allow_nil => true,
@@ -41,6 +42,7 @@ class CompanySettings < ActiveRecord::Base
       footer_color: self.footer_color,
       footer_text_color: self.footer_text_color,
       body_bg_repeat: self.body_bg_repeat,
+      body_bg_color: self.body_bg_color,
     }
   end
 
@@ -48,7 +50,8 @@ class CompanySettings < ActiveRecord::Base
 
   def format_color
     [:header_color, :header_text_color, :tab_bar_color, :tab_bar_text_color,
-      :icon_text_color, :footer_color, :footer_text_color].each do |color|
+     :body_bg_color, :icon_text_color,
+     :footer_color, :footer_text_color].each do |color|
 
       send "#{color}=", nil if send(color) == ''
       next if send(color).nil?

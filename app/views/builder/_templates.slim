@@ -308,8 +308,7 @@ script.customize(type="text/template")
     select name="area_select"
       option value="head" Header
       option value="tab_bar" Mobile Tab Bar & Footer
-      option value="widget_icons" Widget Icons
-      option value="body_bg" Content Background
+      option value="home_page" Home Page
 
     form.subpanels
       .head
@@ -357,9 +356,9 @@ script.customize(type="text/template")
           div style="background-color:{{ tab_bar_text_color }}"
         input type="hidden" name="tab_bar_text_color" value="{{ tab_bar_text_color }}"
 
-      .widget_icons
-        h3 Customizing Widget Icons
-        label Icon Font
+      .home_page
+        h3 Customizing Home Page
+        label Icon Text Font
         br
         select name="icon_font_family"
           option value="Arial, Helvetica, sans-serif" Arial
@@ -373,7 +372,11 @@ script.customize(type="text/template")
           div style="background-color:{{ icon_text_color }}"
         input type="hidden" name="icon_text_color" value="{{ icon_text_color }}"
 
-      .body_bg
+        label Background Color
+        .color-picker data-color="{{ body_bg_color }}" data-target="body_bg_color"
+          div style="background-color:{{ body_bg_color }}"
+        input type="hidden" name="body_bg_color" value="{{ body_bg_color }}"
+
         table.body_bg.wphoto-wrap
           tbody
             tr
@@ -403,6 +406,7 @@ script.customize(type="text/template")
                   option value="repeat-y" Repeat Vertically
                   option value="repeat" Repeat Both
             | <% } %>
+
 
     br
     .action-bar
