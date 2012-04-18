@@ -148,15 +148,18 @@ class SiteManagerController < ApplicationController
   end
 
   def upgrade
+    return error 'agree_to_terms' unless params[:terms] == "on"
+
     months = params[:months].to_i
-    months = 1 if params[:recur]
-    return 'Bad request' if (months <= 0 || months > 12)
+    months = 1 if params[:months] == "recur"
+
+    return error 'select_length' if (months <= 0 || months > 12)
 
     if params[:id] && (@site = Company.find_by_id params[:id])
 
       @time = "#{months} months"
       @time = "1 year" if months == 12
-      @time = "monthly" if params[:recur]
+      @time = "monthly" if params[:months] == "recur"
       user = current_user
 
       checkout_params = {
@@ -167,7 +170,7 @@ class SiteManagerController < ApplicationController
         :reference_id => "#{user.id}|#{@site.id}|#{months}|#{SecureRandom.uuid}",
         :prefill_info => { email:user.email, name:"#{user.first_name} #{user.last_name}" },
       }
-      if params[:recur]
+      if params[:months] == "recur"
         checkout_params[:period] = 'monthly'
         checkout_params[:end_time] = (DateTime.now + 1.year).to_time.to_i
         checkout_params[:auto_recur] = true

@@ -117,17 +117,18 @@
       | <% } else { %>
       h3 Select a thing:
       form.pay action="{{ actionPath }}" method="POST" data-remote="true"
-        h3 One Month - $12
-        input type="hidden" name="months" value="1"
-        input type="submit" value="One Month"
-      form.pay action="{{ actionPath }}" method="POST" data-remote="true"
-        h3 One Year - $144
-        input type="hidden" name="months" value="12"
-        input type="submit" value="One Year"
-      form.pay action="{{ actionPath }}" method="POST" data-remote="true"
-        h3 Autopay Monthly - $12/month
-        input type="hidden" name="recur" value="true"
-        input type="submit" value="Monthly"
+        input type="radio" value="1" name="months" checked="checked"
+        label One Month - $12
+        br
+        input type="radio" value="12" name="months"
+        label One Year - $144
+        br
+        input type="radio" name="months" value="recur"
+        label Autopay Monthly - $12/month
+        br
+        br
+        input type="checkbox" name="terms" I agree to terms.
+        input type="submit" value="Submit"
       | <% } %>
       .error.hide
 

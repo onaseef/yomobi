@@ -142,6 +142,9 @@
   SiteGradeView = Backbone.View.extend({
     el: $('#manager-container .accordian > .site-grade'),
     template: util.getTemplate('site-grade'),
+    events: {
+      'click .back-btn':        'goBack'
+    },
     render: function (site) {
       var extraData = {
         actionLabel: site.get('isPremium') ? 'Manage' : 'Upgrade',
@@ -177,6 +180,11 @@
     renderBody: function (content) {
       this.el.find('.content-body').html(content);
     },
+
+    goBack: function () {
+      this.render( sman.getSelectedSite() );
+      this.$('.content-body').show();
+    }
   });
 
 
