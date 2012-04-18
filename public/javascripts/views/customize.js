@@ -80,7 +80,11 @@
         body_bg_src: g.body_bg,
         isDefaultBanner: false
       };
-      _.extend(extraData, g.settings, util.defaultSetting);
+      var settings = _.extend({}, g.settings);
+      for (var p in settings) {
+        if (!settings[p]) settings[p] = util.defaultSettings[p];
+      }
+      _.extend(extraData, settings);
 
       this.el.html( this.template(extraData) )
         .find('.help-bubble').simpletooltip(undefined,'help').end()
