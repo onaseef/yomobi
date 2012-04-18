@@ -168,6 +168,8 @@
     },
 
     saveChanges: function () {
+      if (!g.isPremium) return;
+
       var submitBtn = this.$('input[type=submit]').prop('disabled',true)
         , loader = this.$('.loader').show()
         , checkmark = this.$('.checkmark').hide()

@@ -433,6 +433,15 @@ es:
       keywords: "Ingresa las palabras clave que describen a tu sitio web, separadas por comas:"
       save: "Guardar Opciones Seleccionadas"    
 
+    customize:
+      title: "@@Advanced Customization"
+      explanation: "@@<p>Customize the look and feel of your site.</p>"
+      banner: "@@Banner"
+      banner_help: "@@<p>A banner will override all other header settings.</p>"
+      body_bg: "@@Body Background Image"
+      body_bg_help: "@@<p>Upload a background image.</p>"
+      not_premium: "@@You must upgrade this site to Professional to use this feature."
+
     edit_tab_bar:
       explanation: "Selecciona las páginas que quieres que sean más visibles para tus visitantes móviles."
 

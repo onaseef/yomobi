@@ -27,6 +27,7 @@ window.g = {
   MAX_TEXT_CHARS: <%= @max_text_chars || -1 %>,
   MAX_COMPANY_NAME_LENGTH: <%= MAX_COMPANY_NAME_LENGTH %>,
   openEditSettings: <%= @open_edit_settings || false %>,
+  isPremium: <%= @company.premium? %>,
 
   wphotoUploadPath: "<%= wphoto_upload_path %>",
   customizeUploadPath: "<%= customize_upload_path %>",

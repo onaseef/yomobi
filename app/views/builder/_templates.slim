@@ -411,12 +411,17 @@ script.customize(type="text/template")
     br
     .action-bar
       p.error.lfloat style="margin-top:2px"
-      .accept-btn.main-btn
-        input.content type="submit" value=t'builder.widget_editor.save'
-      .cancel-btn.alt-btn
-        .content = t'builder.widget_editor.cancel'
-      .checkmark
-      .loader
+      - if @company.premium? == false
+        p.not-premium = t'builder.customize.not_premium'
+        .accept-btn.main-btn.disabled
+          input.content type="submit" value=t'builder.widget_editor.save'
+      - else
+        .accept-btn.main-btn
+          input.content type="submit" value=t'builder.widget_editor.save'
+        .cancel-btn.alt-btn
+          .content = t'builder.widget_editor.cancel'
+        .checkmark
+        .loader
       .clearfix
 
 

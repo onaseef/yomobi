@@ -439,6 +439,7 @@ en:
       banner_help: "<p>A banner will override all other header settings.</p>"
       body_bg: "Body Background Image"
       body_bg_help: "<p>Upload a background image.</p>"
+      not_premium: "You must upgrade this site to Professional to use this feature."
 
     edit_tab_bar:
       explanation: "Select the pages you want to be most visible to your mobile visitors."

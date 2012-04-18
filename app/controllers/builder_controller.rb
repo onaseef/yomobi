@@ -135,6 +135,7 @@ class BuilderController < ApplicationController
 
   def upload_customize
     company = current_user.company
+    return error 'not_premium' if company.premium? == false
 
     if params[:destroy] == "1" && params[:targetType] == 'banner'
       company.update_attribute :banner, nil
