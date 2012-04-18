@@ -125,7 +125,7 @@
       }
       else if (res.body_bg) {
         g.body_bg = res.body_bg;
-        $('#canvas .page').css({
+        $('#canvas #home.page').css({
           backgroundImage: 'url('+ g.body_bg +')',
           backgroundRepeat: 'no-repeat'
         });
@@ -145,7 +145,7 @@
     removeBodyBg: function (e) {
       e.preventDefault();
       g.body_bg = '';
-      $('#canvas .page').css({
+      $('#canvas #home.page').css({
         backgroundImage: 'none',
         backgroundRepeat: 'none'
       });
@@ -160,7 +160,7 @@
 
     updateRepeat: function () {
       var repeat = this.$('[name=body_bg_repeat]').val();
-      $('#canvas .page').css({ backgroundRepeat:repeat });
+      $('#canvas #home.page').css({ backgroundRepeat:repeat });
     },
 
     saveChanges: function () {
