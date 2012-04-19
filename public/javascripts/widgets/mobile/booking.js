@@ -44,13 +44,13 @@
   function prettyErrorMsg (serverResponse) {
     var msg = '<ul>';
     if (serverResponse === "bad message")
-      msg += '<li>You must fill in all fields.</li>';
+      msg += '<li>' + g.i18n.all_fields_required + '</li>';
     else if (serverResponse === "captcha") {
-      msg += '<li>Incorrect math answer. Please try again.</li>';
+      msg += '<li>' + g.i18n.invalid_captcha + '</li>';
       util.spawnAritcaptcha();
     }
     else if (serverResponse === "bad phone")
-      msg += '<li>Invalid phone number.</li>';
+      msg += '<li>' + g.i18n.invalid_captcha + '</li>';
     util.log('SERVER RESPONSE',serverResponse);
     return msg + '</ul>';
   }

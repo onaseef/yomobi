@@ -10,6 +10,9 @@
       .invalid-icon
 
   script.mapp-header(type="text/template")
+    | <% if (g.banner) { %>
+    img.banner src="<% print(g.banner); %>"
+    | <% } else { %>
     table
       | <% if (_maybe.slogan) { %>
       tr
@@ -28,6 +31,7 @@
         | <% } %>
         td.name {{ name }}
       | <% } %>
+    | <% } %>
 
   script.tab-bar(type="text/template")
     table
@@ -184,7 +188,7 @@
         | &nbsp;&frasl;&nbsp;
         = select_tag 'date_d', options_for_select(1..31,Date.today.day)
         | &nbsp;&frasl;&nbsp;
-        = select_tag 'date_y', options_for_select(2011..2012,Date.today.year)
+        = select_tag 'date_y', options_for_select(Date.today.year..Date.today.year+5,Date.today.year)
         br
         .aritcaptcha-container
         p.error.response
@@ -232,6 +236,8 @@
     .clearfix
 
   script.gmap-page(type="text/template")
+    p =t'mobile.form.address' 
+
     .addr-line {{ _maybe.addr1 }}
     .addr-line {{ _maybe.addr2 }}
     .addr-line {{ _maybe.city }}<% if (_maybe.city && _maybe.state) { print(','); } %> {{ _maybe.state }} {{ _maybe.zip }}
@@ -240,15 +246,15 @@
     .maps style="margin-top: 8px"
       a.map-link href="http://maps.google.com/maps?q={{ fullAddress }}"
         img src="{{ mapUrl2 }}"
-    a.map-link href="http://maps.google.com/maps?q={{ fullAddress }}" View Google Map
+    a.map-link href="http://maps.google.com/maps?q={{ fullAddress }}" =t'mobile.form.view_in_map'
 
     .directions
-      .banner Get Directions:
+      .banner =t'mobile.form.get_directions'
       form action="http://maps.google.com/maps" method="get"
-        label Starting Address:
+        label =t'mobile.form.starting_address'
         br
         input type="text" name="saddr"
-        input type="submit" value="Map It"
+        input type="submit" value=t'mobile.form.map_it'
         input type="hidden" name="daddr" value="{{ fullAddress }}"
 
   script.coupon-page(type="text/template")

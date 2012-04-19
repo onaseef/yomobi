@@ -1,19 +1,19 @@
 (function ($) {
 
   window.EditAdvancedSettingsView = Backbone.View.extend({
-    
+
     el: $('#builder .widget-editor'),
 
     template: util.getTemplate('edit-advanced-settings'),
-    
+
     events: {
       'click input[type=submit]': 'submit'
     },
-    
+
     initialize: function () {
-      
+
     },
-    
+
     submit: function () {
       var self = this;
       this.el
@@ -42,10 +42,10 @@
         self.el.find('p.error').text(e.responseText).show('pulsate',{ times:3 });
       });
     },
-    
+
     startEditing: function () {
       util.log('Editing Settings');
-      
+
       this.el.html( this.template({
         keywords: g.keywords
       }) )
@@ -53,11 +53,14 @@
       ;
       this.delegateEvents();
     },
-    
+
+    hasChanges: function () { return false; },
+    discardChanges: function () {},
+
     stopEditing: function () {
       this.el.html(bapp.idleTemplate());
     }
-    
+
   });
-  
+
 })(jQuery);

@@ -1,20 +1,19 @@
-A visitor to <a href="<%= @params[:company_mobile_url] %>">your YoMobi site</a> has sent you a booking request:
+<%==t('booking_request.email.body', :site_url => @params[:company_mobile_url]) %>
 <br />
 <br />
 
-Name: <%= @params[:name] %>
+<%=t('mobile.email.name') %> <%= @params[:name] %>
 <br />
-Phone: <%= @params[:phone] %>
+<%=t('mobile.email.phone') %> <%= @params[:phone] %>
 <br />
-Number of People: <%= @params[:party_size] %>
+<%=t('mobile.email.num_people') %>  <%= @params[:party_size] %>
 <br />
-Time: <%= @params[:time] %>
+<%=t('mobile.email.time') %>  <%= @params[:time] %>
 <br />
-Date: <%= @params[:date] %>
+<%=t('mobile.email.date') %>  <%= @params[:date] %>
 <br />
 <br />
 
-Thank You,
+<%==t('mobile.email.closing')%>
 <br />
-<a href="http://www.yomobi.com">YoMobi</a>
-<br />
+<%==t('mobile.email.signature')%>

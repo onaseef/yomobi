@@ -26,7 +26,6 @@ div.wysiwyg ul.toolbar {
     border-top: 1px solid #dddddd;
     margin: 5px 0; }
   #sidebar .option {
-    height: 16px;
     padding: 3px 0 2px 4px;
     clear: left; }
     #sidebar .option .icon {
@@ -89,7 +88,6 @@ div.wysiwyg ul.toolbar {
       visibility: hidden !important; }
 
 #sidebar .widgets {
-  height: 515px;
   padding-left: 2px;
   overflow: auto; }
 
@@ -137,7 +135,7 @@ div.wysiwyg ul.toolbar {
   font-weight: bold;
   color: #000066; }
 #builder .left > .title-subtext, #builder .right > .title-subtext {
-  height: 30px;
+  min-height: 30px;
   padding: 0 10px 5px 0; }
 #builder .left {
   width: 390px;
@@ -354,56 +352,81 @@ div.wysiwyg ul.toolbar {
   margin: 10px 0; }
 
 #builder .edit-area.edit-settings,
-#builder .edit-area.edit-advanced-settings {
+#builder .edit-area.edit-advanced-settings,
+#builder .edit-area.customize {
   padding-top: 8px; }
   #builder .edit-area.edit-settings .box,
-  #builder .edit-area.edit-advanced-settings .box {
+  #builder .edit-area.edit-advanced-settings .box,
+  #builder .edit-area.customize .box {
     margin: 10px 0px 0px 0px;
     border: 2px solid #d0d7e3;
     padding: 8px; }
     #builder .edit-area.edit-settings .box input[type=text],
-    #builder .edit-area.edit-advanced-settings .box input[type=text] {
+    #builder .edit-area.edit-advanced-settings .box input[type=text],
+    #builder .edit-area.customize .box input[type=text] {
       width: 274px;
       margin-bottom: 5px; }
     #builder .edit-area.edit-settings .box textarea,
-    #builder .edit-area.edit-advanced-settings .box textarea {
+    #builder .edit-area.edit-advanced-settings .box textarea,
+    #builder .edit-area.customize .box textarea {
       width: 326px;
       margin: 0; }
   #builder .edit-area.edit-settings .divider,
-  #builder .edit-area.edit-advanced-settings .divider {
+  #builder .edit-area.edit-advanced-settings .divider,
+  #builder .edit-area.customize .divider {
     border-color: #d0d7e3;
     margin: 5px 0px; }
   #builder .edit-area.edit-settings form .action-bar,
-  #builder .edit-area.edit-advanced-settings form .action-bar {
+  #builder .edit-area.edit-advanced-settings form .action-bar,
+  #builder .edit-area.customize form .action-bar {
     border-top: 2px solid #d0d7e3;
     padding-right: 0;
     padding-top: 8px;
     margin-top: 15px; }
   #builder .edit-area.edit-settings .site-settings input[type=text], #builder .edit-area.edit-settings .site-settings textarea,
   #builder .edit-area.edit-advanced-settings .site-settings input[type=text],
-  #builder .edit-area.edit-advanced-settings .site-settings textarea {
+  #builder .edit-area.edit-advanced-settings .site-settings textarea,
+  #builder .edit-area.customize .site-settings input[type=text],
+  #builder .edit-area.customize .site-settings textarea {
     width: 240px; }
   #builder .edit-area.edit-settings .site-settings textarea,
-  #builder .edit-area.edit-advanced-settings .site-settings textarea {
+  #builder .edit-area.edit-advanced-settings .site-settings textarea,
+  #builder .edit-area.customize .site-settings textarea {
     height: 4em; }
   #builder .edit-area.edit-settings select,
-  #builder .edit-area.edit-advanced-settings select {
+  #builder .edit-area.edit-advanced-settings select,
+  #builder .edit-area.customize select {
     width: 245px; }
   #builder .edit-area.edit-settings .top,
-  #builder .edit-area.edit-advanced-settings .top {
+  #builder .edit-area.edit-advanced-settings .top,
+  #builder .edit-area.customize .top {
     vertical-align: top; }
   #builder .edit-area.edit-settings .logo,
-  #builder .edit-area.edit-advanced-settings .logo {
+  #builder .edit-area.edit-advanced-settings .logo,
+  #builder .edit-area.customize .logo {
     margin: 3px 0px; }
   #builder .edit-area.edit-settings .site-name,
-  #builder .edit-area.edit-advanced-settings .site-name {
+  #builder .edit-area.edit-advanced-settings .site-name,
+  #builder .edit-area.customize .site-name {
     padding-bottom: 10px; }
   #builder .edit-area.edit-settings .new-picture,
-  #builder .edit-area.edit-advanced-settings .new-picture {
+  #builder .edit-area.edit-advanced-settings .new-picture,
+  #builder .edit-area.customize .new-picture {
     width: 100%; }
+
+#builder .edit-area.customize .subpanels > * {
+  display: none; }
+#builder .edit-area.customize img.banner.default {
+  border: 1px dashed; }
+#builder .edit-area.customize .not-premium {
+  width: 250px;
+  float: left; }
 
 .widget-editor .edit-area label {
   white-space: normal; }
+.widget-editor .edit-area input[name=hideWidget] {
+  margin-top: 5px;
+  margin-right: -2px; }
 
 .wphoto-wrap {
   width: 100%;
@@ -475,8 +498,7 @@ div.wysiwyg ul.toolbar {
     padding-left: 5px; }
     #builder .edit-area.hours .day-hours .times label {
       float: left;
-      width: 24px;
-      margin-top: 4px;
+      margin: 2px 4px 0px 4px;
       color: #7e7e7e;
       text-align: center; }
     #builder .edit-area.hours .day-hours .times .t1 {
@@ -512,35 +534,56 @@ div.wysiwyg ul.toolbar {
   border: 1px solid #b3b3b3;
   padding: 3px;
   background: silver; }
+#builder .edit-area.category .controls.category, #builder .edit-area.page_tree .controls.category {
+  height: 66px; }
+  #builder .edit-area.category .controls.category hr, #builder .edit-area.page_tree .controls.category hr {
+    margin-top: 31px; }
 #builder .edit-area.category .controls .button, #builder .edit-area.page_tree .controls .button {
   height: 22px;
   padding: 6px 2px 0 22px;
   margin: 0 4px 0 0;
   border: 1px outset transparent;
-  background: url(/images/ui/plus.png) 3px 5px no-repeat;
+  background-position: 3px 5px;
+  background-repeat: no-repeat;
+  vertical-align: center;
   float: left;
   cursor: pointer; }
-  #builder .edit-area.category .controls .button:empty, #builder .edit-area.page_tree .controls .button:empty {
-    padding-left: 24px;
-    background-position: 50% 50%; }
 #builder .edit-area.category .controls .button:hover, #builder .edit-area.page_tree .controls .button:hover {
   border: 1px outset #e0e0e0; }
 #builder .edit-area.category .button.back, #builder .edit-area.page_tree .button.back {
-  background-image: url(/images/ui/back-btn.png); }
+  font-size: 30px;
+  font-weight: bold;
+  height: 64px;
+  line-height: 58px;
+  padding: 0px 6px; }
+#builder .edit-area.category .button.back.page, #builder .edit-area.page_tree .button.back.page {
+  height: 26px;
+  line-height: 22px;
+  padding: 0px 6px; }
 #builder .edit-area.category .button-separator, #builder .edit-area.page_tree .button-separator {
   float: left;
-  height: 22px;
+  height: 28px;
   margin: 0 4px 0 0;
-  padding: 3px 1px;
+  padding: 0px 1px;
   border: none;
   background: gray; }
+#builder .edit-area.category .button-separator.back, #builder .edit-area.page_tree .button-separator.back {
+  height: 66px; }
+#builder .edit-area.category .button-separator.back.page, #builder .edit-area.page_tree .button-separator.back.page {
+  height: 28px; }
+#builder .edit-area.category .row-separator, #builder .edit-area.page_tree .row-separator {
+  height: 0px;
+  border: 1px;
+  border-style: inset;
+  margin: 3px 0px;
+  width: 324px;
+  float: left; }
 #builder .edit-area.category .button.add-cat, #builder .edit-area.page_tree .button.add-cat {
   background-image: url(/images/ui/icon-folder-new.png); }
 #builder .edit-area.category .button.add-item, #builder .edit-area.page_tree .button.add-item {
   background-image: url(/images/ui/icon-item-new.png); }
 #builder .edit-area.category .button.add-rss-feed, #builder .edit-area.page_tree .button.add-rss-feed {
-  background-image: url(/images/ui/icon-rss-new.png);
-  padding: 6px 2px 0 18px; }
+  background-image: url(/images/ui/icon-rss-new.png); }
 #builder .edit-area.category .button.rename, #builder .edit-area.page_tree .button.rename {
   background-image: url(/images/ui/icon-rename.png);
   background-position: center; }
@@ -564,9 +607,9 @@ div.wysiwyg ul.toolbar {
   float: left;
   background: transparent 50% 50% no-repeat; }
 #builder .edit-area.category .nodes .name, #builder .edit-area.page_tree .nodes .name {
-  padding: 6px 10px 6px 3px;
+  margin: 6px 0px 6px 3px;
   float: left;
-  width: 265px;
+  width: 260px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: no-wrap;

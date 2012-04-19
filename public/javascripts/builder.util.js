@@ -402,7 +402,7 @@ var builderUtil = {
       , file = fileInput.val()
     ;
     if (file && file.length > 0) {
-      $('input[value=Upload]').prop('disabled',false);
+      $('[name=upload_submit]').prop('disabled',false);
     }
   },
 
@@ -414,7 +414,7 @@ var builderUtil = {
       onDone: _.identity
     }
     options = _.extend(defaults, options);
-
+util.log('INTSANCE ID',options.instanceId, options.extraParams);
     var uploader = this._uploaders[options.instanceId];
 
     if (uploader && options.emptyQueue && uploader.files.length > 0) {
@@ -435,7 +435,7 @@ var builderUtil = {
 
     uploader = this._uploaders[options.instanceId] = new plupload.Uploader(_.extend({
       runtimes: 'html5,flash,html4',
-      url: g.wphotoUploadPath,
+      url: options.uploadPath || g.wphotoUploadPath,
       max_file_size: '10mb',
       multiple_queues: false,
       multi_selection: false,
@@ -445,7 +445,7 @@ var builderUtil = {
 
       flash_swf_url: '/javascripts/plupload/plupload.flash.swf',
       multipart: true,
-      multipart_params: _.extend(g.uploadifyScriptData, options.extraParams),
+      multipart_params: _.extend({}, g.uploadifyScriptData, options.extraParams),
       headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') }
     }, extraData));
 

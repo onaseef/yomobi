@@ -15,6 +15,13 @@ en:
     Friday: "Friday"
     Saturday: "Saturday"
 
+  helpers:
+    label:
+      user:
+        email: "Email:"
+        password: "Password:"
+        password_confirmation: "Password confirmation:"
+
   homepage:
     welcome: "Welcome to YoMobi"
     message: 'Reach more people with a <span class="hilite">free</span> mobile website. YoMobi makes building a mobile site easy. Go from sign up to online in minutes.<br/><br/> Being mobile is more important than ever.'
@@ -54,7 +61,7 @@ en:
     terms: "Terms"
 
 
-  javascript:
+  javascript_builder:
 
     save: "Save"
     submit: "Submit"
@@ -100,7 +107,14 @@ en:
       unsavedChangesText: "You have unsaved changes. Click OK to go back and save changes. Click Cancel to discard your changes."
       invalid_widget: "This widget will <b>NOT</b> appear on your mobile site because required information is missing.<br /><br />Please click on this widget to edit. Remember to <b>Save Changes</b> when you are done."
       deactivated_widget: "You have deactivated this widget; it <b>WILL NOT</b> appear on your mobile site.<br /><br />To undo this, please click this widget and uncheck the \"Deactivate\" checkbox."
- 
+      name_already_in_use: "Name already in use."
+      name_too_short: "Name is too short (minimum 2 characters)."
+      name_too_long: "Name is too long."
+      name_reserved: "Sorry, that name is reserved."
+      save_name: "Save Name"
+      add_new_widget: "Add New Widget"
+      cancel: "Cancel"
+
 
     site_manager:
       default_error: "We're sorry, something went wrong."
@@ -110,6 +124,19 @@ en:
       concede_ownership_dialog_title: "Concede Site Ownership"
       add: "Add"
       continue: "Continue"
+
+
+  javascript_mobile:
+
+    email: "Email"
+    phone: "Mobile Number"
+
+    all_fields_required: "You must fill in all fields."
+    invalid_captcha: "Incorrect math answer. Please try again."
+    invalid_email: "Invalid email address."
+    invalid_phone: "Invalid mobile number."
+    email_or_phone_required: "You must provide an email or phone number."
+
 
   new_site:
     site_name: "Site Name:"
@@ -131,6 +158,7 @@ en:
     sign_in: "Sign In"
     or: "or"
     sign_up: "Sign Up for Yomobi"
+    unlock_not_received: "Didn't receive unlock instructions?"
     error:
       reenter_password: "Please re-enter your password"
       incorrect_password: "The password you entered is incorrect. Please try again (make sure your caps lock is off)."
@@ -146,30 +174,95 @@ en:
     signup_key: "Signup Key:"
     sign_up: "Sign Up"
     sign_up_bar: "YoMobi helps you reach more people with a mobile optimized website."
-    already_member: "Already a Member?"
+    already_member: "Already a Member? "
     click_to_signin: "Click here to sign in."
     error:
       general: "There was problem with your request:"
       recaptcha: "There was an error with the recaptcha code below. Please re-enter the code and click submit."
 
   recaptcha:
-    type_words: "Type the two words:  "
+    type_words: "Type the two words: "
     new_words: "(Get New Words)"
+
+  confirm_account:
+    already_confirmed: "Your account has already been confirmed"
+    email_resent: "The confirmation email was resent. Please check your mailbox."
+    confirm_not_received: "Didn't receive confirmation instructions?"
+    email:
+      greeting: "Hello %{first_name},"
+      thank_you: "Thank you for registering with YoMobi."
+      confirm_msg: "Please confirm your email address to continue the registration: "
+      click_to_confirm: "Click here to confirm"
+      closing: "Sincerely,"
+      signature: "Yomobi Support"
+      contact: '<a href="mailto:support@yomobi.com">support@yomobi.com</a>'
+
+  resend_confirmation:
+    title: "Resend confirmation instructions"
+    resend_confirmation: "Resend confirmation instructions"
+
+  forgot_password:
+    title: "Forgot your password?"
+    forgot_password: "Forgot your password?"
+    reset_password: "Send me reset password instructions"
+
+  change_password:
+    title: "Change your password"
+    change_password: "Change my password"
+    email:
+      greeting: "Hello %{email},"
+      password_change_request_msg: "You received this email because a request was made to change your password."
+      change_password: "Click here to change your password."
+      no_user_request: "If you didn't request to change your password, please ignore this email. Your password won't change until you access the link above and create a new one."
+      closing: "Thank you,"
+      signature: "Yomobi Support"
+      contact: '<a href="mailto:support@yomobi.com">support@yomobi.com</a>'
+
+  account:
+    already_setup: "Your account has already been setup."
+    enter_current_password: "Please enter your current password to update your account."
+    updated_success: "Account updated successfully."
+
+    welcome_email:
+      subject: "Welcome to YoMobi"
+      thank_you: "Thank you for signing up with YoMobi. You're one step closer to expanding your fan base and making it easier for visitors to find you wherever they are."
+      mobile_site_url: "Your mobile site URL is: "
+      mobile_redirect: 'Use your YoMobi mobile site to complement your existing desktop site. <a href="http://help.yomobi.com/Account/MobileRedirectScript">Click here for instructions</a> on how to seamlessly direct visitors to your new mobile site whenever they visit from a mobile device.'
+      share: "Click here to share the news with your friends."
+      access_account: "Click here to sign in to your YoMobi account."
+      closing: "Thank you,"
+      signature: "Yomobi Support"
+      contact: '<a href="mailto:support@yomobi.com">support@yomobi.com</a>'
+
+    username_changed_email:
+      subject: "Your YoMobi account username has changed."
+      message: "The email associated with %{mobile_url} has been changed from %{old_email} to %{new_email}. Next time you log in to YoMobi, your login email will be %{new_email}."
+      closing: "Thank you,"
+      signature: "Yomobi Support"
+      contact: '<a href="mailto:support@yomobi.com">support@yomobi.com</a>'
 
   leave_a_message:
     instructions: "Leave a message:"
     subject: "Subject:"
     message: "Message:"
     confirmation: "Your message has been sent to %{company_name}. Thank you."
+    email:
+      body: "A visitor sent you a message from: %{site_url}"
 
   call_back:
     instructions: "Enter your call back information:"
     confirmation: "Your call back request has been sent to %{company_name}. Thank you."
+    email:
+      subject: "You have a call back request."
+      body: "A visitor sent you a call back request from: %{site_url}"
 
   tell_a_friend:
     instructions: "Share %{company_name} with a friend. A short email will be sent to your friend with a link to this mobile site."
     friend_email: "Your Friend's Email:"
     confirmation: "Thank you for sharing %{company_name} with your friend."
+    email:
+      subject: "%{friend_name} wants to share %{site_name} with you."
+      body: "Your friend, %{friend_name}, recommends this mobile site to you: "
 
   booking_request:
     instructions: "Send a Booking Request:"
@@ -177,6 +270,9 @@ en:
     time: "Time:"
     date: "Date:"
     confirmation: "Your booking request has been sent to %{company_name}."
+    email:
+      subject: "You have a booking request."
+      body: "A visitor sent you a booking request from: %{site_url}"
 
   keep_me_informed:
     instructions: "Enter your information to follow the latest news from %{company_name}. You can opt out at any time and your information will remain private."
@@ -191,7 +287,7 @@ en:
     form:
       title: "Sign Up"
       subtitle: "It's free."
-  
+
   account_setup:
 
     about_label: "Tell your visitors who you are (optional):"
@@ -248,10 +344,15 @@ en:
     final:
       title: "Congratulations!"
       site_online: "You've successfully created your mobile site and it's now online!"
+      site_url_header: "Mobile Site URL"
       site_url: "You can see your new mobile site on your smart phone or tablet by browsing to "
+      auto_redirect_header: "Auto-Redirect"
       auto_redirect: If you have a desktop site, <a target="ym-help" href="http://help.yomobi.com/Account/MobileRedirectScript"> learn how to automatically redirect your mobile visitors from your desktop site to your mobile site</a>.
+      easy_update_header: "Easy Site Update"
       easy_update: "Updating your mobile site is easy. All changes you make are automatically published, so your site is always up to date."
-      help: For additional information, <a target="ym-help" href="http://help.yomobi.com">please visit our help pages.</a> 
+      help_header: "Need Help?"
+      help: For additional information, <a target="ym-help" href="http://help.yomobi.com">please visit our help pages.</a>
+      customize_header: "Start Customizing"
       customize: "To start customizing your site, please click the button below."
 
   navigation_bar:
@@ -286,6 +387,7 @@ en:
       general_settings: "General Settings"
       advanced_settings: "Advanced Settings"
       edit_tab_bar: "Edit Mobile Tab Bar"
+      customize: "Advanced Customization"
       mobile_site_builder: "Mobile Site Builder"
 
     email_panel:
@@ -297,7 +399,7 @@ en:
       send: "Send Email"
       sending: "Sending. Please wait..."
       missing_info: "Please enter both a subject and message."
-      success: "Email successfully sent."  
+      success: "Email successfully sent."
 
     text_panel:
       title: "Text Message your Followers"
@@ -324,8 +426,8 @@ en:
       browse: "Browse..."
       upload: "Upload"
       header_background: "Header Background:"
-      header_text: "Header Text:" 
-      save: "Save Settings"    
+      header_text: "Header Text:"
+      save: "Save Settings"
 
     advanced_settings:
       title: "Advanced Settings"
@@ -334,7 +436,16 @@ en:
       redirect_code: "Desktop Redirect Code:"
       redirect_code_help: "To automatically redirect visitors to your mobile site when they visit your desktop site from a mobile phone, copy this code snippet and paste it into your desktop site’s home page, just before the closing &lt;head&gt; tag. <b>Click ? more help.</b>"
       keywords: "Enter keywords that describe your website, separated by commas:"
-      save: "Save Settings"    
+      save: "Save Settings"
+
+    customize:
+      title: "Advanced Customization"
+      explanation: "<p>Customize the look and feel of your site.</p>"
+      banner: "Banner"
+      banner_help: "<p>A banner will override all other header settings.</p>"
+      body_bg: "Body Background Image"
+      body_bg_help: "<p>Upload a background image.</p>"
+      not_premium: "You must upgrade this site to Professional to use this feature."
 
     edit_tab_bar:
       explanation: "Select the pages you want to be most visible to your mobile visitors."
@@ -355,10 +466,11 @@ en:
       explanation: "<p>Edit the navigation tab bar at the top of your mobile site.</p><br><p>Highlight the widgets you want your mobile site visitors to see first by adding them to the navigation tab bar which appears at the top of your mobile site.</p>"
       tab_1: "Tab #1"
       tab_n: "Tab #%{num}"
-      none: "== None ==" 
-    
+      none: "== None =="
+
     widget_editor:
       add_item: "Add %{item}"
+      add_rss: "Add RSS"
       address1_label_required: "Address 1*:"
       address2_label: "Address 2:"
       browse: "Browse..."
@@ -380,7 +492,7 @@ en:
       drag_widget: "Drag a widget from the Mobile Website Builder into the Mobile Phone Emulator"
       edit_icon: "Edit"
       edit_widget: "Click on a widget in the Mobile Phone Emulator to enter your information."
-      editing_crumb: '@@<b>Editing: <span class="blue">%{breadcrumb}</span></b>'
+      editing_crumb: '<b>Editing: <span class="blue">%{breadcrumb}</span></b>'
       email_label_required: "Your email address*:"
       email_opt_in_label: "Allow users to opt-in for emails."
       expiration_date_label: "Expiration Date:"
@@ -410,12 +522,12 @@ en:
       zip_label: "Zip / Postal Code:"
 
 
-      
+
 
   dialog:
     error: "Error: %{error_message}"
     add: "Add"
-    
+
     change_icon:
       title: "Change Icon"
       instructions: "Click on icon to select:"
@@ -428,7 +540,7 @@ en:
     rename_widget:
       title: "Rename Widget"
       instructions: "Please rename your widget:"
-    
+
     add_new:
       title: "Add New %{item_type}"
       instructions: " %{item_type} name:"
@@ -451,6 +563,9 @@ en:
       percent_sign: "%"
       clickable_url: "Clickable URL (optional):"
       set_as_preview: "Set as thumbnail preview"
+
+    add_page:
+      added: "Added %{type_plural}"
 
     add_item:
       added_items: "Added Items"
@@ -490,6 +605,7 @@ en:
     add_admin: "Add Admin"
     revoke_access: "Revoke Access"
     make_owner: "Make Owner"
+    owner: "(Owner)"
     create_new_site: "Create New Site"
     make_default: "Make Default"
     site_name: "Site Name:"
@@ -527,11 +643,30 @@ en:
       home: "Home"
     form:
       email: "Email Address:"
+      address: "Address:"
       name: "Name:"
       phone_number: "Phone Number:"
       your_name: "Your Name:"
       security: "Please solve this security question:"
       send: "Send"
+      get_directions: "Get Directions: "
+      starting_address: "Starting Address: "
+      view_in_map: "View in Map"
+      map_it: "Map It"
+
+    email:
+      name: "Name: "
+      email: "Email: "
+      subject: "Subject: "
+      phone: "Phone: "
+      num_people: "Number of people: "
+      time: "Time: "
+      date: "Date: "
+      message: "Message: "
+      closing: "Thank You,"
+      signature: '<a href="http://www.yomobi.com">YoMobi</a>'
+      create_site: 'Create your own free mobile site at: <a href="http://www.yomobi.com">YoMobi.com</a>'
+
 
   widgets:
     helpText:

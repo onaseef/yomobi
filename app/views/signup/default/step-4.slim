@@ -4,19 +4,24 @@
   .content
     h2 ==t'account_setup.final.title'
     h3 ==t'account_setup.final.site_online'
-    br
+
+    h4 ==t'account_setup.final.site_url_header'
     p 
     	==t'account_setup.final.site_url'
     	a target="preview-mobile-site" href=@company.mobile_url 
     		=@company.mobile_url
     	' .
-    br
+
+    h4 ==t'account_setup.final.auto_redirect_header'
     p ==t'account_setup.final.auto_redirect'
-    br
+
+    h4 ==t'account_setup.final.easy_update_header'
     p ==t'account_setup.final.easy_update'
-    br
+
+    h4 ==t'account_setup.final.help_header'
     p ==t'account_setup.final.help'
-    br
+
+    h4 ==t'account_setup.final.customize_header'
     p ==t'account_setup.final.customize'
     br
     br

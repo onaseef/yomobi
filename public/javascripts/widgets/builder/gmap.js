@@ -32,7 +32,7 @@
 
   window.widgetEditors.gmap = window.EditWidgetView.extend({
     onEditStart: function () {
-      var c = this.widget.get('country') || 'United States';
+      var c = this.widget.get('country') || 'US';
       this.el.find('select[name=country]').val(c);
     }
   });

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120417155155) do
+ActiveRecord::Schema.define(:version => 20120418151639) do
 
   create_table "carriers", :force => true do |t|
     t.string   "name"
@@ -35,11 +35,15 @@ ActiveRecord::Schema.define(:version => 20120417155155) do
     t.string   "informed_email"
     t.string   "leave_msg_email"
     t.string   "booking_email"
-    t.text     "keywords",          :limit => 255
+    t.text     "keywords",            :limit => 255
     t.string   "call_back_email"
     t.integer  "company_type_id"
-    t.integer  "id_counter",                       :default => 1,     :null => false
-    t.boolean  "premium",                          :default => false
+    t.integer  "id_counter",                         :default => 1,     :null => false
+    t.boolean  "premium",                            :default => false
+    t.string   "banner_file_name"
+    t.string   "banner_content_type"
+    t.integer  "banner_file_size"
+    t.datetime "banner_updated_at"
   end
 
   add_index "companies", ["db_name"], :name => "index_companies_on_db_name", :unique => true
@@ -51,6 +55,18 @@ ActiveRecord::Schema.define(:version => 20120417155155) do
     t.datetime "updated_at"
     t.string   "header_text_color"
     t.string   "slogan"
+    t.string   "tab_bar_color"
+    t.string   "tab_bar_text_color"
+    t.string   "icon_font_family"
+    t.string   "icon_text_color"
+    t.string   "footer_color"
+    t.string   "footer_text_color"
+    t.string   "body_bg_file_name"
+    t.string   "body_bg_content_type"
+    t.integer  "body_bg_file_size"
+    t.datetime "body_bg_updated_at"
+    t.string   "body_bg_repeat"
+    t.string   "body_bg_color"
   end
 
   create_table "company_types", :force => true do |t|

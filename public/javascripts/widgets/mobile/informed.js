@@ -31,16 +31,16 @@
   function prettyErrorMsg (serverResponse) {
     var msg = '<ul>';
     if (serverResponse === "bad message")
-      msg += '<li>You must provide an email or phone number</li>';
+      msg += '<li>' + g.i18n.email_or_phone_required + '</li>';
     else if (serverResponse === "captcha") {
-      msg += '<li>Incorrect math answer. Please try again.</li>';
+      msg += '<li>' + g.i18n.invalid_captcha + '</li>';
       util.spawnAritcaptcha();
     }
     _.each(serverResponse.email, function (error) {
-      msg += '<li>Email ' + error + '</li>';
+      msg += '<li>' + g.i18n.email + ' ' + error + '</li>';
     });
     _.each(serverResponse.phone, function (error) {
-      msg += '<li>Mobile number ' + error + '</li>';
+      msg += '<li>' + g.i18n.phone + ' ' + error + '</li>';
     });
     util.log('SERVER RESPONSE',serverResponse);
     return msg + '</ul>';

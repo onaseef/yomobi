@@ -57,7 +57,12 @@ button[type=button] {
   padding: 6px; }
 
 input[type=checkbox] {
-  margin-left: 0px; }
+  margin-left: 0px;
+  vertical-align: top; }
+
+.opt-in-select label {
+  margin-bottom: 6px;
+  max-width: 90%; }
 
 .explanation {
   background: #e4edf8;
@@ -206,7 +211,7 @@ p.success {
   padding-bottom: 15px; }
 
 .center-box {
-  width: 600px;
+  width: 500px;
   margin: 20px auto;
   padding: 10px 20px;
   border: 1px solid #cccccc;
@@ -242,6 +247,9 @@ p.success {
   .main-btn .content:active {
     background: #4f6aa3;
     border-color: #4f6aa3; }
+
+.main-btn.disabled {
+  opacity: 0.5; }
 
 .alt-btn {
   background: #eeeeee;

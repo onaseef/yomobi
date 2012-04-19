@@ -241,7 +241,7 @@ label {
 
 #step-arrows {
   background: #eceef4;
-  width: 500px;
+  width: 542px;
   margin: 20px auto;
   background: url(/images/ui/step-arrow-inactive-bg.png) repeat-x; }
   #step-arrows .arrow {
@@ -274,45 +274,47 @@ label {
   #step-arrows .arrow.active .back {
     background-position: -21px 0; }
 
-#account-setup-box, #account-settings-box {
-  width: 500px; }
-  #account-setup-box h2, #account-settings-box h2 {
-    margin: 5px 0px 15px 0px; }
-  #account-setup-box h3, #account-settings-box h3 {
-    margin: 10px 0px 5px 0px; }
-  #account-setup-box textarea, #account-settings-box textarea, #account-setup-box input[type=text], #account-settings-box input[type=text], #account-setup-box input[type=password], #account-settings-box input[type=password] {
-    font-size: 1.2em;
-    width: 450px; }
-  #account-setup-box #user_current_password, #account-settings-box #user_current_password {
-    width: 450px; }
-  #account-setup-box #user_email, #account-settings-box #user_email, #account-setup-box #user_first_name, #account-settings-box #user_first_name, #account-setup-box #user_last_name, #account-settings-box #user_last_name {
-    width: 375px; }
-  #account-setup-box #user_password, #account-settings-box #user_password, #account-setup-box #user_password_confirmation, #account-settings-box #user_password_confirmation {
-    width: 292px; }
-  #account-setup-box input[type=text], #account-settings-box input[type=text], #account-setup-box input[type=password], #account-settings-box input[type=password] {
-    margin-bottom: 10px; }
-  #account-setup-box textarea, #account-settings-box textarea {
-    height: 7em;
-    line-height: 110%; }
-  #account-setup-box .site-url span, #account-settings-box .site-url span {
-    font-size: 1.5em; }
-  #account-setup-box .site-url input, #account-settings-box .site-url input {
-    width: 221px;
-    margin: 0; }
-  #account-setup-box .site-url .site-url-input-wrap, #account-settings-box .site-url .site-url-input-wrap {
-    padding: 0 0 0 2px;
-    float: left; }
-  #account-setup-box a.skip-link, #account-settings-box a.skip-link {
-    padding: 4px 10px 0 0; }
-  #account-setup-box td.logo-preview, #account-settings-box td.logo-preview {
-    width: 125px;
-    height: 100px;
-    text-align: center; }
-  #account-setup-box .already-confirmed, #account-settings-box .already-confirmed {
-    font-size: 1.5em; }
-  #account-setup-box .edit_user input[type=submit], #account-settings-box .edit_user input[type=submit] {
-    font-size: 1.5em;
-    margin-top: 20px; }
+#account-setup-box h2, #account-settings-box h2 {
+  margin: 5px 0px 15px 0px; }
+#account-setup-box h3, #account-settings-box h3 {
+  margin: 10px 0px 5px 0px; }
+#account-setup-box h4, #account-settings-box h4 {
+  margin-bottom: 4px; }
+#account-setup-box p, #account-settings-box p {
+  margin: 0px 6px; }
+#account-setup-box textarea, #account-settings-box textarea, #account-setup-box input[type=text], #account-settings-box input[type=text], #account-setup-box input[type=password], #account-settings-box input[type=password] {
+  font-size: 1.2em;
+  width: 450px; }
+#account-setup-box #user_current_password, #account-settings-box #user_current_password {
+  width: 450px; }
+#account-setup-box #user_email, #account-settings-box #user_email, #account-setup-box #user_first_name, #account-settings-box #user_first_name, #account-setup-box #user_last_name, #account-settings-box #user_last_name {
+  width: 375px; }
+#account-setup-box #user_password, #account-settings-box #user_password, #account-setup-box #user_password_confirmation, #account-settings-box #user_password_confirmation {
+  width: 292px; }
+#account-setup-box input[type=text], #account-settings-box input[type=text], #account-setup-box input[type=password], #account-settings-box input[type=password] {
+  margin-bottom: 10px; }
+#account-setup-box textarea, #account-settings-box textarea {
+  height: 7em;
+  line-height: 110%; }
+#account-setup-box .site-url span, #account-settings-box .site-url span {
+  font-size: 1.5em; }
+#account-setup-box .site-url input, #account-settings-box .site-url input {
+  width: 221px;
+  margin: 0; }
+#account-setup-box .site-url .site-url-input-wrap, #account-settings-box .site-url .site-url-input-wrap {
+  padding: 0 0 0 2px;
+  float: left; }
+#account-setup-box a.skip-link, #account-settings-box a.skip-link {
+  padding: 4px 10px 0 0; }
+#account-setup-box td.logo-preview, #account-settings-box td.logo-preview {
+  width: 125px;
+  height: 100px;
+  text-align: center; }
+#account-setup-box .already-confirmed, #account-settings-box .already-confirmed {
+  font-size: 1.5em; }
+#account-setup-box .edit_user input[type=submit], #account-settings-box .edit_user input[type=submit] {
+  font-size: 1.5em;
+  margin-top: 20px; }
 
 #account-settings-box {
   width: 900px;

@@ -36,7 +36,7 @@ div.wysiwyg ul.toolbar {
     border-top: 1px solid #dddddd;
     margin: 5px 0; }
   .option {
-    height: 16px;
+    //height: 16px;
     padding: 3px 0 2px 4px;
     clear: left;
     .icon {
@@ -103,7 +103,7 @@ div.wysiwyg ul.toolbar {
 }
 
 #sidebar .widgets {
-  height: $sidebar-widgets-height;
+  //height: $sidebar-widgets-height;
   padding-left: 2px;
   overflow: auto; }
 
@@ -160,7 +160,7 @@ div.wysiwyg ul.toolbar {
       font-weight: bold;
       color: #000066; }
     & > .title-subtext {
-      height: 30px;
+      min-height: 30px;
       padding: 0 10px 5px 0; } 
     }
   .left {
@@ -397,7 +397,8 @@ div.wysiwyg ul.toolbar {
   margin: 10px 0; }
 
 #builder .edit-area.edit-settings, 
-#builder .edit-area.edit-advanced-settings {
+#builder .edit-area.edit-advanced-settings,
+#builder .edit-area.customize {
   padding-top: 8px;
   .box {
     margin: 10px 0px 0px 0px;
@@ -431,10 +432,20 @@ div.wysiwyg ul.toolbar {
   .new-picture { width: 100%; }
 }
 
+#builder .edit-area.customize {
+  .subpanels > * { display: none }
+  img.banner.default { border: 1px dashed; }
+  .not-premium { width: 250px; float: left; }
+}
+
 
 .widget-editor .edit-area {
   label {
     white-space: normal;
+  }
+  input[name=hideWidget] {
+    margin-top: 5px;
+    margin-right: -2px;
   }
 }
 
@@ -514,10 +525,10 @@ div.wysiwyg ul.toolbar {
       padding-left: 5px;
       label {
         float: left;
-        width: 24px;
-        margin-top: 4px;
+        margin: 2px 4px 0px 4px;
         color: #7e7e7e;
-        text-align: center; }
+        text-align: center;
+      }
       .t1 {
         display: none;
         clear: left;
@@ -560,31 +571,70 @@ div.wysiwyg ul.toolbar {
     padding: 3px;
     background: rgb(192, 192, 192);
   }
+
+  .controls.category {
+    height: 66px; 
+    hr {
+      margin-top: 31px;
+    }
+  }
+
   .controls .button {
     height: 22px;
     padding: 6px 2px 0 22px;
     margin: 0 4px 0 0;
     border: 1px outset transparent;
-    background: url(/images/ui/plus.png) 3px 5px no-repeat;
+    background-position: 3px 5px;
+    background-repeat: no-repeat;
+    vertical-align: center; 
     float: left;
     cursor: pointer;
-    &:empty { padding-left: 24px; background-position: 50% 50%; }
   }
+
   .controls .button:hover {
     border: 1px outset rgb(224, 224, 224);
   }
   
   .button.back { 
-    background-image: url(/images/ui/back-btn.png); 
+    font-size: 30px;
+    font-weight: bold;
+    height: 64px;
+    line-height: 58px;
+    padding: 0px 6px;
   }
+
+  .button.back.page { 
+    height: 26px;
+    line-height: 22px;
+    padding: 0px 6px;
+  }
+
   .button-separator {
     float: left;
-    height: 22px;
+    height: 28px;
     margin: 0 4px 0 0;
-    padding: 3px 1px;
+    padding: 0px 1px;
     border: none;
     background: gray;
   }
+
+  .button-separator.back {
+    height: 66px;
+  }
+
+  .button-separator.back.page {
+    height: 28px;
+  }
+
+  .row-separator {
+    height: 0px;
+    border: 1px;
+    border-style: inset;
+    margin: 3px 0px;
+    width: 324px;
+    float: left;  
+  }
+
   .button.add-cat {
     background-image: url(/images/ui/icon-folder-new.png);
   }
@@ -593,7 +643,6 @@ div.wysiwyg ul.toolbar {
   }
   .button.add-rss-feed {
     background-image: url(/images/ui/icon-rss-new.png);
-    padding: 6px 2px 0 18px;
   }
   .button.rename {
     background-image: url(/images/ui/icon-rename.png);
@@ -626,9 +675,9 @@ div.wysiwyg ul.toolbar {
       background: transparent 50% 50% no-repeat;
     }
     .name {
-      padding: 6px 10px 6px 3px;
+      margin: 6px 0px 6px 3px;
       float: left;
-      width: 265px;
+      width: 260px;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: no-wrap;      

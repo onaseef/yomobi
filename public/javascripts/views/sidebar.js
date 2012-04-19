@@ -15,6 +15,7 @@
       'click .edit-tab-bar': 'tellBappToEditTabBar',
       'click .edit-settings': 'tellBappToEditSettings',
       'click .edit-advanced-settings': 'tellBappToEditAdvancedSettings',
+      'click .customize': 'tellBappToCustomize',
       'click img.add': 'onClickAddIcon',
       'dblclick .home-icon': 'onDoubleClick'
     },
@@ -120,7 +121,8 @@
 
     tellBappToEditTabBar: function () { bapp.startEditingPanel('tabBar'); },
     tellBappToEditSettings: function () { bapp.startEditingPanel('settings'); },
-    tellBappToEditAdvancedSettings: function () { bapp.startEditingPanel('advancedSettings'); }
+    tellBappToEditAdvancedSettings: function () { bapp.startEditingPanel('advancedSettings'); },
+    tellBappToCustomize: function () { bapp.startEditingPanel('customize'); }
     
   });
 

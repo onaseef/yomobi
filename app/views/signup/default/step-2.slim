@@ -28,8 +28,7 @@
     input name="step_data[address][zip]" type="text"
     label =t'account_setup.address.country'
     br
-    select name="step_data[address][country]"
-      = render 'builder/country-options'
+    = localized_country_select_tag 'step_data[address][country]', "US"
   .action-bar
     .rfloat.main-btn
       input.content type="submit" value=t'account_setup.button.save_and_continue'

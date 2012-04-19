@@ -10,7 +10,7 @@ class SignupController < ApplicationController
     return redirect_to account_setup_path(1) if current_user.company.nil? && @step_num.to_i >= 2
 
     if @step_num.to_i >= 5 || !current_user.company.nil? && @step_num.to_i == 1
-      return redirect_to builder_main_path, :notice => 'Your account has already been setup.'
+      return redirect_to builder_main_path, :notice => I18n.t('account.already_setup')
     end
     
     @errors = {}; @data = {}; @company = current_user.company || Company.new
@@ -57,7 +57,7 @@ class SignupController < ApplicationController
           company = current_user.company
 
           if data['desc'].present?
-            about_us_doc = company.get_widget_doc 'custom-page', 'About Us'
+            about_us_doc = company.get_widget_doc 'custom-page'
             if about_us_doc
               about_us_doc['content'] = data['desc']
               company.save_doc about_us_doc

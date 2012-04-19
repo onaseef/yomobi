@@ -55,7 +55,7 @@ script.add-subcat-dialog(type="text/template")
       | <% if (addedCats.length > 0) { %>
       .divider
       .other-names
-        b Added <% print( util.pluralize(typeName) ); %>:
+        b == t 'dialog.add_page.added', :type_plural => "<% print( util.pluralize(typeName) ); %>"
         ul
           | <% for(var i=0; i < addedCats.length; i++) { %>
           |    <li> {{ addedCats[i] }} </li>
@@ -230,7 +230,7 @@ script.edit-settings(type="text/template")
             td
               input type="file" name="logo" accept="image/*"
             td
-              input.rfloat type="submit" value==t'builder.general_settings.upload' disabled="disabled"
+              input.rfloat type="submit" name="upload_submit" value==t'builder.general_settings.upload' disabled="disabled"
           tr
             td colspan="3"
               .divider
@@ -292,6 +292,138 @@ script.edit-advanced-settings(type="text/template")
         input.content type="submit" value==t'builder.advanced_settings.save'
       .checkmark
       .loader
+
+
+script.customize(type="text/template")
+  .header.customize
+    .icon{ style="background-image: url(/images/customize.png)" }
+    .widget-name
+      =t'builder.customize.title'
+    p.help-text
+      a.help-link href="http://help.yomobi.com/Account/AdvancedCustomization" target="_blank" =t'builder.widget_editor.help'
+
+  .edit-area.customize
+    .explanation ==t'builder.customize.explanation'
+
+    select name="area_select"
+      option value="head" Header
+      option value="tab_bar" Mobile Tab Bar & Footer
+      option value="home_page" Home Page
+
+    form.subpanels
+      .head
+        table.banner.wphoto-wrap
+          tbody
+            tr
+              td colspan="2"
+                label
+                  =t'builder.customize.banner'
+                  a href="http://help.yomobi.com/Mobile/ChangeSiteBanner" target="ymhelp"
+                    img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.customize.banner_help')
+                | <% if (banner_src) { %>
+                img.banner src="{{ banner_src }}"
+                | <% } %>
+            tr
+              td
+                .selected-file.lfloat &nbsp;
+                button name="pick_files" =t'dialog.add_new.browse'
+                .error
+              | <% if (banner_src) { %>
+              td
+                a.remove-banner-link href="#" =t'dialog.add_new.remove_picture'
+              | <% } %>
+        h3 Customizing Header
+        label Backgound Color
+        .color-picker data-color="{{ header_color }}" data-target="header_color"
+          div style="background-color:{{ header_color }}"
+        input type="hidden" name="header_color" value="{{ header_color }}"
+        br
+        label Text Color
+        .color-picker data-color="{{ header_text_color }}" data-target="header_text_color"
+          div style="background-color:{{ header_text_color }}"
+        input type="hidden" name="header_text_color" value="{{ header_text_color }}"
+        br
+
+      .tab_bar
+        h3 Customizing Tab Bar & Footer
+        label Backgound Color
+        .color-picker data-color="{{ tab_bar_color }}" data-target="tab_bar_color"
+          div style="background-color:{{ tab_bar_color }}"
+        input type="hidden" name="tab_bar_color" value="{{ tab_bar_color }}"
+        br
+        label Text Color
+        .color-picker data-color="{{ tab_bar_text_color }}" data-target="tab_bar_text_color"
+          div style="background-color:{{ tab_bar_text_color }}"
+        input type="hidden" name="tab_bar_text_color" value="{{ tab_bar_text_color }}"
+
+      .home_page
+        h3 Customizing Home Page
+        label Icon Text Font
+        br
+        select name="icon_font_family"
+          option value="Arial, Helvetica, sans-serif" Arial
+          option value="Courier New, monospace" Courier New
+          option value="Georgia, serif" Georgia
+          option value="Times New Roman, Times, serif" Times New Roman
+          option value="Verdana, Geneva, sans-serif" Verdana
+        br
+        label Icon Text Color
+        .color-picker data-color="{{ icon_text_color }}" data-target="icon_text_color"
+          div style="background-color:{{ icon_text_color }}"
+        input type="hidden" name="icon_text_color" value="{{ icon_text_color }}"
+
+        label Background Color
+        .color-picker data-color="{{ body_bg_color }}" data-target="body_bg_color"
+          div style="background-color:{{ body_bg_color }}"
+        input type="hidden" name="body_bg_color" value="{{ body_bg_color }}"
+
+        table.body_bg.wphoto-wrap
+          tbody
+            tr
+              td colspan="2"
+                label
+                  =t'builder.customize.body_bg'
+                  a href="http://help.yomobi.com/Mobile/ChangeSiteBackground" target="ymhelp"
+                    img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.customize.body_bg_help')
+                | <% if (body_bg_src) { %>
+                img.banner src="{{ body_bg_src }}"
+                | <% } %>
+            tr
+              td
+                .selected-file.lfloat &nbsp;
+                button name="pick_files" =t'dialog.add_new.browse'
+                .error
+              | <% if (body_bg_src) { %>
+              td
+                a.remove-body_bg-link href="#" =t'dialog.add_new.remove_picture'
+              | <% } %>
+            | <% if (body_bg_src) { %>
+            tr
+              td colspan="2"
+                select name="body_bg_repeat"
+                  option value="no-repeat" Don't Repeat
+                  option value="repeat-x" Repeat Horizontally
+                  option value="repeat-y" Repeat Vertically
+                  option value="repeat" Repeat Both
+            | <% } %>
+
+
+    br
+    .action-bar
+      p.error.lfloat style="margin-top:2px"
+      - if @company.premium? == false
+        p.not-premium = t'builder.customize.not_premium'
+        .accept-btn.main-btn.disabled
+          input.content type="submit" value=t'builder.widget_editor.save'
+      - else
+        .accept-btn.main-btn
+          input.content type="submit" value=t'builder.widget_editor.save'
+        .cancel-btn.alt-btn
+          .content = t'builder.widget_editor.cancel'
+        .checkmark
+        .loader
+      .clearfix
+
 
 script.jeditor-image-dialog(type="text/template")
   #dialog-confirm.jeditor-image title=t'dialog.add_picture.title'
@@ -499,8 +631,7 @@ script.find-us-edit-area(type="text/template")
   br
   label =t'builder.widget_editor.country_label_required'
   br
-  select name="country"
-    = render 'builder/country-options'
+  = localized_country_select_tag 'country', "US"
   br
 
 script.coupon-edit-area(type="text/template")
@@ -555,18 +686,17 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
           td
         | <% } %>
 
-    .controls
+    .controls.category
       / For icon-only buttons, you need = ""
-      .button.back title=t'builder.widget_editor.go_back_icon' = ""
-      .button-separator
+      .button.back title=t'builder.widget_editor.go_back_icon' &#0139;
+      .button-separator.back
       .button.add-cat =t('builder.widget_editor.add_item', :item => "{{ catLabel }}")
       .button.add-item =t('builder.widget_editor.add_item', :item => "{{ itemLabel }}")
       | <% if (wtype === 'page_tree') { %>
-      .button.add-rss-feed title=t'builder.widget_editor.rss_icon' = ""
+      .button.add-rss-feed title=t'builder.widget_editor.rss_icon' = t'builder.widget_editor.add_rss' 
       | <% } %>
-
-      | <% if (isThereStuff == true) { %>
-      .button-separator
+      .row-separator
+      | <% if (isThereStuff == true | true) { %>
       .button.edit title=t'builder.widget_editor.edit_icon' &nbsp;
       .button.rename title=t'builder.widget_editor.rename_icon' &nbsp;
       .button.delete title=t'builder.widget_editor.delete_icon' &nbsp;
@@ -587,8 +717,8 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
 
     | <% } else { %>
     .controls
-      .button.back title=t'builder.widget_editor.go_back_icon' = ""
-      .button-separator
+      .button.back.page title=t'builder.widget_editor.go_back_icon' &#0139;
+      .button-separator.back.page
       .crumb-wrap
         erb:
           <%==t('builder.widget_editor.editing_crumb', :breadcrumb => "{{ catCrumbs }}")%>

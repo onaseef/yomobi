@@ -275,7 +275,7 @@ label {
 
 #step-arrows {
   background: #eceef4;
-  width: 500px;
+  width: 542px;
   margin: 20px auto;
   background: url(/images/ui/step-arrow-inactive-bg.png) repeat-x;
   .arrow {
@@ -309,11 +309,10 @@ label {
     background-position: -21px 0; } }
 
 #account-setup-box {
-  h2 {
-    margin: 5px 0px 15px 0px; }
-  h3 {
-    margin: 10px 0px 5px 0px; }
-  width: 500px;
+  h2 { margin: 5px 0px 15px 0px; }
+  h3 { margin: 10px 0px 5px 0px; }
+  h4 { margin-bottom: 4px; }
+  p { margin: 0px 6px; }
   textarea, input[type=text], input[type=password] {
     font-size: 1.2em;
     width:450px;

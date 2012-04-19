@@ -44,8 +44,6 @@
   });
 
   // ==================================
-  var invalidWidgetTooltip = g.i18n.builder_app.invalid_widget;
-  var deactivatedWidgetTooltip = g.i18n.builder_app.deactivated_widget;
   WidgetHomeView = Backbone.View.extend({
     tagName: 'div',
     className: 'home-icon dbx-box',
@@ -75,7 +73,7 @@
       if (mapp.homeView.showInvalidWidgets && !this.model.validForShowing()) {
 
         var className = 'invalid' + (this.model.get('hide') ? ' deactivated' : '');
-        var tip = this.model.get('hide') ? deactivatedWidgetTooltip : invalidWidgetTooltip;
+        var tip = this.model.get('hide') ? g.i18n.builder_app.deactivated_widget : g.i18n.builder_app.invalid_widget;
         $(this.el).addClass(className).simpletooltip(tip);
       }
       return this;
@@ -201,7 +199,8 @@
         logo: g.logo.match(/default-logo_mobile.png$/) ? null : g.logo
       }))
       .find('img').load(function (e,elem) {
-        g.topBarHeight = Math.max(g.topBarHeight,$('#top-bar').height());
+        g.topBarHeight = Math.max(g.topBarHeight || 0,$('#top-bar').height());
+        _.delay(function () { mapp.resize() }, 100);
       });
 
       this.trigger('render');
@@ -371,7 +370,8 @@
 
     // overridden in builder-app.js
     resize: function (height) {
-      height = ( height || mapp.getActivePage().height() ) + g.topBarMaxHeight;
+      height = ( height || mapp.getActivePage().height() ) +
+                Math.max(g.topBarMaxHeight,g.topBarHeight) + 20;
       $('#mobile-container').height(height);
       return height;
     },

@@ -11,15 +11,24 @@ var util = {
   linkTypeURL:     "url",
   linkTypePhone:   "phone",
   linkTypeAddress: "address",
-  linkTypeEmail:   "email", 
+  linkTypeEmail:   "email",
   linkTypeUnknown: "unknown",
 
   linkURLProtocol:     "http://",
   linkPhoneProtocol:   "tel:",
   linkAddressProtocol: "http://maps.google.com/?q=",
   linkEmailProtocol:   "mailto:",
-  defaultHeaderBackgroundColor:  "#2a426a",
-  defaultHeaderTextColor: "#ffffff",
+
+  defaultSettings: {
+    header_color:  "#2a426a",
+    header_text_color: "#ffffff",
+    tab_bar_color:  "#C4CDE0",
+    tab_bar_text_color: "#3B59A0",
+    icon_text_color: "#000",
+    icon_font_family: "Arial, Helvetica, sans-serif",
+    body_bg_repeat: "none",
+    body_bg_color: "#fff"
+  },
 
   // namespace for shared widget functions
   widget: {},

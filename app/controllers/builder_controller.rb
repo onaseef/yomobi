@@ -117,6 +117,55 @@ class BuilderController < ApplicationController
     end
   end
 
+  def customize
+    settings = current_user.company.settings
+    settings.header_color = params[:header_color]
+    settings.header_text_color = params[:header_text_color]
+    settings.tab_bar_color = params[:tab_bar_color]
+    settings.tab_bar_text_color = params[:tab_bar_text_color]
+    settings.icon_font_family = params[:icon_font_family]
+    settings.icon_text_color = params[:icon_text_color]
+    settings.footer_color = params[:footer_color]
+    settings.footer_text_color = params[:footer_text_color]
+    settings.body_bg_repeat = params[:body_bg_repeat]
+    settings.body_bg_color = params[:body_bg_color]
+    settings.save
+    success(settings)
+  end
+
+  def upload_customize
+    company = current_user.company
+    return error 'not_premium' if company.premium? == false
+
+    if params[:destroy] == "1" && params[:targetType] == 'banner'
+      company.update_attribute :banner, nil
+      success :banner => company.banner.url(:mobile)
+    elsif params[:destroy] == "1" && params[:targetType] == 'body_bg'
+      settings = company.settings
+      settings.update_attribute :body_bg, nil
+      success :body_bg => settings.banner.url(:mobile)
+    elsif params[:targetType] == 'banner'
+      save_success = company.update_attributes :banner => params[:file]
+
+      if save_success == false && company.errors[:logo_file_size]
+        error 'file_size_too_large'
+      elsif save_success
+        success :banner => company.banner.url(:mobile)
+      end
+    elsif params[:targetType] == 'body_bg'
+      settings = company.settings
+      save_success = settings.update_attributes\
+        :body_bg => params[:file],
+        :body_bg_repeat => 'no-repeat'
+
+      if save_success == false && settings.errors[:logo_file_size]
+        error 'file_size_too_large'
+      elsif save_success
+        success :body_bg => settings.body_bg.url(:mobile)
+      end
+    end
+  end
+
   def upload_wphoto
     params[:file].content_type = MIME::Types.type_for(params[:file].original_filename).to_s
 

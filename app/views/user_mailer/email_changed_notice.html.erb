@@ -1,8 +1,10 @@
-The email associated with <%= link_to 'your YoMobi site', @mobile_url %> has been changed from <%= @old_email %> to <%= @new_email %>. Next time you log in to YoMobi, your login email will be: <%= @new_email %>.
+<%=t('account.username_changed_email.message', :mobile_url => @mobile_url, :old_email => @old_email, :new_email => @new_email)%>
 <br />
 <br />
-Thank You,
+<p>
+<%==t'account.username_changed_email.closing'%>
 <br />
-Yomobi Support
-<a href="http://www.yomobi.com">YoMobi.com</a>
+<%==t'account.username_changed_email.signature'%>
 <br />
+<%==t'account.username_changed_email.contact'%>
+</p>

@@ -13,10 +13,10 @@ class AccountController < ApplicationController
     old_email = @user.email
 
     if u_params[:current_password].blank?
-      flash[:alert] = "Please enter your current password to update your account."
+      flash[:alert] = t'account.enter_current_password'
     elsif @user.update_with_password(u_params)
       sign_in(@user, :bypass => true)
-      flash[:notice] = "Account updated successfully."
+      flash[:notice] = t'account.updated_success'
       if @user.email != old_email
         UserMailer.email_changed_notice(@user, old_email).deliver
       end

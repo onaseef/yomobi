@@ -1,21 +1,24 @@
 = form_tag session_path(:user) do |f|
   .signin-bg
-    .signin-section1
-      span.signin-text =t'sign_in.email'
-      br
-      = text_field_tag 'user[email]', '', :class => "signin-field"
-      br
-      .floatleft
-        = check_box_tag 'user[remember_me]'
+    table
+      tr
+        td.signin-text
+          =t'sign_in.email'
+        td.signin-text 
+          =t'sign_in.password'
+        td rowspan=3
+          input.signin-button type="submit" value=t'sign_in.sign_in' tabindex="3"
+      tr
+        td
+          = text_field_tag 'user[email]', '', :class => "signin-field", :tabindex => 1
+        td
+          = password_field_tag 'user[password]', '', :class => "signin-field", :tabindex => 2
+      tr
+        td.signin-lighttext
+          .checkbox.floatleft
+            = check_box_tag 'user[remember_me]', :tabindex => 4
+          .signin-lighttext.remember  =t'sign_in.remember_user'
+        td.signin-lighttext
+          a.signin-lighttext  href="/users/password/new" =t'sign_in.forgot_password', :tabindex => 5
 
-      .signin-whitetext  =t'sign_in.remember_user'
-
-    .signin-section2
-      span.signin-text =t'sign_in.password'
-      br
-      = password_field_tag 'user[password]', '', :class => "signin-field"
-      br
-      a.signin-whitetext  href="/users/password/new" =t'sign_in.forgot_password'
-
-    input.pretty-button.signin-button type="submit" value=t'sign_in.sign_in'
 

@@ -1,16 +1,16 @@
-A visitor to <a href="<%= @params[:company_mobile_url] %>">your YoMobi site</a> left you a call back request:
+<%==t('call_back.email.body', :site_url => @params[:company_mobile_url]) %>
 <br />
 <br />
 
-Name: <%=@params[:customer_name] %>
+<%=t('mobile.email.name') %>  <%=@params[:customer_name] %>
 <br />
-Phone: <%=@params[:customer_phone] %>
+<%=t('mobile.email.phone') %>  <%=@params[:customer_phone] %>
 <br />
 <br />
-Message: <%= @params[:customer_message] %>
+<%=t('mobile.email.message') %>  <%= @params[:customer_message] %>
 <br />
 <br />
 
-Thank You,
+<%==t('mobile.email.closing')%>
 <br />
-YoMobi
+<%==t('mobile.email.signature')%>
