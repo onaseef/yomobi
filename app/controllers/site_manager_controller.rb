@@ -7,7 +7,7 @@ class SiteManagerController < ApplicationController
   before_filter :ensure_user_has_already_setup
   before_filter :ensure_user_owns_company,
                 :only => [:add_admin, :remove_admin, :concede,
-                          :add_domain,
+                          :add_domain, :remove_domain,
                           :gen_signup_key, :delete]
 
   def index
@@ -156,6 +156,18 @@ class SiteManagerController < ApplicationController
       render :json => { :status => :error, :reasons => errors, :host => params[:host] }
     else
       # TODO: Send to heroku
+      render :json => { :status => :ok, :site => @company }
+    end
+  end
+
+  def remove_domain
+    domain = Domain.find_by_id params[:domain_id]
+
+    if domain.nil?
+      render :json => { :status => :error, :reasons => { :does_not_exist => true }, :host => params[:domain_id] }
+    else
+      # TODO: Send to heroku
+      domain.delete
       render :json => { :status => :ok, :site => @company }
     end
   end

@@ -94,6 +94,11 @@
     }
   });
 
+  // shared function
+  var showContent = function () {
+    this.$('.content-body').show();
+  };
+
 
   SiteDetailsView = Backbone.View.extend({
     el: $('#manager-container .accordian > .site-details'),
@@ -112,6 +117,7 @@
       'click .signup-key':            'selectKey',
       'click button.gen-signup-key': 'genSignupKey'
     },
+    showContent: showContent,
     render: function (site) {
       $(this.el).html( this.template() );
       this.$('.gen-signup-key').prop('disabled', !site.get('isOwnedByUser'));
@@ -147,7 +153,15 @@
     template: util.getTemplate('custom-domains'),
     domainsTemplate: util.getTemplate('domain-list'),
     events: {
-      'click .add-domain':        'openDomainDialog'
+      'click .domains li':            'selectDomain',
+      'click .add-domain':            'openDomainDialog',
+      'click button.remove-domain':   'removeDomain'
+    },
+    showContent: showContent,
+
+    selectDomain: function (e) {
+      this.$('.domains li').removeClass('ui-selected');
+      $(e.currentTarget).addClass('ui-selected');
     },
 
     openDomainDialog: function (e) {
@@ -155,6 +169,26 @@
       this.dialog.model = sman.getSelectedSite();
       this.dialog.options = { mode:'addDomain' };
       this.dialog.prompt();
+    },
+
+    removeDomain: function () {
+      var self = this
+        , site = sman.getSelectedSite()
+        , domain_id = this.getSelectedDomainId()
+      ;
+      this.$('button').prop('disabled',true);
+
+      submitForm(site, g.removeDomainPath, {
+        params: { domain_id:domain_id },
+        success: function (resp) {
+          site.set(resp.site);
+          self.render( site ).showContent();
+        }
+      });
+    },
+
+    getSelectedDomainId: function () {
+      return this.$('.domains li.ui-selected').data('id');
     },
 
     render: function (site) {
@@ -170,6 +204,7 @@
   MerchantAccountView = Backbone.View.extend({
     el: $('#manager-container .accordian > .merchant-account'),
     template: util.getTemplate('merchant-account'),
+    showContent: showContent,
     render: function (site) {
       $(this.el).html( this.template() );
       return this;
@@ -183,6 +218,7 @@
     events: {
       'click .back-btn':        'goBack'
     },
+    showContent: showContent,
     render: function (site) {
       var extraData = {
         actionLabel: site.get('isPremium') ? 'Manage' : 'Upgrade',
@@ -222,7 +258,7 @@
 
     goBack: function () {
       this.render( sman.getSelectedSite() );
-      this.$('.content-body').show();
+      this.showContent();
     }
   });
 
@@ -231,6 +267,7 @@
     el: $('#manager-container .site-admins'),
     template: util.getTemplate('site-admins'),
     adminsTemplate: util.getTemplate('admin-list'),
+    showContent: showContent,
 
     render: function (site) {
       var isSelected = this.$('.content-header').hasClass('active');
@@ -566,7 +603,7 @@
 
           sman.accordian.getActiveSection()
             .render( self.model )
-            .$('.content-body').show()
+            .showContent()
           ;
           sman.render();
           $(self.el).dialog('close');
