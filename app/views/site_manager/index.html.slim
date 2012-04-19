@@ -15,6 +15,9 @@
       createSitePath: _.template( unescape("<%=raw create_site_path %>") ),
       addAdminPath: _.template( unescape("<%=raw add_admin_path '{{ id }}' %>") ),
       removeAdminPath: _.template( unescape("<%=raw remove_admin_path '{{ id }}', '{{ admin_id }}' %>") ),
+
+      addDomainPath: _.template( unescape("<%=raw add_domain_path '{{ id }}' %>") ),
+      removeDomainPath: _.template( unescape("<%=raw remove_domain_path '{{ id }}', '{{ domain_id }}' %>") ),
       genSignupKey: _.template( unescape("<%=raw gen_signup_key_path '{{ id }}' %>") ),
       concedeSitePath: _.template( unescape("<%=raw concede_site_path '{{ id }}' %>") ),
       makeDefaultSitePath: _.template( unescape("<%=raw make_default_site_path '{{ id }}' %>") ),
@@ -44,6 +47,7 @@
     .signup-keys
     .site-grade
     .merchant-account
+    .custom-domains
     .site-admins
 
   .clearfix
@@ -132,6 +136,31 @@
       | <% } %>
       .error.hide
 
+  script.custom-domains(type="text/template")
+    .content-header
+      .action Setup
+      h3.title Custom Domains
+      .status <% print(domains.length); %> Connected Domains
+      .clearfix
+    .content-body
+      | <% if (!isPremium) { %>
+      p This site must be upgraded to <b>Professional</b> to use Custom Domains.
+      | <% } else { %>
+      ul.domains.fancy-selectable
+      button.add-domain    disabled="disabled" =t'site_manager.add_domain'
+      button.remove-domain disabled="disabled" =t'site_manager.remove_domain'
+      | <% } %>
+      .clearfix
+
+  script.domain-list(type="text/template")
+    | <% if (domains.length === 0) { %>
+    p No domains connected to this site.
+    | <% } else { %>
+    |    <% for (var i=0; i < domains.length; i++) { %>
+    li.domain data-id="{{ domains[i].id }}" {{ domains[i].host }}
+    |    <% } %>
+    | <% } %>
+
   script.merchant-account(type="text/template")
     .content-header
       .action Setup
@@ -165,16 +194,16 @@
               span.name
                 ' {{ owner.firstName }} {{ owner.lastName }}
                 span.is-owner (Owner)
-      | <% for (var i=0; i < admins.length; i++) { %>
-      li.admin data-id="{{ admins[i].id }}"
-        table
-          tbody
-            tr
-              td.site-pic
-                img src="{{ admins[i].logo }}"
-              td
-                span.name {{ admins[i].firstName }} {{ admins[i].lastName }}
-      | <% } %>
+    | <% for (var i=0; i < admins.length; i++) { %>
+    li.admin data-id="{{ admins[i].id }}"
+      table
+        tbody
+          tr
+            td.site-pic
+              img src="{{ admins[i].logo }}"
+            td
+              span.name {{ admins[i].firstName }} {{ admins[i].lastName }}
+    | <% } %>
 
   script.admin(type="text/template")
     span.url yomobi.com/{{ name }}
@@ -232,7 +261,7 @@
       .loading
         h3 =t'status.submitting'
         img src="/images/ui/ajax-loader-small.gif"
-  
+
   script.add-admin-dialog(type="text/template")
     form#account-setup-box.add-admin.dialog title="Add Admin"
       .fields
@@ -244,6 +273,24 @@
         p.error =t'site_manager.error.no_self_admin'
         | <% } %>
         input type="text" name="email" value="{{ email }}"
+      .loading
+        h3 =t'status.submitting'
+        img src="/images/ui/ajax-loader-small.gif"
+
+  script.add-domain-dialog(type="text/template")
+    form#account-setup-box.add-domain.dialog title=t('site_manager.add_domain')
+      .fields
+        h3 =t'site_manager.domain_name'
+        | <% if (errors.taken) { %>
+        p.error =t'site_manager.error.domain_taken'
+        | <% } %>
+        | <% if (errors.host) { %>
+        p.error =t'site_manager.error.bad_domain_format'
+        | <% } %>
+        | <% if (errors.max_domain_count) { %>
+        p.error =t'site_manager.error.max_domain_count'
+        | <% } %>
+        input type="text" name="host" value="{{ _maybe.host }}"
       .loading
         h3 =t'status.submitting'
         img src="/images/ui/ajax-loader-small.gif"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120414210711) do
+ActiveRecord::Schema.define(:version => 20120417155155) do
 
   create_table "carriers", :force => true do |t|
     t.string   "name"
@@ -51,12 +51,6 @@ ActiveRecord::Schema.define(:version => 20120414210711) do
     t.datetime "updated_at"
     t.string   "header_text_color"
     t.string   "slogan"
-    t.string   "tab_bar_color"
-    t.string   "tab_bar_text_color"
-    t.string   "icon_font_family"
-    t.string   "icon_text_color"
-    t.string   "footer_color"
-    t.string   "footer_text_color"
   end
 
   create_table "company_types", :force => true do |t|
@@ -66,6 +60,15 @@ ActiveRecord::Schema.define(:version => 20120414210711) do
   end
 
   add_index "company_types", ["name"], :name => "index_company_types_on_name", :unique => true
+
+  create_table "domains", :force => true do |t|
+    t.integer  "company_id"
+    t.string   "host"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "domains", ["host"], :name => "index_domains_on_host", :unique => true
 
   create_table "followers", :force => true do |t|
     t.integer  "company_id"

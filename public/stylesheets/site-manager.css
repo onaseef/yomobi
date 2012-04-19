@@ -89,8 +89,10 @@ h2.active-site {
       max-width: 50px;
       vertical-align: middle; }
 
-form#account-setup-box.dialog .loading {
-  display: none; }
+form#account-setup-box.dialog {
+  width: 480px; }
+  form#account-setup-box.dialog .loading {
+    display: none; }
 
 form#account-setup-box.dialog.submitting .fields {
   display: none; }

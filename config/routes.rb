@@ -61,6 +61,9 @@ Yomobi::Application.routes.draw do
   post "sites/:id/admins/:admin_id/delete" => 'site_manager#remove_admin', :as => :remove_admin
   post "sites/:id/signup-key" => 'site_manager#gen_signup_key', :as => :gen_signup_key
 
+  post "sites/:id/domains"          => 'site_manager#add_domain', :as => :add_domain
+  post "sites/:id/domains/:domain_id/delete" => 'site_manager#remove_domain', :as => :remove_domain
+
 
   get 'builder/main'      => 'builder#index', :as => :builder_main
 

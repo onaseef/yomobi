@@ -6,8 +6,9 @@ class SiteManagerController < ApplicationController
   before_filter :authenticate_user!
   before_filter :ensure_user_has_already_setup
   before_filter :ensure_user_owns_company,
-                :only => [:add_admin, :remove_admin, :gen_signup_key,
-                          :concede, :delete]
+                :only => [:add_admin, :remove_admin, :concede,
+                          :add_domain,
+                          :gen_signup_key, :delete]
 
   def index
     @companies = current_user.all_companies
@@ -133,6 +134,28 @@ class SiteManagerController < ApplicationController
         key.user.update_attribute :active_company_id, nil
         key.delete
       }
+      render :json => { :status => :ok, :site => @company }
+    end
+  end
+
+  def add_domain
+    # LAST TIME: check if domain has already been registered
+    if @company.domains.count >= 5
+      return render :json => { :status => :error, :reasons => { :max_domain_count => true }, :host => params[:host] }
+    end
+
+    domain = Domain.find_by_host(params[:host])
+    if domain.present?
+      return render :json => { :status => :error, :reasons => { :taken => true }, :host => params[:host] }
+    end
+
+    domain = Domain.create :host => params[:host], :company => @company
+    errors = domain.errors
+
+    if errors.count > 0
+      render :json => { :status => :error, :reasons => errors, :host => params[:host] }
+    else
+      # TODO: Send to heroku
       render :json => { :status => :ok, :site => @company }
     end
   end

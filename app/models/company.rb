@@ -11,6 +11,7 @@ class Company < ActiveRecord::Base
   has_many :admins, :through => :keys, :source => :user
   has_many :signup_keys, :dependent => :delete_all
   has_many :payments
+  has_many :domains
 
   has_many :followers
   has_many :wphotos
@@ -138,6 +139,7 @@ class Company < ActiveRecord::Base
       logo: self.logo.url(:mobile),
       owner: self.user,
       admins: self.admins,
+      domains: self.domains,
       isPremium: self.premium?,
       expireDate: self.expire_date.to_s,
       subscriptionEndDate: (Time.at(self.subscription_end_date).to_date if self.subscription_end_date),

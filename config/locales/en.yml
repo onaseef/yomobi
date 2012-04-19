@@ -106,6 +106,7 @@ en:
       default_error: "We're sorry, something went wrong."
       new_site_dialog_title: "Create New Site"
       add_admin_dialog_title: "Add Admin for "
+      add_domain_dialog_title: "Add Custom Domain for "
       concede_ownership_dialog_title: "Concede Site Ownership"
       add: "Add"
       continue: "Continue"
@@ -500,6 +501,9 @@ en:
     site_access_list: "Sites you have access to:"
     admin_email: "Admin's Email:"
     enter_password: "Enter your password to continue:"
+    add_domain: "Add Domain"
+    remove_domain: "Remove Domain"
+    domain_name: "Domain Name (e.g. www.example.com):"
     error:
       are_you_sure: "Are you sure?"
       site_limit: "You have reached the site count limit of %{max_site_count}."
@@ -507,7 +511,10 @@ en:
       no_self_admin: "You cannot add yourself as a Admin."
       already_owner: "You are already the owner of this site."
       description_too_long: "Description is too long. 2500 characters max."
-      
+      domain_taken: "Domain has already been linked to another mobile site."
+      bad_domain_format: "Invalid domain format."
+      max_domain_count: "You have reached the maximum number of domains for this mobile site (5)."
+
     help:
       signup_keys: "When you are ready to hand this site over to its owner, generate a signup key, then email the link to the site owner and have them click on the link to sign up to Yomobi and take ownership of their site.<br><b>Click ? for more information.</b>"
     confirm:
