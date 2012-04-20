@@ -520,13 +520,24 @@ util.log('INTSANCE ID',options.instanceId, options.extraParams);
       $('#'+pickerId).hide();
       uploader.refresh();
     };
-    uploader.disableBrowseButton = function () {
-      $('#'+pickerId).hide();
-      $('<button>').text('Browse...')
-        .prop('disabled',true)
-        .insertAfter('#'+pickerId)
-        .after('<img class="ajax" src="/images/ui/ajax-loader-small.gif">')
-      ;
+    uploader.toggleBrowseButton = function (toggle) {
+      $('#'+pickerId).toggle(toggle);
+      if (toggle === false) {
+        $('<button>').text('Browse...')
+          .prop('disabled',true)
+          .insertAfter('#'+pickerId)
+          .after('<img class="ajax" src="/images/ui/ajax-loader-small.gif">')
+        ;
+      }
+      else {
+        $('#'+pickerId)
+          .siblings('.selected-file')
+            .text(' ')
+            .css('background-position', '-500px 0')
+            .end()
+          .siblings('button,.ajax').remove()
+        ;
+      }
       uploader.refresh();
     };
 
@@ -561,7 +572,7 @@ util.log('INTSANCE ID',options.instanceId, options.extraParams);
       if (uploader.yoIsCancelled === true) return;
 
       context.find('.selected-file').text('Uploading...');
-      uploader.disableBrowseButton();
+      uploader.toggleBrowseButton(false);
       uploader.startTimestamp = util.now();
     });
 

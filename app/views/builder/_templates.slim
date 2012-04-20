@@ -320,12 +320,12 @@ script.customize(type="text/template")
                   =t'builder.customize.banner'
                   a href="http://help.yomobi.com/Mobile/ChangeSiteBanner" target="ymhelp"
                     img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.customize.banner_help')
-                | <% if (banner_src && isPremium) { %>
+                | <% if (isPremium) { %>
                 img.banner src="{{ banner_src }}"
                 | <% } %>
             | <% if (isPremium) { %>
             tr
-              td
+              td.file-picker
                 .selected-file.lfloat &nbsp;
                 button name="pick_files" =t'dialog.add_new.browse'
                 .error
@@ -390,8 +390,8 @@ script.customize(type="text/template")
                   =t'builder.customize.body_bg'
                   a href="http://help.yomobi.com/Mobile/ChangeSiteBackground" target="ymhelp"
                     img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.customize.body_bg_help')
-                | <% if (body_bg_src) { %>
-                img.banner src="{{ body_bg_src }}"
+                | <% if (isPremium) { %>
+                img.body_bg src="{{ body_bg_src }}"
                 | <% } %>
             | <% if (isPremium) { %>
             tr
@@ -403,15 +403,13 @@ script.customize(type="text/template")
               td
                 a.remove-body_bg-link href="#" =t'dialog.add_new.remove_picture'
               | <%    } %>
-            | <%    if (body_bg_src) { %>
-            tr
+            tr.bg_repeat class="<% if (body_bg_src === g.blankImg) { print('hide'); } %>"
               td colspan="2"
                 select name="body_bg_repeat"
                   option value="no-repeat" Don't Repeat
                   option value="repeat-x" Repeat Horizontally
                   option value="repeat-y" Repeat Vertically
                   option value="repeat" Repeat Both
-            | <%    } %>
             | <% } else { %>
             tr
               td = t'builder.customize.not_premium'
