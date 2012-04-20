@@ -2,7 +2,7 @@ Yomobi::Application.routes.draw do
 
   get "payments/index"
 
-  constraints(Subdomain) do
+  constraints(MobileDomain) do
     match '/' => 'mobile#index'
     post ':company/leave_msg/submit' => 'widgets/leave_msg#submit'
     post ':company/call_back/submit' => 'widgets/call_back#mobile_submit'

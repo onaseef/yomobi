@@ -140,7 +140,7 @@ class SiteManagerController < ApplicationController
 
   def add_domain
     # LAST TIME: check if domain has already been registered
-    if @company.domains.count >= 5
+    if @company.domains.count >= MAX_DOMAIN_COUNT
       return render :json => { :status => :error, :reasons => { :max_domain_count => true }, :host => params[:host] }
     end
 
@@ -155,7 +155,10 @@ class SiteManagerController < ApplicationController
     if errors.count > 0
       render :json => { :status => :error, :reasons => errors, :host => params[:host] }
     else
-      # TODO: Send to heroku
+      if ENV['HEROKU_API_KEY'].present?
+        client = Heroku::Client.new('', ENV['HEROKU_API_KEY'])
+        client.add_domain Rails.application.config.heroku_app_name, params[:host]
+      end
       render :json => { :status => :ok, :site => @company }
     end
   end
@@ -166,7 +169,10 @@ class SiteManagerController < ApplicationController
     if domain.nil?
       render :json => { :status => :error, :reasons => { :does_not_exist => true }, :host => params[:domain_id] }
     else
-      # TODO: Send to heroku
+      if ENV['HEROKU_API_KEY'].present?
+        client = Heroku::Client.new('', ENV['HEROKU_API_KEY'])
+        client.remove_domain Rails.application.config.heroku_app_name, domain.host
+      end
       domain.delete
       render :json => { :status => :ok, :site => @company }
     end

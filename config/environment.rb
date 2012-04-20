@@ -1,4 +1,4 @@
-require './lib/subdomain.rb'
+require './lib/mobile_domain.rb'
 
 # Load the rails application
 require File.expand_path('../application', __FILE__)
@@ -22,6 +22,7 @@ MAX_COMPANY_SLOGAN_LENGTH = 90
 
 # used in site_manager_controller.rb
 MAX_SITE_COUNT = 30
+MAX_DOMAIN_COUNT = 5
 
 # Initialize the rails application
 Yomobi::Application.initialize!
