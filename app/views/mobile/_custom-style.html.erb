@@ -1,7 +1,4 @@
-
-<% if @company.premium? %>
 <style type="text/css">
-
 .company-info {
   <% if @company.settings.header_color %>
   <% @color = @company.settings.header_color %>
@@ -25,6 +22,11 @@
   color: <%= @company.settings.header_text_color %>;
   <% end %>
 }
+</style>
+
+
+<% if @company.premium? %>
+<style type="text/css">
 
 #top-bar .tab-bar, .mobile-footer, .ad-bar {
   <% if @company.settings.tab_bar_color %>
