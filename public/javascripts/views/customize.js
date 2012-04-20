@@ -84,7 +84,8 @@
         wnames: _.keys(mapp.metaDoc.worder),
         banner_src: g.banner,
         body_bg_src: g.body_bg,
-        isDefaultBanner: false
+        isDefaultBanner: false,
+        isPremium: g.isPremium
       };
       var settings = _.extend({}, g.settings);
       for (var p in settings) {
@@ -114,8 +115,10 @@
       this.$('[name=area_select]').val(targetArea);
       this.$('.subpanels .' + targetArea).show();
 
-      initDialogUploader('banner', this.el, this.onUpload);
-      initDialogUploader('body_bg', this.el, this.onUpload);
+      if (g.isPremium) {
+        initDialogUploader('banner', this.el, this.onUpload);
+        initDialogUploader('body_bg', this.el, this.onUpload);
+      }
     },
 
     viewArea: function (e) {
