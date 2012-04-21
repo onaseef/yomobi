@@ -23,7 +23,7 @@
     #header.signed-out form label {
       padding: 0px; }
     #header.signed-out form input[type=text], #header.signed-out form input[type=password] {
-      width: 142px;
+      max-width: 175px;
       padding: 2px;
       margin: 0px;
       border-color: #8A9CC2; }
