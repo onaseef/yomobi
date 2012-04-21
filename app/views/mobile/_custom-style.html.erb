@@ -28,6 +28,12 @@
 <% if @company.premium? %>
 <style type="text/css">
 
+.company-info {
+  <% if @company.settings.header_font_family %>
+  font-family: <%= @company.settings.header_font_family %>;
+  <% end %>
+}
+
 #top-bar .tab-bar, .mobile-footer, .ad-bar {
   <% if @company.settings.tab_bar_color %>
   background: <%= @company.settings.tab_bar_color %>;
@@ -35,6 +41,10 @@
 
   <% if @company.settings.tab_bar_text_color %>
   border-color: <%= @company.settings.tab_bar_text_color %>;
+  <% end %>
+
+  <% if @company.settings.tab_bar_font_family %>
+  font-family: <%= @company.settings.tab_bar_font_family %>;
   <% end %>
 }
 

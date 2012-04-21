@@ -65,7 +65,7 @@
       'change [name=area_select]':        'viewArea',
       'change input[type=file]':          'enableUploadButton',
       'click input[type=file]':           'enableUploadButton',
-      'change [name=icon_font_family]':   'updateIconFont',
+      'change select':                    'updateFonts',
       'change [name=body_bg_repeat]':     'updateRepeat',
       'click .accept-btn':                'saveChanges',
       'click .cancel-btn':                'discardChanges',
@@ -97,6 +97,8 @@
         .find('.help-bubble').simpletooltip(undefined,'help').end()
         .find('input:file').keypress(function () { return false; }).end()
         .find('[name=icon_font_family]').val(extraData.icon_font_family).end()
+        .find('[name=header_font_family]').val(extraData.header_font_family).end()
+        .find('[name=tab_bar_font_family]').val(extraData.tab_bar_font_family).end()
         .find('[name=body_bg_repeat]').val(extraData.body_bg_repeat).end()
       ;
       this.delegateEvents();
@@ -111,7 +113,7 @@
         }
       });
 
-      targetArea || (targetArea = 'head');
+      targetArea || (targetArea = 'banner');
       this.$('[name=area_select]').val(targetArea);
       this.$('.subpanels .' + targetArea).show();
 
@@ -152,7 +154,7 @@
       g.banner = '';
       mapp.render();
       $('img.banner').attr('src', g.blankImg);
-      $.post(g.customizeUploadPath, { destroy:1, targetType:'head' });
+      $.post(g.customizeUploadPath, { destroy:1, targetType:'banner' });
     },
 
     removeBodyBg: function (e) {
@@ -167,9 +169,15 @@
       $.post(g.customizeUploadPath, { destroy:1, targetType:'body_bg' });
     },
 
-    updateIconFont: function () {
+    updateFonts: function () {
       var font = this.$('[name=icon_font_family]').val();
       $('#canvas .home-icon .title').css({ fontFamily:font });
+
+      var font = this.$('[name=header_font_family]').val();
+      $('#top-bar .company-info').css({ fontFamily:font });
+
+      var font = this.$('[name=tab_bar_font_family]').val();
+      $('#top-bar .tab-bar').css({ fontFamily:font });
     },
 
     updateRepeat: function () {
@@ -200,7 +208,7 @@
         .val( getSetting('icon_font_family') );
       this.$('[name=body_bg_repeat]')
         .val( getSetting('body_bg_repeat') );
-      this.updateIconFont();
+      this.updateFonts();
       this.updateRepeat();
       this.startEditing( this.$('[name=area_select]').val() );
     },

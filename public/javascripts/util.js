@@ -22,8 +22,10 @@ var util = {
   defaultSettings: {
     header_color:  "#2a426a",
     header_text_color: "#ffffff",
+    header_font_family: "Arial, Helvetica, sans-serif",
     tab_bar_color:  "#C4CDE0",
     tab_bar_text_color: "#3B59A0",
+    tab_bar_font_family: "Arial, Helvetica, sans-serif",
     icon_text_color: "#000",
     icon_font_family: "Arial, Helvetica, sans-serif",
     body_bg_repeat: "none",

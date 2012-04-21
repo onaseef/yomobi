@@ -306,12 +306,12 @@ script.customize(type="text/template")
     .explanation ==t'builder.customize.explanation'
 
     select name="area_select"
-      option value="head" Header
+      option value="banner" Header
       option value="tab_bar" Mobile Tab Bar & Footer
       option value="home_page" Home Page
 
     form.subpanels
-      .head
+      .banner
         table.banner.wphoto-wrap
           tbody
             tr
@@ -338,6 +338,11 @@ script.customize(type="text/template")
               td = t'builder.customize.not_premium'
             | <% } %>
         h3 Customizing Header
+        label Header Font
+        br
+        select name="header_font_family"
+          = render 'builder/font-family-options'
+        br
         label Backgound Color
         .color-picker data-color="{{ header_color }}" data-target="header_color"
           div style="background-color:{{ header_color }}"
@@ -351,6 +356,11 @@ script.customize(type="text/template")
 
       .tab_bar
         h3 Customizing Tab Bar & Footer
+        label Font
+        br
+        select name="tab_bar_font_family"
+          = render 'builder/font-family-options'
+        br
         label Backgound Color
         .color-picker data-color="{{ tab_bar_color }}" data-target="tab_bar_color"
           div style="background-color:{{ tab_bar_color }}"
@@ -366,11 +376,7 @@ script.customize(type="text/template")
         label Icon Text Font
         br
         select name="icon_font_family"
-          option value="Arial, Helvetica, sans-serif" Arial
-          option value="Courier New, monospace" Courier New
-          option value="Georgia, serif" Georgia
-          option value="Times New Roman, Times, serif" Times New Roman
-          option value="Verdana, Geneva, sans-serif" Verdana
+          = render 'builder/font-family-options'
         br
         label Icon Text Color
         .color-picker data-color="{{ icon_text_color }}" data-target="icon_text_color"
