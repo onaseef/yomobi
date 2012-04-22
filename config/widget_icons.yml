@@ -51,8 +51,12 @@
 - name: keep-me-informed
 - name: leave-a-message
 - name: booking-request
+- name: yomobi
 - name: facebook
 - name: twitter
+- name: linkedin
+- name: foursquare
+- name: googleplus
 - name: share
 - name: tell-a-friend
 - name: reviews
