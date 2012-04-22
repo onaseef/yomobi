@@ -33,12 +33,12 @@
             label =t'sign_up.site_type'
           td
             = f.select :company_type_id, options_for_select(company_types, @user.company_type_id || 57)
-      - if params[:sk]
+      - if params[:sk] || cookies[:signup_key]
         tr
           td
             label =t'sign_up.signup_key'
           td
-            = f.text_field :signup_key, :value => params[:sk], :readonly => "readonly"
+            = f.text_field :signup_key, :value => (params[:sk] || cookies[:signup_key]), :readonly => "readonly"
   
   - unless hide_captcha
     = render 'shared/recaptcha'

@@ -1,6 +1,12 @@
 class RegistrationsController < Devise::RegistrationsController
 
   def new
+    if params[:sk].present?
+      cookies[:signup_key] = {
+        :value => params[:sk],
+        :expires => 1.hour.from_now
+      }
+    end
     @hide_signup_bar = true
     super
   end
@@ -30,6 +36,7 @@ class RegistrationsController < Devise::RegistrationsController
     # give user admin rights to site associated with key
     Key.create :user_id => user.id, :company_id => signup_key.company_id
     signup_key.expire!(self)
+    cookies.delete :signup_key
   end
 
   protected
