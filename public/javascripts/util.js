@@ -692,6 +692,11 @@ var util = {
     return prefix + url;
   },
 
+  ensurePTag: function (str) {
+    if (str && str.indexOf('<p>') === -1) return '<p>' + str + '</p>';
+    return str;
+  },
+
   urlType: function (url) {
 
     if (url==null) return;

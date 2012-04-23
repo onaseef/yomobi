@@ -140,6 +140,7 @@
         , delay = this.areStylesDirty ? 350 : 1200
       ;
       this.updateTimeoutId = setTimeout(function () {
+        if ( !self.widget.hasLeafOnTop() ) return;
         self.updateActiveLeaf();
         delete self.updateTimeoutId;
       }, delay);
@@ -148,7 +149,7 @@
     updateActiveLeaf: function () {
       var level = this.widget.getCurrentLevel(true)
         , leaf = level._data
-        , oldContent = leaf.content
+        , oldContent = leaf.content || '<p></p>'
       ;
 
       if (this.areStylesDirty) {
@@ -156,11 +157,12 @@
         this.areStylesDirty = false;
       }
 
-      leaf.content = $('#jeditor').wysiwyg('getContent');
+      leaf.content = util.ensurePTag( $('#jeditor').wysiwyg('getContent') || '' );
       this.widget.pageView.refresh();
       mapp.resize();
 
       if (oldContent !== leaf.content) {
+util.log('CHANGED ['+oldContent+'] ['+leaf.content+']');
         this.setChanged('leaf-content',true);
       }
     },
