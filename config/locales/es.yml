@@ -458,6 +458,7 @@ es:
       add_item: "Agregar %{item}"
       add_rss: "Agregar RSS"
       address1_label_required: "Dirección 1*:"
+      address1_label: "Dirección 1:"
       address2_label: "Dirección 2:"
       browse: "Explorar..."
       calendar_link_label: "Pega el enlace de tu calendario aquí:"
