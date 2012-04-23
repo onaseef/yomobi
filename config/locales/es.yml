@@ -85,6 +85,7 @@ es:
       empty_node_list: "--Ninguno (Oprime Agregar Arriba)--"
       empty_name_error: "El nombre no puede estar en blanco"
       name_in_use_error: "El nombre ya está en uso"
+      rss_url_required: "@@RSS URL is required"
       add_node_success: "Se agregó con éxito"
 
       dialog:

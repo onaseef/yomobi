@@ -856,6 +856,10 @@
         this.prompt({ error:i18n.name_in_use_error },item,true);
         return false;
       }
+      else if (item.type === 'rss-feed' && !item.url) {
+        this.prompt({ error:i18n.rss_url_required },item,true);
+        return false;
+      }
       return true;
     },
 

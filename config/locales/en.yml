@@ -84,6 +84,7 @@ en:
       empty_node_list: "--None (Click Add above)--"
       empty_name_error: "Name cannot be empty"
       name_in_use_error: "Name is already in use"
+      rss_url_required: "RSS URL is required"
       add_node_success: "Item added successfully"
 
       dialog:
