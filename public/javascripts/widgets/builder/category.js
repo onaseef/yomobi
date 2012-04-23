@@ -464,8 +464,9 @@
       ;
       if (_.isEmpty(item)) return alert(i18n.edit_nothing);
 
-      var dialog =  this.itemDialog || new this.AddItemDialog({ model: this.widget });
-      this.itemDialog.options = {
+      var dialog = this.itemDialog || new this.AddItemDialog({ model: this.widget });
+      this.itemDialog || (this.itemDialog = dialog);
+      dialog.options = {
         onClose: this.refreshViews
       };
       dialog.enterMode('edit').prompt(null,item);
