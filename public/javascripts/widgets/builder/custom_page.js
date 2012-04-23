@@ -27,22 +27,24 @@
     },
 
     onEditStart: function (resetChanges,isFirstEdit) {
-      this.originalContent = this.widget.get('content') || '';
+      this.originalContent = util.ensurePTag( this.widget.get('content') );
       util.spawnJEditor();
       if (resetChanges || isFirstEdit) this.changes = {};
     },
 
     grabWidgetValues: function () {
       return {
-        content: $('#jeditor').wysiwyg('getContent'),
+        content: util.ensurePTag( $('#jeditor').wysiwyg('getContent') ),
         wphotoUrl: this.el.find('input[name=wphotoUrl]').val()
       };
     },
 
     setDirty: function () {
+      var newContent = util.ensurePTag( $('#jeditor').wysiwyg('getContent') );
       if (!this.hasChanges() &&
-          this.originalContent !== $('#jeditor').wysiwyg('getContent'))
+          this.originalContent !== newContent)
       {
+util.log('CHANGED ['+this.originalContent+'] ['+newContent+']');
         this.setChanged('content',true);
       }
     },

@@ -694,7 +694,10 @@ var util = {
 
   ensurePTag: function (str) {
     if (str && str.indexOf('<p>') === -1) return '<p>' + str + '</p>';
-    return str;
+    else if (!str)
+      return '<p></p>'
+    else
+      return str;
   },
 
   urlType: function (url) {

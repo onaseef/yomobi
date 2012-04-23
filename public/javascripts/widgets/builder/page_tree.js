@@ -149,7 +149,7 @@
     updateActiveLeaf: function () {
       var level = this.widget.getCurrentLevel(true)
         , leaf = level._data
-        , oldContent = leaf.content || '<p></p>'
+        , oldContent = util.ensurePTag(leaf.content)
       ;
 
       if (this.areStylesDirty) {
@@ -157,12 +157,11 @@
         this.areStylesDirty = false;
       }
 
-      leaf.content = util.ensurePTag( $('#jeditor').wysiwyg('getContent') || '' );
+      leaf.content = util.ensurePTag( $('#jeditor').wysiwyg('getContent') );
       this.widget.pageView.refresh();
       mapp.resize();
 
       if (oldContent !== leaf.content) {
-util.log('CHANGED ['+oldContent+'] ['+leaf.content+']');
         this.setChanged('leaf-content',true);
       }
     },
