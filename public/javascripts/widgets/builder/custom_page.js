@@ -27,7 +27,7 @@
     },
 
     onEditStart: function (resetChanges,isFirstEdit) {
-      this.originalContent = this.widget.get('content');
+      this.originalContent = this.widget.get('content') || '';
       util.spawnJEditor();
       if (resetChanges || isFirstEdit) this.changes = {};
     },
