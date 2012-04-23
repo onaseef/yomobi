@@ -7,8 +7,7 @@ body {
 	margin: 0px 0px 0px 0px;
 	padding: 0px 4px 0px 4px;  
 	word-wrap: break-word;
-	overflow-y: scroll;
-	overflow-x: hidden;
+	overflow: auto;
 }
 
 p {
