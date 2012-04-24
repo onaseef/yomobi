@@ -434,7 +434,7 @@ var builderUtil = {
     }
 
     uploader = this._uploaders[options.instanceId] = new plupload.Uploader(_.extend({
-      runtimes: 'flash,html4',
+      runtimes: 'html5,flash,html4',
       url: g.wphotoUploadPath,
       max_file_size: '10mb',
       multiple_queues: false,
@@ -462,11 +462,12 @@ var builderUtil = {
     var pickerId = util.generateId()
       , uploader = util.getOrCreateUploader({ browse_button:pickerId }, options)
     ;
+    uploader.ctx = context;
 
     if (!options.emptyQueue) {
       if (uploader.files.length > 0) {
         file = uploader.files[0];
-        context.find('.selected-file').empty().append(
+        uploader.ctx.find('.selected-file').empty().append(
           '<div id="' + file.id + '">' +
           file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' +
         '</div>');
@@ -482,14 +483,14 @@ var builderUtil = {
       }
       else if (uploader.files.length > 0) {
         file = uploader.files[0];
-        context.find('.selected-file').empty().append(
+        uploader.ctx.find('.selected-file').empty().append(
           '<div id="' + file.id + '">' +
           file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' +
         '</div>');
       }
     });
 
-    context.find('[name=pick_files]').attr('id', pickerId);
+    uploader.ctx.find('[name=pick_files]').attr('id', pickerId);
 
     uploader.init();
 
@@ -499,7 +500,7 @@ var builderUtil = {
         uploader.bringToFront();
       }
     };
-    context.find('img').load(function () { uploader.reposition(); });
+    uploader.ctx.find('img').load(function () { uploader.reposition(); });
     // fix bug with flash runtime
     var resizeTimeout;
     $(window).unbind('resize.yo-up').bind('resize.yo-up', function () {
@@ -548,7 +549,7 @@ var builderUtil = {
       }
 
       $.each(files, function (i, file) {
-        context.find('.selected-file').empty().append(
+        uploader.ctx.find('.selected-file').empty().append(
           '<div id="' + file.id + '">' +
           file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' +
         '</div>');
@@ -565,7 +566,7 @@ var builderUtil = {
     uploader.bind('BeforeUpload', function () {
       if (uploader.yoIsCancelled === true) return;
 
-      context.find('.selected-file').text('Uploading...');
+      uploader.ctx.find('.selected-file').text('Uploading...');
       uploader.disableBrowseButton();
       uploader.startTimestamp = util.now();
     });
@@ -573,14 +574,14 @@ var builderUtil = {
     uploader.bind('UploadProgress', function (up, file) {
       if (uploader.yoIsCancelled === true) return;
 
-      var width = context.find('.selected-file').outerWidth();
+      var width = uploader.ctx.find('.selected-file').outerWidth();
       var offset = parseInt(-500 + file.percent * width / 100) + 'px 0';
-      context.find('.selected-file').css('background-position', offset);
+      uploader.ctx.find('.selected-file').css('background-position', offset);
       if (file.percent === 100) {
         var delay = Math.max(uploader.startTimestamp + 2000 - util.now(), 0);
         setTimeout(function () {
           if (!uploader.startTimestamp) return;
-          context.find('.selected-file').text('Processing...');
+          uploader.ctx.find('.selected-file').text('Processing...');
         }, delay);
       }
     });
@@ -597,7 +598,7 @@ var builderUtil = {
           'files with the following extension: png, jpg, jpeg, gif');
       }
       else {
-        context.find('.error').append("<div>Error: " + err.code +
+        uploader.ctx.find('.error').append("<div>Error: " + err.code +
           ", Message: " + err.message +
           (err.file ? ", File: " + err.file.name : "") +
           "</div>"
@@ -614,7 +615,7 @@ var builderUtil = {
         return;
       }
 
-      context.find('.selected-file').text('Saving widget...');
+      uploader.ctx.find('.selected-file').text('Saving widget...');
       uploader.layover.find('input').show();
 
       var resData = $.parseJSON(response.response);
