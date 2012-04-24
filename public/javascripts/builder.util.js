@@ -464,7 +464,7 @@ var builderUtil = {
     ;
     uploader.ctx = context;
 
-    if (!options.emptyQueue) {
+    if (!options.emptyQueue && uploader.runtime === 'flash') {
       if (uploader.files.length > 0) {
         file = uploader.files[0];
         uploader.ctx.find('.selected-file').empty().append(
