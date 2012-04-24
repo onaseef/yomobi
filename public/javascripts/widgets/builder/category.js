@@ -54,6 +54,9 @@
       ) {
         // skip upload until validator returns true
         util.releaseUI();
+        if (dialogView.type === 'cat' || dialogView.type === 'page') {
+          options.onUpload(options.addAnother);
+        }
       }
       else if (uploader.files.length > 0 && uploader.files[0].status !== plupload.DONE) {
         util.log('has stuff!',dialogElem);

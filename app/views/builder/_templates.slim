@@ -19,7 +19,7 @@ script.add-widget-dialog(type="text/template")
       | <% } %>
 
 script.add-subcat-dialog(type="text/template")
-  #dialog-confirm title=t('dialog.add_new.title', :item_type => "{{ typeName }}")
+  #dialog-confirm.subcat title=t('dialog.add_new.title', :item_type => "{{ typeName }}")
       label =t('dialog.add_new.instructions', :item_type => "{{ typeName }}")
       br
       input type="text" value="{{ _maybe.name }}" name="cat"
@@ -47,7 +47,7 @@ script.add-subcat-dialog(type="text/template")
       input type="hidden" value="" name="wphotoUrl"
       | <% } %>
 
-      input name="add" type="button" value=t'dialog.add_new.add'
+      input.lfloat name="add" type="button" value=t'dialog.add_new.add'
 
       | <% if(_maybe.error) { %>
       p.error =t('dialog.error', :error_message => "{{ _maybe.error }}")
