@@ -423,8 +423,8 @@ var builderUtil = {
       }
     }
 
-    if (uploader && uploader.runtime === 'flash') {
-      this.destroyUploader(options.instanceId);
+    if (uploader && uploader.runtime === 'flash' && options.emptyQueue) {
+      $('#' + uploader.id + '_' + uploader.runtime + '_container').remove();
     }
     else if (uploader) {
       _.extend(uploader.settings, extraData);
@@ -434,7 +434,7 @@ var builderUtil = {
     }
 
     uploader = this._uploaders[options.instanceId] = new plupload.Uploader(_.extend({
-      runtimes: 'html5,flash,html4',
+      runtimes: 'flash,html4',
       url: g.wphotoUploadPath,
       max_file_size: '10mb',
       multiple_queues: false,
@@ -455,11 +455,6 @@ var builderUtil = {
     return uploader;
   },
 
-  destroyUploader: function (instanceId) {
-    this._uploaders[instanceId].destroy();
-    delete this._uploaders[instanceId];
-  },
-
   initUploader: function (context, options) {
     options || (options = {});
     options.context = context;
@@ -467,7 +462,17 @@ var builderUtil = {
     var pickerId = util.generateId()
       , uploader = util.getOrCreateUploader({ browse_button:pickerId }, options)
     ;
-    util.uploaderContext = context;
+
+    if (!options.emptyQueue) {
+      if (uploader.files.length > 0) {
+        file = uploader.files[0];
+        context.find('.selected-file').empty().append(
+          '<div id="' + file.id + '">' +
+          file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' +
+        '</div>');
+      }
+      return uploader;
+    }
 
     uploader.unbindAll();
 

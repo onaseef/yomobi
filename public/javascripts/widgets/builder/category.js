@@ -54,7 +54,6 @@
       ) {
         // skip upload until validator returns true
         util.releaseUI();
-        options.onUpload(options.addAnother);
       }
       else if (uploader.files.length > 0 && uploader.files[0].status !== plupload.DONE) {
         util.log('has stuff!',dialogElem);
