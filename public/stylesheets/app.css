@@ -375,7 +375,10 @@ label.help {
   float: right; }
 
 .clearfix {
-  clear: both; }
+  clear: both;
+  margin: 0;
+  padding: 0;
+  height: 0; }
 
 .lclear {
   clear: left; }
