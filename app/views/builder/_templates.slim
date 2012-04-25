@@ -47,7 +47,7 @@ script.add-subcat-dialog(type="text/template")
       input type="hidden" value="" name="wphotoUrl"
       | <% } %>
 
-      input.lfloat name="add" type="button" value=t'dialog.add_new.add'
+      input name="add" type="button" value=t'dialog.add_new.add'
 
       | <% if(_maybe.error) { %>
       p.error =t('dialog.error', :error_message => "{{ _maybe.error }}")
