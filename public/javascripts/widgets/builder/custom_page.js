@@ -44,7 +44,6 @@
       if (!this.hasChanges() &&
           this.originalContent !== newContent)
       {
-util.log('CHANGED ['+this.originalContent+'] ['+newContent+']');
         this.setChanged('content',true);
       }
     },
