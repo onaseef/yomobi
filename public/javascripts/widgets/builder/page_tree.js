@@ -63,6 +63,7 @@
     onEditStart: function (resetChanges, firstEdit) {
       categoryEditor.onEditStart.call(this, resetChanges, firstEdit);
       if (this.widget.hasLeafOnTop()) {
+        this.$('#jeditor').text(this.widget.getCurrentNode()._data.content);
         util.spawnJEditor();
         // clear changes a bit after to ignore initialization changes
         var self = this;

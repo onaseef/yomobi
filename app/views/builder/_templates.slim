@@ -392,7 +392,7 @@ script.facebook-edit-area.twitter-edit-area.picasa-edit-area.flickr-edit-area(ty
 
 script.custom-page-edit-area.about-us-edit-area(type="text/template")
   #jeditor-wrapper
-    textarea#jeditor rows=8 cols=8 {{ _maybe.content }}
+    textarea#jeditor rows=8 cols=8
 
 script.call-us-edit-area(type="text/template")
   label =t'builder.widget_editor.phone_number_label_required'
@@ -591,5 +591,5 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
         erb:
           <%==t('builder.widget_editor.editing_crumb', :breadcrumb => "{{ catCrumbs }}")%>
     #jeditor-wrapper
-      textarea#jeditor {{ content }}
+      textarea#jeditor
     | <% } %>

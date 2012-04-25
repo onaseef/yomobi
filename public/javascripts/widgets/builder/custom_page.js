@@ -28,6 +28,7 @@
 
     onEditStart: function (resetChanges,isFirstEdit) {
       this.originalContent = util.ensurePTag( this.widget.get('content') );
+      this.$('#jeditor').text(this.originalContent);
       util.spawnJEditor();
       if (resetChanges || isFirstEdit) this.changes = {};
     },
