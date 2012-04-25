@@ -27,7 +27,7 @@ script.item-dialog(type="text/template")
         | <% } %>
     input.item-input type="hidden" value="{{ _maybe.wphotoUrl }}" name="wphotoUrl"
     | <% if (mode == 'add') { %>
-    input type="button" value=t'dialog.add' name="add" style="margin:10px 15px 0 2px"
+    input.lfloat type="button" value=t'dialog.add' name="add" style="margin:10px 15px 0 2px"
     | <% } %>
 
     | <% if(flash.error) { %>
