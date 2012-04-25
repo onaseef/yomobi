@@ -53,7 +53,7 @@ script.add-subcat-dialog(type="text/template")
       p.error =t('dialog.error', :error_message => "{{ _maybe.error }}")
       | <% } %>
       | <% if (addedCats.length > 0) { %>
-      .divider
+      .divider.clearfix
       .other-names
         b == t 'dialog.add_page.added', :type_plural => "<% print( util.pluralize(typeName) ); %>"
         ul

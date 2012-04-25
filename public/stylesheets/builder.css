@@ -454,6 +454,8 @@ div.wysiwyg ul.toolbar {
 #dialog-confirm.subcat p.error {
   margin: 0 0 0 48px;
   padding: 1px 0 0 0; }
+#dialog-confirm.subcat .divider {
+  margin-top: 38px; }
 
 #builder .edit-area.hours .double-time-input {
   margin: 30px 0px 10px 0px; }
