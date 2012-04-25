@@ -105,7 +105,9 @@ div.wysiwyg ul.toolbar {
 #sidebar .widgets {
   //height: $sidebar-widgets-height;
   padding-left: 2px;
-  overflow: auto; }
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
 
 #content {
   float: left;

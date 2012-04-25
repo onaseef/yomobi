@@ -89,7 +89,8 @@ div.wysiwyg ul.toolbar {
 
 #sidebar .widgets {
   padding-left: 2px;
-  overflow: auto; }
+  overflow-x: hidden;
+  overflow-y: hidden; }
 
 #content {
   float: left;
