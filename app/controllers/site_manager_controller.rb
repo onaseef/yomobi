@@ -123,7 +123,13 @@ class SiteManagerController < ApplicationController
       render :json => { :status => :error, :reasons => errors, :admin_id => params[:admin_id] }
     else
       Key.where(:user_id => admin.id, :company_id => @company.id).each {|key|
-        key.user.update_attribute :active_company_id, nil
+        user = key.user
+        if user.active_company_id == @company.id
+          user.update_attribute :active_company_id, nil
+        end
+        if user.default_company_id == @company.id
+          user.update_attribute :default_company_id, nil
+        end
         key.delete
       }
       render :json => { :status => :ok, :site => @company }
