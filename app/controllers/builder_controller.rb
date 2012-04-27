@@ -136,9 +136,9 @@ class BuilderController < ApplicationController
   private
 
   def handle_special_widget_cases(widget)
-    email = widget[:email]
+    email = widget['email']
 
-    case widget[:wtype]
+    case widget['wtype']
     when 'informed'
       current_user.company.update_attribute :informed_email, email
     when 'leave_msg'
