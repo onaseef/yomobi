@@ -75,6 +75,19 @@ es:
     wysiwyg:
       add_picture: "Agrega una Imagen"
       add_video: "Agrega un Video"
+      dialogs:
+        link:
+          legend: "@@Insert Link"
+          type  : "@@Type"
+          url   : "@@Value"
+          title : "@@Link Title"
+          target: "@@Link Target"
+          submit: "@@Insert Link"
+          reset : "@@Cancel"
+          url_op: "@@URL"
+          email : "@@Email"
+          phone : "@@Phone"
+          address: "@@Address"
 
     category:
       delete_node: "¿En verdad quieres borrarlo? (Los datos se perderán)"
@@ -114,7 +127,7 @@ es:
       save_name: "Guardar el nombre"
       add_new_widget: "agregar nuevo función"
       cancel: "Cancelar"
- 
+
 
     site_manager:
       default_error: "Lo sentimos, algo salió mal."
@@ -286,7 +299,7 @@ es:
     form:
       title: "Regístrate"
       subtitle: "Es gratis."
-  
+
   account_setup:
 
     about_label: "Dile a tus visitantes quien eres tú (opcional):"
@@ -350,7 +363,7 @@ es:
       easy_update_header: "Actualización de sitio con facilidad"
       easy_update: "Es muy fácil actualizar tu sitio móvil. Todos los cambios que realices son automáticamente publicados, de modo que tu sitio siempre se encuentre actualizado."
       help_header: "¿Necesita ayuda?"
-      help: 'Para mayor información, <a target="ym-help" href="http://help.yomobi.com">favor de visitar nuestras páginas de ayuda.</a>' 
+      help: 'Para mayor información, <a target="ym-help" href="http://help.yomobi.com">favor de visitar nuestras páginas de ayuda.</a>'
       customize_header: "Comenzar Personalización"
       customize: "Para iniciar la personalización de tu sitio, favor de hacer click en el botón de abajo."
 
@@ -372,7 +385,7 @@ es:
     change_password: "Cambiar Contraseña (Opcional):"
     new_password: "Nueva Contraseña:"
     new_password_confirm: "Repetir Contraseña:"
-    save: "Guardar Cambios" 
+    save: "Guardar Cambios"
 
   builder:
 
@@ -394,7 +407,7 @@ es:
       send: "Enviar Email"
       sending: "Enviando. Favor de esperar..."
       missing_info: "Favor de ingresar tanto el asunto como el mensaje."
-      success: "Email enviado con éxito."  
+      success: "Email enviado con éxito."
 
     text_panel:
       title: "Envía un Mensaje de Texto a tus Seguidores"
@@ -421,8 +434,8 @@ es:
       browse: "Explorar..."
       upload: "Subir"
       header_background: "Fondo del Encabezado:"
-      header_text: "Texto del Encabezado:" 
-      save: "Guardar Opciones seleccionadas"    
+      header_text: "Texto del Encabezado:"
+      save: "Guardar Opciones seleccionadas"
 
     advanced_settings:
       title: "Opciones Avanzadas"
@@ -431,7 +444,7 @@ es:
       redirect_code: "Código de Re-dirección desde Sitio Tradicional:"
       redirect_code_help: "Para redirigir visitantes hacia tu sitio móvil cuando accedan hacia tu sitio tradicional usando un teléfono móvil/celular, copia esta pieza de código para pegarlo en la página de inicio de tu sitioâ€™s tradicional, justo antes del símbolo de cierre de la etiqueta (tag)&lt;head&gt;. <b>Para más ayuda, Haz Click en ?.</b>"
       keywords: "Ingresa las palabras clave que describen a tu sitio web, separadas por comas:"
-      save: "Guardar Opciones Seleccionadas"    
+      save: "Guardar Opciones Seleccionadas"
 
     edit_tab_bar:
       explanation: "Selecciona las páginas que quieres que sean más visibles para tus visitantes móviles."
@@ -452,8 +465,8 @@ es:
       explanation: "<p>Edita la barra de navegación en la parte superior de tu sitio móvil.</p><br><p>Selecciona las funciones de tu sitio móvil que quieras que tus visitantes vean primero, agregándolas a la barra de navegación que aparece en la parte superior de tu sitio móvil.</p>"
       tab_1: "Barra #1"
       tab_n: "Barra #%{num}"
-      none: "== Ninguna ==" 
-    
+      none: "== Ninguna =="
+
     widget_editor:
       add_item: "Agregar %{item}"
       add_rss: "Agregar RSS"
@@ -511,7 +524,7 @@ es:
   dialog:
     error: "Error: %{error_message}"
     add: "Agregar"
-    
+
     change_icon:
       title: "Cambiar Icono"
       instructions: "Haz click en el icono a elegir:"
@@ -610,7 +623,7 @@ es:
       no_self_admin: "No te puedes agregar a ti mismo(a) como un(a) Administrador(a)."
       already_owner: "Tu ya apareces como propietario de este sitio."
       description_too_long: "La Descripción es demasiado larga. El máximo es de 2500 caracteres."
-      
+
     help:
       signup_keys: "Cuando estés listo para entregar este sitio a su propietario, genera una clave de registro, luego envía por email el enlace al propietario del sitio. Asegúrate que haga click en el enlace para que se registre ante Yomobi y tome posesión de su sitio.<br><b>Para mayor información, Haz Click en ?</b>"
     confirm:
@@ -621,7 +634,7 @@ es:
   mobile:
     tab_bar:
       home: "Inicio"
-    form:      
+    form:
       email: "Dirección de Email:"
       address: "Dirección:"
       name: "Nombre:"

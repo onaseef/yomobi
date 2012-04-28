@@ -74,6 +74,19 @@ en:
     wysiwyg:
       add_picture: "Add a Picture"
       add_video: "Add a Video"
+      dialogs:
+        link:
+          legend: "Insert Link"
+          type  : "Type"
+          url   : "Value"
+          title : "Link Title"
+          target: "Link Target"
+          submit: "Insert Link"
+          reset : "Cancel"
+          url_op: "URL"
+          email : "Email"
+          phone : "Phone"
+          address: "Address"
 
     category:
       delete_node: "Are you sure you want to delete? (Data will be lost)"

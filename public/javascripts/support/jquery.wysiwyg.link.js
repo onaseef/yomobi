@@ -32,7 +32,11 @@
 				title : "Link Title",
 				target: "Link Target",
 				submit: "Insert Link",
-				reset : "Cancel"
+				reset : "Cancel",
+				url_op: "URL",
+				email : "Email",
+				phone : "Phone",
+				address: "Address"
 			};
 
 			formLinkHtml =
@@ -41,10 +45,10 @@
 				'<tr>' +
 				'<td class="label"><label>{type}: </label></td>' +
 				'<td><select name="linktype">' +
-					'<option value="url">URL</option>' +
-					'<option value="email">Email</option>' +
-					'<option value="phone">Phone</option>' +
-					'<option value="address">Address</option>' +
+					'<option value="url">{url_op}</option>' +
+					'<option value="email">{email}</option>' +
+					'<option value="phone">{phone}</option>' +
+					'<option value="address">{address}</option>' +
 				'</select>' +
 				'<a href="http://help.yomobi.com/Wysiwyg/LinkTypes" target="ymhelp"><img class="help-bubble" src="/images/ui/help-bubble.png" title=""></a>' +
 				'</td></tr>' +
@@ -59,11 +63,13 @@
 
 			for (key in dialogReplacements) {
 				if ($.wysiwyg.i18n) {
-					translation = $.wysiwyg.i18n.t(dialogReplacements[key], "dialogs.link");
+					// translation = $.wysiwyg.i18n.t(dialogReplacements[key], "dialogs.link");
+					// yomobi-specific
+					translation = g.i18n.wysiwyg.dialogs.link[key];
 
-					if (translation === dialogReplacements[key]) { // if not translated search in dialogs
-						translation = $.wysiwyg.i18n.t(dialogReplacements[key], "dialogs");
-					}
+					// if (translation === dialogReplacements[key]) { // if not translated search in dialogs
+					// 	translation = $.wysiwyg.i18n.t(dialogReplacements[key], "dialogs");
+					// }
 
 					dialogReplacements[key] = translation;
 				}
