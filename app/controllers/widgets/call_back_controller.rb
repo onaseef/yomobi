@@ -14,7 +14,7 @@ class Widgets::CallBackController < ApplicationController
 
     UserMailer.call_back({
       :to => company.call_back_email || company.user.email,
-      :subject => t'call_back.email.subject',
+      :subject => t('call_back.email.subject'),
       :from => "\"YoMobi\" <message@yomobi.com>",
       :customer_name => params[:name],
       :customer_phone => params[:phone],
