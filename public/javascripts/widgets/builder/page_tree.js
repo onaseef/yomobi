@@ -99,6 +99,9 @@
         if (this.updateTimeoutId) {
           // update content before proceeding
           clearTimeout(this.updateTimeoutId);
+          if ( $('#jeditor').data('wysiwyg').viewHTML ) {
+            $('#jeditor-wrapper .toolbar .html').click();
+          }
           this.updateActiveLeaf();
         }
 
