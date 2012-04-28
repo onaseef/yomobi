@@ -3,6 +3,11 @@
 //
 (function ($) {
 
+  // Backwards compatibility for icon names
+  var ensureBackComp = function (iconName) {
+    return iconName && iconName.replace(/\./g, '-');
+  };
+
   var Backbone_set = Backbone.Model.prototype.set;
 
   window.Widget = Backbone.Model.extend({
@@ -49,7 +54,7 @@
         wtype: wdata.wtype,
         wsubtype: wdata.wsubtype,
         name: this.get('name'),
-        iconName: this.get('iconName') || wdata.wsubtype,
+        iconName: ensureBackComp( this.get('iconName') ) || wdata.wsubtype,
         singletonClass: wdata.singleton ? 'singleton' : ''
       };
     },
