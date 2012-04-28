@@ -77,17 +77,17 @@ es:
       add_video: "Agrega un Video"
       dialogs:
         link:
-          legend: "@@Insert Link"
-          type  : "@@Type"
-          url   : "@@Value"
+          legend: "Crear Link"
+          type  : "Tipo"
+          url   : "Valor"
           title : "@@Link Title"
           target: "@@Link Target"
-          submit: "@@Insert Link"
-          reset : "@@Cancel"
-          url_op: "@@URL"
-          email : "@@Email"
-          phone : "@@Phone"
-          address: "@@Address"
+          submit: "Crear Link"
+          reset : "Cerrar"
+          url_op: "URL"
+          email : "Email"
+          phone : "Teléfono"
+          address: "Dirección"
 
     category:
       delete_node: "¿En verdad quieres borrarlo? (Los datos se perderán)"
