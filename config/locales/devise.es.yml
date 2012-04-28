@@ -4,6 +4,8 @@ es:
       not_found: "no encontrado"
       already_confirmed: "ha sido confirmado"
       not_locked: "no fue bloqueado"
+      invalid: "@@is invalid."
+      blank: "@@can't be blank."
 
   devise:
     failure:

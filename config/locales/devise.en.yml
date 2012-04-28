@@ -4,6 +4,8 @@ en:
       not_found: "not found"
       already_confirmed: "was already confirmed"
       not_locked: "was not locked"
+      invalid: "is invalid."
+      blank: "can't be blank."
 
   devise:
     failure:
