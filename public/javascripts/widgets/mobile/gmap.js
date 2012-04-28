@@ -6,17 +6,9 @@
     , mapUrlOptions = '&size=300x300&sensor=false'
     , externalMapUrlBase = 'http://maps.google.com/maps?'
   ;
-  
+
   window.widgetClasses.gmap = Widget.extend({
     requiredAttrs: ['city'],
-
-    onHomeViewClick: function () {
-      if (!this.get('addr1') && this.validForShowing()) {
-        window.open(externalMapUrlBase + 'q=' + this.get('bname'));
-        return false;
-      }
-      return true;
-    },
 
     getFullAddress: function () {
       var city_state = _.compact([this.get('city'), this.get('state')]).join(', ');
@@ -32,7 +24,7 @@
              address + '&markers=' + address +
              '&zoom=' + zoomLevel + mapUrlOptions;
     },
-    
+
     getShowData: function () {
       var extraData = {
         fullAddress: this.getFullAddress(),
@@ -42,6 +34,6 @@
       return _.extend({},this.toJSON(),extraData);
     }
   });
-  
+
 })(jQuery);
 
