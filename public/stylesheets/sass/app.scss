@@ -478,7 +478,11 @@ label.help { padding-bottom: 4px; }
   }
   
   h1 { padding-left: 0px !important; }
+  h2 { margin-top: 1.5em; }
   .hilite { font-weight: bold; color: red; }
+  .hilite-good, .hilite-good a { font-weight:bold;  color: green; }
+  .hilite-warning, .hilite-warning a { font-weight:bold; color: red; }
+
   li { font-size: 14px; font-weight: bold; }
 }
 

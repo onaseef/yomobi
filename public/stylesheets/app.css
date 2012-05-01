@@ -435,7 +435,15 @@ label.help {
   border: 0; }
 #why_mobile h1 {
   padding-left: 0px !important; }
+#why_mobile h2 {
+  margin-top: 1.5em; }
 #why_mobile .hilite {
+  font-weight: bold;
+  color: red; }
+#why_mobile .hilite-good, #why_mobile .hilite-good a {
+  font-weight: bold;
+  color: green; }
+#why_mobile .hilite-warning, #why_mobile .hilite-warning a {
   font-weight: bold;
   color: red; }
 #why_mobile li {

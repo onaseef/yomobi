@@ -34,16 +34,22 @@ html lang="en-US"
             ul.menu-bar
               li
                 div.menu-item
-                  a href=root_path =t'links.home'
+                  a href=root_path =t('links.home')
               li
                 div.menu-item
-                  a href=about_path =t'links.about'
+                  a href=about_path =t('links.about')
               li
                 div.menu-item
-                  a href=why_mobile_path =t'links.mobile_matters'
+                  a href=why_mobile_path =t('links.mobile_matters')
               li
                 div.menu-item
-                  a target="ym" href=help_url =t'links.help' 
+                  a href=plans_path =t('links.plans')
+              li
+                div.menu-item
+                  a href=opportunity_path =t('links.opportunities')
+              li
+                div.menu-item
+                  a target="ym" href=help_url =t('links.help') 
             .clearfix
       - unless user_signed_in? || @hide_signup_bar
         .signup-bar

@@ -6,13 +6,17 @@ script type="text/javascript" src="http://www.yomobi.com/javascripts/mobile-redi
   .menu-bg
     ul.menu-ul
       li.menu-li
-        a.menulink href=root_path =t'links.home'
+        a.menulink href=root_path =t('links.home')
       li.menu-li
-        a.menulink href=about_path =t'links.about'
+        a.menulink href=about_path =t('links.about')
       li.menu-li
-        a.menulink href=why_mobile_path =t'links.mobile_matters'
+        a.menulink href=why_mobile_path =t('links.mobile_matters')
       li.menu-li
-        a.menulink target="ym" href="http://help.yomobi.com" =t'links.help'
+        a.menulink href=plans_path =t('links.plans')
+      li.menu-li
+        a.menulink href=opportunity_path =t('links.opportunities')
+      li.menu-li
+        a.menulink target="ym" href="http://help.yomobi.com" =t('links.help')
 
     = render :partial => 'builder/social-share-new'
 

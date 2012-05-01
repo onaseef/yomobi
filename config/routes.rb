@@ -12,10 +12,10 @@ Yomobi::Application.routes.draw do
   end
 
   get 'about' => 'home#about', :as => :about
-  get 'biz' => 'home#opportunity', :as => :opportunity
-  get 'business-opportunities' => 'home#opportunity', :as => :opportunity
   get 'help' => redirect('http://help.yomobi.com'), :as => :help
   get 'how-to-make-a-mobile-website' => 'home#easy', :as => :easy
+  get 'opportunities' => 'home#opportunities', :as => :opportunity
+  get 'plans' => 'home#plans', :as => :plans
   get 'privacy' => 'home#privacy', :as => :privacy
   get 'terms' => 'home#terms', :as => :terms
   get 'vote' => redirect('http://www.facebook.com/yomobi?sk=app_208195102528120'), :as => :vote

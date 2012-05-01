@@ -41,30 +41,23 @@ body {
 .menulink {
 	color:#FFFFFF;
 	text-transform:uppercase;
-	font-size:16px;
+	font-size:14px;
 	text-decoration:none;
 	line-height:32px;
 	padding-top:6px;
 	padding-bottom:6px;
 /*	margin-left:10px;*/
-	padding-left:15px;
-	padding-right:15px;
+	padding-left:12px;
+	padding-right:12px;
 	text-shadow:1px 1px 1px #0273bf;
 }
 .menulink:hover {
-	color:#FFFFFF;
-	text-transform:uppercase;
-	font-size:16px;
-	text-decoration:none;
-	line-height:32px;
-	padding-top:6px;
-	padding-bottom:6px;
-/*	margin-left:10px;*/
-	padding-left:15px;
-	padding-right:15px;
 	text-shadow:1px 1px 1px #1c1c1c;
 	background:url(../images/new_design/menubutton-bg.jpg);
-	border-radius: 7px 7px 7px 7px;
+	border-radius: 7px;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+
 }
 .footerlink {
 	color:#000000;
@@ -318,6 +311,16 @@ td.top {
 }
 
 .hilite, .hilite a {
+	color: red;
+	font-weight:bold;
+}
+
+.hilite-good, .hilite-good a {
+	color: green;
+	font-weight:bold;
+}
+
+.hilite-warning, .hilite-warning a {
 	color: red;
 	font-weight:bold;
 }

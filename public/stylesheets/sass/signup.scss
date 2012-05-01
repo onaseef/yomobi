@@ -367,12 +367,50 @@ label {
 
 .yomobi-info-page {
   margin: 40px;
+  div { float: left; }
+  .hr {
+    border: 0px;
+    width: 100%;
+    margin-top: 20px; 
+    color: brown;
+    background-color: brown;
+    height: 2px;  
+  }
 }
 
 #easy {
   margin: 40px 0;
   text-align: center;
 }
+
+
+#plans ul { margin-top: -1em; }
+#opportunities p { margin-top: 1em; }
+
+.notation-number {
+  vertical-align: super;
+  font-size: 10px;
+  font-weight: bold;
+  margin: 0px 2px;
+}
+
+.notation-text {
+  background: lightgray;
+  margin-top: 40px;  
+}
+
+.plan-box {
+  float: left;
+  width: 40%;
+  padding: 5px 20px;
+  margin: 0px 20px 0px 0px;
+  background: lightBlue;
+  border-radius: 32px;
+  -moz-border-radius: 32px;
+  -webkit-border-radius: 32px;
+  display: block;
+}
+
 
 .marketing-copy {
   p {
