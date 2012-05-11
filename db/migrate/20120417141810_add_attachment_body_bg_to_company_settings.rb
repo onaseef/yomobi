@@ -13,6 +13,6 @@ class AddAttachmentBodyBgToCompanySettings < ActiveRecord::Migration
     remove_column :company_settings, :body_bg_content_type
     remove_column :company_settings, :body_bg_file_size
     remove_column :company_settings, :body_bg_updated_at
-  end
     remove_column :company_settings, :body_bg_repeat
+  end
 end
