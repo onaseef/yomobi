@@ -87,6 +87,10 @@ class Company < ActiveRecord::Base
     "http://#{db_name}.yomobi.com"
   end
 
+  def mobile_url_share
+    "http://www.yomobi.com/#{db_name}"
+  end
+
   def couch_host
     Rails.application.config.couch_host
   end

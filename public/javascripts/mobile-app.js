@@ -200,6 +200,7 @@
       }))
       .find('img').load(function (e,elem) {
         g.topBarHeight = Math.max(g.topBarHeight,$('#top-bar').height());
+        _.delay(function() { mapp.resize() }, 100);
       });
 
       this.trigger('render');
