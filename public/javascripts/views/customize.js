@@ -118,8 +118,8 @@
       this.$('.subpanels .' + targetArea).show();
 
       if (g.isPremium) {
-        initDialogUploader('banner', this.el, this.onUpload);
-        initDialogUploader('body_bg', this.el, this.onUpload);
+        initDialogUploader('banner', this.$('.banner'), this.onUpload);
+        initDialogUploader('body_bg', this.$('.home_page'), this.onUpload);
       }
     },
 
