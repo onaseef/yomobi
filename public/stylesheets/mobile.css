@@ -139,6 +139,8 @@ p {
     padding: 6px 8px;
     font-style: italic;
     line-height: 1em; }
+  .company-info .banner-wrap {
+    text-align: center; }
   .company-info img.banner {
     max-width: 100%; }
 

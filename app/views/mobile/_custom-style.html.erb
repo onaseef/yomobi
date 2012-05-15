@@ -68,6 +68,7 @@
   <% if @company.settings.body_bg.url(:mobile) != '' %>
   background-image: url(<%= @company.settings.body_bg.url(:mobile) %>);
   background-repeat: <%= @company.settings.body_bg_repeat %>;
+  background-position: 50% 0;
   <% end %>
 
   <% if @company.settings.body_bg_color %>

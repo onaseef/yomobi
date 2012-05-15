@@ -434,7 +434,7 @@ div.wysiwyg ul.toolbar {
 
 #builder .edit-area.customize {
   .subpanels > * { display: none }
-  img.banner.default { border: 1px dashed; }
+  img.banner, img.body_bg { max-width: 64px; }
   .not-premium { width: 250px; float: left; }
 }
 

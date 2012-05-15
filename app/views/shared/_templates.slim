@@ -11,7 +11,8 @@
 
   script.mapp-header(type="text/template")
     | <% if (g.banner) { %>
-    img.banner src="<% print(g.banner); %>"
+    .banner-wrap
+      img.banner src="<% print(g.banner); %>"
     | <% } else { %>
     table
       | <% if (_maybe.slogan) { %>

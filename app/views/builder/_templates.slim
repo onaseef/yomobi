@@ -329,7 +329,7 @@ script.customize(type="text/template")
                 .selected-file.lfloat &nbsp;
                 button name="pick_files" =t'dialog.add_new.browse'
                 .error
-              | <%   if (banner_src) { %>
+              | <%   if (g.banner) { %>
               td
                 a.remove-banner-link href="#" =t'dialog.add_new.remove_picture'
               | <%   } %>
@@ -405,7 +405,7 @@ script.customize(type="text/template")
                 .selected-file.lfloat &nbsp;
                 button name="pick_files" =t'dialog.add_new.browse'
                 .error
-              | <%    if (body_bg_src) { %>
+              | <%    if (g.body_bg) { %>
               td
                 a.remove-body_bg-link href="#" =t'dialog.add_new.remove_picture'
               | <%    } %>

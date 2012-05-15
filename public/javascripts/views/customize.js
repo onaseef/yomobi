@@ -142,7 +142,7 @@
           backgroundImage: 'url('+ g.body_bg +')',
           backgroundRepeat: 'no-repeat'
         });
-        $('img.body_bg').attr('src', g.banner);
+        $('img.body_bg').attr('src', g.body_bg);
         $('.bg_repeat').show();
         util._uploaders['customize_body_bg'].toggleBrowseButton(true);
       }
