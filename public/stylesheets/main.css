@@ -378,6 +378,18 @@ td.top {
 	line-height:20px;
 }
 
+.footer-wrapper .languages {
+	text-align: center;
+  list-style: none;
+  margin: 8px 25px 0 0;
+  padding: 8px 10px 12px 0;
+  border-top: 1px solid #b3b3b3;
+}
+.footer-wrapper .languages li {
+  display: inline;
+  margin: 0 0 0 10px;
+}
+
 .social-facebook {
 	float:right;
 	margin-top:15px;

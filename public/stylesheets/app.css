@@ -330,6 +330,15 @@ p.success {
     margin: 5px 30px 0 0; }
     #footer .site-links a, #footer .site-links a:visited {
       color: #000; }
+  #footer .languages {
+    float: right;
+    list-style: none;
+    margin: 8px 25px 0 0;
+    padding: 8px 10px 12px 0;
+    border-top: 1px solid #b3b3b3; }
+    #footer .languages li {
+      float: left;
+      margin: 0 0 0 10px; }
 
 ul.fancy-selectable {
   background: #fff;
