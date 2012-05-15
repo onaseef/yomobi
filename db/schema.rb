@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120420214608) do
+ActiveRecord::Schema.define(:version => 20120515202639) do
 
   create_table "carriers", :force => true do |t|
     t.string   "name"
@@ -59,8 +59,6 @@ ActiveRecord::Schema.define(:version => 20120420214608) do
     t.string   "tab_bar_text_color"
     t.string   "icon_font_family"
     t.string   "icon_text_color"
-    t.string   "footer_color"
-    t.string   "footer_text_color"
     t.string   "body_bg_file_name"
     t.string   "body_bg_content_type"
     t.integer  "body_bg_file_size"
@@ -69,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20120420214608) do
     t.string   "body_bg_color"
     t.string   "header_font_family"
     t.string   "tab_bar_font_family"
+    t.string   "banner_size",          :default => "auto"
   end
 
   create_table "company_types", :force => true do |t|

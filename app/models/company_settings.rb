@@ -35,6 +35,7 @@ class CompanySettings < ActiveRecord::Base
       header_color: self.header_color,
       header_text_color: self.header_text_color,
       header_font_family: self.header_font_family,
+      banner_size: self.banner_size,
       tab_bar_color: self.tab_bar_color,
       tab_bar_text_color: self.tab_bar_text_color,
       tab_bar_font_family: self.tab_bar_font_family,

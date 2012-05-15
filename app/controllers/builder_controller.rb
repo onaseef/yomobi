@@ -123,6 +123,8 @@ class BuilderController < ApplicationController
     settings.header_text_color = params[:header_text_color]
     settings.header_font_family = params[:header_font_family]
 
+    settings.banner_size = params[:banner_size]
+
     settings.tab_bar_color = params[:tab_bar_color]
     settings.tab_bar_text_color = params[:tab_bar_text_color]
     settings.tab_bar_font_family = params[:tab_bar_font_family]

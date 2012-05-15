@@ -23,6 +23,7 @@ var util = {
     header_color:  "#2a426a",
     header_text_color: "#ffffff",
     header_font_family: "Arial, Helvetica, sans-serif",
+    banner_size: 'auto',
     tab_bar_color:  "#C4CDE0",
     tab_bar_text_color: "#3B59A0",
     tab_bar_font_family: "Arial, Helvetica, sans-serif",

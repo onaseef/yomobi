@@ -34,6 +34,12 @@
   <% end %>
 }
 
+.company-info .banner-wrap img {
+  <% if @company.settings.banner_size %>
+  width: <%= @company.settings.banner_size %>;
+  <% end %>
+}
+
 #top-bar .tab-bar, .mobile-footer, .ad-bar {
   <% if @company.settings.tab_bar_color %>
   background: <%= @company.settings.tab_bar_color %>;

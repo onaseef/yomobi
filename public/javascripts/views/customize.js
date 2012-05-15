@@ -67,6 +67,7 @@
       'click input[type=file]':           'enableUploadButton',
       'change select':                    'updateFonts',
       'change [name=body_bg_repeat]':     'updateRepeat',
+      'change [name=banner_size]':        'updateBannerSize',
       'click .accept-btn':                'saveChanges',
       'click .cancel-btn':                'discardChanges',
       'click .remove-banner-link':        'removeBanner',
@@ -100,6 +101,7 @@
         .find('[name=header_font_family]').val(extraData.header_font_family).end()
         .find('[name=tab_bar_font_family]').val(extraData.tab_bar_font_family).end()
         .find('[name=body_bg_repeat]').val(extraData.body_bg_repeat).end()
+        .find('[name=banner_size]').val(extraData.banner_size).end()
       ;
       this.delegateEvents();
 
@@ -134,6 +136,7 @@
         g.banner = res.banner;
         mapp.render();
         $('img.banner').attr('src', g.banner);
+        $('.banner_size').show();
         util._uploaders['customize_banner'].toggleBrowseButton(true);
       }
       else if (res.body_bg) {
@@ -185,6 +188,11 @@
       $('#canvas #home.page').css({ backgroundRepeat:repeat });
     },
 
+    updateBannerSize: function () {
+      var size = this.$('[name=banner_size]').val() || 'auto';
+      $('#top-bar .company-info .banner-wrap img').width(size);
+    },
+
     saveChanges: function () {
       if (!g.isPremium) return;
 
@@ -208,6 +216,8 @@
         .val( getSetting('icon_font_family') );
       this.$('[name=body_bg_repeat]')
         .val( getSetting('body_bg_repeat') );
+      this.$('[name=banner_size]')
+        .val( getSetting('banner_size') );
       this.updateFonts();
       this.updateRepeat();
       this.startEditing( this.$('[name=area_select]').val() );
