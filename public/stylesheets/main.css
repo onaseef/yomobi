@@ -232,6 +232,7 @@ td.top {
 .menu-ul {
 	list-style:none;
 	display:inline;
+	margin-left: -60px;
 }
 .menu-li {
 	float:left;
