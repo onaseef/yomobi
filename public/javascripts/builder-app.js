@@ -456,7 +456,7 @@
     panelHasUnsavedChanges: function () {
       if (this.currentPanel && this.currentPanel.hasChanges()) {
         var throwaway = confirm('You have unsaved changes. Discard them?');
-        throwaway && this.currentPanel.discardChanges();
+        throwaway && this.currentPanel.discardChanges({ byNavigation:true });
         return !throwaway;
       }
       return false;

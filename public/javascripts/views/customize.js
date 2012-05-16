@@ -135,6 +135,7 @@
       if (res.banner) {
         g.banner = res.banner;
         mapp.render();
+        g.settings.banner_size = 'auto';
         this.$('img.banner').attr('src', g.banner).css('width', 'auto');
         this.$('[name=banner_size]').val('auto');
         this.$('.banner_size, .remove-banner-link').show();
@@ -146,6 +147,7 @@
           backgroundImage: 'url('+ g.body_bg +')',
           backgroundRepeat: 'no-repeat'
         });
+        g.settings.body_bg_repeat = 'no-repeat';
         $('img.body_bg').attr('src', g.body_bg).css('background-repeat', 'no-repeat');
         this.$('[name=body_bg_repeat]').val('no-repeat');
         $('.bg_repeat, .remove-bogy_bg-link').show();
@@ -178,6 +180,8 @@
     },
 
     updateFonts: function () {
+      hasChanges || (hasChanges = true);
+
       var font = this.$('[name=icon_font_family]').val();
       $('#canvas .home-icon .title').css({ fontFamily:font });
 
@@ -189,11 +193,13 @@
     },
 
     updateRepeat: function () {
+      hasChanges || (hasChanges = true);
       var repeat = this.$('[name=body_bg_repeat]').val();
       $('#canvas #home.page').css({ backgroundRepeat:repeat });
     },
 
     updateBannerSize: function () {
+      hasChanges || (hasChanges = true);
       var size = this.$('[name=banner_size]').val() || 'auto';
       $('#top-bar .company-info .banner-wrap img').width(size);
     },
@@ -212,10 +218,11 @@
         loader.hide();
         checkmark.show();
         submitBtn.prop('disabled',false);
+        hasChanges = false;
       });
     },
 
-    discardChanges: function () {
+    discardChanges: function (opts) {
       for (var area in updateColor) updateColor[area]();
       this.$('[name=icon_font_family]')
         .val( getSetting('icon_font_family') );
@@ -225,7 +232,13 @@
         .val( getSetting('banner_size') );
       this.updateFonts();
       this.updateRepeat();
-      this.startEditing( this.$('[name=area_select]').val() );
+      this.updateBannerSize();
+      if (opts.byNavigation === true) {
+        hasChanges = false;
+      }
+      else {
+        this.startEditing( this.$('[name=area_select]').val() );
+      }
     },
 
     hasChanges: function () { return hasChanges; },
