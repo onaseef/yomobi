@@ -3,7 +3,7 @@ class Domain < ActiveRecord::Base
 
   validates :host,
             :uniqueness => true,
-            :format => { :with => /^[a-z0-9]+(\.[a-z0-9]+)*\.[a-z]{2,6}$/,
+            :format => { :with => /^[a-z0-9\-]+(\.[a-z0-9\-]+)*\.[a-z]{2,6}$/,
                          :message => "Invalid host format." }
 
   before_validation :format_host

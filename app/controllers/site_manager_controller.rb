@@ -138,7 +138,6 @@ class SiteManagerController < ApplicationController
   end
 
   def add_domain
-    # LAST TIME: check if domain has already been registered
     if @company.domains.count >= MAX_DOMAIN_COUNT
       return render :json => { :status => :error, :reasons => { :max_domain_count => true }, :host => params[:host] }
     end
