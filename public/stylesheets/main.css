@@ -47,8 +47,8 @@ body {
 	padding-top:6px;
 	padding-bottom:6px;
 /*	margin-left:10px;*/
-	padding-left:12px;
-	padding-right:12px;
+	padding-left:10px;
+	padding-right:10px;
 	text-shadow:1px 1px 1px #0273bf;
 }
 .menulink:hover {
@@ -218,7 +218,8 @@ td.top {
 	float:left;
 	background:url(../images/new_design/menu-bg.jpg);
 	width:930px;
-	//height:55px;
+	max-height:42px;
+	overflow:hidden;
 	padding: 0px 10px;
 	border-bottom: 2px #026EB6 solid;
 }
