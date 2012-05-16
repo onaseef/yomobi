@@ -124,6 +124,7 @@ en:
       concede_ownership_dialog_title: "Concede Site Ownership"
       add: "Add"
       continue: "Continue"
+      select_domain: "Please select a domain"
 
 
   javascript_mobile:

@@ -176,6 +176,9 @@
         , site = sman.getSelectedSite()
         , domain_id = this.getSelectedDomainId()
       ;
+      if (!domain_id) {
+        return alert(g.i18n.site_manager.select_domain);
+      }
       this.$('button').prop('disabled',true);
 
       submitForm(site, g.removeDomainPath, {
