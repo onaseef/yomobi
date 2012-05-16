@@ -59,6 +59,23 @@ body {
 	-webkit-border-radius: 7px;
 
 }
+.langlink {
+	color:#FFFFFF;
+	font-size:10px;
+	text-decoration:none;
+	padding-top:6px;
+	padding-bottom:6px;
+	padding-left:12px;
+	padding-right:12px;
+	text-shadow:1px 1px 1px #0273bf;
+}
+.langlink:hover {
+	text-decoration:underline;
+	border-radius: 7px;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+
+}
 .footerlink {
 	color:#000000;
 	margin-left:10px;
@@ -199,19 +216,16 @@ td.top {
 }
 .menumain {
 	float:left;
-	width:950px;
-	height:55px;
+	background:url(../images/new_design/menu-bg.jpg);
+	width:930px;
+	//height:55px;
+	padding: 0px 10px;
+	border-bottom: 2px #026EB6 solid;
 }
 .menu-corner1 {
 	float:left;
 	background:url(../images/new_design/menu-corner1.png);
 	width:6px;
-	height:55px;
-}
-.menu-bg {
-	float:left;
-	background:url(../images/new_design/menu-bg.jpg);
-	width:938px;
 	height:55px;
 }
 .menu-ul {
@@ -220,7 +234,7 @@ td.top {
 }
 .menu-li {
 	float:left;
-	margin-top:10px;
+	margin-top:8px;
 }
 .menu-corner2 {
 	float:right;
@@ -233,6 +247,22 @@ td.top {
 	margin-top:20px;
 	width:50px;
 }
+.menulang {
+	float:left;
+	width:930px;
+	padding: 0px 10px;
+	background: #2c8ded;
+	border-bottom: #333 1px solid;
+}
+.lang-ul {
+	list-style:none;
+	display:inline;
+}
+.lang-li {
+	float:left;
+	margin-bottom: 2px;
+}
+
 .main-whitebg {
 	float:left;
 	width:950px;
@@ -402,116 +432,58 @@ td.top {
 	line-height:20px;
 }
 
-.social-facebook {
+.social {
 	float:right;
-	margin-top:15px;
-	height:28px;
-	background:url(../images/new_design/facebook.jpg) center top;
+	margin-top:6px;
+	height:28px;	
 	cursor:default;
 	width:50px;
+}
+
+.social:hover {
+	cursor:pointer;
+}
+
+.social-facebook {
+	background:url(../images/new_design/facebook.jpg) center top;
 }
 .social-facebook:hover {
-	float:right;
-	margin-top:15px;
-	height:28px;
 	background:url(../images/new_design/facebook-hover.jpg) center top;
-	cursor:pointer;
-	width:50px;
 }
 .social-twitter {
-	float:right;
-	margin-top:15px;
-	height:28px;
 	background:url(../images/new_design/twitter.jpg) center top;
-	cursor:default;
-	width:50px;
 }
 .social-twitter:hover {
-	float:right;
-	margin-top:15px;
-	height:28px;
 	background:url(../images/new_design/twitter-hover.jpg) center top;
-	cursor:pointer;
-	width:50px;
 }
 .social-linkdin {
-	float:right;
-	margin-top:15px;
-	height:28px;
 	background:url(../images/new_design/linkdin.jpg) center top;
-	cursor:default;
-	width:50px;
 }
 .social-linkdin:hover {
-	float:right;
-	margin-top:15px;
-	height:28px;
 	background:url(../images/new_design/linkdin-hover.jpg) center top;
-	cursor:pointer;
-	width:50px;
 }
 .social-linkdin {
-	float:right;
-	margin-top:15px;
-	height:28px;
 	background:url(../images/new_design/linkdin.jpg) center top;
-	cursor:default;
-	width:50px;
 }
 .social-linkdin:hover {
-	float:right;
-	margin-top:15px;
-	height:28px;
 	background:url(../images/new_design/linkdin-hover.jpg) center top;
-	cursor:pointer;
-	width:50px;
 }
 .social-stumble {
-	float:right;
-	margin-top:15px;
-	height:28px;
 	background:url(../images/new_design/stumble.jpg) center top;
-	cursor:default;
-	width:50px;
 }
 .social-stumble:hover {
-	float:right;
-	margin-top:15px;
-	height:28px;
 	background:url(../images/new_design/stumble-hover.jpg) center top;
-	cursor:pointer;
-	width:50px;
 }
 .social-google {
-	float:right;
-	margin-top:15px;
-	height:28px;
 	background:url(../images/new_design/google.jpg) center top;
-	cursor:default;
-	width:50px;
 }
 .social-google:hover {
-	float:right;
-	margin-top:15px;
-	height:28px;
 	background:url(../images/new_design/google-hover.jpg) center top;
-	cursor:pointer;
-	width:50px;
 }
 .social-gmail {
-	float:right;
-	margin-top:15px;
-	height:28px;
 	background:url(../images/new_design/gmail.jpg) center top;
-	cursor:default;
-	width:50px;
 }
 .social-gmail:hover {
-	float:right;
-	margin-top:15px;
-	height:28px;
 	background:url(../images/new_design/gmail-hover.jpg) center top;
-	cursor:pointer;
-	width:50px;
 }
 
