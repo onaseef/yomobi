@@ -177,7 +177,7 @@
         , domain_id = this.getSelectedDomainId()
       ;
       if (!domain_id) {
-        return alert(g.i18n.site_manager.select_domain);
+        return alert(i18n.select_domain);
       }
       this.$('button').prop('disabled',true);
 
@@ -219,7 +219,8 @@
     el: $('#manager-container .accordian > .site-grade'),
     template: util.getTemplate('site-grade'),
     events: {
-      'click .back-btn':        'goBack'
+      'click .back-btn':        'goBack',
+      'submit form.cancel':     'confirmCancelSub'
     },
     showContent: showContent,
     render: function (site) {
@@ -262,6 +263,14 @@
     goBack: function () {
       this.render( sman.getSelectedSite() );
       this.showContent();
+    },
+
+    confirmCancelSub: function (e) {
+      if (!confirm(i18n.cancel_sub_confirm)) {
+        e.preventDefault();
+        return false;
+      }
+      return true;
     }
   });
 

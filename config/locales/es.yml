@@ -123,6 +123,7 @@ es:
       add: "Agregar"
       continue: "Continuar"
       select_domain: "@@Please select a domain"
+      cancel_sub_confirm: "Are you sure you want to cancel your subscription?"
 
 
   javascript_mobile:
