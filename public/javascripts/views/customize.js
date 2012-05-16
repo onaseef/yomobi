@@ -156,6 +156,7 @@
 
     removeBanner: function (e) {
       e.preventDefault();
+      if (!confirm(g.i18n.category.delete_node)) return;
       g.banner = '';
       mapp.render();
       $('img.banner').attr('src', g.blankImg);
@@ -165,6 +166,7 @@
 
     removeBodyBg: function (e) {
       e.preventDefault();
+      if (!confirm(g.i18n.category.delete_node)) return;
       g.body_bg = '';
       $('#canvas #home.page').css({
         backgroundImage: 'none',
