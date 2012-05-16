@@ -329,10 +329,8 @@ script.customize(type="text/template")
                 .selected-file.lfloat &nbsp;
                 button name="pick_files" =t'dialog.add_new.browse'
                 .error
-              | <%   if (g.banner) { %>
-              td
+              td class="<% if (banner_src === g.blankImg) { print('hide'); } %>"
                 a.remove-banner-link href="#" =t'dialog.add_new.remove_picture'
-              | <%   } %>
             tr.banner_size class="<% if (banner_src === g.blankImg) { print('hide'); } %>"
               td colspan="2"
                 label Banner Size:
@@ -412,10 +410,8 @@ script.customize(type="text/template")
                 .selected-file.lfloat &nbsp;
                 button name="pick_files" =t'dialog.add_new.browse'
                 .error
-              | <%    if (g.body_bg) { %>
-              td
+              td class="<% if (body_bg_src === g.blankImg) { print('hide'); } %>"
                 a.remove-body_bg-link href="#" =t'dialog.add_new.remove_picture'
-              | <%    } %>
             tr.bg_repeat class="<% if (body_bg_src === g.blankImg) { print('hide'); } %>"
               td colspan="2"
                 select name="body_bg_repeat"

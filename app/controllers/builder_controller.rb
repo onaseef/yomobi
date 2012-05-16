@@ -1,8 +1,8 @@
 class BuilderController < ApplicationController
-  
+
   before_filter :authenticate_user!
   before_filter :ensure_user_has_already_setup
-  
+
   def index
     @user = current_user
     @user.reset_authentication_token!
@@ -21,14 +21,14 @@ class BuilderController < ApplicationController
   def new_widget
     return error 'Not a new document' unless params[:id].nil?
     db = CouchRest.database(current_user.company.couch_db_url)
-    
+
     # scrub off rails related data
     params.delete :action; params.delete :controller
-    
+
     res = db.save_doc(params)
     success params
   end
-  
+
   def update_widget
     return error 'Invalid id' if params[:id].nil?
     db = CouchRest.database(current_user.company.couch_db_url)
@@ -39,13 +39,13 @@ class BuilderController < ApplicationController
     wdata.delete :action; wdata.delete :controller
 
     return error 'Bad data' unless handle_special_widget_cases(wdata)
-    
+
     # couchrest adds _id and _rev to the hash on success
     res = db.save_doc(wdata)
     wdata[:email] = params[:email] if params[:email]
     success wdata
   end
-  
+
   def delete_widget
     return error 'Invalid id'  if params[:_id].nil?
     return error 'Invalid rev' if params[:_rev].nil?
@@ -55,11 +55,11 @@ class BuilderController < ApplicationController
     res = db.delete_doc(params)
     success params
   end
-  
+
   def update_order
     return error 'Invalid id'  if params[:_id].nil?
     return error 'Invalid rev' if params[:_rev].nil?
-    
+
     db = CouchRest.database(current_user.company.couch_db_url)
 
     # scrub off rails related data
@@ -68,7 +68,7 @@ class BuilderController < ApplicationController
     db.save_doc(params)
     success params
   end
-  
+
   def change_settings
     if params[:company_name].present?
       cname = params[:company_name]
@@ -155,6 +155,7 @@ class BuilderController < ApplicationController
       if save_success == false && company.errors[:logo_file_size]
         error 'file_size_too_large'
       elsif save_success
+        company.settings.update_attributes :banner_size => 'auto'
         success :banner => company.banner.url(:mobile)
       end
     elsif params[:targetType] == 'body_bg'
@@ -166,6 +167,7 @@ class BuilderController < ApplicationController
       if save_success == false && settings.errors[:logo_file_size]
         error 'file_size_too_large'
       elsif save_success
+        company.settings.update_attributes :body_bg_repeat => 'no-repeat'
         success :body_bg => settings.body_bg.url(:mobile)
       end
     end

@@ -135,8 +135,9 @@
       if (res.banner) {
         g.banner = res.banner;
         mapp.render();
-        $('img.banner').attr('src', g.banner);
-        $('.banner_size').show();
+        this.$('img.banner').attr('src', g.banner).css('width', 'auto');
+        this.$('[name=banner_size]').val('auto');
+        this.$('.banner_size, .remove-banner-link').show();
         util._uploaders['customize_banner'].toggleBrowseButton(true);
       }
       else if (res.body_bg) {
@@ -145,8 +146,9 @@
           backgroundImage: 'url('+ g.body_bg +')',
           backgroundRepeat: 'no-repeat'
         });
-        $('img.body_bg').attr('src', g.body_bg);
-        $('.bg_repeat').show();
+        $('img.body_bg').attr('src', g.body_bg).css('background-repeat', 'no-repeat');
+        this.$('[name=body_bg_repeat]').val('no-repeat');
+        $('.bg_repeat, .remove-bogy_bg-link').show();
         util._uploaders['customize_body_bg'].toggleBrowseButton(true);
       }
       util.releaseUI();
@@ -157,6 +159,7 @@
       g.banner = '';
       mapp.render();
       $('img.banner').attr('src', g.blankImg);
+      $('.banner_size, .remove-banner-link').hide();
       $.post(g.customizeUploadPath, { destroy:1, targetType:'banner' });
     },
 
@@ -168,7 +171,7 @@
         backgroundRepeat: 'none'
       });
       $('img.body_bg').attr('src', g.blankImg);
-      $('.bg_repeat').hide();
+      $('.bg_repeat, .remove-body_bg-link').hide();
       $.post(g.customizeUploadPath, { destroy:1, targetType:'body_bg' });
     },
 
