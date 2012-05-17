@@ -169,7 +169,12 @@ class SiteManagerController < ApplicationController
     else
       if ENV['HEROKU_API_KEY'].present?
         client = Heroku::Client.new('', ENV['HEROKU_API_KEY'])
-        client.remove_domain Rails.application.config.heroku_app_name, domain.host
+        begin
+          client.remove_domain Rails.application.config.heroku_app_name, domain.host
+        rescue RestClient::ResourceNotFound
+          # A problem with heroku. Regardless, catch exception so we can delete
+          # the domain from our local db
+        end
       end
       domain.delete
       render :json => { :status => :ok, :site => @company }
