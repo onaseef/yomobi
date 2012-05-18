@@ -150,7 +150,7 @@
         g.settings.body_bg_repeat = 'no-repeat';
         $('img.body_bg').attr('src', g.body_bg).css('background-repeat', 'no-repeat');
         this.$('[name=body_bg_repeat]').val('no-repeat');
-        $('.bg_repeat, .remove-bogy_bg-link').show();
+        $('.bg_repeat, .remove-body_bg-link').show();
         util._uploaders['customize_body_bg'].toggleBrowseButton(true);
       }
       util.releaseUI();
