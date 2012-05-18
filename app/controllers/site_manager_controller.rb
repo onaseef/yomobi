@@ -155,7 +155,12 @@ class SiteManagerController < ApplicationController
     else
       if ENV['HEROKU_API_KEY'].present?
         client = Heroku::Client.new('', ENV['HEROKU_API_KEY'])
-        client.add_domain Rails.application.config.heroku_app_name, params[:host]
+        begin
+          client.add_domain Rails.application.config.heroku_app_name, params[:host]
+        rescue RestClient::UnprocessableEntity
+          # The domain is most likely in use by another Heroku app
+          return render :json => { :status => :error, :reasons => { :taken => true }, :host => params[:host] }
+        end
       end
       render :json => { :status => :ok, :site => @company }
     end
