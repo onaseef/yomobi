@@ -15,4 +15,8 @@ class Payment < ActiveRecord::Base
     Payment.where(:company_id => cid).order('created_at DESC').first
   end
 
+  def months
+    (amount_paid / 12).to_s.to_i
+  end
+
 end

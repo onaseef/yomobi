@@ -5,5 +5,7 @@
 ul
 - @payments.each do |p|
   li
-    = "You paid $#{p.amount_paid} to upgrade "
+    ' (#{ p.created_at.strftime( t 'date_formats.payment' ) })
+    ' You paid $#{p.amount_paid} to upgrade
     b = p.company.url_and_name
+    |  for #{p.months} month(s).

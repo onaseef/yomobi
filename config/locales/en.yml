@@ -2,6 +2,9 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  date_formats:
+    payment: "%B %d, %Y"
+
   general:
     click_here_start: "Click here"
     click_here_middle: "click here"
