@@ -84,9 +84,9 @@
 
   script.signup-keys(type="text/template")
     .content-header
-      .action Generate
-      h3.title Signup Keys
-      .status Generate Signup Key
+      .action = t 'site_manager.generate'
+      h3.title = t 'site_manager.signup_keys'
+      .status = t 'site_manager.generate_signup_key'
       .clearfix
     .content-body
       button.gen-signup-key =t'site_manager.generate_signup_key'
@@ -98,7 +98,7 @@
   script.site-grade(type="text/template")
     .content-header
       .action {{ actionLabel }}
-      h3.title Site Grade
+      h3.title = t 'site_manager.site_grade'
       .status
         | <% if (isPremium && subscriptionEndDate) { %>
         | {{ grade }} (next charge: {{expireDate}})
@@ -110,14 +110,14 @@
       .clearfix
     .content-body
       | <% if (subscriptionEndDate === 'cancelled') { %>
-      label Monthly subscription cancelled sucessfully.
+      label = t 'site_manager.cancel_success'
       | <% } %>
 
       | <% if (subscriptionEndDate && subscriptionEndDate !== 'cancelled') { %>
       form.cancel action="{{ cancelPath }}" method="POST" data-remote="true"
-        label You are on a monthly subscription until {{ subscriptionEndDate }}
+        label = t 'site_manager.subscription_status'
         input type="hidden" name="site_id" value="{{ id }}"
-        input type="submit" value="Cancel Subscription"
+        input type="submit" value=t('site_manager.cancel_subscription')
       | <% } else { %>
       h3 Select a thing:
       form.pay action="{{ actionPath }}" method="POST" data-remote="true"
@@ -138,13 +138,13 @@
 
   script.custom-domains(type="text/template")
     .content-header
-      .action Setup
-      h3.title Custom Domains
-      .status <% print(domains.length); %> Connected Domains
+      .action = t 'site_manager.setup'
+      h3.title = t 'site_manager.custom_domains'
+      .status == t 'site_manager.connected_domains', :domain_count => '<% print(domains.length); %>'
       .clearfix
     .content-body
       | <% if (!isPremium) { %>
-      p This site must be upgraded to <b>Professional</b> to use Custom Domains.
+      p == t 'site_manager.not_premium_for_domains'
       | <% } else { %>
       ul.domains.fancy-selectable
       button.add-domain    disabled="disabled" =t'site_manager.add_domain'
@@ -163,18 +163,18 @@
 
   script.merchant-account(type="text/template")
     .content-header
-      .action Setup
-      h3.title Merchant Account
-      .status You have not set up your merchant account.
+      .action = t 'site_manager.setup'
+      h3.title = t'site_manager.merchant_account'
+      .status = t 'site_manager.no_merchant_account'
       .clearfix
     .content-body
-      b Coming soon.
+      b = t 'site_manager.coming_soon'
 
   script.site-admins(type="text/template")
     .content-header
-      .action Manage
-      h3.title Site Admins
-      .status This site has <b><% print(admins.length+1); %></b> admin(s).
+      .action = t 'site_manager.manage'
+      h3.title = t 'site_manager.site_admins'
+      .status == t 'site_manager.site_admins_status', :admin_count => '<% print(admins.length+1); %>'
       .clearfix
     .content-body
       ul.admins.fancy-selectable
@@ -193,7 +193,7 @@
             td
               span.name
                 ' {{ owner.firstName }} {{ owner.lastName }}
-                span.is-owner (Owner)
+                span.is-owner = t 'site_manager.owner'
     | <% for (var i=0; i < admins.length; i++) { %>
     li.admin data-id="{{ admins[i].id }}"
       table
@@ -209,7 +209,7 @@
     span.url yomobi.com/{{ name }}
 
   script.new-site-dialog(type="text/template")
-    form#account-setup-box.new-site.dialog title="Create a New Site"
+    form#account-setup-box.new-site.dialog title=t('site_manager.create_new_site')
       .fields
         | <% if (errors.maxSiteCount) { %>
         p.error =t('site_manager.error.site_limit', :max_site_count => "{{errors.maxSiteCount}}")
@@ -263,7 +263,7 @@
         img src="/images/ui/ajax-loader-small.gif"
 
   script.add-admin-dialog(type="text/template")
-    form#account-setup-box.add-admin.dialog title="Add Admin"
+    form#account-setup-box.add-admin.dialog title=t('site_manager.add_admin')
       .fields
         h3 =t'site_manager.admin_email'
         | <% if (errors.email) { %>

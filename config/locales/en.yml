@@ -129,6 +129,10 @@ en:
       continue: "Continue"
       select_domain: "Please select a domain"
       cancel_sub_confirm: "Are you sure you want to cancel your subscription?"
+      manage: "Manage"
+      upgrade: "Upgrade"
+      professional: "Professional"
+      standard: "Standard"
 
 
   javascript_mobile:
@@ -637,6 +641,8 @@ en:
     select_site: "Please select a site on the left."
     selected_site: "Manage: %{site_name}"
     edit_site: "Edit Site"
+    generate: "Generate"
+    signup_keys: "Signup Keys"
     generate_signup_key: "Generate Signup Key"
     site_access_list: "Sites you have access to:"
     admin_email: "Admin's Email:"
@@ -644,6 +650,26 @@ en:
     add_domain: "Add Domain"
     remove_domain: "Remove Domain"
     domain_name: "Domain Name (e.g. www.example.com):"
+
+    site_grade: "Site Grade"
+    subscription_status: "You are on a monthly subscription until {{ subscriptionEndDate }}"
+    cancel_subscription: "Cancel Subscription"
+    cancel_success: "Monthly subscription cancelled sucessfully."
+
+    setup: "Setup"
+    custom_domains: "Custom Domains"
+    connected_domains: "%{domain_count} Connected Domains"
+    not_premium_for_domains: "This site must be upgraded to <b>Professional</b> to use Custom Domains."
+
+    merchant_account: "Merchant Account"
+    no_merchant_account: "You have not set up your merchant account."
+    coming_soon: "Coming Soon."
+
+    manage: "Manage"
+    site_admins: "Site Admins"
+    site_admins_status: "This site has <b>%{admin_count}</b> admin(s)."
+
+    # site_manager
     error:
       are_you_sure: "Are you sure?"
       site_limit: "You have reached the site count limit of %{max_site_count}."
@@ -654,13 +680,14 @@ en:
       domain_taken: "Domain has already been linked to another mobile site."
       bad_domain_format: "Invalid domain format."
       max_domain_count: "You have reached the maximum number of domains for this mobile site (5)."
-
+    # site_manager
     help:
       signup_keys: "When you are ready to hand this site over to its owner, generate a signup key, then email the link to the site owner and have them click on the link to sign up to Yomobi and take ownership of their site.<br><b>Click ? for more information.</b>"
     confirm:
       concede_site: Are you sure? You will lose ownership of this site.
     dialog:
       concede_site: Conceding your ownership of this site will give up your ownership rights. That means you will no longer have control over collaborators.
+
 
   mobile:
     tab_bar:

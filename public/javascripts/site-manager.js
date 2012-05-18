@@ -225,8 +225,8 @@
     showContent: showContent,
     render: function (site) {
       var extraData = {
-        actionLabel: site.get('isPremium') ? 'Manage' : 'Upgrade',
-        grade: site.get('isPremium') ? 'Professional' : 'Standard',
+        actionLabel: site.get('isPremium') ? i18n.manage : i18n.upgrade,
+        grade: site.get('isPremium') ? i18n.professional : i18n.standard,
         actionPath: g.upgradeSitePath(site.toJSON()),
         cancelPath: g.cancelSubPath(site.toJSON()),
         expireDate: site.get('expireDate')

@@ -124,6 +124,10 @@ es:
       continue: "Continuar"
       select_domain: "@@Please select a domain"
       cancel_sub_confirm: "Are you sure you want to cancel your subscription?"
+      manage: "@@Manage"
+      upgrade: "@@Upgrade"
+      professional: "@@Professional"
+      standard: "@@Standard"
 
 
   javascript_mobile:
@@ -628,6 +632,8 @@ es:
     select_site: "Favor de seleccionar un sitio de la izquierda."
     selected_site: "Seleccionado: %{site_name}"
     edit_site: "Editar Sitio"
+    generate: "@@Generate"
+    signup_keys: "@@Signup Keys"
     generate_signup_key: "Generar Clave de Registro"
     site_access_list: "Sitios a los que tienes acceso:"
     admin_email: "Email del Administrador:"
@@ -635,6 +641,26 @@ es:
     add_domain: "@@Add Domain"
     remove_domain: "@@Remove Domain"
     domain_name: "@@Domain Name (e.g. www.example.com):"
+
+    site_grade: "@@Site Grade"
+    subscription_status: "@@You are on a monthly subscription until {{ subscriptionEndDate }}"
+    cancel_subscription: "@@Cancel Subscription"
+    cancel_success: "@@Monthly subscription cancelled sucessfully."
+
+    setup: "@@Setup"
+    custom_domains: "@@Custom Domains"
+    connected_domains: "@@%{domain_count} Connected Domains"
+    not_premium_for_domains: "@@This site must be upgraded to <b>Professional</b> to use Custom Domains."
+
+    merchant_account: "@@Merchant Account"
+    no_merchant_account: "@@You have not set up your merchant account."
+    coming_soon: "@@Coming Soon."
+
+    manage: "@@Manage"
+    site_admins: "@@Site Admins"
+    site_admins_status: "@@This site has <b>%{admin_count}</b> admin(s)."
+
+    # site_manager
     error:
       are_you_sure: "¿Estás seguro(a)?"
       site_limit: "Has alcanzado el límite de %{max_site_count}."
@@ -645,7 +671,7 @@ es:
       domain_taken: "@@Domain has already been linked to another mobile site."
       bad_domain_format: "@@Invalid domain format."
       max_domain_count: "@@You have reached the maximum number of domains for this mobile site (5)."
-
+    # site_manager
     help:
       signup_keys: "Cuando estés listo para entregar este sitio a su propietario, genera una clave de registro, luego envía por email el enlace al propietario del sitio. Asegúrate que haga click en el enlace para que se registre ante Yomobi y tome posesión de su sitio.<br><b>Para mayor información, Haz Click en ?</b>"
     confirm:
