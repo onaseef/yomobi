@@ -246,11 +246,11 @@ class SiteManagerController < ApplicationController
     begin
       cancel_preapproval record.preapproval_id
     rescue WepayRails::Exceptions::WepayCheckoutError => e
-      if e.message =~ /already been cancelled/
+      if e.message =~ /(already been cancelled|already been stopped)/
         WepayCheckoutRecord.find(record.id).update_attribute :state, 'cancelled'
         return success :cancelSubscription => company.id
       else
-        puts "CANCEL ERROR: #{e.inspect}"
+        puts "CANCEL ERROR: #{e.message}::#{e.inspect}"
         return error 'cancel_error'
       end
     else
