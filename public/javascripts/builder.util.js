@@ -306,13 +306,13 @@ var builderUtil = {
   jeditorYoutubeDialog: function () {
     var dialog = util.dialog(youtubeDialogTemplate(), {
       'Save': function () {
-        
+
         var vurl = dialog.find('[name=url]').val();
         var html = null;
 
         // First check if the video URL is a YouTube video URL
         var vid = getYoutubeVideoId( vurl );
-        
+
         // If the vid is valid, it is a YouTube video. Handle it as such
         if (vid) {
           html = youtubeEmbedTemplate({ vid: vid || 'GGT8ZCTBoBA' });
@@ -502,7 +502,7 @@ util.log('INTSANCE ID',options.instanceId, options.extraParams);
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(function () { uploader.reposition(); }, 300);
     });
-    
+
     // because we're in a dialog, sometimes we need to set the uploader to be
     // on top of everything else, as well as send it back
     uploader.layover = $('#' + uploader.id + '_' + uploader.runtime + '_container');
@@ -533,6 +533,7 @@ util.log('INTSANCE ID',options.instanceId, options.extraParams);
         $('#'+pickerId)
           .siblings('.selected-file')
             .text(' ')
+            .addClass('no-anim')
             .css('background-position', '-500px 0')
             .end()
           .siblings('button,.ajax').remove()
@@ -554,12 +555,16 @@ util.log('INTSANCE ID',options.instanceId, options.extraParams);
       }
 
       $.each(files, function (i, file) {
-        context.find('.selected-file').empty().append(
-          '<div id="' + file.id + '">' +
-          file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' +
-        '</div>');
+        context.find('.selected-file')
+          .empty()
+          .append(
+            '<div id="' + file.id + '">' +
+            file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' +
+            '</div>')
+          .removeClass('no-anim')
+        ;
       });
-      
+
       if (isAutoEnabled) {
         util.log('starting uploader');
         uploader.start();
