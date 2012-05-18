@@ -444,6 +444,25 @@ es:
       body_bg_help: "@@<p>Upload a background image.</p>"
       not_premium: "@@You must upgrade this site to Professional to use this feature."
 
+      header: "@@Header"
+      header_font: "@@Header Font"
+
+      banner_size: "@@Banner Size"
+      text_color: "@@Text Color"
+      background_color: "@@Background Color"
+
+      tab_bar_and_footer: "@@Mobile Tab Bar & Footer"
+      customizing_tab_bar_and_footer: "@@Customizing Tab Bar & Footer"
+      icon_text_font: "@@Icon Text Font"
+      icon_text_color: "@@Icon Text Color"
+
+      home_page: "@@Home Page"
+      customizing_home_page: "@@Customizing Home Page"
+      dont_repeat: "@@Don't Repeat"
+      repeat_horizontal: "@@Repeat Horizontally"
+      repeat_vertical: "@@Repeat Vertically"
+      repeat_both: "@@Repeat Both"
+
     edit_tab_bar:
       explanation: "Selecciona las páginas que quieres que sean más visibles para tus visitantes móviles."
 

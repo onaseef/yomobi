@@ -306,9 +306,9 @@ script.customize(type="text/template")
     .explanation ==t'builder.customize.explanation'
 
     select name="area_select"
-      option value="banner" Header
-      option value="tab_bar" Mobile Tab Bar & Footer
-      option value="home_page" Home Page
+      option value="banner" = t 'builder.customize.header'
+      option value="tab_bar" = t 'builder.customize.tab_bar_and_footer'
+      option value="home_page" = t 'builder.customize.home_page'
 
     form.subpanels
       .banner
@@ -333,7 +333,7 @@ script.customize(type="text/template")
                 a.remove-banner-link href="#" class="<% if (banner_src === g.blankImg) { print('hide'); } %>" = t'dialog.add_new.remove_picture'
             tr.banner_size class="<% if (banner_src === g.blankImg) { print('hide'); } %>"
               td colspan="2"
-                label Banner Size:
+                label = t 'builder.customize.banner_size'
                 select name="banner_size"
                   option value="auto" Original
                   - (1..10).each do |i|
@@ -342,53 +342,53 @@ script.customize(type="text/template")
             tr
               td = t'builder.customize.not_premium'
             | <% } %>
-        h3 Customizing Header
-        label Header Font
+        h3 = t 'builder.customize.customizing_home_page'
+        label = t 'builder.customize.header_font'
         br
         select name="header_font_family"
           = render 'builder/font-family-options'
         br
-        label Backgound Color
+        label = t 'builder.customize.background_color'
         .color-picker data-color="{{ header_color }}" data-target="header_color"
           div style="background-color:{{ header_color }}"
         input type="hidden" name="header_color" value="{{ header_color }}"
         br
-        label Text Color
+        label = t 'builder.customize.text_color'
         .color-picker data-color="{{ header_text_color }}" data-target="header_text_color"
           div style="background-color:{{ header_text_color }}"
         input type="hidden" name="header_text_color" value="{{ header_text_color }}"
         br
 
       .tab_bar
-        h3 Customizing Tab Bar & Footer
+        h3 = t 'builder.customize.customizing_tab_bar_and_footer'
         label Font
         br
         select name="tab_bar_font_family"
           = render 'builder/font-family-options'
         br
-        label Backgound Color
+        label  = t 'builder.customize.background_color'
         .color-picker data-color="{{ tab_bar_color }}" data-target="tab_bar_color"
           div style="background-color:{{ tab_bar_color }}"
         input type="hidden" name="tab_bar_color" value="{{ tab_bar_color }}"
         br
-        label Text Color
+        label = t 'builder.customize.text_color'
         .color-picker data-color="{{ tab_bar_text_color }}" data-target="tab_bar_text_color"
           div style="background-color:{{ tab_bar_text_color }}"
         input type="hidden" name="tab_bar_text_color" value="{{ tab_bar_text_color }}"
 
       .home_page
-        h3 Customizing Home Page
-        label Icon Text Font
+        h3  = t 'builder.customize.customizing_home_page'
+        label = t 'builder.customize.icon_text_font'
         br
         select name="icon_font_family"
           = render 'builder/font-family-options'
         br
-        label Icon Text Color
+        label = t 'builder.customize.icon_text_color'
         .color-picker data-color="{{ icon_text_color }}" data-target="icon_text_color"
           div style="background-color:{{ icon_text_color }}"
         input type="hidden" name="icon_text_color" value="{{ icon_text_color }}"
 
-        label Background Color
+        label = t 'builder.customize.background_color'
         .color-picker data-color="{{ body_bg_color }}" data-target="body_bg_color"
           div style="background-color:{{ body_bg_color }}"
         input type="hidden" name="body_bg_color" value="{{ body_bg_color }}"
@@ -415,10 +415,10 @@ script.customize(type="text/template")
             tr.bg_repeat class="<% if (body_bg_src === g.blankImg) { print('hide'); } %>"
               td colspan="2"
                 select name="body_bg_repeat"
-                  option value="no-repeat" Don't Repeat
-                  option value="repeat-x" Repeat Horizontally
-                  option value="repeat-y" Repeat Vertically
-                  option value="repeat" Repeat Both
+                  option value="no-repeat" = t 'builder.customize.dont_repeat'
+                  option value="repeat-x" = t 'builder.customize.repeat_horizontal'
+                  option value="repeat-y" = t 'builder.customize.repeat_vertically'
+                  option value="repeat" = t 'builder.customize.repeat_both'
             | <% } else { %>
             tr
               td = t'builder.customize.not_premium'
