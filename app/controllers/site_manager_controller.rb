@@ -250,6 +250,7 @@ class SiteManagerController < ApplicationController
         WepayCheckoutRecord.find(record.id).update_attribute :state, 'cancelled'
         return success :cancelSubscription => company.id
       else
+        puts "CANCEL ERROR: #{e.inspect}"
         return error 'cancel_error'
       end
     else
