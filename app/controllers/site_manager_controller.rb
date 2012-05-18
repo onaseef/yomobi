@@ -6,8 +6,9 @@ class SiteManagerController < ApplicationController
   before_filter :ensure_user_has_already_setup
   before_filter :ensure_user_owns_company,
                 :only => [:add_admin, :remove_admin, :concede,
-                          :add_domain, :remove_domain,
                           :gen_signup_key, :delete]
+  before_filter :ensure_user_is_admin_of_company,
+                :only => [:add_domain, :remove_domain]
 
   def index
     @companies = current_user.all_companies
@@ -269,6 +270,14 @@ class SiteManagerController < ApplicationController
     if @company.owner != current_user
       render :json => { :status => :error,
                         :reasons => { :insufficient_permissions => true} }
+      return false
+    end
+  end
+
+  def ensure_user_is_admin_of_company
+    @company = Company.find_by_id params[:id]
+    unless current_user.can_access_company?(@company)
+      render :json => { :status => :error, :reasons => {}, :host => params[:host] }
       return false
     end
   end

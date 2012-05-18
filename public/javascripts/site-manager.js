@@ -196,8 +196,6 @@
 
     render: function (site) {
       $(this.el).html( this.template(site.toJSON()) );
-      this.$('.add-domain').prop('disabled', !site.get('isOwnedByUser'));
-      this.$('.remove-domain').prop('disabled', !site.get('isOwnedByUser'));
       this.$('ul.domains').html( this.domainsTemplate(site.toJSON()) );
       return this;
     }
@@ -621,6 +619,7 @@
           $(self.el).dialog('close');
         },
         error: function (resp) {
+util.log('FAIL', resp);
           self.render(resp.reasons, resp);
         }
       });
