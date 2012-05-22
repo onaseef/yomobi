@@ -22,7 +22,9 @@ gem 'validates_as_email_address'
 gem 'aritcaptcha', :git => 'https://github.com/mindeavor/aritcaptcha.git'
 #gem 'aritcaptcha', :git => '/Users/tapwater/p/aritcaptcha'
 
-gem 'newrelic_rpm', '~> 3.3'
+group :production do
+  gem 'newrelic_rpm', '~> 3.3'
+end
 
 group :development, :test do
   gem 'heroku'
