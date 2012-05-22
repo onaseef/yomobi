@@ -34,54 +34,37 @@ The mobile visitor visits a UWG (usually by a redirect) from a mobile device. Vi
 
 These variables must be in your development environment:
 
-#### `GOOGLE_API_KEY`
+`GOOGLE_API_KEY` - A Google url shortener api key.
 
-> A Google url shortener api key.
+`S3_KEY` - Your Amazon S3 public access key.
 
-#### `S3_KEY`
-    
-> Your Amazon S3 public access key. **Note**: 
+`S3_SECRET` - Your Amazon S3 secret access key.
 
-#### `S3_SECRET`
+`SES_KEY` (optional, dev only) - Your Amazon S3 public access key for emails. Defaults to the `S3_KEY` environment variable.
 
-> Your Amazon S3 secret access key.
+`SES_SECRET` (optional, dev only) - Your Amazon S3 secret access key for emails. Defaults to the `S3_SECRET` environment variable.
 
-#### `SES_KEY` (optional, dev only)
+`ARITCAPTCHA_S3_BUCKET` - The bucket name on your Amazon S3 account to use for caching generated aritcaptcha images.
 
-> Your Amazon S3 public access key for emails. Defaults to the `S3_KEY` environment variable.
+`LOGO_S3_BUCKET` - The bucket name on your Amazon S3 account to use for company logos (now called "site photos" in the front end).
 
-#### `SES_SECRET` (optional, dev only)
+`COUCH_HOST` - The CouchDB url to use for public mobile website data. Example: `yomobi.iriscouch.com`
 
-> Your Amazon S3 secret access key for emails. Defaults to the `S3_SECRET` environment variable.
+`COUCH_ADMIN_USER` - The admin username to your CouchDB server.
 
-#### `ARITCAPTCHA_S3_BUCKET`
+`COUCH_ADMIN_PASS` - The admin password to your CouchDB server.
 
-> The bucket name on your Amazon S3 account to use for caching generated aritcaptcha images.
+`DEVISE_URL_HOST` (optional) - The base url Devise will use for opt-out urls. Default: `http://local.host:3000`
 
-#### `LOGO_S3_BUCKET`
+`ACTION_MAILER_HOST` (optional) - The host ActionMailer will use for urls. Default: `local.host:3000`
 
-> The bucket name on your Amazon S3 account to use for company logos (now called "site photos" in the front end).
+#### Production-Only
 
-#### `COUCH_HOST`
+`NEW_RELIC_APP_NAME` - The application name associated with the production newrelic.com account.
 
-> The CouchDB url to use for public mobile website data. Example: `yomobi.iriscouch.com`
+`NEW_RELIC_LICENSE_KEY` - The license key associated with the production newrelic.com account.
 
-#### `COUCH_ADMIN_USER`
-
-> The admin username to your CouchDB server.
-
-#### `COUCH_ADMIN_PASS`
-
-> The admin password to your CouchDB server.
-
-#### `DEVISE_URL_HOST` (optional)
-
-> The base url Devise will use for opt-out urls. Default: `http://local.host:3000`
-
-#### `ACTION_MAILER_HOST` (optional)
-
-> The host ActionMailer will use for urls. Default: `local.host:3000`
-
+`HEROKU_API_KEY` - The heroku api key associated with the production heroku app (used for domain managing).
 
 # Development Overview
 
