@@ -48,7 +48,7 @@ These variables must be in your development environment:
 
 `LOGO_S3_BUCKET` - The bucket name on your Amazon S3 account to use for company logos (now called "site photos" in the front end).
 
-`COUCH_HOST` - The CouchDB url to use for public mobile website data. Example: `yomobi.iriscouch.com`
+`COUCH_HOST` - The CouchDB url to use for public mobile website data. Example: `localhost:5984`
 
 `COUCH_ADMIN_USER` - The admin username to your CouchDB server.
 
