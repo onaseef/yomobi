@@ -63,7 +63,6 @@
 
     render: function (site) {
       _.each(this.sections, function (v) { v.render(site); });
-      $(window).unbind('beforeunload');
       return this;
     },
 
@@ -75,7 +74,6 @@
       });
       var $header = util.ensureClassAncestor(e.target, 'content-header');
       $header.addClass('active').siblings('.content-body').show();
-      $(window).unbind('beforeunload');
     },
 
     closeAccordian: function () {
@@ -275,9 +273,6 @@
         return false;
       }
       $(e.target).find('[type=submit]').prop('disabled', true);
-      $(window).bind('beforeunload', function () {
-        return "Payment is processing.";
-      });
       return true;
     },
 
