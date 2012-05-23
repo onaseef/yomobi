@@ -12,6 +12,12 @@ class SiteManagerController < ApplicationController
 
   def index
     @companies = current_user.all_companies
+    if params[:checkout_id]
+      record = WepayCheckoutRecord.find_by_checkout_id params[:checkout_id]
+      if record && record.payment && record.payment.user == current_user
+        @payment = record.payment
+      end
+    end
   end
 
   def make_active

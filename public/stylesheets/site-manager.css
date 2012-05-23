@@ -101,3 +101,6 @@ form#account-setup-box.dialog.submitting .loading {
 
 .error {
   color: #800; }
+
+.success {
+  color: #080; }

@@ -26,9 +26,16 @@
 
       user_id: <%= current_user.id %>,
       defaultSite_id: <%= current_user.default_company.id %>,
+      <% if @payment %>
+      activeSite_id: <%= @payment.company_id %>,
+      <% else %>
       activeSite_id: <%= current_user.company.id %>,
+      <% end %>
 
       concedeSiteConfirmation: "<%= t'site_manager.confirm.concede_site' %>"
+      <% if @payment %>
+      , payment: <%=raw @payment.to_json %>
+      <% end %>
     };
     </script>
   = javascript_include_tag 'site-manager'
@@ -112,6 +119,9 @@
       | <% if (subscriptionEndDate === 'cancelled') { %>
       label = t 'site_manager.cancel_success'
       | <% } %>
+
+      .payment-complete.hide
+        label.success = t 'site_manager.payment_complete'
 
       | <% if (subscriptionEndDate && subscriptionEndDate !== 'cancelled') { %>
       form.cancel action="{{ cancelPath }}" method="POST" data-remote="true"

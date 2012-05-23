@@ -63,17 +63,19 @@
 
     render: function (site) {
       _.each(this.sections, function (v) { v.render(site); });
+      $(window).unbind('beforeunload');
       return this;
     },
 
     viewAccordianSection: function (e) {
-      _.each(this.sections, function (v) {
-        v.el
+      _.each(this.sections, function (view) {
+        view.el
           .find('.content-header').removeClass('active').end()
           .find('.content-body').hide().end();
       });
       var $header = util.ensureClassAncestor(e.target, 'content-header');
       $header.addClass('active').siblings('.content-body').show();
+      $(window).unbind('beforeunload');
     },
 
     closeAccordian: function () {
@@ -97,6 +99,7 @@
   // shared function
   var showContent = function () {
     this.$('.content-body').show();
+    return this;
   };
 
 
@@ -218,6 +221,7 @@
     template: util.getTemplate('site-grade'),
     events: {
       'click .back-btn':        'goBack',
+      'submit form.pay':        'onPaySubmit',
       'submit form.cancel':     'confirmCancelSub'
     },
     showContent: showContent,
@@ -261,6 +265,24 @@
     goBack: function () {
       this.render( sman.getSelectedSite() );
       this.showContent();
+    },
+
+    onPaySubmit: function (e) {
+      if ( $(e.target).find('[name=terms]').prop('checked') !== true ) {
+        console.log('bad.');
+        e.preventDefault();
+        alert(i18n.agree_to_terms);
+        return false;
+      }
+      $(e.target).find('[type=submit]').prop('disabled', true);
+      $(window).bind('beforeunload', function () {
+        return "Payment is processing.";
+      });
+      return true;
+    },
+
+    onPayComplete: function (e) {
+      this.el.find('.payment-complete').show();
     },
 
     confirmCancelSub: function (e) {
@@ -407,6 +429,9 @@
       var activeSite = this.sites.get(g.activeSite_id);
       $(activeSite.view.el).addClass('ui-selected');
       this.accordian.render(activeSite);
+      if (g.payment) {
+        this.accordian.siteGrade.showContent().onPayComplete();
+      }
 
       return this;
     },

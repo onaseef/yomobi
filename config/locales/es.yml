@@ -128,6 +128,7 @@ es:
       upgrade: "@@Upgrade"
       professional: "@@Professional"
       standard: "@@Standard"
+      agree_to_terms: "@@Please agree to the terms before continuing."
 
 
   javascript_mobile:
@@ -646,6 +647,7 @@ es:
     subscription_status: "@@You are on a monthly subscription until {{ subscriptionEndDate }}"
     cancel_subscription: "@@Cancel Subscription"
     cancel_success: "@@Monthly subscription cancelled sucessfully."
+    payment_complete: "@@Site successfully upgraded."
 
     setup: "@@Setup"
     custom_domains: "@@Custom Domains"

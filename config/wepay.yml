@@ -20,7 +20,7 @@ development:
   account_id: 353008
   access_token: b009f8dac83038f2df195a9197470543ab36e4c8a8b3059eba8057138616b13d
   root_callback_uri: "http://www.local.host:3000"
-  after_checkout_redirect_uri: "/account/payments"
+  after_checkout_redirect_uri: "/site-manager#payment-complete"
   scope: [refund_payments,collect_payments,view_balance,view_user]
   wepay_api_uri: "http://stage.wepayapi.com/v2"
   fee_payer: payee
