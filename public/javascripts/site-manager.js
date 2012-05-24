@@ -220,7 +220,7 @@
     events: {
       'click .back-btn':        'goBack',
       'submit form.pay':        'onPaySubmit',
-      'submit form.cancel':     'confirmCancelSub'
+      'submit form.cancel, click form.cancel [type=submit]':     'confirmCancelSub'
     },
     showContent: showContent,
     render: function (site) {
@@ -266,13 +266,13 @@
     },
 
     onPaySubmit: function (e) {
-      if ( $(e.target).find('[name=terms]').prop('checked') !== true ) {
-        console.log('bad.');
+      if ( this.$('[name=terms]').prop('checked') !== true ) {
         e.preventDefault();
+        e.stopPropagation();
         alert(i18n.agree_to_terms);
         return false;
       }
-      $(e.target).find('[type=submit]').prop('disabled', true);
+      this.$('[type=submit]').prop('disabled', true);
       return true;
     },
 
@@ -309,7 +309,7 @@
       this.$('.content-body').toggle(isSelected);
       this.$('.content-header').toggleClass('active',isSelected);
       return this;
-    },
+    }
   });
 
 
