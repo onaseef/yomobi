@@ -1,12 +1,12 @@
 _.templateSettings.interpolate = /\{\{([^\{].*?)\}\}/g;
 
 var util = {
-  
+
   debug: true,
   cycleIdx: 0,
 
   //
-  // Constants 
+  // Constants
   //
   linkTypeURL:     "url",
   linkTypePhone:   "phone",
@@ -481,14 +481,14 @@ var util = {
     else
       return word + 's';
   },
-  
+
   log: function () {
     if(!this.debug) return;
-    if(!window.console || !window.console.log) return;
-    
+    if(!window.console || !window.console.log || $.browser.msie) return;
+
     console.log.apply(console, arguments);
   },
-  
+
   couchSync: function (method,model,success,error) {
     if(method == 'read') {
       $.ajax({

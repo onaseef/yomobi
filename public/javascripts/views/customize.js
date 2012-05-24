@@ -121,7 +121,7 @@
 
       if (g.isPremium) {
         initDialogUploader('banner', this.$('.banner'), this.onUpload);
-        initDialogUploader('body_bg', this.$('.home_page'), this.onUpload);
+        this.hasInitBodyBgUploader = false;
       }
     },
 
@@ -129,6 +129,11 @@
       var targetArea = $(e.target).val();
       this.$('.subpanels > *').hide();
       this.$('.subpanels .' + targetArea).show();
+
+      if (targetArea === 'home_page' && this.hasInitBodyBgUploader === false) {
+        initDialogUploader('body_bg', this.$('.home_page'), this.onUpload);
+        this.hasInitBodyBgUploader = true;
+      }
     },
 
     onUpload: function (res) {
@@ -245,6 +250,8 @@
 
     stopEditing: function () {
       this.el.html(bapp.idleTemplate());
+      destroyUploader('customize_banner');
+      destroyUploader('customize_body_bg');
     },
 
     enableUploadButton: util.enableFileUploadButton

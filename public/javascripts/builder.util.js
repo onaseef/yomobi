@@ -414,7 +414,7 @@ var builderUtil = {
       onDone: _.identity
     }
     options = _.extend(defaults, options);
-util.log('INTSANCE ID',options.instanceId, options.extraParams);
+
     var uploader = this._uploaders[options.instanceId];
 
     if (uploader && options.emptyQueue && uploader.files.length > 0) {
@@ -530,14 +530,14 @@ util.log('INTSANCE ID',options.instanceId, options.extraParams);
         ;
       }
       else {
-        $('#'+pickerId)
-          .siblings('.selected-file')
-            .text(' ')
-            .addClass('no-anim')
-            .css('background-position', '-500px 0')
-            .end()
-          .siblings('button,.ajax').remove()
-        ;
+        var selectedFile = $('#'+pickerId).siblings('.selected-file');
+        selectedFile.text(' ').addClass('no-anim');
+
+        _.delay(function () {
+          selectedFile.css('background-position', '-500px 0');
+        }, 100);
+
+        $('#'+pickerId).siblings('button,.ajax').remove();
       }
       uploader.refresh();
     };
