@@ -140,6 +140,15 @@ class Company < ActiveRecord::Base
     payment && payment.expire_date
   end
 
+  def recalculate_premium
+    expire_date = self.expire_date
+    if expire_date.nil?
+      self.update_attribute :premium, false
+    else
+      self.update_attribute :premium, expire_date > DateTime.now
+    end
+  end
+
   def subscription_end_date
     payment = self.last_payment
     record = payment && payment.wepay_checkout_record

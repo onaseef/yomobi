@@ -12,7 +12,7 @@ class Payment < ActiveRecord::Base
 
   def self.most_recent_for_company(company_or_id)
     cid = company_or_id.is_a?(Company) ? company_or_id.id : company_or_id
-    Payment.where(:company_id => cid).order('created_at DESC').first
+    Payment.where(:company_id => cid, :is_valid => true).order('created_at DESC').first
   end
 
   def months
