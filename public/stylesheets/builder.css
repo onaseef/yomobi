@@ -396,7 +396,7 @@ div.wysiwyg ul.toolbar {
   #builder .edit-area.edit-settings select,
   #builder .edit-area.edit-advanced-settings select,
   #builder .edit-area.customize select {
-    width: 245px; }
+    width: auto; }
   #builder .edit-area.edit-settings .top,
   #builder .edit-area.edit-advanced-settings .top,
   #builder .edit-area.customize .top {
@@ -793,15 +793,13 @@ div.wysiwyg ul.toolbar {
   cursor: pointer; }
 
 .color-picker {
-  background: transparent url(/images/color-picker/select2.png) no-repeat;
   height: 36px;
   width: 72px;
   position: relative; }
 
 .color-picker div {
   position: absolute;
-  top: 6px;
-  left: 6px;
+  top: 3px;
   width: 64px;
   height: 28px;
   background: url(/images/color-picker/select2.png) center; }

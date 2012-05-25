@@ -150,11 +150,11 @@
         g.body_bg = res.body_bg;
         $('#canvas #home.page').css({
           backgroundImage: 'url('+ g.body_bg +')',
-          backgroundRepeat: 'no-repeat'
+          backgroundRepeat: 'repeat'
         });
-        g.settings.body_bg_repeat = 'no-repeat';
-        $('img.body_bg').attr('src', g.body_bg).css('background-repeat', 'no-repeat');
-        this.$('[name=body_bg_repeat]').val('no-repeat');
+        g.settings.body_bg_repeat = 'repeat';
+        $('img.body_bg').attr('src', g.body_bg).css('background-repeat', 'repeat');
+        this.$('[name=body_bg_repeat]').val('repeat');
         $('.bg_repeat, .remove-body_bg-link').show();
         util._uploaders['customize_body_bg'].toggleBrowseButton(true);
       }

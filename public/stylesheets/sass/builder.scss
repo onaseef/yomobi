@@ -425,7 +425,7 @@ div.wysiwyg ul.toolbar {
     }
     textarea { height: 4em; }
   }
-  select { width: 245px; }
+  select { width: auto; }
   .top { vertical-align: top; }
   .logo { margin: 3px 0px; }
   .site-name { padding-bottom: 10px; }
@@ -913,14 +913,15 @@ div.wysiwyg ul.toolbar {
 }
 
 .color-picker {
-  background: transparent url(/images/color-picker/select2.png) no-repeat;
+  //background: transparent url(/images/color-picker/select2.png) no-repeat;
   height: 36px;
   width: 72px;
   position: relative;
 }
 .color-picker div {
   position: absolute;
-  top: 6px; left: 6px;
+  top: 3px; 
+  //left: 6px;
   width: 64px; height: 28px;
   background: url(/images/color-picker/select2.png) center;
 }

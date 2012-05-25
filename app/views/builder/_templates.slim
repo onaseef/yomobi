@@ -33,15 +33,15 @@ script.add-subcat-dialog(type="text/template")
               img src="{{ wphotoUrl }}"
             | <% } %>
             td
-              label =t'dialog.add_new.select_picture'
+              label =t'dialog.add_picture.select_picture'
               br
               .selected-file.lfloat &nbsp;
-              button name="pick_files" =t'dialog.add_new.browse'
+              button name="pick_files" =t'dialog.add_picture.browse'
               .error
           | <% if (_maybe.wphotoUrl) { %>
           tr
             td
-              a.remove-wphoto-link href="#" =t'dialog.add_new.remove_picture'
+              a.remove-wphoto-link href="#" =t'dialog.add_picture.remove_picture'
             td
           | <% } %>
       input type="hidden" value="" name="wphotoUrl"
@@ -312,6 +312,29 @@ script.customize(type="text/template")
 
     form.subpanels
       .banner
+        h3 = t 'builder.customize.customizing_header'
+        table
+          tr
+            td
+              label = t 'builder.customize.header_font'
+            td
+              select name="header_font_family"
+                = render 'builder/font-family-options'
+          tr
+            td 
+              label = t 'builder.customize.background_color'
+            td
+              .color-picker data-color="{{ header_color }}" data-target="header_color"
+                div style="background-color:{{ header_color }}"
+              input type="hidden" name="header_color" value="{{ header_color }}"
+          tr
+            td
+              label = t 'builder.customize.text_color'
+            td
+              .color-picker data-color="{{ header_text_color }}" data-target="header_text_color"
+                div style="background-color:{{ header_text_color }}"
+              input type="hidden" name="header_text_color" value="{{ header_text_color }}"
+        br
         table.banner.wphoto-wrap
           tbody
             tr
@@ -327,10 +350,10 @@ script.customize(type="text/template")
             tr
               td.file-picker
                 .selected-file.lfloat &nbsp;
-                button name="pick_files" =t'dialog.add_new.browse'
+                button name="pick_files" =t'dialog.add_picture.browse'
                 .error
               td
-                a.remove-banner-link href="#" class="<% if (banner_src === g.blankImg) { print('hide'); } %>" = t'dialog.add_new.remove_picture'
+                a.remove-banner-link href="#" class="<% if (banner_src === g.blankImg) { print('hide'); } %>" = t'dialog.add_picture.remove_picture'
             tr.banner_size class="<% if (banner_src === g.blankImg) { print('hide'); } %>"
               td colspan="2"
                 label = t 'builder.customize.banner_size'
@@ -342,56 +365,55 @@ script.customize(type="text/template")
             tr
               td = t'builder.customize.not_premium'
             | <% } %>
-        h3 = t 'builder.customize.customizing_home_page'
-        label = t 'builder.customize.header_font'
-        br
-        select name="header_font_family"
-          = render 'builder/font-family-options'
-        br
-        label = t 'builder.customize.background_color'
-        .color-picker data-color="{{ header_color }}" data-target="header_color"
-          div style="background-color:{{ header_color }}"
-        input type="hidden" name="header_color" value="{{ header_color }}"
-        br
-        label = t 'builder.customize.text_color'
-        .color-picker data-color="{{ header_text_color }}" data-target="header_text_color"
-          div style="background-color:{{ header_text_color }}"
-        input type="hidden" name="header_text_color" value="{{ header_text_color }}"
         br
 
       .tab_bar
         h3 = t 'builder.customize.customizing_tab_bar_and_footer'
-        label Font
-        br
-        select name="tab_bar_font_family"
-          = render 'builder/font-family-options'
-        br
-        label  = t 'builder.customize.background_color'
-        .color-picker data-color="{{ tab_bar_color }}" data-target="tab_bar_color"
-          div style="background-color:{{ tab_bar_color }}"
-        input type="hidden" name="tab_bar_color" value="{{ tab_bar_color }}"
-        br
-        label = t 'builder.customize.text_color'
-        .color-picker data-color="{{ tab_bar_text_color }}" data-target="tab_bar_text_color"
-          div style="background-color:{{ tab_bar_text_color }}"
-        input type="hidden" name="tab_bar_text_color" value="{{ tab_bar_text_color }}"
+        table
+          tr
+            td
+              label = t('builder.customize.font')
+            td
+              select name="tab_bar_font_family"
+                = render 'builder/font-family-options'
+          tr
+            td
+              label  = t 'builder.customize.background_color'
+            td
+              .color-picker data-color="{{ tab_bar_color }}" data-target="tab_bar_color"
+                div style="background-color:{{ tab_bar_color }}"
+              input type="hidden" name="tab_bar_color" value="{{ tab_bar_color }}"
+          tr
+            td
+              label = t 'builder.customize.text_color'
+            td
+              .color-picker data-color="{{ tab_bar_text_color }}" data-target="tab_bar_text_color"
+                div style="background-color:{{ tab_bar_text_color }}"
+              input type="hidden" name="tab_bar_text_color" value="{{ tab_bar_text_color }}"
 
       .home_page
         h3  = t 'builder.customize.customizing_home_page'
-        label = t 'builder.customize.icon_text_font'
-        br
-        select name="icon_font_family"
-          = render 'builder/font-family-options'
-        br
-        label = t 'builder.customize.icon_text_color'
-        .color-picker data-color="{{ icon_text_color }}" data-target="icon_text_color"
-          div style="background-color:{{ icon_text_color }}"
-        input type="hidden" name="icon_text_color" value="{{ icon_text_color }}"
-
-        label = t 'builder.customize.background_color'
-        .color-picker data-color="{{ body_bg_color }}" data-target="body_bg_color"
-          div style="background-color:{{ body_bg_color }}"
-        input type="hidden" name="body_bg_color" value="{{ body_bg_color }}"
+        table
+          tr
+            td
+              label = t 'builder.customize.icon_text_font'
+            td
+              select name="icon_font_family"
+                = render 'builder/font-family-options'
+          tr
+            td
+              label = t 'builder.customize.background_color'
+            td
+              .color-picker data-color="{{ body_bg_color }}" data-target="body_bg_color"
+                div style="background-color:{{ body_bg_color }}"
+              input type="hidden" name="body_bg_color" value="{{ body_bg_color }}"
+          tr
+            td
+              label = t 'builder.customize.icon_text_color'
+            td
+              .color-picker data-color="{{ icon_text_color }}" data-target="icon_text_color"
+                div style="background-color:{{ icon_text_color }}"
+              input type="hidden" name="icon_text_color" value="{{ icon_text_color }}"
 
         table.body_bg.wphoto-wrap
           tbody
@@ -408,10 +430,10 @@ script.customize(type="text/template")
             tr
               td
                 .selected-file.lfloat &nbsp;
-                button name="pick_files" =t'dialog.add_new.browse'
+                button name="pick_files" =t'dialog.add_picture.browse'
                 .error
               td
-                a.remove-body_bg-link href="#" class="<% if (body_bg_src === g.blankImg) { print('hide'); } %>" = t'dialog.add_new.remove_picture'
+                a.remove-body_bg-link href="#" class="<% if (body_bg_src === g.blankImg) { print('hide'); } %>" = t'dialog.add_picture.remove_picture'
             tr.bg_repeat class="<% if (body_bg_src === g.blankImg) { print('hide'); } %>"
               td colspan="2"
                 select name="body_bg_repeat"
