@@ -6,6 +6,12 @@ class WepayCheckoutRecordObserver < ActiveRecord::Observer
 
     payment = Payment.find_or_create_by_wepay_checkout_record_id(wcr.id)
 
+    if payment.user_id.nil? || payment.company_id.nil?
+      user_id, company_id, months = wcr.reference_id.split('|').map(&:to_i)
+      payment.user_id = user_id
+      payment.company_id = company_id
+    end
+
     if wcr.state == 'authorized' || wcr.state == 'approved'
       user_id, company_id, months = wcr.reference_id.split('|').map(&:to_i)
       last_payment = Payment.most_recent_for_company(company_id)
@@ -13,8 +19,6 @@ class WepayCheckoutRecordObserver < ActiveRecord::Observer
 
       time_paid = months.months
 
-      payment.user_id = user_id
-      payment.company_id = company_id
       payment.currency = wcr.currency
       payment.amount_paid = wcr.amount.to_s('F')
       payment.company.update_attribute :premium, true
