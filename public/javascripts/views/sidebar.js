@@ -1,25 +1,21 @@
 (function ($) {
- 
+
   var i18n = g.i18n.side_bar;
- 
+
   var singletonInUseTooltip = i18n.singletonInUseTooltip;
   var unsavedChangesText = i18n.unsavedChangesText;
 
   SidebarView = Backbone.View.extend({
-    
+
     el: $('#sidebar'),
-    
+
     widgetTemplate: util.getTemplate('sidebar-widget'),
 
     events: {
-      'click .edit-tab-bar': 'tellBappToEditTabBar',
-      'click .edit-settings': 'tellBappToEditSettings',
-      'click .edit-advanced-settings': 'tellBappToEditAdvancedSettings',
-      'click .customize': 'tellBappToCustomize',
       'click img.add': 'onClickAddIcon',
       'dblclick .home-icon': 'onDoubleClick'
     },
-    
+
     initialize: function (options) {
       var self = this;
       _.bindAll(this,'render');
@@ -29,11 +25,11 @@
 
       this.widgets.comparator = options.comparator;
       this.widgets.sort({ silent:true });
-      
+
       this.el.find('.widgets .home-icon').live('mouseover',makeDraggable);
       if (!options.skipRender) this.render();
     },
-    
+
     setSingletonInUse: function (widget,inUse) {
       var w = this.widgets.find(function (w) {
         return w.get('wtype') == widget.get('wtype') &&
@@ -43,7 +39,7 @@
       w.set({ singletonInUse:inUse });
       this.render();
     },
-    
+
     getSingletons: function () {
       return this.widgets.select(function (w) { return !!w.get('singleton'); });
     },
@@ -94,7 +90,7 @@
         });
         return;
       }
-      
+
       var editor = bapp.currentEditor;
       if (editor && editor.hasChanges()) {
         if (confirm(unsavedChangesText)) {
@@ -106,7 +102,7 @@
           editor.stopEditing();
         }
       }
-      
+
       var elem = $(targetedElem)
         , wtype = elem.data('wtype')
         , wsubtype = elem.data('wsubtype')
@@ -114,16 +110,10 @@
         , isSingleton = elem.hasClass('singleton')
       ;
       if(!elem.hasClass('sidebar')) return;
-      
+
       util.log('dropped',name,wtype,wsubtype,isSingleton);
       bapp.addNewWidget(name,wtype,wsubtype,isSingleton);
-    },
-
-    tellBappToEditTabBar: function () { bapp.startEditingPanel('tabBar'); },
-    tellBappToEditSettings: function () { bapp.startEditingPanel('settings'); },
-    tellBappToEditAdvancedSettings: function () { bapp.startEditingPanel('advancedSettings'); },
-    tellBappToCustomize: function () { bapp.startEditingPanel('customize'); }
-    
+    }
   });
 
   function makeDraggable () {
