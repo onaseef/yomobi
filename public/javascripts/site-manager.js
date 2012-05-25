@@ -267,12 +267,15 @@
 
     onPaySubmit: function (e) {
       if ( this.$('[name=terms]').prop('checked') !== true ) {
+        alert('bad');
         e.preventDefault();
         e.stopPropagation();
         alert(i18n.agree_to_terms);
         return false;
       }
-      this.$('[type=submit]').prop('disabled', true);
+      _.delay(function () {
+        this.$('[type=submit]').prop('disabled', true);
+      }, 10);
       return true;
     },
 
