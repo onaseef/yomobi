@@ -74,7 +74,11 @@ script.edit-subcat-dialog(type="text/template")
 
 script.edit-widget(type="text/template")
   .header
+    | <% if( !iconName.match('http://') ) { %>
     .icon{ style="background-image: url(/images/widgets/{{ iconName }}.png)" }
+    | <% }else{ %>
+    .icon{ style="background-image: url({{ iconName }})" }
+    | <% } %>
     .widget-name-edit
       input type="text" name="wname" value="{{ name }}" maxlength="22"
     .widget-name
@@ -137,6 +141,21 @@ script.edit-icon-dialog(type="text/template")
       img src="/images/widgets/{{ icons[i].name }}.png" data-pname="{{ icons[i].pname }}" title="{{ icons[i].pname }}" data-name="{{ icons[i].name }}"
       | <% } %>
       | <% } %>
+    .upload-icon-container
+      br
+      table.wphoto-wrap
+        tbody
+          tr
+            td
+              img src="<% print(g.noPhotoPath); %>"
+            td
+              label =t'dialog.add_picture.upload_picture'
+              br
+              .selected-file.lfloat &nbsp;
+              button name="pick_files" =t'dialog.add_picture.browse'
+              button id="start_upload" Upload 
+              .error
+
     .selected-display
       div.selected-label =t'dialog.change_icon.selected_icon'
       img src=""

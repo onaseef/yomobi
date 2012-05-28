@@ -205,7 +205,11 @@ div.wysiwyg ul.toolbar {
       float: left;
       width: 64px;
       height: 64px;
-      background: no-repeat; }
+      border-radius: 7px;
+      -webkit-border-radius: 7px;
+      -moz-border-radius: 7px;
+      background: no-repeat; 
+      background-size: 64px 64px;}
     #builder .widget-editor .header .help-text {
       position: relative;
       top: 4px; }

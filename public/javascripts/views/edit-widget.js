@@ -14,7 +14,7 @@
       'click a.edit-icon-link':     'editIcon',
 
       'keyup input[type=text][name!=wname]': 'checkForChanges',
-      'keyup textarea':                      'checkForChanges'
+      'keyup textarea':                      'checkForChanges',
     },
 
     initialize: function (widget) {
@@ -116,6 +116,8 @@
       e.preventDefault();
       if (!this.widget._bdata.canEditIcon) return;
 
+
+
       this.editIconDialog = this.editIconDialog || new EditIconDialog();
       this.editIconDialog.model = this.widget;
       this.editIconDialog.options = {
@@ -123,6 +125,52 @@
       };
 
       this.editIconDialog.prompt();
+
+      var callback = function(data){
+        util.log('Received custom icon data', data);
+        util.releaseUI();
+
+        if(data.result !== 'success' && data.result !== "noupload"){
+          alert("Custom icon upload failed (" + data.result + ")");
+          return;
+        }
+
+        if(data.wphotoUrl){
+            this.selectedIcon && this.selectedIcon.removeClass('selected');
+            $('body').find('.selected-display')
+              .find('img').attr('src', data.wphotoUrl).attr('width', '57px').attr('height', '57px').end()
+              .find('label').text("Custom").end()
+              .show();
+        }
+
+        $('body').find('.ajax').hide();
+
+        util.customIcon = { 
+          url : data.wphotoUrl 
+        }
+
+      }
+
+      util.initUploader( $(this.editIconDialog.el).find('.wphoto-wrap'), {
+        instanceId: 'dialog',
+        auto: false,
+        alwaysOnTop: true,
+        emptyQueue: true,
+        wid: this.widget.id
+      });
+      // Because we're in a dialog, we need to set the uploader to be
+      // on top of everything else.
+      util._uploaders['dialog'].bringToFront();
+
+
+      var uploader = util._uploaders['dialog'];
+
+      $(this.editIconDialog.el).find('#start_upload').click(function(){
+        uploader.yomobiOptions.onDone = callback;
+        uploader.start();
+      });
+
+
     },
 
     refreshViews: function (options) {
@@ -300,10 +348,20 @@
     },
 
     saveIcon: function () {
-      if (!this.selectedIcon) return;
+      if (!this.selectedIcon && !util.customIcon) return;
 
-      util.log('saving icon', this.selectedIcon.data('name'));
-      this.model.set({'iconName': this.selectedIcon.data('name')});
+      if(util.customIcon){
+        var name = util.customIcon.url,
+            custom = true;
+      }else{
+        var name = this.selectedIcon.data('name'),
+            custom = false;
+      }
+
+      delete util.customIcon;
+
+      util.log('saving icon', name);
+      this.model.set({'iconName': name, 'customIcon': custom});
       bapp.currentEditor.setChanged('icon',true);
       this.options.onClose && this.options.onClose();
     }
