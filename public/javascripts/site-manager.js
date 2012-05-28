@@ -241,7 +241,8 @@
           util.log('Unknown Error', xhr, status, error);
           xhr.responseText = '"unknown_error"';
         }
-        var msg = g.i18n.error + ': ' + $.parseJSON(xhr.responseText);
+        var msgCode = $.parseJSON(xhr.responseText);
+        var msg = g.i18n.error + ': ' + (i18n[msgCode] || msgCode);
         self.$('.error').text( msg ).show('pulsate', { times:3 });
       });
       this.$('form.pay').bind('ajax:success', function (e, data, status, xhr) {
@@ -267,7 +268,6 @@
 
     onPaySubmit: function (e) {
       if ( this.$('[name=terms]').prop('checked') !== true ) {
-        alert('bad');
         e.preventDefault();
         e.stopPropagation();
         alert(i18n.agree_to_terms);

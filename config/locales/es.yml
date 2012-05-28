@@ -70,6 +70,8 @@ es:
     close: "Cerrar"
     create: "Crear"
 
+    error: "@@Error"
+
     delete_widget: "¿En verdad quieres borrar esta función?\n(todos los datos se perderán)"
 
     wysiwyg:
