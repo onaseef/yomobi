@@ -7,14 +7,14 @@
 
   // ----------------------------
   window.BuilderWidgets = Widgets.extend({
-    
+
     initialize: function () {
       _.bindAll(this,'addOrder','updateOverallOrder');
       this.bind('add',this.onAdd);
       this.bind('remove', _.bind(function () { this.lastMod = -1; },this));
       this.lastMod = 0;
     },
-    
+
     onAdd: function (widget) {
       // +1 on length to make sure order update catches the change
       widget.setOrder( _.keys(mapp.metaDoc.worder).length+1 );
@@ -37,7 +37,7 @@
       });
       this.lastMod = 1;
     },
-    
+
     updateOverallOrder: function (options) {
       var i = 0, worder = {}, options = options || {}, changed = options.forceChange;
       this.each(function (widget) {
@@ -66,9 +66,9 @@
         bapp.syncMetaDoc(options.callback);
       }
     }
-    
+
   });
-  
+
   // -----------------------------------------------
   var superObj = {
     resize: window.MobileAppView.prototype.resize,
@@ -76,7 +76,7 @@
     goHome: window.MobileAppView.prototype.goHome
   }
   window.MobileAppView = window.MobileAppView.extend({
-    
+
     events: {
       'click .back-btn':              'goBack',
       'click .tab-bar':               'editTabBar',
@@ -95,14 +95,14 @@
 
       if (bapp.currentEditor.widget.pageView.onBackBtnClick)
         return bapp.currentEditor.widget.pageView.onBackBtnClick();
-      
+
       this.transition('back');
     },
-    
+
     goToPage: function (widgetName) {
       mapp.transition('forward');
     },
-    
+
     scrollTo: function (position,elem) {
       elem = elem || this.el;
       var targetTop = $(elem).offset().top
@@ -113,10 +113,10 @@
         default:        var dest = p.top + $(elem).height();
       }
       util.log('Scrolling to elem',elem,'dest',dest,'scrollTop',this.el.parent().scrollTop());
-      
+
       // this.el.parent().scrollTop(dest);
     },
-    
+
     resize: function (height) {
       var newHeight = superObj.resize.call(this,height);
       var emulatorWidth = 320 + util.scrollbarWidth();
@@ -138,10 +138,11 @@
       }
     }
   });
-  
+
   // ----------------------------------
   BuilderAppController = Backbone.Controller.extend({
     routes: {
+      'edit-widget': _.identity,
       'edit-tab-bar':  'editTabBar',
       'edit-settings': 'editSettings',
       'edit-advanced-settings': 'editAdvancedSettings',
@@ -167,26 +168,26 @@
 
   // ----------------------------------
   BuilderAppView = Backbone.View.extend({
-    
+
     // can either be 'edit' or 'emulate'
     mode: 'edit',
     idleTemplate: util.getTemplate('edit-widget-idle'),
-    
+
     tabBarEditor: new window.EditTabBarView(),
     settingsEditor: new window.EditSettingsView(),
     advancedSettingsEditor: new window.EditAdvancedSettingsView(),
     customizeEditor: new window.CustomizeView(),
 
     widgetsAvailable: new Widgets(),
-    
+
     initialize: function () {
       _.bindAll(this,'rebindSortables');
 
-      new BuilderAppController();
-      
+      this.router = new BuilderAppController();
+
       window.Widgets.prototype.url = 'http://'+g.couchLocation+'/m_' + g.db_name +
          '/_design/widgets/_view/by_name?include_docs=true',
-      
+
       window.mapp = new MobileAppView({
         widgets: new BuilderWidgets(),
         showInvalidWidgets: true,
@@ -194,7 +195,7 @@
       });
 
       mapp.bind('render', this.bindHoverTooltips);
-      
+
       mapp.widgets.bind('add',mapp.homeView.render);
       mapp.widgets.bind('remove',mapp.homeView.render);
 
@@ -207,14 +208,14 @@
           mapp.widgets.lastMod = 0;
         }
       });
-      
+
       // first fetch overall widget order
       var self = this;
       mapp.fetchMetaDoc(function (metaDoc) {
 
         mapp.metaDoc = metaDoc;
         mapp.render();
-        
+
         // now fetch the widgets themselves
         mapp.widgets.fetch({
           success: function (widgets,res) {
@@ -234,13 +235,13 @@
 
               var wdata = _.extend({},data);
               delete wdata.editAreaTemplate;
-              
+
               if (wdata.singleton)
                 wdata.singletonInUse = !!mapp.widgets.findByType(wdata.wtype,wdata.wsubtype);
               return wdata;
             });
             self.widgetsAvailable.refresh( _.compact(widgetsAvailable) );
-          
+
             util.toggleLoaderOverlay(false);
             util.log('fetch',widgets,self.widgetsAvailable,mapp.widgets);
 
@@ -254,13 +255,13 @@
           }
         });
       });
-      
+
       this.sidebar = new SidebarView({
         widgets: this.widgetsAvailable,
         comparator: pluckName
       });
     },
-    
+
     homeViewWidgetClick: function (widget) {
       if(this.mode == 'emulate') return true;
       if (bapp.panelHasUnsavedChanges()) return false;
@@ -283,20 +284,21 @@
       }
       this.currentEditor = widget.getEditor();
       this.currentEditor.startEditing(true,true);
+      this.router.saveLocation('edit-widget');
       // returning false will cause the mobile emulator to ignore the click
       return false;
     },
-    
+
     addNewWidget: function (name,wtype,wsubtype,isSingleton) {
       util.log('adding new widget',name,wtype,wsubtype);
       if (!util.reserveUI()) return;
       var self = this;
-      
+
       this.validateWidgetName(name,wtype,isSingleton, {
         isNewWidget: true,
         onValid: function (validName) {
           var newWidget = util.newWidgetByType(wtype,wsubtype);
-      
+
           if (newWidget) {
             newWidget.set({ name:validName });
             mapp.widgets.add(newWidget);
@@ -316,7 +318,7 @@
     //  If widget name is not valid, returns false and opens a dialog box
     //  else returns true
     // NOTE: `name` is already in prettified form
-    // 
+    //
     validateWidgetName: function (name,wtype,isSingleton,options) {
       var error = null
         , self = this
@@ -349,7 +351,7 @@
         this.validateWidgetName(newName,wtype,isSingleton,options);
         return false;
       }
-      
+
       var dialogHtml = util.getTemplate('add-widget-dialog')({
         defaultName: name,
         error: error
@@ -373,10 +375,10 @@
       };
 
       util.dialog(dialogHtml,buttons);
-    	
+
     	return false;
     },
-    
+
     removeWidget: function (widget) {
       this.tabBarEditor.removeTabIfExists(widget.id);
       mapp.widgets.remove(widget);
@@ -406,11 +408,11 @@
         }
       });
     },
-    
+
     rebindSortables: function () {
       g.homeDbx.initBoxes();
     },
-    
+
     syncMetaDoc: function (callback) {
       util.log('Syncing meta...',mapp.metaDoc);
       util.pushUIBlock('meta');
@@ -421,7 +423,7 @@
         callback && callback();
       });
     },
-    
+
     startEditingPanel: function (panelType) {
       var editor = this.currentEditor;
       if (editor && editor.hasChanges()) {
@@ -471,7 +473,7 @@
     'yes',             // hide source box while dragging ['yes'|'no']
     'button'           // toggle button element type ['link'|'button']
   );
-  
+
   g.homeDbx = new dbxGroup(
     'home-widgets',      // container ID [/-_a-zA-Z0-9/]
     'freeform-insert',   // orientation ['vertical'|'horizontal'|'freeform'|'freeform-insert'|'confirm']
@@ -485,17 +487,17 @@
     'close',                                         // word for "close", as in "close this box"
     '',          // sentence for "move this box" by mouse
     'click to %toggle% this box',                    // pattern-match sentence for "(open|close) this box" by mouse
-    
+
     'use the arrow keys to move this box. ',         // sentence for "move this box" by keyboard
     'press the enter key to %toggle% this box. ',    // pattern-match sentence-fragment for "(open|close) this box" by keyboard
-    
+
     '%mytitle%  [%dbxtitle%]',                       // pattern-match syntax for title-attribute conflicts
 
     'hit the enter key to select this target',       // confirm dialog sentence for "selection okay"
     'sorry, this target cannot be selected'          // confirm dialog sentence for "selection not okay"
   );
   _.bindAll(g.homeDbx,'initBoxes');
-  
+
   $('#emulator').droppable({
     hoverClass: 'drophover',
 
@@ -510,18 +512,18 @@
       bapp.sidebar.addNewWidgetViaTargetedElem(ui.draggable);
     }
   }).disableSelection();
-  
+
   window.bapp = new BuilderAppView();
 
   // more drag & drop logic
   g.rearrangeManager.onbeforestatechange = function () {
     return util.isUIFree();
   };
-  
+
   g.rearrangeManager.onstatechange = mapp.widgets.updateOverallOrder;
-  
+
   g.rearrangeManager.onboxdrag = function () {
     return util.isUIFree();
   };
-  
+
 })(jQuery);
