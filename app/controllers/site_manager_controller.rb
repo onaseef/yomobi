@@ -213,15 +213,16 @@ class SiteManagerController < ApplicationController
 
     if params[:id] && (@site = Company.find_by_id params[:id])
 
-      @time = "#{months} months"
-      @time = "1 year" if months == 12
-      @time = "monthly" if params[:months] == "recur"
+      @time = "#{months} " + t('site_manager.months').downcase
+      @time = "1 " + t('site_manager.year').downcase if months == 12
+      @time = t('site_manager.monthly').downcase if params[:months] == "recur"
       user = current_user
 
+      payment_label = t 'site_manager.upgrade_payment'
       checkout_params = {
         :amount => 12 * months,
-        :short_description => "YoMobi - [#{@site.db_name}]: Professional Site Payment (#{@time})",
-        :long_description => "YoMobi - #{@site.url_and_name}: Professional Site Payment (#{@time})",
+        :short_description => "YoMobi - [#{@site.db_name}]: #{payment_label} (#{@time})",
+        :long_description => "YoMobi - #{@site.url_and_name}: #{payment_label} (#{@time})",
         :mode => 'iframe',
         :reference_id => "#{user.id}|#{@site.id}|#{months}|#{ActiveSupport::SecureRandom.uuid}",
         :prefill_info => { email:user.email, name:"#{user.first_name} #{user.last_name}" },

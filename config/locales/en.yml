@@ -673,6 +673,11 @@ en:
     site_admins: "Site Admins"
     site_admins_status: "This site has <b>%{admin_count}</b> admin(s)."
 
+    months: "Months"
+    monthly: "Monthly"
+    year: "Year"
+    upgrade_payment: "Professional Site Payment"
+
     # site_manager
     error:
       are_you_sure: "Are you sure?"
