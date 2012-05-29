@@ -204,6 +204,8 @@ p {
   border-bottom: 2px solid $secondary-color;
   background: $color-topbar;
   text-align: center;
+  max-height: 60px;
+  overflow: hidden;
   &.bottom {
     height: 48px; } }
 

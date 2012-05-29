@@ -171,7 +171,9 @@ p {
   padding: 0 0;
   border-bottom: 2px solid #627aad;
   background: #2a426a;
-  text-align: center; }
+  text-align: center;
+  max-height: 60px;
+  overflow: hidden; }
   .ad-bar.bottom {
     height: 48px; }
 
