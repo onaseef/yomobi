@@ -273,8 +273,9 @@
         alert(i18n.agree_to_terms);
         return false;
       }
+      var self = this;
       _.delay(function () {
-        this.$('[type=submit]').prop('disabled', true);
+        self.$('[type=submit]').prop('disabled', true);
       }, 10);
       return true;
     },
