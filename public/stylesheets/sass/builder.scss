@@ -236,9 +236,15 @@ div.wysiwyg ul.toolbar {
     padding: $widget-editor-header-padding;
     .icon {
       float: left;
-      width: 64px;
-      height: 64px;
-      background: no-repeat; }
+      margin-right: 8px;
+      width: 57px;
+      height: 57px;
+      background-size: 57px 57px;
+      border-radius: 12px;
+      -webkit-border-radius: 12px;
+      -moz-border-radius: 12px;
+      background: no-repeat; 
+    }
     .help-text {
       position: relative;
       top: 4px; } 
@@ -491,6 +497,7 @@ div.wysiwyg ul.toolbar {
 
 #dialog-confirm .wphoto-wrap {
   padding: 0px 4px 0px 4px;
+  border: 3px solid #BDC7D8;
 }
 #dialog-confirm.subcat {
   p.error {
@@ -759,11 +766,12 @@ div.wysiwyg ul.toolbar {
     font-size: 90%;} }
 
 #dialog-confirm.edit-icon {
+  p { margin: 5px 0px; }
   .icons {
     max-height: 235px;
-    margin: 0 2px 8px -3px;
+    margin: 0 2px 8px 0px;
     padding: 10px 0 10px 0;
-    border: 1px solid #ccc;
+    border: 3px solid #ccc;
     overflow: auto;
         
     img {
@@ -780,19 +788,30 @@ div.wysiwyg ul.toolbar {
 
   .selected-display {
     display: none;
+    img { 
+      width: 57px;
+      height: 57px;
+      border-radius: 12px;
+      -webkit-border-radius: 12px;
+      -moz-border-radius: 12px;
+    }  
   }
     
-  label {
+  .upload-custom-icon-label {
     font-size: 120%;
-    position: relative;
-    top: -20px;
-    left: 10px;
   }
 
   .selected-label {
     font-size: 120%;
     float: left;
     margin: 4px 10px 0px 0px;
+  }
+
+  .icon-name-label {
+    font-size: 120%;
+    position: relative;
+    top: -20px;
+    left: 10px;
   }
 
   p { 

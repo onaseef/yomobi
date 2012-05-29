@@ -138,8 +138,8 @@
         if(data.wphotoUrl){
             this.selectedIcon && this.selectedIcon.removeClass('selected');
             $('body').find('.selected-display')
-              .find('img').attr('src', data.wphotoUrl).attr('width', '57px').attr('height', '57px').end()
-              .find('label').text("Custom").end()
+              .find('img').attr('src', data.wphotoUrl).end()
+              .find('label').text("").end()
               .show();
         }
 
@@ -313,6 +313,11 @@
     selectIcon: function (e) {
       this.selectedIcon && this.selectedIcon.removeClass('selected');
       this.selectedIcon = $(e.target).addClass('selected');
+      if (util.customIcon) {
+        custom = false;
+        delete util.customIcon;
+        util.customIcon = null;
+      }
       $(this.el).find('.selected-display')
         .find('img').attr('src', this.selectedIcon.attr('src')).end()
         .find('label').text(this.selectedIcon.data('pname')).end()

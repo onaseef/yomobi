@@ -531,6 +531,8 @@ es:
       title: "Cambiar Icono"
       instructions: "Haz click en el icono a elegir:"
       selected_icon: "Icono Seleccionado:"
+      upload_custom_icon: "Subir Icono Personalizados"
+      upload: "Subir"
 
     rename_category:
       title: "Renombrar"

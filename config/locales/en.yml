@@ -533,8 +533,8 @@ en:
       title: "Change Icon"
       instructions: "Click on icon to select:"
       selected_icon: "Selected Icon:"
-      upload_icon: "Upload Custom Icon"
-      submit_upload: "Upload!"
+      upload_custom_icon: "Upload Custom Icon"
+      upload: "Upload"
 
     rename_category:
       title: "Rename"

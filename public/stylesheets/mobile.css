@@ -207,7 +207,11 @@ p {
   .home-icon .icon {
     width: 57px;
     height: 57px;
+    background-size: 57px 57px;
     margin: 0 auto 4px auto;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
     background: no-repeat; }
     .home-icon .icon:hover {
       cursor: pointer; }

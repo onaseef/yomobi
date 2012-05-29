@@ -8,8 +8,7 @@
       | <% if(!iconName.match('http://')) { %>
       .icon.dbx-handle{ style="background-image: url(/images/widgets/{{ iconName }}.png)" }
       | <% }else{ %>
-      | <% var iconName = iconName.replace(/-/g, '.'); %>
-      .icon.dbx-handle{ style="background-image: url({{ iconName }}); background-size: 57px 57px; border-radius: 7px;" }
+      .icon.dbx-handle{ style="background-image: url({{ iconName }});" }
       | <% } %>
       .title {{ name }}
       .invalid-icon

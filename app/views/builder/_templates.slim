@@ -142,24 +142,24 @@ script.edit-icon-dialog(type="text/template")
       | <% } %>
       | <% } %>
     .upload-icon-container
-      br
       table.wphoto-wrap
         tbody
           tr
             td
-              img src="<% print(g.noPhotoPath); %>"
+              label.upload-custom-icon-label =t'dialog.change_icon.upload_custom_icon'
+          tr
             td
-              label =t'dialog.add_picture.upload_picture'
+              label =t'dialog.add_picture.select_picture'
               br
               .selected-file.lfloat &nbsp;
               button name="pick_files" =t'dialog.add_picture.browse'
-              button id="start_upload" Upload 
+              button id="start_upload" =t'dialog.change_icon.upload' 
               .error
 
     .selected-display
       div.selected-label =t'dialog.change_icon.selected_icon'
       img src=""
-      label
+      label.icon-name-label
 
 = render :partial => 'builder/cat-dialog-templates'
 
