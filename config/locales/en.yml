@@ -377,13 +377,16 @@ en:
     title: "Account Settings"
     current_password: "Current Password*:"
     contact_information: "Contact Information"
+    update_contact_info: "Update Contact Information"
     first_name: "First Name:"
     last_name: "Last Name:"
     email: "Email:"
-    change_password: "Change Password (Optional):"
+    change_password: "Change Password"
+    change_password_optional: "Change Password (Optional):"
     new_password: "New Password:"
     new_password_confirm: "Re-enter New Password:"
     save: "Save Changes"
+    payment_history: "Payment History"
 
   upgrade:
     title: "Upgrade Mobile Site"

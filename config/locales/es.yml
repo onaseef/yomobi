@@ -374,13 +374,16 @@ es:
     title: "Opciones de la Cuenta"
     current_password: "Contraseña Actual*:"
     contact_information: "Información de Contacto"
+    update_contact_info: "@@Update Contact Information"
     first_name: "Nombre:"
     last_name: "Apellido:"
     email: "Email:"
-    change_password: "Cambiar Contraseña (Opcional):"
+    change_password: "Cambiar Contraseña"
+    change_password_optional: "Cambiar Contraseña (Opcional):"
     new_password: "Nueva Contraseña:"
     new_password_confirm: "Repetir Contraseña:"
     save: "Guardar Cambios"
+    payment_history: "@@Payment History"
 
   builder:
 

@@ -4,11 +4,11 @@
 - content_for :sidebar do
   ul
     li
-      a class=active('password',@page) href=account_path Change Password
+      a class=active('password',@page) href=account_path = t 'account_settings.change_password'
     li
-      a class=active('contact',@page) href=account_path Update Contact Information
+      a class=active('contact',@page) href=account_path = t 'account_settings.update_contact_info'
     li
-      a class=active('payment-history',@page) href=account_payments_path Payment History
+      a class=active('payment-history',@page) href=account_payments_path = t 'account_settings.pament_history'
 
 .title
   = yield :title
