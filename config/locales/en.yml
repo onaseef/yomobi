@@ -667,6 +667,7 @@ en:
     custom_domains: "Custom Domains"
     connected_domains: "%{domain_count} Connected Domains"
     not_premium_for_domains: "This site must be upgraded to <b>Professional</b> to use Custom Domains."
+    no_domains_connected: "No domains connected to this site."
 
     merchant_account: "Merchant Account"
     no_merchant_account: "You have not set up your merchant account."

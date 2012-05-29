@@ -164,7 +164,7 @@
 
   script.domain-list(type="text/template")
     | <% if (domains.length === 0) { %>
-    p No domains connected to this site.
+    p = t 'site_manager.no_domains_connected'
     | <% } else { %>
     |    <% for (var i=0; i < domains.length; i++) { %>
     li.domain data-id="{{ domains[i].id }}" {{ domains[i].host }}
