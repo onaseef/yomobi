@@ -681,6 +681,7 @@ es:
     months: "@@Months"
     monthly: "@@Monthly"
     year: "@@Year"
+    yearly: "@@Yearly"
     upgrade_payment: "@@Professional Site Payment"
 
     # site_manager

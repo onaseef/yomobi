@@ -208,6 +208,7 @@ class SiteManagerController < ApplicationController
 
     months = params[:months].to_i
     months = 1 if params[:months] == "recur"
+    months = 12 if params[:months] == "recur_yearly"
 
     return error 'select_length' if (months <= 0 || months > 12)
 
@@ -216,11 +217,15 @@ class SiteManagerController < ApplicationController
       @time = "#{months} " + t('site_manager.months').downcase
       @time = "1 " + t('site_manager.year').downcase if months == 12
       @time = t('site_manager.monthly').downcase if params[:months] == "recur"
+      @time = t('site_manager.yearly').downcase if params[:months] == "recur_yearly"
       user = current_user
 
-      price = 5
-      if months == 12
+      if months == 12 && params[:months] == 'recur_yearly'
+        price = 48.76
+      elsif months == 12
         price = 50
+      else
+        price = 5 * months
       end
 
       payment_label = t 'site_manager.upgrade_payment'
@@ -235,6 +240,11 @@ class SiteManagerController < ApplicationController
       if params[:months] == "recur"
         checkout_params[:period] = 'monthly'
         checkout_params[:end_time] = (DateTime.now + 1.year).to_time.to_i
+        checkout_params[:auto_recur] = true
+        checkout_params[:api_url] = '/preapproval/create'
+      elsif params[:months] == "recur_yearly"
+        checkout_params[:period] = 'yearly'
+        checkout_params[:end_time] = (DateTime.now + 3.years).to_time.to_i
         checkout_params[:auto_recur] = true
         checkout_params[:api_url] = '/preapproval/create'
       else
