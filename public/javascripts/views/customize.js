@@ -3,6 +3,9 @@
   var hasChanges = false;
 
   var getSetting = function (name) {
+    if (!g.isPremium && name != 'header_color' && name != 'header_text_color') {
+      return util.defaultSettings[name];
+    }
     return g.settings[name] || util.defaultSettings[name];
   };
 
@@ -90,7 +93,8 @@
       };
       var settings = _.extend({}, g.settings);
       for (var p in settings) {
-        if (!settings[p]) settings[p] = util.defaultSettings[p];
+        if (!settings[p] || !g.isPremium)
+          settings[p] = util.defaultSettings[p];
       }
       _.extend(extraData, settings);
 
@@ -130,7 +134,8 @@
       this.$('.subpanels > *').hide();
       this.$('.subpanels .' + targetArea).show();
 
-      if (targetArea === 'home_page' && this.hasInitBodyBgUploader === false) {
+      if (targetArea === 'home_page' && this.hasInitBodyBgUploader === false
+      && g.isPremium) {
         initDialogUploader('body_bg', this.$('.home_page'), this.onUpload);
         this.hasInitBodyBgUploader = true;
       }
@@ -184,16 +189,19 @@
       $.post(g.customizeUploadPath, { destroy:1, targetType:'body_bg' });
     },
 
-    updateFonts: function () {
+    updateFonts: function (useDefault) {
       hasChanges || (hasChanges = true);
 
       var font = this.$('[name=icon_font_family]').val();
+      if (useDefault === true) font = util.defaultSettings.icon_font_family;
       $('#canvas .home-icon .title').css({ fontFamily:font });
 
       var font = this.$('[name=header_font_family]').val();
+      if (useDefault === true) font = util.defaultSettings.header_font_family;
       $('#top-bar .company-info').css({ fontFamily:font });
 
       var font = this.$('[name=tab_bar_font_family]').val();
+      if (useDefault === true) font = util.defaultSettings.tab_bar_font_family;
       $('#top-bar .tab-bar').css({ fontFamily:font });
     },
 
@@ -235,7 +243,7 @@
         .val( getSetting('body_bg_repeat') );
       this.$('[name=banner_size]')
         .val( getSetting('banner_size') );
-      this.updateFonts();
+      this.updateFonts(!g.isPremium);
       this.updateRepeat();
       this.updateBannerSize();
       if (opts.byNavigation === true) {

@@ -10,7 +10,7 @@
       .invalid-icon
 
   script.mapp-header(type="text/template")
-    | <% if (g.banner) { %>
+    | <% if (g.banner && g.isPremium) { %>
     .banner-wrap
       img.banner src="<% print(g.banner); %>"
     | <% } else { %>
