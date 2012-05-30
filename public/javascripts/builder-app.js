@@ -433,6 +433,7 @@
           delete bapp.currentEditor;
         }
         else {
+          this.router.revert();
           return false;
         }
       }
@@ -457,9 +458,13 @@
 
     panelHasUnsavedChanges: function () {
       if (this.currentPanel && this.currentPanel.hasChanges()) {
-        var throwaway = confirm('You have unsaved changes. Discard them?');
-        throwaway && this.currentPanel.discardChanges({ byNavigation:true });
-        return !throwaway;
+        var shouldDiscard = confirm('You have unsaved changes. Discard them?');
+        shouldDiscard && this.currentPanel.discardChanges({ byNavigation:true });
+
+        if (!shouldDiscard && this.router.prevHash) {
+          this.router.revert();
+        }
+        return !shouldDiscard;
       }
       return false;
     }

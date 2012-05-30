@@ -612,6 +612,14 @@
     // initialization logic.
     initialize : function(){},
 
+    // The previous triggering hash
+    prevHash: null,
+
+    // Reverts to the previous hash after a route trigger
+    revert: function () {
+      this.shouldRevert = true;
+    },
+
     // Manually bind a single named route to a callback. For example:
     //
     //     this.route('search/:query/p:num', 'search', function(query, num) {
@@ -621,10 +629,18 @@
     route : function(route, name, callback) {
       Backbone.history || (Backbone.history = new Backbone.History);
       if (!_.isRegExp(route)) route = this._routeToRegExp(route);
-      Backbone.history.route(route, _.bind(function(hash) {
+      Backbone.history.route(route, _.bind(function (hash) {
         var args = this._extractParameters(route, hash);
         callback.apply(this, args);
         this.trigger.apply(this, ['route:' + name].concat(args));
+        // Set afterwards so callbacks will know the previous route hash
+        if (this.shouldRevert === true) {
+          this.saveLocation(this.prevHash);
+          this.shouldRevert = false;
+        }
+        else {
+          this.prevHash = hash;
+        }
       }, this));
     },
 
@@ -632,6 +648,7 @@
     // without triggering routes.
     saveLocation : function(hash) {
       Backbone.history.saveLocation(hash);
+      this.prevHash = hash;
     },
 
     // Bind all defined routes to `Backbone.history`.
