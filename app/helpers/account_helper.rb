@@ -1,6 +1,6 @@
 module AccountHelper
 
-  def active(switch, trigger)
-    (trigger == switch) ? switch : ''
+  def active(a,b)
+    (a == b) ? 'active' : ''
   end
 end

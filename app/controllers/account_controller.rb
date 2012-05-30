@@ -5,6 +5,7 @@ class AccountController < ApplicationController
 
   def edit
     @user = current_user
+    @page = 'edit'
   end
 
   def update
@@ -25,6 +26,11 @@ class AccountController < ApplicationController
       flash[:alert] = "Error: #{error[0].to_s.humanize} #{error[1]}"
     end
     redirect_to account_path
+  end
+
+  def change_password
+    @user = current_user
+    @page = 'password'
   end
 
 end

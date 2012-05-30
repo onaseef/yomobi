@@ -30,6 +30,7 @@ Yomobi::Application.routes.draw do
   post 'confirm' => 'home#resend_confirmation', :as => :resend_confirmation
 
   get "account/edit", :as => :account
+  get "account/change_password" => 'account#change_password', :as => :change_password
   put "account/update", :as => :update_account
 
   namespace :account do

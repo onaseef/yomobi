@@ -4,9 +4,9 @@
 - content_for :sidebar do
   ul
     li
-      a class=active('password',@page) href=account_path = t 'account_settings.change_password'
+      a class=active('password',@page) href=change_password_path = t 'account_settings.change_password'
     li
-      a class=active('contact',@page) href=account_path = t 'account_settings.update_contact_info'
+      a class=active('edit',@page) href=account_path = t 'account_settings.update_contact_info'
     li
       a class=active('payment-history',@page) href=account_payments_path = t 'account_settings.payment_history'
 

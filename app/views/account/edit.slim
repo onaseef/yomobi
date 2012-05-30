@@ -27,23 +27,6 @@
         td
           = f.text_field :email, :autocomplete => "off"
 
-  h3 =t'account_settings.change_password_optional'
-  br
-
-  table
-    tbody
-      tr
-        td
-          label =t'account_settings.new_password'
-        td
-          = f.password_field :password
-      tr
-        td
-          label =t'account_settings.new_password_confirm'
-        td
-          = f.password_field :password_confirmation
-
-
   input type="submit" value==t'account_settings.save'
   - if flash[:notice] || flash[:alert]
     br

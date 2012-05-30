@@ -4,6 +4,7 @@ class Account::PaymentsController < ApplicationController
 
   def index
     @payments = current_user.payments
+    @page = 'payment-history'
   end
 
 end
