@@ -634,6 +634,12 @@ en:
       msg: "&nbsp;New widgets can only be added from the mobile home screen.<p><br></p><p>Please click on Home in the Mobile Tab Bar to return to the mobile home screen and try adding again.</p>"
 
 
+  payments:
+    email_bad:
+      subject: "Payment failed for %{site_name}"
+      body: "Your payment has failed"
+
+
   site_manager:
     active_site: "Active Site: %{site_name}"
     add_admin: "Add Admin"

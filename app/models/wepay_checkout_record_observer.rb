@@ -26,8 +26,10 @@ class WepayCheckoutRecordObserver < ActiveRecord::Observer
     end
 
     case wcr.state
-    when %w{authorized reserved captured settled} then payment.is_valid = true
-    when %w{cancelled failed refunded chargeback} then payment.is_valid = false
+    when /^(authorized|reserved|captured|settled)$/ then payment.is_valid = true
+    when /^(cancelled|failed|refunded|chargeback)$/ then
+      payment.is_valid = false
+      UserMailer.notify_bad_payment(payment, wcr.state).deliver
     end
     payment.save
     payment.company.recalculate_premium

@@ -63,6 +63,16 @@ class UserMailer < ActionMailer::Base
     mail scrub_headers params
   end
 
+  def notify_bad_payment(payment, state)
+    @payment = payment
+    @payment_state = state
+    mail(
+      :subject => t('payments.email_bad.subject', :site_name => payment.company.name),
+      :to => payment.user.email,
+      :from => "\"YoMobi\" <message@yomobi.com>"
+    )
+  end
+
   private
 
   # removes any illegal email headers

@@ -627,6 +627,13 @@ es:
       title: "¡Caramba!"
       msg: "&nbsp;Las nuevas funciones sólo se pueden agregar desde la pantalla de Inicio del sitio móvil.<p><br></p><p>Favor de Hacer click hacia Inicio (Home) en la Barra de Funciones Móviles para regresar a la pantalla de inicio e intenta agregar nuevamente.</p>"
 
+
+  payments:
+    email_bad:
+      subject: "@@Payment failed for %{site_name}"
+      body: "@@Your payment has failed"
+
+
   site_manager:
     active_site: "Sitio Activo: %{site_name}"
     add_admin: "Agregar Administrador"
