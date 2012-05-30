@@ -15,4 +15,5 @@
 .inner-content {
   background: #edeff4;
   border-top: 1px solid #b3b3b3;
-  padding: 10px 20px; }
+  padding: 10px 20px;
+  min-height: 450px; }
