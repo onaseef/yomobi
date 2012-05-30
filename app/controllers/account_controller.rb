@@ -33,9 +33,12 @@ class AccountController < ApplicationController
     @page = 'password'
     if params[:user]
       @user = current_user
+      u = params[:user]
 
-      if params[:user][:current_password].blank?
+      if u[:current_password].blank?
         flash.now[:alert] = t'account.enter_current_password'
+      elsif u[:password].blank? || u[:password_confirmation].blank?
+        flash[:alert] = t'account.enter_new_password'
       elsif @user.update_with_password(params[:user])
         sign_in(@user, :bypass => true)
         flash.now[:notice] = t'account.updated_success'

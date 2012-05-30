@@ -228,6 +228,7 @@ es:
   account:
     already_setup: "Tu cuenta ya ha sido activada."
     enter_current_password: "Favor de ingresar tu contraseña actual para actualizar tu cuenta."
+    enter_new_password: "@@Please enter a new password to change to."
     updated_success: "Tu cuenta ha sido actualizada con éxito."
 
     welcome_email:

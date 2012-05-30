@@ -231,6 +231,7 @@ en:
   account:
     already_setup: "Your account has already been setup."
     enter_current_password: "Please enter your current password to update your account."
+    enter_new_password: "Please enter a new password to change to."
     updated_success: "Account updated successfully."
 
     welcome_email:
