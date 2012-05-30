@@ -129,16 +129,16 @@
         input type="hidden" name="site_id" value="{{ id }}"
         input type="submit" value=t('site_manager.cancel_subscription')
       | <% } else { %>
-      h3 Select a thing:
+      h3 Select a payment option:
       form.pay action="{{ actionPath }}" method="POST" data-remote="true"
         input type="radio" value="1" name="months" checked="checked"
-        label One Month - $12
+        label One Month - $5
         br
         input type="radio" value="12" name="months"
-        label One Year - $144
+        label One Year - $50
         br
         input type="radio" name="months" value="recur"
-        label Autopay Monthly - $12/month
+        label Autopay Monthly - $5/month
         br
         br
         input type="checkbox" name="terms" I agree to terms.

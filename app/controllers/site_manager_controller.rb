@@ -218,9 +218,14 @@ class SiteManagerController < ApplicationController
       @time = t('site_manager.monthly').downcase if params[:months] == "recur"
       user = current_user
 
+      price = 5
+      if months == 12
+        price = 50
+      end
+
       payment_label = t 'site_manager.upgrade_payment'
       checkout_params = {
-        :amount => 12 * months,
+        :amount => price,
         :short_description => "YoMobi - [#{@site.db_name}]: #{payment_label} (#{@time})",
         :long_description => "YoMobi - #{@site.url_and_name}: #{payment_label} (#{@time})",
         :mode => 'iframe',
