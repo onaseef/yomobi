@@ -155,6 +155,12 @@ class Company < ActiveRecord::Base
     record && record.state != 'cancelled' && record.end_time
   end
 
+  def subscription_type
+    payment = self.last_payment
+    record = payment && payment.wepay_checkout_record
+    record && record.period
+  end
+
   def as_json(options=nil)
     {
       id: self.id,
@@ -167,6 +173,7 @@ class Company < ActiveRecord::Base
       isPremium: self.premium?,
       expireDate: self.expire_date.to_s,
       subscriptionEndDate: (Time.at(self.subscription_end_date).to_date if self.subscription_end_date),
+      subscriptionType: self.subscription_type,
     }
   end
 

@@ -140,6 +140,8 @@ en:
       professional: "Custom"
       standard: "Standard"
       agree_to_terms: "Please agree to the terms before continuing."
+      monthly: "Monthly"
+      yearly: "Yearly"
 
 
   javascript_mobile:
@@ -670,10 +672,10 @@ en:
     remove_domain: "Remove Domain"
     domain_name: "Domain Name (e.g. www.example.com):"
 
-    site_grade: "Site Type"
-    subscription_status: "You are on a monthly subscription until {{ subscriptionEndDate }}"
+    site_grade: "Site Grade"
+    subscription_status: "You are on a {{ subscriptionType }} subscription until {{ subscriptionEndDate }}"
     cancel_subscription: "Cancel Subscription"
-    cancel_success: "Monthly subscription cancelled sucessfully."
+    cancel_success: "Subscription cancelled sucessfully."
     payment_complete: "Site successfully upgraded."
 
     setup: "Setup"

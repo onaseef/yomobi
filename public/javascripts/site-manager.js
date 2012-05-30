@@ -229,7 +229,8 @@
         grade: site.get('isPremium') ? i18n.professional : i18n.standard,
         actionPath: g.upgradeSitePath(site.toJSON()),
         cancelPath: g.cancelSubPath(site.toJSON()),
-        expireDate: site.get('expireDate')
+        expireDate: site.get('expireDate'),
+        subscriptionType: i18n[ site.get('subscriptionType') ]
       };
       var templateData = _.extend(site.toJSON(), extraData);
       $(this.el).html( this.template(templateData) );
@@ -289,6 +290,10 @@
         e.preventDefault();
         return false;
       }
+      var self = this;
+      _.delay(function () {
+        self.$('[type=submit]').prop('disabled', true);
+      }, 10)
       return true;
     }
   });
