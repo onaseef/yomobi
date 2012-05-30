@@ -31,6 +31,19 @@ class AccountController < ApplicationController
   def change_password
     @user = current_user
     @page = 'password'
+    if params[:user]
+      @user = current_user
+
+      if params[:user][:current_password].blank?
+        flash.now[:alert] = t'account.enter_current_password'
+      elsif @user.update_with_password(params[:user])
+        sign_in(@user, :bypass => true)
+        flash.now[:notice] = t'account.updated_success'
+      else
+        error = @user.errors.first
+        flash.now[:alert] = "Error: #{error[0].to_s.humanize} #{error[1]}"
+      end
+    end
   end
 
 end
