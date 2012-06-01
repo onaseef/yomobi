@@ -264,19 +264,19 @@ p {
 
 .mobile-footer {
   width: 100%;
-  height: 70px;
-  padding: 12px 0 0 0;
+  //min-height: 70px;
+  padding: 12px 0 8px 0;
   background: #c4cde0;
   border-top: solid 1px #1d4088;
   border-bottom: solid 1px #1d4088;
   color: #3b59a0;
   a, a:visited {
-    color: #3b59a0; }
+    color: inherit; }
   p {
     margin: 0 0 10px 0;
     padding-left: 5px; }
   .powered-by {
-    font-size: 11px;
+    font-size: 14px;
     text-align: center; } }
 
 #templates {

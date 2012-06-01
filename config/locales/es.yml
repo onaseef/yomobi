@@ -2,6 +2,15 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 es:
+  powered_by:
+    slogan: "@@Powered by YoMobi"
+
+  share:
+    share: "@@Share:"
+
+  date_formats:
+    payment: "%B %d, %Y"
+
   general:
     click_here_start: "Haz click aquí"
     click_here_middle: "haz click aquí"
