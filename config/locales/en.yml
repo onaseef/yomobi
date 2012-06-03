@@ -137,7 +137,7 @@ en:
       cancel_sub_confirm: "Are you sure you want to cancel your subscription?"
       manage: "Manage"
       upgrade: "Upgrade"
-      professional: "Professional"
+      professional: "Custom"
       standard: "Standard"
       agree_to_terms: "Please agree to the terms before continuing."
 
@@ -364,11 +364,11 @@ en:
       site_url_header: "Mobile Site URL"
       site_url: "You can see your new mobile site on your smart phone or tablet by browsing to "
       auto_redirect_header: "Auto-Redirect"
-      auto_redirect: If you have a desktop site, <a target="ym-help" href="http://help.yomobi.com/Account/MobileRedirectScript"> learn how to automatically redirect your mobile visitors from your desktop site to your mobile site</a>.
+      auto_redirect: If you have a desktop site, <a target="ymhelp" href="http://help.yomobi.com/Account/MobileRedirectScript"> learn how to automatically redirect your mobile visitors from your desktop site to your mobile site</a>.
       easy_update_header: "Easy Site Update"
       easy_update: "Updating your mobile site is easy. All changes you make are automatically published, so your site is always up to date."
       help_header: "Need Help?"
-      help: For additional information, <a target="ym-help" href="http://help.yomobi.com">please visit our help pages.</a>
+      help: For additional information, <a target="ymhelp" href="http://help.yomobi.com">please visit our help pages.</a>
       customize_header: "Start Customizing"
       customize: "To start customizing your site, please click the button below."
 
@@ -465,7 +465,7 @@ en:
       banner_help: "<p>A banner will override all other header settings.</p>"
       body_bg: "Wallpaper"
       body_bg_help: "<p>Upload a background image.</p>"
-      not_premium: "You must upgrade this site to Professional to use this feature."
+      not_premium: "You must upgrade this site to Custom to use this feature."
 
       customizing_header: "Customizing Header"
       header: "Header"
@@ -670,7 +670,7 @@ en:
     remove_domain: "Remove Domain"
     domain_name: "Domain Name (e.g. www.example.com):"
 
-    site_grade: "Site Grade"
+    site_grade: "Site Type"
     subscription_status: "You are on a monthly subscription until {{ subscriptionEndDate }}"
     cancel_subscription: "Cancel Subscription"
     cancel_success: "Monthly subscription cancelled sucessfully."
@@ -679,7 +679,7 @@ en:
     setup: "Setup"
     custom_domains: "Custom Domains"
     connected_domains: "%{domain_count} Connected Domains"
-    not_premium_for_domains: "This site must be upgraded to <b>Professional</b> to use Custom Domains."
+    not_premium_for_domains: "This site must be upgraded to use custom domains."
     no_domains_connected: "No domains connected to this site."
 
     merchant_account: "Merchant Account"
@@ -694,7 +694,7 @@ en:
     monthly: "Monthly"
     year: "Year"
     yearly: "Yearly"
-    upgrade_payment: "Professional Site Payment"
+    upgrade_payment: "Custom Site Payment"
 
     # site_manager
     error:
@@ -709,12 +709,15 @@ en:
       max_domain_count: "You have reached the maximum number of domains for this mobile site (5)."
     # site_manager
     help:
-      signup_keys: "When you are ready to hand this site over to its owner, generate a signup key, then email the link to the site owner and have them click on the link to sign up to Yomobi and take ownership of their site.<br><b>Click ? for more information.</b>"
+      site_access_list: '<img class="help-bubble" src="/images/ui/help-bubble.png">To manage a site, select it in the list below, then use the configuration panel on the right to edit or update the site. <a href="http://help.yomobi.com/SiteManager" target="ymhelp"><b>Click here for more information.</b></a>'
+      signup_keys: '<a href="http://help.yomobi.com/Account/SignupKey" target="ymhelp"><img class="help-bubble" src="/images/ui/help-bubble.png"></a>When you are ready to hand this site over to an owner who does not already have a YoMobi login, generate a signup key, then email the link to the site owner and have them click on the link to sign up to Yomobi and take ownership of their site. <a href="http://help.yomobi.com/Account/SignupKey" target="ymhelp"><b>Click here for more information.</b></a>'
+      manage_site_type: '<img class="help-bubble" src="/images/ui/help-bubble.png">Select a payment option below to upgrade your mobile site to a Custom account, or to renew your Custom account. <a href="http://help.yomobi.com/SiteManager/SiteTypes" target="ymhelp">Click here for more information about a Custom account and making payments.</a>'
+      manage_custom_domain: '<a href="http://help.yomobi.com/SiteManager/CustomDomain" target="ymhelp"><img class="help-bubble" src="/images/ui/help-bubble.png">Click here to learn how to associate a custom domain with your mobile site.</a>'
+      manage_site_admins: '<a href="http://help.yomobi.com/SiteManager/SiteAdmins" target="ymhelp"><img class="help-bubble" src="/images/ui/help-bubble.png">Click here to learn how to manage site administrators.</a>'
     confirm:
       concede_site: Are you sure? You will lose ownership of this site.
     dialog:
       concede_site: Conceding your ownership of this site will give up your ownership rights. That means you will no longer have control over collaborators.
-
 
   mobile:
     tab_bar:
@@ -744,7 +747,6 @@ en:
       closing: "Thank You,"
       signature: '<a href="http://www.yomobi.com">YoMobi</a>'
       create_site: 'Create your own free mobile site at: <a href="http://www.yomobi.com">YoMobi.com</a>'
-
 
   widgets:
     helpText:

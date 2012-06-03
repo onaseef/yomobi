@@ -20,8 +20,7 @@
         div align="center"
         = render 'mobile/adsense' if Rails.env == 'production'
     .mobile-footer
-      - unless @is_preview_mode
-        = render 'mobile/social-share'
+      = render 'mobile/social-share'
       erb:
         <div class="powered-by"><a href="http://www.yomobi.com" target="_blank"><%=t('powered_by.slogan')%></a></div>
 

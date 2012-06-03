@@ -1,8 +1,24 @@
+input[type="button"], input[type="submit"], button {
+  background: #5B74A8;
+  padding: 2px 6px 3px;
+  border: 1px solid #5B74A8;
+  border-top-color: #8A9CC2;
+  color: white;
+  font-weight: bold;
+  margin-right: 6px;
+  cursor: pointer; }
+
+input[type="button"]:hover, input[type="submit"]:hover, button:hover {
+  color: yellow; }
+
+input[type="checkbox"] {
+  vertical-align: middle; }
+
 ul.fancy-selectable {
   background: #fff;
   border: 1px solid #b3b3b3;
   list-style: none;
-  margin: 0;
+  margin-bottom: 6px;
   padding: 10px; }
   ul.fancy-selectable li {
     padding: 6px 10px;

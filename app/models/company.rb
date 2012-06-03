@@ -109,7 +109,7 @@ class Company < ActiveRecord::Base
   end
 
   def upgrade_state
-    premium ? 'Professional' : 'Standard'
+    premium ? 'Custom' : 'Standard'
   end
 
   def couch_host

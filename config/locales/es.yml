@@ -137,7 +137,7 @@ es:
       cancel_sub_confirm: "Are you sure you want to cancel your subscription?"
       manage: "@@Manage"
       upgrade: "@@Upgrade"
-      professional: "@@Professional"
+      professional: "@@Custom"
       standard: "@@Standard"
       agree_to_terms: "@@Please agree to the terms before continuing."
 
@@ -395,6 +395,9 @@ es:
     save: "Guardar Cambios"
     payment_history: "@@Payment History"
 
+  upgrade:
+    title: "@@Upgrade Mobile Site"
+
   builder:
 
     sidebar:
@@ -462,7 +465,7 @@ es:
       banner_help: "@@<p>A banner will override all other header settings.</p>"
       body_bg: "@@Wallpaper"
       body_bg_help: "@@<p>Upload a background image.</p>"
-      not_premium: "@@You must upgrade this site to Professional to use this feature."
+      not_premium: "@@You must upgrade this site to use this feature."
 
       customizing_header: "@@Customizing Header"
       header: "@@Header"
@@ -667,7 +670,7 @@ es:
     remove_domain: "@@Remove Domain"
     domain_name: "@@Domain Name (e.g. www.example.com):"
 
-    site_grade: "@@Site Grade"
+    site_grade: "@@Site Type"
     subscription_status: "@@You are on a monthly subscription until {{ subscriptionEndDate }}"
     cancel_subscription: "@@Cancel Subscription"
     cancel_success: "@@Monthly subscription cancelled sucessfully."
@@ -676,7 +679,7 @@ es:
     setup: "@@Setup"
     custom_domains: "@@Custom Domains"
     connected_domains: "@@%{domain_count} Connected Domains"
-    not_premium_for_domains: "@@This site must be upgraded to <b>Professional</b> to use Custom Domains."
+    not_premium_for_domains: "@@This site must be upgraded to use custom domains."
     no_domains_connected: "@@No domains connected to this site."
 
     merchant_account: "@@Merchant Account"
@@ -691,7 +694,7 @@ es:
     monthly: "@@Monthly"
     year: "@@Year"
     yearly: "@@Yearly"
-    upgrade_payment: "@@Professional Site Payment"
+    upgrade_payment: "@@Custom Site Payment"
 
     # site_manager
     error:
@@ -706,7 +709,11 @@ es:
       max_domain_count: "@@You have reached the maximum number of domains for this mobile site (5)."
     # site_manager
     help:
-      signup_keys: "Cuando estés listo para entregar este sitio a su propietario, genera una clave de registro, luego envía por email el enlace al propietario del sitio. Asegúrate que haga click en el enlace para que se registre ante Yomobi y tome posesión de su sitio.<br><b>Para mayor información, Haz Click en ?</b>"
+      site_access_list: '@@<img class="help-bubble" src="/images/ui/help-bubble.png">To manage a site, select it in the list below, then use the configuration panel on the right to edit or update the site. <a href="http://help.yomobi.com/SiteManager" target="ymhelp"><b>Click here for more information.</b></a>'
+      signup_keys: '<a href="http://help.yomobi.com/Account/SignupKey" target="ymhelp"><img class="help-bubble" src="/images/ui/help-bubble.png"></a>Cuando estés listo para entregar este sitio a su propietario, genera una clave de registro, luego envía por email el enlace al propietario del sitio. Asegúrate que haga click en el enlace para que se registre ante Yomobi y tome posesión de su sitio. <a href="http://help.yomobi.com/Account/SignupKey" target="ymhelp"><b>Haz click aquí para mayor información.</b></a>'
+      manage_site_type: '@@<img class="help-bubble" src="/images/ui/help-bubble.png">Select a payment option below to upgrade your mobile site to a Custom account, or to renew your Custom account. <a href="http://help.yomobi.com/SiteManager/SiteTypes" target="ymhelp">Click here for more information about a Custom account and making payments.</a>'
+      manage_custom_domain: '@@<a href="http://help.yomobi.com/SiteManager/CustomDomain" target="ymhelp"><img class="help-bubble" src="/images/ui/help-bubble.png">Click here to learn how to associate a custom domain with your mobile site.</a>'
+      manage_site_admins: '@@<a href="http://help.yomobi.com/SiteManager/SiteAdmins" target="ymhelp"><img class="help-bubble" src="/images/ui/help-bubble.png">Click here to learn how to manage site administrators.</a>'
     confirm:
       concede_site: ¿Estás seguro(a)? Cederás / Perderás la propiedad de este sitio.
     dialog:

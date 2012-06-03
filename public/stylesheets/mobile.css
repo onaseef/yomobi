@@ -226,6 +226,7 @@ p {
     word-wrap: break-word; }
 
 .mobile-footer {
+  font-size: 14px;
   width: 100%;
   padding: 12px 0 8px 0;
   background: #c4cde0;
@@ -237,6 +238,14 @@ p {
   .mobile-footer p {
     margin: 0 0 10px 0;
     padding-left: 5px; }
+  .mobile-footer .social-share {
+    margin: 0;
+    padding: 0 0 0 5px;
+    list-style: none; }
+    .mobile-footer .social-share li {
+      float: left;
+      cursor: pointer;
+      margin-right: 12px !important; }
   .mobile-footer .powered-by {
     font-size: 14px;
     text-align: center; }
@@ -250,15 +259,6 @@ p {
   .aritcaptcha-container input[type=text] {
     width: 100px !important;
     margin: 5px 0 0 0 !important; }
-
-.social-share {
-  margin: 0;
-  padding: 0 0 0 5px;
-  list-style: none; }
-  .social-share li {
-    float: left;
-    cursor: pointer;
-    margin-right: 12px; }
 
 .clearfix {
   clear: both; }
