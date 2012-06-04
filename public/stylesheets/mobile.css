@@ -173,11 +173,12 @@ p {
 .ad-bar {
   display: none;
   padding: 0 0;
-  border-bottom: 2px solid #627aad;
+  border-bottom: 1px solid #627aad;
   background: #2a426a;
   text-align: center; }
   .ad-bar.bottom {
-    height: 48px; }
+    border-top: 1px solid #627aad;
+    border-bottom: none; }
 
 .back-btn {
   cursor: pointer;
@@ -459,17 +460,17 @@ pre {
   padding: 0px; }
 
 .yomobi-upgrade-ad {
-  height: 48px;
-  padding: 1px;
-  background: yellow;
-  line-height: 48px; }
+  font-size: 13px;
+  font-weight: bold;
+  color: red;
+  background: yellow; }
+  .yomobi-upgrade-ad p {
+    padding: 6px; }
   .yomobi-upgrade-ad a {
     color: red;
     text-decoration: none; }
   .yomobi-upgrade-ad a:hover {
     text-decoration: underline; }
-  .yomobi-upgrade-ad h3 {
-    font-size: 14px; }
 
 img.yo-left {
   padding: 3px 10px 0px 0px; }
