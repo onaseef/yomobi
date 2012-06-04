@@ -37,6 +37,9 @@ html lang="en-US" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com
     - unless @is_preview_mode || @company.premium?
       javascript:
         showAds = true
+    - if @company.premium? == false && @is_preview_mode == true
+      javascript:
+        showAds = true
     javascript:
       $(function () {
         window.mapp = new MobileAppView();

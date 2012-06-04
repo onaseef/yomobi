@@ -458,6 +458,12 @@ pre {
   margin: 0px;
   padding: 0px; }
 
+.yomobi-upgrade-ad {
+  padding: 1px;
+  color: white; }
+  .yomobi-upgrade-ad a {
+    color: white; }
+
 img.yo-left {
   padding: 3px 10px 0px 0px; }
 

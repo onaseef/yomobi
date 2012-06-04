@@ -402,6 +402,9 @@ es:
 
   builder:
 
+    upgrade_ad:
+      title: "@@Upgrade to a custom site to remove this ad."
+
     sidebar:
       view_mobile_site: "Ver Sitio Móvil"
       email_followers: "Envía un Email a Tus Seguidores"
