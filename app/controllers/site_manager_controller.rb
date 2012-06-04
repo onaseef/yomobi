@@ -264,7 +264,7 @@ class SiteManagerController < ApplicationController
     return error('bad_site_id') unless company.present?
 
     record = WepayCheckoutRecord.last_preapproval_for_company(company)
-    return error('no_subscription') unless company.present?
+    return error('no_subscription') unless record.present?
 
     begin
       cancel_preapproval record.preapproval_id

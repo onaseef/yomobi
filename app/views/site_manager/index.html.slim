@@ -125,31 +125,37 @@
       .payment-complete.hide
         label.success = t 'site_manager.payment_complete'
 
-      | <% if (subscriptionEndDate && subscriptionEndDate !== 'cancelled') { %>
+      | <% if (isSubscribed) { %>
       form.cancel action="{{ cancelPath }}" method="POST" data-remote="true"
         label = t 'site_manager.subscription_status'
         input type="hidden" name="site_id" value="{{ id }}"
         input type="submit" value=t('site_manager.cancel_subscription')
-      | <% } else { %>
-      p == t('site_manager.help.manage_site_type')
-      h3 Select a payment option:
-      form.pay action="{{ actionPath }}" method="POST" data-remote="true"
-        input type="radio" value="1" name="months" checked="checked"
-        label One Month - $5
-        br
-        input type="radio" value="12" name="months"
-        label One Year - $50
-        br
-        input type="radio" value="recur" name="months"
-        label Autopay Monthly - $5/month
-        br
-        input type="radio" value="recur_yearly" name="months"
-        label Autopay Yearly - $48.76year
-        br
-        br
-        input type="checkbox" name="terms" I agree to terms.
-        input type="submit" value="Submit"
+      button.renew = t 'site_manager.renew_subscription'
       | <% } %>
+      .pay-options class="<% if (isSubscribed) { print('hide'); } %>"
+        | <% if (isSubscribed) { %>
+        .divider
+        p == t('site_manager.help.renew_subscription')
+        | <% } else { %>
+        p == t('site_manager.help.manage_site_type')
+        | <% } %>
+        h3 Select a payment option:
+        form.pay action="{{ actionPath }}" method="POST" data-remote="true"
+          input type="radio" value="1" name="months" checked="checked"
+          label One Month - $5
+          br
+          input type="radio" value="12" name="months"
+          label One Year - $50
+          br
+          input type="radio" value="recur" name="months"
+          label Autopay Monthly - $5/month
+          br
+          input type="radio" value="recur_yearly" name="months"
+          label Autopay Yearly - $48.76year
+          br
+          br
+          input type="checkbox" name="terms" I agree to terms.
+          input type="submit" value="Submit"
       .error.hide
 
   script.custom-domains(type="text/template")

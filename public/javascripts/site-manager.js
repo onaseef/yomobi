@@ -220,17 +220,21 @@
     events: {
       'click .back-btn':        'goBack',
       'submit form.pay':        'onPaySubmit',
-      'submit form.cancel, click form.cancel [type=submit]':     'confirmCancelSub'
+      'submit form.cancel, click form.cancel [type=submit]':     'confirmCancelSub',
+      'click button.renew':     'showPayOptions'
     },
     showContent: showContent,
     render: function (site) {
+      var subEndDate = site.get('subscriptionEndDate');
+
       var extraData = {
         actionLabel: site.get('isPremium') ? i18n.manage : i18n.upgrade,
         grade: site.get('isPremium') ? i18n.professional : i18n.standard,
         actionPath: g.upgradeSitePath(site.toJSON()),
         cancelPath: g.cancelSubPath(site.toJSON()),
         expireDate: site.get('expireDate'),
-        subscriptionType: i18n[ site.get('subscriptionType') ]
+        subscriptionType: i18n[ site.get('subscriptionType') ],
+        isSubscribed: subEndDate && subEndDate !== 'cancelled'
       };
       var templateData = _.extend(site.toJSON(), extraData);
       $(this.el).html( this.template(templateData) );
@@ -265,6 +269,11 @@
     goBack: function () {
       this.render( sman.getSelectedSite() );
       this.showContent();
+    },
+
+    showPayOptions: function () {
+      this.$('button.renew').hide();
+      this.$('.pay-options').show();
     },
 
     onPaySubmit: function (e) {

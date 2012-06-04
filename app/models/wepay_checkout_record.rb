@@ -8,6 +8,7 @@ class WepayCheckoutRecord < ActiveRecord::Base
     joins(:payment)
       .where('payments.company_id' => cid,
              'wepay_checkout_records.checkout_id' => nil)
+      .where('wepay_checkout_records.preapproval_id IS NOT NULL')
       .order('created_at DESC')
       .first
   end

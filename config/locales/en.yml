@@ -677,6 +677,7 @@ en:
     cancel_subscription: "Cancel Subscription"
     cancel_success: "Subscription cancelled sucessfully."
     payment_complete: "Site successfully upgraded."
+    renew_subscription: "Renew Subscription / Prepay"
 
     setup: "Setup"
     custom_domains: "Custom Domains"
@@ -711,6 +712,7 @@ en:
       max_domain_count: "You have reached the maximum number of domains for this mobile site (5)."
     # site_manager
     help:
+      renew_subscription: '<img class="help-bubble" src="/images/ui/help-bubble.png"> i18n RENEW HELP'
       site_access_list: '<img class="help-bubble" src="/images/ui/help-bubble.png">To manage a site, select it in the list below, then use the configuration panel on the right to edit or update the site. <a href="http://help.yomobi.com/SiteManager" target="ymhelp"><b>Click here for more information.</b></a>'
       signup_keys: '<a href="http://help.yomobi.com/Account/SignupKey" target="ymhelp"><img class="help-bubble" src="/images/ui/help-bubble.png"></a>When you are ready to hand this site over to an owner who does not already have a YoMobi login, generate a signup key, then email the link to the site owner and have them click on the link to sign up to Yomobi and take ownership of their site. <a href="http://help.yomobi.com/Account/SignupKey" target="ymhelp"><b>Click here for more information.</b></a>'
       manage_site_type: '<img class="help-bubble" src="/images/ui/help-bubble.png">Select a payment option below to upgrade your mobile site to a Custom account, or to renew your Custom account. <a href="http://help.yomobi.com/SiteManager/SiteTypes" target="ymhelp">Click here for more information about a Custom account and making payments.</a>'

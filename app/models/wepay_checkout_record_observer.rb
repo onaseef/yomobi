@@ -1,4 +1,5 @@
 class WepayCheckoutRecordObserver < ActiveRecord::Observer
+  include WepayRails::Payments
 
   def after_update(wcr)
     return if wcr.state == 'expired'
@@ -23,13 +24,22 @@ class WepayCheckoutRecordObserver < ActiveRecord::Observer
       payment.amount_paid = wcr.amount.to_s('F')
       payment.company.update_attribute :premium, true
       payment.expire_date = expire_date + time_paid
+
+      # check for previous preapproval
+      prevSub = WepayCheckoutRecord.last_preapproval_for_company(company_id)
+      if prevSub.present? && wcr.preapproval_id.present?
+        puts "PREVIOUS SUBSCRIPTION #{prevSub}"
+        cancel_preapproval prevSub.preapproval_id
+      end
     end
 
     case wcr.state
     when /^(authorized|reserved|captured|settled)$/ then payment.is_valid = true
-    when /^(cancelled|failed|refunded|chargeback)$/ then
+    when /^(failed|refunded|chargeback|stopped)$/ then
       payment.is_valid = false
       UserMailer.notify_bad_payment(payment, wcr.state).deliver
+    when /^(cancelled)$/ then
+      payment.is_valid = false
     end
     payment.save
     payment.company.recalculate_premium
