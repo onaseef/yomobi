@@ -544,8 +544,11 @@ pre {
 
 .yomobi-upgrade-ad {
   padding: 1px;
-  color: white;
-  a { color: white; }
+  background: yellow;
+  a { color: red; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  
+  h3 { font-size: 14px; }
 }
 
 // WYSIWYG Photo styling

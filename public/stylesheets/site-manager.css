@@ -11,6 +11,12 @@ input[type="button"], input[type="submit"], button {
 input[type="button"]:hover, input[type="submit"]:hover, button:hover {
   color: yellow; }
 
+input[type="button"]:disabled, input[type="submit"]:disabled, button:disabled {
+  color: gray;
+  background: #ddd;
+  border-color: gray;
+  cursor: default; }
+
 input[type="checkbox"] {
   vertical-align: middle; }
 

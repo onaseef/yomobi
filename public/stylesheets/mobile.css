@@ -460,9 +460,14 @@ pre {
 
 .yomobi-upgrade-ad {
   padding: 1px;
-  color: white; }
+  background: yellow; }
   .yomobi-upgrade-ad a {
-    color: white; }
+    color: red;
+    text-decoration: none; }
+  .yomobi-upgrade-ad a:hover {
+    text-decoration: underline; }
+  .yomobi-upgrade-ad h3 {
+    font-size: 14px; }
 
 img.yo-left {
   padding: 3px 10px 0px 0px; }

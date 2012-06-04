@@ -47,8 +47,7 @@
   .site-list-wrap
     button.create =t'site_manager.create_new_site'
     h2 =t'site_manager.site_access_list'
-    p ==t'site_manager.help.site_access_list'
-    br
+    p.explanation ==t'site_manager.help.site_access_list'
     ul.sites.fancy-selectable
 
   .accordian
@@ -98,8 +97,7 @@
       .status = t 'site_manager.generate_signup_key'
       .clearfix
     .content-body
-      p ==t('site_manager.help.signup_keys')
-      br
+      p.explanation ==t('site_manager.help.signup_keys')
       button.gen-signup-key =t'site_manager.generate_signup_key'
       br
       input.signup-key-input.hide type="text" readonly="readonly"
@@ -135,9 +133,9 @@
       .pay-options class="<% if (isSubscribed) { print('hide'); } %>"
         | <% if (isSubscribed) { %>
         .divider
-        p == t('site_manager.help.renew_subscription')
+        p.explanation == t('site_manager.help.renew_subscription')
         | <% } else { %>
-        p == t('site_manager.help.manage_site_type')
+        p.explanation == t('site_manager.help.manage_site_type')
         | <% } %>
         h3 Select a payment option:
         form.pay action="{{ actionPath }}" method="POST" data-remote="true"
@@ -165,8 +163,7 @@
       .status == t 'site_manager.connected_domains', :domain_count => '<% print(domains.length); %>'
       .clearfix
     .content-body
-      p == t('site_manager.help.manage_custom_domain')
-      br
+      p.explanation == t('site_manager.help.manage_custom_domain')
       | <% if (!isPremium) { %>
       p == t 'site_manager.not_premium_for_domains'
       | <% } else { %>
@@ -201,8 +198,7 @@
       .status == t 'site_manager.site_admins_status', :admin_count => '<% print(admins.length+1); %>'
       .clearfix
     .content-body
-      p == t('site_manager.help.manage_site_admins')
-      br    
+      p.explanation == t('site_manager.help.manage_site_admins')
       ul.admins.fancy-selectable
       button.add-admin    disabled="disabled" =t'site_manager.add_admin'
       button.remove-admin disabled="disabled" =t'site_manager.revoke_access'
