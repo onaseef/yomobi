@@ -459,8 +459,12 @@ pre {
   padding: 0px; }
 
 .yomobi-upgrade-ad {
+  height: 48px;
   padding: 1px;
-  color: white; }
+  color: white;
+  line-height: 48px; }
+  .yomobi-upgrade-ad h3 {
+    font-size: 16px; }
   .yomobi-upgrade-ad a {
     color: white; }
 

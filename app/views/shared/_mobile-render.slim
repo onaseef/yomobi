@@ -22,6 +22,9 @@
       .ad-bar.bottom
         div align="center"
         = render 'mobile/adsense' if Rails.env == 'production'
+    - if @company.premium? == false && @is_preview_mode == true
+      .ad-bar.bottom
+        = render 'mobile/yomobi-upgrade-ad'
     .mobile-footer
       = render 'mobile/social-share'
       erb:
