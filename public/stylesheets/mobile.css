@@ -159,7 +159,7 @@ p {
     text-decoration: none; }
   .tab-bar td, .tab-bar td a {
     width: 25%;
-    padding: 6px 0px;
+    padding: 6px 3px;
     text-align: center;
     font-weight: bold;
     font-size: 14px;
