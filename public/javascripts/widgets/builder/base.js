@@ -62,7 +62,7 @@
     validate: function (attrs) {
       for (var key in attrs) {
         // check for strings
-        if (attrs[key].substring) attrs[key] = $.trim(attrs[key]);
+        if (attrs[key] && attrs[key].substring) attrs[key] = $.trim(attrs[key]);
       }
       this.beforeSave && this.beforeSave(attrs);
     }
