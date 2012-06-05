@@ -259,7 +259,6 @@
 
     changeSiteCreateType: function (e) {
       var showType = $(e.target).val() == 'type';
-      e.preventDefault();
       this.$('.site-type').toggle( showType );
       this.$('.site-source').toggle( !showType );
       this.$('[name="site[source_db_name]"]').val('');
