@@ -99,7 +99,11 @@ h2.active-site {
     padding: 10px;
     .title { float: left; width: 175px; margin: 0; }
     .status { float: left; width: 275px; }
-    .action { float: right; }
+    .action {
+      color: #3B5998;
+      text-decoration: underline; 
+      float: right; 
+    }
   }
   .content-header.active {
   }
@@ -108,6 +112,7 @@ h2.active-site {
     background: $highlight-color;
   }
   .content-body {
+    margin-top: 6px;
     padding: 0 10px;
     display: none;
     overflow: hidden;

@@ -87,11 +87,14 @@ h2.active-site {
       float: left;
       width: 275px; }
     .accordian .content-header .action {
+      color: #3B5998;
+      text-decoration: underline;
       float: right; }
   .accordian .content-header:hover {
     cursor: pointer;
     background: #d8dfea; }
   .accordian .content-body {
+    margin-top: 6px;
     padding: 0 10px;
     display: none;
     overflow: hidden;
