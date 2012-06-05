@@ -106,18 +106,18 @@ h2.active-site {
     }
   }
   .content-header.active {
+    background: $highlight-color;  
   }
   .content-header:hover {
     cursor: pointer;
     background: $highlight-color;
   }
   .content-body {
-    margin-top: 6px;
-    padding: 0 10px;
+    padding: 6px 10px 20px 10px;
+    background: $highlight-color;
     display: none;
     overflow: hidden;
     clear: both;
-    margin-bottom: 20px;
     .error { margin-top: 10px; }
   }
 

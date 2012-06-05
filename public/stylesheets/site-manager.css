@@ -90,16 +90,17 @@ h2.active-site {
       color: #3B5998;
       text-decoration: underline;
       float: right; }
+  .accordian .content-header.active {
+    background: #d8dfea; }
   .accordian .content-header:hover {
     cursor: pointer;
     background: #d8dfea; }
   .accordian .content-body {
-    margin-top: 6px;
-    padding: 0 10px;
+    padding: 6px 10px 20px 10px;
+    background: #d8dfea;
     display: none;
     overflow: hidden;
-    clear: both;
-    margin-bottom: 20px; }
+    clear: both; }
     .accordian .content-body .error {
       margin-top: 10px; }
   .accordian .signup-keys .signup-key-input {
