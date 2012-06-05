@@ -27,7 +27,7 @@
       this.widgets.bind('refresh',this.render);
 
       this.widgets.comparator = options.comparator;
-      this.widgets.sort({ silent:true });
+      if (this.widgets.length > 0 ) this.widgets.sort({ silent:true });
       
       this.el.find('.widgets .home-icon').live('mouseover',makeDraggable);
       if (!options.skipRender) this.render();

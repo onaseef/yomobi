@@ -7,6 +7,9 @@
 
   script type="text/javascript"
     | new SidebarView({ widgets:new Backbone.Collection, skipRender:true });
+    | if ($.browser.msie && $.browser.version.slice(0,1) == "7") {
+    |   $(window).ready(function () { alert('hi'); $('.follower-section').css({ height: '1%' }); });
+    | }
 
 h1 = @company.name
 #builder-container
