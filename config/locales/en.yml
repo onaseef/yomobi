@@ -650,6 +650,9 @@ en:
     email_bad:
       subject: "Payment failed for %{site_name}"
       body: "Your payment has failed"
+    subscription_fail:
+      subject: "Subscription Payment failed for %{site_name}"
+      body: "Your subscription payment has failed"
 
 
   site_manager:

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120515202639) do
+ActiveRecord::Schema.define(:version => 20120605191037) do
 
   create_table "carriers", :force => true do |t|
     t.string   "name"
@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(:version => 20120515202639) do
     t.string   "currency"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "sub_state"
   end
 
   add_index "payments", ["wepay_checkout_record_id"], :name => "index_payments_on_wepay_checkout_record_id", :unique => true

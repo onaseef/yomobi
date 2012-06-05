@@ -73,6 +73,15 @@ class UserMailer < ActionMailer::Base
     )
   end
 
+  def notify_subscription_payment_failure(payment)
+    @payment = payment
+    mail(
+      :subject => t('payments.subscription_fail.subject', :site_name => payment.company.name),
+      :to => payment.user.email,
+      :from => "\"YoMobi\" <message@yomobi.com>"
+    )
+  end
+
   private
 
   # removes any illegal email headers

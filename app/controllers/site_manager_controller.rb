@@ -12,8 +12,14 @@ class SiteManagerController < ApplicationController
 
   def index
     @companies = current_user.all_companies
-    if params[:checkout_id]
-      record = WepayCheckoutRecord.find_by_checkout_id params[:checkout_id]
+
+    if params[:checkout_id] || params[:preapproval_id]
+      conds = {
+        :checkout_id     => params[:checkout_id],
+        :preapproval_id  => params[:preapproval_id],
+      }.delete_if {|k,v| v.nil?}
+
+      record = WepayCheckoutRecord.where(conds).first
       if record && record.payment && record.payment.user == current_user
         @payment = record.payment
       end
@@ -237,14 +243,21 @@ class SiteManagerController < ApplicationController
         :reference_id => "#{user.id}|#{@site.id}|#{months}|#{ActiveSupport::SecureRandom.uuid}",
         :prefill_info => { email:user.email, name:"#{user.first_name} #{user.last_name}" },
       }
+      # LAST TIME: Test if base_date is working
+      # (should be end of last payment cycle)
+      last_sub = @site.last_subscription
+      base_date = @site.next_charge_date || @site.expire_date || DateTime.now
+puts "BASE DATE: #{base_date}"
       if params[:months] == "recur"
         checkout_params[:period] = 'monthly'
-        checkout_params[:end_time] = (DateTime.now + 1.year).to_time.to_i
+        checkout_params[:start_time] = base_date
+        checkout_params[:end_time] = (base_date + 1.year).to_time.to_i
         checkout_params[:auto_recur] = true
         checkout_params[:api_url] = '/preapproval/create'
       elsif params[:months] == "recur_yearly"
         checkout_params[:period] = 'yearly'
-        checkout_params[:end_time] = (DateTime.now + 3.years).to_time.to_i
+        checkout_params[:start_time] = base_date
+        checkout_params[:end_time] = (base_date + 3.years).to_time.to_i
         checkout_params[:auto_recur] = true
         checkout_params[:api_url] = '/preapproval/create'
       else
@@ -252,6 +265,7 @@ class SiteManagerController < ApplicationController
       end
       @checkout = init_checkout(checkout_params)
       render :layout => false
+      # return error 'todo'
     else
       return error 'site_not_specified'
     end

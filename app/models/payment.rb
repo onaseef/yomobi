@@ -19,4 +19,26 @@ class Payment < ActiveRecord::Base
     (amount_paid / 12).to_s.to_i
   end
 
+  def next_charge_date(base_time=nil)
+    wcr = self.wepay_checkout_record
+    return nil if wcr.end_time.nil?
+puts "DATE START #{Time.at(wcr.start_time).to_datetime}"
+    base_time ||= [DateTime.now, Time.at(wcr.start_time).to_datetime].max
+    end_date = Time.at(wcr.end_time).to_date
+    return nil if end_date < (base_time + 1.month)
+
+    if wcr.period == 'monthly'
+      while end_date > base_time + 1.month
+        end_date -= 1.month
+      end
+    elsif wcr.period == 'yearly'
+      while end_date > base_time + 1.year
+        end_date -= 1.year
+      end
+    else
+      return nil
+    end
+    end_date
+  end
+
 end

@@ -249,6 +249,7 @@
         var msgCode = $.parseJSON(xhr.responseText);
         var msg = g.i18n.error + ': ' + (i18n[msgCode] || msgCode);
         self.$('.error').text( msg ).show('pulsate', { times:3 });
+        self.$('[type=submit]').prop('disabled', false);
       });
       this.$('form.pay').bind('ajax:success', function (e, data, status, xhr) {
         self.renderBody(data);
