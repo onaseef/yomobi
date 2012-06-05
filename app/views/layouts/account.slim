@@ -3,11 +3,14 @@
 
 - content_for :sidebar do
   ul
-    li
+    li.option.contact_info
+      div.icon
       a class=active('edit',@page) href=account_path = t 'account_settings.update_contact_info'
-    li
+    li.option.change_password
+      div.icon
       a class=active('password',@page) href=change_password_path = t 'account_settings.change_password'
-    li
+    li.option.payment_history
+      div.icon
       a class=active('payment-history',@page) href=account_payments_path = t 'account_settings.payment_history'
 
 .title

@@ -67,12 +67,20 @@ label {
     #sidebar .option:hover {
       background-color: #d8dfea;
       cursor: pointer; }
+    #sidebar .option .active {
+      background-color: #d8dfea; }
   #sidebar .option.basic .icon {
     background-position: 0 0; }
   #sidebar .option.config .icon {
     background-position: 0 -16px; }
   #sidebar .option.builder .icon {
     background-position: 0 -32px; }
+  #sidebar .option.contact_info .icon {
+    background-position: 0 -64px; }
+  #sidebar .option.change_password .icon {
+    background-position: 0 -80px; }
+  #sidebar .option.payment_history .icon {
+    background-position: 0 -48px; }
   #sidebar .option.active {
     background-color: #d8dfea; }
 
@@ -152,6 +160,25 @@ label {
     .landing-bar .menu-bar .menu-item:hover {
       background: #e4ecf4;
       border: 1px solid #999999; }
+
+.language-bar {
+  overflow-x: hidden;
+  overflow-y: auto;
+  float: left;
+  width: 100%;
+  margin: 0 0 15px 0;
+  padding: 0px;
+  text-align: left;
+  list-style-type: none;
+  background: #d8dfea; }
+  .language-bar a, .language-bar a:visited {
+    color: #36485c !important; }
+  .language-bar li {
+    font-size: 1em;
+    font-weight: normal;
+    position: relative;
+    float: left;
+    margin: 3px 0 3px 6px; }
 
 #signup-box table, #actual-signin-box table {
   float: right;

@@ -77,13 +77,21 @@ label {
       background: url(/images/test-icons.png); }
     &:hover {
       background-color: $highlight-color;
-      cursor: pointer; } }
+      cursor: pointer; } 
+    .active { background-color: $highlight-color;}
+  }
   .option.basic .icon {
     background-position: 0 0; }
   .option.config .icon {
     background-position: 0 -16px; }
   .option.builder .icon {
     background-position: 0 -32px; }
+  .option.contact_info .icon {
+    background-position: 0 -64px; }
+  .option.change_password .icon {
+    background-position: 0 -80px; }
+  .option.payment_history .icon {
+    background-position: 0 -48px; }
   .option.active {
     background-color: $highlight-color; } }
 
@@ -169,6 +177,26 @@ label {
       background: #e4ecf4; border:
       1px solid #999999;
     }
+  }
+}
+
+.language-bar {
+  overflow-x: hidden;
+  overflow-y: auto;
+  a, a:visited { color:$main-color !important; }
+  float: left;
+  width: 100%;
+  margin: 0 0 15px 0;
+  padding: 0px; 
+  text-align: left;
+  list-style-type: none;
+  background: $highlight-color;
+  li { 
+    font-size: 1em;
+    font-weight: normal;
+    position: relative; 
+    float:left; 
+    margin: 3px 0 3px 6px; 
   }
 }
 

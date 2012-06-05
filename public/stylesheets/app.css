@@ -448,6 +448,7 @@ label.help {
 #why_mobile .hilite {
   font-weight: bold;
   color: red; }
-#why_mobile li {
+
+.bold_list {
   font-size: 14px;
   font-weight: bold; }

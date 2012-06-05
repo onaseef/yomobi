@@ -14,15 +14,21 @@ Yomobi::Application.routes.draw do
   end
 
   get 'about' => 'home#about', :as => :about
+  get 'about_es' => 'home#about_es', :as => :about_es
   get 'biz' => 'home#opportunity', :as => :opportunity
   get 'business-opportunities' => 'home#opportunity', :as => :opportunity
   get 'help' => redirect('http://help.yomobi.com'), :as => :help
   get 'how-to-make-a-mobile-website' => 'home#easy', :as => :easy
   get 'privacy' => 'home#privacy', :as => :privacy
+  get 'privacy_es' => 'home#privacy_es', :as => :privacy_es
+  get 'payment_terms' => 'home#payment_terms', :as => :payment_terms
+  get 'payment_terms_es' => 'home#payment_terms_es', :as => :payment_terms_es
   get 'terms' => 'home#terms', :as => :terms
+  get 'terms_es' => 'home#terms_es', :as => :terms_es
   get 'vote' => redirect('http://www.facebook.com/yomobi?sk=app_208195102528120'), :as => :vote
   get 'webesity' => 'home#webesity', :as => :webesity
   get 'why-mobile' => 'home#why_mobile', :as => :why_mobile
+  get 'why-mobile_es' => 'home#why_mobile_es', :as => :why_mobile_es
 
 
 
