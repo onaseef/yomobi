@@ -116,8 +116,6 @@
       e.preventDefault();
       if (!this.widget._bdata.canEditIcon) return;
 
-
-
       this.editIconDialog = this.editIconDialog || new EditIconDialog();
       this.editIconDialog.model = this.widget;
       this.editIconDialog.options = {
@@ -141,8 +139,44 @@
               .find('img').attr('src', data.wphotoUrl).end()
               .find('label').text("").end()
               .show();
+
+          $('.wphoto-wrap button').attr('disabled', false);
+          //$('.wphoto-wrap tbody').fadeOut().remove();
+          var html = '' +
+            + '<tbody>'
+              + '<tr>'
+                + '<td>'
+                  + '<label class="upload-custom-icon-label">Upload Custom Icon</label>'
+                + '</td>'
+              + '</tr>'
+              + '<tr>'
+                + '<td>'
+                  + '<label>Select a picture...</label><br>'
+                  + '<div class="selected-file lfloat">&nbsp;</div>'
+                  + '<button name="pick_files" style="position: relative; z-index: 0; ">Browse...</button>'
+                  + '<div class="error"></div>'
+                + '</td>'
+              + '</tr>'
+            + '</tbody>';
+
+
+          //$('.wphoto-wrap').html(html);
+
+          util.initUploader( $('.wphoto-wrap'), {
+            instanceId: 'dialog',
+            auto: false,
+            alwaysOnTop: true,
+            emptyQueue: true,
+            autostart: true
+          });
+
+          util._uploaders['dialog'].bringToFront();
+
+          //var uploader_id = util._uploaders['dialog'];
+
         }
 
+        // hide ajax spinner
         $('body').find('.ajax').hide();
 
         util.customIcon = { 
@@ -165,11 +199,10 @@
 
       var uploader = util._uploaders['dialog'];
 
-      $(this.editIconDialog.el).find('#start_upload').click(function(){
+      $('.selected-file').live('change', function(){
         uploader.yomobiOptions.onDone = callback;
         uploader.start();
       });
-
 
     },
 
