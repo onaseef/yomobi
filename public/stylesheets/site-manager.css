@@ -98,7 +98,8 @@ h2.active-site {
       text-decoration: underline;
       float: right; }
   .accordian .content-header.active {
-    background: #d8dfea; }
+    background: #d8dfea;
+    border-bottom: 0px; }
   .accordian .content-header:hover {
     cursor: pointer;
     background: #d8dfea; }
@@ -107,7 +108,8 @@ h2.active-site {
     background: #d8dfea;
     display: none;
     overflow: hidden;
-    clear: both; }
+    clear: both;
+    border-bottom: 1px solid #B3B3B3; }
     .accordian .content-body .error {
       margin-top: 10px; }
   .accordian .signup-keys .signup-key-input {

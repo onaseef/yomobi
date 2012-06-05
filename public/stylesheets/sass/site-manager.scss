@@ -115,7 +115,8 @@ h2.active-site {
     }
   }
   .content-header.active {
-    background: $highlight-color;  
+    background: $highlight-color;
+    border-bottom: 0px;
   }
   .content-header:hover {
     cursor: pointer;
@@ -127,6 +128,7 @@ h2.active-site {
     display: none;
     overflow: hidden;
     clear: both;
+    border-bottom: 1px solid #B3B3B3;
     .error { margin-top: 10px; }
   }
 
