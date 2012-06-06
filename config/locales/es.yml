@@ -53,7 +53,6 @@ es:
     uploading: "Cargando a servidor..."
     working: "Trabajando..."
 
-
   security:
     error:
       incorrect_password: "Contraseña Incorrecta"
@@ -130,6 +129,7 @@ es:
       default_error: "Lo sentimos, algo salió mal."
       new_site_dialog_title: "Crear un Sitio Nuevo"
       add_admin_dialog_title: "Agregar Administrador para "
+      add_domain_dialog_title: "@@Add Custom Domain for "
       concede_ownership_dialog_title: "Otorgar Propiedad del Sitio"
       add: "Agregar"
       continue: "Continuar"
@@ -676,7 +676,7 @@ es:
     enter_password: "Ingresa tu contraseña para continuar:"
     add_domain: "@@Add Domain"
     remove_domain: "@@Remove Domain"
-    domain_name: "@@Domain Name (e.g. www.example.com):"
+    domain_name: "@@Domain Name (e.g. m.example.com):"
 
     site_grade: "@@Site Grade"
     subscription_status: "@@You are on a {{ subscriptionType }} subscription until {{ subscriptionEndDate }}"

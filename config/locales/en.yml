@@ -676,7 +676,7 @@ en:
     enter_password: "Enter your password to continue:"
     add_domain: "Add Domain"
     remove_domain: "Remove Domain"
-    domain_name: "Domain Name (e.g. www.example.com):"
+    domain_name: "Domain Name (e.g. m.example.com):"
 
     site_grade: "Site Grade"
     subscription_status: "You are on a {{ subscriptionType }} subscription until {{ subscriptionEndDate }}"

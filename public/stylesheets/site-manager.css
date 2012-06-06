@@ -112,6 +112,8 @@ h2.active-site {
     border-bottom: 1px solid #B3B3B3; }
     .accordian .content-body .error {
       margin-top: 10px; }
+    .accordian .content-body .payment-complete {
+      margin-bottom: 8px; }
   .accordian .signup-keys .signup-key-input {
     width: 510px; }
   .accordian ul.admins {
