@@ -718,7 +718,7 @@ es:
       max_domain_count: "@@You have reached the maximum number of domains for this mobile site (5)."
     # site_manager
     help:
-      renew_subscription: '@@i18n RENEW HELP'
+      renew_subscription: '@@Please renew your current subscription to maintain access to custom features.'
       site_access_list: '@@To manage a site, select it in the list below, then use the configuration panel on the right to edit or update the site.<br/></br><a href="http://help.yomobi.com/SiteManager" target="ymhelp"><b>Click here for more information.</b></a>'
       signup_keys: 'Cuando estés listo para entregar este sitio a su propietario, genera una clave de registro, luego envía por email el enlace al propietario del sitio. Asegúrate que haga click en el enlace para que se registre ante Yomobi y tome posesión de su sitio.<br/></br><a href="http://help.yomobi.com/Account/SignupKey" target="ymhelp"><b>Haz click aquí para mayor información.</b></a>'
       manage_site_type: '@@Select a payment option below to upgrade your mobile site to a Custom account, or to renew your Custom account.<br/></br><a href="http://help.yomobi.com/SiteManager/SiteTypes" target="ymhelp"><b>Click here for more information about a Custom account and making payments.</b></a>'

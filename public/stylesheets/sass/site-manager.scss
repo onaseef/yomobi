@@ -88,6 +88,7 @@ h2.active-site {
 .accordian {
   float: left;
   width: 625px;
+  min-height: 635px;
   padding: 10px;
   border-left: 1px solid $light-border;
 
@@ -124,7 +125,7 @@ h2.active-site {
   }
   .content-body {
     padding: 6px 10px 20px 10px;
-    background: $highlight-color;
+    background: #e5ebf5;
     display: none;
     overflow: hidden;
     clear: both;

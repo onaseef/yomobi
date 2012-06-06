@@ -71,6 +71,7 @@ h2.active-site {
 .accordian {
   float: left;
   width: 625px;
+  min-height: 635px;
   padding: 10px;
   border-left: 1px solid #b3b3b3; }
   .accordian .site-details {
@@ -105,7 +106,7 @@ h2.active-site {
     background: #d8dfea; }
   .accordian .content-body {
     padding: 6px 10px 20px 10px;
-    background: #d8dfea;
+    background: #e5ebf5;
     display: none;
     overflow: hidden;
     clear: both;
