@@ -35,6 +35,7 @@ var getVimeoVideoId = function (url) {
   }
 }
 
+
 var _blank = {};
 
 var builderUtil = {
@@ -449,6 +450,7 @@ var builderUtil = {
       headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') }
     }, extraData));
 
+
     uploader.instanceId = options.instanceId;
     uploader.yomobiOptions = options;
 
@@ -470,7 +472,7 @@ var builderUtil = {
         uploader.ctx.find('.selected-file').empty().append(
           '<div id="' + file.id + '">' +
           file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' +
-        '</div>');
+        '</div>').trigger('change');
       }
       return uploader;
     }
@@ -486,7 +488,7 @@ var builderUtil = {
         uploader.ctx.find('.selected-file').empty().append(
           '<div id="' + file.id + '">' +
           file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' +
-        '</div>');
+        '</div>').trigger('change');
       }
     });
 
@@ -552,7 +554,7 @@ var builderUtil = {
         uploader.ctx.find('.selected-file').empty().append(
           '<div id="' + file.id + '">' +
           file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' +
-        '</div>');
+        '</div>').trigger('change');
       });
       
       if (isAutoEnabled) {
@@ -615,7 +617,7 @@ var builderUtil = {
         return;
       }
 
-      uploader.ctx.find('.selected-file').text('Saving widget...');
+      uploader.ctx.find('.selected-file').text('Saving ...');
       uploader.layover.find('input').show();
 
       var resData = $.parseJSON(response.response);
