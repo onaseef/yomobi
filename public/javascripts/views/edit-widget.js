@@ -14,7 +14,7 @@
       'click a.edit-icon-link':     'editIcon',
 
       'keyup input[type=text][name!=wname]': 'checkForChanges',
-      'keyup textarea':                      'checkForChanges',
+      'keyup textarea':                      'checkForChanges'
     },
 
     initialize: function (widget) {
@@ -141,7 +141,7 @@
               .show();
 
           $('.wphoto-wrap button').attr('disabled', false);
-          //$('.wphoto-wrap tbody').fadeOut().remove();
+          $('.wphoto-wrap tbody').fadeOut().remove();
           var html = '' +
             + '<tbody>'
               + '<tr>'
@@ -160,7 +160,7 @@
             + '</tbody>';
 
 
-          //$('.wphoto-wrap').html(html);
+          $('.wphoto-wrap').html(html);
 
           util.initUploader( $('.wphoto-wrap'), {
             instanceId: 'dialog',
@@ -347,7 +347,6 @@
       this.selectedIcon && this.selectedIcon.removeClass('selected');
       this.selectedIcon = $(e.target).addClass('selected');
       if (util.customIcon) {
-        custom = false;
         delete util.customIcon;
         util.customIcon = null;
       }
@@ -373,10 +372,10 @@
     prompt: function () {
       delete this.selectedIcon;
 
-      var dialogContent = this.render().el
-        , self = this
-        , buttons = {}
-      ;
+      var dialogContent = this.render().el;
+      var self = this;
+      var buttons = {};
+
       buttons[g.i18n.save] = function () { $(this).dialog('close'); self.saveIcon(); };
       buttons[g.i18n.cancel] = closeFunc;
 
