@@ -227,7 +227,7 @@ class SiteManagerController < ApplicationController
       user = current_user
 
       if months == 12 && params[:months] == 'recur_yearly'
-        price = 48.76
+        price = 50
       elsif months == 12
         price = 50
       else
@@ -251,7 +251,7 @@ puts "BASE DATE: #{base_date}"
       if params[:months] == "recur"
         checkout_params[:period] = 'monthly'
         checkout_params[:start_time] = base_date
-        checkout_params[:end_time] = (base_date + 1.year).to_time.to_i
+        checkout_params[:end_time] = (base_date + 3.year).to_time.to_i
         checkout_params[:auto_recur] = true
         checkout_params[:api_url] = '/preapproval/create'
       elsif params[:months] == "recur_yearly"
