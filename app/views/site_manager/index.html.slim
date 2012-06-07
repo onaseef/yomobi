@@ -108,9 +108,9 @@
       h3.title = t 'site_manager.site_grade'
       .status
         | <% if (isPremium && subscriptionEndDate) { %>
-        | {{ grade }} (next charge: {{ nextChargeDate }})
+        | {{ grade }} (#{ t 'site_manager.next_charge' }: {{ nextChargeDate }})
         | <% } else if (isPremium) { %>
-        | {{ grade }} (expires {{ expireDate }})
+        | {{ grade }} (#{ t 'site_manager.expires' } {{ expireDate }})
         | <% } else { %>
         | {{ grade }}
         | <% } %>
@@ -137,24 +137,24 @@
         | <% } else { %>
         p.explanation == t('site_manager.help.manage_site_type')
         | <% } %>
-        h3 Select a payment option:
+        h3 = t 'site_manager.select_payment_option'
         form.pay action="{{ actionPath }}" method="POST" data-remote="true"
           input type="radio" value="1" name="months" checked="checked"
-          label One Month - $5
+          label = t 'site_manager.opt_one_month', :price => '$5'
           br
           input type="radio" value="12" name="months"
-          label One Year - $50
+          label = t 'site_manager.opt_one_year', :price => '$50'
           br
           input type="radio" value="recur" name="months"
-          label Autopay Monthly - $5/month
+          label = t 'site_manager.opt_monthly', :price => '$5'
           br
           input type="radio" value="recur_yearly" name="months"
-          label Autopay Yearly - $48.76year
+          label = t 'site_manager.opt_yearly', :price => '$48.76'
           br
           br
-          input type="checkbox" name="terms" 
-            a href="payment_terms" target="ymhelp" I agree to terms.
-          input type="submit" value="Submit"
+          input type="checkbox" name="terms"
+            a href="payment_terms" target="ymhelp" = t 'site_manager.i_agree'
+          input type="submit" value=t('javascript_builder.submit')
       .error.hide
 
   script.custom-domains(type="text/template")
