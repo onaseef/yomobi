@@ -126,6 +126,7 @@ en:
 
 
     site_manager:
+      unknown_error: "An unknown error has occured."
       default_error: "We're sorry, something went wrong."
       new_site_dialog_title: "Create New Site"
       add_admin_dialog_title: "Add Admin for "
