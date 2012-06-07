@@ -100,6 +100,7 @@
   // shared function
   var showContent = function () {
     this.$('.content-body').show();
+    this.$('.content-header').addClass('active');
     return this;
   };
 
