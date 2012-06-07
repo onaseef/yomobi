@@ -119,8 +119,10 @@ h2.active-site {
       margin-top: 12px; }
     .accordian .content-body input[type="button"], .accordian .content-body input[type="submit"], .accordian .content-body button {
       margin-left: 0px; }
-    .accordian .content-body .pay-options a {
-      margin-right: 6px; }
+    .accordian .content-body .pay-options {
+      margin-top: 6px; }
+      .accordian .content-body .pay-options a {
+        margin-right: 6px; }
   .accordian .signup-keys .signup-key-input {
     width: 510px; }
   .accordian ul.admins {

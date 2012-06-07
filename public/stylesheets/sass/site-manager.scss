@@ -134,7 +134,11 @@ h2.active-site {
     .payment-complete { margin-bottom: 8px; }
     .renew { margin-top: 12px; }
     input[type="button"], input[type="submit"], button { margin-left: 0px; }
-    .pay-options a { margin-right: 6px; }
+    
+    .pay-options {
+      margin-top: 6px;
+      a { margin-right: 6px; }
+    }
   }
 
   .signup-keys {
