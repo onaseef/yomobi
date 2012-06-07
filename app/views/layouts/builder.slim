@@ -52,7 +52,7 @@ html lang="en-US"
       - next if File.basename(widget) == 'base.js'
       = javascript_include_tag "widgets/mobile/#{File.basename widget}"
 
-
+    = javascript_include_tag "support/colorpicker"
 
     = javascript_include_tag 'views/edit-widget'
     = javascript_include_tag 'views/edit-tab-bar'
@@ -71,8 +71,6 @@ html lang="en-US"
     / ajax file uploading
     = javascript_include_tag "support/swfobject.js"
     = javascript_include_tag "plupload/plupload.full"
-
-    = javascript_include_tag "support/colorpicker"
 
     - if Rails.env.production?
       = javascript_include_tag 'google-analytics'
