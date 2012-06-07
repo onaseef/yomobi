@@ -662,7 +662,6 @@ var builderUtil = {
         var inputName = $(elem).data('target')
           , input = bapp.settingsEditor.$('[name='+inputName+']')
         ;
-        util.log('EH?',input);
         $(elem).ColorPickerSetColor( input.val() );
       },
       onShow: function (colpkr) {

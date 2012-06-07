@@ -1,21 +1,34 @@
 (function ($) {
 
   var pluckName = function (w) { return w && w.get('name'); };
-    
+
+  var getSetting = function (name) {
+    return g.settings[name] || util.defaultSettings[name];
+  };
+  var setTabBarColors = function () {
+    var color = getSetting('tab_bar_color');
+    $('#top-bar .tab-bar').css({ background:color});
+    var color = getSetting('tab_bar_text_color');
+    $('#top-bar .tab-bar td, #top-bar .tab-bar td a').css({ color:color });
+util.log('SETTING TAB BAR COLORS', color, $('#top-bar .tab-bar td, #top-bar .tab-bar td a'))
+    $('#top-bar .tab-bar').css({ borderColor:color });
+  };
+
+
   window.EditTabBarView = Backbone.View.extend({
-    
+
     el: $('#builder .widget-editor'),
 
     template: util.getTemplate('edit-tab-bar'),
-    
+
     events: {
       'change select': 'updateWtabs'
     },
-    
+
     initialize: function () {
-      
+
     },
-    
+
     updateWtabs: function (e) {
       var self = this
         , $elem = $(e.target)
@@ -24,15 +37,17 @@
       ;
       if (!util.reserveUI()) {
         mapp.updateWtabs();
+        setTabBarColors();
         return;
       }
       util.log('Updating wtabs',idx,wid);
       mapp.metaDoc.wtabs.splice(idx,1,wid);
-      
+
       this.leftJustifyWtabs();
-      
+
       bapp.syncMetaDoc(function () {
         mapp.updateWtabs();
+        setTabBarColors();
         bapp.startEditingPanel('tabBar');
       });
     },
@@ -62,7 +77,7 @@
         mapp.updateWtabs();
       }
     },
-    
+
     startEditing: function () {
       util.log('Editing Tab Bar');
 
@@ -91,7 +106,7 @@
     stopEditing: function () {
       this.el.html(bapp.idleTemplate());
     }
-    
+
   });
-  
+
 })(jQuery);
