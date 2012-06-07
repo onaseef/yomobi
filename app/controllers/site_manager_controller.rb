@@ -243,10 +243,8 @@ class SiteManagerController < ApplicationController
         :reference_id => "#{user.id}|#{@site.id}|#{months}|#{ActiveSupport::SecureRandom.uuid}",
         :prefill_info => { email:user.email, name:"#{user.first_name} #{user.last_name}" },
       }
-      # LAST TIME: Test if base_date is working
-      # (should be end of last payment cycle)
-      last_sub = @site.last_subscription
-      base_date = @site.next_charge_date || @site.expire_date || DateTime.now
+      base_date = @site.next_charge_date || @site.expire_date || (DateTime.now + 3.hours)
+      base_date = DateTime.now + 3.hours if base_date < DateTime.now + 3.hours
 puts "BASE DATE: #{base_date}"
       if params[:months] == "recur"
         checkout_params[:period] = 'monthly'
@@ -263,7 +261,14 @@ puts "BASE DATE: #{base_date}"
       else
         checkout_params[:type] = 'SERVICE'
       end
-      @checkout = init_checkout(checkout_params)
+
+      begin
+        @checkout = init_checkout(checkout_params)
+      rescue WepayRails::Exceptions::WepayCheckoutError => e
+        match = e.message.match /:error_description=>"([^"]*)"/
+        return error match[1] if match[1]
+        error 500, 'unknown_error'
+      end
       render :layout => false
       # return error 'todo'
     else
