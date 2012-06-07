@@ -57,12 +57,13 @@
       this.siteAdmins = new SiteAdminsView();
 
       this.sections = [this.siteDetailsView, this.signupKeys,
-                       this.siteGrade, this.domains, this.merchant,
+                       this.siteGrade, this.merchant, this.domains,
                        this.siteAdmins];
     },
 
     render: function (site) {
       _.each(this.sections, function (v) { v.render(site); });
+      if (this.selectedIdx) this.sections[this.selectedIdx].showContent();
       return this;
     },
 
@@ -74,6 +75,7 @@
       });
       var $header = util.ensureClassAncestor(e.target, 'content-header');
       $header.addClass('active').siblings('.content-body').show();
+      this.selectedIdx = $header.parent().index();
     },
 
     closeAccordian: function () {
@@ -83,7 +85,8 @@
           body.hide().removeClass('active');
           view.render(sman.getSelectedSite());
         }
-      })
+      });
+      delete this.selectedIdx;
     },
 
     getActiveSection: function () {
