@@ -291,7 +291,7 @@ puts "BASE DATE: #{base_date}"
         return error 'cancel_error'
       end
     else
-      return success :cancelSubscription => company.id
+      return success :cancelSubscription => company.id, :site => company
     end
   end
 

@@ -116,7 +116,7 @@
         | <% } %>
       .clearfix
     .content-body
-      | <% if (subscriptionEndDate === 'cancelled') { %>
+      | <% if (_maybe.justCancelled) { %>
       label = t 'site_manager.cancel_success'
       | <% } %>
 

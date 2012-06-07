@@ -256,7 +256,8 @@
       });
       this.$('form.cancel').bind('ajax:success', function (e, data, status, xhr) {
         var site = sman.getSelectedSite();
-        site.set({ subscriptionEndDate:'cancelled' });
+        site.set(data.site);
+        site.set({ justCancelled:true });
         self.render(site);
         self.$('.content-header').click();
       });
