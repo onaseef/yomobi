@@ -125,11 +125,12 @@
         button.ok = t 'general.ok'
 
       | <% if (isSubscribed) { %>
-      form.cancel action="{{ cancelPath }}" method="POST" data-remote="true"
-        label = t 'site_manager.subscription_status'
-        input type="hidden" name="site_id" value="{{ id }}"
-        input type="submit" value=t('site_manager.cancel_subscription')
-      button.renew = t 'site_manager.renew_subscription'
+      .subscribe-options
+        form.cancel action="{{ cancelPath }}" method="POST" data-remote="true"
+          label = t 'site_manager.subscription_status'
+          input type="hidden" name="site_id" value="{{ id }}"
+          input type="submit" value=t('site_manager.cancel_subscription')
+        button.renew = t 'site_manager.renew_subscription'
       | <% } %>
       .pay-options class="<% if (isSubscribed) { print('hide'); } %>"
         | <% if (isSubscribed) { %>
@@ -142,12 +143,12 @@
         | <% } %>
         h3 = t 'site_manager.select_payment_option'
         form.pay action="{{ actionPath }}" method="POST" data-remote="true"
-          input type="radio" value="1" name="months" checked="checked"
-          label = t 'site_manager.opt_one_month', :price => '$5'
-          br
-          input type="radio" value="12" name="months"
-          label = t 'site_manager.opt_one_year', :price => '$50'
-          br
+          /input type="radio" value="1" name="months" checked="checked"
+          /label = t 'site_manager.opt_one_month', :price => '$5'
+          /br
+          /input type="radio" value="12" name="months"
+          /label = t 'site_manager.opt_one_year', :price => '$50'
+          /br
           input type="radio" value="recur" name="months"
           label = t 'site_manager.opt_monthly', :price => '$5'
           br
