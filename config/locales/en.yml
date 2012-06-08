@@ -683,9 +683,9 @@ en:
     subscription_status: "You are on a {{ subscriptionType }} subscription until {{ subscriptionEndDate }}"
     cancel_subscription: "Cancel Subscription"
     cancel_success: "Subscription cancelled sucessfully."
-    payment_complete: "Site successfully upgraded."
+    payment_complete: "This site has been successfully upgraded."
     renew_subscription: "Renew Subscription / Prepay"
-    next_charge: "next charge"
+    next_charge: "next charge: "
     expires: "expires"
 
     select_payment_option: "Select a payment option:"

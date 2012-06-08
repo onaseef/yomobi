@@ -108,7 +108,7 @@
       h3.title = t 'site_manager.site_grade'
       .status
         | <% if (isPremium && subscriptionEndDate) { %>
-        | {{ grade }} (#{ t 'site_manager.next_charge' }: {{ nextChargeDate }})
+        | {{ grade }} (#{ t 'site_manager.next_charge' } {{ nextChargeDate }})
         | <% } else if (isPremium) { %>
         | {{ grade }} (#{ t 'site_manager.expires' } {{ expireDate }})
         | <% } else { %>

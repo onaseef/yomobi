@@ -93,7 +93,8 @@ h2.active-site {
       margin: 0; }
     .accordian .content-header .status {
       float: left;
-      width: 275px; }
+      width: 275px;
+      color: #080; }
     .accordian .content-header .action {
       color: #3B5998;
       text-decoration: underline;
