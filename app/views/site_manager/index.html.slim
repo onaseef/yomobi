@@ -122,6 +122,7 @@
 
       .payment-complete.hide
         label.success = t 'site_manager.payment_complete'
+        button.ok = t 'general.ok'
 
       | <% if (isSubscribed) { %>
       form.cancel action="{{ cancelPath }}" method="POST" data-remote="true"

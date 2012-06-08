@@ -14,6 +14,7 @@ en:
   general:
     click_here_start: "Click here"
     click_here_middle: "click here"
+    ok: "OK"
 
   days:
     Sunday: "Sunday"

@@ -225,7 +225,8 @@
       'click .back-btn':        'goBack',
       'submit form.pay':        'onPaySubmit',
       'submit form.cancel, click form.cancel [type=submit]':     'confirmCancelSub',
-      'click button.renew':     'showPayOptions'
+      'click button.renew':     'showPayOptions',
+      'click .payment-complete .ok':   'onPayCompleteOk'
     },
     showContent: showContent,
     render: function (site) {
@@ -299,6 +300,11 @@
     onPayComplete: function (e) {
       this.el.find('.payment-complete').show();
       this.el.find('.pay-options').hide();
+    },
+
+    onPayCompleteOk: function (e) {
+      this.render( sman.getSelectedSite() );
+      this.showContent();
     },
 
     confirmCancelSub: function (e) {
