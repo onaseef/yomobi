@@ -10,6 +10,7 @@ en:
 
   date_formats:
     payment: "%B %d, %Y"
+    site_grade_dates: "%Y-%m-%d"
 
   general:
     click_here_start: "Click here"
