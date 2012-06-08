@@ -2,10 +2,17 @@
 - content_for :title do
   h1 Payment History
 
-ul
-- @payments.each do |p|
-  li
-    ' (#{ p.created_at.strftime( t 'date_formats.payment' ) })
-    ' You paid $#{p.amount_paid} to upgrade
-    b = p.company.url_and_name
-    |  for #{p.months} month(s).
+a href="http://help.yomobi.com/PaymentHistory" Click here for help with payment history.
+br
+br
+table.payment-history
+	tr.header
+  		td.date Date
+  		td.amount Amount
+  		td.url Site
+	- @payments.each do |p|
+  	tr 
+  		td.date #{ p.created_at.strftime( t 'date_formats.payment' ) }
+  		td.amount $#{p.amount_paid}
+  		td.url = p.company.url_and_name
+
