@@ -226,7 +226,7 @@
       'submit form.pay':        'onPaySubmit',
       'submit form.cancel, click form.cancel [type=submit]':     'confirmCancelSub',
       'click button.renew':     'showPayOptions',
-      'click .payment-complete .ok':   'onPayCompleteOk'
+      'click button.ok':   'onOkButton'
     },
     showContent: showContent,
     render: function (site) {
@@ -243,6 +243,13 @@
       };
       var templateData = _.extend(site.toJSON(), extraData);
       $(this.el).html( this.template(templateData) );
+
+      if (site.get('justCancelled')) {
+        this.el.find('.just-cancelled').show();
+        this.el.find('.subscribe-options').hide();
+        this.el.find('.pay-options').hide();
+        site.set({ justCancelled:false });
+      }
 
       // bind button forms' ajax callbacks
       var self = this;
@@ -303,7 +310,7 @@
       this.el.find('.pay-options').hide();
     },
 
-    onPayCompleteOk: function (e) {
+    onOkButton: function (e) {
       this.render( sman.getSelectedSite() );
       this.showContent();
     },

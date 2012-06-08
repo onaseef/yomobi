@@ -116,9 +116,10 @@
         | <% } %>
       .clearfix
     .content-body
-      | <% if (_maybe.justCancelled) { %>
-      label = t 'site_manager.cancel_success'
-      | <% } %>
+
+      .just-cancelled.hide
+        label.success = t 'site_manager.cancel_success'
+        button.ok = t 'general.ok'
 
       .payment-complete.hide
         label.success = t 'site_manager.payment_complete'
