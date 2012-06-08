@@ -686,8 +686,8 @@ es:
     cancel_success: "@@Subscription cancelled sucessfully."
     payment_complete: "@@This site has been successfully upgraded."
     renew_subscription: "@@Renew Subscription / Prepay"
-    next_charge: "@@next charge: "
-    expires: "@@expires "
+    next_charge: "@@next charge: {{ nextChargeDate }})"
+    expires: "@@expires {{ expireDate }}"
 
     select_payment_option: "@@Select a payment option:"
     opt_one_month: "@@One Month - %{price}"
