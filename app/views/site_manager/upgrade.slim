@@ -7,4 +7,4 @@ erb:
     WePay.iframe_checkout("checkout", "<%=raw (@checkout.checkout_uri || @checkout.preapproval_uri) %>");
   </script>
 
-button.back-btn Back
+button.back-btn ==t('site_manager.back')

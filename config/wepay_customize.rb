@@ -9,9 +9,9 @@ theme_object = {
 }
 
 params = {
-  :client_id => "175290",
-  :client_secret => "fb0167863f",
-  :theme_object => "theme_object"
+  :client_id => '175290',
+  :client_secret => 'fb0167863f',
+  :theme_object => theme_object
 }
 
 response = RestClient.post 'http://stage.wepayapi.com/v2/app/modify', params.to_json
