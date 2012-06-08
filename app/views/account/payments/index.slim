@@ -1,18 +1,18 @@
 
 - content_for :title do
-  h1 Payment History
+  h1  = t 'account_settings.payment_history'
 
-a href="http://help.yomobi.com/PaymentHistory" Click here for help with payment history.
+a href="http://help.yomobi.com/PaymentHistory" = t 'account_settings.payment_history_help'
 br
 br
 table.payment-history
-	tr.header
-  		td.date Date
-  		td.amount Amount
-  		td.url Site
-	- @payments.each do |p|
-  	tr 
-  		td.date #{ p.created_at.strftime( t 'date_formats.payment' ) }
-  		td.amount $#{p.amount_paid}
-  		td.url = p.company.url_and_name
-
+  tr.header
+      td.date = t 'general.date'
+      td.amount = t 'general.amount'
+      td.url = t 'general.site'
+  - @payments.each do |p|
+    tr class=cycle('odd','even')
+      td.type
+      td.date = p.created_at.strftime( t 'date_formats.payment' )
+      td.amount = "$#{p.amount_paid}"
+      td.url = p.company.url_and_name

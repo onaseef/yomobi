@@ -15,6 +15,10 @@ es:
   general:
     click_here_start: "Haz click aquí"
     click_here_middle: "haz click aquí"
+    ok: "@@OK"
+    date: "@@Date"
+    site: "@@Site"
+    amount: "@@Amount"
 
   days:
     Sunday: "Domingo"
@@ -398,6 +402,7 @@ es:
     new_password_confirm: "Repetir Contraseña:"
     save: "Guardar Cambios"
     payment_history: "@@Payment History"
+    payment_history_help: "@@Click here for help with payment history."
 
   upgrade:
     title: "@@Upgrade Mobile Site"

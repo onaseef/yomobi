@@ -16,6 +16,9 @@ en:
     click_here_start: "Click here"
     click_here_middle: "click here"
     ok: "OK"
+    date: "Date"
+    site: "Site"
+    amount: "Amount"
 
   days:
     Sunday: "Sunday"
@@ -399,6 +402,7 @@ en:
     new_password_confirm: "Re-enter New Password:"
     save: "Save Changes"
     payment_history: "Payment History"
+    payment_history_help: "Click here for help with payment history."
 
   upgrade:
     title: "Upgrade Mobile Site"
