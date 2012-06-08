@@ -12,7 +12,6 @@ table.payment-history
       td.url = t 'general.site'
   - @payments.each do |p|
     tr class=cycle('odd','even')
-      td.type
       td.date = p.created_at.strftime( t 'date_formats.payment' )
       td.amount = "$#{p.amount_paid}"
       td.url = p.company.url_and_name
