@@ -124,85 +124,82 @@
 
       this.editIconDialog.prompt();
 
-      var callback = function(data){
-        util.log('Received custom icon data', data);
-        util.releaseUI();
-
-        if(data.result !== 'success' && data.result !== "noupload"){
-          alert("Custom icon upload failed (" + data.result + ")");
-          return;
-        }
-
-        if(data.wphotoUrl){
-            this.selectedIcon && this.selectedIcon.removeClass('selected');
-            $('body').find('.selected-display')
-              .find('img').attr('src', data.wphotoUrl).end()
-              .find('label').text("").end()
-              .show();
-
-          $('.wphoto-wrap button').attr('disabled', false);
-          $('.wphoto-wrap tbody').fadeOut().remove();
-          var html = '' +
-            + '<tbody>'
-              + '<tr>'
-                + '<td>'
-                  + '<label class="upload-custom-icon-label">Upload Custom Icon</label>'
-                + '</td>'
-              + '</tr>'
-              + '<tr>'
-                + '<td>'
-                  + '<label>Select a picture...</label><br>'
-                  + '<div class="selected-file lfloat">&nbsp;</div>'
-                  + '<button name="pick_files" style="position: relative; z-index: 0; ">Browse...</button>'
-                  + '<div class="error"></div>'
-                + '</td>'
-              + '</tr>'
-            + '</tbody>';
-
-
-          $('.wphoto-wrap').html(html);
-
-          util.initUploader( $('.wphoto-wrap'), {
-            instanceId: 'dialog',
-            auto: false,
-            alwaysOnTop: true,
-            emptyQueue: true,
-            autostart: true
-          });
-
-          util._uploaders['dialog'].bringToFront();
-
-          //var uploader_id = util._uploaders['dialog'];
-
-        }
-
-        // hide ajax spinner
-        $('body').find('.ajax').hide();
-
-        util.customIcon = { 
-          url : data.wphotoUrl 
-        }
-
-      }
-
-      util.initUploader( $(this.editIconDialog.el).find('.wphoto-wrap'), {
-        instanceId: 'dialog',
+      // initiate the uploader
+      util.initUploader($(this.editIconDialog.el), {
+        instanceId: this.widget.id,
         auto: false,
         alwaysOnTop: true,
         emptyQueue: true,
         wid: this.widget.id
       });
-      // Because we're in a dialog, we need to set the uploader to be
-      // on top of everything else.
-      util._uploaders['dialog'].bringToFront();
+      // bring it to front
+      util._uploaders[this.widget.id].bringToFront();
+      window.widgetid = this.widget.id;
 
-
-      var uploader = util._uploaders['dialog'];
+      // will be run after the upload is completed
 
       $('.selected-file').live('change', function(){
-        uploader.yomobiOptions.onDone = callback;
-        uploader.start();
+        var uploader = util._uploaders[window.widgetid];
+        if(typeof uploader.files[0].status !== 'undefined' && uploader.files.length > 0 && uploader.files[0].status !== plupload.DONE){
+        
+          uploader.yomobiOptions.onDone = afterUploadCallback;
+          uploader.start();
+        }
       });
+
+      var afterUploadCallback = function(data){
+        util.log('Received custom icon data', data);
+        util.releaseUI();
+
+        // get existent uploader
+        var uploader = util._uploaders[window.widgetid];
+        if(uploader.files.length > 0){
+          uploader.splice();
+        }
+
+        if(data.result !== 'success' && data.result !== "noupload"){
+          alert("Custom icon upload failed (" + data.result + ")");
+          return;
+        }
+        // check if the image url is present
+        if(data.wphotoUrl){
+            // remove the current selected class from icons container
+            this.selectedIcon && this.selectedIcon.removeClass('selected');
+            // update the image attribute and fade it in
+            $('body').find('.selected-display')
+              .find('img').attr('src', data.wphotoUrl).end()
+              .find('label').text("").end()
+              .show();
+            
+            // enable the upload button again
+            $('.wphoto-wrap button:disabled').remove();
+            $('.wphoto-wrap button[name=pick_files]').fadeIn();
+            $('.selected-file').removeAttr('style').html('');
+            //$('.selected-file').animate({ backgroundPosition: "(0 0)" }, 300);
+            $('.ajax').hide();
+
+            util.customIcon = { 
+              url : data.wphotoUrl 
+            }
+
+            
+            // if browser
+            if($.browser.msie && $.browser.version <= '8.0'){
+              util.initUploader($('.wphoto-wrap'), {
+                instanceId: window.widgetid,
+                auto: false,
+                alwaysOnTop: true,
+                emptyQueue: true,
+                wid: window.widgetid
+              });
+              // bring it to front
+              util._uploaders[window.widgetid].bringToFront();
+            }
+
+
+        } // end if data.wphotourl
+
+      }// end callback
 
     },
 
