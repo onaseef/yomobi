@@ -131,9 +131,9 @@
       button.renew = t 'site_manager.renew_subscription'
       | <% } %>
       .pay-options class="<% if (isSubscribed) { print('hide'); } %>"
-        | <% if (isSubscribed) { %>
-        .divider
-        p.explanation == t('site_manager.help.renew_subscription')
+        | <% if (isSubscribed || isPremium) { %>
+        br
+        p.explanation == t('site_manager.help.extend_premium_term')
         | <% } else { %>
         p.explanation == t('site_manager.help.manage_site_type')
         | <% } %>

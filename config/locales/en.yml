@@ -696,7 +696,6 @@ en:
     i_agree: "I agree to these terms"
     back: "&larr; Back"
 
-
     setup: "Setup"
     custom_domains: "Custom Domains"
     connected_domains: "%{domain_count} Connected Domains"
@@ -728,12 +727,14 @@ en:
       domain_taken: "Domain has already been linked to another mobile site."
       bad_domain_format: "Invalid domain format."
       max_domain_count: "You have reached the maximum number of domains for this mobile site (5)."
+      
     # site_manager
     help:
-      renew_subscription: 'Please renew your current subscription to maintain access to custom features.'
       site_access_list: 'To manage a site, select it in the list below, then use the configuration panel on the right to edit or update the site.<br/><br/><a href="http://help.yomobi.com/SiteManager" target="ymhelp"><b>Click here for more information.</b></a>'
       signup_keys: 'When you are ready to hand this site over to an owner who does not already have a YoMobi login, generate a signup key, then email the link to the site owner and have them click on the link to sign up to Yomobi and take ownership of their site.<br/><br/><a href="http://help.yomobi.com/Account/SignupKey" target="ymhelp"><b>Click here for more information.</b></a>'
-      manage_site_type: 'Select a payment option below to upgrade your mobile site to a Custom account, or to renew your Custom account.<br/><br/><a href="http://help.yomobi.com/SiteManager/SiteTypes" target="ymhelp"><b>Click here for more information about a Custom account and making payments.</b></a>'
+      manage_site_type: 'Select a payment option below to upgrade your mobile site to a Custom account.<br/><br/><a href="http://help.yomobi.com/SiteManager/SiteTypes" target="ymhelp"><b>Click here for more information about a Custom account features and making payments.</b></a>'
+      extend_premium_term: 'Select a payment option below to extend the duration of your existing Custom account.<br/><br/><a href="http://help.yomobi.com/SiteManager/SiteTypes" target="ymhelp"><b>Click here for more information about Custom account features and making payments.</b></a>'
+      renew_subscription: 'Please renew your current subscription to maintain access to custom features.'
       manage_custom_domain: '<a href="http://help.yomobi.com/SiteManager/CustomDomain" target="ymhelp"><b>Click here to learn how to associate a custom domain with your mobile site.</b></a>'
       manage_site_admins: '<a href="http://help.yomobi.com/SiteManager/SiteAdmins" target="ymhelp"><b>Click here to learn how to manage site administrators.</b></a>'
     confirm:

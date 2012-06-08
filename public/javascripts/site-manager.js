@@ -298,6 +298,7 @@
 
     onPayComplete: function (e) {
       this.el.find('.payment-complete').show();
+      this.el.find('.pay-options').hide();
     },
 
     confirmCancelSub: function (e) {
