@@ -108,6 +108,14 @@ class Company < ActiveRecord::Base
     "[/#{db_name}] #{name}"
   end
 
+  def site_name
+    "#{name}"
+  end
+
+  def site_url
+    "/#{db_name}"
+  end
+
   def couch_host
     Rails.application.config.couch_host
   end

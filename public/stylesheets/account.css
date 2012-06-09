@@ -16,6 +16,33 @@
   background: #edeff4;
   border-top: 1px solid #b3b3b3;
   padding: 10px 20px;
-  min-height: 450px; }
+  height: 450px;
+  overflow: auto; }
   .inner-content table {
     padding-bottom: 10px; }
+  .inner-content .payment-history-wrapper {
+    max-height: 400px;
+    overflow: auto;
+    border: 1px solid #C1DAD7; }
+  .inner-content .payment-history {
+    border-collapse: collapse;
+    width: 100%; }
+    .inner-content .payment-history .header {
+      background-color: #D9C780;
+      border-top: 1px solid #C1DAD7;
+      border-bottom: 1px solid #C1DAD7;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-align: left;
+      padding: 6px 6px 6px 12px;
+      font-weight: bold; }
+    .inner-content .payment-history .date, .inner-content .payment-history .amount {
+      width: 85px; }
+    .inner-content .payment-history td {
+      padding: 3px 16px 3px 6px;
+      border-right: 1px solid #C1DAD7; }
+    .inner-content .payment-history .name {
+      border-right: none; }
+    .inner-content .payment-history .even {
+      background-color: #D6E9E7;
+      margin: 6px 0px; }

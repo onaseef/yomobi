@@ -9,7 +9,7 @@ en:
     share: "Share:"
 
   date_formats:
-    payment: "%B %d, %Y"
+    payment: "%m/%d/%Y"
     site_grade_dates: "%Y-%m-%d"
 
   general:
@@ -18,6 +18,8 @@ en:
     ok: "OK"
     date: "Date"
     site: "Site"
+    site_url: "Site URL"
+    site_name: "Site Name"
     amount: "Amount"
 
   days:

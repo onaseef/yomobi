@@ -122,8 +122,10 @@ h2.active-site {
       margin-left: 0px; }
     .accordian .content-body .back-btn {
       font-size: 14px; }
+    .accordian .content-body .subscribe-options label {
+      margin-right: 30px; }
     .accordian .content-body .pay-options {
-      margin-top: 6px; }
+      margin-top: 12px; }
       .accordian .content-body .pay-options a {
         margin-right: 6px; }
   .accordian .signup-keys .signup-key-input {

@@ -5,13 +5,16 @@
 a href="http://help.yomobi.com/PaymentHistory" = t 'account_settings.payment_history_help'
 br
 br
-table.payment-history
-  tr.header
-      td.date = t 'general.date'
-      td.amount = t 'general.amount'
-      td.url = t 'general.site'
-  - @payments.each do |p|
-    tr class=cycle('odd','even')
-      td.date = p.created_at.strftime( t 'date_formats.payment' )
-      td.amount = "$#{p.amount_paid}"
-      td.url = p.company.url_and_name
+div.payment-history-wrapper
+	table.payment-history
+	  tr.header
+	      td.date = t 'general.date'
+	      td.amount = t 'general.amount'
+	      td.url = t 'general.site_url'
+	      td.name = t 'general.site_name'
+	  - @payments.each do |p|
+	    tr class=cycle('odd','even')
+	      td.date = p.created_at.strftime( t 'date_formats.payment' )
+	      td.amount = "$#{p.amount_paid}"
+	      td.url = p.company.site_url
+	      td.name = p.company.site_name
