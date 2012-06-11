@@ -18,7 +18,7 @@ class WepayCheckoutRecordObserver < ActiveRecord::Observer
       company = Company.find_by_id(company_id)
       return if company.nil?
 
-      last_sub = company.last_subscription(payment.id)
+      last_sub = company.last_subscription(payment)
       last_payment = company.last_payment
 
       # base_date is when the subscription will start
@@ -26,9 +26,8 @@ class WepayCheckoutRecordObserver < ActiveRecord::Observer
         base_date = last_sub.next_charge_date
       elsif last_payment
         base_date = last_payment.expire_date
-      else
-        base_date = Date.today
       end
+      base_date ||= Date.today
 
       payment.sub_state = 'active' if wcr.period
 
