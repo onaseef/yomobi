@@ -23,22 +23,28 @@ class Payment < ActiveRecord::Base
     wcr = self.wepay_checkout_record
     return nil if wcr.end_time.nil?
 puts "DATE START #{Time.at(wcr.start_time).to_datetime}"
-    base_time ||= [DateTime.now, Time.at(wcr.start_time).to_datetime].max
+    base_time ||= [Date.today, Time.at(wcr.start_time).to_date].max
     end_date = Time.at(wcr.end_time).to_date
     return nil if end_date < (base_time + 1.month)
 
     if wcr.period == 'monthly'
-      while end_date > base_time + 1.month
+      offset = base_time > (Date.today + 1.month) ? 0 : 1.month
+      while end_date > base_time + offset
         end_date -= 1.month
       end
     elsif wcr.period == 'yearly'
-      while end_date > base_time + 1.year
+      offset = base_time > (Date.today + 1.year) ? 0 : 1.year
+      while end_date > base_time + offset
         end_date -= 1.year
       end
     else
       return nil
     end
     end_date
+  end
+
+  def wcr
+    self.wepay_checkout_record
   end
 
 end
