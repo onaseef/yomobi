@@ -30,6 +30,21 @@ class User < ActiveRecord::Base
     super(conditions)
   end
 
+  def charge_history
+    payments = self.payments
+      .joins(:wepay_checkout_record).includes(:wepay_checkout_record)
+      .includes(:company)
+      .where(:is_valid => true)
+      .where('wepay_checkout_records.start_time <= :start_time',
+              :start_time => (Time.now + 3.hours).to_i)
+      .order('wepay_checkout_records.start_time')
+    history = []
+    payments.each do |p|
+      history << p.charge_history.map {|date| Charge.new(p,date) }
+    end
+    history.flatten!.sort_by! { |charge| charge.charge_date }
+  end
+
   # returns the company that the user is currently editing
   def company
     co = Company.find_by_id self.active_company_id

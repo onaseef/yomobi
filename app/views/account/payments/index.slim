@@ -12,9 +12,9 @@ div.payment-history-wrapper
 	      td.amount = t 'general.amount'
 	      td.url = t 'general.site_url'
 	      td.name = t 'general.site_name'
-	  - @payments.each do |p|
+	  - @charges.each do |c|
 	    tr class=cycle('odd','even')
-	      td.date = p.created_at.strftime( t 'date_formats.payment' )
-	      td.amount = "$#{p.amount_paid}"
-	      td.url = p.company.site_url
-	      td.name = p.company.site_name
+	      td.date = c.charge_date.strftime( t 'date_formats.payment' )
+	      td.amount = "$#{c.amount_paid}"
+	      td.url = c.site_url
+	      td.name = c.site_name

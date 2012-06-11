@@ -61,8 +61,12 @@ class WepayCheckoutRecordObserver < ActiveRecord::Observer
         # check for a previous valid payment
       end
     when /^(cancelled)$/ then
-      # Manually cancelled. Don't modify payment validitidy, but update expire date
-      if payment.sub_state == 'active'
+      # Manually cancelled. Update expire date
+      if payment.sub_state == 'active' && payment.start_date > Date.today
+        # No payment has been made for this subscription. Just mark it as invalid
+        payment.is_valid = false
+        payment.sub_state = 'cancelled'
+      elsif payment.sub_state == 'active'
         puts "CANCELLING #{wcr.preapproval_id}"
         payment.expire_date = payment.next_charge_date
         payment.sub_state = 'cancelled'

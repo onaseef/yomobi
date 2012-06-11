@@ -242,13 +242,13 @@ class SiteManagerController < ApplicationController
 puts "BASE DATE: #{base_date}"
       if recur_type == "monthly"
         checkout_params[:period] = 'monthly'
-        checkout_params[:start_time] = base_date
+        checkout_params[:start_time] = base_date.to_time.to_i
         checkout_params[:end_time] = (base_date + 3.years).to_time.to_i
         checkout_params[:auto_recur] = true
         checkout_params[:api_url] = '/preapproval/create'
       elsif recur_type == "yearly"
         checkout_params[:period] = 'yearly'
-        checkout_params[:start_time] = base_date
+        checkout_params[:start_time] = base_date.to_time.to_i
         checkout_params[:end_time] = (base_date + 3.years).to_time.to_i
         checkout_params[:auto_recur] = true
         checkout_params[:api_url] = '/preapproval/create'

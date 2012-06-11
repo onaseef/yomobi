@@ -3,7 +3,7 @@ class Account::PaymentsController < ApplicationController
   layout 'account'
 
   def index
-    @payments = current_user.payments
+    @charges = current_user.charge_history
     @page = 'payment-history'
   end
 
