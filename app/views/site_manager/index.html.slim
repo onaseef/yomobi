@@ -144,16 +144,10 @@
         | <% } %>
         h3 = t 'site_manager.select_payment_option'
         form.pay action="{{ actionPath }}" method="POST" data-remote="true"
-          /input type="radio" value="1" name="months"
-          /label = t 'site_manager.opt_one_month', :price => '$5'
-          /br
-          /input type="radio" value="12" name="months"
-          /label = t 'site_manager.opt_one_year', :price => '$50'
-          /br
-          input type="radio" value="recur" name="months" checked="checked"
+          input type="radio" value="monthly" name="recur_type" checked="checked"
           label = t 'site_manager.opt_monthly', :price => '$5'
           br
-          input type="radio" value="recur_yearly" name="months"
+          input type="radio" value="yearly" name="recur_type"
           label = t 'site_manager.opt_yearly', :price => '$50'
           br
           br
