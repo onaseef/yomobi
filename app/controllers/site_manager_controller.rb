@@ -275,7 +275,7 @@ puts "BASE DATE: #{base_date}"
     return error('bad_site_id') unless company.present?
 
     record = WepayCheckoutRecord.last_preapproval_for_company(company)
-    return error('no_subscription') unless record.present?
+    return success :cancelSubscription => company.id, :site => company if record.nil?
 
     begin
       cancel_preapproval record.preapproval_id
