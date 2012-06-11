@@ -26,18 +26,17 @@ class Payment < ActiveRecord::Base
   def next_charge_date(base_time=nil)
     wcr = self.wepay_checkout_record
     return nil if wcr.end_time.nil?
-puts "DATE START #{Time.at(wcr.start_time).to_datetime}"
     base_time ||= [Date.today, Time.at(wcr.start_time).to_date].max
     end_date = Time.at(wcr.end_time).to_date
     return nil if end_date < (base_time + 1.month)
 
     if wcr.period == 'monthly'
-      offset = base_time > (Date.today + 1.month) ? 0 : 1.month
+      offset = base_time > (Date.today + 1.month - 1.day) ? 0 : 1.month
       while end_date > base_time + offset
         end_date -= 1.month
       end
     elsif wcr.period == 'yearly'
-      offset = base_time > (Date.today + 1.year) ? 0 : 1.year
+      offset = base_time > (Date.today + 1.year - 1.day) ? 0 : 1.year
       while end_date > base_time + offset
         end_date -= 1.year
       end
@@ -50,23 +49,16 @@ puts "DATE START #{Time.at(wcr.start_time).to_datetime}"
   def charge_history
     start_date = self.start_date
     end_date = [self.expire_date, Time.at(wcr.end_time).to_date, Date.today].min
-    return [] if Date.today < start_date
+    return [] if Date.today < start_date || !['monthly', 'yearly'].include?(wcr.period)
 
     dates = []
+    step = (wcr.period == 'monthly') ? 1.month : 1.year
 
-    if wcr.period == 'monthly'
-      while start_date <= end_date
-        dates << start_date
-        start_date += 1.month
-      end
-    elsif wcr.period == 'yearly'
-      while start_date <= end_date
-        dates << start_date
-        start_date += 1.year
-      end
-    else
-      return nil
+    while start_date <= end_date
+      dates << start_date if start_date != self.expire_date
+      start_date += step
     end
+
     dates
   end
 
