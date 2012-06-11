@@ -142,8 +142,8 @@ class Company < ActiveRecord::Base
     @last_payment
   end
 
-  def last_subscription
-    wcr = WepayCheckoutRecord.last_preapproval_for_company(self)
+  def last_subscription(exception_id=nil)
+    wcr = WepayCheckoutRecord.last_preapproval_for_company(self, exception_id)
     wcr && wcr.payment
   end
 
