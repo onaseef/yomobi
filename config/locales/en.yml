@@ -10,7 +10,7 @@ en:
 
   date_formats:
     payment: "%m/%d/%Y"
-    site_grade_dates: "%Y-%m-%d"
+    site_grade_dates: "%b %d, %Y"
 
   general:
     click_here_start: "Click here"
@@ -694,7 +694,7 @@ en:
     payment_complete: "This site has been successfully upgraded."
     renew_subscription: "Renew Subscription"
     next_charge: "next charge: {{ nextChargeDate }}"
-    expires: "expires {{ expireDate }}"
+    expires: "expires: {{ expireDate }}"
 
     select_payment_option: "Select a payment option:"
     opt_one_month: "One Month - %{price}"
