@@ -212,54 +212,46 @@ class SiteManagerController < ApplicationController
   def upgrade
     return error 'agree_to_terms' unless params[:terms] == "on"
 
-    months = params[:months].to_i
-    months = 1 if params[:months] == "recur"
-    months = 12 if params[:months] == "recur_yearly"
+    recur_type = params[:recur_type]
 
-    return error 'select_length' if (months <= 0 || months > 12)
+    return error 'bad_recur_type' unless recur_type =~ /^(monthly|yearly)$/
 
     if params[:id] && (@site = Company.find_by_id params[:id])
 
-      @time = "#{months} " + t('site_manager.months').downcase
-      @time = "1 " + t('site_manager.year').downcase if months == 12
-      @time = t('site_manager.monthly').downcase if params[:months] == "recur"
-      @time = t('site_manager.yearly').downcase if params[:months] == "recur_yearly"
-      user = current_user
-
-      if months == 12 && params[:months] == 'recur_yearly'
+      if recur_type == 'yearly'
         price = 50
-      elsif months == 12
-        price = 50
+        @time = t('site_manager.yearly').downcase
       else
-        price = 5 * months
+        price = 5
+        @time = t('site_manager.monthly').downcase
       end
 
+      user = current_user
       payment_label = t 'site_manager.upgrade_payment'
+
       checkout_params = {
         :amount => price,
         :short_description => "YoMobi - [#{@site.db_name}]: #{payment_label} (#{@time})",
         :long_description => "YoMobi - #{@site.url_and_name}: #{payment_label} (#{@time})",
         :mode => 'iframe',
-        :reference_id => "#{user.id}|#{@site.id}|#{months}|#{ActiveSupport::SecureRandom.uuid}",
+        :reference_id => "#{user.id}|#{@site.id}|#{recur_type}|#{ActiveSupport::SecureRandom.uuid}",
         :prefill_info => { email:user.email, name:"#{user.first_name} #{user.last_name}" },
       }
       base_date = @site.next_charge_date || @site.expire_date || (DateTime.now + 3.hours)
       base_date = DateTime.now + 3.hours if base_date < DateTime.now + 3.hours
 puts "BASE DATE: #{base_date}"
-      if params[:months] == "recur"
+      if recur_type == "monthly"
         checkout_params[:period] = 'monthly'
         checkout_params[:start_time] = base_date
-        checkout_params[:end_time] = (base_date + 3.year).to_time.to_i
+        checkout_params[:end_time] = (base_date + 3.years).to_time.to_i
         checkout_params[:auto_recur] = true
         checkout_params[:api_url] = '/preapproval/create'
-      elsif params[:months] == "recur_yearly"
+      elsif recur_type == "yearly"
         checkout_params[:period] = 'yearly'
         checkout_params[:start_time] = base_date
         checkout_params[:end_time] = (base_date + 3.years).to_time.to_i
         checkout_params[:auto_recur] = true
         checkout_params[:api_url] = '/preapproval/create'
-      else
-        checkout_params[:type] = 'SERVICE'
       end
 
       begin

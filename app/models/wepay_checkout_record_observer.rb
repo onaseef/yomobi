@@ -8,44 +8,42 @@ class WepayCheckoutRecordObserver < ActiveRecord::Observer
     payment = Payment.find_or_create_by_wepay_checkout_record_id(wcr.id)
 
     if payment.user_id.nil? || payment.company_id.nil?
-      user_id, company_id, months = wcr.reference_id.split('|').map(&:to_i)
+      user_id, company_id, recur_type = wcr.reference_id.split('|').map(&:to_i)
       payment.user_id = user_id
       payment.company_id = company_id
     end
 
     if wcr.state == 'authorized' || wcr.state == 'approved'
-      user_id, company_id, months = wcr.reference_id.split('|').map(&:to_i)
-      last_payment = Payment.most_recent_for_company(company_id)
-      expire_date = (last_payment && last_payment.expire_date) || Date.today
+      user_id, company_id, recur_type = wcr.reference_id.split('|').map(&:to_i)
+      company = Company.find_by_id(company_id)
+      return if company.nil?
+
+      last_sub = company.last_subscription
+      last_payment = company.last_payment
+
+      # base_date is when the subscription will start
+      if last_sub
+        base_date = last_sub.next_charge_date
+      elsif last_payment
+        base_date = last_payment.expire_date
+      else
+        base_date = Date.today
+      end
 
       payment.sub_state = 'active' if wcr.period
 
-      # Since there is only one record per subscription, we must multiply
-      # the time paid to get the final subscription expiration date
-      time_paid =
-        case wcr.period
-        when 'monthly' then (months * 12).months
-        when 'yearly' then (months * 3).months
-        else months.months
-        end
+      # Subscription is always 3 years long (36 months)
+      time_paid = 12 * 3
 
       payment.currency = wcr.currency
       payment.amount_paid = wcr.amount.to_s('F')
       payment.company.update_attribute :premium, true
-      payment.expire_date = expire_date + time_paid
+      payment.expire_date = base_date + time_paid.months
       puts "EXPRIE #{payment.expire_date}"
 
-      # check for previous preapproval
-      prevSub = WepayCheckoutRecord.last_preapproval_for_company(company_id, wcr.preapproval_id)
-      if prevSub.present? && wcr.preapproval_id.present?
-        puts "PREVIOUS SUBSCRIPTION #{prevSub}"
-        cancel_preapproval prevSub.preapproval_id
-
-        last_payment = Payment.most_recent_for_company(company_id)
-        expire_date = (last_payment && last_payment.expire_date) || Date.today
-        payment.expire_date = expire_date + time_paid
-        puts "EXPRIE DATE 2 #{payment.expire_date}"
-      end
+      # cancel previous subscription
+      puts "PREVIOUS SUBSCRIPTION #{last_sub}"
+      cancel_preapproval last_sub.wcr.preapproval_id if last_sub.present?
     end
 
     case wcr.state
@@ -58,8 +56,9 @@ class WepayCheckoutRecordObserver < ActiveRecord::Observer
       if payment.sub_state == 'active'
         puts "FAILED SUBSCRIPTION PAYMENT #{wcr.preapproval_id}"
         payment.expire_date = payment.next_charge_date
-        payment.sub_state = 'cancelled'
+        payment.sub_state = 'stopped'
         UserMailer.notify_subscription_payment_failure(payment).deliver
+        # check for a previous valid payment
       end
     when /^(cancelled)$/ then
       # Manually cancelled. Don't modify payment validitidy, but update expire date

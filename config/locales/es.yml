@@ -692,7 +692,7 @@ es:
     cancel_subscription: "@@Cancel Subscription"
     cancel_success: "@@Subscription cancelled sucessfully."
     payment_complete: "@@This site has been successfully upgraded."
-    renew_subscription: "@@Renew Subscription / Prepay"
+    renew_subscription: "@@Renew Subscription"
     next_charge: "@@next charge: {{ nextChargeDate }})"
     expires: "@@expires {{ expireDate }}"
 

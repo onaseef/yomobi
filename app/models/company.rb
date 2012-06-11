@@ -164,7 +164,9 @@ class Company < ActiveRecord::Base
   def subscription_end_date
     payment = self.last_payment
     record = payment && payment.wepay_checkout_record
-    record && record.state != 'cancelled' && record.end_time
+    if record && record.state && record.state != 'cancelled' && record.end_time
+      Time.at(record.end_time).to_date
+    end
   end
 
   def subscription_type
@@ -191,7 +193,7 @@ class Company < ActiveRecord::Base
       isPremium: self.premium?,
       expireDate: (self.expire_date.strftime I18n.t 'date_formats.site_grade_dates' if self.expire_date),
       nextChargeDate: (self.next_charge_date.strftime I18n.t 'date_formats.site_grade_dates' if self.next_charge_date),
-      subscriptionEndDate: (Time.at(self.subscription_end_date).to_date if self.subscription_end_date),
+      subscriptionEndDate: self.subscription_end_date,
       subscriptionType: self.subscription_type,
     }
   end
