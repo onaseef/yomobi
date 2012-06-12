@@ -1,0 +1,13 @@
+# Typus Models Configuration File
+#
+# Use the README file as a reference to customize settings.
+
+Payment:
+  fields:
+    default: company, sub_state, expire_date, cents, is_valid, user
+    form: expire_date, is_valid, sub_state, user, company
+  order_by:
+  relationships: company, user, wepay_checkout_record
+  filters: created_at
+  search:
+  application: yomobi
