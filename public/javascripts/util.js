@@ -703,7 +703,7 @@ var util = {
     // ensure there's a ptag somewhere in the content
     if (str && str.toLowerCase().indexOf('<p>') == -1) return '<p>' + str + '</p>';
     else if (!str)
-      return '<p></p>'
+      return ''
     else
       return str;
   },
