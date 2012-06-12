@@ -237,19 +237,19 @@ class SiteManagerController < ApplicationController
         :reference_id => "#{user.id}|#{@site.id}|#{recur_type}|#{ActiveSupport::SecureRandom.uuid}",
         :prefill_info => { email:user.email, name:"#{user.first_name} #{user.last_name}" },
       }
-      base_date = @site.next_charge_date || @site.expire_date || (DateTime.now + 3.hours)
-      base_date = DateTime.now + 3.hours if base_date < DateTime.now + 3.hours
+      base_date = @site.next_charge_date || @site.expire_date || (DateTime.now + 10.minutes)
+      base_date = DateTime.now + 10.minutes if base_date < DateTime.now + 10.minutes
 puts "BASE DATE: #{base_date}"
       if recur_type == "monthly"
         checkout_params[:period] = 'monthly'
         checkout_params[:start_time] = base_date.to_time.to_i
-        checkout_params[:end_time] = (base_date + 3.years).to_time.to_i
+        checkout_params[:end_time] = (base_date + 5.years).to_time.to_i
         checkout_params[:auto_recur] = true
         checkout_params[:api_url] = '/preapproval/create'
       elsif recur_type == "yearly"
         checkout_params[:period] = 'yearly'
         checkout_params[:start_time] = base_date.to_time.to_i
-        checkout_params[:end_time] = (base_date + 3.years).to_time.to_i
+        checkout_params[:end_time] = (base_date + 5.years).to_time.to_i
         checkout_params[:auto_recur] = true
         checkout_params[:api_url] = '/preapproval/create'
       end
