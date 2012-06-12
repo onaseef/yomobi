@@ -162,24 +162,25 @@
           return;
         }
         // check if the image url is present
-        if(data.wphotoUrl){
+        if(data.icon_url){
             // remove the current selected class from icons container
             this.selectedIcon && this.selectedIcon.removeClass('selected');
             // update the image attribute and fade it in
             $('body').find('.selected-display')
-              .find('img').attr('src', data.wphotoUrl).end()
+              .find('img').attr('src', data.icon_url).end()
               .find('label').text("").end()
               .show();
             
             // enable the upload button again
             $('.wphoto-wrap button:disabled').remove();
             $('.wphoto-wrap button[name=pick_files]').fadeIn();
-            $('.selected-file').removeAttr('style').html('');
+            $('.selected-file').html('');
+            $('.selected-file').attr('style', '');
             //$('.selected-file').animate({ backgroundPosition: "(0 0)" }, 300);
             $('.ajax').hide();
 
             util.customIcon = { 
-              url : data.wphotoUrl 
+              url : data.icon_url 
             }
 
             

@@ -126,8 +126,8 @@ class BuilderController < ApplicationController
       :wid => params[:wid]
 
     if @photo.save
-      puts "wphoto upload success; id=#{@photo[:id]}; url=#{@photo.photo.url(:thumb)}"
-      render :json => { :result => 'success', :wphotoUrl => @photo.photo.url(:thumb) }, :content_type => 'text/html'
+     puts "wphoto upload success; id=#{@photo[:id]}; url=#{@photo.photo.url(:thumb)}"
+      render :json => { :result => 'success', :icon_url => @photo.photo.url(:icon) ,:wphotoUrl => @photo.photo.url(:thumb) }, :content_type => 'text/html'
     else
       render :json => { :result => 'fail' }, :content_type => 'text/html'
     end
