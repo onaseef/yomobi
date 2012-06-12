@@ -43,6 +43,14 @@ div.wysiwyg ul.toolbar {
     background-position: 0 -16px; }
   #sidebar .option.builder .icon {
     background-position: 0 -32px; }
+  #sidebar .option.customize .icon {
+    background-position: 0 -96px; }
+  #sidebar .option.preview .icon {
+    background-position: 0 -112px; }
+  #sidebar .option.email .icon {
+    background-position: 0 -128px; }
+  #sidebar .option.text .icon {
+    background-position: 0 -144px; }
   #sidebar .option.active {
     background-color: #d8dfea; }
   #sidebar .home-icon {

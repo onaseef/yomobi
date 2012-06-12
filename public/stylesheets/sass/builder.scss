@@ -54,6 +54,14 @@ div.wysiwyg ul.toolbar {
     background-position: 0 -16px; }
   .option.builder .icon {
     background-position: 0 -32px; }
+  .option.customize .icon {
+    background-position: 0 -96px; }
+  .option.preview .icon {
+    background-position: 0 -112px; }
+  .option.email .icon {
+    background-position: 0 -128px; }
+  .option.text .icon {
+    background-position: 0 -144px; }
   .option.active {
     background-color: $highlight-color; }
   .home-icon {
