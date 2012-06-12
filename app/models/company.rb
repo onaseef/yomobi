@@ -150,7 +150,7 @@ class Company < ActiveRecord::Base
 
   def expire_date(bust_cache=false)
     payment = self.last_payment(bust_cache)
-    payment && payment.expire_date
+    [payment && payment.expire_date, self.manual_expire_date].compact.max
   end
 
   def recalculate_premium

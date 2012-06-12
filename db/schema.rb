@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120605191037) do
+ActiveRecord::Schema.define(:version => 20120612202921) do
 
   create_table "carriers", :force => true do |t|
     t.string   "name"
@@ -38,12 +38,13 @@ ActiveRecord::Schema.define(:version => 20120605191037) do
     t.text     "keywords",            :limit => 255
     t.string   "call_back_email"
     t.integer  "company_type_id"
-    t.integer  "id_counter",                         :default => 1,     :null => false
+    t.integer  "id_counter",                         :default => 1,            :null => false
     t.boolean  "premium",                            :default => false
     t.string   "banner_file_name"
     t.string   "banner_content_type"
     t.integer  "banner_file_size"
     t.datetime "banner_updated_at"
+    t.date     "manual_expire_date",                 :default => '2012-01-01'
   end
 
   add_index "companies", ["db_name"], :name => "index_companies_on_db_name", :unique => true

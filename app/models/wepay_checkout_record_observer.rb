@@ -28,6 +28,7 @@ class WepayCheckoutRecordObserver < ActiveRecord::Observer
         base_date = last_payment.expire_date
       end
       base_date ||= Date.today
+      base_date = [company.manual_expire_date, base_date].max if company.manual_expire_date
 
       payment.sub_state = 'active' if wcr.period
 

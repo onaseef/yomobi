@@ -237,7 +237,7 @@ class SiteManagerController < ApplicationController
         :reference_id => "#{user.id}|#{@site.id}|#{recur_type}|#{ActiveSupport::SecureRandom.uuid}",
         :prefill_info => { email:user.email, name:"#{user.first_name} #{user.last_name}" },
       }
-      base_date = @site.next_charge_date || @site.expire_date || (DateTime.now + 3.hours)
+      base_date = [@site.next_charge_date, @site.expire_date, DateTime.now + 3.hours].compact.max
       base_date = DateTime.now + 3.hours if base_date < DateTime.now + 3.hours
 puts "BASE DATE: #{base_date}"
       if recur_type == "monthly"
