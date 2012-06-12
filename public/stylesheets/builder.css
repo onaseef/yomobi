@@ -428,7 +428,13 @@ div.wysiwyg ul.toolbar {
   max-width: 64px; }
 #builder .edit-area.customize .not-premium {
   width: 230px;
-  float: left; }
+  float: left;
+  color: red; }
+  #builder .edit-area.customize .not-premium a, #builder .edit-area.customize .not-premium a:visited {
+    color: red; }
+#builder .edit-area.customize td.not-premium {
+  width: 100%;
+  padding: 0px 4px; }
 
 .widget-editor .edit-area label {
   white-space: normal; }
@@ -442,8 +448,7 @@ div.wysiwyg ul.toolbar {
   margin: 10px 0;
   padding: 5px; }
   .wphoto-wrap label {
-    font-weight: bold;
-    font-size: 0.8em; }
+    font-weight: bold; }
   .wphoto-wrap img {
     -moz-border-radius: 0px;
     -khtml-border-radius: 0px;

@@ -443,7 +443,13 @@ div.wysiwyg ul.toolbar {
 #builder .edit-area.customize {
   .subpanels > * { display: none }
   img.banner, img.body_bg { max-width: 64px; }
-  .not-premium { width: 230px; float: left; }
+  .not-premium { 
+    width: 230px; 
+    float: left; 
+    color: red;
+    a, a:visited { color: red; } 
+  }
+  td.not-premium { width: 100%; padding: 0px 4px; }
 }
 
 
@@ -464,7 +470,6 @@ div.wysiwyg ul.toolbar {
   padding: 5px;
   label {
     font-weight: bold;
-    font-size: 0.8em;
   }
   img {
     -moz-border-radius: 0px;

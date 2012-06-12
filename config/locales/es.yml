@@ -479,7 +479,7 @@ es:
       banner_help: "@@<p>A banner will override all other header settings.</p>"
       body_bg: "@@Wallpaper"
       body_bg_help: "@@<p>Upload a background image.</p>"
-      not_premium: "@@You must upgrade this site to use this feature."
+      not_premium: '@@<a href="http://help.yomobi.com/upgrade" target="ymhelp">You must upgrade this site to Custom to use this feature. Click here to learn how to upgrade.</a>'
 
       customizing_header: "@@Customizing Header"
       header: "@@Header"

@@ -363,7 +363,7 @@ script.customize(type="text/template")
                     option value="#{i*10}%" #{i*10}%
             | <% } else { %>
             tr
-              td = t'builder.customize.not_premium'
+              td.not-premium == t'builder.customize.not_premium'
             | <% } %>
         br
 
@@ -443,7 +443,7 @@ script.customize(type="text/template")
                   option value="repeat" = t 'builder.customize.repeat_both'
             | <% } else { %>
             tr
-              td = t'builder.customize.not_premium'
+              td.not-premium == t'builder.customize.not_premium'
             | <% } %>
 
 
@@ -451,7 +451,7 @@ script.customize(type="text/template")
     .action-bar
       p.error.lfloat style="margin-top:2px"
       - if @company.premium? == false
-        p.not-premium = t'builder.customize.not_premium'
+        p.not-premium == t'builder.customize.not_premium'
         .accept-btn.main-btn.disabled
           input.content type="submit" value=t'builder.widget_editor.save'
       - else
