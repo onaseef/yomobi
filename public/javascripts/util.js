@@ -693,6 +693,9 @@ var util = {
   },
 
   ensurePTag: function (str) {
+    // strip trailing ptags
+    if (str) str = str.replace(/<p><\/p>$/, '').replace(/^<p><\/p>/, '');
+    // ensure there's a ptag somewhere in the content
     if (str && str.toLowerCase().indexOf('<p>') == -1) return '<p>' + str + '</p>';
     else if (!str)
       return '<p></p>'
