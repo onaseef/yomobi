@@ -376,9 +376,7 @@ var util = {
   },
   
   newEditor: function (widget) {
-    //return new window.EditWidgetView(widget);
-
-    return new (window.EditWidgetView || window.widgetEditors[widget.get('wtype')])(widget);
+    return new (window.widgetEditors[widget.get('wtype')] || window.EditWidgetView)(widget);
   },
   
   showLoading: function (element) {
