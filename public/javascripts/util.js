@@ -693,8 +693,13 @@ var util = {
   },
 
   ensurePTag: function (str) {
-    // strip trailing ptags
-    if (str) str = str.replace(/<p><\/p>$/, '').replace(/^<p><\/p>/, '');
+    if (str) {
+      // strip trailing ptags
+      str = str.replace(/<p><\/p>$/, '').replace(/^<p><\/p>/, '');
+      // ensure beginning content is wrapped in a ptag
+      m = str.match(/([^<]+)<p>/);
+      if (m) str = str.replace(new RegExp('^' + m[1]), '<p>'+m[1]+'</p>');
+    }
     // ensure there's a ptag somewhere in the content
     if (str && str.toLowerCase().indexOf('<p>') == -1) return '<p>' + str + '</p>';
     else if (!str)
