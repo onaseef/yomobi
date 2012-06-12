@@ -128,6 +128,8 @@ h2.active-site {
       margin-top: 12px; }
       .accordian .content-body .pay-options a {
         margin-right: 6px; }
+    .accordian .content-body label {
+      margin-right: 12px; }
   .accordian .signup-keys .signup-key-input {
     width: 510px; }
   .accordian ul.admins {
