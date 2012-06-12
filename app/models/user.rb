@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
       .includes(:company)
       .where(:is_valid => true)
       .where('wepay_checkout_records.start_time <= :start_time',
-              :start_time => (Time.now + 10.minutes).to_i)
+              :start_time => (Time.now + 3.hours).to_i)
       .order('wepay_checkout_records.start_time')
     history = []
     payments.each do |p|
