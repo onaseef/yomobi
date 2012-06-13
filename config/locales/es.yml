@@ -18,8 +18,8 @@ es:
     ok: "OK"
     date: "Fecha"
     site: "Sitio"
-    site_url: "@@Site URL"
-    site_name: "@@Site Name"
+    site_url: "URL del Sitio"
+    site_name: "Nombre del Sitio"
     amount: "Cantidad"
 
   days:
@@ -475,7 +475,7 @@ es:
     customize:
       title: "Modificaciones Avanzadas"
       explanation: "<p>Modifica la apariencia y el toque de tu sitio.</p>"
-      banner: "@@Banner"
+      banner: "Banner"
       banner_help: "<p>Un banner tendrá prioridad por encima de cualquier ajuste del encabezado.</p>"
       body_bg: "Tapiz de Fondo"
       body_bg_help: "<p>Cargar a servidor imagen de fondo.</p>"
@@ -702,7 +702,7 @@ es:
     back: "&larr; Regresar"
 
     setup: "Ajustes"
-    custom_domains: "@@Dominios a la Medida"
+    custom_domains: "Dominios a la Medida"
     connected_domains: "%{domain_count} Dominios Relacionados"
     not_premium_for_domains: "El plan de este sitio debe ser mejorado para poder hacer uso de dominios a la medida."
     no_domains_connected: "Ningún dominio está relacionado con este sitio."
@@ -719,7 +719,7 @@ es:
     monthly: "Mensual"
     year: "Año"
     yearly: "Anual"
-    upgrade_payment: "@@Pago para tener un Sitio a la Medida"
+    upgrade_payment: "Pago para tener un Sitio a la Medida"
 
     # site_manager
     error:
