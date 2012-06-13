@@ -457,7 +457,7 @@
         wids: wids,
         wnames: wnames
       }));
-      g.topBarHeight = Math.max(g.topBarHeight, this.el.find('#top-bar').height());
+      g.topBarHeight = Math.max(g.topBarHeight || 0, this.el.find('#top-bar').height());
     },
 
     showAds: function () {
