@@ -1,12 +1,12 @@
-# Sample localization file for Spanish. Add more files in this directory for other locales.
+﻿# Sample localization file for Spanish. Add more files in this directory for other locales.
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 es:
   powered_by:
-    slogan: "@@Powered by YoMobi"
+    slogan: "Alojado en YoMobi"
 
   share:
-    share: "@@Share:"
+    share: "Compartir:"
 
   date_formats:
     payment: "%d/%m/%Y"
@@ -16,11 +16,11 @@ es:
     click_here_start: "Haz click aquí"
     click_here_middle: "haz click aquí"
     ok: "OK"
-    date: "@@Date"
-    site: "@@Site"
+    date: "Fecha"
+    site: "Sitio"
     site_url: "@@Site URL"
     site_name: "@@Site Name"
-    amount: "@@Amount"
+    amount: "Cantidad"
 
   days:
     Sunday: "Domingo"
@@ -85,7 +85,7 @@ es:
     close: "Cerrar"
     create: "Crear"
 
-    error: "@@Error"
+    error: "Error"
 
     delete_widget: "¿En verdad quieres borrar esta función?\n(todos los datos se perderán)"
 
@@ -120,7 +120,7 @@ es:
       unsavedChangesText: "Tienes cambios sin guardar. Haz Click \"OK\" para volver y guardarlos. Haz Click en Cancelar para descartar tus cambios."
 
     builder_app:
-      unsavedChangesText: "Tienes cambios sin guardar. Haz Click \"OK\" para volver y guardarlos. Haz Click en Cancelar para descartar tus cambios."
+      unsavedChangesText: "Tienes cambios sin guardar. Haz Click OK para volver y guardarlos. Haz Click en Cancelar para descartar tus cambios."
       invalid_widget: "Esta función <b>NO</b> aparecerá en tu sitio móvil debido a que la información necesaria se ha perdido.<br /><br />Por favor haz click en esta función para editar. Recuerda <b>Guardar los Cambios</b> cuando hayas terminado."
       deactivated_widget: "Has desactivado esta función; <b>YA NO</b> aparecerá en tu sitio móvil.<br /><br />Para deshacer esto, por favor haz click en esta función y deja en blanco la casilla \"Desactivar\"."
       name_already_in_use: "Nombre ya está en uso."
@@ -133,23 +133,23 @@ es:
 
 
     site_manager:
-      unknown_error: "@@An unknown error has occured."
+      unknown_error: "Ha ocurrido un error no conocido."
       default_error: "Lo sentimos, algo salió mal."
       new_site_dialog_title: "Crear un Sitio Nuevo"
       add_admin_dialog_title: "Agregar Administrador para "
-      add_domain_dialog_title: "@@Add Custom Domain for "
+      add_domain_dialog_title: "Agregar un Dominio a la Medida para "
       concede_ownership_dialog_title: "Otorgar Propiedad del Sitio"
       add: "Agregar"
       continue: "Continuar"
-      select_domain: "@@Please select a domain"
+      select_domain: "Selecciona un dominio por favor"
       cancel_sub_confirm: "Are you sure you want to cancel your subscription?"
-      manage: "@@Manage"
-      upgrade: "@@Upgrade"
-      professional: "@@Custom"
-      standard: "@@Standard"
-      agree_to_terms: "@@Please agree to the terms before continuing."
-      monthly: "@@Monthly"
-      yearly: "@@Yearly"
+      manage: "Administrar"
+      upgrade: "Mejorar Plan"
+      professional: "A la Medida"
+      standard: "Estándar"
+      agree_to_terms: "Indica si estás de acuerdo con los términos antes de continuar."
+      monthly: "Mensual"
+      yearly: "Anual"
 
 
   javascript_mobile:
@@ -247,7 +247,7 @@ es:
   account:
     already_setup: "Tu cuenta ya ha sido activada."
     enter_current_password: "Favor de ingresar tu contraseña actual para actualizar tu cuenta."
-    enter_new_password: "@@Please enter a new password to change to."
+    enter_new_password: "Favor de ingresar tu nueva contraseña."
     updated_success: "Tu cuenta ha sido actualizada con éxito."
 
     welcome_email:
@@ -394,7 +394,7 @@ es:
     title: "Opciones de la Cuenta"
     current_password: "Contraseña Actual*:"
     contact_information: "Información de Contacto"
-    update_contact_info: "@@Update Contact Information"
+    update_contact_info: "Actualizar Información de Contacto"
     first_name: "Nombre:"
     last_name: "Apellido:"
     email: "Email:"
@@ -403,16 +403,16 @@ es:
     new_password: "Nueva Contraseña:"
     new_password_confirm: "Repetir Contraseña:"
     save: "Guardar Cambios"
-    payment_history: "@@Payment History"
-    payment_history_help: "@@Click here for help with payment history."
+    payment_history: "Historial de Pagos"
+    payment_history_help: "Pulsa aquí para tener ayuda respecto al historial de pagos"
 
   upgrade:
-    title: "@@Upgrade Mobile Site"
+    title: "Mejorar el Plan de Sitio Móvil"
 
   builder:
 
     upgrade_ad:
-      title: "@@Click here to learn how to upgrade your site type to remove this ad bar and to enable additional customization."
+      title: "Pulsa aquí y entérate de como mejorar el plan de tu sitio, para así poder eliminar este espacio publicitario y permitir modificaciones a la medida adicionales."
 
     sidebar:
       view_mobile_site: "Ver Sitio Móvil"
@@ -421,7 +421,7 @@ es:
       general_settings: "Opciones Generales"
       advanced_settings: "Opciones Avanzadas"
       edit_tab_bar: "Editar Barra Móvil de funciones"
-      customize: "@@Advanced Customization"
+      customize: "Modificaciones Avanzadas"
       mobile_site_builder: "Constructor de Sitio Móvil"
 
     email_panel:
@@ -473,34 +473,34 @@ es:
       save: "Guardar Opciones Seleccionadas"
 
     customize:
-      title: "@@Advanced Customization"
-      explanation: "@@<p>Customize the look and feel of your site.</p>"
+      title: "Modificaciones Avanzadas"
+      explanation: "<p>Modifica la apariencia y el toque de tu sitio.</p>"
       banner: "@@Banner"
-      banner_help: "@@<p>A banner will override all other header settings.</p>"
-      body_bg: "@@Wallpaper"
-      body_bg_help: "@@<p>Upload a background image.</p>"
-      not_premium: '@@<a href="http://help.yomobi.com/upgrade" target="ymhelp">You must upgrade this site to Custom to use this feature. Click here to learn how to upgrade.</a>'
+      banner_help: "<p>Un banner tendrá prioridad por encima de cualquier ajuste del encabezado.</p>"
+      body_bg: "Tapiz de Fondo"
+      body_bg_help: "<p>Cargar a servidor imagen de fondo.</p>"
+      not_premium: "Deberás mejorar el plan de tu sitio para usar esta función."
 
-      customizing_header: "@@Customizing Header"
-      header: "@@Header"
-      header_font: "@@Font"
+      customizing_header: "Modificar Encabezado"
+      header: "Encabezado"
+      header_font: "Fuente"
 
-      banner_size: "@@Banner Size"
-      text_color: "@@Text Color"
-      background_color: "@@Background Color"
-      font: "@@Font"
+      banner_size: "Tamaño del Banner"
+      text_color: "Color de Texto"
+      background_color: "Color de Fondo"
+      font: "Fuente"
 
-      tab_bar_and_footer: "@@Mobile Tab Bar & Footer"
-      customizing_tab_bar_and_footer: "@@Customizing Tab Bar & Footer"
-      icon_text_font: "@@Font"
-      icon_text_color: "@@Text Color"
+      tab_bar_and_footer: "Pestañas y Pie de Página para Móvil"
+      customizing_tab_bar_and_footer: "Modificar Pestaña y Pie de Página"
+      icon_text_font: "Fuente"
+      icon_text_color: "Color de Texto"
 
-      home_page: "@@Home Page"
-      customizing_home_page: "@@Customizing Home Page"
-      dont_repeat: "@@Don't Repeat"
-      repeat_horizontal: "@@Repeat Horizontally"
-      repeat_vertical: "@@Repeat Vertically"
-      repeat_both: "@@Repeat Both"
+      home_page: "Página de Inicio"
+      customizing_home_page: "Modificación de Página de Inicio"
+      dont_repeat: "No Repetir"
+      repeat_horizontal: "Repetir Horizontalmente"
+      repeat_vertical: "Repetir Verticalmente"
+      repeat_both: "Repetir de ambas formas"
 
     edit_tab_bar:
       explanation: "Selecciona las páginas que quieres que sean más visibles para tus visitantes móviles."
@@ -596,9 +596,6 @@ es:
     add_new:
       title: "Agregar un(a) Nuevo(a) %{item_type}"
       instructions: " Nombre de %{item_type}:"
-      select_picture: "Selecciona una imagen..."
-      browse: "Explorar..."
-      remove_picture: "Eliminar Imagen"
       add: "Agregar"
       added: "%{item} agregado:"
 
@@ -657,11 +654,11 @@ es:
 
   payments:
     email_bad:
-      subject: "@@Payment failed for %{site_name}"
-      body: "@@Your payment has failed"
+      subject: "El pago de %{site_name} no ha tenido éxito"
+      body: "Tu pago ha fallado"
     subscription_fail:
-      subject: "@@Subscription payment failed for %{site_name}."
-      body: "@@Your subscription payment has failed."
+      subject: "El pago por cuota suscripción de %{site_name} no ha tenido éxito."
+      body: "El pago de tu suscripción ha fallado."
 
 
   site_manager:
@@ -677,52 +674,52 @@ es:
     select_site: "Favor de seleccionar un sitio de la izquierda."
     selected_site: "Seleccionado: %{site_name}"
     edit_site: "Editar Sitio"
-    generate: "@@Generate"
-    signup_keys: "@@Signup Keys"
+    generate: "Generar"
+    signup_keys: "Claves de Registro"
     generate_signup_key: "Generar Clave de Registro"
     site_access_list: "Sitios a los que tienes acceso:"
     admin_email: "Email del Administrador:"
     enter_password: "Ingresa tu contraseña para continuar:"
-    add_domain: "@@Add Domain"
-    remove_domain: "@@Remove Domain"
-    domain_name: "@@Domain Name (e.g. m.example.com):"
+    add_domain: "Agregar Dominio"
+    remove_domain: "Eliminar Dominio"
+    domain_name: "Nombre de Dominio (p. ej. m.ejemplo.com):"
 
-    site_grade: "@@Site Grade"
-    subscription_status: "@@You are on a {{ subscriptionType }} subscription until {{ subscriptionEndDate }}"
-    cancel_subscription: "@@Cancel Subscription"
-    cancel_success: "@@Subscription cancelled sucessfully."
-    payment_complete: "@@This site has been successfully upgraded."
-    renew_subscription: "@@Renew Subscription"
-    next_charge: "@@next charge: {{ nextChargeDate }})"
-    expires: "@@expires: {{ expireDate }}"
+    site_grade: "Categoría del Sitio"
+    subscription_status: "Tienes una suscripción {{ subscriptionType }} que vence {{ subscriptionEndDate }}"
+    cancel_subscription: "Cancelar Suscripción"
+    cancel_success: "La Suscripción ha sido cancelada con éxito."
+    payment_complete: "El plan del sitio ha sido mejorado con éxito."
+    renew_subscription: "Renovar Suscripción / Pre-pago"
+    next_charge: "próximo cobro: {{ nextChargeDate }})"
+    expires: "vencimiento: {{ expireDate }}"
 
-    select_payment_option: "@@Select a payment option:"
-    opt_one_month: "@@One Month - %{price}"
-    opt_one_year: "@@One Year - %{price}"
-    opt_monthly: "@@Autopay Monthly - %{price} / month"
-    opt_yearly: "@@Autopay Yearly - %{price} / year"
-    i_agree: "@@I agree to these terms"
+    select_payment_option: "Selecciona una opción de pago:"
+    opt_one_month: "Mensual - %{price}"
+    opt_one_year: "Anual - %{price}"
+    opt_monthly: "Cobro Automático Mensual - %{price} / al mes"
+    opt_yearly: "Cobro Automático Anual - %{price} / al año"
+    i_agree: "Estoy de acuerdo con estos términos y condiciones"
     back: "&larr; Regresar"
 
-    setup: "@@Setup"
-    custom_domains: "@@Custom Domains"
-    connected_domains: "@@%{domain_count} Connected Domains"
-    not_premium_for_domains: "@@This site must be upgraded to use custom domains."
-    no_domains_connected: "@@No domains connected to this site."
+    setup: "Ajustes"
+    custom_domains: "@@Dominios a la Medida"
+    connected_domains: "%%{domain_count} Dominios Relacionados"
+    not_premium_for_domains: "@@El plan de este sitio debe ser mejorado para poder hacer uso de dominios a la medida."
+    no_domains_connected: "Ningún dominio está relacionado con este sitio."
 
-    merchant_account: "@@Merchant Account"
-    no_merchant_account: "@@You have not set up your merchant account."
-    coming_soon: "@@Coming Soon."
+    merchant_account: "Cuenta de Proveedor / Comerciante"
+    no_merchant_account: "No has registrado tu cuenta de proveedor."
+    coming_soon: "Próximamente Disponible."
 
-    manage: "@@Manage"
-    site_admins: "@@Site Admins"
-    site_admins_status: "@@This site has <b>%{admin_count}</b> admin(s)."
+    manage: "Administrar"
+    site_admins: "Administradores del Sitio"
+    site_admins_status: "Este sitio tiene <b>%{admin_count}</b> administrador(es)."
 
-    months: "@@Months"
-    monthly: "@@Monthly"
-    year: "@@Year"
-    yearly: "@@Yearly"
-    upgrade_payment: "@@Custom Site Payment"
+    months: "Meses"
+    monthly: "Mensual"
+    year: "Año"
+    yearly: "Anual"
+    upgrade_payment: "@@Pago para tener un Sitio a la Medida"
 
     # site_manager
     error:
@@ -732,19 +729,19 @@ es:
       no_self_admin: "No te puedes agregar a ti mismo(a) como un(a) Administrador(a)."
       already_owner: "Tu ya apareces como propietario de este sitio."
       description_too_long: "La Descripción es demasiado larga. El máximo es de 2500 caracteres."
-      domain_taken: "@@Domain has already been linked to another mobile site."
-      bad_domain_format: "@@Invalid domain format."
-      max_domain_count: "@@You have reached the maximum number of domains for this mobile site (5)."
+      domain_taken: "Este dominio ya está vinculado con otro sitio móvil."
+      bad_domain_format: "Formato de dominio inválido."
+      max_domain_count: "Has alcanzado el máximo número de dominios para este sitio móvil (5)."
 
     # site_manager
     help:
-      site_access_list: '@@To manage a site, select it in the list below, then use the configuration panel on the right to edit or update the site.<br/></br><a href="http://help.yomobi.com/SiteManager" target="ymhelp">Click here for more information.</a>'
+      site_access_list: 'Para administrar un sitio, selecciónalo de la lista siguiente, luego usa el panel de configuración de la derecha para editar o actualizar el sitio.<br/></br><a href="http://help.yomobi.com/SiteManager" target="ymhelp">Para mayor información pulsa aquí.</a>'
       signup_keys: 'Cuando estés listo para entregar este sitio a su propietario, genera una clave de registro, luego envía por email el enlace al propietario del sitio. Asegúrate que haga click en el enlace para que se registre ante Yomobi y tome posesión de su sitio.<br/><a href="http://help.yomobi.com/Account/SignupKey" target="ymhelp"><b>Haz click aquí para mayor información.</a>'
-      manage_site_type: '@@Select a payment option below to upgrade your mobile site to a Custom account. You may cancel your subscription at any time.<br/></br><a href="http://help.yomobi.com/SiteManager/SiteTypes" target="ymhelp">Click here for more information about Custom account and making payments.</a>'
-      extend_premium_term: '@@Select a payment option below to extend the duration of your existing Custom account. You may cancel your subscription at any time.<br/><br/><a href="http://help.yomobi.com/SiteManager/SiteTypes" target="ymhelp">Click here for more information about Custom account features and making payments.</a>'
-      renew_subscription: '@@Please renew your current subscription to maintain access to custom features. You may cancel your subscription at any time.'
-      manage_custom_domain: '@@<a href="http://help.yomobi.com/SiteManager/CustomDomain" target="ymhelp">Click here to learn how to associate a custom domain with your mobile site.</a>'
-      manage_site_admins: '@@<a href="http://help.yomobi.com/SiteManager/SiteAdmins" target="ymhelp">Click here to learn how to manage site administrators.</a>'
+      manage_site_type: 'Selecciona una opción de pago a continuación para mejorar el plan de tu sitio móvil a una cuenta a la Medida. Puedes cancelar tu suscripción en cualquier momento.<br/></br><a href="http://help.yomobi.com/SiteManager/SiteTypes" target="ymhelp">Para mayor información acerca de la cuenta a la Medida y de cómo pagar, pulsa aquí.</a>'
+      extend_premium_term: 'Selecciona una opción de pago para ampliar la vigencia de tu actual cuenta a la Medida. Puedes cancelar tu suscripción en cualquier momento.<br/><br/><a href="http://help.yomobi.com/SiteManager/SiteTypes" target="ymhelp">Para mayor información acerca de las funciones de la cuenta a la Medida y de sus formas de pago pulsa aquí.</a>'
+      renew_subscription: 'Favor de renovar tu suscripción actual para que puedas mantener las funciones de modificación a la medida. Puedes cancelar tu suscripción en cualquier momento.'
+      manage_custom_domain: '<a href="http://help.yomobi.com/SiteManager/CustomDomain" target="ymhelp">Para saber cómo relacionar un dominio a la medida con tu sitio móvil, pulsa aquí.</a>'
+      manage_site_admins: '<a href="http://help.yomobi.com/SiteManager/SiteAdmins" target="ymhelp">Para conocer cómo ajustar las cuentas de administradores para este sitio, pulsa aquí.</a>'
     confirm:
       concede_site: ¿Estás seguro(a)? Cederás / Perderás la propiedad de este sitio.
     dialog:
@@ -907,12 +904,12 @@ es:
   jwysiwyg:
     controls:
       "Bold": "Negrilla"
-      "Colorpicker": ""
+      "Colorpicker": "Selector de Color"
       "Copy": "Copiar"
       "Create link": "Crear Link"
       "Cut": "Cortar"
       "Decrease font size": "Disminuir tamaño fuente"
-      "Fullscreen": ""
+      "Fullscreen": "Pantalla Completa"
       "Header 1": "Titulo 1"
       "Header 2": "Titulo 2"
       "Header 3": "Titulo 3"
@@ -942,34 +939,34 @@ es:
       "Undo": "Deshacer"
 
     dialogs:
-      "Apply": ""
-      "Cancel": ""
+      "Apply": "Aplicar"
+      "Cancel": "Cancelar"
 
       colorpicker:
-        "Colorpicker": ""
-        "Color": ""
+        "Colorpicker": "Selector de Color"
+        "Color": "Color"
 
       image:
-        "Insert Image": ""
-        "Preview": ""
-        "URL": ""
-        "Title": ""
-        "Description": ""
-        "Width": ""
-        "Height": ""
-        "Original W x H": ""
-        "Float": ""
-        "None": ""
-        "Left": ""
-        "Right": ""
+        "Insert Image": "Insertar Imagen"
+        "Preview": "Vista Previa"
+        "URL": "URL"
+        "Title": "Título"
+        "Description": "Descripción"
+        "Width": "Ancho"
+        "Height": "Altura"
+        "Original W x H": "Ancho x Alto Originales"
+        "Float": "Flotante"
+        "None": "Ninguno"
+        "Left": "Izquierda"
+        "Right": "Derecha"
 
       link:
-        "Insert Link": ""
-        "Link URL": ""
-        "Link Title": ""
-        "Link Target": ""
+        "Insert Link": "Insertar Vínculo"
+        "Link URL": "URL del Vínculo"
+        "Link Title": "Título del Vínculo"
+        "Link Target": "Destino del Vínculo"
 
       table:
-        "Insert table": ""
-        "Count of columns": ""
-        "Count of rows": ""
+        "Insert table": "Insertar Tabla"
+        "Count of columns": "Número de columnas"
+        "Count of rows": "Número de renglones"
