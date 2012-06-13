@@ -703,8 +703,8 @@ es:
 
     setup: "Ajustes"
     custom_domains: "@@Dominios a la Medida"
-    connected_domains: "%%{domain_count} Dominios Relacionados"
-    not_premium_for_domains: "@@El plan de este sitio debe ser mejorado para poder hacer uso de dominios a la medida."
+    connected_domains: "%{domain_count} Dominios Relacionados"
+    not_premium_for_domains: "El plan de este sitio debe ser mejorado para poder hacer uso de dominios a la medida."
     no_domains_connected: "Ningún dominio está relacionado con este sitio."
 
     merchant_account: "Cuenta de Proveedor / Comerciante"
@@ -736,7 +736,7 @@ es:
     # site_manager
     help:
       site_access_list: 'Para administrar un sitio, selecciónalo de la lista siguiente, luego usa el panel de configuración de la derecha para editar o actualizar el sitio.<br/></br><a href="http://help.yomobi.com/SiteManager" target="ymhelp">Para mayor información pulsa aquí.</a>'
-      signup_keys: 'Cuando estés listo para entregar este sitio a su propietario, genera una clave de registro, luego envía por email el enlace al propietario del sitio. Asegúrate que haga click en el enlace para que se registre ante Yomobi y tome posesión de su sitio.<br/><a href="http://help.yomobi.com/Account/SignupKey" target="ymhelp"><b>Haz click aquí para mayor información.</a>'
+      signup_keys: 'Cuando estés listo para entregar este sitio a su propietario, genera una clave de registro, luego envía por email el enlace al propietario del sitio. Asegúrate que haga click en el enlace para que se registre ante Yomobi y tome posesión de su sitio.<br/><br><a href="http://help.yomobi.com/Account/SignupKey" target="ymhelp">Haz click aquí para mayor información.</a>'
       manage_site_type: 'Selecciona una opción de pago a continuación para mejorar el plan de tu sitio móvil a una cuenta a la Medida. Puedes cancelar tu suscripción en cualquier momento.<br/></br><a href="http://help.yomobi.com/SiteManager/SiteTypes" target="ymhelp">Para mayor información acerca de la cuenta a la Medida y de cómo pagar, pulsa aquí.</a>'
       extend_premium_term: 'Selecciona una opción de pago para ampliar la vigencia de tu actual cuenta a la Medida. Puedes cancelar tu suscripción en cualquier momento.<br/><br/><a href="http://help.yomobi.com/SiteManager/SiteTypes" target="ymhelp">Para mayor información acerca de las funciones de la cuenta a la Medida y de sus formas de pago pulsa aquí.</a>'
       renew_subscription: 'Favor de renovar tu suscripción actual para que puedas mantener las funciones de modificación a la medida. Puedes cancelar tu suscripción en cualquier momento.'
