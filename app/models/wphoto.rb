@@ -5,7 +5,11 @@ class Wphoto < ActiveRecord::Base
     :styles => {
       :thumb => "70x80>",
       :original => "360x480>",
-      :icon => "57x57"
+      :icon => "57x57#"
+    },
+    :convert_options => {
+      :thumb => "-quality 75 -strip", 
+      :icon => "-quality 75 -strip" 
     },
     :storage => :s3,
     :bucket => Rails.application.config.logo_s3_bucket,
