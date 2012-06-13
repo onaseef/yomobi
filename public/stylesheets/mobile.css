@@ -212,7 +212,7 @@ p {
     border-radius: 12px;
     -webkit-border-radius: 12px;
     -moz-border-radius: 12px;
-    background: no-repeat; }
+    background-repeat: repeat; }
     .home-icon .icon:hover {
       cursor: pointer; }
   .home-icon .title {
