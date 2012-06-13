@@ -28,7 +28,8 @@
         var feed = new google.feeds.Feed( this.get('url') )
           , self = this
         ;
-        feed.setNumEntries(this.get('postCount') || 10);
+        // Maximum RSS feed entry count
+        feed.setNumEntries(this.get('postCount') || g.max_rss_feed_count);
         feed.load(function (result) {
           if (result.error) return;
           util.log('RESULT',result);

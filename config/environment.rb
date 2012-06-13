@@ -21,7 +21,12 @@ MAX_COMPANY_NAME_LENGTH = 45
 MAX_COMPANY_SLOGAN_LENGTH = 90
 
 # used in site_manager_controller.rb
-MAX_SITE_COUNT = 30
+# maximum site count / max site count
+MAX_SITE_COUNT = 500
+
+# maximum RSS feed entry count / max RSS feed entry count
+# also update in _mobile-data-loader.html.erb
+MAX_RSS_FEED_COUNT = 50
 
 # Initialize the rails application
 Yomobi::Application.initialize!

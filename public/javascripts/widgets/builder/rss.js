@@ -6,7 +6,8 @@
   window.widgetEditors.rss = window.EditWidgetView.extend({
 
     onEditStart: function (widget) {
-      var postCount = this.widget.get('postCount') || 25;
+      // Maximum RSS feed entry count
+      var postCount = this.widget.get('postCount') || g.MAX_RSS_FEED_COUNT;
       this.$('select[name=postCount]').val(postCount);
     }
   });

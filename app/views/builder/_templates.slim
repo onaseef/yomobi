@@ -432,8 +432,9 @@ script.rss-feed-edit-area(type="text/template")
   label
     =t'builder.widget_editor.rss_max_entries'
   select name="postCount" type="text" value="{{ _maybe.postCount }}"
-    - 50.times do |i|
-      option value=i+1 = i+1
+    / Maximum RSS feed entry count
+    - (MAX_RSS_FEED_COUNT/5).times do |i|
+      option value=(i+1)*5 = (i+1)*5
 
 script.keep-me-informed-edit-area(type="text/template")
   label =t'builder.widget_editor.email_label_required'
