@@ -247,7 +247,6 @@
     enterEditMode: function () {
       mapp.viewWidget(this.widget);
       this.startEditing();
-      $('#mobile-scroller').scrollTop(0);
     },
 
     onEditStart: function (resetChanges, firstEdit) {
