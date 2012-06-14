@@ -153,6 +153,7 @@ script.edit-icon-dialog(type="text/template")
               br
               .selected-file.lfloat &nbsp;
               button name="pick_files" =t'dialog.add_picture.browse'
+              button id="upload-files" name="upload"
               .error
 
     .selected-display
@@ -343,7 +344,7 @@ script.jeditor-image-dialog(type="text/template")
       select name="float"
         option value="left" =t'dialog.add_picture.left'
         option value="right" =t'dialog.add_picture.right'
-        option value="none" =t'dialog.add_picture.inline'
+        option selected="selected" value="none" =t'dialog.add_picture.inline'
     p
       label =t'dialog.add_picture.image_size'
       input type="text" name="size" size="3" value="{{ size }}"
