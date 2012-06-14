@@ -115,7 +115,7 @@ var builderUtil = {
 
   _createDummyImage: function () {
     return $('<img class="yo">').css({
-      float: 'left',
+      float: 'none',
       width: 'auto',
       maxWidth: '100%'
     }).attr('data-size',1);
@@ -160,7 +160,7 @@ var builderUtil = {
           $('#jeditor').data('wysiwyg').ui.focus();
           $('#jeditor').wysiwyg('insertImage', imgAttrs.src, {
             src: imgAttrs.src,
-            style:'float:left'
+            style:'float:none'
           });
           util.jeditorImageDialog( $('#jeditor').data('wysiwyg').lastInsertedImage );
 
