@@ -4,7 +4,7 @@ class Wphoto < ActiveRecord::Base
   has_attached_file :photo,
     :styles => {
       :thumb => "70x80>",
-      :original => "360x480>"
+      :original => "324x480>"
     },
     :storage => :s3,
     :bucket => Rails.application.config.logo_s3_bucket,
