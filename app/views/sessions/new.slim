@@ -4,7 +4,9 @@
   - if alert
     .login-error
       b =t'sign_in.error.reenter_password'
+      br
       p =t'sign_in.error.incorrect_password'
+      br
       p
         =t'sign_in.forgot_your_password' 
         a href=new_password_path(:user) =t'sign_in.request_new_password'
