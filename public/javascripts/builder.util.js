@@ -161,7 +161,7 @@ var builderUtil = {
           $('#jeditor').data('wysiwyg').ui.focus();
           $('#jeditor').wysiwyg('insertImage', imgAttrs.src, {
             src: imgAttrs.src,
-            style:''
+            style:'float:left'
           });
           util.jeditorImageDialog( $('#jeditor').data('wysiwyg').lastInsertedImage );
 
