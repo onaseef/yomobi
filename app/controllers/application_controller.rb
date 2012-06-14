@@ -71,9 +71,9 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     lang = (request.env['HTTP_ACCEPT_LANGUAGE'] || '').scan(/^[a-z]{2}/).first
-    lang = nil unless lang && lang.match(/^(es)$/)
+    lang = nil unless lang
 
-    if params[:locale].present? && params[:locale].match(/^(es|en)/)
+    if params[:locale].present? && params[:locale].match(/^(es|en|fr)/)
       cookies[:locale] = params[:locale]
     end
 

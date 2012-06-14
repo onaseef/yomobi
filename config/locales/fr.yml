@@ -1,4 +1,4 @@
-﻿# Sample localization file for English. Add more files in this directory for other locales.
+﻿# Sample localization file for French. Add more files in this directory for other locales.
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 fr:
@@ -40,7 +40,7 @@ fr:
 
   homepage:
     welcome: "Bienvenue à YoMobi"
-    message: 'Atteindre plus de gens avec un <span class="hilite"> libre </span> site Web mobile. YoMobi rend la construction d'un site mobile facile. Aller de vous inscrire à en ligne en quelques minutes. <br/> Être mobile est plus important que jamais.'
+    message: "Atteindre plus de gens avec un <span class=\"hilite\"> libre </span> site Web mobile. YoMobi rend la construction d'un site mobile facile. Aller de vous inscrire à en ligne en quelques minutes. <br/> Être mobile est plus important que jamais."
     why_mobile_matters: "Voir Importance du mobile"
     get_mobilized: "Get Mobilized!"
     reach_more: "Reach more people with a mobile website. YoMobi makes building a mobile site easy. Go from sign up to online in minutes."
