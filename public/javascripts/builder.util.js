@@ -75,10 +75,10 @@ var builderUtil = {
         save: function () { bapp.currentEditor.trigger('wysiwyg-change'); },
         paste: function () { bapp.currentEditor.trigger('wysiwyg-paste'); return false; },
         click: function (e,b,c) {
+          $(this).find('img').removeClass('jwysiwyg-selected');
 
           if (e.target.tagName.toLowerCase() === 'img') {
-
-            util.jeditorImageDialog(e.target);
+            $(e.target).addClass('jwysiwyg-selected');
             return false;
           }
         }
@@ -127,8 +127,11 @@ var builderUtil = {
       , isNew = !img
       , $parent = $(img).parent()
     ;
+
     if (isNew) {
-      $img = util._createDummyImage();
+      // Check for selected image
+      $img = $(this.editorDoc).find('.jwysiwyg-selected');
+      if ($img.length == 0) $img = util._createDummyImage();
     }
     else $img = $(img);
 

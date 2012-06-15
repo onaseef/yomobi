@@ -34,3 +34,6 @@ h1, h2, h3 { margin: 4px 0px 4px 0px; }
 img.yo { cursor: pointer; }
 img.yo-left  { padding: 3px 10px 0px 0px; }
 img.yo-right { padding: 3px 0px 0px 10px; }
+
+img.yo { border: 5px solid transparent; }
+img.yo.jwysiwyg-selected { border-color: #00f; }
