@@ -22,7 +22,8 @@ development:
   root_callback_uri: "http://www.deelmob.com"
   after_checkout_redirect_uri: "/site-manager"
   scope: [refund_payments,collect_payments,view_balance,view_user]
-  wepay_api_uri: "http://stage.wepayapi.com/v2"
+  wepay_ui_endpoint: "https://stage.wepay.com/v2"
+  wepay_api_endpoint: "https://stage.wepayapi.com/v2"
   fee_payer: payee
   charge_tax: false
   app_fee: 0
