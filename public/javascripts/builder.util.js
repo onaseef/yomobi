@@ -401,6 +401,10 @@ var builderUtil = {
     });
   },
 
+  stripMeta: function (str) {
+    return str.replace(/jwysiwyg-selected/g, '');
+  },
+
   enableFileUploadButton: function () {
     if ($.browser.msie) {
       setTimeout(util._enableFileUploadButton, 0);

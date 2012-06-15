@@ -35,13 +35,13 @@
 
     grabWidgetValues: function () {
       return {
-        content: util.ensurePTag( $('#jeditor').wysiwyg('getContent') ),
+        content: util.stripMeta( util.ensurePTag( $('#jeditor').wysiwyg('getContent') )),
         wphotoUrl: this.el.find('input[name=wphotoUrl]').val()
       };
     },
 
     setDirty: function () {
-      var newContent = util.ensurePTag( $('#jeditor').wysiwyg('getContent') );
+      var newContent = util.stripMeta( util.ensurePTag( $('#jeditor').wysiwyg('getContent') ));
       if (!this.hasChanges() &&
           this.originalContent !== newContent)
       {
