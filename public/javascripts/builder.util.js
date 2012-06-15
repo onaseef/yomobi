@@ -278,11 +278,13 @@ var builderUtil = {
       var origImg = dialog.find('img.hide')[0];
       var updateSize = function () {
         var size = Math.round($img[0].width / origImg.width * 100);
+        size = Math.round(size / 10) * 10;
         dialog.find('[name=size]').val(size);
       };
       if (origImg.width) updateSize();
       else origImg.onLoad = updateSize;
     }
+    dialog.find('[name=size]').val( $img.data('size') );
 
     if (isNew) {
       var currentUploader = util._uploaders['dialog']

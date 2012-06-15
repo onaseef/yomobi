@@ -36,4 +36,13 @@ module BuilderHelper
     icon_names.to_json
   end
 
+  def image_size_options
+    result = []
+    10.times do |i|
+      v = (i+1)*10
+      result.push ["#{v}",v]
+    end
+    result
+  end
+
 end

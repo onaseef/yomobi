@@ -328,7 +328,7 @@ script.jeditor-image-dialog(type="text/template")
         option value="right" =t'dialog.add_picture.right'
     p
       label =t'dialog.add_picture.image_size'
-      input type="text" name="size" size="3" value="{{ size }}"
+      = select_tag :size, options_for_select(image_size_options,'100')
       span.percent-sign =t'dialog.add_picture.percent_sign'
 
     p
