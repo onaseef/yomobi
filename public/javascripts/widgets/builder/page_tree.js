@@ -161,7 +161,7 @@
         this.areStylesDirty = false;
       }
 
-      leaf.content = util.stripMeta( util.ensurePTag( $('#jeditor').wysiwyg('2') ));
+      leaf.content = util.stripMeta( util.ensurePTag( $('#jeditor').wysiwyg('getContent') ));
       this.widget.pageView.refresh();
       mapp.resize();
 
