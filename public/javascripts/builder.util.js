@@ -132,6 +132,7 @@ var builderUtil = {
       // Check for selected image
       $img = $(this.editorDoc).find('.jwysiwyg-selected');
       if ($img.length == 0) $img = util._createDummyImage();
+      else isNew = false;
     }
     else $img = $(img);
 
