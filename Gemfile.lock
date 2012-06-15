@@ -16,7 +16,7 @@ GIT
 
 GIT
   remote: https://github.com/mindeavor/wepay-rails
-  revision: 4cc628281352a37107c44da7f0d2e680a17c87c4
+  revision: 384b27d0037447e8585f2d7970377556ad83cc75
   specs:
     wepay-rails (2.3.5)
       httparty
