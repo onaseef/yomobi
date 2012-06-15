@@ -367,7 +367,7 @@ div.wysiwyg ul.toolbar {
     #builder .edit-area.edit-settings .box textarea,
     #builder .edit-area.edit-advanced-settings .box textarea {
       width: 326px;
-      height: 8em;
+      height: 9em;
       margin: 0; }
   #builder .edit-area.edit-settings .divider,
   #builder .edit-area.edit-advanced-settings .divider {
