@@ -39,7 +39,7 @@ module BuilderHelper
   def image_size_options
     result = []
     10.times do |i|
-      v = (i+1)*10
+      v = (10 - i) * 10
       result.push ["#{v}",v]
     end
     result
