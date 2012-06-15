@@ -75,7 +75,7 @@ es:
     delete_widget: "¿En verdad quieres borrar esta función?\n(todos los datos se perderán)"
 
     wysiwyg:
-      add_picture: "Agrega una Imagen"
+      add_picture: "Agrega / Editar una Imagen"
       add_video: "Agrega un Video"
       dialogs:
         link:
