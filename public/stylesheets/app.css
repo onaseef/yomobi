@@ -402,8 +402,9 @@ label.help {
   .company-header .company-name {
     font-size: 14px;
     font-weight: bold; }
-  .company-header a.company-url {
-    margin: 0px 20px; }
+  .company-header .divider-dot {
+    font-weight: bold;
+    padding: 0px 10px; }
 
 /********************************************/
 /* CSS for home & landing pages                       

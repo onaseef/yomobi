@@ -436,13 +436,9 @@ label.help { padding-bottom: 4px; }
 
 .company-header {
   padding: 5px 10px;
-  .company-name {
-    font-size: 14px;
-    font-weight: bold;
-  }
-  a.company-url {
-    margin: 0px 20px;
-  }
+  .company-name { font-size: 14px; font-weight: bold; }
+  a.company-url {}
+  .divider-dot { font-weight: bold; padding: 0px 10px; }
 }
 
 /********************************************/
