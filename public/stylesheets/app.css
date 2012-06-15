@@ -397,6 +397,14 @@ label.help {
 .hide {
   display: none; }
 
+.company-header {
+  padding: 5px 10px; }
+  .company-header .company-name {
+    font-size: 14px;
+    font-weight: bold; }
+  .company-header a.company-url {
+    margin: 0px 20px; }
+
 /********************************************/
 /* CSS for home & landing pages                       
 /********************************************/

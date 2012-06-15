@@ -434,7 +434,16 @@ label.help { padding-bottom: 4px; }
 .hide {
   display: none; }
 
-
+.company-header {
+  padding: 5px 10px;
+  .company-name {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  a.company-url {
+    margin: 0px 20px;
+  }
+}
 
 /********************************************/
 /* CSS for home & landing pages                       

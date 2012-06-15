@@ -35,5 +35,10 @@ img.yo { cursor: pointer; }
 img.yo-left  { padding: 3px 10px 0px 0px; }
 img.yo-right { padding: 3px 0px 0px 10px; }
 
-img.yo { border: 5px solid transparent; }
-img.yo.jwysiwyg-selected { border-color: #00f; }
+img.yo { border: 0px solid transparent; }
+img.yo.jwysiwyg-selected { 
+	border-color: #00f;
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+	-moz-opacity: 0.5;
+	opacity: 0.5;
+}

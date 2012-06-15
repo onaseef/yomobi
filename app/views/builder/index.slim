@@ -17,7 +17,10 @@
         $.wysiwyg.i18n.lang[g.i18n_locale] = <%=raw t("jwysiwyg").to_json %>;
       </script>
 
-h1 = @company.name
+div.company-header
+  p
+    span.company-name = @company.name
+    a.company-url#preview-mobile-site target="preview-mobile-site" href=@company.mobile_url = @company.mobile_url
 #builder-container
   #builder
     .left.lfloat
