@@ -6,10 +6,10 @@ access_token = 'b009f8dac83038f2df195a9197470543ab36e4c8a8b3059eba8057138616b13d
 
 theme_object = {
   "name" => "yomobi-theme",
-  "primary_color" => "FFFFFF",
-  "secondary_color" => "000000",
-  "background_color" =>"004C64",
-  "button_color" => "0084A0"
+  "primary_color" => "5B74A8",
+  "secondary_color" => "FFFFFF",
+  "background_color" => "E4EDF8",
+  "button_color" => "5B74A8"
 }
 params = {
   :client_id => '175290',
