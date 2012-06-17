@@ -48,7 +48,9 @@ window.g = {
   noPhotoPath: '/images/no-wphoto.png',
   isPreview: <%= @is_preview_mode.present? %>,
   isBuilder: <%= @is_builder.present? %>,
-  isTablet: /<%= tablet_devices %>/i.test( navigator.userAgent.toLowerCase() )
+  isTablet: /<%= tablet_devices %>/i.test( navigator.userAgent.toLowerCase() ),
+  isNonphone: /<%= nonphone_devices %>/i.test( navigator.userAgent.toLowerCase() )
+
 };
 window.widgetClasses = {};
 window.widgetPages = {};

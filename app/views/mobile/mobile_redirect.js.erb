@@ -1,5 +1,7 @@
 var exceptions = <%=raw @exceptions.to_json %>;
-var isMobile = /<%= mobile_devices %>/i.test( navigator.userAgent.toLowerCase() );
+var agent = navigator.userAgent.toLowerCase();
+var isMobile = /<%= mobile_devices %>/i.test( agent );
+var isTablet = /<%= tablet_devices %>/i.test( agent );
 var shouldRedirect = true;
 
 for (var i=exceptions.length-1; i >=0; i--) {
@@ -9,6 +11,6 @@ for (var i=exceptions.length-1; i >=0; i--) {
   }
 }
 
-if (window._RSITE && isMobile && shouldRedirect) {
+if (window._RSITE && isMobile && !isTablet && shouldRedirect) {
   window.location = window._RSITE;
 }

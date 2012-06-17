@@ -17,6 +17,7 @@ window.g = {
   isBuilder: <%= @is_builder.present? %>,
   isTablet: /<%= tablet_devices %>/i.test( navigator.userAgent.toLowerCase() ),
   isMobile: /<%= mobile_devices %>/i.test( navigator.userAgent.toLowerCase() ),
+  isNonphone: /<%= nonphone_devices %>/i.test( navigator.userAgent.toLowerCase() ),
   max_rss_feed_count: 50,
 };
 window.widgetClasses = {};
