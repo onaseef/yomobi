@@ -83,6 +83,9 @@ h2.active-site {
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 6px; }
+    .accordian .site-details a {
+      float: right;
+      text-decoration: underline; }
   .accordian .content-header {
     border: 1px solid transparent;
     border-bottom: 1px solid #b3b3b3;

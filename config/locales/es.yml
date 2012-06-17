@@ -142,7 +142,7 @@ es:
       add: "Agregar"
       continue: "Continuar"
       select_domain: "Selecciona un dominio por favor"
-      cancel_sub_confirm: "Are you sure you want to cancel your subscription?"
+      cancel_sub_confirm: "¿Estás seguro(a) que desea cancelar su suscripción?"
       manage: "Administrar"
       upgrade: "Mejorar Plan"
       professional: "A la Medida"

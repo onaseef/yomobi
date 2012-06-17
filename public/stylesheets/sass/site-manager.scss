@@ -53,9 +53,9 @@ ul.fancy-selectable {
 }
 
 h2.active-site {
-  margin: 0;
-  padding: 10px 10px 10px 20px;
-  border-bottom: 1px solid $light-border;
+    margin: 0;
+    padding: 10px 10px 10px 20px;
+    border-bottom: 1px solid $light-border;
 }
 
 .site-list-wrap {
@@ -101,6 +101,11 @@ h2.active-site {
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 6px;
+
+    a { 
+      float: right;
+      text-decoration: underline; 
+    }
   }
 
   .content-header {
