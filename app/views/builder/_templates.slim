@@ -74,7 +74,11 @@ script.edit-subcat-dialog(type="text/template")
 
 script.edit-widget(type="text/template")
   .header
+    | <% if( !iconName.match('http://') ) { %>
     .icon{ style="background-image: url(/images/widgets/{{ iconName }}.png)" }
+    | <% }else{ %>
+    .icon{ style="background-image: url({{ iconName }})" }
+    | <% } %>
     .widget-name-edit
       input type="text" name="wname" value="{{ name }}" maxlength="22"
     .widget-name
@@ -137,10 +141,24 @@ script.edit-icon-dialog(type="text/template")
       img src="/images/widgets/{{ icons[i].name }}.png" data-pname="{{ icons[i].pname }}" title="{{ icons[i].pname }}" data-name="{{ icons[i].name }}"
       | <% } %>
       | <% } %>
+    .upload-icon-container
+      table.wphoto-wrap
+        tbody
+          tr
+            td
+              label.upload-custom-icon-label =t'dialog.change_icon.upload_custom_icon'
+          tr
+            td
+              label =t'dialog.add_picture.select_picture'
+              br
+              .selected-file.lfloat &nbsp;
+              button name="pick_files" =t'dialog.add_picture.browse'
+              .error
+
     .selected-display
       div.selected-label =t'dialog.change_icon.selected_icon'
       img src=""
-      label
+      label.icon-name-label
 
 = render :partial => 'builder/cat-dialog-templates'
 

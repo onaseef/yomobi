@@ -5,6 +5,9 @@
 
   // Backwards compatibility for icon names
   var ensureBackComp = function (iconName) {
+    if(iconName && iconName.match('http://'))
+      return iconName;  
+      
     return iconName && iconName.replace(/\./g, '-');
   };
 

@@ -243,8 +243,12 @@ p {
   .icon {
     width: 57px;
     height: 57px;
+    background-size: 57px 57px !important;
     margin: 0 auto 4px auto;
-    background: no-repeat;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    background-repeat: repeat;
     &:hover {
       cursor: pointer; } }
   .title {

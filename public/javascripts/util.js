@@ -472,7 +472,9 @@ var util = {
   
   log: function () {
     if(!this.debug) return;
-    if(!window.console || !window.console.log) return;
+    if(!window.console || !window.console.log)
+      var console = { log: function() {} }; 
+      return;
     
     console.log.apply(console, arguments);
   },

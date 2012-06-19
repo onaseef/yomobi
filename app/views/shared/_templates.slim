@@ -5,7 +5,11 @@
 
   script.home-icon(type="text/template")
     .inner
+      | <% if(!iconName.match('http://')) { %>
       .icon.dbx-handle{ style="background-image: url(/images/widgets/{{ iconName }}.png)" }
+      | <% }else{ %>
+      .icon.dbx-handle{ style="background-image: url({{ iconName }});" }
+      | <% } %>
       .title {{ name }}
       .invalid-icon
 

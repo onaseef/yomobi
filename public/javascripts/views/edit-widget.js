@@ -123,6 +123,85 @@
       };
 
       this.editIconDialog.prompt();
+
+      // initiate the uploader
+      util.initUploader($(this.editIconDialog.el), {
+        instanceId: this.widget.id,
+        auto: false,
+        alwaysOnTop: true,
+        emptyQueue: true,
+        wid: this.widget.id
+      });
+      // bring it to front
+      util._uploaders[this.widget.id].bringToFront();
+      window.widgetid = this.widget.id;
+
+      // will be run after the upload is completed
+
+      $('.selected-file').live('change', function(){
+        var uploader = util._uploaders[window.widgetid];
+        if(typeof uploader.files[0].status !== 'undefined' && uploader.files.length > 0 && uploader.files[0].status !== plupload.DONE){
+        
+          uploader.yomobiOptions.onDone = afterUploadCallback;
+          uploader.start();
+        }
+      });
+
+      var afterUploadCallback = function(data){
+        util.log('Received custom icon data', data);
+        util.releaseUI();
+
+        // get existent uploader
+        var uploader = util._uploaders[window.widgetid];
+        if(uploader.files.length > 0){
+          uploader.splice();
+        }
+
+        if(data.result !== 'success' && data.result !== "noupload"){
+          alert("Custom icon upload failed (" + data.result + ")");
+          return;
+        }
+        // check if the image url is present
+        if(data.icon_url){
+            // remove the current selected class from icons container
+            this.selectedIcon && this.selectedIcon.removeClass('selected');
+            // update the image attribute and fade it in
+            $('body').find('.selected-display')
+              .find('img').attr('src', data.icon_url).end()
+              .find('label').text("").end()
+              .show();
+            
+            // enable the upload button again
+            $('.wphoto-wrap button:disabled').remove();
+            $('.wphoto-wrap button[name=pick_files]').fadeIn();
+            $('.selected-file').html('');
+            $('.selected-file').attr('style', '');
+            //$('.selected-file').animate({ backgroundPosition: "(0 0)" }, 300);
+            $('.ajax').hide();
+
+            util.customIcon = { 
+              url : data.icon_url 
+            }
+
+            
+            // if browser
+            if($.browser.msie && $.browser.version <= '8.0'){
+              util.initUploader($('.wphoto-wrap'), {
+                instanceId: window.widgetid,
+                auto: false,
+                alwaysOnTop: true,
+                emptyQueue: true,
+                wid: window.widgetid
+              });
+              // bring it to front
+              util._uploaders[window.widgetid].bringToFront();
+            }
+
+
+        } // end if data.wphotourl
+
+      }// end callback
+
     },
 
     refreshViews: function (options) {
@@ -265,6 +344,10 @@
     selectIcon: function (e) {
       this.selectedIcon && this.selectedIcon.removeClass('selected');
       this.selectedIcon = $(e.target).addClass('selected');
+      if (util.customIcon) {
+        delete util.customIcon;
+        util.customIcon = null;
+      }
       $(this.el).find('.selected-display')
         .find('img').attr('src', this.selectedIcon.attr('src')).end()
         .find('label').text(this.selectedIcon.data('pname')).end()
@@ -287,10 +370,10 @@
     prompt: function () {
       delete this.selectedIcon;
 
-      var dialogContent = this.render().el
-        , self = this
-        , buttons = {}
-      ;
+      var dialogContent = this.render().el;
+      var self = this;
+      var buttons = {};
+
       buttons[g.i18n.save] = function () { $(this).dialog('close'); self.saveIcon(); };
       buttons[g.i18n.cancel] = closeFunc;
 
@@ -300,10 +383,20 @@
     },
 
     saveIcon: function () {
-      if (!this.selectedIcon) return;
+      if (!this.selectedIcon && !util.customIcon) return;
 
-      util.log('saving icon', this.selectedIcon.data('name'));
-      this.model.set({'iconName': this.selectedIcon.data('name')});
+      if(util.customIcon){
+        var name = util.customIcon.url,
+            custom = true;
+      }else{
+        var name = this.selectedIcon.data('name'),
+            custom = false;
+      }
+
+      delete util.customIcon;
+
+      util.log('saving icon', name);
+      this.model.set({'iconName': name, 'customIcon': custom});
       bapp.currentEditor.setChanged('icon',true);
       this.options.onClose && this.options.onClose();
     }
