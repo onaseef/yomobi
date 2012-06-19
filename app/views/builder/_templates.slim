@@ -362,7 +362,7 @@ script.jeditor-image-dialog(type="text/template")
         img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.jeditor.help.thumb')
 
     | <% } %>
-    input type="hidden" name="src" value="_maybe.src"
+    input type="hidden" name="src" value="{{ _maybe.src }}"
 
 script.jeditor-youtube-dialog(type="text/template")
   #dialog-confirm.jeditor-image title=t'dialog.add_video.title'

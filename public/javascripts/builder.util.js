@@ -168,6 +168,7 @@ var builderUtil = {
         var imgAttrs = util.getFormValueHash( $(this) );
 
         if (isNew) {
+          if (!imgAttrs.src) return $(this).dialog('close');
           $('#jeditor').data('wysiwyg').ui.focus();
           $('#jeditor').wysiwyg('insertImage', imgAttrs.src, {
             src: imgAttrs.src,
