@@ -294,8 +294,11 @@ var builderUtil = {
       };
       if (origImg.width) updateSize();
       else origImg.onLoad = updateSize;
+      dialog.find('[name=size]').val('100');
     }
-    dialog.find('[name=size]').val( $img.data('size') );
+    else {
+      dialog.find('[name=size]').val( $img.data('size') );
+    }
 
     if (isNew) {
       var currentUploader = util._uploaders['dialog']
