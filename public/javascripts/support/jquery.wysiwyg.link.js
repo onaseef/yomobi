@@ -54,7 +54,7 @@
 				'</td></tr>' +
 				'<tr>' +
 				'<td class="label"><label>{url}: </label></td>' +
-				'<td><input type="text" name="linkhref" value=""/></td>' +
+				'<td><input class="focus" type="text" name="linkhref" value=""/></td>' +
 				'</tr></table>' +
 				'<input type="text" name="linktitle" value="" style="display:none"/>' +
 				'<input type="text" name="linktarget" value="" style="display:none" />' +
@@ -195,6 +195,9 @@
 						dialog.remove();
 					}
 				});
+				setTimeout(function () {
+		      dialog.find('.focus').focus();
+		    }, 200);
 			} else {
 				if (a.self) {
 					url = window.prompt("URL", a.href);

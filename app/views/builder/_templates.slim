@@ -324,7 +324,7 @@ script.jeditor-image-dialog(type="text/template")
             label =t'dialog.add_picture.upload_picture'
             br
             .selected-file.lfloat &nbsp;
-            button name="pick_files" =t'dialog.add_picture.browse'
+            button.browse name="pick_files" =t'dialog.add_picture.browse'
             .error
 
     | <% } else { %>
@@ -340,7 +340,7 @@ script.jeditor-image-dialog(type="text/template")
 
     p
       label =t'dialog.add_picture.alignment'
-      select name="float"
+      select.focus name="float"
         option value="none" =t'dialog.add_picture.inline'
         option value="left" =t'dialog.add_picture.left'
         option value="right" =t'dialog.add_picture.right'
@@ -370,7 +370,7 @@ script.jeditor-youtube-dialog(type="text/template")
       label =t'dialog.add_video.url'
       a href="http://help.yomobi.com/Wysiwyg/YouTube" target="_blank"
         img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.jeditor.help.youtube')
-      input type="text" name="url" value=""
+      input.focus type="text" name="url" value=""
     p.error.hide
       =t'dialog.add_video.invalid_url'
 

@@ -281,6 +281,10 @@ var builderUtil = {
 
     dialog.find('.help-bubble').simpletooltip(undefined,'help');
 
+    setTimeout(function () {
+      dialog.find('.focus').focus();
+    }, 200);
+
     if (!$img.data('size')) {
       var origImg = dialog.find('img.hide')[0];
       var updateSize = function () {
@@ -357,6 +361,9 @@ var builderUtil = {
       'Cancel': dialogCloseFunc
     });
     dialog.find('.help-bubble').simpletooltip(undefined,'help');
+    setTimeout(function () {
+      dialog.find('.focus').focus();
+    }, 200);
   },
 
   toHtml: function (jqueryObject) {
