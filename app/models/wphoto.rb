@@ -4,7 +4,7 @@ class Wphoto < ActiveRecord::Base
   has_attached_file :photo,
     :styles => {
       :thumb => "70x80>",
-      :original => "300x400>"
+      :original => "300x400>",
       :icon => "57x57#"
     },
     :convert_options => {
