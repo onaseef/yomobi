@@ -3,64 +3,64 @@ link::video:
   canEditIcon: true
 link_fb::twitter:
   canRename: true
-  canEditIcon: false
+  canEditIcon: true
 tell_friend::tell-a-friend:
   canRename: true
-  canEditIcon: false
+  canEditIcon: true
 category::services:
   canRename: true
   canEditIcon: true
 link::reviews:
   canRename: true
-  canEditIcon: false
+  canEditIcon: true
 category::property-listings:
   canRename: true
-  canEditIcon: false
+  canEditIcon: true
 category::products:
   canRename: true
   canEditIcon: true
 link_fb::picasa:
   canRename: true
-  canEditIcon: false
+  canEditIcon: true
 link::photo-bucket:
   canRename: true
-  canEditIcon: false
+  canEditIcon: true
 link::news:
   canRename: true
-  canEditIcon: false
+  canEditIcon: true
 category::menu:
   canRename: true
-  canEditIcon: false
+  canEditIcon: true
 category::locations:
   canRename: true
-  canEditIcon: false
+  canEditIcon: true
 link::link:
   canRename: true
   canEditIcon: true
 leave_msg::leave-a-message:
   canRename: true
-  canEditIcon: false
+  canEditIcon: true
 informed::keep-me-informed:
   canRename: true
-  canEditIcon: false
+  canEditIcon: true
 link::full-website:
   canRename: true
   canEditIcon: true
 link_fb::flickr:
   canRename: true
-  canEditIcon: false
+  canEditIcon: true
 gmap::find-us:
   canRename: true
-  canEditIcon: false
+  canEditIcon: true
 link_fb::facebook:
   canRename: true
-  canEditIcon: false
+  canEditIcon: true
 link::event-calendar:
   canRename: true
-  canEditIcon: false
+  canEditIcon: true
 link::donate:
   canRename: true
-  canEditIcon: false
+  canEditIcon: true
 custom_page::custom-page:
   canRename: true
   canEditIcon: true
@@ -72,22 +72,22 @@ page_tree::category:
   canEditIcon: true
 phone::call-us:
   canRename: true
-  canEditIcon: false
+  canEditIcon: true
 call_back::call-me-back:
   canRename: true
-  canEditIcon: false
+  canEditIcon: true
 hours::business-hours:
   canRename: true
-  canEditIcon: false
+  canEditIcon: true
 booking::booking-request:
   canRename: true
-  canEditIcon: false
+  canEditIcon: true
 link::blog:
   canRename: true
   canEditIcon: true
 custom_page::about-us:
   canRename: true
-  canEditIcon: false
+  canEditIcon: true
 rss::rss-feed:
   canRename: true
   canEditIcon: true
