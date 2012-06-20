@@ -73,7 +73,10 @@ div.wysiwyg ul.toolbar {
       float: left;
       margin: 0;
       width: 18px;
-      height: 18px; }
+      height: 18px;
+      border-radius: 0px;
+      -webkit-border-radius: 0px;
+      -moz-border-radius: 0px; }
   #sidebar .home-icon:hover {
     background: url(/images/ui/yellowbg-small.png); }
     #sidebar .home-icon:hover .add {
@@ -206,7 +209,7 @@ div.wysiwyg ul.toolbar {
       margin-right: 8px;
       width: 57px;
       height: 57px;
-      background-size: 57px 57px;
+      background-size: 57px 57px !important;
       border-radius: 12px;
       -webkit-border-radius: 12px;
       -moz-border-radius: 12px;
@@ -265,7 +268,7 @@ div.wysiwyg ul.toolbar {
     margin: 0 auto; }
   #builder .widget-editor .action-bar {
     padding: 12px 0 0;
-    margin: 0 auto;
+    margin-top: 6px;
     border-top: 1px solid #b3b3b3; }
   #builder .widget-editor .accept-btn {
     float: right; }
