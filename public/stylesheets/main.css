@@ -107,7 +107,7 @@ body {
 	height:32px;
 }
 .signup-btn {
-    background:url(../images/new_design/signup-button.png);
+    //background:url(../images/new_design/signup-button.png);
 	float:right;
 	text-decoration: none;
 	font-family: Impact, Charcoal, sans-serif;
