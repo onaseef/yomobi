@@ -1,7 +1,7 @@
 Yomobi::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
-  config.app_domains = ['local.host', 'deelmob.com']
+  config.app_domains = ['deelmob.com', 'local.host']
   config.re_app_domains = config.app_domains.map {|d| Regexp.escape d}.join '|'
   config.heroku_app_name = 'yomobi-test'
 

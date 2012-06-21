@@ -6,6 +6,11 @@ class MobileController < ApplicationController
     if @company.nil?
       site_ref = MobileDomain.get_mobile_reference(request)
       return redirect_to(root_url :subdomain => 'www') if site_ref == false
+      if site_ref =~ /^redirect:/
+        db_name = site_ref.split(':')[1]
+        puts "ROOT: http://#{db_name}.#{Rails.application.config.app_domains.first}"
+        return redirect_to("http://#{db_name}.#{Rails.application.config.app_domains.first}")
+      end
 
       @company = Company.find_by_id(site_ref) if site_ref.is_a? Integer
       @company = Company.find_by_db_name(site_ref) if site_ref.is_a? String
