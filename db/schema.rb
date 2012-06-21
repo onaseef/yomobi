@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120612202921) do
+ActiveRecord::Schema.define(:version => 20120621204215) do
 
   create_table "carriers", :force => true do |t|
     t.string   "name"
@@ -116,7 +116,7 @@ ActiveRecord::Schema.define(:version => 20120612202921) do
     t.integer  "user_id"
     t.integer  "company_id"
     t.integer  "wepay_checkout_record_id"
-    t.date     "expire_date"
+    t.date     "expire_date",                                :null => false
     t.boolean  "is_valid",                 :default => true
     t.integer  "cents",                    :default => 0,    :null => false
     t.string   "currency"
