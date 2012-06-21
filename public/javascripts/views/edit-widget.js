@@ -259,14 +259,14 @@
   window.EditIconDialog = Backbone.View.extend({
 
     events: {
-      'click .icons img':      'selectIcon'
+      'click .icons .wicon-opt':      'selectIcon'
     },
 
     selectIcon: function (e) {
       this.selectedIcon && this.selectedIcon.removeClass('selected');
       this.selectedIcon = $(e.target).addClass('selected');
       $(this.el).find('.selected-display')
-        .find('img').attr('src', this.selectedIcon.attr('src')).end()
+        .find('.wicon-opt').attr('class', 'wicon-opt i-'+this.selectedIcon.data('name')).end()
         .find('label').text(this.selectedIcon.data('pname')).end()
         .show()
       ;

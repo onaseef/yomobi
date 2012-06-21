@@ -134,12 +134,12 @@ script.edit-icon-dialog(type="text/template")
           td.r
             div.r
       | <% } else { %>
-      img src="/images/widgets/{{ icons[i].name }}.png" data-pname="{{ icons[i].pname }}" title="{{ icons[i].pname }}" data-name="{{ icons[i].name }}"
+      .wicon-opt class="i-{{ icons[i].name }}" data-pname="{{ icons[i].pname }}" title="{{ icons[i].pname }}" data-name="{{ icons[i].name }}"
       | <% } %>
       | <% } %>
     .selected-display
       div.selected-label =t'dialog.change_icon.selected_icon'
-      img src=""
+      .wicon-opt
       label
 
 = render :partial => 'builder/cat-dialog-templates'

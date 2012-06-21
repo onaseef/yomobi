@@ -704,15 +704,12 @@ div.wysiwyg ul.toolbar {
   padding: 10px 0 10px 0;
   border: 1px solid #ccc;
   overflow: auto; }
-  #dialog-confirm.edit-icon .icons img {
+  #dialog-confirm.edit-icon .icons .wicon-opt {
     border: 2px solid #fff;
-    padding: 1px;
-    cursor: pointer;
-    width: 40px;
-    height: 40px; }
-  #dialog-confirm.edit-icon .icons img:hover {
+    cursor: pointer; }
+  #dialog-confirm.edit-icon .icons .wicon-opt:hover {
     border: 2px solid #d8dfea; }
-  #dialog-confirm.edit-icon .icons img.selected {
+  #dialog-confirm.edit-icon .icons .wicon-opt.selected {
     border: 2px dashed black; }
 #dialog-confirm.edit-icon .selected-display {
   display: none; }
