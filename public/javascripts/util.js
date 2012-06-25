@@ -619,7 +619,7 @@ var util = {
     var date = new Date();
     date.setTime(date.getTime()+(minutes*60*1000));
     var expires = "; expires=" + date.toGMTString();
-    document.cookie = 'noredirect::' + domain + "=1" + expires + "; path=/";
+    document.cookie = 'noredirect::' + domain + "=1" + expires + ";path=/;domain=yomobi.com";
   },
 
   toComparableName: function (name) {
