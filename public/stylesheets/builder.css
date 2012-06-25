@@ -713,7 +713,8 @@ div.wysiwyg ul.toolbar {
   #dialog-confirm.edit-icon .icons .wicon-opt.selected {
     border: 2px dashed black; }
 #dialog-confirm.edit-icon .selected-display {
-  display: none; }
+  display: none;
+  margin-top: 12px; }
 #dialog-confirm.edit-icon label {
   font-size: 120%;
   position: relative;
