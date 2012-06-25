@@ -5,7 +5,8 @@ class WepayCheckoutRecordObserver < ActiveRecord::Observer
     return if wcr.state == 'expired'
     puts "UPDATING WEPAY RECORD #{wcr.id}: #{wcr.state} #{wcr.reference_id}"
 
-    payment = Payment.find_or_create_by_wepay_checkout_record_id(wcr.id)
+    payment = Payment.find_by_wepay_checkout_record_id(wcr.id)
+    payment ||= Payment.new :wepay_checkout_record => wcr
 
     if payment.user_id.nil? || payment.company_id.nil?
       user_id, company_id, recur_type = wcr.reference_id.split('|').map(&:to_i)
