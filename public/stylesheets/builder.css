@@ -705,6 +705,7 @@ div.wysiwyg ul.toolbar {
   border: 1px solid #ccc;
   overflow: auto; }
   #dialog-confirm.edit-icon .icons .wicon-opt {
+    margin: 2px;
     border: 2px solid #fff;
     cursor: pointer; }
   #dialog-confirm.edit-icon .icons .wicon-opt:hover {
@@ -727,8 +728,9 @@ div.wysiwyg ul.toolbar {
   padding: 4px 0px 0px 0px; }
 #dialog-confirm.edit-icon table.change-icon-separator {
   width: 100%;
-  border-collapse: collapse;
-  margin: 10px 0px 4px 0px; }
+  border-collapse: collapse; }
+  #dialog-confirm.edit-icon table.change-icon-separator td {
+    padding: 6px 0px; }
   #dialog-confirm.edit-icon table.change-icon-separator td.l {
     width: 5%;
     padding-left: 4px; }
@@ -741,8 +743,8 @@ div.wysiwyg ul.toolbar {
     white-space: nowrap; }
   #dialog-confirm.edit-icon table.change-icon-separator div.l, #dialog-confirm.edit-icon table.change-icon-separator div.r {
     border-top: 4px solid #b3b3b3; }
-#dialog-confirm.edit-icon table.first {
-  margin-top: 0px; }
+#dialog-confirm.edit-icon table.first, #dialog-confirm.edit-icon td.first {
+  padding-top: 0px; }
 
 #dialog-confirm.jeditor-image .preview img {
   max-width: 100%;

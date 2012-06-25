@@ -118,11 +118,11 @@ script.edit-icon-dialog(type="text/template")
       | <% if (icons[i].separator && first==1) { first=0; %>
       table.change-icon-separator.first
         tr
-          td.l
+          td.l.first
             div.l
-          td.label
+          td.label.first
             div.label {{ icons[i].pname }}
-          td.r
+          td.r.first
             div.r
       | <% } else if (icons[i].separator) {  %>
       table.change-icon-separator
@@ -140,7 +140,7 @@ script.edit-icon-dialog(type="text/template")
     .selected-display
       div.selected-label =t'dialog.change_icon.selected_icon'
       .wicon-opt
-      label
+      label.hide
 
 = render :partial => 'builder/cat-dialog-templates'
 

@@ -787,6 +787,7 @@ div.wysiwyg ul.toolbar {
     overflow: auto;
 
     .wicon-opt {
+      margin: 2px;
       border: 2px solid #fff;
       cursor: pointer;
     }
@@ -821,8 +822,8 @@ div.wysiwyg ul.toolbar {
   table.change-icon-separator {
     width: 100%;
     border-collapse: collapse;
-    margin: 10px 0px 4px 0px;
     
+    td { padding: 6px 0px; }
     td.l {
       width: 5%;
       padding-left: 4px;
@@ -841,7 +842,7 @@ div.wysiwyg ul.toolbar {
     }
   }
   
-  table.first { margin-top: 0px; }
+  table.first, td.first { padding-top: 0px; }
 
 }
 
