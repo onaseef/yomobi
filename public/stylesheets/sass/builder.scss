@@ -50,7 +50,9 @@ div.wysiwyg ul.toolbar {
       cursor: pointer; } }
   .option.basic .icon {
     background-position: 0 0; }
-  .option.config .icon {
+  .option.config .icon, 
+  .option.edit-settings .icon, 
+  .option.edit-advanced-settings .icon {
     background-position: 0 -16px; }
   .option.builder .icon {
     background-position: 0 -32px; }
@@ -62,6 +64,8 @@ div.wysiwyg ul.toolbar {
     background-position: 0 -128px; }
   .option.text .icon {
     background-position: 0 -144px; }
+  .option.edit-tab-bar .icon {
+    background-position: 0 -160px; }
   .option.active {
     background-color: $highlight-color; }
   .home-icon {

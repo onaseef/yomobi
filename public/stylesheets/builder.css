@@ -39,7 +39,9 @@ div.wysiwyg ul.toolbar {
       cursor: pointer; }
   #sidebar .option.basic .icon {
     background-position: 0 0; }
-  #sidebar .option.config .icon {
+  #sidebar .option.config .icon,
+  #sidebar .option.edit-settings .icon,
+  #sidebar .option.edit-advanced-settings .icon {
     background-position: 0 -16px; }
   #sidebar .option.builder .icon {
     background-position: 0 -32px; }
@@ -51,6 +53,8 @@ div.wysiwyg ul.toolbar {
     background-position: 0 -128px; }
   #sidebar .option.text .icon {
     background-position: 0 -144px; }
+  #sidebar .option.edit-tab-bar .icon {
+    background-position: 0 -160px; }
   #sidebar .option.active {
     background-color: #d8dfea; }
   #sidebar .home-icon {
