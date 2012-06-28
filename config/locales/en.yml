@@ -2,9 +2,25 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  powered_by:
+    slogan: "Powered by YoMobi"
+
+  share:
+    share: "Share:"
+
+  date_formats:
+    payment: "%m/%d/%Y"
+    site_grade_dates: "%b %d, %Y"
+
   general:
     click_here_start: "Click here"
     click_here_middle: "click here"
+    ok: "OK"
+    date: "Date"
+    site: "Site"
+    site_url: "Site URL"
+    site_name: "Site Name"
+    amount: "Amount"
 
   days:
     Sunday: "Sunday"
@@ -71,6 +87,8 @@ en:
     close: "Close"
     create: "Create"
 
+    error: "Error"
+
     delete_widget: "Are you sure you want to delete this widget?\n(all data will be lost)"
 
     wysiwyg:
@@ -131,12 +149,23 @@ en:
 
 
     site_manager:
+      unknown_error: "An unknown error has occured."
       default_error: "We're sorry, something went wrong."
       new_site_dialog_title: "Create New Site"
       add_admin_dialog_title: "Add Admin for "
+      add_domain_dialog_title: "Add Custom Domain for "
       concede_ownership_dialog_title: "Concede Site Ownership"
       add: "Add"
       continue: "Continue"
+      select_domain: "Please select a domain"
+      cancel_sub_confirm: "Are you sure you want to cancel your subscription?"
+      manage: "Manage"
+      upgrade: "Upgrade"
+      professional: "Custom"
+      standard: "Standard"
+      agree_to_terms: "Please agree to the terms before continuing."
+      monthly: "Monthly"
+      yearly: "Yearly"
 
 
   javascript_mobile:
@@ -234,6 +263,7 @@ en:
   account:
     already_setup: "Your account has already been setup."
     enter_current_password: "Please enter your current password to update your account."
+    enter_new_password: "Please enter a new password to change to."
     updated_success: "Account updated successfully."
 
     welcome_email:
@@ -360,11 +390,11 @@ en:
       site_url_header: "Mobile Site URL"
       site_url: "You can see your new mobile site on your smart phone or tablet by browsing to "
       auto_redirect_header: "Auto-Redirect"
-      auto_redirect: If you have a desktop site, <a target="ym-help" href="http://help.yomobi.com/Account/MobileRedirectScript"> learn how to automatically redirect your mobile visitors from your desktop site to your mobile site</a>.
+      auto_redirect: If you have a desktop site, <a target="ymhelp" href="http://help.yomobi.com/Account/MobileRedirectScript"> learn how to automatically redirect your mobile visitors from your desktop site to your mobile site</a>.
       easy_update_header: "Easy Site Update"
       easy_update: "Updating your mobile site is easy. All changes you make are automatically published, so your site is always up to date."
       help_header: "Need Help?"
-      help: For additional information, <a target="ym-help" href="http://help.yomobi.com">please visit our help pages.</a>
+      help: For additional information, <a target="ymhelp" href="http://help.yomobi.com">please visit our help pages.</a>
       customize_header: "Start Customizing"
       customize: "To start customizing your site, please click the button below."
 
@@ -380,15 +410,25 @@ en:
     title: "Account Settings"
     current_password: "Current Password*:"
     contact_information: "Contact Information"
+    update_contact_info: "Update Contact Information"
     first_name: "First Name:"
     last_name: "Last Name:"
     email: "Email:"
-    change_password: "Change Password (Optional):"
+    change_password: "Change Password"
+    change_password_optional: "Change Password (Optional):"
     new_password: "New Password:"
     new_password_confirm: "Re-enter New Password:"
     save: "Save Changes"
+    payment_history: "Payment History"
+    payment_history_help: "Click here for help with payment history."
+
+  upgrade:
+    title: "Upgrade Mobile Site"
 
   builder:
+
+    upgrade_ad:
+      title: "Click here to learn how to upgrade your site type to remove this ad bar and to enable additional customization."
 
     sidebar:
       view_mobile_site: "View Mobile Site"
@@ -397,6 +437,7 @@ en:
       general_settings: "General Settings"
       advanced_settings: "Advanced Settings"
       edit_tab_bar: "Edit Mobile Tab Bar"
+      customize: "Advanced Customization"
       mobile_site_builder: "Mobile Site Builder"
 
     email_panel:
@@ -446,6 +487,36 @@ en:
       redirect_code_help: "To automatically redirect visitors to your mobile site when they visit your desktop site from a mobile phone, copy this code snippet and paste it into your desktop site’s home page, just before the closing &lt;head&gt; tag. <b>Click ? more help.</b>"
       keywords: "Enter keywords that describe your website, separated by commas:"
       save: "Save Settings"
+
+    customize:
+      title: "Advanced Customization"
+      explanation: "<p>Customize the look and feel of your site.</p>"
+      banner: "Banner"
+      banner_help: "<p>A banner will override all other header settings.</p>"
+      body_bg: "Wallpaper"
+      body_bg_help: "<p>Upload a background image.</p>"
+      not_premium: '<a href="http://help.yomobi.com/upgrade" target="ymhelp">You must upgrade this site to Custom to use this feature. Click here to learn how to upgrade.</a>'
+
+      customizing_header: "Customizing Header"
+      header: "Header"
+      header_font: "Font"
+
+      banner_size: "Banner Size"
+      text_color: "Text Color"
+      background_color: "Background Color"
+      font: "Font"
+
+      tab_bar_and_footer: "Mobile Tab Bar & Footer"
+      customizing_tab_bar_and_footer: "Customizing Tab Bar & Footer"
+      icon_text_font: "Font"
+      icon_text_color: "Text Color"
+
+      home_page: "Home Page"
+      customizing_home_page: "Customizing Home Page"
+      dont_repeat: "Don't Repeat"
+      repeat_horizontal: "Repeat Horizontally"
+      repeat_vertical: "Repeat Vertically"
+      repeat_both: "Repeat Both"
 
     edit_tab_bar:
       explanation: "Select the pages you want to be most visible to your mobile visitors."
@@ -603,6 +674,15 @@ en:
       msg: "&nbsp;New widgets can only be added from the mobile home screen.<p><br></p><p>Please click on Home in the Mobile Tab Bar to return to the mobile home screen and try adding again.</p>"
 
 
+  payments:
+    email_bad:
+      subject: "Payment failed for %{site_name}"
+      body: "Your payment has failed"
+    subscription_fail:
+      subject: "Subscription payment failed for %{site_name}"
+      body: "Your subscription payment has failed."
+
+
   site_manager:
     active_site: "Active Site: %{site_name}"
     add_admin: "Add Admin"
@@ -614,12 +694,56 @@ en:
     site_name: "Site Name:"
     site_details: "Site Details"
     select_site: "Please select a site on the left."
-    selected_site: "Selected: %{site_name}"
+    selected_site: "Manage: %{site_name}"
     edit_site: "Edit Site"
+    generate: "Generate"
+    signup_keys: "Signup Keys"
     generate_signup_key: "Generate Signup Key"
     site_access_list: "Sites you have access to:"
     admin_email: "Admin's Email:"
     enter_password: "Enter your password to continue:"
+    add_domain: "Add Domain"
+    remove_domain: "Remove Domain"
+    domain_name: "Domain Name (e.g. m.example.com):"
+
+    site_grade: "Site Grade"
+    subscription_status: "You are on a {{ subscriptionType }} subscription until {{ subscriptionEndDate }}"
+    cancel_subscription: "Cancel Subscription"
+    cancel_success: "Subscription cancelled sucessfully."
+    payment_complete: "This site has been successfully upgraded."
+    renew_subscription: "Renew Subscription"
+    next_charge: "next charge: {{ nextChargeDate }}"
+    expires: "expires: {{ expireDate }}"
+
+    select_payment_option: "Select a payment option:"
+    opt_one_month: "One Month - %{price}"
+    opt_one_year: "One Year - %{price}"
+    opt_monthly: "Autopay Monthly - %{price} / month"
+    opt_yearly: "Autopay Yearly - %{price} / year"
+    i_agree: "I agree to these terms"
+    back: "&larr; Back"
+
+    setup: "Setup"
+    custom_domains: "Custom Domains"
+    connected_domains: "%{domain_count} Connected Domains"
+    not_premium_for_domains: "This site must be upgraded to use custom domains."
+    no_domains_connected: "No domains connected to this site."
+
+    merchant_account: "Merchant Account"
+    no_merchant_account: "You have not set up your merchant account."
+    coming_soon: "Coming Soon."
+
+    manage: "Manage"
+    site_admins: "Site Admins"
+    site_admins_status: "This site has <b>%{admin_count}</b> admin(s)."
+
+    months: "Months"
+    monthly: "Monthly"
+    year: "Year"
+    yearly: "Yearly"
+    upgrade_payment: "Custom Site Payment"
+
+    # site_manager
     error:
       are_you_sure: "Are you sure?"
       site_limit: "You have reached the site count limit of %{max_site_count}."
@@ -627,9 +751,19 @@ en:
       no_self_admin: "You cannot add yourself as a Admin."
       already_owner: "You are already the owner of this site."
       description_too_long: "Description is too long. 2500 characters max."
-
+      domain_taken: "Domain has already been linked to another mobile site."
+      bad_domain_format: "Invalid domain format."
+      max_domain_count: "You have reached the maximum number of domains for this mobile site (5)."
+      
+    # site_manager
     help:
-      signup_keys: "When you are ready to hand this site over to its owner, generate a signup key, then email the link to the site owner and have them click on the link to sign up to Yomobi and take ownership of their site.<br><b>Click ? for more information.</b>"
+      site_access_list: 'To manage a site, select it in the list below, then use the configuration panel on the right to edit or update the site.<br/><br/><a href="http://help.yomobi.com/SiteManager" target="ymhelp">Click here for more information.</a>'
+      signup_keys: 'When you are ready to hand this site over to an owner who does not already have a YoMobi login, generate a signup key, then email the link to the site owner and have them click on the link to sign up to Yomobi and take ownership of their site.<br/><br/><a href="http://help.yomobi.com/Account/SignupKey" target="ymhelp">Click here for more information.</a>'
+      manage_site_type: 'Select a payment option below to upgrade your mobile site to a Custom account. You may cancel your subscription at any time.<br/><br/><a href="http://help.yomobi.com/SiteManager/SiteTypes" target="ymhelp">Click here for more information about Custom account features and making payments.</a>'
+      extend_premium_term: 'Select a payment option below to extend the duration of your existing Custom account. You may cancel your subscription at any time.<br/><br/><a href="http://help.yomobi.com/SiteManager/SiteTypes" target="ymhelp">Click here for more information about Custom account features and making payments.</a>'
+      renew_subscription: 'Please renew your current subscription to maintain access to custom features. You may cancel your subscription at any time.'
+      manage_custom_domain: '<a href="http://help.yomobi.com/SiteManager/CustomDomain" target="ymhelp">Click here to learn how to associate a custom domain with your mobile site.</a>'
+      manage_site_admins: '<a href="http://help.yomobi.com/SiteManager/SiteAdmins" target="ymhelp">Click here to learn how to manage site administrators.</a>'
     confirm:
       concede_site: Are you sure? You will lose ownership of this site.
     dialog:
@@ -663,7 +797,6 @@ en:
       closing: "Thank You,"
       signature: '<a href="http://www.yomobi.com">YoMobi</a>'
       create_site: 'Create your own free mobile site at: <a href="http://www.yomobi.com">YoMobi.com</a>'
-
 
   widgets:
     helpText:

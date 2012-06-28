@@ -170,6 +170,13 @@ p {
     font-style: italic;
     line-height: 1em;
   }
+  .banner-wrap {
+    text-align: center;
+  }
+  img.banner {
+    //width: 100%;
+    max-width: 100%;
+  }
 }
 
 .tab-bar {
@@ -187,7 +194,7 @@ p {
     text-decoration: none; }
   td, td a {
     width: 25%;
-    padding: 6px 0px;
+    padding: 6px 3px;
     text-align: center;
     font-weight: bold;
     font-size: 14px;
@@ -201,13 +208,15 @@ p {
 .ad-bar {
   display: none;
   padding: 0 0;
-  border-bottom: 2px solid $secondary-color;
+  border-bottom: 1px solid $secondary-color;
   background: $color-topbar;
   text-align: center;
   max-height: 60px;
   overflow: hidden;
   &.bottom {
-    height: 48px; } }
+    border-top: 1px solid $secondary-color;
+    border-bottom: none;
+  } }
 
 .back-btn {
   cursor: pointer;
@@ -262,9 +271,10 @@ p {
     word-wrap: break-word; } }
 
 .mobile-footer {
+  font-size: 14px;
   width: 100%;
-  height: 70px;
-  padding: 12px 0 6px 0;
+  //min-height: 70px;
+  padding: 12px 0 8px 0;
   background: #c4cde0;
   border-top: solid 1px #1d4088;
   border-bottom: solid 1px #1d4088;
@@ -274,6 +284,14 @@ p {
   p {
     margin: 0 0 10px 0;
     padding-left: 5px; }
+  .social-share {
+    margin: 0;
+    padding: 0 0 0 5px;
+    list-style: none;
+    li {
+      float: left;
+      cursor: pointer;
+      margin-right: 12px !important; } }
   .powered-by {
     font-size: 14px;
     text-align: center; } }
@@ -289,15 +307,6 @@ p {
   input[type=text] {
     width: 100px !important;
     margin: 5px 0 0 0 !important; } }
-
-.social-share {
-  margin: 0;
-  padding: 0 0 0 5px;
-  list-style: none;
-  li {
-    float: left;
-    cursor: pointer;
-    margin-right: 12px; } }
 
 .clearfix {
   clear: both; }
@@ -541,6 +550,16 @@ pre {
       padding: 0px;
     }
   }
+}
+
+.yomobi-upgrade-ad {
+  font-size: 13px;
+  font-weight: bold;
+  color: red;
+  background: yellow;
+  p { padding: 6px; }
+  a { color: red; text-decoration: none; }
+  a:hover { text-decoration: underline; }
 }
 
 // WYSIWYG Photo styling

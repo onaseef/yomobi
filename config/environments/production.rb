@@ -1,6 +1,10 @@
 Yomobi::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
+  config.app_domains = ['yomobi.com']
+  config.re_app_domains = config.app_domains.map {|d| Regexp.escape d}.join '|'
+  config.heroku_app_name = 'yomobi'
+
   config.opt_out_url_host = 'http://www.yomobi.com'
 
   # The production environment is meant for finished, "live" apps.

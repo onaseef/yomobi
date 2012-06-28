@@ -1,0 +1,10 @@
+h2 = "Paying #{@time} subscription for: #{@site.url_and_name}"
+
+#checkout
+
+erb:
+  <script type="text/javascript">
+    WePay.iframe_checkout("checkout", "<%=raw (@checkout.checkout_uri || @checkout.preapproval_uri) %>");
+  </script>
+
+button.back-btn ==t('site_manager.back')

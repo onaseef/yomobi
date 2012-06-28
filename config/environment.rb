@@ -1,4 +1,4 @@
-require './lib/subdomain.rb'
+require './lib/mobile_domain.rb'
 
 # Load the rails application
 require File.expand_path('../application', __FILE__)
@@ -21,8 +21,8 @@ MAX_COMPANY_NAME_LENGTH = 45
 MAX_COMPANY_SLOGAN_LENGTH = 90
 
 # used in site_manager_controller.rb
-# maximum site count / max site count
-MAX_SITE_COUNT = 500
+MAX_SITE_COUNT = 30
+MAX_DOMAIN_COUNT = 5
 
 # maximum RSS feed entry count / max RSS feed entry count
 # also update in _mobile-data-loader.html.erb

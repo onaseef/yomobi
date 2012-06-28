@@ -12,6 +12,9 @@
   - unless @is_preview_mode || @company.premium?
     .ad-bar
       = render 'mobile/adsense' if Rails.env == 'production'
+  - if @company.premium? == false && @is_preview_mode == true
+    .ad-bar
+      = render 'mobile/yomobi-upgrade-ad'
 #canvas
   #home.page
     #home-widgets.content.dbx-group
@@ -19,7 +22,11 @@
       .ad-bar.bottom
         div align="center"
         = render 'mobile/adsense' if Rails.env == 'production'
-    - unless @is_preview_mode
-      .mobile-footer
-        = render 'mobile/social-share'
+    - if @company.premium? == false && @is_preview_mode == true
+      .ad-bar.bottom
+        = render 'mobile/yomobi-upgrade-ad'
+    .mobile-footer
+      = render 'mobile/social-share'
+      erb:
+        <div class="powered-by"><a href="http://www.yomobi.com" target="_blank"><%=t('powered_by.slogan')%></a></div>
 

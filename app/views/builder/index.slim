@@ -6,7 +6,7 @@
   = javascript_include_tag 'views/sidebar'
   = javascript_include_tag 'mobile-app'
   = javascript_include_tag 'builder-app'
-  
+
   = javascript_include_tag 'support/jquery.wysiwyg'
   = javascript_include_tag 'support/jquery.wysiwyg.link'
   = javascript_include_tag 'support/jquery.wysiwyg.image'
@@ -15,6 +15,11 @@
     erb:
       <script type="text/javascript">
         $.wysiwyg.i18n.lang[g.i18n_locale] = <%=raw t("jwysiwyg").to_json %>;
+      </script>
+  - if @company.premium? == false && @is_preview_mode == true
+    erb:
+      <script type="text/javascript">
+        mapp.showAds();
       </script>
 
 div.company-header
@@ -27,7 +32,7 @@ div.company-header
     .left.lfloat
       .title =t'builder.mobile_emulator.title'
       .title-subtext
-        a target="_blank" href="http://help.yomobi.com/Account/MobileRedirectScript" 
+        a target="_blank" href="http://help.yomobi.com/Account/MobileRedirectScript"
           img src="/images/redirect.png"
         a target="ymhelp" href="http://help.yomobi.com/Account/MobileRedirectScript" =t'general.click_here_start'
         =t'builder.mobile_emulator.mobile_redirect'

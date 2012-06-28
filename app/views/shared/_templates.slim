@@ -14,6 +14,10 @@
       .invalid-icon
 
   script.mapp-header(type="text/template")
+    | <% if (g.banner && g.isPremium) { %>
+    .banner-wrap
+      img.banner src="<% print(g.banner); %>"
+    | <% } else { %>
     table
       | <% if (_maybe.slogan) { %>
       tr
@@ -32,6 +36,7 @@
         | <% } %>
         td.name {{ name }}
       | <% } %>
+    | <% } %>
 
   script.tab-bar(type="text/template")
     table

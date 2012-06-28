@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_many :companies
   has_many :keys, :dependent => :delete_all
   has_many :shared_companies, :through => :keys, :source => :company
+  has_many :payments
 
   # only used for analytics purposes
   has_many :signup_keys, :dependent => :delete_all
@@ -27,6 +28,21 @@ class User < ActiveRecord::Base
       conditions[:email].strip!
     end
     super(conditions)
+  end
+
+  def charge_history
+    payments = self.payments
+      .joins(:wepay_checkout_record).includes(:wepay_checkout_record)
+      .includes(:company)
+      .where(:is_valid => true)
+      .where('wepay_checkout_records.start_time <= :start_time',
+              :start_time => (Time.now + 3.hours).to_i)
+      .order('wepay_checkout_records.start_time')
+    history = []
+    payments.each do |p|
+      history << p.charge_history.map {|date| Charge.new(p,date) }
+    end
+    history.flatten.sort_by! { |charge| charge.charge_date }
   end
 
   # returns the company that the user is currently editing

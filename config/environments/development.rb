@@ -1,6 +1,10 @@
 Yomobi::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
+  config.app_domains = ['deelmob.com', 'local.host']
+  config.re_app_domains = config.app_domains.map {|d| Regexp.escape d}.join '|'
+  config.heroku_app_name = 'yomobi-test'
+
   config.opt_out_url_host = ENV['DEVISE_URL_HOST'] || 'http://local.host:3000'
 
   # In the development environment your application's code is reloaded on

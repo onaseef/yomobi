@@ -43,17 +43,29 @@ div.wysiwyg ul.toolbar {
       float: left;
       width: 16px;
       height: 16px;
-      margin: -1px 4px 0 0;
+      margin: 0px 4px 0 0;
       background: url(/images/test-icons.png); }
     &:hover {
       background-color: $highlight-color;
       cursor: pointer; } }
   .option.basic .icon {
     background-position: 0 0; }
-  .option.config .icon {
+  .option.config .icon, 
+  .option.edit-settings .icon, 
+  .option.edit-advanced-settings .icon {
     background-position: 0 -16px; }
   .option.builder .icon {
     background-position: 0 -32px; }
+  .option.customize .icon {
+    background-position: 0 -96px; }
+  .option.preview .icon {
+    background-position: 0 -112px; }
+  .option.email .icon {
+    background-position: 0 -128px; }
+  .option.text .icon {
+    background-position: 0 -144px; }
+  .option.edit-tab-bar .icon {
+    background-position: 0 -160px; }
   .option.active {
     background-color: $highlight-color; }
   .home-icon {
@@ -125,8 +137,8 @@ div.wysiwyg ul.toolbar {
 
 // builder related
 
-.ad-bar {
-  display: none !important; }
+#emulator-wrapper .ad-bar {
+  display: none; }
 
 .home-icon.editing {
   //background: url(/images/ui/highlight.png) no-repeat 0px 1px !important;
@@ -409,7 +421,8 @@ div.wysiwyg ul.toolbar {
   margin: 10px 0; }
 
 #builder .edit-area.edit-settings, 
-#builder .edit-area.edit-advanced-settings {
+#builder .edit-area.edit-advanced-settings,
+#builder .edit-area.customize {
   padding-top: 8px;
   .box {
     margin: 10px 0px 0px 0px;
@@ -435,12 +448,25 @@ div.wysiwyg ul.toolbar {
       width: 240px;
     }
     textarea { height: 4em; }
+    select { max-width: 250px; }
   }
-  select { width: 245px; }
+  select { width: auto; }
   .top { vertical-align: top; }
   .logo { margin: 3px 0px; }
   .site-name { padding-bottom: 10px; }
   .new-picture { width: 100%; }
+}
+
+#builder .edit-area.customize {
+  .subpanels > * { display: none }
+  img.banner, img.body_bg { max-width: 64px; }
+  .not-premium { 
+    width: 230px; 
+    float: left; 
+    color: red;
+    a, a:visited { color: red; } 
+  }
+  td.not-premium { width: 100%; padding: 0px 4px; }
 }
 
 
@@ -459,7 +485,6 @@ div.wysiwyg ul.toolbar {
   padding: 5px;
   label {
     font-weight: bold;
-    font-size: 0.8em;
   }
   img {
     -moz-border-radius: 0px;
@@ -497,6 +522,12 @@ div.wysiwyg ul.toolbar {
   overflow: hidden;
   white-space: nowrap;
   clear: left;
+}
+.wphoto-wrap .selected-file.no-anim {
+  transition-duration: 0;
+  -moz-transition-duration: 0;
+  -webkit-transition-duration: 0;
+  -o-transition-duration: 0;
 }
 
 #dialog-confirm .wphoto-wrap {
@@ -777,28 +808,21 @@ div.wysiwyg ul.toolbar {
     padding: 10px 0 10px 0;
     border: 3px solid #ccc;
     overflow: auto;
-        
-    img {
+
+    .wicon-opt {
+      margin: 2px;
       border: 2px solid #fff;
-      padding: 1px;
       cursor: pointer;
-      width: 40px; height: 40px;
     }
-    img:hover { border: 2px solid $highlight-color; }
-    img.selected {
+    .wicon-opt:hover { border: 2px solid $highlight-color; }
+    .wicon-opt.selected {
       border: 2px dashed black;
     }
   }
 
   .selected-display {
     display: none;
-    img { 
-      width: 57px;
-      height: 57px;
-      border-radius: 12px;
-      -webkit-border-radius: 12px;
-      -moz-border-radius: 12px;
-    }  
+    margin-top: 12px;
   }
     
   .upload-custom-icon-label {
@@ -826,8 +850,8 @@ div.wysiwyg ul.toolbar {
   table.change-icon-separator {
     width: 100%;
     border-collapse: collapse;
-    margin: 10px 0px 4px 0px;
     
+    td { padding: 6px 0px; }
     td.l {
       width: 5%;
       padding-left: 4px;
@@ -846,7 +870,7 @@ div.wysiwyg ul.toolbar {
     }
   }
   
-  table.first { margin-top: 0px; }
+  table.first, td.first { padding-top: 0px; }
 
 }
 
@@ -930,14 +954,15 @@ div.wysiwyg ul.toolbar {
 }
 
 .color-picker {
-  background: transparent url(/images/color-picker/select2.png) no-repeat;
+  //background: transparent url(/images/color-picker/select2.png) no-repeat;
   height: 36px;
   width: 72px;
   position: relative;
 }
 .color-picker div {
   position: absolute;
-  top: 6px; left: 6px;
+  top: 3px; 
+  //left: 6px;
   width: 64px; height: 28px;
   background: url(/images/color-picker/select2.png) center;
 }

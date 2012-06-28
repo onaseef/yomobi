@@ -1,9 +1,9 @@
 ul
-  li.option.basic class=active?('mobile',active)
+  li.option.preview class=active?('mobile',active)
     .icon
     a#preview-mobile-site href=mobile_preview_path(@company.db_name) =t'builder.sidebar.view_mobile_site'
   li.spacer
-  li.option.text class=active?('email',active)
+  li.option.email class=active?('email',active)
     .icon
     a href=builder_email_path =t 'builder.sidebar.email_followers'
   li.option.text class=active?('text',active)
@@ -19,6 +19,10 @@ ul
   li.option.edit-tab-bar
     .icon
     a href=builder_main_path(:anchor => 'edit-tab-bar') =t 'builder.sidebar.edit_tab_bar'
+  li.spacer
+  li.option.customize
+    .icon
+    a href=builder_main_path(:anchor => 'customize') =t 'builder.sidebar.customize'
   li.spacer
   li.option.builder class=active?('builder',active)
     .icon

@@ -1,5 +1,4 @@
 <style type="text/css">
-
 .company-info {
   <% if @company.settings.header_color %>
   <% @color = @company.settings.header_color %>
@@ -23,5 +22,66 @@
   color: <%= @company.settings.header_text_color %>;
   <% end %>
 }
+</style>
+
+
+<% if @company.premium? %>
+<style type="text/css">
+
+.company-info {
+  <% if @company.settings.header_font_family %>
+  font-family: <%= @company.settings.header_font_family %>;
+  <% end %>
+}
+
+.company-info .banner-wrap img {
+  <% if @company.settings.banner_size %>
+  width: <%= @company.settings.banner_size %>;
+  <% end %>
+}
+
+#top-bar .tab-bar, .mobile-footer, .ad-bar {
+  <% if @company.settings.tab_bar_color %>
+  background: <%= @company.settings.tab_bar_color %>;
+  <% end %>
+
+  <% if @company.settings.tab_bar_text_color %>
+  border-color: <%= @company.settings.tab_bar_text_color %>;
+  <% end %>
+
+  <% if @company.settings.tab_bar_font_family %>
+  font-family: <%= @company.settings.tab_bar_font_family %>;
+  <% end %>
+}
+
+#top-bar .tab-bar td, #top-bar .tab-bar td a, .mobile-footer {
+  <% if @company.settings.tab_bar_text_color %>
+  color: <%= @company.settings.tab_bar_text_color %>;
+  <% end %>
+}
+
+#canvas .home-icon .title {
+  <% if @company.settings.icon_font_family %>
+  font-family: <%= @company.settings.icon_font_family %>;
+  <% end %>
+
+  <% if @company.settings.icon_text_color %>
+  color: <%= @company.settings.icon_text_color %>;
+  <% end %>
+}
+
+#canvas #home.page {
+  background-position: 50% 0;
+
+  <% if @company.settings.body_bg.url(:mobile) != '' %>
+  background-image: url(<%= @company.settings.body_bg.url(:mobile) %>);
+  background-repeat: <%= @company.settings.body_bg_repeat %>;
+  <% end %>
+
+  <% if @company.settings.body_bg_color %>
+  background-color: <%= @company.settings.body_bg_color %>;
+  <% end %>
+}
 
 </style>
+<% end %>

@@ -3,7 +3,10 @@
   = stylesheet_link_tag 'site-manager'
 
 - content_for :js do
-  = render 'layouts/js-base'
+
+  / Used for remote forms
+  = javascript_include_tag 'rails'
+
   erb:
     <script type="text/javascript">
     window._sitesData = <%=raw @companies.to_json %>;
@@ -13,37 +16,49 @@
       createSitePath: _.template( unescape("<%=raw create_site_path %>") ),
       addAdminPath: _.template( unescape("<%=raw add_admin_path '{{ id }}' %>") ),
       removeAdminPath: _.template( unescape("<%=raw remove_admin_path '{{ id }}', '{{ admin_id }}' %>") ),
+
+      addDomainPath: _.template( unescape("<%=raw add_domain_path '{{ id }}' %>") ),
+      removeDomainPath: _.template( unescape("<%=raw remove_domain_path '{{ id }}', '{{ domain_id }}' %>") ),
       genSignupKey: _.template( unescape("<%=raw gen_signup_key_path '{{ id }}' %>") ),
       concedeSitePath: _.template( unescape("<%=raw concede_site_path '{{ id }}' %>") ),
       makeDefaultSitePath: _.template( unescape("<%=raw make_default_site_path '{{ id }}' %>") ),
+      upgradeSitePath: _.template( unescape("<%=raw upgrade_path '{{ id }}' %>") ),
+      cancelSubPath: _.template( unescape("<%=raw cancel_sub_path '{{ id }}' %>") ),
 
       user_id: <%= current_user.id %>,
       defaultSite_id: <%= current_user.default_company.id %>,
+      <% if @payment %>
+      activeSite_id: <%= @payment.company_id %>,
+      <% else %>
       activeSite_id: <%= current_user.company.id %>,
+      <% end %>
 
       concedeSiteConfirmation: "<%= t'site_manager.confirm.concede_site' %>"
+      <% if @payment %>
+      , payment: <%=raw @payment.to_json %>
+      <% end %>
     };
     </script>
   = javascript_include_tag 'site-manager'
+  script type="text/javascript" src="https://www.wepay.com/js/iframe.wepay.js"
 
 #manager-container
   h2.active-site =t('site_manager.active_site', :site_name => current_user.company.db_name)
 
   .site-list-wrap
-    h2 =t'site_manager.site_access_list'
-    ul.sites.fancy-selectable
-    button.edit =t'site_manager.edit_site'
     button.create =t'site_manager.create_new_site'
-    button.make-default =t'site_manager.make_default'
-  .site-details-wrap
-    h2 =t'site_manager.site_details'
-    .details
-      h3.active-site =t'site_manager.select_site'
-      button disabled="disabled" =t'site_manager.generate_signup_key'
-      ul.admins.fancy-selectable
-    button.add-admin    disabled="disabled" =t'site_manager.add_admin'
-    button.remove-admin disabled="disabled" =t'site_manager.revoke_access'
-    button.concede      disabled="disabled" =t'site_manager.make_owner'
+    h2 =t'site_manager.site_access_list'
+    p.explanation ==t'site_manager.help.site_access_list'
+    ul.sites.fancy-selectable
+
+  .accordian
+    .site-details
+    .signup-keys
+    .site-grade
+    .merchant-account
+    .custom-domains
+    .site-admins
+
   .clearfix
 
 
@@ -67,46 +82,158 @@
               |  [Default]
               | <% } %>
 
-
   script.site-details(type="text/template")
     h3.active-site
       =t('site_manager.selected_site', :site_name => "{{ url }}")
       | <% if (isOwnedByUser === true) { %>
       | *
       | <% } %>
+    button.edit =t'site_manager.edit_site'
+    button.make-default =t'site_manager.make_default'
+    a href="http://help.yomobi.com/SiteManager" target="ymhelp" =t('links.help')
 
-    button.gen-signup-key =t'site_manager.generate_signup_key'
-    input.signup-key.hide type="text" readonly="readonly"
-    a href="http://help.yomobi.com/Account/SignupKey" target="ymhelp"
-      img.help-bubble src="/images/ui/help-bubble.png" title=t('site_manager.help.signup_keys')
+  script.signup-keys(type="text/template")
+    .content-header
+      .action = t 'site_manager.generate'
+      h3.title = t 'site_manager.signup_keys'
+      .status = t 'site_manager.generate_signup_key'
+      .clearfix
+    .content-body
+      p.explanation ==t('site_manager.help.signup_keys')
+      button.gen-signup-key =t'site_manager.generate_signup_key'
+      br
+      input.signup-key-input.hide type="text" readonly="readonly"
 
-    ul.admins.fancy-selectable
-      li.admin.owner data-id="{{ owner.id }}"
-        table
-          tbody
-            tr
-              td.site-pic
-                img src="{{ owner.logo }}"
-              td
-                span.name
-                  ' {{ owner.firstName }} {{ owner.lastName }}
-                  span.is-owner =t'site_manager.owner'
-        | <% for (var i=0; i < admins.length; i++) { %>
-        li.admin data-id="{{ admins[i].id }}"
-          table
-            tbody
-              tr
-                td.site-pic
-                  img src="{{ admins[i].logo }}"
-                td
-                  span.name {{ admins[i].firstName }} {{ admins[i].lastName }}
+  script.site-grade(type="text/template")
+    .content-header
+      .action {{ actionLabel }}
+      h3.title = t 'site_manager.site_grade'
+      .status
+        | <% if (isPremium && subscriptionEndDate) { %>
+        | {{ grade }} (#{ t 'site_manager.next_charge' })
+        | <% } else if (isPremium) { %>
+        | {{ grade }} (#{ t 'site_manager.expires' })
+        | <% } else { %>
+        | {{ grade }}
         | <% } %>
+      .clearfix
+    .content-body
+
+      .just-cancelled.hide
+        label.success = t 'site_manager.cancel_success'
+        button.ok = t 'general.ok'
+
+      .payment-complete.hide
+        label.success = t 'site_manager.payment_complete'
+        button.ok = t 'general.ok'
+
+      | <% if (isSubscribed) { %>
+      .subscribe-options
+        form.cancel action="{{ cancelPath }}" method="POST" data-remote="true"
+          label = t 'site_manager.subscription_status'
+          input type="hidden" name="site_id" value="{{ id }}"
+          input type="submit" value=t('site_manager.cancel_subscription')
+        button.renew = t 'site_manager.renew_subscription'
+      | <% } %>
+      .pay-options class="<% if (isSubscribed) { print('hide'); } %>"
+        | <% if (isSubscribed) { %>
+        br
+        p.explanation == t('site_manager.help.extend_premium_term')
+        | <% } else if (isPremium) { %>
+        p.explanation == t('site_manager.help.extend_premium_term')
+        | <% } else { %>
+        p.explanation == t('site_manager.help.manage_site_type')
+        | <% } %>
+        h3 = t 'site_manager.select_payment_option'
+        form.pay action="{{ actionPath }}" method="POST" data-remote="true"
+          input type="radio" value="monthly" name="recur_type" checked="checked"
+          label = t 'site_manager.opt_monthly', :price => '$5'
+          br
+          input type="radio" value="yearly" name="recur_type"
+          label = t 'site_manager.opt_yearly', :price => '$50'
+          br
+          br
+          input type="checkbox" name="terms"
+            a href="payment_terms" target="ymhelp" = t 'site_manager.i_agree'
+          input type="submit" value=t('javascript_builder.submit')
+      .error.hide
+
+  script.custom-domains(type="text/template")
+    .content-header
+      .action = t 'site_manager.setup'
+      h3.title = t 'site_manager.custom_domains'
+      .status == t 'site_manager.connected_domains', :domain_count => '<% print(domains.length); %>'
+      .clearfix
+    .content-body
+      p.explanation == t('site_manager.help.manage_custom_domain')
+      | <% if (!isPremium) { %>
+      p == t 'site_manager.not_premium_for_domains'
+      | <% } else { %>
+      ul.domains.fancy-selectable
+      button.add-domain    =t'site_manager.add_domain'
+      button.remove-domain =t'site_manager.remove_domain'
+      | <% } %>
+      .clearfix
+
+  script.domain-list(type="text/template")
+    | <% if (domains.length === 0) { %>
+    p = t 'site_manager.no_domains_connected'
+    | <% } else { %>
+    |    <% for (var i=0; i < domains.length; i++) { %>
+    li.domain data-id="{{ domains[i].id }}" {{ domains[i].host }}
+    |    <% } %>
+    | <% } %>
+
+  script.merchant-account(type="text/template")
+    .content-header
+      .action = t 'site_manager.setup'
+      h3.title = t'site_manager.merchant_account'
+      .status = t 'site_manager.no_merchant_account'
+      .clearfix
+    .content-body
+      b = t 'site_manager.coming_soon'
+
+  script.site-admins(type="text/template")
+    .content-header
+      .action = t 'site_manager.manage'
+      h3.title = t 'site_manager.site_admins'
+      .status == t 'site_manager.site_admins_status', :admin_count => '<% print(admins.length+1); %>'
+      .clearfix
+    .content-body
+      p.explanation == t('site_manager.help.manage_site_admins')
+      ul.admins.fancy-selectable
+      button.add-admin    disabled="disabled" =t'site_manager.add_admin'
+      button.remove-admin disabled="disabled" =t'site_manager.revoke_access'
+      button.concede      disabled="disabled" =t'site_manager.make_owner'
+      .clearfix
+
+  script.admin-list(type="text/template")
+    li.admin.owner data-id="{{ owner.id }}"
+      table
+        tbody
+          tr
+            td.site-pic
+              img src="{{ owner.logo }}"
+            td
+              span.name
+                ' {{ owner.firstName }} {{ owner.lastName }}
+                span.is-owner = t 'site_manager.owner'
+    | <% for (var i=0; i < admins.length; i++) { %>
+    li.admin data-id="{{ admins[i].id }}"
+      table
+        tbody
+          tr
+            td.site-pic
+              img src="{{ admins[i].logo }}"
+            td
+              span.name {{ admins[i].firstName }} {{ admins[i].lastName }}
+    | <% } %>
 
   script.admin(type="text/template")
     span.url yomobi.com/{{ name }}
 
   script.new-site-dialog(type="text/template")
-    form#account-setup-box.new-site.dialog title="Create a New Site"
+    form#account-setup-box.new-site.dialog title=t('site_manager.create_new_site')
       .fields
         | <% if (errors.maxSiteCount) { %>
         p.error =t('site_manager.error.site_limit', :max_site_count => "{{errors.maxSiteCount}}")
@@ -158,9 +285,9 @@
       .loading
         h3 =t'status.submitting'
         img src="/images/ui/ajax-loader-small.gif"
-  
+
   script.add-admin-dialog(type="text/template")
-    form#account-setup-box.add-admin.dialog title="Add Admin"
+    form#account-setup-box.add-admin.dialog title=t('site_manager.add_admin')
       .fields
         h3 =t'site_manager.admin_email'
         | <% if (errors.email) { %>
@@ -170,6 +297,24 @@
         p.error =t'site_manager.error.no_self_admin'
         | <% } %>
         input type="text" name="email" value="{{ email }}"
+      .loading
+        h3 =t'status.submitting'
+        img src="/images/ui/ajax-loader-small.gif"
+
+  script.add-domain-dialog(type="text/template")
+    form#account-setup-box.add-domain.dialog title=t('site_manager.add_domain')
+      .fields
+        h3 =t'site_manager.domain_name'
+        | <% if (errors.taken) { %>
+        p.error =t'site_manager.error.domain_taken'
+        | <% } %>
+        | <% if (errors.host) { %>
+        p.error =t'site_manager.error.bad_domain_format'
+        | <% } %>
+        | <% if (errors.max_domain_count) { %>
+        p.error =t'site_manager.error.max_domain_count'
+        | <% } %>
+        input type="text" name="host" value="{{ _maybe.host }}"
       .loading
         h3 =t'status.submitting'
         img src="/images/ui/ajax-loader-small.gif"

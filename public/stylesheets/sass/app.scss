@@ -275,6 +275,10 @@ p.success {
     background: #4f6aa3;
     border-color: #4f6aa3; } }
 
+.main-btn.disabled {
+  opacity: 0.5;
+}
+
 .alt-btn {
   background: #eeeeee;
   border: 1px solid;
@@ -502,6 +506,7 @@ label.help { padding-bottom: 4px; }
   li { font-size: 14px; font-weight: bold; }
 }
 
+.bold_list { font-size: 14px; font-weight: bold; }
 
 
 

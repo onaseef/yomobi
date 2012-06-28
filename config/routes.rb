@@ -1,6 +1,8 @@
 Yomobi::Application.routes.draw do
 
-  constraints(Subdomain) do
+  get "payments/index"
+
+  constraints(MobileDomain) do
     match '/' => 'mobile#index'
     post ':company/leave_msg/submit' => 'widgets/leave_msg#submit'
     post ':company/call_back/submit' => 'widgets/call_back#mobile_submit'
@@ -12,15 +14,23 @@ Yomobi::Application.routes.draw do
   end
 
   get 'about' => 'home#about', :as => :about
+  get 'about_es' => 'home#about_es', :as => :about_es
+  get 'biz' => 'home#opportunity', :as => :opportunity
+  get 'business-opportunities' => 'home#opportunity', :as => :opportunity
   get 'help' => redirect('http://help.yomobi.com'), :as => :help
   get 'how-to-make-a-mobile-website' => 'home#easy', :as => :easy
   get 'opportunities' => 'home#opportunities', :as => :opportunity
   get 'plans' => 'home#plans', :as => :plans
   get 'privacy' => 'home#privacy', :as => :privacy
+  get 'privacy_es' => 'home#privacy_es', :as => :privacy_es
+  get 'payment_terms' => 'home#payment_terms', :as => :payment_terms
+  get 'payment_terms_es' => 'home#payment_terms_es', :as => :payment_terms_es
   get 'terms' => 'home#terms', :as => :terms
+  get 'terms_es' => 'home#terms_es', :as => :terms_es
   get 'vote' => redirect('http://www.facebook.com/yomobi?sk=app_208195102528120'), :as => :vote
   get 'webesity' => 'home#webesity', :as => :webesity
   get 'why-mobile' => 'home#why_mobile', :as => :why_mobile
+  get 'why-mobile_es' => 'home#why_mobile_es', :as => :why_mobile_es
 
 
 
@@ -28,7 +38,12 @@ Yomobi::Application.routes.draw do
   post 'confirm' => 'home#resend_confirmation', :as => :resend_confirmation
 
   get "account/edit", :as => :account
+  match "account/change_password" => 'account#change_password', :as => :change_password
   put "account/update", :as => :update_account
+
+  namespace :account do
+    resources :payments, :only => [:index, :show]
+  end
 
   match 'account-setup/:step_num' => 'signup#account_setup', :as => :account_setup
 
@@ -48,10 +63,15 @@ Yomobi::Application.routes.draw do
   delete  "sites/:id" => 'site_manager#delete'
   post    "sites/:id/make-default" => 'site_manager#make_default', :as => :make_default_site
   post    "sites/:id/concede"      => 'site_manager#concede', :as => :concede_site
+  post    "sites/:id/upgrade"      => 'site_manager#upgrade', :as => :upgrade
+  post    "sites/:id/cancel_sub"   => 'site_manager#cancel_subscription', :as => :cancel_sub
 
   post "sites/:id/admins"           => 'site_manager#add_admin', :as => :add_admin
   post "sites/:id/admins/:admin_id/delete" => 'site_manager#remove_admin', :as => :remove_admin
   post "sites/:id/signup-key" => 'site_manager#gen_signup_key', :as => :gen_signup_key
+
+  post "sites/:id/domains"          => 'site_manager#add_domain', :as => :add_domain
+  post "sites/:id/domains/:domain_id/delete" => 'site_manager#remove_domain', :as => :remove_domain
 
 
   get 'builder/main'      => 'builder#index', :as => :builder_main
@@ -65,7 +85,9 @@ Yomobi::Application.routes.draw do
   get 'builder/email'     => 'widgets/informed#email_panel', :as => :builder_email
   post 'builder/email'    => 'widgets/informed#send_email'
 
-  post 'builder/adv-settings'   => 'builder#change_advanced_settings'
+  post 'builder/adv-settings'     => 'builder#change_advanced_settings'
+  post 'builder/customize'        => 'builder#customize'
+  post 'builder/customize/upload' => 'builder#upload_customize', :as => :customize_upload
 
   put    'widgets/:id' => 'builder#update_widget'
   post   'widgets'     => 'builder#new_widget'

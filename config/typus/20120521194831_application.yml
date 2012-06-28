@@ -1,0 +1,13 @@
+# Typus Models Configuration File
+#
+# Use the README file as a reference to customize settings.
+
+Domain:
+  fields:
+    default: host, company
+    form: host, company
+  order_by:
+  relationships: company
+  filters: created_at
+  search: host
+  application: yomobi

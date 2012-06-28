@@ -1,13 +1,29 @@
 class SiteManagerController < ApplicationController
+  include WepayRails::Payments
   require 'couch'
 
   before_filter :authenticate_user!
+  before_filter :ensure_user_has_already_setup
   before_filter :ensure_user_owns_company,
-                :only => [:add_admin, :remove_admin, :gen_signup_key,
-                          :concede, :delete]
+                :only => [:add_admin, :remove_admin, :concede,
+                          :gen_signup_key, :delete]
+  before_filter :ensure_user_is_admin_of_company,
+                :only => [:add_domain, :remove_domain]
 
   def index
     @companies = current_user.all_companies
+
+    if params[:checkout_id] || params[:preapproval_id]
+      conds = {
+        :checkout_id     => params[:checkout_id],
+        :preapproval_id  => params[:preapproval_id],
+      }.delete_if {|k,v| v.nil?}
+
+      record = WepayCheckoutRecord.where(conds).first
+      if record && record.payment && record.payment.user == current_user
+        @payment = record.payment
+      end
+    end
   end
 
   def make_active
@@ -140,6 +156,55 @@ class SiteManagerController < ApplicationController
     end
   end
 
+  def add_domain
+    if @company.domains.count >= MAX_DOMAIN_COUNT
+      return render :json => { :status => :error, :reasons => { :max_domain_count => true }, :host => params[:host] }
+    end
+
+    domain = Domain.find_by_host(params[:host])
+    if domain.present?
+      return render :json => { :status => :error, :reasons => { :taken => true }, :host => params[:host] }
+    end
+
+    domain = Domain.create :host => params[:host], :company => @company
+    errors = domain.errors
+
+    if errors.count > 0
+      render :json => { :status => :error, :reasons => errors, :host => params[:host] }
+    else
+      if ENV['HEROKU_API_KEY'].present?
+        client = Heroku::Client.new('', ENV['HEROKU_API_KEY'])
+        begin
+          client.add_domain Rails.application.config.heroku_app_name, params[:host]
+        rescue RestClient::UnprocessableEntity
+          # The domain is most likely in use by another Heroku app
+          return render :json => { :status => :error, :reasons => { :taken => true }, :host => params[:host] }
+        end
+      end
+      render :json => { :status => :ok, :site => @company }
+    end
+  end
+
+  def remove_domain
+    domain = Domain.find_by_id params[:domain_id]
+
+    if domain.nil?
+      render :json => { :status => :error, :reasons => { :does_not_exist => true }, :host => params[:domain_id] }
+    else
+      if ENV['HEROKU_API_KEY'].present?
+        client = Heroku::Client.new('', ENV['HEROKU_API_KEY'])
+        begin
+          client.remove_domain Rails.application.config.heroku_app_name, domain.host
+        rescue RestClient::ResourceNotFound
+          # A problem with heroku. Regardless, catch exception so we can delete
+          # the domain from our local db
+        end
+      end
+      domain.delete
+      render :json => { :status => :ok, :site => @company }
+    end
+  end
+
   # generate signup key
   def gen_signup_key
     if (key = SignupKey.create :company => @company) != nil
@@ -150,6 +215,95 @@ class SiteManagerController < ApplicationController
     end
   end
 
+  def upgrade
+    return error 'agree_to_terms' unless params[:terms] == "on"
+
+    recur_type = params[:recur_type]
+
+    return error 'bad_recur_type' unless recur_type =~ /^(monthly|yearly)$/
+
+    if params[:id] && (@site = Company.find_by_id params[:id])
+
+      if recur_type == 'yearly'
+        price = 50
+        @time = t('site_manager.yearly').downcase
+      else
+        price = 5
+        @time = t('site_manager.monthly').downcase
+      end
+
+      user = current_user
+      payment_label = t 'site_manager.upgrade_payment'
+
+      checkout_params = {
+        :amount => price,
+        :short_description => "YoMobi - [#{@site.db_name}]: #{payment_label} (#{@time})",
+        :long_description => "YoMobi - #{@site.url_and_name}: #{payment_label} (#{@time})",
+        :mode => 'iframe',
+        :reference_id => "#{user.id}|#{@site.id}|#{recur_type}|#{ActiveSupport::SecureRandom.uuid}",
+        :prefill_info => { email:user.email, name:"#{user.first_name} #{user.last_name}" },
+      }
+
+      now = DateTime.now
+      base_date = [@site.next_charge_date, @site.expire_date, now].compact.max
+      base_date = now if base_date < now
+
+      if recur_type == "monthly"
+        checkout_params[:period] = 'monthly'
+        checkout_params[:start_time] = base_date.to_time.to_i  unless base_date == now
+        checkout_params[:end_time] = (base_date + 3.years).to_time.to_i
+        checkout_params[:auto_recur] = true
+        checkout_params[:api_url] = '/preapproval/create'
+      elsif recur_type == "yearly"
+        checkout_params[:period] = 'yearly'
+        checkout_params[:start_time] = base_date.to_time.to_i  unless base_date == now
+        checkout_params[:end_time] = (base_date + 3.years).to_time.to_i
+        checkout_params[:auto_recur] = true
+        checkout_params[:api_url] = '/preapproval/create'
+      end
+
+      begin
+        @checkout = init_checkout(checkout_params)
+      rescue WepayRails::Exceptions::WepayCheckoutError => e
+        match = e.message.match /:error_description=>"([^"]*)"/
+        return error match[1] if match[1]
+        error 500, 'unknown_error'
+      end
+      render :layout => false
+      # return error 'todo'
+    else
+      return error 'site_not_specified'
+    end
+  end
+
+  def cancel_subscription
+    return error('no_site_id') unless params[:site_id].present?
+
+    company = Company.find_by_id params[:site_id]
+    return error('bad_site_id') unless company.present?
+
+    record = WepayCheckoutRecord.last_preapproval_for_company(company)
+    return success :cancelSubscription => company.id, :site => company if record.nil?
+
+    begin
+      cancel_preapproval record.preapproval_id
+    rescue WepayRails::Exceptions::WepayCheckoutError => e
+      if e.message =~ /(already been cancelled|already been stopped)/
+        WepayCheckoutRecord.find(record.id).update_attribute :state, 'cancelled'
+        return success :cancelSubscription => company.id
+      else
+        puts "CANCEL ERROR: #{e.message}::#{e.inspect}"
+        return error 'cancel_error'
+      end
+    else
+      return success :cancelSubscription => company.id, :site => company
+    end
+  end
+
+  def thanks
+    render :layout => false
+  end
+
   private
 
   def ensure_user_owns_company
@@ -157,6 +311,14 @@ class SiteManagerController < ApplicationController
     if @company.owner != current_user
       render :json => { :status => :error,
                         :reasons => { :insufficient_permissions => true} }
+      return false
+    end
+  end
+
+  def ensure_user_is_admin_of_company
+    @company = Company.find_by_id params[:id]
+    unless current_user.can_access_company?(@company)
+      render :json => { :status => :error, :reasons => {}, :host => params[:host] }
       return false
     end
   end

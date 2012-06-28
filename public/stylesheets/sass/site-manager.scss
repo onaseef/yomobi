@@ -1,14 +1,43 @@
 @import "constants";
 
+input[type="button"], input[type="submit"], button {
+  background: #5B74A8;
+  padding: 2px 6px 3px;
+  border: 1px solid #5B74A8;
+  border-top-color: #8A9CC2;
+  color: white;
+  font-weight: bold;
+  margin-right: 6px;
+  cursor: pointer;
+}
+
+input[type="button"]:hover, input[type="submit"]:hover, button:hover {
+  color: yellow;
+}
+
+input[type="button"]:disabled, input[type="submit"]:disabled, button:disabled {
+  color: gray;
+  background: #ddd;
+  border-color: gray;
+  cursor: default;
+}
+
+
+
+input[type="checkbox"] {
+  vertical-align: middle;
+}
+
+
 ul.fancy-selectable {
   background: #fff;
-  border: 1px solid #b3b3b3;
+  border: 1px solid $light-border;
   list-style: none;
-  margin: 0;
+  margin-bottom: 6px;
   padding: 10px;
   li {
     padding: 6px 10px;
-    border: 1px solid #b3b3b3;
+    border: 1px solid $light-border;
     margin-bottom: 4px;
     cursor: pointer;
     overflow: auto;
@@ -19,19 +48,19 @@ ul.fancy-selectable {
 
 #manager-container {
   background: $light-bg-color;
-  border: 1px solid #b3b3b3;
+  border: 1px solid $light-border;
   border-top: none;
 }
 
 h2.active-site {
-  margin: 0;
-  padding: 10px 10px 10px 20px;
-  border-bottom: 1px solid #b3b3b3;
+    margin: 0;
+    padding: 10px 10px 10px 20px;
+    border-bottom: 1px solid $light-border;
 }
 
 .site-list-wrap {
   float: left;
-  width: 360px;
+  width: 320px;
   margin: 20px 20px 0px 20px;
   ul.sites {
     height:400px;
@@ -56,26 +85,88 @@ h2.active-site {
   }
 }
 
-.site-details-wrap {
+.accordian {
   float: left;
-  padding: 20px;
-  padding-left: 20px;
-  border-left: 1px solid #B3B3B3;  
-  .signup-key {}
+  width: 625px;
+  min-height: 635px;
+  padding: 10px;
+  border-left: 1px solid $light-border;
+
+  .site-details { 
+    color: #333;
+    background: #E4EDF8;
+    padding: 1px 10px 10px 10px; 
+    margin-bottom: 10px;
+    border: 2px solid #F39814;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 6px;
+
+    a { 
+      float: right;
+      text-decoration: underline; 
+    }
+  }
+
+  .content-header {
+    border: 1px solid transparent;
+    border-bottom: 1px solid $light-border;
+    padding: 10px;
+    .title { float: left; width: 170px; padding-right: 24px; margin: 0; }
+    .status { float: left; width: 275px; color: #080; }
+    .action {
+      color: #3B5998;
+      text-decoration: underline; 
+      float: right; 
+    }
+  }
+  .content-header.active {
+    background: #e5ebf5;
+    border-bottom: 0px;
+  }
+  .content-header:hover {
+    cursor: pointer;
+    background: #e5ebf5;
+  }
+  .content-body {
+    padding: 6px 10px 20px 10px;
+    background: #e5ebf5;
+    display: none;
+    overflow: hidden;
+    clear: both;
+    border-bottom: 1px solid #B3B3B3;
+    .error { margin-top: 10px; }
+    .payment-complete { margin-bottom: 8px; }
+    .renew { margin-top: 12px; }
+    input[type="button"], input[type="submit"], button { margin-left: 0px; }
+    .back-btn { font-size: 14px; }
+    
+    .subscribe-options  label { margin-right: 30px; }
+    .pay-options {
+      margin-top: 12px;
+      a { margin-right: 6px; }
+    }
+    label { margin-right: 12px; }
+  }
+
+  .signup-keys {
+    .signup-key-input { width: 510px; }
+  }
   ul.admins {
-    height: 337px;
+    height: 258px;
     overflow: auto;
     margin-top: 10px;
     margin-bottom: 6px;
-    width: 500px;
-    img { 
+    width: 585px;
+    img {
       max-width: 50px;
-      vertical-align: middle 
+      vertical-align: middle
     }
   }
 }
 
 form#account-setup-box.dialog {
+  width: 480px;
   .loading { display: none; }
 }
 
@@ -85,3 +176,6 @@ form#account-setup-box.dialog.submitting {
     display: block;
   }
 }
+
+.error { color: #800; }
+.success { color: #080; }

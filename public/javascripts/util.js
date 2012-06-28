@@ -1,25 +1,37 @@
 _.templateSettings.interpolate = /\{\{([^\{].*?)\}\}/g;
 
 var util = {
-  
+
   debug: true,
   cycleIdx: 0,
 
   //
-  // Constants 
+  // Constants
   //
   linkTypeURL:     "url",
   linkTypePhone:   "phone",
   linkTypeAddress: "address",
-  linkTypeEmail:   "email", 
+  linkTypeEmail:   "email",
   linkTypeUnknown: "unknown",
 
   linkURLProtocol:     "http://",
   linkPhoneProtocol:   "tel:",
   linkAddressProtocol: "http://maps.google.com/?q=",
   linkEmailProtocol:   "mailto:",
-  defaultHeaderBackgroundColor:  "#2a426a",
-  defaultHeaderTextColor: "#ffffff",
+
+  defaultSettings: {
+    header_color:  "#2a426a",
+    header_text_color: "#ffffff",
+    header_font_family: "Arial, Helvetica, sans-serif",
+    banner_size: 'auto',
+    tab_bar_color:  "#C4CDE0",
+    tab_bar_text_color: "#3B59A0",
+    tab_bar_font_family: "Arial, Helvetica, sans-serif",
+    icon_text_color: "#000",
+    icon_font_family: "Arial, Helvetica, sans-serif",
+    body_bg_repeat: "none",
+    body_bg_color: "#fff"
+  },
 
   // namespace for shared widget functions
   widget: {},
@@ -469,16 +481,14 @@ var util = {
     else
       return word + 's';
   },
-  
+
   log: function () {
     if(!this.debug) return;
-    if(!window.console || !window.console.log)
-      var console = { log: function() {} }; 
-      return;
-    
+    if(!window.console || !window.console.log || $.browser.msie) return;
+
     console.log.apply(console, arguments);
   },
-  
+
   couchSync: function (method,model,success,error) {
     if(method == 'read') {
       $.ajax({

@@ -32,17 +32,29 @@ div.wysiwyg ul.toolbar {
       float: left;
       width: 16px;
       height: 16px;
-      margin: -1px 4px 0 0;
+      margin: 0px 4px 0 0;
       background: url(/images/test-icons.png); }
     #sidebar .option:hover {
       background-color: #d8dfea;
       cursor: pointer; }
   #sidebar .option.basic .icon {
     background-position: 0 0; }
-  #sidebar .option.config .icon {
+  #sidebar .option.config .icon,
+  #sidebar .option.edit-settings .icon,
+  #sidebar .option.edit-advanced-settings .icon {
     background-position: 0 -16px; }
   #sidebar .option.builder .icon {
     background-position: 0 -32px; }
+  #sidebar .option.customize .icon {
+    background-position: 0 -96px; }
+  #sidebar .option.preview .icon {
+    background-position: 0 -112px; }
+  #sidebar .option.email .icon {
+    background-position: 0 -128px; }
+  #sidebar .option.text .icon {
+    background-position: 0 -144px; }
+  #sidebar .option.edit-tab-bar .icon {
+    background-position: 0 -160px; }
   #sidebar .option.active {
     background-color: #d8dfea; }
   #sidebar .home-icon {
@@ -106,8 +118,8 @@ div.wysiwyg ul.toolbar {
   #content .leaf-content h1 {
     padding-left: 0px; }
 
-.ad-bar {
-  display: none !important; }
+#emulator-wrapper .ad-bar {
+  display: none; }
 
 .home-icon.editing {
   background: #a4bec6 no-repeat 0px 1px !important;
@@ -361,54 +373,86 @@ div.wysiwyg ul.toolbar {
   margin: 10px 0; }
 
 #builder .edit-area.edit-settings,
-#builder .edit-area.edit-advanced-settings {
+#builder .edit-area.edit-advanced-settings,
+#builder .edit-area.customize {
   padding-top: 8px; }
   #builder .edit-area.edit-settings .box,
-  #builder .edit-area.edit-advanced-settings .box {
+  #builder .edit-area.edit-advanced-settings .box,
+  #builder .edit-area.customize .box {
     margin: 10px 0px 0px 0px;
     border: 2px solid #d0d7e3;
     padding: 8px; }
     #builder .edit-area.edit-settings .box input[type=text],
-    #builder .edit-area.edit-advanced-settings .box input[type=text] {
+    #builder .edit-area.edit-advanced-settings .box input[type=text],
+    #builder .edit-area.customize .box input[type=text] {
       width: 274px;
       margin-bottom: 5px; }
     #builder .edit-area.edit-settings .box textarea,
-    #builder .edit-area.edit-advanced-settings .box textarea {
+    #builder .edit-area.edit-advanced-settings .box textarea,
+    #builder .edit-area.customize .box textarea {
       width: 326px;
       height: 9em;
       margin: 0; }
   #builder .edit-area.edit-settings .divider,
-  #builder .edit-area.edit-advanced-settings .divider {
+  #builder .edit-area.edit-advanced-settings .divider,
+  #builder .edit-area.customize .divider {
     border-color: #d0d7e3;
     margin: 5px 0px; }
   #builder .edit-area.edit-settings form .action-bar,
-  #builder .edit-area.edit-advanced-settings form .action-bar {
+  #builder .edit-area.edit-advanced-settings form .action-bar,
+  #builder .edit-area.customize form .action-bar {
     border-top: 2px solid #d0d7e3;
     padding-right: 0;
     padding-top: 8px;
     margin-top: 15px; }
   #builder .edit-area.edit-settings .site-settings input[type=text], #builder .edit-area.edit-settings .site-settings textarea,
   #builder .edit-area.edit-advanced-settings .site-settings input[type=text],
-  #builder .edit-area.edit-advanced-settings .site-settings textarea {
+  #builder .edit-area.edit-advanced-settings .site-settings textarea,
+  #builder .edit-area.customize .site-settings input[type=text],
+  #builder .edit-area.customize .site-settings textarea {
     width: 240px; }
   #builder .edit-area.edit-settings .site-settings textarea,
-  #builder .edit-area.edit-advanced-settings .site-settings textarea {
+  #builder .edit-area.edit-advanced-settings .site-settings textarea,
+  #builder .edit-area.customize .site-settings textarea {
     height: 4em; }
+  #builder .edit-area.edit-settings .site-settings select,
+  #builder .edit-area.edit-advanced-settings .site-settings select,
+  #builder .edit-area.customize .site-settings select {
+    max-width: 250px; }
   #builder .edit-area.edit-settings select,
-  #builder .edit-area.edit-advanced-settings select {
-    width: 245px; }
+  #builder .edit-area.edit-advanced-settings select,
+  #builder .edit-area.customize select {
+    width: auto; }
   #builder .edit-area.edit-settings .top,
-  #builder .edit-area.edit-advanced-settings .top {
+  #builder .edit-area.edit-advanced-settings .top,
+  #builder .edit-area.customize .top {
     vertical-align: top; }
   #builder .edit-area.edit-settings .logo,
-  #builder .edit-area.edit-advanced-settings .logo {
+  #builder .edit-area.edit-advanced-settings .logo,
+  #builder .edit-area.customize .logo {
     margin: 3px 0px; }
   #builder .edit-area.edit-settings .site-name,
-  #builder .edit-area.edit-advanced-settings .site-name {
+  #builder .edit-area.edit-advanced-settings .site-name,
+  #builder .edit-area.customize .site-name {
     padding-bottom: 10px; }
   #builder .edit-area.edit-settings .new-picture,
-  #builder .edit-area.edit-advanced-settings .new-picture {
+  #builder .edit-area.edit-advanced-settings .new-picture,
+  #builder .edit-area.customize .new-picture {
     width: 100%; }
+
+#builder .edit-area.customize .subpanels > * {
+  display: none; }
+#builder .edit-area.customize img.banner, #builder .edit-area.customize img.body_bg {
+  max-width: 64px; }
+#builder .edit-area.customize .not-premium {
+  width: 230px;
+  float: left;
+  color: red; }
+  #builder .edit-area.customize .not-premium a, #builder .edit-area.customize .not-premium a:visited {
+    color: red; }
+#builder .edit-area.customize td.not-premium {
+  width: 100%;
+  padding: 0px 4px; }
 
 .widget-editor .edit-area label {
   white-space: normal; }
@@ -419,8 +463,7 @@ div.wysiwyg ul.toolbar {
   margin: 10px 0;
   padding: 5px; }
   .wphoto-wrap label {
-    font-weight: bold;
-    font-size: 0.8em; }
+    font-weight: bold; }
   .wphoto-wrap img {
     -moz-border-radius: 0px;
     -khtml-border-radius: 0px;
@@ -454,6 +497,12 @@ div.wysiwyg ul.toolbar {
   overflow: hidden;
   white-space: nowrap;
   clear: left; }
+
+.wphoto-wrap .selected-file.no-anim {
+  transition-duration: 0;
+  -moz-transition-duration: 0;
+  -webkit-transition-duration: 0;
+  -o-transition-duration: 0; }
 
 #dialog-confirm .wphoto-wrap {
   padding: 0px 4px 0px 4px;
@@ -675,24 +724,17 @@ div.wysiwyg ul.toolbar {
   padding: 10px 0 10px 0;
   border: 3px solid #ccc;
   overflow: auto; }
-  #dialog-confirm.edit-icon .icons img {
+  #dialog-confirm.edit-icon .icons .wicon-opt {
+    margin: 2px;
     border: 2px solid #fff;
-    padding: 1px;
-    cursor: pointer;
-    width: 40px;
-    height: 40px; }
-  #dialog-confirm.edit-icon .icons img:hover {
+    cursor: pointer; }
+  #dialog-confirm.edit-icon .icons .wicon-opt:hover {
     border: 2px solid #d8dfea; }
-  #dialog-confirm.edit-icon .icons img.selected {
+  #dialog-confirm.edit-icon .icons .wicon-opt.selected {
     border: 2px dashed black; }
 #dialog-confirm.edit-icon .selected-display {
-  display: none; }
-  #dialog-confirm.edit-icon .selected-display img {
-    width: 57px;
-    height: 57px;
-    border-radius: 12px;
-    -webkit-border-radius: 12px;
-    -moz-border-radius: 12px; }
+  display: none;
+  margin-top: 12px; }
 #dialog-confirm.edit-icon .upload-custom-icon-label {
   font-size: 120%; }
 #dialog-confirm.edit-icon .selected-label {
@@ -709,8 +751,9 @@ div.wysiwyg ul.toolbar {
   padding: 4px 0px 0px 0px; }
 #dialog-confirm.edit-icon table.change-icon-separator {
   width: 100%;
-  border-collapse: collapse;
-  margin: 10px 0px 4px 0px; }
+  border-collapse: collapse; }
+  #dialog-confirm.edit-icon table.change-icon-separator td {
+    padding: 6px 0px; }
   #dialog-confirm.edit-icon table.change-icon-separator td.l {
     width: 5%;
     padding-left: 4px; }
@@ -723,8 +766,8 @@ div.wysiwyg ul.toolbar {
     white-space: nowrap; }
   #dialog-confirm.edit-icon table.change-icon-separator div.l, #dialog-confirm.edit-icon table.change-icon-separator div.r {
     border-top: 4px solid #b3b3b3; }
-#dialog-confirm.edit-icon table.first {
-  margin-top: 0px; }
+#dialog-confirm.edit-icon table.first, #dialog-confirm.edit-icon td.first {
+  padding-top: 0px; }
 
 #dialog-confirm.jeditor-image .preview img {
   max-width: 100%;
@@ -789,15 +832,13 @@ div.wysiwyg ul.toolbar {
   cursor: pointer; }
 
 .color-picker {
-  background: transparent url(/images/color-picker/select2.png) no-repeat;
   height: 36px;
   width: 72px;
   position: relative; }
 
 .color-picker div {
   position: absolute;
-  top: 6px;
-  left: 6px;
+  top: 3px;
   width: 64px;
   height: 28px;
   background: url(/images/color-picker/select2.png) center; }

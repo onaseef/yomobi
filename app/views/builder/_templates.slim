@@ -33,15 +33,15 @@ script.add-subcat-dialog(type="text/template")
               img src="{{ wphotoUrl }}"
             | <% } %>
             td
-              label =t'dialog.add_new.select_picture'
+              label =t'dialog.add_picture.select_picture'
               br
               .selected-file.lfloat &nbsp;
-              button name="pick_files" =t'dialog.add_new.browse'
+              button name="pick_files" =t'dialog.add_picture.browse'
               .error
           | <% if (_maybe.wphotoUrl) { %>
           tr
             td
-              a.remove-wphoto-link href="#" =t'dialog.add_new.remove_picture'
+              a.remove-wphoto-link href="#" =t'dialog.add_picture.remove_picture'
             td
           | <% } %>
       input type="hidden" value="" name="wphotoUrl"
@@ -122,11 +122,11 @@ script.edit-icon-dialog(type="text/template")
       | <% if (icons[i].separator && first==1) { first=0; %>
       table.change-icon-separator.first
         tr
-          td.l
+          td.l.first
             div.l
-          td.label
+          td.label.first
             div.label {{ icons[i].pname }}
-          td.r
+          td.r.first
             div.r
       | <% } else if (icons[i].separator) {  %>
       table.change-icon-separator
@@ -138,7 +138,7 @@ script.edit-icon-dialog(type="text/template")
           td.r
             div.r
       | <% } else { %>
-      img src="/images/widgets/{{ icons[i].name }}.png" data-pname="{{ icons[i].pname }}" title="{{ icons[i].pname }}" data-name="{{ icons[i].name }}"
+      .wicon-opt class="i-{{ icons[i].name }}" data-pname="{{ icons[i].pname }}" title="{{ icons[i].pname }}" data-name="{{ icons[i].name }}"
       | <% } %>
       | <% } %>
     .upload-icon-container
@@ -157,8 +157,8 @@ script.edit-icon-dialog(type="text/template")
 
     .selected-display
       div.selected-label =t'dialog.change_icon.selected_icon'
-      img src=""
-      label.icon-name-label
+      .wicon-opt
+      label.hide
 
 = render :partial => 'builder/cat-dialog-templates'
 
@@ -310,6 +310,177 @@ script.edit-advanced-settings(type="text/template")
         input.content type="submit" value==t'builder.advanced_settings.save'
       .checkmark
       .loader
+
+
+script.customize(type="text/template")
+  .header.customize
+    .icon{ style="background-image: url(/images/customize.png)" }
+    .widget-name
+      =t'builder.customize.title'
+    p.help-text
+      a.help-link href="http://help.yomobi.com/Account/AdvancedCustomization" target="_blank" =t'builder.widget_editor.help'
+
+  .edit-area.customize
+    .explanation ==t'builder.customize.explanation'
+
+    select name="area_select"
+      option value="banner" = t 'builder.customize.header'
+      option value="tab_bar" = t 'builder.customize.tab_bar_and_footer'
+      option value="home_page" = t 'builder.customize.home_page'
+
+    form.subpanels
+      .banner
+        h3 = t 'builder.customize.customizing_header'
+        table
+          tr
+            td
+              label = t 'builder.customize.header_font'
+            td
+              select name="header_font_family"
+                = render 'builder/font-family-options'
+          tr
+            td 
+              label = t 'builder.customize.background_color'
+            td
+              .color-picker data-color="{{ header_color }}" data-target="header_color"
+                div style="background-color:{{ header_color }}"
+              input type="hidden" name="header_color" value="{{ header_color }}"
+          tr
+            td
+              label = t 'builder.customize.text_color'
+            td
+              .color-picker data-color="{{ header_text_color }}" data-target="header_text_color"
+                div style="background-color:{{ header_text_color }}"
+              input type="hidden" name="header_text_color" value="{{ header_text_color }}"
+        br
+        table.banner.wphoto-wrap
+          tbody
+            tr
+              td colspan="2"
+                label
+                  =t'builder.customize.banner'
+                  a href="http://help.yomobi.com/Mobile/ChangeSiteBanner" target="ymhelp"
+                    img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.customize.banner_help')
+                | <% if (isPremium) { %>
+                img.banner src="{{ banner_src }}"
+                | <% } %>
+            | <% if (isPremium) { %>
+            tr
+              td.file-picker
+                .selected-file.lfloat &nbsp;
+                button name="pick_files" =t'dialog.add_picture.browse'
+                .error
+              td
+                a.remove-banner-link href="#" class="<% if (banner_src === g.blankImg) { print('hide'); } %>" = t'dialog.add_picture.remove_picture'
+            tr.banner_size class="<% if (banner_src === g.blankImg) { print('hide'); } %>"
+              td colspan="2"
+                label = t 'builder.customize.banner_size'
+                select name="banner_size"
+                  option value="auto" Original
+                  - (1..10).each do |i|
+                    option value="#{i*10}%" #{i*10}%
+            | <% } else { %>
+            tr
+              td.not-premium == t'builder.customize.not_premium'
+            | <% } %>
+        br
+
+      .tab_bar
+        h3 = t 'builder.customize.customizing_tab_bar_and_footer'
+        table
+          tr
+            td
+              label = t('builder.customize.font')
+            td
+              select name="tab_bar_font_family"
+                = render 'builder/font-family-options'
+          tr
+            td
+              label  = t 'builder.customize.background_color'
+            td
+              .color-picker data-color="{{ tab_bar_color }}" data-target="tab_bar_color"
+                div style="background-color:{{ tab_bar_color }}"
+              input type="hidden" name="tab_bar_color" value="{{ tab_bar_color }}"
+          tr
+            td
+              label = t 'builder.customize.text_color'
+            td
+              .color-picker data-color="{{ tab_bar_text_color }}" data-target="tab_bar_text_color"
+                div style="background-color:{{ tab_bar_text_color }}"
+              input type="hidden" name="tab_bar_text_color" value="{{ tab_bar_text_color }}"
+
+      .home_page
+        h3  = t 'builder.customize.customizing_home_page'
+        table
+          tr
+            td
+              label = t 'builder.customize.icon_text_font'
+            td
+              select name="icon_font_family"
+                = render 'builder/font-family-options'
+          tr
+            td
+              label = t 'builder.customize.background_color'
+            td
+              .color-picker data-color="{{ body_bg_color }}" data-target="body_bg_color"
+                div style="background-color:{{ body_bg_color }}"
+              input type="hidden" name="body_bg_color" value="{{ body_bg_color }}"
+          tr
+            td
+              label = t 'builder.customize.icon_text_color'
+            td
+              .color-picker data-color="{{ icon_text_color }}" data-target="icon_text_color"
+                div style="background-color:{{ icon_text_color }}"
+              input type="hidden" name="icon_text_color" value="{{ icon_text_color }}"
+
+        table.body_bg.wphoto-wrap
+          tbody
+            tr
+              td colspan="2"
+                label
+                  =t'builder.customize.body_bg'
+                  a href="http://help.yomobi.com/Mobile/ChangeSiteBackground" target="ymhelp"
+                    img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.customize.body_bg_help')
+                | <% if (isPremium) { %>
+                img.body_bg src="{{ body_bg_src }}"
+                | <% } %>
+            | <% if (isPremium) { %>
+            tr
+              td
+                .selected-file.lfloat &nbsp;
+                button name="pick_files" =t'dialog.add_picture.browse'
+                .error
+              td
+                a.remove-body_bg-link href="#" class="<% if (body_bg_src === g.blankImg) { print('hide'); } %>" = t'dialog.add_picture.remove_picture'
+            tr.bg_repeat class="<% if (body_bg_src === g.blankImg) { print('hide'); } %>"
+              td colspan="2"
+                select name="body_bg_repeat"
+                  option value="no-repeat" = t 'builder.customize.dont_repeat'
+                  option value="repeat-x" = t 'builder.customize.repeat_horizontal'
+                  option value="repeat-y" = t 'builder.customize.repeat_vertical'
+                  option value="repeat" = t 'builder.customize.repeat_both'
+            | <% } else { %>
+            tr
+              td.not-premium == t'builder.customize.not_premium'
+            | <% } %>
+
+
+    br
+    .action-bar
+      p.error.lfloat style="margin-top:2px"
+      - if @company.premium? == false
+        p.not-premium == t'builder.customize.not_premium'
+        .accept-btn.main-btn.disabled
+          input.content type="submit" value=t'builder.widget_editor.save'
+      - else
+        .accept-btn.main-btn
+          input.content type="submit" value=t'builder.widget_editor.save'
+        .cancel-btn.alt-btn
+          .content = t'builder.widget_editor.cancel'
+        .checkmark
+        .loader
+      .clearfix
+
 
 script.jeditor-image-dialog(type="text/template")
   #dialog-confirm.jeditor-image title=t'dialog.add_picture.title'

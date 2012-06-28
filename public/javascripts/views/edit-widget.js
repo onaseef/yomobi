@@ -338,7 +338,7 @@
   window.EditIconDialog = Backbone.View.extend({
 
     events: {
-      'click .icons img':      'selectIcon'
+      'click .icons .wicon-opt':      'selectIcon'
     },
 
     selectIcon: function (e) {
@@ -349,7 +349,7 @@
         util.customIcon = null;
       }
       $(this.el).find('.selected-display')
-        .find('img').attr('src', this.selectedIcon.attr('src')).end()
+        .find('.wicon-opt').attr('class', 'wicon-opt i-'+this.selectedIcon.data('name')).end()
         .find('label').text(this.selectedIcon.data('pname')).end()
         .show()
       ;
@@ -377,10 +377,7 @@
       buttons[g.i18n.save] = function () { $(this).dialog('close'); self.saveIcon(); };
       buttons[g.i18n.cancel] = closeFunc;
 
-      util.dialog(dialogContent, buttons, dialogContent.title, {
-        width: 500
-      })
-      ;
+      util.dialog(dialogContent, buttons, dialogContent.title, { width:700 });
     },
 
     saveIcon: function () {

@@ -327,13 +327,13 @@ var builderUtil = {
   jeditorYoutubeDialog: function () {
     var dialog = util.dialog(youtubeDialogTemplate(), {
       'Save': function () {
-        
+
         var vurl = dialog.find('[name=url]').val();
         var html = null;
 
         // First check if the video URL is a YouTube video URL
         var vid = getYoutubeVideoId( vurl );
-        
+
         // If the vid is valid, it is a YouTube video. Handle it as such
         if (vid) {
           html = youtubeEmbedTemplate({ vid: vid || 'GGT8ZCTBoBA' });
@@ -463,7 +463,7 @@ var builderUtil = {
 
     uploader = this._uploaders[options.instanceId] = new plupload.Uploader(_.extend({
       runtimes: 'html5,flash,html4',
-      url: g.wphotoUploadPath,
+      url: options.uploadPath || g.wphotoUploadPath,
       max_file_size: '10mb',
       multiple_queues: false,
       multi_selection: false,
@@ -473,7 +473,7 @@ var builderUtil = {
 
       flash_swf_url: '/javascripts/plupload/plupload.flash.swf',
       multipart: true,
-      multipart_params: _.extend(g.uploadifyScriptData, options.extraParams),
+      multipart_params: _.extend({}, g.uploadifyScriptData, options.extraParams),
       headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') }
     }, extraData));
 
@@ -537,7 +537,7 @@ var builderUtil = {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(function () { uploader.reposition(); }, 300);
     });
-    
+
     // because we're in a dialog, sometimes we need to set the uploader to be
     // on top of everything else, as well as send it back
     uploader.layover = $('#' + uploader.id + '_' + uploader.runtime + '_container');
@@ -555,13 +555,25 @@ var builderUtil = {
       $('#'+pickerId).hide();
       uploader.refresh();
     };
-    uploader.disableBrowseButton = function () {
-      $('#'+pickerId).hide();
-      $('<button>').text('Browse...')
-        .prop('disabled',true)
-        .insertAfter('#'+pickerId)
-        .after('<img class="ajax" src="/images/ui/ajax-loader-small.gif">')
-      ;
+    uploader.toggleBrowseButton = function (toggle) {
+      $('#'+pickerId).toggle(toggle);
+      if (toggle === false) {
+        $('<button>').text('Browse...')
+          .prop('disabled',true)
+          .insertAfter('#'+pickerId)
+          .after('<img class="ajax" src="/images/ui/ajax-loader-small.gif">')
+        ;
+      }
+      else {
+        var selectedFile = $('#'+pickerId).siblings('.selected-file');
+        selectedFile.text(' ').addClass('no-anim');
+
+        _.delay(function () {
+          selectedFile.css('background-position', '-500px 0');
+        }, 100);
+
+        $('#'+pickerId).siblings('button,.ajax').remove();
+      }
       uploader.refresh();
     };
 
@@ -578,12 +590,16 @@ var builderUtil = {
       }
 
       $.each(files, function (i, file) {
-        uploader.ctx.find('.selected-file').empty().append(
-          '<div id="' + file.id + '">' +
-          file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' +
-        '</div>').trigger('change');
+        context.find('.selected-file')
+          .empty()
+          .append(
+            '<div id="' + file.id + '">' +
+            file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' +
+            '</div>')
+          .removeClass('no-anim')
+        ;
       });
-      
+
       if (isAutoEnabled) {
         util.log('starting uploader');
         uploader.start();
@@ -595,8 +611,8 @@ var builderUtil = {
     uploader.bind('BeforeUpload', function () {
       if (uploader.yoIsCancelled === true) return;
 
-      uploader.ctx.find('.selected-file').text('Uploading...');
-      uploader.disableBrowseButton();
+      context.find('.selected-file').text('Uploading...');
+      uploader.toggleBrowseButton(false);
       uploader.startTimestamp = util.now();
     });
 
@@ -681,7 +697,6 @@ var builderUtil = {
         var inputName = $(elem).data('target')
           , input = bapp.settingsEditor.$('[name='+inputName+']')
         ;
-        util.log('EH?',input);
         $(elem).ColorPickerSetColor( input.val() );
       },
       onShow: function (colpkr) {

@@ -20,12 +20,17 @@ gem 'json'
 
 gem 'validates_as_email_address'
 gem 'aritcaptcha', :git => 'https://github.com/mindeavor/aritcaptcha.git'
-#gem 'aritcaptcha', :git => '/Users/tapwater/p/aritcaptcha'
+
+gem 'wepay-rails', :git => 'https://github.com/mindeavor/wepay-rails'
+# gem 'wepay-rails', :path => '/Users/tapwater/p/src/wepay-rails'
+gem 'money'
 
 group :production do
   gem 'newrelic_rpm', '~> 3.3'
 end
 
-group :development, :test do
-  gem 'heroku'
+group :production do
+  gem 'newrelic_rpm', '~> 3.3'
 end
+
+gem 'heroku'
