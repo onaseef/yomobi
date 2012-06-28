@@ -74,9 +74,9 @@ class ApplicationController < ActionController::Base
     # Do the language check here since we support limited languages and 
     # checking here is faster than a file system check. If we expand to cover
     # most languages, we can remove this list.
-    lang = nil unless lang && lang.match(/^(es|fr)$/)
+    lang = nil unless lang && lang.match(/^(es)$/)
 
-    if params[:locale].present? && params[:locale].match(/^(es|en|fr)/)
+    if params[:locale].present? && params[:locale].match(/^(es|en)/)
       cookies[:locale] = params[:locale]
     end
 
