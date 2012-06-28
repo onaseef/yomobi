@@ -124,28 +124,17 @@
 
       this.editIconDialog.prompt();
 
-      // initiate the uploader
-      util.initUploader($(this.editIconDialog.el), {
-        instanceId: this.widget.id,
-        auto: false,
-        alwaysOnTop: true,
-        emptyQueue: true,
-        wid: this.widget.id
-      });
-      // bring it to front
-      util._uploaders[this.widget.id].bringToFront();
-      window.widgetid = this.widget.id;
-
       // will be run after the upload is completed
 
-      $('.selected-file').live('change', function(){
-        var uploader = util._uploaders[window.widgetid];
-        if(typeof uploader.files[0].status !== 'undefined' && uploader.files.length > 0 && uploader.files[0].status !== plupload.DONE){
-        
-          uploader.yomobiOptions.onDone = afterUploadCallback;
-          uploader.start();
-        }
-      });
+  //     $('.selected-file').live('change', function(){
+  // util.log('CHANGE')
+  //       var uploader = util._uploaders[window.widgetid];
+  //       if(typeof uploader.files[0].status !== 'undefined' && uploader.files.length > 0 && uploader.files[0].status !== plupload.DONE){
+
+  //         uploader.yomobiOptions.onDone = afterUploadCallback;
+  //         uploader.start();
+  //       }
+  //     });
 
       var afterUploadCallback = function(data){
         util.log('Received custom icon data', data);
@@ -167,10 +156,13 @@
             this.selectedIcon && this.selectedIcon.removeClass('selected');
             // update the image attribute and fade it in
             $('body').find('.selected-display')
-              .find('img').attr('src', data.icon_url).end()
+              .find('.wicon-opt')
+                .addClass('blank')
+                .html( $('<img>').attr('src', data.icon_url) )
+                .end()
               .find('label').text("").end()
               .show();
-            
+
             // enable the upload button again
             $('.wphoto-wrap button:disabled').remove();
             $('.wphoto-wrap button[name=pick_files]').fadeIn();
@@ -179,11 +171,11 @@
             //$('.selected-file').animate({ backgroundPosition: "(0 0)" }, 300);
             $('.ajax').hide();
 
-            util.customIcon = { 
-              url : data.icon_url 
+            util.customIcon = {
+              url : data.icon_url
             }
 
-            
+
             // if browser
             if($.browser.msie && $.browser.version <= '8.0'){
               util.initUploader($('.wphoto-wrap'), {
@@ -200,7 +192,20 @@
 
         } // end if data.wphotourl
 
-      }// end callback
+      };// end callback
+
+      // initiate the uploader
+      uploader = util.initUploader($(this.editIconDialog.el), {
+        instanceId: this.widget.id,
+        auto: true,
+        alwaysOnTop: true,
+        emptyQueue: true,
+        wid: this.widget.id,
+        onDone: afterUploadCallback
+      });
+      // bring it to front
+      uploader.bringToFront();
+      window.widgetid = this.widget.id;
 
     },
 
@@ -349,7 +354,11 @@
         util.customIcon = null;
       }
       $(this.el).find('.selected-display')
-        .find('.wicon-opt').attr('class', 'wicon-opt i-'+this.selectedIcon.data('name')).end()
+        .find('.wicon-opt')
+          .html('')
+          .removeClass('blank')
+          .attr('class', 'wicon-opt i-'+this.selectedIcon.data('name'))
+          .end()
         .find('label').text(this.selectedIcon.data('pname')).end()
         .show()
       ;

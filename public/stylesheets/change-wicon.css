@@ -3,6 +3,11 @@
   width: 57px; height: 57px;
   float: left;
 }
+.wicon-opt.blank { background-image: none;  }
+.wicon-opt img {
+  max-width: 100%;
+  max-height: 100%;
+}
 .wicon-opt.i-1-apparel-clothing { background-position: -0px 0px;  }
 .wicon-opt.i-2-apply-for-job { background-position: -0px -57px;  }
 .wicon-opt.i-3-arts-culture { background-position: -0px -114px;  }
