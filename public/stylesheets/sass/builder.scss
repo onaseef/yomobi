@@ -823,6 +823,14 @@ div.wysiwyg ul.toolbar {
   .selected-display {
     display: none;
     margin-top: 12px;
+
+    img {
+      width: 57px;
+      height: 57px;
+      border-radius: 12px;
+      -webkit-border-radius: 12px;
+      -moz-border-radius: 12px;
+    }
   }
     
   .upload-custom-icon-label {

@@ -735,6 +735,12 @@ div.wysiwyg ul.toolbar {
 #dialog-confirm.edit-icon .selected-display {
   display: none;
   margin-top: 12px; }
+  #dialog-confirm.edit-icon .selected-display img {
+    width: 57px;
+    height: 57px;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px; }
 #dialog-confirm.edit-icon .upload-custom-icon-label {
   font-size: 120%; }
 #dialog-confirm.edit-icon .selected-label {

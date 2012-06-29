@@ -331,6 +331,8 @@ label {
   margin-bottom: 4px; }
 #account-setup-box p, #account-settings-box p {
   margin: 0px 6px; }
+#account-setup-box p.error, #account-settings-box p.error {
+  margin: 3px 20px 3px 0; }
 #account-setup-box textarea, #account-settings-box textarea, #account-setup-box input[type=text], #account-settings-box input[type=text], #account-setup-box input[type=password], #account-settings-box input[type=password] {
   font-size: 1.2em;
   width: 450px; }
