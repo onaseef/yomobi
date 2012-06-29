@@ -183,19 +183,19 @@ label {
       background: #e4ecf4;
       border: 1px solid #999999; }
 
-.language-bar {
+ul.language-bar {
   overflow-x: hidden;
   overflow-y: auto;
   float: left;
   width: 100%;
-  margin: 0 0 15px 0;
+  margin: 0 0 15px 0 !important;
   padding: 0px;
   text-align: left;
   list-style-type: none;
   background: #d8dfea; }
-  .language-bar a, .language-bar a:visited {
+  ul.language-bar a, ul.language-bar a:visited {
     color: #36485c !important; }
-  .language-bar li {
+  ul.language-bar li {
     font-size: 1em;
     font-weight: normal;
     position: relative;

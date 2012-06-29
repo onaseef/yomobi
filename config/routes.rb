@@ -20,7 +20,9 @@ Yomobi::Application.routes.draw do
   get 'help' => redirect('http://help.yomobi.com'), :as => :help
   get 'how-to-make-a-mobile-website' => 'home#easy', :as => :easy
   get 'opportunities' => 'home#opportunities', :as => :opportunity
+  get 'opportunities_es' => 'home#opportunities_es', :as => :opportunity_es
   get 'plans' => 'home#plans', :as => :plans
+  get 'plans_es' => 'home#plans_es', :as => :plans_es
   get 'privacy' => 'home#privacy', :as => :privacy
   get 'privacy_es' => 'home#privacy_es', :as => :privacy_es
   get 'payment_terms' => 'home#payment_terms', :as => :payment_terms

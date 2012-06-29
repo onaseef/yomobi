@@ -198,13 +198,13 @@ label {
   }
 }
 
-.language-bar {
+ul.language-bar {
   overflow-x: hidden;
   overflow-y: auto;
   a, a:visited { color:$main-color !important; }
   float: left;
   width: 100%;
-  margin: 0 0 15px 0;
+  margin: 0 0 15px 0 !important;
   padding: 0px; 
   text-align: left;
   list-style-type: none;
