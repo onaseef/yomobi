@@ -66,4 +66,14 @@ class Payment < ActiveRecord::Base
     self.wepay_checkout_record
   end
 
+  def ipn_url
+    settings = WepayRails::Configuration.settings
+    type = wcr.checkout_id.present? ? 'checkout_id' : 'preapproval_id'
+    "#{settings[:root_callback_uri]}/wepay/ipn?security_token=#{wcr.security_token}&#{type}=#{wcr.send type}"
+  end
+
+  def force_ipn_update
+    RestClient.post self.ipn_url, ''
+  end
+
 end
