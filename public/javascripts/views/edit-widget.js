@@ -176,10 +176,11 @@
             if($.browser.msie && $.browser.version <= '8.0'){
               util.initUploader($('.wphoto-wrap'), {
                 instanceId: 'custom_icon',
-                auto: false,
+                auto: true,
                 alwaysOnTop: true,
                 emptyQueue: true,
-                wid: window.widgetid
+                wid: window.widgetid,
+                onDone: afterUploadCallback
               });
             }
 
