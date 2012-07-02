@@ -183,7 +183,7 @@ class Company < ActiveRecord::Base
   def next_charge_date
     last_sub = self.last_subscription
     return nil if last_sub.nil?
-    last_sub.next_charge_date
+    last_sub.next_charge_date(Date.today)
   end
 
   def as_json(options=nil)
