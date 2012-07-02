@@ -141,7 +141,7 @@
         util.releaseUI();
 
         // get existent uploader
-        var uploader = util._uploaders[window.widgetid];
+        var uploader = util._uploaders['custom_icon'];
         if(uploader.files.length > 0){
           uploader.splice();
         }
@@ -164,11 +164,7 @@
               .show();
 
             // enable the upload button again
-            $('.wphoto-wrap button:disabled').remove();
-            $('.wphoto-wrap button[name=pick_files]').fadeIn();
-            $('.selected-file').html('');
-            $('.selected-file').attr('style', '');
-            //$('.selected-file').animate({ backgroundPosition: "(0 0)" }, 300);
+            uploader.toggleBrowseButton(true);
             $('.ajax').hide();
 
             util.customIcon = {
@@ -179,24 +175,23 @@
             // if browser
             if($.browser.msie && $.browser.version <= '8.0'){
               util.initUploader($('.wphoto-wrap'), {
-                instanceId: window.widgetid,
+                instanceId: 'custom_icon',
                 auto: false,
                 alwaysOnTop: true,
                 emptyQueue: true,
                 wid: window.widgetid
               });
-              // bring it to front
-              util._uploaders[window.widgetid].bringToFront();
             }
 
 
         } // end if data.wphotourl
 
+        util._uploaders['custom_icon'].bringToFront();
       };// end callback
 
       // initiate the uploader
       uploader = util.initUploader($(this.editIconDialog.el), {
-        instanceId: this.widget.id,
+        instanceId: 'custom_icon',
         auto: true,
         alwaysOnTop: true,
         emptyQueue: true,
