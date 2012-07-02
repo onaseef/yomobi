@@ -56,9 +56,16 @@
       this.merchant = new MerchantAccountView();
       this.siteAdmins = new SiteAdminsView();
 
-      this.sections = [this.siteDetailsView, this.signupKeys,
-                       this.siteGrade, this.merchant, this.domains,
-                       this.siteAdmins];
+      // The order of sections here MUST match the order of sections in
+      // site_manager/index.html.slim .accordian section
+      this.sections = [
+        this.siteDetailsView, 
+        this.siteGrade, 
+        this.domains,
+        this.siteAdmins,
+        this.signupKeys
+//        this.merchant, 
+      ];
     },
 
     render: function (site) {

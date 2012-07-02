@@ -51,13 +51,15 @@
     p.explanation ==t'site_manager.help.site_access_list'
     ul.sites.fancy-selectable
 
+  / The order of sections below MUST match the order of 
+  / sections in the site-manager.js this.sections object. 
   .accordian
     .site-details
-    .signup-keys
     .site-grade
-    .merchant-account
     .custom-domains
     .site-admins
+    .signup-keys
+    / .merchant-account
 
   .clearfix
 
