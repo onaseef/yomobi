@@ -111,12 +111,9 @@ class SiteManagerController < ApplicationController
 
   def make_default
     company = Company.find_by_id params[:id]
-    errors = validate_company_admin(company, current_user)
-    # ignore self error
-    errors.reject! {|k| k == 'self'}
 
-    if errors.count > 0
-      render :json => { :status => :error, :reasons => errors }
+    if current_user.can_access_company?(company) == false
+      render :json => { :status => :error, :reasons => { :no_access => true } }
     else
       current_user.update_attribute :default_company_id, company.id
       render :json => { :status => :ok }
