@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
 
   def default_company
     co = Company.find_by_id self.default_company_id
-    if co.nil?
+    if co.nil? || !self.can_access_company?(co)
       co = self.all_companies.first
       (self.default_company_id = co.id) && save unless co.nil?
     end
