@@ -32,3 +32,23 @@ development:
   shipping_fee: 0
   charge_tax: false
   preapproval_auto_recur: true
+
+production:
+  client_id: 157742
+  client_secret: ddb30ff687
+  account_id: 222888
+  access_token: f93f97d90ef24178a906ac518357868ff6c4b0f5ff7103c570a6c0f68fbf1849
+  root_callback_uri: "http://www.yomobi.com"
+  after_checkout_redirect_uri: "/site-manager"
+  scope: [refund_payments,collect_payments,view_balance,view_user]
+  wepay_ui_endpoint: "https://www.wepay.com/v2"
+  wepay_api_endpoint: "https://www.wepayapi.com/v2"
+  fee_payer: payee
+  charge_tax: false
+  app_fee: 0
+  auto_capture: true
+  require_shipping: false
+  shipping_fee: 0
+  charge_tax: false
+  preapproval_auto_recur: true
+
