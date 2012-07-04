@@ -152,7 +152,7 @@ en:
       unknown_error: "An unknown error has occured."
       default_error: "We're sorry, something went wrong."
       new_site_dialog_title: "Create New Site"
-      add_admin_dialog_title: "Add Admin for "
+      add_admin_dialog_title: "Add Administrator for "
       add_domain_dialog_title: "Add Custom Domain for "
       concede_ownership_dialog_title: "Concede Site Ownership"
       add: "Add"
@@ -495,7 +495,7 @@ en:
       banner_help: "<p>A banner will override all other header settings.</p>"
       body_bg: "Wallpaper"
       body_bg_help: "<p>Upload a background image.</p>"
-      not_premium: '<a href="http://help.yomobi.com/upgrade" target="ymhelp">You must upgrade this site to Custom to use this feature. Click here to learn how to upgrade.</a>'
+      not_premium: '<a href="http://help.yomobi.com/SiteManager/Upgrade" target="ymhelp">You must upgrade this site to Custom to use this feature. Click here to learn how to upgrade.</a>'
 
       customizing_header: "Customizing Header"
       header: "Header"
@@ -593,9 +593,6 @@ en:
       url_type_label_required: "Your %{type} URL*:"
       zip_label: "Zip / Postal Code:"
 
-
-
-
   dialog:
     error: "Error: %{error_message}"
     add: "Add"
@@ -685,7 +682,7 @@ en:
 
   site_manager:
     active_site: "Active Site: %{site_name}"
-    add_admin: "Add Admin"
+    add_admin: "Add Administrator"
     revoke_access: "Revoke Access"
     make_owner: "Make Owner"
     owner: "(Owner)"
@@ -734,7 +731,7 @@ en:
     coming_soon: "Coming Soon."
 
     manage: "Manage"
-    site_admins: "Site Admins"
+    site_admins: "Site Administrators"
     site_admins_status: "This site has <b>%{admin_count}</b> admin(s)."
 
     months: "Months"
