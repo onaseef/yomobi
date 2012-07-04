@@ -495,7 +495,7 @@ es:
       banner_help: "<p>Un banner tendrá prioridad por encima de cualquier ajuste del encabezado.</p>"
       body_bg: "Tapiz de Fondo"
       body_bg_help: "<p>Cargar a servidor imagen de fondo.</p>"
-      not_premium: '<a href="http://help.yomobi.com/SiteManager/Upgrade" target="ymhelp">Deberás mejorar el plan de tu sitio para usar esta función. Haz clic aquí para más información.'
+      not_premium: '<a href="http://www.google.com/translate_c?langpair=en|es&u=http://help.yomobi.com/SiteManager/Upgrade" target="ymhelp">Deberás mejorar el plan de tu sitio para usar esta función. Haz clic aquí para más información.'
 
       customizing_header: "Modificar Encabezado"
       header: "Encabezado"
