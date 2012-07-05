@@ -10,7 +10,7 @@ class UserMailer < ActionMailer::Base
     mail({
       :subject => t('account.welcome_email.subject'),
       :to => user.email,
-      :from => 'support@yomobi.com'
+      :from => "\"YoMobi\" <support@yomobi.com>"
     })
   end
 
@@ -21,7 +21,7 @@ class UserMailer < ActionMailer::Base
     mail({
       :subject => t('account.username_changed_email.subject'),
       :to => [old_email, user.email],
-      :from => 'support@yomobi.com'
+      :from => "\"YoMobi\" <support@yomobi.com>"
     })
   end
 
