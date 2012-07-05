@@ -428,7 +428,7 @@ es:
   builder:
 
     upgrade_ad:
-      title: "Pulsa aquí y entérate de como mejorar el plan de tu sitio, para así poder eliminar este espacio publicitario y permitir modificaciones a la medida adicionales."
+      title: "Pulsa aquí y entérate de como mejorar tu sitio, para así poder eliminar este espacio publicitario y permitir modificaciones a la medida adicionales."
 
     sidebar:
       view_mobile_site: "Ver Sitio Móvil"

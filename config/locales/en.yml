@@ -428,7 +428,7 @@ en:
   builder:
 
     upgrade_ad:
-      title: "Click here to learn how to upgrade your site type to remove this ad bar and to enable additional customization."
+      title: "Click here to learn how to upgrade your site to remove this ad bar and to enable additional customization."
 
     sidebar:
       view_mobile_site: "View Mobile Site"
