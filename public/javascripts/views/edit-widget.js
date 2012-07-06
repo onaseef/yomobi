@@ -165,6 +165,7 @@
 
             // enable the upload button again
             uploader.toggleBrowseButton(true);
+            uploader.bringToFront();
             $('.ajax').hide();
 
             util.customIcon = {
