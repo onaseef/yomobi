@@ -142,11 +142,13 @@
   // ----------------------------------
   BuilderAppController = Backbone.Controller.extend({
     routes: {
-      'edit-widget': _.identity,
+      'edit-widget': 'editWidget',
       'edit-tab-bar':  'editTabBar',
       'edit-settings': 'editSettings',
       'edit-advanced-settings': 'editAdvancedSettings',
       'customize': 'customize'
+    },
+    editWidget: function () {
     },
     editTabBar: function () {
       if (bapp.panelHasUnsavedChanges()) return false;
