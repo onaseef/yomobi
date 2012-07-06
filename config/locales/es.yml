@@ -718,7 +718,7 @@ es:
     opt_monthly: "Cobro Automático Mensual - %{price} / al mes"
     opt_yearly: "Cobro Automático Anual - %{price} / al año"
     i_agree: "Estoy de acuerdo con estos términos y condiciones"
-    back: "&larr; Regresar"
+    back: "Cancelar"
 
     setup: "Ajustes"
     custom_domains: "Dominios a la Medida"

@@ -718,7 +718,7 @@ en:
     opt_monthly: "Autopay Monthly - %{price} / month"
     opt_yearly: "Autopay Yearly - %{price} / year"
     i_agree: "I agree to these terms"
-    back: "&larr; Back"
+    back: "Cancel"
 
     setup: "Setup"
     custom_domains: "Custom Domains"
