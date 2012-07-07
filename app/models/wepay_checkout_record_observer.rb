@@ -34,7 +34,7 @@ class WepayCheckoutRecordObserver < ActiveRecord::Observer
       payment.sub_state = 'active' if wcr.period
 
       # Subscription is always 3 years long (36 months)
-      time_paid = 12 * 3
+      time_paid = 12 * 5
 
       payment.currency = wcr.currency
       payment.amount_paid = wcr.amount.to_s('F')

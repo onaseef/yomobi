@@ -157,6 +157,12 @@ class Company < ActiveRecord::Base
     [payment && payment.expire_date, self.manual_expire_date].compact.max
   end
 
+  def hard_expire_date
+    payment = self.last_payment(true)
+    expire_date = payment && (payment.wcr.preapproval_id ? payment.next_charge_date : payment.expire_date)
+    [expire_date, self.manual_expire_date].compact.max
+  end
+
   def recalculate_premium
     expire_date = self.expire_date(true)
     if expire_date.nil?

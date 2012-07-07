@@ -242,8 +242,9 @@ class SiteManagerController < ApplicationController
       }
 
       now = DateTime.now
-      base_date = [@site.next_charge_date, @site.expire_date, now].compact.max
+      base_date = [@site.next_charge_date, @site.hard_expire_date, now].compact.max
       base_date = now if base_date < now
+      puts "BASE DATE: #{base_date}"
 
       if recur_type == "monthly"
         checkout_params[:period] = 'monthly'
