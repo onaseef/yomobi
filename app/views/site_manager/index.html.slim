@@ -149,10 +149,10 @@
         h3 = t 'site_manager.select_payment_option'
         form.pay action="{{ actionPath }}" method="POST" data-remote="true"
           input type="radio" value="monthly" name="recur_type" checked="checked"
-          label = t 'site_manager.opt_monthly', :price => '$5'
+          label = t 'site_manager.opt_monthly', :price => '$6'
           br
           input type="radio" value="yearly" name="recur_type"
-          label = t 'site_manager.opt_yearly', :price => '$50'
+          label = t 'site_manager.opt_yearly', :price => '$60'
           br
           br
           input type="checkbox" name="terms"

@@ -222,10 +222,10 @@ class SiteManagerController < ApplicationController
     if params[:id] && (@site = Company.find_by_id params[:id])
 
       if recur_type == 'yearly'
-        price = 50
+        price = 60
         @time = t('site_manager.yearly')
       else
-        price = 5
+        price = 6
         @time = t('site_manager.monthly')
       end
 
@@ -248,13 +248,13 @@ class SiteManagerController < ApplicationController
       if recur_type == "monthly"
         checkout_params[:period] = 'monthly'
         checkout_params[:start_time] = base_date.to_time.to_i  unless base_date == now
-        checkout_params[:end_time] = (base_date + 3.years).to_time.to_i
+        checkout_params[:end_time] = (base_date + 5.years).to_time.to_i
         checkout_params[:auto_recur] = true
         checkout_params[:api_url] = '/preapproval/create'
       elsif recur_type == "yearly"
         checkout_params[:period] = 'yearly'
         checkout_params[:start_time] = base_date.to_time.to_i  unless base_date == now
-        checkout_params[:end_time] = (base_date + 3.years).to_time.to_i
+        checkout_params[:end_time] = (base_date + 5.years).to_time.to_i
         checkout_params[:auto_recur] = true
         checkout_params[:api_url] = '/preapproval/create'
       end
