@@ -223,10 +223,10 @@ class SiteManagerController < ApplicationController
 
       if recur_type == 'yearly'
         price = 50
-        @time = t('site_manager.yearly').downcase
+        @time = t('site_manager.yearly')
       else
         price = 5
-        @time = t('site_manager.monthly').downcase
+        @time = t('site_manager.monthly')
       end
 
       user = current_user

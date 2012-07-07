@@ -134,6 +134,12 @@ h2.active-site {
         margin-right: 6px; }
     .accordian .content-body label {
       margin-right: 12px; }
+    .accordian .content-body .payment_details {
+      margin: 0 4px 0px 1px;
+      padding: 6px 15px;
+      line-height: 1.5em;
+      background: #5B74A8;
+      color: white; }
   .accordian .signup-keys .signup-key-input {
     width: 510px; }
   .accordian ul.admins {

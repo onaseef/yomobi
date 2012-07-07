@@ -724,6 +724,7 @@ en:
     opt_monthly: "Autopay Monthly - %{price} / month"
     opt_yearly: "Autopay Yearly - %{price} / year"
     i_agree: "I agree to these terms"
+    payment_details: "Site: %{site}<br/>Payment Schedule: %{term}"
     back: "Cancel"
 
     setup: "Setup"

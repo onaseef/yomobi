@@ -387,7 +387,7 @@ es:
       step4: "Paso 4"
       label1: "Información General"
       label2: "Información de Contacto"
-      label3: "Imagen del Sito"
+      label3: "Imagen del Sitio"
       label4: "Personalizar"
 
     final:
@@ -407,7 +407,7 @@ es:
   navigation_bar:
     help: "Ayuda"
     sign_out: "Cerrar Sesión"
-    site_manager: "Administrador de Sito"
+    site_manager: "Administrador de Sitio"
     site_builder: "Constructor de Sitio Web"
     account_settings: "Opciones de la Cuenta"
 
@@ -724,6 +724,7 @@ es:
     opt_monthly: "Cobro Automático Mensual - %{price} / al mes"
     opt_yearly: "Cobro Automático Anual - %{price} / al año"
     i_agree: "Estoy de acuerdo con estos términos y condiciones"
+    payment_details: "Sitio: %{site}<br/>Calendario de Pagos: %{term}"
     back: "Cancelar"
 
     setup: "Ajustes"
