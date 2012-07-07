@@ -61,7 +61,7 @@ class WepayCheckoutRecordObserver < ActiveRecord::Observer
         UserMailer.notify_subscription_payment_failure(payment).deliver
         # check for a previous valid payment
       end
-    when /^(cancelled)$/ then
+    when /^(cancelled|revoked)$/ then
       # Manually cancelled. Update expire date
       if payment.sub_state == 'active' && payment.start_date > Date.today
         puts "KILLING #{wcr.preapproval_id}::#{payment.start_date}"
