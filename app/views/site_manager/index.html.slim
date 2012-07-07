@@ -266,20 +266,20 @@
 
         br
         br
-        input type="radio" name="create_type" value="type" New Site
-        input type="radio" name="create_type" value="source" Copy Site
+        input type="radio" name="create_type" value="type" =t('new_site.new_site_choice')
+        input type="radio" name="create_type" value="source" =t('new_site.copy_site_choice')
 
         .site-type
-          h3 Site Type:
+          h3 =t('new_site.site_type')
           | <% if (errors.type) { %>
-          p.error Invalid site type.
+          p.error =t('new_site.error.invalid_site_type')
           | <% } %>
           = select :site, :type, options_for_select(company_types, 57)
 
         .site-source.hide
-          h3 Copy Site:
+          h3 =t('new_site.copy_site')
           select.source name="site[source_db_name]"
-            option value="www" -- Please Select a Site to Copy --
+            option value="www" =t('new_site.select_site')
             | <% for (var i=0; i < sites.length; i++) { %>
             option value="{{ sites[i].url }}" [/{{ sites[i].url }}] {{ sites[i].name }}
             | <% } %>

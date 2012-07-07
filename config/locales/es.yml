@@ -183,8 +183,14 @@ es:
   new_site:
     site_name: "Nombre del Sitio:"
     site_url: "URL del Sitio Móvil:"
+    site_type: "Tipo de Sitio:"
+    copy_site: "Copia del Sitio:"
+    new_site_choice: "Nuevo Sitio"
+    copy_site_choice: "Copia del Sitio"
+    select_site: "-- Favor de Seleccionar un Sitio Para Copiar --"
     error:
       invalid_site_name: "Nombre de Sitio Inválido. El nombre del sitio debe ser de 2 a %{max_length} caracteres."
+      invalid_site_type: "Tipo de Sitio no Válido."
       invalid_site_url: "URL Inválida: La URL debe ser de al menos 3 caracteres de largo y contener sólo A-Z, a-z, 0-9, guión bajo (_), y guiones (-)."
       name_reserved: "Lo sentimos, ese nombre está reservado. Favor de elegir otro."
       url_taken: "Esa URL ya ha sido elegida."

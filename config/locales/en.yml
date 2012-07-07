@@ -183,8 +183,14 @@ en:
   new_site:
     site_name: "Site Name:"
     site_url: "Mobile Site URL:"
+    site_type: "Site Type:"
+    copy_site: "Copy Site:"
+    new_site_choice: "New Site"
+    copy_site_choice: "Copy Site"
+    select_site: "-- Please Select a Site to Copy --"
     error:
       invalid_site_name: "Invalid Site Name. Site name must be 2 - %{max_length} characters long."
+      invalid_site_type: "Invalid Site Type."
       invalid_site_url: "Invalid URL: the URL must be at least 3 characters long and contain only A-Z, a-z, 0-9, underscores (_), and dashes (-)."
       name_reserved: "Sorry, that name is reserved. Please choose another."
       url_taken: "URL is already taken."
