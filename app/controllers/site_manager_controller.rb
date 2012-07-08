@@ -246,6 +246,11 @@ class SiteManagerController < ApplicationController
       base_date = now if base_date < now
       puts "BASE DATE: #{base_date}"
 
+      # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      # NOTE: Make sure the value of checkout_params[:end_time] matches 
+      # the value for time_paid in wepay_checkout_record_observer.rb
+      # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
       if recur_type == "monthly"
         checkout_params[:period] = 'monthly'
         checkout_params[:start_time] = base_date.to_time.to_i  unless base_date == now

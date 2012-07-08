@@ -33,7 +33,11 @@ class WepayCheckoutRecordObserver < ActiveRecord::Observer
 
       payment.sub_state = 'active' if wcr.period
 
-      # Subscription is always 3 years long (36 months)
+      # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      # NOTE: Make sure the value for time_paid matches the value for 
+      # checkout_params[:end_time] in site_manager_controller.rb  
+      # Subscription is always 5 years long (60 months)
+      # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
       time_paid = 12 * 5
 
       payment.currency = wcr.currency
