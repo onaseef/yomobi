@@ -200,6 +200,14 @@ p.success {
       text-decoration: none; }
     #header.signed-in #nav a:hover {
       background-color: #6d86b7; }
+    #header.signed-in #nav .vdivider {
+      background: #6d86b7;
+      content: " ";
+      display: block;
+      height: 15px;
+      width: 1px;
+      margin: 7px 0 0 0;
+      float: right; }
 
 #page-container {
   width: 1010px;

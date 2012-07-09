@@ -226,7 +226,18 @@ p.success {
       font-weight: bold;
       text-decoration: none; }
     a:hover {
-      background-color: #6d86b7; } } }
+      background-color: #6d86b7; } 
+    .vdivider {
+      background: #6d86b7;
+      content: " ";
+      display: block;
+      height: 15px;
+      width: 1px;
+      margin: 7px 0 0 0;
+      float: right;
+    } 
+  } 
+}
 
 #page-container {
   width: $page-width;
