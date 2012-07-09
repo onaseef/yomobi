@@ -409,7 +409,7 @@ es:
     sign_out: "Cerrar Sesión"
     site_manager: "Administrador de Sitio"
     site_builder: "Constructor de Sitio Web"
-    account_settings: "Opciones de la Cuenta"
+    account_settings: "Administrador de la Cuenta"
 
 
   account_settings:
