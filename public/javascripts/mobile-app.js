@@ -397,6 +397,7 @@
         dataType: 'jsonp',
         success: function(metaDoc) {
           if(!metaDoc) statusbar.append('not defined metaDoc '+JSON.stringify(metaDoc));
+          metaDoc.worder || (metaDoc.worder = {});
           util.log('Got meta!',metaDoc);
 
           callback(metaDoc);
