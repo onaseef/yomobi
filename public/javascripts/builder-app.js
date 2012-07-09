@@ -420,6 +420,7 @@
       util.pushUIBlock('meta');
 
       $.post('/order',mapp.metaDoc,function (newMetaDoc) {
+        newMetaDoc.worder || (newMetaDoc.worder = {});
         mapp.metaDoc = newMetaDoc;
         util.clearUIBlock('meta');
         callback && callback();
