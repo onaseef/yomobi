@@ -413,7 +413,7 @@ en:
 
 
   account_settings:
-    title: "Account Settings"
+    title: "Account Manager"
     current_password: "Current Password*:"
     contact_information: "Contact Information"
     update_contact_info: "Update Contact Information"

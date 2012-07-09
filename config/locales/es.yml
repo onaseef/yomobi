@@ -413,7 +413,7 @@ es:
 
 
   account_settings:
-    title: "Opciones de la Cuenta"
+    title: "Administrador de la Cuenta"
     current_password: "Contraseña Actual*:"
     contact_information: "Información de Contacto"
     update_contact_info: "Actualizar Información de Contacto"
