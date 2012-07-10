@@ -147,6 +147,8 @@
         mapp.render();
         g.settings.banner_size = 'auto';
         this.$('img.banner').attr('src', g.banner).css('width', 'auto');
+        $('#emulator img.banner').css('width', 'auto');
+
         this.$('[name=banner_size]').val('auto');
         this.$('.banner_size, .remove-banner-link').show();
         util._uploaders['customize_banner'].toggleBrowseButton(true);
