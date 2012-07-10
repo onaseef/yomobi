@@ -472,9 +472,14 @@ pre {
   font-size: 13px;
   font-weight: bold;
   color: red;
-  background: yellow; }
-  .yomobi-upgrade-ad p {
-    padding: 6px; }
+  background: yellow;
+  height: 50px;
+  max-height: 50px; }
+  .yomobi-upgrade-ad table {
+    height: 100%;
+    border-collapse: collapse; }
+  .yomobi-upgrade-ad td {
+    padding: 0px 3px; }
   .yomobi-upgrade-ad a {
     color: red;
     text-decoration: none; }

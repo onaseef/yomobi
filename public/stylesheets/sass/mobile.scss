@@ -557,7 +557,10 @@ pre {
   font-weight: bold;
   color: red;
   background: yellow;
-  p { padding: 6px; }
+  height: 50px;
+  max-height: 50px;
+  table { height: 100%; border-collapse: collapse; }
+  td { padding: 0px 3px; }
   a { color: red; text-decoration: none; }
   a:hover { text-decoration: underline; }
 }
