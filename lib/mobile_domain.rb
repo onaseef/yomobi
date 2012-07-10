@@ -14,7 +14,7 @@ class MobileDomain
       domain = Domain.find_by_host(request.host)
       puts "UNRECOGNIZED HOST: #{request.host}"
       puts "CUSTOM DOMAIN: #{domain.inspect}"
-      if domain.company_id && domain.company.premium? == false
+      if domain && domain.company_id && domain.company.premium? == false
         return "redirect:#{domain.company.db_name}"
       else
         return domain && domain.company_id
