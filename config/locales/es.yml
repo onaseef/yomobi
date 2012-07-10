@@ -434,7 +434,7 @@ es:
   builder:
 
     upgrade_ad:
-      title: "Mejorar tu sitio para así poder eliminar publicitario y permitir modificaciones a la medida. Pulsa aquí y entérate como."
+      title: "Mejora tu sitio para poder eliminar anuncios y modificarlo a la medida. Para mayor información, pulsa aquí."
 
     sidebar:
       view_mobile_site: "Ver Sitio Móvil"
