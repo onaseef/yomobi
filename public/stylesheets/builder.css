@@ -445,7 +445,7 @@ div.wysiwyg ul.toolbar {
 #builder .edit-area.customize img.banner, #builder .edit-area.customize img.body_bg {
   max-width: 64px; }
 #builder .edit-area.customize .not-premium {
-  width: 230px;
+  width: 220px;
   float: left;
   color: red; }
   #builder .edit-area.customize .not-premium a, #builder .edit-area.customize .not-premium a:visited {
