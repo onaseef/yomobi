@@ -715,7 +715,7 @@ es:
     cancel_success: "La Suscripción ha sido cancelada con éxito."
     payment_complete: "El plan del sitio ha sido mejorado con éxito."
     renew_subscription: "Renovar Suscripción / Pre-pago"
-    next_charge: "próximo cobro: {{ nextChargeDate }})"
+    next_charge: "próximo cobro: {{ nextChargeDate }}"
     expires: "vencimiento: {{ expireDate }}"
 
     select_payment_option: "Selecciona una opción de pago:"
