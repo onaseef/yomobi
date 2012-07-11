@@ -219,6 +219,7 @@ p.success {
     background: $secondary-color;
     text-align: right;
     a, a:visited {
+      margin: 0px -1px;
       float: right;
       height: 23px;
       padding: 7px 10px 0;
@@ -226,6 +227,7 @@ p.success {
       font-weight: bold;
       text-decoration: none; }
     a:hover {
+      margin: 0px -1px; 
       background-color: #6d86b7; } 
     .vdivider {
       background: #6d86b7;

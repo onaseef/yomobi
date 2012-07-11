@@ -142,6 +142,7 @@ div.wysiwyg ul.toolbar {
   background-image: url(/images/ui/deactivated.png); }
 
 #builder-container {
+  min-height: 450px;
   background: #edeff4;
   border-top: 1px solid #b3b3b3; }
 
