@@ -88,6 +88,7 @@ GEM
       launchy (>= 0.3.2)
       rest-client (~> 1.6.1)
       term-ansicolor (~> 1.0.5)
+    http_accept_language (1.0.2)
     httparty (0.8.3)
       multi_json (~> 1.0)
       multi_xml
@@ -174,6 +175,7 @@ DEPENDENCIES
   couchrest!
   devise (~> 1.4)
   heroku
+  http_accept_language (= 1.0.2)
   json
   money
   newrelic_rpm (~> 3.3)

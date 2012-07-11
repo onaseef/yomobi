@@ -20,6 +20,7 @@ gem 'json'
 
 gem 'validates_as_email_address'
 gem 'aritcaptcha', :git => 'https://github.com/mindeavor/aritcaptcha.git'
+gem 'http_accept_language', '1.0.2'
 
 gem 'wepay-rails', :git => 'https://github.com/mindeavor/wepay-rails'
 # gem 'wepay-rails', :path => '/Users/tapwater/p/src/wepay-rails'
