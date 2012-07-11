@@ -107,7 +107,7 @@
         p.response.error
         input(type="submit" value=t'mobile.form.send')
     .thanks-wrap style="display:none"
-      h3 = t('leave_a_message.confirmation', :company_name => @company.name)
+      h3 = escape_quotes t('leave_a_message.confirmation', :company_name => @company.name)
 
   script.call_back-page(type="text/template")
     .input-wrap
@@ -135,11 +135,11 @@
         br
         input(type="submit" value=t'mobile.form.send')
     .thanks-wrap style="display:none"
-      h3 =t('call_back.confirmation', :company_name => @company.name)
+      h3 = escape_quotes t('call_back.confirmation', :company_name => @company.name)
 
   script.tell_friend-page(type="text/template")
     .input-wrap
-      p =t('tell_a_friend.instructions', :company_name => @company.name)
+      p = escape_quotes t('tell_a_friend.instructions', :company_name => @company.name)
   
       = form_tag "/#{@company.db_name}/tell_friend/submit", :method => 'post' do
         label =t'tell_a_friend.friend_email'
@@ -154,7 +154,7 @@
         br
         input type="submit" value=t'mobile.form.send'
     .thanks-wrap style="display:none"
-      h3 =t('tell_a_friend.confirmation', :company_name => @company.name)
+      h3 = escape_quotes t('tell_a_friend.confirmation', :company_name => @company.name)
 
   script.booking-page(type="text/template")
     .input-wrap
@@ -199,14 +199,14 @@
         p.error.response
         input(type="submit" value=t'mobile.form.send')
     .thanks-wrap style="display:none"
-      h3 =t('booking_request.confirmation', :company_name => @company.name)
+      h3 = escape_quotes t('booking_request.confirmation', :company_name => @company.name)
 
   script.informed-page(type="text/template")
     .input-wrap
       | <% if (_maybe.message) { %>
       p {{ message }}
       | <% } else { %>
-      p =t('keep_me_informed.instructions', :company_name => @company.name)
+      p = escape_quotes t('keep_me_informed.instructions', :company_name => @company.name)
       | <% } %>
 
       = form_tag "/#{@company.db_name}/informed/submit", :method => 'post' do
@@ -229,7 +229,7 @@
         p.response.error
         input(type="submit" value=t'mobile.form.send')
     .thanks-wrap style="display:none"
-      h3 =t('keep_me_informed.confirmation', :company_name => @company.name)
+      h3 = escape_quotes t('keep_me_informed.confirmation', :company_name => @company.name)
 
   script.hours-page(type="text/template")
     - %w(mon tue wed thu fri sat sun).each do |day|

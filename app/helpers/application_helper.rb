@@ -29,4 +29,8 @@ module ApplicationHelper
   def topline_notice
     render :partial => 'shared/topline-notice', :locals => { :notice => notice, :alert => alert }
   end
+
+  def escape_quotes(str)
+    str.gsub('"', '&quot;').gsub("'", '&#39;')
+  end
 end

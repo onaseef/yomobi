@@ -631,7 +631,7 @@ script.keep-me-informed-edit-area(type="text/template")
   br
   label =t'builder.widget_editor.custom_message_label'
   img.help-bubble src="/images/ui/help-bubble.png" title=t('widgets.helpText.keep-me-informed.mobile-message')
-  textarea name="message" == "<% print(_maybe.message || '#{ t'keep_me_informed.instructions', :company_name => @company.name }'); %>"
+  textarea name="message" == "<% print(_maybe.message || '#{ escape_quotes t('keep_me_informed.instructions', :company_name => @company.name) }'); %>"
   br
   .opt-in-select
     label =t'builder.widget_editor.select_at_least_one_label_required'
