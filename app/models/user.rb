@@ -65,7 +65,7 @@ class User < ActiveRecord::Base
   end
 
   def all_companies
-    self.companies + self.shared_companies
+    (self.companies + self.shared_companies).sort! {|a,b| a.db_name <=> b.db_name}
   end
 
   def can_access_company?(co)
