@@ -2,6 +2,11 @@
 
   var hasChanges = false;
 
+  var resizeEmulator = function () {
+    g.topBarHeight = $('#top-bar').height();
+    mapp.resize();
+  };
+
   var getSetting = function (name) {
     if (!g.isPremium && name != 'header_color' && name != 'header_text_color') {
       return util.defaultSettings[name];
@@ -148,6 +153,7 @@
         g.settings.banner_size = 'auto';
         this.$('img.banner').attr('src', g.banner).css('width', 'auto');
         $('#emulator img.banner').css('width', 'auto');
+        resizeEmulator();
 
         this.$('[name=banner_size]').val('auto');
         this.$('.banner_size, .remove-banner-link').show();
@@ -175,6 +181,7 @@
       mapp.render();
       $('img.banner').attr('src', g.blankImg);
       $('.banner_size, .remove-banner-link').hide();
+      resizeEmulator();
       $.post(g.customizeUploadPath, { destroy:1, targetType:'banner' });
     },
 
@@ -217,6 +224,7 @@
       hasChanges || (hasChanges = true);
       var size = this.$('[name=banner_size]').val() || 'auto';
       $('#top-bar .company-info .banner-wrap img').width(size);
+      resizeEmulator();
     },
 
     saveChanges: function () {
