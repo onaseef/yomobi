@@ -72,7 +72,7 @@ class ApplicationController < ActionController::Base
   def set_locale
     # Do the language check here since we support limited languages and
     # checking here is faster than a file system check.
-    lang = request.compatible_language_from %w{en es}
+    lang = request.compatible_language_from %w{en es es-es}
 
     if params[:locale].present? && params[:locale].match(/^(es|en)/)
       cookies[:locale] = params[:locale]
