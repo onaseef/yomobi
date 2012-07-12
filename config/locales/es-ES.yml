@@ -3,7 +3,7 @@
 
 es-ES:
   powered_by:
-    slogan: "Alojado en YoMobi (SPAIN)"
+    slogan: "Alojado en YoMobi"
 
   share:
     share: "Compartir:"
@@ -65,15 +65,15 @@ es-ES:
       incorrect_password: "Contraseña Incorrecta"
 
   links:
-    about: "Quienes Somos (SP)"
-    feedback: "Contacto (SP)"
-    help: "Ayuda (SP)"
-    home: "Inicio (SP)"
-    mobile_matters: "La Movilidad Importa (SP)"
-    plans: Planes (SP)
-    opportunities: Oportunidades (SP)
-    privacy: "Privacidad (SP)"
-    terms: "Términos (SP)"
+    about: "Quienes Somos"
+    feedback: "Contacto"
+    help: "Ayuda"
+    home: "Inicio"
+    mobile_matters: "La Movilidad Importa"
+    plans: "Planes"
+    opportunities: "Oportunidades"
+    privacy: "Privacidad"
+    terms: "Términos"
 
   legal:
     rights_reserved: "Todos los Derechos Reservados YoMobi © 2012"
@@ -171,12 +171,12 @@ es-ES:
   javascript_mobile:
 
     email: "Email"
-    phone: "Número de Móvil/Celular"
+    phone: "Número de Móvil"
 
     all_fields_required: "Debes de llenar todos los campos."
     invalid_captcha: "Respuesta incorrecta. Favor de intentar de nuevo."
     invalid_email: "Dirección de email inválida."
-    invalid_phone: "Número de móvil/celular inválido."
+    invalid_phone: "Número de móvil inválido."
     email_or_phone_required: "Debes proporcionar un email o número de teléfono."
 
 
@@ -325,7 +325,7 @@ es-ES:
 
   keep_me_informed:
     instructions: "Ingresa tus datos para recibir las últimas noticias de %{company_name}. Puedes darte de baja en cualquier momento y tus datos permanecerán privados."
-    mobile_number: "Número de Móvil/Celular:"
+    mobile_number: "Número de Móvil:"
     mobile_carrier: "Compañía operadora del servicio:"
     confirmation: "Gracias por seguir a %{company_name}."
 
@@ -490,7 +490,7 @@ es-ES:
       explanation: "<p>Editar opciones avanzadas.</p>"
       mobile_url: "URL del Sitio Móvil:"
       redirect_code: "Código de Re-dirección desde Sitio Tradicional:"
-      redirect_code_help: "Para redirigir visitantes hacia tu sitio móvil cuando accedan hacia tu sitio tradicional usando un teléfono móvil/celular, copia esta pieza de código para pegarlo en la página de inicio de tu sitioâ€™s tradicional, justo antes del símbolo de cierre de la etiqueta (tag)&lt;head&gt;. <b>Para más ayuda, Haz Click en ?.</b>"
+      redirect_code_help: "Para redirigir visitantes hacia tu sitio móvil cuando accedan hacia tu sitio tradicional usando un teléfono móvil, copia esta pieza de código para pegarlo en la página de inicio de tu sitioâ€™s tradicional, justo antes del símbolo de cierre de la etiqueta (tag)&lt;head&gt;. <b>Para más ayuda, Haz Click en ?.</b>"
       keywords: "Ingresa las palabras clave que describen a tu sitio web, separadas por comas:"
       save: "Guardar Opciones Seleccionadas"
 
@@ -782,7 +782,7 @@ es-ES:
       name: "Nombre:"
       phone_number: "Número de Teléfono:"
       your_name: "Tu Nombre:"
-      security: "Favor de contestar esta pregunta de seguridad:"
+      security: "Por favor, conteste a esta pregunta de seguridad:"
       send: "Enviar"
       get_directions: "Obtener direcciones: "
       starting_address: "Dirección de Inicio: "

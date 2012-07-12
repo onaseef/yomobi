@@ -72,7 +72,7 @@
     .clearfix
 
   script.phone-page(type="text/template")
-    h2 Call:
+    h2 =t'mobile.form.phone_number'
     h2
       | <% if (g.isMobile) { %>
       a href="tel:{{ _maybe.phone }}" {{ _maybe.phone }}
