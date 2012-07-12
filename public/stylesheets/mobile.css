@@ -53,7 +53,10 @@ p {
   font-size: 16px;
   word-break: break-word; }
   #canvas .page > .content label {
-    margin-bottom: 2px; }
+    margin-bottom: 2px;
+    font-size: inherit;
+    padding: inherit;
+    white-space: inherit; }
   #canvas .page > .content input[type=text] {
     width: 70%;
     margin: 0px 0px 10px 0px;
