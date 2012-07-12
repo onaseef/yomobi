@@ -691,7 +691,8 @@ var builderUtil = {
 
     $elems.ColorPicker({
       color: function (elem) {
-        return $(elem).data('color');
+        // This value doesn't matter due to onBeforeShow
+        return '#000000';
       },
       onBeforeShow: function (elem, colpkr) {
         var inputName = $(elem).data('target')
