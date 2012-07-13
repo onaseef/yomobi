@@ -172,7 +172,7 @@ es:
 
     email: "Email"
     phone: "Número de Móvil/Celular"
-    closed: "@@Closed"
+    closed: "Cerrado"
 
     all_fields_required: "Debes de llenar todos los campos."
     invalid_captcha: "Respuesta incorrecta. Favor de intentar de nuevo."
