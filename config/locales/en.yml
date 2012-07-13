@@ -172,6 +172,7 @@ en:
 
     email: "Email"
     phone: "Mobile Number"
+    closed: "Closed"
 
     all_fields_required: "You must fill in all fields."
     invalid_captcha: "Incorrect math answer. Please try again."
