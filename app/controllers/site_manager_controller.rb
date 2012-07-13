@@ -296,6 +296,7 @@ class SiteManagerController < ApplicationController
         return success :cancelSubscription => company.id
       else
         puts "CANCEL ERROR: #{e.message}::#{e.inspect}"
+        puts "(Tried to cancel preapproval_id #{record.preapproval_id})"
         return error 'cancel_error'
       end
     else
