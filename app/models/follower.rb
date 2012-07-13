@@ -36,6 +36,9 @@ class Follower < ActiveRecord::Base
 
   def send_text(message)
     return if phone.nil? || carrier.nil?
+    handle_empty_values
+    self.save if self.changed?
+
     puts "Sending text to #{phone} (#{carrier})"
     UserMailer.send_text({
       :follower => self,
@@ -46,6 +49,9 @@ class Follower < ActiveRecord::Base
 
   def send_email(subject,content)
     return if email.nil?
+    handle_empty_values
+    self.save if self.changed?
+
     puts "Sending email to #{email} (subject=#{subject})"
     UserMailer.email_follower({
       :short_url => short_url,
@@ -65,7 +71,7 @@ class Follower < ActiveRecord::Base
     self.phone.gsub! /[^0-9]+/, '' if phone
     (self.phone = nil) && (self.carrier = nil) if !phone.present? || !carrier.present?
     self.email = nil if !email.present?
-    self.opt_out_key, self.short_url = new_opt_out_pair if opt_out_key.nil?
+    self.opt_out_key, self.short_url = new_opt_out_pair if opt_out_key.nil? || self.short_url.nil?
     true
   end
 
