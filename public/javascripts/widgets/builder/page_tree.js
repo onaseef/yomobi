@@ -144,7 +144,11 @@
         , delay = this.areStylesDirty ? 350 : 1200
       ;
       this.updateTimeoutId = setTimeout(function () {
-        if ( !self.widget.hasLeafOnTop() ) return;
+        if ( !self.widget.hasLeafOnTop() ||
+             $('#jeditor').data('wysiwyg').viewHTML == true)
+        {
+          return;
+        }
         self.updateActiveLeaf();
         delete self.updateTimeoutId;
       }, delay);
