@@ -24,7 +24,7 @@ class WepayCheckoutRecordObserver < ActiveRecord::Observer
 
       # base_date is when the subscription will start
       if last_sub
-        base_date = last_sub.next_charge_date
+        base_date = last_sub.next_charge_date(Date.today)
       elsif last_payment
         base_date = last_payment.expire_date
       end
@@ -34,8 +34,8 @@ class WepayCheckoutRecordObserver < ActiveRecord::Observer
       payment.sub_state = 'active' if wcr.period
 
       # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      # NOTE: Make sure the value for time_paid matches the value for 
-      # checkout_params[:end_time] in site_manager_controller.rb  
+      # NOTE: Make sure the value for time_paid matches the value for
+      # checkout_params[:end_time] in site_manager_controller.rb
       # Subscription is always 5 years long (60 months)
       # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
       time_paid = 12 * 5
@@ -47,7 +47,7 @@ class WepayCheckoutRecordObserver < ActiveRecord::Observer
       puts "EXPRIE #{payment.expire_date}"
 
       # cancel previous subscription
-      puts "PREVIOUS SUBSCRIPTION #{last_sub}"
+      puts "PREVIOUS SUBSCRIPTION #{last_sub && last_sub.id}"
       cancel_preapproval last_sub.wcr.preapproval_id if last_sub.present?
     end
 
