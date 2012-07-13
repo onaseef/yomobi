@@ -37,10 +37,10 @@
       util.spawnAritcaptcha();
     }
     _.each(serverResponse.email, function (error) {
-      msg += '<li>' + g.i18n.email + ' ' + error + '</li>';
+      msg += '<li>' + g.i18n.invalid_email  + '</li>';
     });
     _.each(serverResponse.phone, function (error) {
-      msg += '<li>' + g.i18n.phone + ' ' + error + '</li>';
+      msg += '<li>' + g.i18n.invalid_phone + '</li>';
     });
     util.log('SERVER RESPONSE',serverResponse);
     return msg + '</ul>';
