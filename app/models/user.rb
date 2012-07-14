@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
     payments.each do |p|
       history << p.charge_history.map {|date| Charge.new(p,date) }
     end
-    history.flatten.sort_by! { |charge| charge.charge_date }
+    history.flatten.sort_by! { |charge| charge.charge_date }.reverse!
   end
 
   # returns the company that the user is currently editing
