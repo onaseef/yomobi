@@ -126,7 +126,7 @@
     el: $('#manager-container .accordian > .signup-keys'),
     template: util.getTemplate('signup-keys'),
     events: {
-      'click .signup-key':            'selectKey',
+      'click .signup-key-input':     'selectKey',
       'click button.gen-signup-key': 'genSignupKey'
     },
     showContent: showContent,
