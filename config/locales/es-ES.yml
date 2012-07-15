@@ -99,8 +99,8 @@ es-ES:
           legend: "Crear Link"
           type  : "Tipo"
           url   : "Valor"
-          title : "@@Link Title"
-          target: "@@Link Target"
+          title : "Texto del Enlace"
+          target: "Destino del Enlace"
           submit: "Crear Link"
           reset : "Cerrar"
           url_op: "URL"
@@ -763,12 +763,12 @@ es-ES:
     # site_manager
     help:
       site_access_list: 'Para administrar un sitio, selecciónalo de la lista siguiente, luego usa el panel de configuración de la derecha para editar o actualizar el sitio.<br/><br/><a href="http://help.yomobi.com/SiteManager" target="ymhelp">Para mayor información pulsa aquí.</a>'
-      signup_keys: 'Cuando estés listo para entregar este sitio a su propietario, genera una clave de registro, luego envía por email el enlace al propietario del sitio. Asegúrate que haga click en el enlace para que se registre ante Yomobi y tome posesión de su sitio.<br/><br/><a href="http://help.yomobi.com/Account/SignupKey" target="ymhelp">Haz click aquí para mayor información.</a>'
+      signup_keys: '<b>Sólo el propietario del sitio puede generar una clave de registro.</b><br/><br/>Cuando estés listo para entregar este sitio a su propietario, genera una clave de registro, luego envía por email el enlace al propietario del sitio. Asegúrate que haga click en el enlace para que se registre ante Yomobi y tome posesión de su sitio.<br/><br/><a href="http://help.yomobi.com/Account/SignupKey" target="ymhelp">Haz click aquí para mayor información.</a>'
       manage_site_type: 'Selecciona una opción de pago a continuación para mejorar el plan de tu sitio móvil a una cuenta a la Medida. Puedes cancelar tu suscripción en cualquier momento.<br/><br/><a href="http://help.yomobi.com/SiteManager/SiteTypes" target="ymhelp">Para mayor información acerca de la cuenta a la Medida y de cómo pagar, pulsa aquí.</a>'
       extend_premium_term: 'Selecciona una opción de pago para ampliar la vigencia de tu actual cuenta a la Medida. Puedes cancelar tu suscripción en cualquier momento.<br/><br/><a href="http://help.yomobi.com/SiteManager/SiteTypes" target="ymhelp">Para mayor información acerca de las funciones de la cuenta a la Medida y de sus formas de pago pulsa aquí.</a>'
       renew_subscription: 'Favor de renovar tu suscripción actual para que puedas mantener las funciones de modificación a la medida. Puedes cancelar tu suscripción en cualquier momento.'
       manage_custom_domain: '<a href="http://help.yomobi.com/SiteManager/CustomDomain" target="ymhelp">Para saber cómo relacionar un dominio a la medida con tu sitio móvil, pulsa aquí.</a>'
-      manage_site_admins: '<a href="http://help.yomobi.com/SiteManager/SiteAdmins" target="ymhelp">Para conocer cómo ajustar las cuentas de administradores para este sitio, pulsa aquí.</a>'
+      manage_site_admins: '<b>Sólo el propietario del sitio puede gestionar los administradores del sitio.</b><br/><br/><a href="http://help.yomobi.com/SiteManager/SiteAdmins" target="ymhelp">Para conocer cómo ajustar las cuentas de administradores para este sitio, pulsa aquí.</a>'
     confirm:
       concede_site: ¿Estás seguro(a)? Cederás / Perderás la propiedad de este sitio.
     dialog:
