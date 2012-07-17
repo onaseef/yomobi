@@ -21,6 +21,7 @@ en:
     site_url: "Site URL"
     site_name: "Site Name"
     amount: "Amount"
+    payment_id: "Payment ID"
 
   days:
     Sunday: "Sunday"

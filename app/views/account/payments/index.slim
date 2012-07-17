@@ -12,9 +12,11 @@ div.payment-history-wrapper
 	      td.amount = t 'general.amount'
 	      td.url = t 'general.site_url'
 	      td.name = t 'general.site_name'
+	      td.payment-id = t 'general.payment_id'
 	  - @charges.each do |c|
 	    tr class=cycle('odd','even')
 	      td.date = c.charge_date.strftime( t 'date_formats.payment' )
 	      td.amount = "$#{c.amount_paid}"
 	      td.url = c.site_url
 	      td.name = c.site_name
+	      td.payment-id = c.preapproval_id

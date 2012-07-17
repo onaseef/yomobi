@@ -21,6 +21,7 @@ es:
     site_url: "URL del Sitio"
     site_name: "Nombre del Sitio"
     amount: "Cantidad"
+    payment_id: "@@Payment ID"
 
   days:
     Sunday: "Domingo"
