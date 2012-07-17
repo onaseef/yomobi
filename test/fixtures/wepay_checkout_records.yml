@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+now_monthly:
+  period: monthly
+  preapproval_id: 111
+  start_time: <%= DateTime.now.to_i %>
+  end_time: <%= (DateTime.now + 5.years).to_i %>
+  state: authorized
+  currency: USD
+  amount: 6.0
+
+ten_days_monthly:
+  period: monthly
+  preapproval_id: 111
+  start_time: <%= (DateTime.now + 10).to_i %>
+  end_time: <%= (DateTime.now + 10 + 5.years).to_i %>
+  state: authorized
+  currency: USD
+  amount: 6.0

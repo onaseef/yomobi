@@ -26,6 +26,12 @@ gem 'wepay-rails', :git => 'https://github.com/mindeavor/wepay-rails'
 # gem 'wepay-rails', :path => '/Users/tapwater/p/src/wepay-rails'
 gem 'money'
 
+group :test, :development do
+  gem 'turn', '~> 0.9.6'
+  gem 'minitest', '~> 3.2.0'
+  gem 'minitest-spec-rails', '~> 3.0.5'
+end
+
 group :production do
   gem 'newrelic_rpm', '~> 3.3'
 end

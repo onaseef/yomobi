@@ -2,8 +2,13 @@ class WepayCheckoutRecordObserver < ActiveRecord::Observer
   include WepayRails::Payments
 
   def after_update(wcr)
+    return if WepayCheckoutRecordObserver.disabled
+    WepayCheckoutRecordObserver.after_update(wcr)
+  end
+
+  def self.after_update(wcr)
     return if wcr.state == 'expired'
-    puts "UPDATING WEPAY RECORD #{wcr.id}: #{wcr.state} #{wcr.reference_id}"
+    # puts "UPDATING WEPAY RECORD #{wcr.id}: #{wcr.state} #{wcr.reference_id}"
 
     payment = Payment.find_by_wepay_checkout_record_id(wcr.id)
     payment ||= Payment.new :wepay_checkout_record => wcr
@@ -44,10 +49,10 @@ class WepayCheckoutRecordObserver < ActiveRecord::Observer
       payment.amount_paid = wcr.amount.to_s('F')
       payment.company.update_attribute :premium, true
       payment.expire_date = base_date + time_paid.months
-      puts "EXPRIE #{payment.expire_date}"
+      # puts "EXPRIE #{payment.expire_date}"
 
       # cancel previous subscription
-      puts "PREVIOUS SUBSCRIPTION #{last_sub && last_sub.id}"
+      # puts "PREVIOUS SUBSCRIPTION #{last_sub && last_sub.id}"
       cancel_preapproval last_sub.wcr.preapproval_id if last_sub.present?
     end
 
@@ -59,7 +64,7 @@ class WepayCheckoutRecordObserver < ActiveRecord::Observer
     when /^(stopped)$/ then
       # Only preapprovals have a `stopped` state
       if payment.sub_state == 'active'
-        puts "FAILED SUBSCRIPTION PAYMENT #{wcr.preapproval_id}"
+        # puts "FAILED SUBSCRIPTION PAYMENT #{wcr.preapproval_id}"
         payment.expire_date = payment.next_charge_date
         payment.sub_state = 'stopped'
         UserMailer.notify_subscription_payment_failure(payment).deliver
@@ -68,7 +73,7 @@ class WepayCheckoutRecordObserver < ActiveRecord::Observer
     when /^(cancelled|revoked)$/ then
       # Manually cancelled. Update expire date
       if payment.sub_state == 'active' && payment.start_date > Date.today
-        puts "KILLING #{wcr.preapproval_id}::#{payment.start_date}"
+        # puts "KILLING #{wcr.preapproval_id}::#{payment.start_date}"
         # No payment has been made for this subscription. Just mark it as invalid
         payment.is_valid = false
         payment.sub_state = 'cancelled'
@@ -80,5 +85,8 @@ class WepayCheckoutRecordObserver < ActiveRecord::Observer
     end
     payment.save
     payment.company.recalculate_premium
+    payment
   end
+
+  cattr_accessor(:disabled)
 end
