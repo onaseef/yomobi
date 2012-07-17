@@ -3,15 +3,15 @@ require 'open-uri'
 
 # Rake task for importing country names from Unicode.org's CLDR repository
 # (http://www.unicode.org/cldr/data/charts/summary/root.html).
-# 
-# It parses a HTML file from Unicode.org for given locale and saves the 
+#
+# It parses a HTML file from Unicode.org for given locale and saves the
 # Rails' I18n hash in the plugin +locale+ directory
-# 
+#
 # Don't forget to restart the application when you add new locale to load it into Rails!
-# 
+#
 # == Example
 #   rake import:country_select 'de'
-# 
+#
 # The code is deliberately procedural and simple, so it's easily
 # understandable by beginners as an introduction to Rake tasks power.
 # See http://github.com/joshmh/cldr/tree/master/converter.rb for much more robust solution
@@ -26,9 +26,9 @@ namespace :import do
       puts "Error: Hpricot library required to use this task (import:country_select)"
       exit
     end
-    
+
     # TODO : Implement locale import chooser from CLDR root via Highline
-    
+
     # Setup variables
     locale = ARGV[1]
     unless locale
@@ -50,8 +50,8 @@ namespace :import do
     puts "... parsing the HTML file"
     countries = []
     doc.search("//tr").each do |row|
-      if row.search("td[@class='n']") && 
-         row.search("td[@class='n']").inner_html =~ /^namesterritory$/ && 
+      if row.search("td[@class='n']") &&
+         row.search("td[@class='n']").inner_html =~ /^namesterritory$/ &&
          row.search("td[@class='g']").inner_html =~ /^[A-Z]{2}/
         code   = row.search("td[@class='g']").inner_text
         code   = code[-code.size, 2]
@@ -72,13 +72,13 @@ HEAD
       output << "\t\t\t:#{country[:code]} => \"#{country[:name]}\",\n"
     end
     output <<<<TAIL
-    } 
+    }
 
   }
 }
 TAIL
 
-    
+
     # ----- Write the parsed values into file      ---------------------------------
     puts "\n... writing the output"
     filename = File.join(File.dirname(__FILE__), '..', 'locale', "#{locale}.rb")
