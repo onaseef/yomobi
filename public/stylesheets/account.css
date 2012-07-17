@@ -41,7 +41,7 @@
     .inner-content .payment-history td {
       padding: 3px 16px 3px 6px;
       border-right: 1px solid #C1DAD7; }
-    .inner-content .payment-history .name {
+    .inner-content .payment-history .payment-id {
       border-right: none; }
     .inner-content .payment-history .even {
       background-color: #D6E9E7;
