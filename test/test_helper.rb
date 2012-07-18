@@ -21,11 +21,54 @@ class ActiveSupport::TestCase
     c
   end
 
-  def new_payment(company, wcr_name)
-    wcr = wcrs(:now_monthly).clone
+  def new_subscription(company, start_time, payment_attrs=nil)
+    wcr = wcrs(:now).clone
     wcr.reference_id = "#{users(:bob).id}|#{company.id}|#{wcr.period}|#{ActiveSupport::SecureRandom.uuid}"
+    wcr.preapproval_id += rand_num(10)
+
+    company.reload
+
+    start_time = (start_time == :now) ? Date.today : start_time.to_date
+    Date.stub :today, start_time, do
+      # MIRRED FROM site_manager_controller.rb:244
+      now = Date.today
+      base_date = [company.next_charge_date, company.hard_expire_date, now].compact.max
+      base_date = now if base_date < now
+      #/MIRRED
+
+      wcr.start_time = base_date.to_time.to_i
+      wcr.end_time = (base_date + 5.years).to_time.to_i
+    end
+
     wcr.save!
-    WepayCheckoutRecordObserver.after_update(wcr)
+
+    payment = nil
+    WepayCheckoutRecordObserver.stub :cancel_preapproval, lambda {|preapproval_id|
+      record = WepayCheckoutRecord.find_by_preapproval_id(preapproval_id)
+      if record
+        record.update_attribute(:state, 'cancelled')
+        WepayCheckoutRecordObserver.after_update(record)
+      end
+      record
+    } do
+      payment = WepayCheckoutRecordObserver.after_update(wcr)
+    end
+
+    unless payment_attrs.nil?
+      payment.attributes = payment_attrs
+      payment.save!
+    end
+    payment
+  end
+
+  def cancel_subscription(sub)
+    record = sub.wcr
+    if record
+      record.update_attribute(:state, 'cancelled')
+      WepayCheckoutRecordObserver.after_update(record)
+    end
+    sub.reload
+    record
   end
 
   def rand_num(length)

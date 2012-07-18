@@ -241,7 +241,7 @@ class SiteManagerController < ApplicationController
         :prefill_info => { email:user.email, name:"#{user.first_name} #{user.last_name}" },
       }
 
-      now = DateTime.now
+      now = Date.today
       base_date = [@site.next_charge_date, @site.hard_expire_date, now].compact.max
       base_date = now if base_date < now
       puts "BASE DATE: #{base_date}"

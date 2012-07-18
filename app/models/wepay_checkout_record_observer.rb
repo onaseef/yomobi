@@ -1,5 +1,10 @@
 class WepayCheckoutRecordObserver < ActiveRecord::Observer
-  include WepayRails::Payments
+
+  cattr_accessor(:disabled)
+
+  class << self
+    include WepayRails::Payments
+  end
 
   def after_update(wcr)
     return if WepayCheckoutRecordObserver.disabled
@@ -29,7 +34,7 @@ class WepayCheckoutRecordObserver < ActiveRecord::Observer
 
       # base_date is when the subscription will start
       if last_sub
-        base_date = last_sub.next_charge_date(Date.today)
+        base_date = last_sub.next_charge_date
       elsif last_payment
         base_date = last_payment.expire_date
       end
@@ -52,7 +57,7 @@ class WepayCheckoutRecordObserver < ActiveRecord::Observer
       # puts "EXPRIE #{payment.expire_date}"
 
       # cancel previous subscription
-      # puts "PREVIOUS SUBSCRIPTION #{last_sub && last_sub.id}"
+      # puts "PREVIOUS SUBSCRIPTION #{last_sub.id}" if last_sub.present?
       cancel_preapproval last_sub.wcr.preapproval_id if last_sub.present?
     end
 
@@ -78,7 +83,7 @@ class WepayCheckoutRecordObserver < ActiveRecord::Observer
         payment.is_valid = false
         payment.sub_state = 'cancelled'
       elsif payment.sub_state == 'active'
-        puts "CANCELLING #{wcr.preapproval_id}"
+        # puts "CANCELLING #{wcr.preapproval_id}"
         payment.expire_date = payment.next_charge_date
         payment.sub_state = 'cancelled'
       end
@@ -88,5 +93,4 @@ class WepayCheckoutRecordObserver < ActiveRecord::Observer
     payment
   end
 
-  cattr_accessor(:disabled)
 end

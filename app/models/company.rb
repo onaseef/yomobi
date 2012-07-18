@@ -160,7 +160,7 @@ class Company < ActiveRecord::Base
   def hard_expire_date
     payment = self.last_payment(true)
     expire_date = payment && (payment.wcr.preapproval_id ? payment.next_charge_date : payment.expire_date)
-    expire_date = DateTime.now if payment && payment.wcr.start_time > Time.now.to_i
+    expire_date = Date.today if payment && payment.wcr.start_time > Time.now.to_i
     [expire_date, self.manual_expire_date].compact.max
   end
 
@@ -190,7 +190,7 @@ class Company < ActiveRecord::Base
   def next_charge_date
     last_sub = self.last_subscription
     return nil if last_sub.nil?
-    last_sub.next_charge_date(Date.today)
+    last_sub.next_charge_date
   end
 
   def as_json(options=nil)

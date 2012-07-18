@@ -23,10 +23,10 @@ class Payment < ActiveRecord::Base
     Time.at(self.wcr.start_time).to_date
   end
 
-  def next_charge_date(base_time=nil)
+  def next_charge_date
     wcr = self.wepay_checkout_record
     return nil if wcr.end_time.nil?
-    base_time ||= [Date.today, Time.at(wcr.start_time).to_date].max
+    base_time = Date.today
     end_date = Time.at(wcr.end_time).to_date
     return nil if end_date < (base_time + 1.month)
 
