@@ -33,6 +33,39 @@ describe Payment do
     s2.next_charge_date.must_equal  s1.expire_date
   end
 
+  it "should calculate next charge dates" do
+    c = new_company
+    # Starting on March 1/12, create sub on Feb 20/12
+    s1 = new_subscription(c, 5.days.ago, :period => 'yearly')
+
+    # One year has been charged.
+    # The next charge date should be Feb 20/13
+    expire_1 = (Date.today - 5.days + 1.year)
+    s1.next_charge_date.must_equal  expire_1
+
+    # In one year (March 1/13), the next charge date should be Feb 20/14
+    Date.stub :today, (Date.today + 1.year), do
+      s1.next_charge_date.must_equal (expire_1 + 1.year)
+    end
+    # In six months (Sep 1/12), the next charge date should be Feb 20/13
+    Date.stub :today, (Date.today + 6.months), do
+      s1.next_charge_date.must_equal expire_1
+    end
+
+    cancel_subscription(s1)
+
+    # Since the sub hasn't started yet, next charge date should be its start date
+    s2 = new_subscription(c, :now)
+    s2.next_charge_date.must_equal  s2.start_date
+    # New monthly sub. Next charge date should still be Feb 20/13
+    s2.next_charge_date.must_equal  expire_1
+
+    # In one year (March 1/13), the next charge date should be April 20/13
+    Date.stub :today, (Date.today + 1.year), do
+      s2.next_charge_date.must_equal (expire_1 + 1.month)
+    end
+  end
+
   it "should properly reset a cancelled subscription's expire date" do
     c = new_company
 

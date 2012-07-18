@@ -39,7 +39,7 @@ class ActiveSupport::TestCase
       wcr.start_time = base_date.to_time.to_i
       wcr.end_time = (base_date + 5.years).to_time.to_i
     end
-
+    wcr.period = payment_attrs.delete(:period) || 'monthly' if payment_attrs
     wcr.save!
 
     payment = nil
