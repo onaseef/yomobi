@@ -125,6 +125,7 @@
 
     editSettings: function () {
       if (bapp.panelHasUnsavedChanges()) return false;
+      bapp.router.saveLocation('edit-settings');
       bapp.startEditingPanel('settings');
     },
     editTabBar:   function (e) {
