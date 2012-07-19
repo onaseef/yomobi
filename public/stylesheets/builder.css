@@ -26,7 +26,8 @@ div.wysiwyg ul.toolbar {
     border-top: 1px solid #dddddd;
     margin: 5px 0; }
   #sidebar .option {
-    padding: 3px 0 2px 4px;
+    min-height: 16px;
+    padding: 2px 0 2px 4px;
     clear: left; }
     #sidebar .option .icon {
       float: left;
