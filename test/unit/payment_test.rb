@@ -127,4 +127,28 @@ describe Payment do
     s3.expire_date.must_equal  expire_1 + 5.years
   end
 
+  it "should handle cancelling a non-started subscription" do
+    c = new_company
+    s1 = new_subscription c, :now, :skip_capture => true
+    month_expire = Date.today + 1.month
+
+    # Capture payment next day
+    Date.stub :today, (Date.today + 1.day), do
+      capture_payment(s1)
+    end
+
+    Date.stub :today, (Date.today + 9.days), do
+      cancel_subscription(s1)
+      c.reload; c.expire_date.must_equal(month_expire)
+    end
+
+    s2 = new_subscription c, (Date.today + 14.days), :period => 'yearly', :skip_capture => true
+
+    Date.stub :today, (Date.today + 14.days), do
+      # Cancel subscription without WePay's capture IPN
+      cancel_subscription(s2)
+      c.reload; c.expire_date.must_equal(month_expire)
+    end
+  end
+
 end
