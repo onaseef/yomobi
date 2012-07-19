@@ -300,6 +300,7 @@ class SiteManagerController < ApplicationController
         return error 'cancel_error'
       end
     else
+      company.recalculate_premium
       return success :cancelSubscription => company.id, :site => company
     end
   end
