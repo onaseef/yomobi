@@ -21,7 +21,7 @@ class ActiveSupport::TestCase
     c
   end
 
-  def new_subscription(company, start_time, payment_attrs=nil)
+  def new_subscription(company, start_time, opts={})
     wcr = wcrs(:now).clone
     wcr.reference_id = "#{users(:bob).id}|#{company.id}|#{wcr.period}|#{ActiveSupport::SecureRandom.uuid}"
     wcr.preapproval_id += rand_num(10)
@@ -39,7 +39,7 @@ class ActiveSupport::TestCase
       wcr.start_time = base_date.to_time.to_i
       wcr.end_time = (base_date + 5.years).to_time.to_i
     end
-    wcr.period = payment_attrs.delete(:period) || 'monthly' if payment_attrs
+    wcr.period = opts[:period] || 'monthly' if opts
     wcr.save!
 
     payment = nil
@@ -54,11 +54,16 @@ class ActiveSupport::TestCase
       payment = WepayCheckoutRecordObserver.after_update(wcr)
     end
 
-    unless payment_attrs.nil?
-      payment.attributes = payment_attrs
-      payment.save!
+    unless opts[:skip_capture]
+      capture_payment(payment)
     end
     payment
+  end
+
+  def capture_payment(sub)
+    # Emulate WePay's capture IPN
+    sub.wcr.update_attribute(:state, 'captured')
+    WepayCheckoutRecordObserver.after_update(sub.wcr)
   end
 
   def cancel_subscription(sub)
