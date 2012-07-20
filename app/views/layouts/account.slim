@@ -12,6 +12,9 @@
     li.option.payment_history
       div.icon
       a class=active('payment-history',@page) href=account_payments_path = t 'account_settings.payment_history'
+    li.option.cancel_account
+      div.icon
+      a href="http://help.yomobi.com/Account/CancelAccount" target="ymhelp" = t 'account_settings.cancel_account'
 
 .title
   = yield :title

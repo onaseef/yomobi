@@ -102,8 +102,13 @@ h2.active-site {
     -moz-border-radius: 3px;
     border-radius: 6px;
 
-    a { 
+    a.help { 
       float: right;
+      text-decoration: underline; 
+    }
+
+    a.delete { 
+      margin: 0 12px; 
       text-decoration: underline; 
     }
   }

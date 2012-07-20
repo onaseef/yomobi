@@ -78,7 +78,8 @@ label {
     padding-left: 0;
     margin-top: 54px; }
   #sidebar .option {
-    padding: 3px 0 2px 4px;
+    min-height: 16px;
+    padding: 2px 0 2px 4px;
     clear: left; }
     #sidebar .option .icon {
       float: left;
@@ -87,7 +88,6 @@ label {
       margin-right: 4px;
       background: url(/images/test-icons.png); }
     #sidebar .option:hover {
-      background-color: #d8dfea;
       cursor: pointer; }
     #sidebar .option .active {
       background-color: #d8dfea; }
@@ -103,8 +103,12 @@ label {
     background-position: 0 -80px; }
   #sidebar .option.payment_history .icon {
     background-position: 0 -48px; }
+  #sidebar .option.cancel_account .icon {
+    background-position: 0 -192px; }
   #sidebar .option.active {
     background-color: #d8dfea; }
+  #sidebar .option.cancel_account.active {
+    background-color: white; }
 
 #content {
   float: left;

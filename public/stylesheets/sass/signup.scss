@@ -84,8 +84,8 @@ label {
     padding-left: 0;
     margin-top: 54px; }
   .option {
-    //height: 16px;
-    padding: 3px 0 2px 4px;
+    min-height: 16px;
+    padding: 2px 0 2px 4px;
     clear: left;
     .icon {
       float: left;
@@ -94,7 +94,7 @@ label {
       margin-right: 4px;
       background: url(/images/test-icons.png); }
     &:hover {
-      background-color: $highlight-color;
+      //background-color: $highlight-color;
       cursor: pointer; } 
     .active { background-color: $highlight-color;}
   }
@@ -110,8 +110,13 @@ label {
     background-position: 0 -80px; }
   .option.payment_history .icon {
     background-position: 0 -48px; }
+  .option.cancel_account .icon {
+    background-position: 0 -192px; }
   .option.active {
-    background-color: $highlight-color; } }
+    background-color: $highlight-color; }
+  .option.cancel_account.active {
+    background-color: white; } }
+
 
 #content {
   float: left;
