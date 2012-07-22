@@ -9,6 +9,13 @@ GIT
       rest-client (~> 1.6.1)
 
 GIT
+  remote: https://github.com/iain/http_accept_language.git
+  revision: 1900d4e83f978af7d3b9dc68ccb3753a6736322f
+  ref: 1900d4e83f
+  specs:
+    http_accept_language (2.0.0.pre)
+
+GIT
   remote: https://github.com/mindeavor/aritcaptcha.git
   revision: f95ad8292012fa34bc0293e05de267553907a1d9
   specs:
@@ -89,7 +96,6 @@ GEM
       launchy (>= 0.3.2)
       rest-client (~> 1.6.1)
       term-ansicolor (~> 1.0.5)
-    http_accept_language (1.0.2)
     httparty (0.8.3)
       multi_json (~> 1.0)
       multi_xml
@@ -182,7 +188,7 @@ DEPENDENCIES
   couchrest!
   devise (~> 1.4)
   heroku
-  http_accept_language (= 1.0.2)
+  http_accept_language!
   json
   minitest (~> 3.2.0)
   minitest-spec-rails (~> 3.0.5)
