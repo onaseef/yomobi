@@ -72,7 +72,6 @@ class ApplicationController < ActionController::Base
   def set_locale
     # Do the language check here since we support limited languages and
     # checking here is faster than a file system check.
-    puts "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
     lang = http_accept_language.preferred_language_from I18n.available_locales
     lang ||= http_accept_language.compatible_language_from I18n.available_locales
 
@@ -80,7 +79,6 @@ class ApplicationController < ActionController::Base
       cookies[:locale] = params[:locale]
     end
 
-    puts "** Using Cookie" if cookies[:locale]
     I18n.locale = cookies[:locale] || lang || I18n.default_locale
   end
 
