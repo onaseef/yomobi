@@ -205,8 +205,10 @@ class SiteManagerController < ApplicationController
   # generate signup key
   def gen_signup_key
     if (key = SignupKey.create :company => @company) != nil
+      url = new_user_registration_url
+      seperator = url['?'] ? '&' : '?'
       render :json => { :status => :ok,
-                        :key => "#{new_user_registration_url}?sk=#{key}" }
+                        :key => "#{url}#{seperator}sk=#{key}" }
     else
       render :json => { :status => :error }
     end
