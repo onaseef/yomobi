@@ -14,10 +14,11 @@ class CompanySettings < ActiveRecord::Base
             :length => { :maximum => MAX_COMPANY_SLOGAN_LENGTH }
 
   before_validation :format_color
-
+ 
+  # See: http://www.imagemagick.org/Usage/resize/
   has_attached_file :body_bg,
     :styles => {
-      :mobile => "320x320>",
+      :mobile => "320x3200>",
       :original => "1x1#"
     },
     :default_url => '',

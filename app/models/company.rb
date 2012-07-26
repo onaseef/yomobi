@@ -31,9 +31,10 @@ class Company < ActiveRecord::Base
       :secret_access_key => ENV['S3_SECRET']
     }
 
+  # See: http://www.imagemagick.org/Usage/resize/
   has_attached_file :banner,
     :styles => {
-      :mobile => "320x320>",
+      :mobile => "320x3200>",
       :original => "1x1#"
     },
     :default_url => '',

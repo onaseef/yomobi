@@ -33,7 +33,7 @@ p {
   width: 320px;
   margin: 0 auto;
   overflow: hidden;
-  font-family: Arial, Helvetica, sans-serif; }
+  font-family: "lucida grande", tahoma, verdana, arial, helvetica, sans-serif; }
 
 #canvas {
   position: relative;

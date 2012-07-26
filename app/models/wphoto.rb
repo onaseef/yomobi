@@ -1,10 +1,11 @@
 class Wphoto < ActiveRecord::Base
   belongs_to :company
 
+  # See: http://www.imagemagick.org/Usage/resize/
   has_attached_file :photo,
     :styles => {
       :thumb => "70x80>",
-      :original => "300x400>",
+      :original => "300x3000>",
       :icon => "57x57#"
     },
     :convert_options => {
