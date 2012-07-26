@@ -1,6 +1,21 @@
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+// Hide script from non-javascript browsers.
+// Load Page Into Parent Window
+function loadinparent(url){
+	if (self.opener) {
+		self.opener.location = url;
+		self.opener.focus();
+	}
+	else {
+		self.location = url;
+	}
+}
+//-->
+</SCRIPT>
 
 <div class="yomobi-upgrade-ad">
   <table><tr><td>
-  	<a href="http://help.yomobi.com/SiteManager/Upgrade" target="ymhelp"><%= t 'builder.upgrade_ad.title' %></a>
+   	<a href="javascript:loadinparent('/site-manager', true);"><%= t 'builder.upgrade_ad.title' %></a>
   </td></tr></table>
 </div>

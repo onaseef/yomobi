@@ -70,7 +70,13 @@
 
     render: function (site) {
       _.each(this.sections, function (v) { v.render(site); });
-      if (this.selectedIdx) this.sections[this.selectedIdx].showContent();
+      if (this.selectedIdx) { 
+        this.sections[this.selectedIdx].showContent();
+      }
+      else {
+        // Show the siteGrade view by default
+        this.siteGrade.showContent();   
+      }
       return this;
     },
 
