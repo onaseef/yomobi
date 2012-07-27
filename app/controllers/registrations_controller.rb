@@ -8,6 +8,12 @@ class RegistrationsController < Devise::RegistrationsController
       }
     end
     @hide_signup_bar = true
+    # Meta information for sign up (/users/sign_up) page
+    @meta = {
+      title: "Mobile Web Sites | Website Creator Free",
+      description: "Sign up for YoMobi's mobile website creator and be on your way to building your free mobile website.",
+      keywords: "mobile web sites, website creator free, mobile website creator, free mobile website, mobile website builder"
+    }
     super
   end
 
