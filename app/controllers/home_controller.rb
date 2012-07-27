@@ -32,27 +32,45 @@ class HomeController < ApplicationController
     return redirect_to confirm_account_path
   end
 
-  def privacy
-  end
-
-  def terms
-  end
-
   def about
     @meta = {
-      title: 'About Title'
-      description: 'About description',
-      keywords: 'About keywords'
+      title: "Best Mobile Website Builder | Mobile Websites",
+      description: "YoMobi pushes you into the mobile age. It's the best mobile website builder and  mobile website creator available. Create interactive mobile websites in minutes!",
+      keywords: "best mobile website builder, mobile websites, mobile website creator, build mobile website free"
     }
   end
 
   def easy
   end
 
-  def why_mobile
+  def opportunities
+    @meta = {
+      title: "Build Mobile Website Free | Mobile Sites",
+      description: "Contact YoMobi to gain more information on how you can help consumers utilize our mobile website builder. Minimal technical experience is needed in mobile websites.",
+      keywords: "build mobile website free, mobile sites, mobile website builder, mobile websites, free mobile website"
+    }
   end
 
-  def opportunity
+  def plans
+    @meta = {
+      title: "Mobile Web Site Builder | Free Mobile Website",
+      description: "YoMobi provides a website creator free so you can build a mobile site yourself . The mobile web site builder is easy to use and you can have your mobile web site up and running immediately.",
+      keywords: "mobile web site builder, free mobile website, website creator free, mobile web site, build mobile website free"
+    }
+  end
+
+  def privacy
+  end
+
+  def terms
+  end
+
+  def why_mobile
+    @meta = {
+      title: "Free Mobile Website Builder | Mobile Site",
+      description: "YoMobi free mobile web site builder allows you to reach customers wherever they are. Our easy to use mobile website builder gives you the tools you need to reach your fans.",
+      keywords: "free mobile website builder, mobile site, mobile web site, mobile website creator, mobile website builder"
+    }
   end
 
   private
