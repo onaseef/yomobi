@@ -42,6 +42,7 @@ Yomobi::Application.routes.draw do
   get "account/edit", :as => :account
   match "account/change_password" => 'account#change_password', :as => :change_password
   put "account/update", :as => :update_account
+  get "account/merchant", :as => :merchant_account
 
   namespace :account do
     resources :payments, :only => [:index, :show]

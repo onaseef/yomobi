@@ -49,4 +49,7 @@ class AccountController < ApplicationController
     end
   end
 
+  def merchant
+  end
+
 end

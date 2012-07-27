@@ -430,6 +430,10 @@ en:
     save: "Save Changes"
     payment_history: "Payment History"
     payment_history_help: "Click here for help with payment history."
+    merchant_account: "Merchant Account"
+    merchant:
+      title: "Merchant Account"
+      subtitle: "Edit your merchant settings"
 
   upgrade:
     title: "Upgrade Mobile Site"
