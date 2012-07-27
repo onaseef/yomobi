@@ -32,10 +32,6 @@ class HomeController < ApplicationController
     return redirect_to confirm_account_path
   end
 
-  def ad_test
-    render :layout => 'mobile_basic'
-  end
-
   def privacy
   end
 
