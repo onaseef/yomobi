@@ -40,6 +40,7 @@ class HomeController < ApplicationController
 
   def about
     @meta = {
+      title: 'About Title'
       description: 'About description',
       keywords: 'About keywords'
     }
