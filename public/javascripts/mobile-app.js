@@ -128,7 +128,8 @@
   MobileAppController = Backbone.Controller.extend({
 
     routes: {
-      '':                   'home',
+      '':                       'home',
+      'home':                   'home',
       'page/:widget':           'viewWidgetByName',
       'page/:widget/*subpage':  'viewWidgetByName'
     },
@@ -313,7 +314,7 @@
         }
         this.pageLevel = 1;
         mapp.transition('back');
-        window.router && router.saveLocation('');
+        window.router && router.saveLocation('#home');
 
         this.currentWidget.pageView.onGoHome();
         delete this.currentWidget;
