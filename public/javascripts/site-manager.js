@@ -59,23 +59,24 @@
       // The order of sections here MUST match the order of sections in
       // site_manager/index.html.slim .accordian section
       this.sections = [
-        this.siteDetailsView, 
-        this.siteGrade, 
+        this.siteDetailsView,
+        this.siteGrade,
         this.domains,
         this.siteAdmins,
         this.signupKeys
-//        this.merchant, 
+//        this.merchant,
       ];
+      this.selectedIdx = g.selectedIdx;
     },
 
     render: function (site) {
       _.each(this.sections, function (v) { v.render(site); });
-      if (this.selectedIdx) { 
+      if (this.selectedIdx) {
         this.sections[this.selectedIdx].showContent();
       }
       else {
         // Show the siteGrade view by default
-        this.siteGrade.showContent();   
+        this.siteGrade.showContent();
       }
       return this;
     },
@@ -89,6 +90,7 @@
       var $header = util.ensureClassAncestor(e.target, 'content-header');
       $header.addClass('active').siblings('.content-body').show();
       this.selectedIdx = $header.parent().index();
+      util.saveState(g.siteMgrPath({ idx:this.selectedIdx }), true);
     },
 
     closeAccordian: function () {

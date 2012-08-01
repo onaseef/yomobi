@@ -25,6 +25,8 @@
       upgradeSitePath: _.template( unescape("<%=raw upgrade_path '{{ id }}' %>") ),
       cancelSubPath: _.template( unescape("<%=raw cancel_sub_path '{{ id }}' %>") ),
 
+      siteMgrPath: _.template( unescape("<%=raw site_manager_path '{{ idx }}' %>") ),
+
       user_id: <%= current_user.id %>,
       defaultSite_id: <%= current_user.default_company.id %>,
       <% if @payment %>
@@ -37,6 +39,8 @@
       <% if @payment %>
       , payment: <%=raw @payment.to_json %>
       <% end %>
+
+      , selectedIdx: <%= @selectedIdx || 'undefined' %>
     };
     </script>
   = javascript_include_tag 'site-manager'

@@ -58,7 +58,7 @@ Yomobi::Application.routes.draw do
   end
 
 
-  get "site-manager" => 'site_manager#index', :as => :site_manager
+  get "site-manager(/:selected_idx)" => 'site_manager#index', :as => :site_manager
   get "sites/:id/activate" => 'site_manager#make_active', :as => :activate_site
 
   post    "sites"     => 'site_manager#create', :as => :create_site

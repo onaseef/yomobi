@@ -24,6 +24,8 @@ class SiteManagerController < ApplicationController
         @payment = record.payment
       end
     end
+
+    @selectedIdx = params[:selected_idx].to_i if params[:selected_idx] =~ /^[0-9]+$/
   end
 
   def make_active

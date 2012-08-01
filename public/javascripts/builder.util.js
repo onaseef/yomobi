@@ -40,6 +40,16 @@ var _blank = {};
 
 var builderUtil = {
 
+  // push state support
+  hasPushState: !!(window.history && window.history.pushState),
+
+  saveState: function (url, replace) {
+    if (!util.hasPushState) return;
+    replace || (replace = false);
+    var method = replace ? 'replaceState' : 'pushState';
+    window.history[method]({}, document.title, url);
+  },
+
   // namespace for shared widget editor functions
   widgetEditor: {},
 
