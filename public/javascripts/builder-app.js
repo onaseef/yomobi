@@ -206,7 +206,7 @@
       mapp.homeView.bind('render',function () {
 
         if (mapp.widgets.lastMod == 1) {
-          var height = mapp.homeView.el.height();
+          var height = $('#mobile-container').height();
           $('#mobile-scroller').animate({ scrollTop:height },3000);
           mapp.widgets.lastMod = 0;
         }
