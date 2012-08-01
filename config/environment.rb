@@ -14,6 +14,7 @@ RESERVED_SITE_URLS = %w{
 }
 
 # used in informed_controller.rb
+TXT_MSG_MAX_LENGTH = 280
 SHORT_URL_RESERVED_COUNT = 23
 
 # used in builder_controller.rb, among other places
