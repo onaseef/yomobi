@@ -339,6 +339,12 @@ script.customize(type="text/template")
               select name="header_font_family"
                 = render 'builder/font-family-options'
           tr
+            td
+              label = t 'builder.customize.header_font_size'
+            td
+              select name="header_font_size"
+                = render 'builder/font-size-options'
+          tr
             td 
               label = t 'builder.customize.background_color'
             td
@@ -396,6 +402,12 @@ script.customize(type="text/template")
                 = render 'builder/font-family-options'
           tr
             td
+              label = t 'builder.customize.size'
+            td
+              select name="tab_bar_font_size"
+                = render 'builder/font-size-options'
+          tr
+            td
               label  = t 'builder.customize.background_color'
             td
               .color-picker data-color="{{ tab_bar_color }}" data-target="tab_bar_color"
@@ -418,6 +430,12 @@ script.customize(type="text/template")
             td
               select name="icon_font_family"
                 = render 'builder/font-family-options'
+          tr
+            td
+              label = t 'builder.customize.icon_text_size'
+            td
+              select name="icon_font_size"
+                = render 'builder/font-size-options'
           tr
             td
               label = t 'builder.customize.background_color'

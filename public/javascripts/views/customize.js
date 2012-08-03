@@ -202,16 +202,27 @@
       hasChanges || (hasChanges = true);
 
       var font = this.$('[name=icon_font_family]').val();
-      if (useDefault === true) font = util.defaultSettings.icon_font_family;
-      $('#canvas .home-icon .title').css({ fontFamily:font });
+      var font_size = this.$('[name=icon_font_size]').val();
+      if (useDefault === true) 
+        font = util.defaultSettings.icon_font_family;
+        font_size = util.defaultSettings.icon_font_size;
+
+      $('#canvas .home-icon .title').css({ fontFamily:font, fontSize: font_size + "px" });
 
       var font = this.$('[name=header_font_family]').val();
-      if (useDefault === true) font = util.defaultSettings.header_font_family;
-      $('#top-bar .company-info').css({ fontFamily:font });
+      var font_size = this.$('[name=header_font_size]').val();
+      if (useDefault === true){
+        font = util.defaultSettings.header_font_family;
+        font_size = util.defaultSettings.header_font_size;
+      }
+      $('#top-bar .company-info').css({ fontFamily:font, fontSize: font_size + "px" });
 
       var font = this.$('[name=tab_bar_font_family]').val();
-      if (useDefault === true) font = util.defaultSettings.tab_bar_font_family;
-      $('#top-bar .tab-bar').css({ fontFamily:font });
+      var font_size = this.$('[name=tab_bar_font_size]').val();
+      if (useDefault === true) 
+        font = util.defaultSettings.tab_bar_font_family;
+        font_size = util.defaultSettings.tab_bar_font_size;
+      $('#top-bar .tab-bar').css({ fontFamily:font, fontSize: font_size + "px" });
     },
 
     updateRepeat: function () {

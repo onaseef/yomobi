@@ -513,15 +513,18 @@ en:
       customizing_header: "Customizing Header"
       header: "Header"
       header_font: "Font"
+      header_font_size: "Font Size"
 
       banner_size: "Banner Size"
       text_color: "Text Color"
       background_color: "Background Color"
       font: "Font"
+      size: "Font Size"
 
       tab_bar_and_footer: "Mobile Tab Bar & Footer"
       customizing_tab_bar_and_footer: "Customizing Tab Bar & Footer"
       icon_text_font: "Font"
+      icon_text_size: "Font Size"
       icon_text_color: "Text Color"
 
       home_page: "Home Page"
