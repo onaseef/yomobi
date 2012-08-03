@@ -358,6 +358,8 @@ script.customize(type="text/template")
               .color-picker data-color="{{ header_text_color }}" data-target="header_text_color"
                 div style="background-color:{{ header_text_color }}"
               input type="hidden" name="header_text_color" value="{{ header_text_color }}"
+
+
         br
         table.banner.wphoto-wrap
           tbody
@@ -420,6 +422,35 @@ script.customize(type="text/template")
               .color-picker data-color="{{ tab_bar_text_color }}" data-target="tab_bar_text_color"
                 div style="background-color:{{ tab_bar_text_color }}"
               input type="hidden" name="tab_bar_text_color" value="{{ tab_bar_text_color }}"
+
+        hr
+        h3 = t 'builder.customize.mobile_tab_bar'
+        table
+          tr
+            td 
+              input type="checkbox" checked="checked"  name="show_mobile_tab_bar"
+            td
+              label = t 'builder.customize.show_mobile_tab_bar'
+        hr
+        h3 = t 'builder.customize.footer'
+        table
+          tr
+            td 
+              input type="checkbox" name="show_phone_number"
+            td
+              label = t 'builder.customize.show_phone_number'
+              input type="text" placeholder="(000) 000-000"
+          tr
+            td 
+              input type="checkbox" name="show_address"
+            td
+              label = t 'builder.customize.show_address'
+              input type="text" placeholder="ex: New York, NY 10003-1502"
+          tr
+            td 
+              input type="checkbox" checked="checked"  name="show_address"
+            td
+              label = t 'builder.customize.social_share_buttons'
 
       .home_page
         h3  = t 'builder.customize.customizing_home_page'

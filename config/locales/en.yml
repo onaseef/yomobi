@@ -534,6 +534,12 @@ en:
       repeat_vertical: "Repeat Vertically"
       repeat_both: "Repeat Both"
 
+      mobile_tab_bar: "Mobile Tab Bar"
+      show_mobile_tab_bar: "Show Mobile Tab Bar"
+      show_address: "Address"
+      show_phone_number: "Phone Number"
+      social_share_buttons: "Social Share Buttons"
+
     edit_tab_bar:
       explanation: "Select the pages you want to be most visible to your mobile visitors."
 
