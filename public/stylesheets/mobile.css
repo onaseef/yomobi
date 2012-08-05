@@ -12,16 +12,14 @@ p {
   -webkit-margin-before: 0em;
   -webkit-margin-after: 0em; }
 
-.leaf-content h1, .leaf-content h2, .leaf-content h3 {
-  margin: 0px; }
-.leaf-content h1, .leaf-content h2, .leaf-content h3 {
-  margin-bottom: 6px; }
-.leaf-content ul, .leaf-content ol {
+.leaf-content h1, .leaf-content h2, .leaf-content h3, .custom_page h1, .custom_page h2, .custom_page h3 {
+  margin: 4px 0px 4px 0px; }
+.leaf-content ul, .leaf-content ol, .custom_page ul, .custom_page ol {
   margin-top: 8px;
   margin-bottom: 8px;
   -webkit-margin-before: 8px;
   -webkit-margin-after: 8px; }
-.leaf-content li {
+.leaf-content li, .custom_page li {
   margin-bottom: 4px;
   -webkit-margin-after: 4px; }
 
