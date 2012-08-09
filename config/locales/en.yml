@@ -600,6 +600,7 @@ en:
       to_start: "To Start:"
       two_times_per_day_label: "Specify two sets of hours for each day."
       url_label_required: "URL*:"
+      url_no_redirect_label: "Do not redirect"
       url_type_label_required: "Your %{type} URL*:"
       zip_label: "Zip / Postal Code:"
 
@@ -874,6 +875,7 @@ en:
 
       link:
         help: <p>Add a link to a web page.</p>
+        noRedirect: "Select this option if you are linking back to a page on your own desktop site."
 
       locations:
         help: <p>Give your mobile site visitors easy access to a directory of your business locations.</p><br><p>Use this widget to create a directory of your business locations.</p>

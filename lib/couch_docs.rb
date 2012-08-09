@@ -421,6 +421,7 @@ class CouchDocs
       {
         :wtype => 'link',
         :wsubtype => "link",
+        'noRedirect' => false
       },
 
       {

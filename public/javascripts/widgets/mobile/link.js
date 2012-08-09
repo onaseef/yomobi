@@ -13,7 +13,8 @@
     
     onHomeViewClick: function () {
       var url = this.get('url');
-      if (this.get('wsubtype') == 'full-website') {
+      var noRedirect = this.get('noRedirect');
+      if ((this.get('wsubtype') == 'full-website') || (noRedirect == true)) {
         if (url.indexOf('?') == -1) url += '?noredirect=1';
         else url += '&noredirect=1';
         var domain = $('<a>').attr('href',url).hide()

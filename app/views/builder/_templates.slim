@@ -566,6 +566,14 @@ script.video-edit-area.full-website-edit-area.news-edit-area.photo-bucket-edit-a
 script.link-edit-area(type="text/template")
   label =t'builder.widget_editor.url_label_required'
   input(name="url" type="text" value="{{ _maybe.url }}")
+  .noredirect-select
+    | <% if (_maybe.noRedirect) { %>
+    input name="noRedirect" type="checkbox" checked="checked"
+    | <% } else { %>
+    input name="noRedirect" type="checkbox"
+    | <% } %>
+    label =t'builder.widget_editor.url_no_redirect_label'
+    img.help-bubble src="/images/ui/help-bubble.png" title=t('widgets.helpText.link.noRedirect')
 
 script.event-calendar-edit-area(type="text/template")
   label =t('builder.widget_editor.url_type_label_required', :type => "{{ subHelpText }}")
