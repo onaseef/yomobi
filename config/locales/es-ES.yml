@@ -39,6 +39,9 @@ es-ES:
         password: "Contraseña:"
         password_confirmation: "Confirmación de contraseña:"
 
+  text_msg:
+    unsubscribe: "@@To Unsubscribe:"
+
   homepage:
     welcome: "Bienvenido a YoMobi"
     message: 'Alcanza fácilmente a más gente con un sitio web móvil <span class="hilite">gratuito</span>. YoMobi hace que el construir un sitio web sea fácil. Desde suscribirte a tener presencia en línea en minutos.<br/><br/> Ser móvil es más importante que nunca.'
