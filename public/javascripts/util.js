@@ -677,16 +677,12 @@ var util = {
     return (x < lower) ? lower : (x > upper) ? upper : x;
   },
 
-  ensureUrl: function (url) {
-    return ensureUrl(url, util.linkTypeURL);
-  },
-
   ensureUrl: function (url, type) {
 
-    if (url==null) url="";
-    if (type==null) type = util.linkTypeURL;
+    if (url === undefined) url = "";
+    if (type === undefined) type = util.linkTypeURL;
 
-    url = $.trim(url);
+    url = $.trim(url).toLowerCase();
 
     if (url.length == 0) return;
 
