@@ -40,7 +40,7 @@ es:
         password_confirmation: "Confirmación de contraseña:"
 
   text_msg:
-    unsubscribe: "@@To Unsubscribe:"
+    unsubscribe: "Para Cancelar:"
 
   homepage:
     welcome: "Bienvenido a YoMobi"
