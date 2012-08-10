@@ -206,7 +206,7 @@
       | <% if (_maybe.message) { %>
       p {{ message }}
       | <% } else { %>
-      p = escape_quotes t('keep_me_informed.instructions', :company_name => @company.name)
+      p = t('keep_me_informed.instructions', :company_name => @company.name)
       | <% } %>
 
       = form_tag "/#{@company.db_name}/informed/submit", :method => 'post' do
