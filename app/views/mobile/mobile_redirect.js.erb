@@ -5,7 +5,7 @@ var isTablet = /<%= tablet_devices %>/i.test( agent );
 var shouldRedirect = true;
 
 for (var i=exceptions.length-1; i >=0; i--) {
-  if (exceptions[i].toLowerCase() === document.domain) {
+  if (exceptions[i].toLowerCase() === document.domain.toLowerCase()) {
     shouldRedirect = false;
     break;
   }
