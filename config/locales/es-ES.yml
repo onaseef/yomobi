@@ -603,7 +603,7 @@ es-ES:
       to_start: "Para Iniciar:"
       two_times_per_day_label: "Especificar dos horarios para cada día."
       url_label_required: "URL*:"
-      url_no_redirect_label: "No Redirigir"
+      url_no_redirect_label: "No redirigir a sitio móvil"
       url_type_label_required: "Tu URL %{type}*:"
       zip_label: "Código Postal:"
 
@@ -878,7 +878,7 @@ es-ES:
 
       link:
         help: <p>Agrega un enlace hacia una página web.</p>
-        noRedirect: "Seleccione esta opción si desea vincular a una página en su sitio completo."
+        noRedirect: "Seleccione esta opción si desea crear un enlace a una página en su sitio completo."
 
       locations:
         help: <p>Ofrece a los visitantes de tu sitio móvil un fácil acceso al directorio de ubicaciones de tu negocio.</p><br><p>Usa esta función para crear un directorio de las ubicaciones de tu negocio.</p>
