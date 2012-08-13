@@ -682,7 +682,7 @@ var util = {
     if (url === undefined) url = "";
     if (type === undefined) type = util.linkTypeURL;
 
-    url = $.trim(url).toLowerCase();
+    url = $.trim(url);
 
     if (url.length == 0) return;
 
