@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120719042652) do
+ActiveRecord::Schema.define(:version => 20120818141925) do
 
   create_table "carriers", :force => true do |t|
     t.string   "name"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(:version => 20120719042652) do
     t.string   "header_font_family"
     t.string   "tab_bar_font_family"
     t.string   "banner_size",          :default => "auto"
+    t.string   "icon_layout",          :default => "grid"
   end
 
   create_table "company_types", :force => true do |t|

@@ -29,6 +29,7 @@ var util = {
     tab_bar_font_family: "Arial, Helvetica, sans-serif",
     icon_text_color: "#000",
     icon_font_family: "Arial, Helvetica, sans-serif",
+    icon_layout: "grid",
     body_bg_repeat: "none",
     body_bg_color: "#fff"
   },

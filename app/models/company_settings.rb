@@ -13,6 +13,8 @@ class CompanySettings < ActiveRecord::Base
             :allow_nil => true,
             :length => { :maximum => MAX_COMPANY_SLOGAN_LENGTH }
 
+  validates :icon_layout, :presence => true, :inclusion => %w(grid line)
+
   before_validation :format_color
  
   # See: http://www.imagemagick.org/Usage/resize/
@@ -42,6 +44,7 @@ class CompanySettings < ActiveRecord::Base
       tab_bar_font_family: self.tab_bar_font_family,
       icon_font_family: self.icon_font_family,
       icon_text_color: self.icon_text_color,
+      icon_layout: self.icon_layout,
       body_bg_repeat: self.body_bg_repeat,
       body_bg_color: self.body_bg_color,
     }

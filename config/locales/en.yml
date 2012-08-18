@@ -523,6 +523,11 @@ en:
       customizing_tab_bar_and_footer: "Customizing Tab Bar & Footer"
       icon_text_font: "Font"
       icon_text_color: "Text Color"
+      
+      icon_layout: "Style:"
+      icon_layout_grid: "Grid"
+      icon_layout_line: "Line"
+      icon_layout_height: "Height"
 
       home_page: "Home Page"
       customizing_home_page: "Customizing Home Page"

@@ -76,6 +76,7 @@
       'change select':                    'updateFonts',
       'change [name=body_bg_repeat]':     'updateRepeat',
       'change [name=banner_size]':        'updateBannerSize',
+      'change [name=icon_layout]':        'updateIconLayout',
       'click .accept-btn':                'saveChanges',
       'click .cancel-btn':                'discardChanges',
       'click .remove-banner-link':        'removeBanner',
@@ -225,6 +226,12 @@
       var size = this.$('[name=banner_size]').val() || 'auto';
       $('#top-bar .company-info .banner-wrap img').width(size);
       resizeEmulator();
+    },
+
+    updateIconLayout: function () {
+      hasChanges || (hasChanges = true);
+      var iconLayout = this.$('input[name=icon_layout]:checked').val();
+      $('#home-widgets .home-icon').toggleClass( 'line', iconLayout == 'line');
     },
 
     saveChanges: function () {
