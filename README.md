@@ -24,6 +24,8 @@ The mobile visitor visits a UWG (usually by a redirect) from a mobile device. Vi
 
 ## Development Environment Setup
 
+There is a more detailed guide located in the [wiki](https://github.com/onaseef/yomobi/wiki/How-to-setup-a-Development-Environment).
+
 ### First time setup
 
     $ git clone git@github.com:onaseef/yomobi.git
