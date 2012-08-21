@@ -232,6 +232,7 @@
       hasChanges || (hasChanges = true);
       var iconLayout = this.$('input[name=icon_layout]:checked').val();
       $('#home-widgets .home-icon .inner').toggleClass( 'line', iconLayout == 'line');
+      resizeEmulator();
     },
 
     saveChanges: function () {
