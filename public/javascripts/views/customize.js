@@ -77,6 +77,7 @@
       'change [name=body_bg_repeat]':     'updateRepeat',
       'change [name=banner_size]':        'updateBannerSize',
       'change [name=icon_layout]':        'updateIconLayout',
+      'change [name=icon_line_height]':   'updateLineHeight',
       'click .accept-btn':                'saveChanges',
       'click .cancel-btn':                'discardChanges',
       'click .remove-banner-link':        'removeBanner',
@@ -226,6 +227,30 @@
       var size = this.$('[name=banner_size]').val() || 'auto';
       $('#top-bar .company-info .banner-wrap img').width(size);
       resizeEmulator();
+    },
+
+    updateLineHeight: function () {
+      if (this.$('input[name=icon_layout]:checked').val() == 'line') {
+        hasChanges || (hasChanges = true);
+        var height = this.$('select[name=icon_line_height]').val();
+        radius = (height/100 * 12)+'px';
+        size = (height/100 * 57)+'px';
+        
+        // JQuery doesn't understand !important, it also can't append an attribute.
+        $("#home-widgets .home-icon .inner .icon").each(function() {
+           var temp_attr = $(this).attr("style"); 
+           $(this).attr("style", 'background-size:' + size + ' ' + size + ' !important; ' + temp_attr);
+        });
+        
+        $('#home-widgets .home-icon .inner .icon').css({ 'height':size,
+                                                         'width':size,
+                                                         'border-radius': radius,
+                                                         '-webkit-border-radius': radius,
+                                                         '-moz-border-radius': radius});
+        $('#home-widgets .home-icon .inner').height(size);
+        
+        resizeEmulator();
+      }
     },
 
     updateIconLayout: function () {

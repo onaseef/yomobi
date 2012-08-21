@@ -83,7 +83,28 @@
   <% end %>
 }
 
-.home-icon { <%= 'width: 100%;' if @company.settings.icon_layout == 'line' %> }
+#home-widgets .home-icon { 
+  <%= 'width: 100%;' if @company.settings.icon_layout == 'line' %>
+}
+
+<% if @company.settings.icon_line_height and @company.settings.icon_layout == 'line' %>
+<% size = @company.settings.icon_line_height/100 * 57 %>
+<% radius = @company.settings.icon_line_height/100 * 12 %>
+#home-widgets .home-icon .inner .icon {
+  width:<%= size %>px;
+  height:<%= size %>px;
+  background-size: <%= size %>px <%= size %>px !important;
+  border-radius: <%= radius %>px;
+  -webkit-border-radius: <%= radius %>px;
+  -moz-border-radius: <%= radius %>px;
+}
+
+#home-widgets .home-icon .inner {
+  height:<%= size %>px;
+}
+
+<% end %>
+
 
 </style>
 <% end %>

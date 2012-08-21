@@ -14,6 +14,10 @@ class CompanySettings < ActiveRecord::Base
             :length => { :maximum => MAX_COMPANY_SLOGAN_LENGTH }
 
   validates :icon_layout, :presence => true, :inclusion => %w(grid line)
+  
+  validates :icon_line_height, :numericality => { :only_integer => true,
+                                                  :less_than_or_equal_to => 100,
+                                                  :greater_than_or_equal_to => 10 }
 
   before_validation :format_color
  
@@ -45,6 +49,7 @@ class CompanySettings < ActiveRecord::Base
       icon_font_family: self.icon_font_family,
       icon_text_color: self.icon_text_color,
       icon_layout: self.icon_layout,
+      icon_line_height: self.icon_line_height,
       body_bg_repeat: self.body_bg_repeat,
       body_bg_color: self.body_bg_color,
     }

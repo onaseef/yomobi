@@ -527,7 +527,7 @@ en:
       icon_layout: "Style:"
       icon_layout_grid: "Grid"
       icon_layout_line: "Line"
-      icon_layout_height: "Height"
+      icon_line_height: "Height"
 
       home_page: "Home Page"
       customizing_home_page: "Customizing Home Page"
