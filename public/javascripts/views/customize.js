@@ -231,7 +231,7 @@
     updateIconLayout: function () {
       hasChanges || (hasChanges = true);
       var iconLayout = this.$('input[name=icon_layout]:checked').val();
-      $('#home-widgets .home-icon').toggleClass( 'line', iconLayout == 'line');
+      $('#home-widgets .home-icon .inner').toggleClass( 'line', iconLayout == 'line');
     },
 
     saveChanges: function () {

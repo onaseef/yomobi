@@ -131,6 +131,8 @@ class BuilderController < ApplicationController
 
     settings.icon_text_color = params[:icon_text_color]
     settings.icon_font_family = params[:icon_font_family]
+    
+    settings.icon_layout = params[:icon_layout]
 
     settings.body_bg_repeat = params[:body_bg_repeat]
     settings.body_bg_color = params[:body_bg_color]
