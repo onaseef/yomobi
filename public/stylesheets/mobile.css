@@ -205,12 +205,12 @@ p {
   font-size: 1em; }
 
 .home-icon {
-  float: left; }
+  float: left;
+  width: 25%; }
   .home-icon a {
     color: #000;
     text-decoration: none; }
   .home-icon .inner {
-    width: 65px;
     height: 88px;
     padding: 7.5px 5.5px 7.5px 5.5px; }
   .home-icon .icon {
