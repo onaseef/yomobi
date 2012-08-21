@@ -439,9 +439,9 @@ script.customize(type="text/template")
               td
                 label = t 'builder.customize.icon_layout'
                 | <input id='radio_grid' type='radio' name='icon_layout' value='grid' #{'checked' if @company.settings.icon_layout == 'grid'} >
-                label id="radio_grid" = t 'builder.customize.icon_layout_grid'
+                label for="radio_grid" = t 'builder.customize.icon_layout_grid'
                 | <input id='radio_line' type='radio' name='icon_layout' value='line' #{"checked" if @company.settings.icon_layout == 'line'} >
-                label id="radio_line" = t 'builder.customize.icon_layout_line'
+                label for="radio_line" = t 'builder.customize.icon_layout_line'
 
         table.body_bg.wphoto-wrap
           tbody
