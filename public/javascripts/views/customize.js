@@ -113,6 +113,7 @@
         .find('[name=tab_bar_font_family]').val(extraData.tab_bar_font_family).end()
         .find('[name=body_bg_repeat]').val(extraData.body_bg_repeat).end()
         .find('[name=banner_size]').val(extraData.banner_size).end()
+        .find('[name=icon_line_height]').val(extraData.icon_line_height).end()
       ;
       this.delegateEvents();
 
@@ -229,26 +230,15 @@
       resizeEmulator();
     },
 
-    updateLineHeight: function () {
+    updateLineHeight: function () {  
       if (this.$('input[name=icon_layout]:checked').val() == 'line') {
         hasChanges || (hasChanges = true);
         var height = this.$('select[name=icon_line_height]').val();
-        radius = (height/100 * 12)+'px';
-        size = (height/100 * 57)+'px';
-        
-        // JQuery doesn't understand !important, it also can't append an attribute.
-        $("#home-widgets .home-icon .inner .icon").each(function() {
-           var temp_attr = $(this).attr("style"); 
-           $(this).attr("style", 'background-size:' + size + ' ' + size + ' !important; ' + temp_attr);
-        });
-        
-        $('#home-widgets .home-icon .inner .icon').css({ 'height':size,
-                                                         'width':size,
-                                                         'border-radius': radius,
-                                                         '-webkit-border-radius': radius,
-                                                         '-moz-border-radius': radius});
-        $('#home-widgets .home-icon .inner').height(size);
-        
+        // Remove previous heightx class
+        for (var i=1; i<=10; i++){
+          $('#home-widgets .home-icon .inner').removeClass('height'+i*10);
+        }   
+        $('#home-widgets .home-icon .inner').addClass('height'+height);
         resizeEmulator();
       }
     },
@@ -258,6 +248,7 @@
       var iconLayout = this.$('input[name=icon_layout]:checked').val();
       $('#home-widgets .home-icon .inner').toggleClass( 'line', iconLayout == 'line');
       $('#home-widgets .home-icon').css('width', (iconLayout == 'line' ? '100%' : '25%'));
+      this.updateLineHeight();
       resizeEmulator();
     },
 

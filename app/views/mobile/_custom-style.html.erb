@@ -87,20 +87,22 @@
   <%= 'width: 100%;' if @company.settings.icon_layout == 'line' %>
 }
 
-<% if @company.settings.icon_line_height and @company.settings.icon_layout == 'line' %>
-<% size = @company.settings.icon_line_height/100 * 57 %>
-<% radius = @company.settings.icon_line_height/100 * 12 %>
-#home-widgets .home-icon .inner .icon {
+<% (1..10).each do |i| %>
+  <% i *= 10 %>
+  <% size = i/100.0 * 57 %>
+  <% radius = i/100.0 * 12 %>
+
+#home-widgets .home-icon .inner.line.<%= "height#{i}" %> {
+  height:<%= size %>px;
+}
+
+#home-widgets .home-icon .inner.line.<%= "height#{i}" %> .icon {
   width:<%= size %>px;
   height:<%= size %>px;
   background-size: <%= size %>px <%= size %>px !important;
   border-radius: <%= radius %>px;
   -webkit-border-radius: <%= radius %>px;
   -moz-border-radius: <%= radius %>px;
-}
-
-#home-widgets .home-icon .inner {
-  height:<%= size %>px;
 }
 
 <% end %>

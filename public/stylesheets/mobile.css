@@ -217,7 +217,7 @@ p {
     width: 57px;
     height: 57px;
     margin: 0 auto 4px auto;
-    background-size: 57px 57px !important;
+    background-size: 57px 57px;
     border-radius: 12px;
     -webkit-border-radius: 12px;
     -moz-border-radius: 12px;
