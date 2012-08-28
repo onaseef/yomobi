@@ -278,9 +278,14 @@
         .val( getSetting('body_bg_repeat') );
       this.$('[name=banner_size]')
         .val( getSetting('banner_size') );
+      this.$('[name=icon_line_height]')
+        .val( getSetting('icon_line_height') );
+      getSetting('icon_layout') === 'grid' ? this.$('#radio_grid').attr('checked', true) : this.$('#radio_line').attr('checked', true)
       this.updateFonts(!g.isPremium);
       this.updateRepeat();
       this.updateBannerSize();
+      this.updateLineHeight();
+      this.updateIconLayout();
       if (opts.byNavigation === true) {
         hasChanges = false;
       }
