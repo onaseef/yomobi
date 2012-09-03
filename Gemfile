@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.8'
+gem 'rails', '3.2.8'
 gem 'sqlite3'
 gem 'couchrest', :git => 'git://github.com/couchrest/couchrest.git', :ref => '239e6c95cfec7'
 
@@ -12,7 +12,7 @@ gem 'shortly'
 
 gem 'devise', "~> 1.4"
 gem 'recaptcha', "= 0.3.4", :require => 'recaptcha/rails'
-gem 'typus', "~> 3.0"
+gem 'typus'
 
 gem 'slim', :require => 'slim'
 gem 'sass'
@@ -25,6 +25,17 @@ gem 'http_accept_language', :git => 'https://github.com/iain/http_accept_languag
 gem 'wepay-rails', :git => 'https://github.com/mindeavor/wepay-rails'
 # gem 'wepay-rails', :path => '/Users/tapwater/p/src/wepay-rails'
 gem 'money'
+
+group :assets do
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'uglifier'
+end
+
+gem 'jquery-rails'
+
+gem 'kaminari'
+
 
 group :test, :development do
   gem 'turn', '~> 0.9.6'

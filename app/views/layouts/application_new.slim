@@ -1,4 +1,4 @@
-! doctype 5
+doctype html
 html lang="en-US"
   head
     meta http-equiv="Content-Type" content="text/html; charset=utf-8"
@@ -7,8 +7,8 @@ html lang="en-US"
 
     = render 'shared/meta'
 
-    = stylesheet_link_tag 'main-app'
-    = stylesheet_link_tag 'flick/jquery-ui-1.8.11.custom'
+    = stylesheet_link_tag '/stylesheets/main-app'
+    = stylesheet_link_tag '/stylesheets/flick/jquery-ui-1.8.11.custom'
 	= yield :css    
 	= csrf_meta_tag
   body
@@ -24,15 +24,15 @@ html lang="en-US"
       = yield
     = render 'shared/footer_new'
 
-    = javascript_include_tag 'support/underscore'
-    = javascript_include_tag 'support/jquery-1.6.4.min'
-    = javascript_include_tag 'support/jquery.tooltip.v.1.1'
-    = javascript_include_tag 'util', 'builder.util'
-    = javascript_include_tag 'notice'
-    = javascript_include_tag 'main'
-    = javascript_include_tag 'jcarousellite'
+    = javascript_include_tag '/javascripts/support/underscore'
+    = javascript_include_tag '/javascripts/support/jquery-1.6.4.min'
+    = javascript_include_tag '/javascripts/support/jquery.tooltip.v.1.1'
+    = javascript_include_tag '/javascripts/util', '/javascripts/builder.util'
+    = javascript_include_tag '/javascripts/notice'
+    = javascript_include_tag '/javascripts/main'
+    = javascript_include_tag '/javascripts/jcarousellite'
     = yield :js
 
     - if Rails.env.production?
-      = javascript_include_tag 'google-analytics'
+      = javascript_include_tag '/javascripts/google-analytics'
 

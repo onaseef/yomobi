@@ -5,7 +5,7 @@ html lang="en-US"
     
     title YoMobi - Free Mobile Website Builder Platform
     = render 'shared/iphone-meta.html'
-    = stylesheet_link_tag 'mobile-basic'
+    = stylesheet_link_tag '/stylesheets/mobile-basic'
   body
     #mobile-container
       #header
@@ -16,4 +16,4 @@ html lang="en-US"
         = yield
 
     - if Rails.env.production?
-      = javascript_include_tag 'google-analytics'
+      = javascript_include_tag '/javascripts/google-analytics'

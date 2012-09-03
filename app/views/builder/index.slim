@@ -3,14 +3,14 @@
   .widgets
 
 - content_for :js do
-  = javascript_include_tag 'views/sidebar'
-  = javascript_include_tag 'mobile-app'
-  = javascript_include_tag 'builder-app'
+  = javascript_include_tag '/javascripts/views/sidebar'
+  = javascript_include_tag '/javascripts/mobile-app'
+  = javascript_include_tag '/javascripts/builder-app'
 
-  = javascript_include_tag 'support/jquery.wysiwyg'
-  = javascript_include_tag 'support/jquery.wysiwyg.link'
-  = javascript_include_tag 'support/jquery.wysiwyg.image'
-  = javascript_include_tag 'support/jquery.wysiwyg.i18n'
+  = javascript_include_tag '/javascripts/support/jquery.wysiwyg'
+  = javascript_include_tag '/javascripts/support/jquery.wysiwyg.link'
+  = javascript_include_tag '/javascripts/support/jquery.wysiwyg.image'
+  = javascript_include_tag '/javascripts/support/jquery.wysiwyg.i18n'
   - if I18n.locale != :en
     erb:
       <script type="text/javascript">

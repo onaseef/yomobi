@@ -2,7 +2,7 @@
   = render :partial => 'shared/sidebar', :locals => {:active => 'booster'}
 
 - content_for :js do
-  = javascript_include_tag 'send_panel.js'
+  = javascript_include_tag '/javascripts/send_panel.js'
 
 h1 = @company.name
 #builder-container

@@ -1,11 +1,11 @@
 - @hide_sidebar = true
 - content_for :css do
-  = stylesheet_link_tag 'site-manager'
+  = stylesheet_link_tag '/stylesheets/site-manager'
 
 - content_for :js do
 
   / Used for remote forms
-  = javascript_include_tag 'rails'
+  = javascript_include_tag '/javascripts/rails'
 
   erb:
     <script type="text/javascript">
@@ -43,7 +43,7 @@
       , selectedIdx: <%= @selectedIdx || 'undefined' %>
     };
     </script>
-  = javascript_include_tag 'site-manager'
+  = javascript_include_tag '/javascripts/site-manager'
   script type="text/javascript" src="https://www.wepay.com/js/iframe.wepay.js"
 
 #manager-container
