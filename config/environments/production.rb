@@ -1,13 +1,13 @@
 Yomobi::Application.configure do
 
   # Compress JavaScript and CSS
-  config.assets.compress = true
+  config.assets.compress = false
 
   # Don't fallback to assets pipeline
   config.assets.compile = false
 
   # Generate digests for assets URLs
-  config.assets.digest = true
+  config.assets.digest = false
   # Settings specified here will take precedence over those in config/application.rb
 
   config.app_domains = ['yomobi.com']
@@ -44,7 +44,7 @@ Yomobi::Application.configure do
 
   # Disable Rails's static asset server
   # In production, Apache or nginx will already do this
-  config.serve_static_assets = false
+  config.serve_static_assets = true
 
   # Enable serving of images, stylesheets, and javascripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"

@@ -9,7 +9,7 @@ module ApplicationHelper
   end
 
   def parent_layout(layout)
-    @_content_for[:layout] = self.output_buffer
+    @view_flow.set(:layout, self.output_buffer)
     self.output_buffer = render(:file => "layouts/#{layout}")
   end
 

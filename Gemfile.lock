@@ -9,9 +9,8 @@ GIT
       rest-client (~> 1.6.1)
 
 GIT
-  remote: https://github.com/iain/http_accept_language.git
-  revision: 1900d4e83f978af7d3b9dc68ccb3753a6736322f
-  ref: 1900d4e83f
+  remote: git://github.com/iain/http_accept_language.git
+  revision: 7738e45ba154015597fca749b7d0257861c14a02
   specs:
     http_accept_language (2.0.0.pre)
 
