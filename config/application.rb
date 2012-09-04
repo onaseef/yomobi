@@ -59,11 +59,9 @@ module Yomobi
     config.s3_base_path = "http://s3.amazonaws.com"
 
     # Amazon Simple Emailing
-    #ActionMailer::Base.add_delivery_method :ses, AWS::SES::Base,
-      #:access_key_id => ENV['S3_KEY'],
-      #:secret_access_key => ENV['S3_SECRET']
-    #config.action_mailer.delivery_method = :ses
-    #TODO remove sendmail
-    config.action_mailer.delivery_method = :sendmail
+    ActionMailer::Base.add_delivery_method :ses, AWS::SES::Base,
+      :access_key_id => ENV['S3_KEY'],
+      :secret_access_key => ENV['S3_SECRET']
+    config.action_mailer.delivery_method = :ses
   end
 end
