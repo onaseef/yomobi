@@ -152,7 +152,7 @@
         p.explanation == t('site_manager.help.manage_site_type')
         | <% } %>
         h3 = t 'site_manager.select_payment_option'
-        form.pay action="{{ actionPath }}" method="POST" data-remote="true"
+        form.pay action="{{ actionPath }}" method="POST" data-remote="true" data-type="html"
           input type="radio" value="monthly" name="recur_type" checked="checked"
           label = t 'site_manager.opt_monthly', :price => '$6'
           br
