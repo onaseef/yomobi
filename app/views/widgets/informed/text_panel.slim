@@ -2,9 +2,9 @@
   = render :partial => 'shared/sidebar', :locals => {:active => 'text'}
 
 - content_for :js do
-  = javascript_include_tag 'send_panel.js'
-  = javascript_include_tag 'text_panel.js'
-  = javascript_include_tag 'views/sidebar'
+  = javascript_include_tag '/javascripts/send_panel.js'
+  = javascript_include_tag '/javascripts/text_panel.js'
+  = javascript_include_tag '/javascripts/views/sidebar'
 
   script type="text/javascript"
     | new SidebarView({ widgets:new Backbone.Collection, skipRender:true });

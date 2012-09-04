@@ -4,10 +4,16 @@ require 'rails/all'
 
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.
-Bundler.require(:default, Rails.env) if defined?(Bundler)
+Bundler.require(:default, :assets, Rails.env) if defined?(Bundler)
 
 module Yomobi
   class Application < Rails::Application
+    # Enable the asset pipeline
+    config.assets.enabled = true
+
+    # Version of your assets, change this if you want to expire all your assets
+    config.assets.version = '1.0'
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -53,9 +59,11 @@ module Yomobi
     config.s3_base_path = "http://s3.amazonaws.com"
 
     # Amazon Simple Emailing
-    ActionMailer::Base.add_delivery_method :ses, AWS::SES::Base,
-      :access_key_id => ENV['S3_KEY'],
-      :secret_access_key => ENV['S3_SECRET']
-    config.action_mailer.delivery_method = :ses
+    #ActionMailer::Base.add_delivery_method :ses, AWS::SES::Base,
+      #:access_key_id => ENV['S3_KEY'],
+      #:secret_access_key => ENV['S3_SECRET']
+    #config.action_mailer.delivery_method = :ses
+    #TODO remove sendmail
+    config.action_mailer.delivery_method = :sendmail
   end
 end

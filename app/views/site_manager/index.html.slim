@@ -1,11 +1,11 @@
 - @hide_sidebar = true
 - content_for :css do
-  = stylesheet_link_tag 'site-manager'
+  = stylesheet_link_tag '/stylesheets/site-manager'
 
 - content_for :js do
 
   / Used for remote forms
-  = javascript_include_tag 'rails'
+  = javascript_include_tag '/javascripts/rails'
 
   erb:
     <script type="text/javascript">
@@ -43,7 +43,7 @@
       , selectedIdx: <%= @selectedIdx || 'undefined' %>
     };
     </script>
-  = javascript_include_tag 'site-manager'
+  = javascript_include_tag '/javascripts/site-manager'
   script type="text/javascript" src="https://www.wepay.com/js/iframe.wepay.js"
 
 #manager-container
@@ -152,7 +152,7 @@
         p.explanation == t('site_manager.help.manage_site_type')
         | <% } %>
         h3 = t 'site_manager.select_payment_option'
-        form.pay action="{{ actionPath }}" method="POST" data-remote="true"
+        form.pay action="{{ actionPath }}" method="POST" data-remote="true" data-type="html"
           input type="radio" value="monthly" name="recur_type" checked="checked"
           label = t 'site_manager.opt_monthly', :price => '$6'
           br

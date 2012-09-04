@@ -1,4 +1,4 @@
-! doctype 5
+doctype html
 html lang="en-US"
   head
     meta http-equiv="Content-Type" content="text/html; charset=utf-8"
@@ -7,8 +7,8 @@ html lang="en-US"
 
     = render 'shared/meta'
 
-    = stylesheet_link_tag 'signup-app'
-    = stylesheet_link_tag 'flick/jquery-ui-1.8.11.custom'
+    = stylesheet_link_tag '/stylesheets/signup-app'
+    = stylesheet_link_tag '/stylesheets/flick/jquery-ui-1.8.11.custom'
     = yield :css
     = csrf_meta_tag
   body
@@ -67,7 +67,7 @@ html lang="en-US"
 
     = render 'layouts/js-base'
     = yield :js
-    = javascript_include_tag 'notice'
+    = javascript_include_tag '/javascripts/notice'
 
     - if Rails.env.production?
-      = javascript_include_tag 'google-analytics'
+      = javascript_include_tag '/javascripts/google-analytics'

@@ -1,4 +1,4 @@
-! doctype 5
+doctype html
 html lang="en-US"
   head
     meta http-equiv="Content-Type" content="text/html; charset=utf-8"
@@ -7,14 +7,14 @@ html lang="en-US"
 
     = render 'shared/meta'
 
-    = stylesheet_link_tag 'builder-app'
-    = stylesheet_link_tag 'flick/jquery-ui-1.8.11.custom'
-    = stylesheet_link_tag 'jquery.wysiwyg'
-    = stylesheet_link_tag 'colorpicker'
+    = stylesheet_link_tag '/stylesheets/builder-app'
+    = stylesheet_link_tag '/stylesheets/flick/jquery-ui-1.8.11.custom'
+    = stylesheet_link_tag '/stylesheets/jquery.wysiwyg'
+    = stylesheet_link_tag '/stylesheets/colorpicker'
     = render 'mobile/custom-style'
     erb:
       <!--[if IE 7]>
-      <%= stylesheet_link_tag 'ie' %>
+      <%= stylesheet_link_tag '/stylesheets/ie' %>
       <![endif]-->
     = csrf_meta_tag
   body
@@ -38,39 +38,39 @@ html lang="en-US"
     = render 'shared/templates'
 
     = render 'layouts/js-base'
-    = javascript_include_tag 'support/dbx'
+    = javascript_include_tag '/javascripts/support/dbx'
     = render :partial => 'shared/data-loader' if @company
-    = javascript_include_tag 'preview-mobile'
+    = javascript_include_tag '/javascripts/preview-mobile'
 
 
-    = javascript_include_tag 'widgets/mobile/base'
-    = javascript_include_tag 'widgets/builder/base'
+    = javascript_include_tag '/javascripts/widgets/mobile/base'
+    = javascript_include_tag '/javascripts/widgets/builder/base'
 
     - Dir[widgets_dir('mobile/*.js')].sort.each do |widget|
       - next if File.basename(widget) == 'base.js'
-      = javascript_include_tag "widgets/mobile/#{File.basename widget}"
+      = javascript_include_tag "/javascripts/widgets/mobile/#{File.basename widget}"
 
-    = javascript_include_tag "support/colorpicker"
+    = javascript_include_tag "/javascripts/support/colorpicker"
 
-    = javascript_include_tag 'views/edit-widget'
-    = javascript_include_tag 'views/edit-tab-bar'
-    = javascript_include_tag 'views/edit-settings'
-    = javascript_include_tag 'views/edit-advanced-settings'
-    = javascript_include_tag 'views/customize'
+    = javascript_include_tag '/javascripts/views/edit-widget'
+    = javascript_include_tag '/javascripts/views/edit-tab-bar'
+    = javascript_include_tag '/javascripts/views/edit-settings'
+    = javascript_include_tag '/javascripts/views/edit-advanced-settings'
+    = javascript_include_tag '/javascripts/views/customize'
 
     - Dir[widgets_dir('builder/*.js')].sort.each do |widget|
       - next if File.basename(widget) == 'base.js'
-      = javascript_include_tag "widgets/builder/#{File.basename widget}"
+      = javascript_include_tag "/javascripts/widgets/builder/#{File.basename widget}"
 
     = yield :js
 
-    = javascript_include_tag 'notice'
+    = javascript_include_tag '/javascripts/notice'
 
     / ajax file uploading
-    = javascript_include_tag "support/swfobject.js"
-    = javascript_include_tag "plupload/plupload.full"
+    = javascript_include_tag "/javascripts/support/swfobject.js"
+    = javascript_include_tag "/javascripts/plupload/plupload.full"
 
     - if Rails.env.production?
-      = javascript_include_tag 'google-analytics'
+      = javascript_include_tag '/javascripts/google-analytics'
 
-    = stylesheet_link_tag 'change-wicon'
+    = stylesheet_link_tag '/stylesheets/change-wicon'

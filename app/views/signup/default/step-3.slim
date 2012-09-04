@@ -1,7 +1,7 @@
 = render :partial => 'signup-step-arrows', :locals => { :step => 3 }
 
 - content_for :js do
-  = javascript_include_tag 'send_panel'
+  = javascript_include_tag '/javascripts/send_panel'
   javascript:
     if ($.browser.msie) {
       $('input[type=file]').click(function () {

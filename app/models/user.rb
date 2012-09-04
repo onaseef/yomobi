@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :company_type_id,
                   :first_name, :last_name, :default_company_id, :active_company_id
 
-  validates_presence_of :first_name, :last_name
+  validates_presence_of :first_name, :last_name, :company_type_id 
 
   before_validation :clean_email, :only => [:email]
   before_save :clean_email
