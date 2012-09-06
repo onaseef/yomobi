@@ -12,6 +12,10 @@ p {
   -webkit-margin-before: 0em;
   -webkit-margin-after: 0em; }
 
+em {
+  font-size:100%;  
+}
+
 .leaf-content h1, .leaf-content h2, .leaf-content h3, .custom_page h1, .custom_page h2, .custom_page h3 {
   margin: 4px 0px 4px 0px; }
 .leaf-content ul, .leaf-content ol, .custom_page ul, .custom_page ol {
