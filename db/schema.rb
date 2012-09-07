@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120719042652) do
+ActiveRecord::Schema.define(:version => 20120907121646) do
 
   create_table "carriers", :force => true do |t|
     t.string   "name"
@@ -171,6 +171,7 @@ ActiveRecord::Schema.define(:version => 20120719042652) do
     t.string   "authentication_token"
     t.integer  "default_company_id"
     t.integer  "active_company_id"
+    t.boolean  "is_test"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
