@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.2.8'
-gem 'sqlite3'
+gem 'pg'
 gem 'couchrest', :git => 'git://github.com/couchrest/couchrest.git'
 
 gem 'paperclip', :git => 'https://github.com/thoughtbot/paperclip', :tag => "v2.3.14"
@@ -38,7 +38,7 @@ gem 'jquery-rails'
 gem 'kaminari'
 gem 'locomotive_cms', '~> 2.0.0.rc11', :require => 'locomotive/engine'
 
-gem 'unicorn', group: 'development'
+gem 'thin'
 
 group :test, :development do
   gem 'turn', '~> 0.9.6'

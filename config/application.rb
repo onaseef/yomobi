@@ -63,7 +63,18 @@ module Yomobi
       #:access_key_id => ENV['S3_KEY'],
       #:secret_access_key => ENV['S3_SECRET']
     #config.action_mailer.delivery_method = :ses
-    #TODO remove sendmail
-    config.action_mailer.delivery_method = :sendmail
+    
+   #use gmail for test emailing
+   config.action_mailer.delivery_method = :smtp
+   config.action_mailer.raise_delivery_errors = true
+   config.action_mailer.default_url_options = { :host => "yomobi-staging.herokuapp.com" }
+   ActionMailer::Base.smtp_settings = {
+     :address  => "smtp.gmail.com",
+     :port  => 587,
+     :user_name  => "eiccatestmail",
+     :password  => "razdvaraz",
+     :authentication  => :plain,
+     :enable_starttls_auto => true
+   }
   end
 end
