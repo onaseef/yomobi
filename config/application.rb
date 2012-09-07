@@ -59,9 +59,22 @@ module Yomobi
     config.s3_base_path = "http://s3.amazonaws.com"
 
     # Amazon Simple Emailing
-    ActionMailer::Base.add_delivery_method :ses, AWS::SES::Base,
-      :access_key_id => ENV['S3_KEY'],
-      :secret_access_key => ENV['S3_SECRET']
-    config.action_mailer.delivery_method = :ses
+    #ActionMailer::Base.add_delivery_method :ses, AWS::SES::Base,
+      #:access_key_id => ENV['S3_KEY'],
+      #:secret_access_key => ENV['S3_SECRET']
+    #config.action_mailer.delivery_method = :ses
+    
+   #use gmail for test emailing
+   config.action_mailer.delivery_method = :smtp
+   config.action_mailer.raise_delivery_errors = true
+   config.action_mailer.default_url_options = { :host => "yomobi-staging.herokuapp.com" }
+   ActionMailer::Base.smtp_settings = {
+     :address  => "smtp.gmail.com",
+     :port  => 587,
+     :user_name  => "eiccatestmail",
+     :password  => "razdvaraz",
+     :authentication  => :plain,
+     :enable_starttls_auto => true
+   }
   end
 end

@@ -38,6 +38,8 @@ gem 'jquery-rails'
 gem 'kaminari'
 gem 'locomotive_cms', '~> 2.0.0.rc11', :require => 'locomotive/engine'
 
+gem 'thin'
+
 group :test, :development do
   gem 'turn', '~> 0.9.6'
   gem 'minitest', '~> 3.2.0'
