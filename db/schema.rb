@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -15,8 +16,8 @@ ActiveRecord::Schema.define(:version => 20120719042652) do
   create_table "carriers", :force => true do |t|
     t.string   "name"
     t.string   "text_email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "carriers", ["name"], :name => "index_carriers_on_name", :unique => true
@@ -26,8 +27,8 @@ ActiveRecord::Schema.define(:version => 20120719042652) do
     t.string   "name"
     t.string   "db_name"
     t.string   "db_pass"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
@@ -35,16 +36,16 @@ ActiveRecord::Schema.define(:version => 20120719042652) do
     t.string   "informed_email"
     t.string   "leave_msg_email"
     t.string   "booking_email"
-    t.text     "keywords",            :limit => 255
+    t.text     "keywords"
     t.string   "call_back_email"
     t.integer  "company_type_id"
-    t.integer  "id_counter",                         :default => 1,            :null => false
-    t.boolean  "premium",                            :default => false
+    t.integer  "id_counter",          :default => 1,            :null => false
+    t.boolean  "premium",             :default => false
     t.string   "banner_file_name"
     t.string   "banner_content_type"
     t.integer  "banner_file_size"
     t.datetime "banner_updated_at"
-    t.date     "manual_expire_date",                 :default => '2012-01-01'
+    t.date     "manual_expire_date",  :default => '2012-01-01'
   end
 
   add_index "companies", ["db_name"], :name => "index_companies_on_db_name", :unique => true
@@ -52,8 +53,8 @@ ActiveRecord::Schema.define(:version => 20120719042652) do
   create_table "company_settings", :force => true do |t|
     t.integer  "company_id"
     t.string   "header_color"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
     t.string   "header_text_color"
     t.string   "slogan"
     t.string   "tab_bar_color"
@@ -73,8 +74,8 @@ ActiveRecord::Schema.define(:version => 20120719042652) do
 
   create_table "company_types", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "company_types", ["name"], :name => "index_company_types_on_name", :unique => true
@@ -82,8 +83,8 @@ ActiveRecord::Schema.define(:version => 20120719042652) do
   create_table "domains", :force => true do |t|
     t.integer  "company_id"
     t.string   "host"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "domains", ["host"], :name => "index_domains_on_host", :unique => true
@@ -94,8 +95,8 @@ ActiveRecord::Schema.define(:version => 20120719042652) do
     t.string   "email"
     t.string   "phone"
     t.string   "opt_out_key"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.string   "short_url"
     t.boolean  "active",      :default => true
   end
@@ -108,8 +109,8 @@ ActiveRecord::Schema.define(:version => 20120719042652) do
     t.integer  "user_id"
     t.integer  "company_id"
     t.boolean  "owner"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "payments", :force => true do |t|
@@ -120,8 +121,8 @@ ActiveRecord::Schema.define(:version => 20120719042652) do
     t.boolean  "is_valid",                 :default => true
     t.integer  "cents",                    :default => 0,    :null => false
     t.string   "currency"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
     t.string   "sub_state"
     t.date     "last_payment_received_at"
   end
@@ -132,8 +133,8 @@ ActiveRecord::Schema.define(:version => 20120719042652) do
     t.integer  "company_id"
     t.string   "key"
     t.boolean  "expired",    :default => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.integer  "user_id"
   end
 
@@ -144,17 +145,17 @@ ActiveRecord::Schema.define(:version => 20120719042652) do
     t.integer  "type"
     t.string   "delete_hash"
     t.text     "custom"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                               :default => "", :null => false
-    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"
-    t.string   "remember_token"
+    t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                       :default => 0
+    t.integer  "sign_in_count",          :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -162,8 +163,8 @@ ActiveRecord::Schema.define(:version => 20120719042652) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.integer  "company_type_id"
     t.string   "first_name"
     t.string   "last_name"
@@ -211,8 +212,8 @@ ActiveRecord::Schema.define(:version => 20120719042652) do
     t.integer  "start_time"
     t.integer  "end_time"
     t.integer  "frequency"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
   end
 
   add_index "wepay_checkout_records", ["checkout_id"], :name => "index_wepay_checkout_records_on_checkout_id"
@@ -225,8 +226,8 @@ ActiveRecord::Schema.define(:version => 20120719042652) do
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
     t.integer  "company_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
 end

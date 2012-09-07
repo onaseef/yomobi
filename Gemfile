@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.2.8'
-gem 'sqlite3'
+gem 'pg'
 gem 'couchrest', :git => 'git://github.com/couchrest/couchrest.git'
 
 gem 'paperclip', :git => 'https://github.com/thoughtbot/paperclip', :tag => "v2.3.14"
