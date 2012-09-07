@@ -38,6 +38,8 @@ Yomobi::Application.routes.draw do
 
   match 'account-setup/:step_num' => 'signup#account_setup', :as => :account_setup
 
+  resource 'test_drive', only: [:new, :create]
+
   devise_for :users, :controllers => {
     :registrations => 'registrations',
     :sessions => 'sessions'

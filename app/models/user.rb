@@ -83,6 +83,10 @@ class User < ActiveRecord::Base
     }
   end
 
+  def create_test_drive
+    false
+  end
+
   private
 
   def clean_email
