@@ -1,13 +1,13 @@
 Yomobi::Application.configure do
 
   # Compress JavaScript and CSS
-  config.assets.compress = false
+  config.assets.compress = true
 
   # Don't fallback to assets pipeline
-  config.assets.compile = false
+  config.assets.compile = true
 
   # Generate digests for assets URLs
-  config.assets.digest = false
+  config.assets.digest = true
   # Settings specified here will take precedence over those in config/application.rb
 
   config.app_domains = ['webesity.com']
