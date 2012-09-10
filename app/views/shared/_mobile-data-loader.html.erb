@@ -18,6 +18,7 @@ window.g = {
   isPreview: <%= @is_preview_mode.present? %>,
   isBuilder: <%= @is_builder.present? %>,
   isPremium: <%= @company.premium? %>,
+  testUser: <%= @user.test_user? %>,
   isTablet: /<%= tablet_devices %>/i.test( navigator.userAgent.toLowerCase() ),
   isMobile: /<%= mobile_devices %>/i.test( navigator.userAgent.toLowerCase() ),
   isNonphone: /<%= nonphone_devices %>/i.test( navigator.userAgent.toLowerCase() ),

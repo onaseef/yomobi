@@ -103,6 +103,10 @@ class User < ActiveRecord::Base
     companies.present?
   end
 
+  def test_user?
+    is_test || false
+  end
+
   private
 
   def clean_email

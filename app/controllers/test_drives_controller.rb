@@ -14,4 +14,9 @@ class TestDrivesController < ApplicationController
       render :new
     end
   end
+
+  def destroy
+    sign_out @user
+    redirect_to new_user_registration_path
+  end
 end

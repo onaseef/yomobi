@@ -379,6 +379,9 @@ script.customize(type="text/template")
                   option value="auto" Original
                   - (1..10).each do |i|
                     option value="#{i*10}%" #{i*10}%
+            | <% } else if(testUser) { %>
+            tr
+              td.not-premium == t'builder.customize.test_user'
             | <% } else { %>
             tr
               td.not-premium == t'builder.customize.not_premium'
@@ -468,7 +471,11 @@ script.customize(type="text/template")
     br
     .action-bar
       p.error.lfloat style="margin-top:2px"
-      - if @company.premium? == false
+      - if test_user?
+        p.not-premium == t'builder.customize.test_user'
+        .accept-btn.main-btn.disabled
+          input.content type="submit" value=t'builder.widget_editor.save'
+      - elsif @company.premium? == false
         p.not-premium == t'builder.customize.not_premium'
         .accept-btn.main-btn.disabled
           input.content type="submit" value=t'builder.widget_editor.save'
