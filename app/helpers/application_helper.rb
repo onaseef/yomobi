@@ -35,6 +35,6 @@ module ApplicationHelper
   end
 
   def test_user?
-    current_user.test_user?
+    current_user.present? && current_user.test_user?
   end
 end
