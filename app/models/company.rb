@@ -204,6 +204,7 @@ class Company < ActiveRecord::Base
       admins: self.admins,
       domains: self.domains,
       isPremium: self.premium?,
+      testUser: self.user.test_user?,
       expireDate: (self.expire_date.strftime I18n.t 'date_formats.site_grade_dates' if self.expire_date),
       nextChargeDate: (self.next_charge_date.strftime I18n.t 'date_formats.site_grade_dates' if self.next_charge_date),
       subscriptionEndDate: (self.subscription_end_date.strftime I18n.t 'date_formats.site_grade_dates' if self.subscription_end_date),

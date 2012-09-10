@@ -33,4 +33,8 @@ module ApplicationHelper
   def escape_quotes(str)
     str.gsub('"', '&quot;').gsub("'", '&#39;')
   end
+
+  def test_user?
+    current_user.test_user?
+  end
 end

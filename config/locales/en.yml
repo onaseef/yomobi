@@ -416,6 +416,7 @@ en:
     site_manager: "Site Manager"
     site_builder: "Website Builder"
     account_settings: "Account Manager"
+    sign_up_now: "Sign Up Now"
 
 
   account_settings:
@@ -509,6 +510,7 @@ en:
       body_bg: "Wallpaper"
       body_bg_help: "<p>Upload a background image.</p>"
       not_premium: '<a href="/site-manager">You must upgrade this site to Custom to use this feature. Click here to learn how to upgrade.</a>'
+      test_user: "This feature is available only in full version. Please, sign up."
 
       customizing_header: "Customizing Header"
       header: "Header"

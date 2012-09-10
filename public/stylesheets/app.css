@@ -210,6 +210,8 @@ p.success {
       width: 1px;
       margin: 7px 0 0 0;
       float: right; }
+    #header.signed-in #nav #sign_up_now {
+      color: yellow; }
 
 #page-container {
   width: 1010px;

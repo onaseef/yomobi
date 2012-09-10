@@ -1,6 +1,7 @@
 class AccountController < ApplicationController
 
   before_filter :authenticate_user!
+  before_filter :restrict_test_account
   layout 'account'
 
   def edit

@@ -90,4 +90,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def restrict_test_account
+    if current_user.test_user?
+      redirect_to builder_main_path, notice: (t'account.restrict_test_account')
+    end
+  end
+
 end

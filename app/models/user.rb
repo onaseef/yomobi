@@ -83,6 +83,30 @@ class User < ActiveRecord::Base
     }
   end
 
+  def create_test_drive
+    generated_name = Devise.friendly_token[0,6]
+
+    skip_confirmation!
+    self.email = generated_name + '@test.com'
+    self.first_name = 'test name'
+    self.last_name = 'test last name'
+    self.is_test = true
+    self.company_type_id = CompanyType.first.id
+    return false unless self.save
+
+    companies.create(
+      name: 'test company',
+      db_name: 'test_drive_' + generated_name.downcase,
+      db_pass: '123123', #uncool, but taken from signup_controller
+      company_type_id: company_type_id
+    )
+    companies.present?
+  end
+
+  def test_user?
+    is_test || false
+  end
+
   private
 
   def clean_email

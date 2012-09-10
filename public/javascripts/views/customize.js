@@ -94,7 +94,8 @@
         banner_src: g.banner || g.blankImg,
         body_bg_src: g.body_bg || g.blankImg,
         isDefaultBanner: false,
-        isPremium: g.isPremium
+        isPremium: g.isPremium,
+        testUser: g.testUser
       };
       var settings = _.extend({}, g.settings);
       for (var p in settings) {
