@@ -3,14 +3,13 @@ class TestDrivesController < ApplicationController
   end
 
   def create
-    @password = Devise.friendly_token[0,10]
-    @user = User.new(password: @password)
+    @user = User.new
 
     if @user.create_test_drive
-      flash.now[:notice] = "Success!"
       sign_in @user
+      redirect_to builder_main_path, notice: t('test_drive.success')
     else
-      flash.now[:alert] = "Sorry, we can't build your test site now"
+      flash.now[:alert] = t('test_drive.cant_build_test_drive')
       render :new
     end
   end

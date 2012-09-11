@@ -63,7 +63,9 @@ module Yomobi
       #:access_key_id => ENV['S3_KEY'],
       #:secret_access_key => ENV['S3_SECRET']
     #config.action_mailer.delivery_method = :ses
-    
+
+    config.test_drive_db_name = ENV['TEST_DRIVE_DB_NAME'] || 'test_drive'
+
    #use gmail for test emailing
    config.action_mailer.delivery_method = :smtp
    config.action_mailer.raise_delivery_errors = true

@@ -85,21 +85,27 @@ class User < ActiveRecord::Base
 
   def create_test_drive
     generated_name = Devise.friendly_token[0,6]
+    test_drive_db_name = Rails.application.config.test_drive_db_name
 
     skip_confirmation!
     self.email = generated_name + '@test.com'
+    self.password = Devise.friendly_token[0,10]
     self.first_name = 'test name'
     self.last_name = 'test last name'
     self.is_test = true
     self.company_type_id = CompanyType.first.id
     return false unless self.save
 
-    companies.create(
-      name: 'test company',
-      db_name: 'test_drive_' + generated_name.downcase,
-      db_pass: '123123', #uncool, but taken from signup_controller
-      company_type_id: company_type_id
-    )
+    base_company = Company.find_by_db_name(test_drive_db_name)
+    return false if base_company.nil?
+
+    new_company = base_company.dup
+    new_company.db_name = 'test_drive_' + generated_name.downcase
+    new_company.source_db_name = test_drive_db_name
+    new_company.company_settings = base_company.company_settings.dup
+    return false unless new_company.save
+
+    companies << new_company
     companies.present?
   end
 

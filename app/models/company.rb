@@ -15,7 +15,7 @@ class Company < ActiveRecord::Base
 
   has_many :followers
   has_many :wphotos
-  has_one :company_settings
+  has_one :company_settings, dependent: :destroy
 
   has_attached_file :logo,
     :styles => {

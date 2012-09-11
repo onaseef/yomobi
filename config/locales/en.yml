@@ -234,6 +234,10 @@ en:
       general: "There was problem with your request:"
       recaptcha: "There was an error with the recaptcha code below. Please re-enter the code and click submit."
 
+  test_drive:
+    success: "Success!"
+    cant_build_test_drive: "Sorry, we can't build your test site now."
+
   recaptcha:
     type_words: "Type the two words: "
     new_words: "(Get New Words)"
@@ -510,7 +514,6 @@ en:
       body_bg: "Wallpaper"
       body_bg_help: "<p>Upload a background image.</p>"
       not_premium: '<a href="/site-manager">You must upgrade this site to Custom to use this feature. Click here to learn how to upgrade.</a>'
-      test_user: "This feature is available only in full version. Please, sign up."
 
       customizing_header: "Customizing Header"
       header: "Header"

@@ -13,10 +13,8 @@ function loadinparent(url){
 }
 //-->
 </SCRIPT>
-<% unless test_user? %>
-  <div class="yomobi-upgrade-ad">
-    <table><tr><td>
-      <a href="javascript:loadinparent('/site-manager', true);"><%= t 'builder.upgrade_ad.title' %></a>
-    </td></tr></table>
-  </div>
-<% end %>
+<div class="yomobi-upgrade-ad">
+  <table><tr><td>
+    <a href="javascript:loadinparent('/site-manager', true);"><%= t 'builder.upgrade_ad.title' %></a>
+  </td></tr></table>
+</div>
