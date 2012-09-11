@@ -4,11 +4,7 @@ CarrierWave.configure do |config|
 
   case Rails.env.to_sym
 
-  when :development
-    config.storage = :file
-    config.root = File.join(Rails.root, 'public')
-
-  when :production
+  when :production, :development
     # the following configuration works for Amazon S3
     config.storage          = :fog
     config.fog_credentials  = {
