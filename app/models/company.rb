@@ -170,7 +170,7 @@ class Company < ActiveRecord::Base
     if expire_date.nil?
       self.update_attribute :premium, false
     else
-      self.update_attribute :premium, expire_date > DateTime.now
+      self.update_attribute :premium, expire_date > Date.today
     end
   end
 

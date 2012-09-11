@@ -151,4 +151,18 @@ describe Payment do
     end
   end
 
+
+  it "should revert a company to standard from premium for manual expiration dates" do
+    c = new_company
+    c.manual_expire_date = Date.today + 5.days
+
+    c.recalculate_premium
+    c.premium?.must_equal true
+
+    Date.stub :today, (Date.today + 10.days), do
+        c.recalculate_premium
+        c.premium?.must_equal false
+    end
+  end
+
 end
