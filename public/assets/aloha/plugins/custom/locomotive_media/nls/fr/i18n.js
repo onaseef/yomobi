@@ -1,1 +1,1 @@
-define({ 'button.addimg.tooltip': 'insérer média' });
+define({"button.addimg.tooltip":"insérer média"});

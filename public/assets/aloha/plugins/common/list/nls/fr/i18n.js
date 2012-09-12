@@ -1,1 +1,1 @@
-define({"button.createulist.tooltip":"Ins\u00e9rer une liste non ordonn\u00e9e","button.createolist.tooltip":"Ins\u00e9rer liste ordonn\u00e9e"});
+define({"button.createulist.tooltip":"Insérer une liste non ordonnée","button.createolist.tooltip":"Insérer liste ordonnée"});

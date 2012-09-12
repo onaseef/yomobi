@@ -1,4 +1,1 @@
-define({
-	root: {"button.addcharacter.tooltip": "pick special characters"},
-	de: true
-});
+define({root:{"button.addcharacter.tooltip":"pick special characters"},de:!0});

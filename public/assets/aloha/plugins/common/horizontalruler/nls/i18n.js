@@ -1,4 +1,1 @@
-define({
-	root: {"button.addhr.tooltip": "Add a horizontal ruler"},
-	de:true
-});
+define({root:{"button.addhr.tooltip":"Add a horizontal ruler"},de:!0});

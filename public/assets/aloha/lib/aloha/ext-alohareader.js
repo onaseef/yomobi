@@ -3,7 +3,8 @@
 * Copyright ï¿½ 2010-2011 Gentics Software GmbH, aloha@gentics.com
 * Contributors http://aloha-editor.org/contribution.php 
 * Licensed unter the terms of http://www.aloha-editor.org/license.html
-*//*
+*/
+/*
 * Aloha Editor is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as published by
 * the Free Software Foundation, either version 3 of the License, or
@@ -17,35 +18,4 @@
 * You should have received a copy of the GNU Affero General Public License
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
-
-
-define(
-['aloha/ext'],
-function(Ext) {
-	
-
-Ext.data.AlohaObjectReader = function(meta, recordType) {
-	meta = {};
-    Ext.applyIf(meta, {
-		idProperty: 'id',
-		root: 'items',
-		totalProperty: 'results',
-		// TODO implement all defined optional attributes
-		fields: [
-			'id',
-			'url',
-			'name',
-			'type',
-			'weight',
-			'path',
-			'repositoryId'
-		]
-    });
-    Ext.data.JsonReader.superclass.constructor.call(this, meta, meta.fields);
-};
-
-Ext.extend(Ext.data.AlohaObjectReader, Ext.data.JsonReader, {
-	// extend of necessary
-});
-
-});
+define(["aloha/ext"],function(e){e.data.AlohaObjectReader=function(t,n){t={},e.applyIf(t,{idProperty:"id",root:"items",totalProperty:"results",fields:["id","url","name","type","weight","path","repositoryId"]}),e.data.JsonReader.superclass.constructor.call(this,t,t.fields)},e.extend(e.data.AlohaObjectReader,e.data.JsonReader,{})});

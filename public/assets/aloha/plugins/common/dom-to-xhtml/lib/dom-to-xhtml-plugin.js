@@ -9,22 +9,4 @@
  * Aloha.Editable.getContent() instance method to generate valid XHTML
  * (in so far as the DOM of the editables itself is valid).
  */
-
-define(
-['aloha', 'aloha/jquery', 'aloha/plugin', 'dom-to-xhtml/dom-to-xhtml'],
-function( Aloha, $, Plugin, domToXhtml) {
-	
-
-	return Plugin.create('dom-to-xhtml', {
-		/**
-		 * Called by the plugin-manager on intialization.
-		 *
-		 * @Override
-		 */
-		init: function () {
-			Aloha.Editable.setContentSerializer(function(editableElement){
-				return domToXhtml.contentsToXhtml(editableElement);
-			});
-		}
-	});
-});
+define(["aloha","aloha/jquery","aloha/plugin","dom-to-xhtml/dom-to-xhtml"],function(e,t,n,r){return n.create("dom-to-xhtml",{init:function(){e.Editable.setContentSerializer(function(e){return r.contentsToXhtml(e)})}})});

@@ -1,7 +1,1 @@
-define({
-	root: {"button.formatlessPaste.tooltip":"Toggle Formatless Pasting"}
-,	"de":true,
-	"fr":true,
-	"pl":true,
-	"ru":true
-});
+define({root:{"button.formatlessPaste.tooltip":"Toggle Formatless Pasting"},de:!0,fr:!0,pl:!0,ru:!0});

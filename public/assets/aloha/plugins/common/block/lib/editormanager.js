@@ -4,34 +4,4 @@
  * aloha-sales@gentics.com
  * Licensed unter the terms of http://www.aloha-editor.com/license.html
  */
-
-
-define(
-['aloha/registry'],
-function(Registry) {
-	
-
-	/**
-	 * The Editor Manager maps data types to editor classes.
-	 *
-	 * @name block.editormanager
-	 * @class Editor manager singleton
-	 */
-	return new (Registry.extend(
-	/** @lends block.editormanager */
-	{
-		/**
-		 * Create an editor from the given definition. Acts as a factory method
-		 * for editors.
-		 *
-		 * @param {Object} definition
-		 */
-		createEditor: function(definition) {
-			if (!this.has(definition.type)) {
-				throw 'Editor for type "' + definition.type + '" not found.';
-			}
-			var Editor = this.get(definition.type);
-			return new Editor(definition);
-		}
-	}))();
-});
+define(["aloha/registry"],function(e){return new(e.extend({createEditor:function(e){if(!this.has(e.type))throw'Editor for type "'+e.type+'" not found.';var t=this.get(e.type);return new t(e)}}))});

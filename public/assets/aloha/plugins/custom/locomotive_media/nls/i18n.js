@@ -1,4 +1,1 @@
-define({
-  root: { "button.addimg.tooltip": "insert media" },
-  fr: true
-});
+define({root:{"button.addimg.tooltip":"insert media"},fr:!0});
