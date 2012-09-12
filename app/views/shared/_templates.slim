@@ -4,7 +4,7 @@
     = render :partial => 'builder/templates'
 
   script.home-icon(type="text/template")
-    .inner
+    .inner class="{{ g.iconLayout }} #{'height'+@company.settings.icon_line_height.to_s if @company.settings.icon_layout == 'line'}"
       | <% if(!iconName.match('http://')) { %>
       .icon.dbx-handle{ style="background-image: url(/images/widgets/{{ iconName }}.png)" }
       | <% }else{ %>

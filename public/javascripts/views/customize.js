@@ -76,6 +76,8 @@
       'change select':                    'updateFonts',
       'change [name=body_bg_repeat]':     'updateRepeat',
       'change [name=banner_size]':        'updateBannerSize',
+      'change [name=icon_layout]':        'updateIconLayout',
+      'change [name=icon_line_height]':   'updateLineHeight',
       'click .accept-btn':                'saveChanges',
       'click .cancel-btn':                'discardChanges',
       'click .remove-banner-link':        'removeBanner',
@@ -111,6 +113,7 @@
         .find('[name=tab_bar_font_family]').val(extraData.tab_bar_font_family).end()
         .find('[name=body_bg_repeat]').val(extraData.body_bg_repeat).end()
         .find('[name=banner_size]').val(extraData.banner_size).end()
+        .find('[name=icon_line_height]').val(extraData.icon_line_height).end()
       ;
       this.delegateEvents();
 
@@ -227,6 +230,28 @@
       resizeEmulator();
     },
 
+    updateLineHeight: function () {  
+      if (this.$('input[name=icon_layout]:checked').val() == 'line') {
+        hasChanges || (hasChanges = true);
+        var height = this.$('select[name=icon_line_height]').val();
+        // Remove previous heightx class
+        for (var i=1; i<=10; i++){
+          $('#home-widgets .home-icon .inner').removeClass('height'+i*10);
+        }   
+        $('#home-widgets .home-icon .inner').addClass('height'+height);
+        resizeEmulator();
+      }
+    },
+
+    updateIconLayout: function () {
+      hasChanges || (hasChanges = true);
+      var iconLayout = this.$('input[name=icon_layout]:checked').val();
+      $('#home-widgets .home-icon .inner').toggleClass( 'line', iconLayout == 'line');
+      $('#home-widgets .home-icon').css('width', (iconLayout == 'line' ? '100%' : '25%'));
+      this.updateLineHeight();
+      resizeEmulator();
+    },
+
     saveChanges: function () {
       if (!g.isPremium) return;
 
@@ -253,9 +278,14 @@
         .val( getSetting('body_bg_repeat') );
       this.$('[name=banner_size]')
         .val( getSetting('banner_size') );
+      this.$('[name=icon_line_height]')
+        .val( getSetting('icon_line_height') );
+      getSetting('icon_layout') === 'grid' ? this.$('#radio_grid').attr('checked', true) : this.$('#radio_line').attr('checked', true)
       this.updateFonts(!g.isPremium);
       this.updateRepeat();
       this.updateBannerSize();
+      this.updateLineHeight();
+      this.updateIconLayout();
       if (opts.byNavigation === true) {
         hasChanges = false;
       }

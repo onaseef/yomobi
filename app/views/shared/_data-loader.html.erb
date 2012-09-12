@@ -15,6 +15,7 @@ window.g = {
   logo: "<%=escape_javascript @company.logo.url(:mobile) %>",
   banner: "<%=escape_javascript @company.banner.url(:mobile) %>",
   body_bg: "<%=escape_javascript @company.settings.body_bg.url(:mobile) %>",
+  iconLayout: "<%=escape_javascript @company.settings.icon_layout %>",
   id_counter: <%=@company.id_counter %>,
   userEmails: {
     yomobi: "<%=escape_javascript @company.user.email %>",

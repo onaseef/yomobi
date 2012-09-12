@@ -15,6 +15,7 @@ window.g = {
   logo: "<%=escape_javascript @company.logo.url(:mobile) %>",
   banner: "<%=escape_javascript @company.banner.url(:mobile) %>",
   body_bg: "<%=escape_javascript @company.settings.body_bg.url(:mobile) %>",
+  iconLayout: "<%=escape_javascript @company.settings.icon_layout %>",
   isPreview: <%= @is_preview_mode.present? %>,
   isBuilder: <%= @is_builder.present? %>,
   isPremium: <%= @company.premium? %>,

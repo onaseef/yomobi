@@ -432,7 +432,23 @@ script.customize(type="text/template")
               .color-picker data-color="{{ icon_text_color }}" data-target="icon_text_color"
                 div style="background-color:{{ icon_text_color }}"
               input type="hidden" name="icon_text_color" value="{{ icon_text_color }}"
-
+              
+        table.body_bg.wphoto-wrap
+          tbody
+            tr
+              td
+                label = t 'builder.customize.icon_layout'
+                | <input id='radio_grid' type='radio' name='icon_layout' value='grid' #{'checked' if @company.settings.icon_layout == 'grid'} >
+                label for="radio_grid" = t 'builder.customize.icon_layout_grid'
+              td
+                | <input id='radio_line' type='radio' name='icon_layout' value='line' #{'checked' if @company.settings.icon_layout == 'line'} >
+                label for="radio_line" = t 'builder.customize.icon_layout_line'
+              td
+                label = t 'builder.customize.icon_line_height'
+                select name="icon_line_height"
+                  - (1..10).each do |i|
+                    option value="#{(11-i)*10}" #{(11-i)*10}%
+                    
         table.body_bg.wphoto-wrap
           tbody
             tr

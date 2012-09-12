@@ -83,5 +83,40 @@
   <% end %>
 }
 
+#home-widgets .home-icon { 
+  <%= 'width: 100%;' if @company.settings.icon_layout == 'line' %>
+}
+
+<% (1..10).each do |i| %>
+  <% i *= 10 %>
+  <% size = i/100.0 * 57 %>
+  <% invalid_icon_size = i/100.0 * 24 %>
+  <% radius = i/100.0 * 12 %>
+
+#home-widgets .home-icon .inner.line.<%= "height#{i}" %> {
+  height:<%= size %>px;
+}
+
+#home-widgets .home-icon .inner.line.<%= "height#{i}" %> .icon {
+  width:<%= size %>px;
+  height:<%= size %>px;
+  background-size: <%= size %>px;
+  border-radius: <%= radius %>px;
+  -webkit-border-radius: <%= radius %>px;
+  -moz-border-radius: <%= radius %>px;
+}
+
+.home-icon.invalid .line.<%= "height#{i}" %> .invalid-icon {
+  top: -<%= i/10.0*5+15 %>px !important;
+  left: <%= i/10.0*4+3 %>px !important;
+  width: <%= invalid_icon_size %>px;
+  height: <%= invalid_icon_size %>px;
+  background-size: <%= invalid_icon_size %>px;
+    
+}
+
+<% end %>
+
+
 </style>
 <% end %>
