@@ -28,10 +28,10 @@ class ActiveSupport::TestCase
 
     company.reload
 
-    start_time = (start_time == :now) ? Date.today : start_time.to_date
-    Date.stub :today, start_time, do
+    start_time = (start_time == :now) ? Date.current : start_time.to_date
+    Date.stub :current, start_time, do
       # MIRRED FROM site_manager_controller.rb:244
-      now = Date.today
+      now = Date.current
       base_date = [company.next_charge_date, company.hard_expire_date, now].compact.max
       base_date = now if base_date < now
       #/MIRRED

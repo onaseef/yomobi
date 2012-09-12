@@ -38,7 +38,7 @@ class WepayCheckoutRecordObserver < ActiveRecord::Observer
       elsif last_payment
         base_date = last_payment.expire_date
       end
-      base_date ||= Date.today
+      base_date ||= Date.current
       base_date = [company.manual_expire_date, base_date].max if company.manual_expire_date
 
       payment.sub_state = 'active' if wcr.period
@@ -63,7 +63,7 @@ class WepayCheckoutRecordObserver < ActiveRecord::Observer
 
     case wcr.state
     when /^(authorized|reserved)$/ then payment.is_valid = true
-    when /^(captured|settled)$/ then payment.last_payment_received_at = Date.today
+    when /^(captured|settled)$/ then payment.last_payment_received_at = Date.current
     when /^(failed|refunded|chargeback)$/ then
       payment.is_valid = false
       UserMailer.notify_bad_payment(payment, wcr.state).deliver
@@ -78,7 +78,7 @@ class WepayCheckoutRecordObserver < ActiveRecord::Observer
       end
     when /^(cancelled|revoked)$/ then
       # Manually cancelled. Update expire date
-      if payment.sub_state == 'active' && payment.start_date > Date.today
+      if payment.sub_state == 'active' && payment.start_date > Date.current
         # No payment has been made for this subscription. Just mark it as invalid
         payment.is_valid = false
         payment.sub_state = 'cancelled'

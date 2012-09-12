@@ -161,7 +161,7 @@ class Company < ActiveRecord::Base
   def hard_expire_date
     payment = self.last_payment(true)
     expire_date = payment && (payment.wcr.preapproval_id ? payment.next_charge_date : payment.expire_date)
-    expire_date = Date.today if payment && payment.wcr.start_time > Time.now.to_i
+    expire_date = Date.current if payment && payment.wcr.start_time > Time.now.to_i
     [expire_date, self.manual_expire_date].compact.max
   end
 
@@ -170,7 +170,7 @@ class Company < ActiveRecord::Base
     if expire_date.nil?
       self.update_attribute :premium, false
     else
-      self.update_attribute :premium, expire_date > Date.today
+      self.update_attribute :premium, expire_date > Date.current
     end
   end
 
