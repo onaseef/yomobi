@@ -1,0 +1,40 @@
+#footer-wrap
+  background: url('/assets/footer-bg.png') $blue repeat-x center top
+  font-family: $sans-serif
+
+.copyright
+  color: $white
+  p
+    +adjust-font-size-to(12px)
+
+.secondary-menu
+  +hidden-320
+  +margin-leader(0.5)
+  ul
+    float: right
+    width: 51%
+  li
+    float: left
+    font-size: 12px
+    font-family: $sans-serif
+    padding: 0 2%
+    a,
+    .a
+      display: block
+
+#footer-wrap
+  .user-menu
+    +visible-320
+    ul
+      width: 93%
+      li
+        border-right: none
+        float: left
+        font-size: 12px
+        font-family: $sans-serif
+        padding: 0 2%
+        a,
+        .a
+          display: block
+    ul, x:-moz-any-link
+      width: 95%

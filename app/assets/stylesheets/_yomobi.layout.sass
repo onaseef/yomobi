@@ -1,0 +1,79 @@
+#body-wrap
+  +clearfix
+  //background: url('../img/12_col.gif') center top repeat-y
+  margin: 0 auto
+
+#header-top
+  +container
+  & > .leftcol
+    +col(6)
+  & > .rightcol
+    +col(6)
+
+#header-wrap
+  & > .main-menu
+    +container
+    & > .content
+      +col(12)
+
+#content-top-wrap,
+#content-middle-wrap,
+#content-bottom-wrap
+  +container
+  +clearfix
+
+#content-middle-wrap,
+#content-bottom-wrap
+  +clearfix
+
+#content-middle-wrap
+  +margin-leader(1)
+  & > .leftcol
+    +col(8)
+    border-right: 1px solid $grey
+    margin-right: 0
+    padding-right: 0.88%
+  & > .rightcol
+    +col(4)
+
+.front
+  #content-top-wrap
+    & > .header,
+    & > .carousel
+      +col(12)
+  #content-middle-wrap
+    +padding-trailer(1)
+    border-bottom: 1px solid $grey
+    & > .promo
+      +col(12)
+    & > .get-started
+      +col(5)
+      width: 43.3%
+    & > .video
+      +col(7) 
+      width: 52.5%
+  #content-bottom-wrap
+    +margin-leader(0.5)
+    +padding-leader(0.5)
+    & > .clients
+      +col(6)
+      border-right: 1px solid $grey
+      margin-right: 0
+      padding-right: 0.9% 
+    & > .mobile-stats
+      +col(6)
+      margin-left: 2%
+      width: 46.9%
+
+#footer-wrap
+  margin-top: -140px
+  & > .inner
+    +container
+    & > .copyright
+      +col(3)
+    & > .main-menu
+      +col(9)
+    & > .secondary-menu
+      +col(12)
+    
+

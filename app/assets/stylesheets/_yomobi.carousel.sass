@@ -1,0 +1,31 @@
+.yomobi-promo-carousel
+  +hidden-515
+  position: relative
+  & > .content
+    +border-radius(10px)
+    background: $green
+    border: 3px solid #e3e0c8  
+    height: 346px
+    position: relative
+    .row
+      display: none
+      & > .carousel
+        left: perc(100px , 940px)
+        top: 25px
+        position: absolute
+        width: 78%
+      img
+        height: 230px
+        max-width: 100%
+      &.active
+        display: block
+      & > .banner-text
+        color: $white
+        font:
+          size: 36px
+        left: perc(100px , 940px)
+        position: absolute
+        bottom: 30px
+  & > a
+    +carousel-nav("carousel-nav.png", 25px , 27px, 152px, 2.5%, 2.5%)
+

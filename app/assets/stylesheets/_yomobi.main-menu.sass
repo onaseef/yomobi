@@ -1,0 +1,94 @@
+.main-menu
+  font-family: $sans-serif
+  & > .content
+    & > ul
+      ul
+        display: none
+        li
+          text-align: center
+      & > li
+        float: left
+        text-align: center
+        & > a,
+        & > .a
+          display: block
+          
+
+#header-wrap
+  & > .main-menu
+    +hidden-240
+    & > .content
+      +clearfix
+      border: 1px solid #155268
+      & > ul
+        +background-image(linear-gradient(#5c9354, #96cb81))
+        float: left
+        width: 100%
+        ul
+          +border-bottom-radius(5px)
+          background: #ddf3d4
+          border-left: 1px solid #c6c0a8
+          border-right: 1px solid #c6c0a8
+          border-bottom: 1px solid #c6c0a8
+          margin-top: 1px
+          max-width: 154px
+          padding: 5px 0
+          position: absolute
+          width: 16%
+          z-index: 200
+          li
+            float: none
+            display: block
+            position: relative
+            text-align: center
+            a,
+            .a
+              +adjust-font-size-to(12px)
+              color: $grey
+              display: block
+              line-height: 40px
+              height: 40px
+              text-decoration: none
+            a
+              &:hover
+                background: #b2daa1
+            .a
+              background: #b2daa1
+        & > li
+          width: 16.6%
+          &:hover
+            +background-image(linear-gradient(#5a8a52, #4f7748, #4f7748, #5a8a52))
+            +box-shadow(#575e31 3px 3px 10px inset)
+          &.active-trail
+            +background-image(linear-gradient(#5a8a52, #4f7748, #4f7748, #5a8a52))
+            +box-shadow(#575e31 3px 3px 10px inset)
+          &:hover
+            ul
+              display: block
+          & > a,
+          & > .a
+            +adjust-font-size-to(15px)
+            height: 41px
+            padding-top: 27px
+            text-decoration: none
+          &.first
+            width: 16.8%
+          &.last
+            width: 16.804%
+
+#footer-wrap
+  & > .inner
+    padding-top: 40px
+    & > .main-menu
+      & > .content
+        & > ul
+          float: right
+          width: 53%
+          & > li
+            font-size: 12px
+            padding: 0 2%
+            &.active-trail > a
+              text-decoration: none
+            
+
+
