@@ -7,10 +7,10 @@ Yomobi::Application.configure do
   config.assets.compile = true
 
   # Generate digests for assets URLs
-  config.assets.digest = true
+  config.assets.digest = false
   # Settings specified here will take precedence over those in config/application.rb
 
-  config.app_domains = ['webesity.com']
+  config.app_domains = ['webesity.com', 'yomobi.dev']
   config.re_app_domains = config.app_domains.map {|d| Regexp.escape d}.join '|'
   config.heroku_app_name = 'yomobi-staging'
 
