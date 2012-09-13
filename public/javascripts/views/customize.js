@@ -17,31 +17,51 @@
   var updateColor = {
     header_color: function (color) {
       color || (color = getSetting('header_color'));
-      $('#top-bar .company-info').css({ background:color });
+      $('#top-bar .company-info').css({
+        background:color
+      });
     },
     header_text_color: function (color) {
       color || (color = getSetting('header_text_color'));
-      $('#top-bar .company-info').css({ color:color });
+      $('#top-bar .company-info').css({
+        color:color
+      });
     },
     tab_bar_color: function (color) {
       color || (color = getSetting('tab_bar_color'));
-      $('#top-bar .tab-bar').css({ background:color});
-      $('#canvas .mobile-footer').css({ background:color });
+      $('#top-bar .tab-bar').css({
+        background:color
+      });
+      $('#canvas .mobile-footer').css({
+        background:color
+      });
     },
     tab_bar_text_color: function (color) {
       color || (color = getSetting('tab_bar_text_color'));
-      $('#top-bar .tab-bar td, #top-bar .tab-bar td a').css({ color:color });
-      $('#canvas .mobile-footer').css({ color:color });
-      $('#top-bar .tab-bar').css({ borderColor:color });
-      $('#canvas .mobile-footer').css({ borderColor:color });
+      $('#top-bar .tab-bar td, #top-bar .tab-bar td a').css({
+        color:color
+      });
+      $('#canvas .mobile-footer').css({
+        color:color
+      });
+      $('#top-bar .tab-bar').css({
+        borderColor:color
+      });
+      $('#canvas .mobile-footer').css({
+        borderColor:color
+      });
     },
     icon_text_color: function (color) {
       color || (color = getSetting('icon_text_color'));
-      $('#canvas .home-icon .title').css({ color:color });
+      $('#canvas .home-icon .title').css({
+        color:color
+      });
     },
     body_bg_color: function (color) {
       color || (color = getSetting('body_bg_color'));
-      $('#canvas #home.page').css({ backgroundColor:color });
+      $('#canvas #home.page').css({
+        backgroundColor:color
+      });
     }
   };
 
@@ -57,7 +77,9 @@
         auto: true,
         emptyQueue: true,
         onDone: onDone,
-        extraParams: { targetType: type }
+        extraParams: {
+          targetType: type
+        }
       });
     }, 300);
   };
@@ -106,14 +128,16 @@
       _.extend(extraData, settings);
 
       this.el.html( this.template(extraData) )
-        .find('.help-bubble').simpletooltip(undefined,'help').end()
-        .find('input:file').keypress(function () { return false; }).end()
-        .find('[name=icon_font_family]').val(extraData.icon_font_family).end()
-        .find('[name=header_font_family]').val(extraData.header_font_family).end()
-        .find('[name=tab_bar_font_family]').val(extraData.tab_bar_font_family).end()
-        .find('[name=body_bg_repeat]').val(extraData.body_bg_repeat).end()
-        .find('[name=banner_size]').val(extraData.banner_size).end()
-        .find('[name=icon_line_height]').val(extraData.icon_line_height).end()
+      .find('.help-bubble').simpletooltip(undefined,'help').end()
+      .find('input:file').keypress(function () {
+        return false;
+      }).end()
+      .find('[name=icon_font_family]').val(extraData.icon_font_family).end()
+      .find('[name=header_font_family]').val(extraData.header_font_family).end()
+      .find('[name=tab_bar_font_family]').val(extraData.tab_bar_font_family).end()
+      .find('[name=body_bg_repeat]').val(extraData.body_bg_repeat).end()
+      .find('[name=banner_size]').val(extraData.banner_size).end()
+      .find('[name=icon_line_height]').val(extraData.icon_line_height).end()
       ;
       this.delegateEvents();
 
@@ -143,7 +167,7 @@
       this.$('.subpanels .' + targetArea).show();
 
       if (targetArea === 'home_page' && this.hasInitBodyBgUploader === false
-      && g.isPremium) {
+        && g.isPremium) {
         initDialogUploader('body_bg', this.$('.home_page'), this.onUpload);
         this.hasInitBodyBgUploader = true;
       }
@@ -185,7 +209,10 @@
       $('img.banner').attr('src', g.blankImg);
       $('.banner_size, .remove-banner-link').hide();
       resizeEmulator();
-      $.post(g.customizeUploadPath, { destroy:1, targetType:'banner' });
+      $.post(g.customizeUploadPath, {
+        destroy:1,
+        targetType:'banner'
+      });
     },
 
     removeBodyBg: function (e) {
@@ -198,7 +225,10 @@
       });
       $('img.body_bg').attr('src', g.blankImg);
       $('.bg_repeat, .remove-body_bg-link').hide();
-      $.post(g.customizeUploadPath, { destroy:1, targetType:'body_bg' });
+      $.post(g.customizeUploadPath, {
+        destroy:1,
+        targetType:'body_bg'
+      });
     },
 
     updateFonts: function (useDefault) {
@@ -206,21 +236,29 @@
 
       var font = this.$('[name=icon_font_family]').val();
       if (useDefault === true) font = util.defaultSettings.icon_font_family;
-      $('#canvas .home-icon .title').css({ fontFamily:font });
+      $('#canvas .home-icon .title').css({
+        fontFamily:font
+      });
 
       var font = this.$('[name=header_font_family]').val();
       if (useDefault === true) font = util.defaultSettings.header_font_family;
-      $('#top-bar .company-info').css({ fontFamily:font });
+      $('#top-bar .company-info').css({
+        fontFamily:font
+      });
 
       var font = this.$('[name=tab_bar_font_family]').val();
       if (useDefault === true) font = util.defaultSettings.tab_bar_font_family;
-      $('#top-bar .tab-bar').css({ fontFamily:font });
+      $('#top-bar .tab-bar').css({
+        fontFamily:font
+      });
     },
 
     updateRepeat: function () {
       hasChanges || (hasChanges = true);
       var repeat = this.$('[name=body_bg_repeat]').val();
-      $('#canvas #home.page').css({ backgroundRepeat:repeat });
+      $('#canvas #home.page').css({
+        backgroundRepeat:repeat
+      });
     },
 
     updateBannerSize: function () {
@@ -256,8 +294,8 @@
       if (!g.isPremium) return;
 
       var submitBtn = this.$('input[type=submit]').prop('disabled',true)
-        , loader = this.$('.loader').show()
-        , checkmark = this.$('.checkmark').hide()
+      , loader = this.$('.loader').show()
+      , checkmark = this.$('.checkmark').hide()
       ;
 
       var payload = this.$('.subpanels').serialize();
@@ -273,13 +311,13 @@
     discardChanges: function (opts) {
       for (var area in updateColor) updateColor[area]();
       this.$('[name=icon_font_family]')
-        .val( getSetting('icon_font_family') );
+      .val( getSetting('icon_font_family') );
       this.$('[name=body_bg_repeat]')
-        .val( getSetting('body_bg_repeat') );
+      .val( getSetting('body_bg_repeat') );
       this.$('[name=banner_size]')
-        .val( getSetting('banner_size') );
+      .val( getSetting('banner_size') );
       this.$('[name=icon_line_height]')
-        .val( getSetting('icon_line_height') );
+      .val( getSetting('icon_line_height') );
       getSetting('icon_layout') === 'grid' ? this.$('#radio_grid').attr('checked', true) : this.$('#radio_line').attr('checked', true)
       this.updateFonts(!g.isPremium);
       this.updateRepeat();
@@ -294,7 +332,9 @@
       }
     },
 
-    hasChanges: function () { return hasChanges; },
+    hasChanges: function () {
+      return hasChanges;
+    },
 
     stopEditing: function () {
       this.el.html(bapp.idleTemplate());
@@ -304,6 +344,15 @@
 
     enableUploadButton: util.enableFileUploadButton
 
+  });
+
+  $('#radio_line, #radio_grid').live('click', function(){
+    var select = $(this).closest('tr').find('select');
+    if($('#radio_line').is(':checked') == true){
+      select.removeAttr('disabled');
+    }else{
+      select.attr('disabled', 'disabled');
+    }
   });
 
 })(jQuery);

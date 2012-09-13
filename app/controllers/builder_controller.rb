@@ -128,12 +128,11 @@ class BuilderController < ApplicationController
     settings.tab_bar_color = params[:tab_bar_color]
     settings.tab_bar_text_color = params[:tab_bar_text_color]
     settings.tab_bar_font_family = params[:tab_bar_font_family]
-
     settings.icon_text_color = params[:icon_text_color]
     settings.icon_font_family = params[:icon_font_family]
     
     settings.icon_layout = params[:icon_layout]
-    settings.icon_line_height = params[:icon_line_height]
+    settings.icon_line_height = params[:icon_line_height] || "100"
 
     settings.body_bg_repeat = params[:body_bg_repeat]
     settings.body_bg_color = params[:body_bg_color]
