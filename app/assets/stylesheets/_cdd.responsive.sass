@@ -51,7 +51,7 @@ $max-width: $columns * ($column-width + $gutter-width)
 
 @mixin background-contain($image)
   background-size: contain
-  -ms-filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="#{image_url($image)}", sizingMethod="scale")
+  -ms-filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="#{$image}", sizingMethod="scale")
 
 
 @function perc($width, $container-width: $max-width)

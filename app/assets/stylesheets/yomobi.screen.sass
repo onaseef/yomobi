@@ -13,6 +13,8 @@
 @import yomobi.carousel
 @import yomobi.footer
 
+@import yomobi.disqus
+
 body
   background: $sand
   color: $grey
@@ -61,6 +63,16 @@ a,
     li
       margin-left: 14px
       margin-bottom: 15px
+  .i10n
+    +hidden-320
+    float: left
+    margin: 0 20px  24px 0
+    width: 24%
+    img
+      max-width: 100%
+  &.custom-plan
+    +margin-leader(1)
+    border-top: 1px solid $grey
 
 .btn-img
   +btn-color-image(180px, 25px, 5px, $orange, $orange, $white, 16px, 10px, 20px, "arrow.png")
@@ -176,29 +188,35 @@ a,
       .link
         @extend .btn-img
 
-.plans
+.plans,
+.fees
   +clearfix
   +margin-leader(0.5)
   +padding-leader(1.5)
   +margin-trailer(0.5)
-  +padding-trailer(0.5)
+  +padding-trailer(1)
   border-top: 1px solid $grey
   border-bottom: 1px solid $grey
   .row
     float: left
     width: 45%
     & > .link
-      +btn-color(60%, 40px, 10px, $green, $green, $white, 24px, 20px)
       border: none
       font:
         family: $sans-serif
         weight: $fw-bold
       margin: 0 auto
-      text-transform: uppercase
     &.first
       border-right: 1px solid $grey 
       padding-right: 4.5%
       margin-right: 3%
+
+.plans
+  .row
+    & > .link
+      +btn-color(60%, 40px, 10px, $green, $green, $white, 24px, 20px)
+      text-transform: uppercase
+   
     & > .title
       +margin-leader(0.5)
       @extend h2
@@ -207,10 +225,16 @@ a,
       padding: 0 10px
       text-align: center
 
-.node
-  &.custom-plan
-    +margin-leader(1)
-    border-top: 1px solid $grey
+.fees
+  & > .header
+    @extend h2
+    margin-top: 0
+  .row
+    & > .link
+      +btn-color(80%, 50px, 10px, $green, $green, $white, 24px, 18px)
+      line-height: 1.8em
+      span
+        font-size: 14px
 
 .compare-table
   +padding-leader(1)
@@ -252,7 +276,98 @@ a,
         img
           margin: 0 auto    
 
+.testimonials,
+.blog
+  & > .header
+    @extend h1
+  .view
+    & > .row
+      +clearfix
+      background: $white
+      margin-bottom: 25px
+      padding: 15px 3.3% 15px 3.3%
+      width: 91%
+      .title
+        @extend h3
+      .i10n
+        +hidden-320
+        img
+          max-width: 100%
+      .link
+        +btn-color(100px, 23px, 5px, $orange, $orange, $white, 14px, 10px)
+        border: none
+        font-family: $sans-serif
 
+
+.testimonials
+  .view
+    & > .row
+      position: relative
+      .title
+        @extend h3
+      .i10n
+        +hidden-320
+        height: 138px
+        position: absolute
+        right: 2.3%
+        top: 20px
+        width: 25%
+        img
+          max-width: 100%
+      .title,
+      .text
+        width: 70%
+
+.blog
+  .view
+    & > .row
+      .i10n
+        float: left
+        width: 24%
+      .title,
+      .text,
+      .link
+        margin-left: 28%
+
+form
+  &.comments    
+    background: #fbfaf1
+    padding: 20px 18% 20px 5%
+    width: 77%
+    h3
+      +margin-trailer(0.5)
+    label
+      display: block
+      color: #66667b
+      float: left
+      font:
+        family: $sans-serif
+        size: 11px
+        weight: $fw-bold
+      margin: 20px 5px 0 0 
+      text-align: right
+      width: 70px
+    input[type="text"],
+    input[type="email"],
+    textarea
+      margin-top: 18px
+      width: 82%
+    textarea
+      height: 105px
+    input[type="submit"]
+      background: $orange
+      border: none
+      color: $white
+      height: 30px
+      font:
+        family: $sans-serif
+        size: 14px
+        weight: $fw-bold
+      margin: 20px 0 0 30px
+      text-shadow: none
+      width: 110px
+
+//media queries
 +res800
   #header-top
     .btn-img
@@ -291,6 +406,10 @@ a,
     .row
       & > .link
         width: 80%
+  .fees
+    .row
+      & > .link
+        width: 90%
 
   .compare-table
     table
@@ -311,6 +430,19 @@ a,
         & > .content
           & > ul
             width: 72%
+  .yomobi-promo-carousel
+    & > .content
+      .row
+        & > .banner-text
+          font-size: 29px
+  form
+    &.comments
+      padding: 20px 5% 20px 5%
+      width: 88%    
+      input[type="text"],
+      input[type="email"],
+      textarea
+        width: 70%
 
 +res768
   #header-top
@@ -328,12 +460,6 @@ a,
             &.first,
             &.last
               width: 16.6%
-
-  .yomobi-promo-carousel
-    & > .content
-      .row
-        & > .banner-text
-          font-size: 29px
 
 +res600
   h1
@@ -509,13 +635,25 @@ a,
         &:first-child
           .i10n
             display: none
-  .plans
+  .plans,
+  .fees
     .row
       +reset
       &.first
         border-right: 0
+  .plans      
+    .row
       & > .link
         width: 70%
+  .fees      
+    .row
+      & > .link
+        width: 70%
+      &.first
+        margin-bottom: 24px
+        padding-right: 0
+        margin-right: 0
+
   .compare-table
     & > .header
       +adjust-font-size-to(26px)
@@ -530,6 +668,11 @@ a,
       tbody
         th
           padding: 3px 10px
+  .testimonials,
+  .blog
+    .view
+      & > .row
+        width: 93%
 
 +res480
   +iphone-text-support
@@ -542,6 +685,8 @@ a,
         padding: 0 1.7%
   
 +res320
+  h3
+    +adjust-font-size-to(18px)
   #header-top
     .btn-img
       float: none
@@ -576,10 +721,29 @@ a,
     & > .inner
       & > .main-menu
         display: none
-  .front
+  .front 
     .mobile-stats 
       p
         width: 100%
+  .testimonials
+    .view
+      & > .row
+        .title,
+        .text
+          width: 100%
+  .blog
+    .view
+      & > .row
+        .title,
+        .text,
+        .link
+          margin-left: 0
+  form
+    &.comments    
+      label
+        font:
+          size: 10px
+        width: 55px
 
 +res295
   #header-top
@@ -608,11 +772,16 @@ a,
           li
             font-size: 10px
             padding: 0 1%
-  .front
+  .front 
     #content-middle-wrap 
       & > .promo 
         .row
           float: none
           height: 140px
           width: 87%
-  
+  form
+    &.comments    
+      label
+        font:
+          size: 8px
+        width: 50px

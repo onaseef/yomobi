@@ -31,7 +31,7 @@ img
       margin-right: $margin
       text-indent: -1000em
       .a
-        background: url(#{$image}) no-repeat top center
+        background: url('#{$image}') no-repeat top center
         cursor: pointer
         display: block
         height: $height
@@ -42,7 +42,7 @@ img
           background-position: 0 (-$height)
 
 @mixin carousel-nav($image, $width, $height, $top, $left, $right)
-  background: url(#{$image})
+  background: url('#{$image}')
   cursor: pointer
   display: block
   height: $height
@@ -88,7 +88,7 @@ img
 @mixin btn-color-image($width, $height, $radius, $color, $border-color, $text-color, $font-size, $padding-top, $padding-left, $image, $left: 95%, $top: 50%)
   +border-radius($radius)
   border: 1px solid $border-color
-  background: url(#{$image}) no-repeat $left $top $color
+  background: url('#{$image}') no-repeat $left $top $color
   padding-left: $padding-left
   width: $width
   a
@@ -104,7 +104,7 @@ img
 @mixin social-menu($width, $height, $image, $margin-left)
   li
     float: left
-    background: url(#{$image}) no-repeat
+    background: url('#{$image}') no-repeat
     margin-left: $margin-left
     text-indent: -1000em
     a

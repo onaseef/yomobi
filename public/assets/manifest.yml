@@ -14,6 +14,7 @@ li-bg.png: li-bg.png
 logo.png: logo.png
 social-menu-bg.png: social-menu-bg.png
 tmp/ad.png: tmp/ad.png
+tmp/blog.png: tmp/blog.png
 tmp/earth.png: tmp/earth.png
 tmp/hourglass.png: tmp/hourglass.png
 tmp/key.png: tmp/key.png
@@ -22,6 +23,8 @@ tmp/phone.png: tmp/phone.png
 tmp/positive.png: tmp/positive.png
 tmp/slider-img.png: tmp/slider-img.png
 tmp/tablet.png: tmp/tablet.png
+tmp/testimonials.png: tmp/testimonials.png
+application.js: application.js
 typus/application.js: typus/application.js
 typus/application.css: typus/application.css
 images/h1.png: images/h1.png

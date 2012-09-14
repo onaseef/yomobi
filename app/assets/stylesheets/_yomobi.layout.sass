@@ -1,6 +1,6 @@
 #body-wrap
   +clearfix
-  //background: url('../img/12_col.gif') center top repeat-y
+  //background: url('/assets/12_col.gif') center top repeat-y
   margin: 0 auto
 
 #header-top
@@ -36,11 +36,11 @@
   & > .rightcol
     +col(4)
 
+#content-top-wrap
+  & > .carousel,
+  & > .header
+    +col(12)
 .front
-  #content-top-wrap
-    & > .header,
-    & > .carousel
-      +col(12)
   #content-middle-wrap
     +padding-trailer(1)
     border-bottom: 1px solid $grey
