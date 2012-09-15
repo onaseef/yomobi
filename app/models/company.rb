@@ -52,6 +52,7 @@ class Company < ActiveRecord::Base
   attr_accessor :source_db_name
 
   before_create :create_couch, :unless => Proc.new {|c| c.db_pass == 'n0n-_-exist@nt??' }
+  before_destroy :delete_couch
 
   before_post_process :check_file_size
   validates_attachment_size :logo, :less_than => 3.megabytes, :unless => Proc.new {|c| c.logo.nil? }
@@ -73,6 +74,11 @@ class Company < ActiveRecord::Base
       db.bulk_save default_docs.compact, false
     end
     result
+  end
+
+  def delete_couch
+    db = CouchRest.database(ApplicationController::couch_url self.db_name, :@admin)
+    db.delete!
   end
 
   def get_widget_doc(wsubtype,wname=nil)
