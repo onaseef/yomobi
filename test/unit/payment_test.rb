@@ -10,9 +10,9 @@ describe Payment do
     c = new_company
     sub = new_subscription(c, :now)
 
-    sub.start_date.must_equal  Date.today
-    sub.expire_date.must_equal  Date.today + 5.years
-    sub.next_charge_date.must_equal  Date.today + 1.month
+    sub.start_date.must_equal  Date.current
+    sub.expire_date.must_equal  Date.current + 5.years
+    sub.next_charge_date.must_equal  Date.current + 1.month
 
     # The company's expire date should be five years from the new subscription
     c.expire_date.must_equal  sub.start_date + 5.years
@@ -27,7 +27,7 @@ describe Payment do
     s1.sub_state.must_equal 'cancelled'
     # Cancelled subscriptions get their expire_date set to their time paid
     # (as opposed to the end of five years)
-    s1.expire_date.must_equal  Date.today + 1.month
+    s1.expire_date.must_equal  Date.current + 1.month
 
     # The new sub should start changing at the cancelled sub's expire date
     s2.next_charge_date.must_equal  s1.expire_date
@@ -40,15 +40,15 @@ describe Payment do
 
     # One year has been charged.
     # The next charge date should be Feb 20/13
-    expire_1 = (Date.today - 5.days + 1.year)
+    expire_1 = (Date.current - 5.days + 1.year)
     s1.next_charge_date.must_equal  expire_1
 
     # In one year (March 1/13), the next charge date should be Feb 20/14
-    Date.stub :today, (Date.today + 1.year), do
+    Date.stub :current, (Date.current + 1.year), do
       s1.next_charge_date.must_equal (expire_1 + 1.year)
     end
     # In six months (Sep 1/12), the next charge date should be Feb 20/13
-    Date.stub :today, (Date.today + 6.months), do
+    Date.stub :current, (Date.current + 6.months), do
       s1.next_charge_date.must_equal expire_1
     end
 
@@ -61,7 +61,7 @@ describe Payment do
     s2.next_charge_date.must_equal  expire_1
 
     # In one year (March 1/13), the next charge date should be April 20/13
-    Date.stub :today, (Date.today + 1.year), do
+    Date.stub :current, (Date.current + 1.year), do
       s2.next_charge_date.must_equal (expire_1 + 1.month)
     end
   end
@@ -78,7 +78,7 @@ describe Payment do
     s1.expire_date.must_equal  c.expire_date
 
     # Since the sub was cancelled, company expire date should be in less than a month
-    expire_1 = (Date.today - 5.days + 1.month)
+    expire_1 = (Date.current - 5.days + 1.month)
     c.expire_date.must_equal(expire_1)
 
     s2 = new_subscription(c, :now); s1.reload; c.reload
@@ -101,7 +101,7 @@ describe Payment do
     s1.is_valid.must_equal true
     s1.sub_state.must_equal 'cancelled'
 
-    expire_1 = (Date.today - 10.days + 1.month)
+    expire_1 = (Date.current - 10.days + 1.month)
     c.expire_date.must_equal  expire_1
 
     # Create a failed subscription in the past
@@ -130,24 +130,38 @@ describe Payment do
   it "should handle cancelling a non-started subscription" do
     c = new_company
     s1 = new_subscription c, :now, :skip_capture => true
-    month_expire = Date.today + 1.month
+    month_expire = Date.current + 1.month
 
     # Capture payment next day
-    Date.stub :today, (Date.today + 1.day), do
+    Date.stub :current, (Date.current + 1.day), do
       capture_payment(s1)
     end
 
-    Date.stub :today, (Date.today + 9.days), do
+    Date.stub :current, (Date.current + 9.days), do
       cancel_subscription(s1)
       c.reload; c.expire_date.must_equal(month_expire)
     end
 
-    s2 = new_subscription c, (Date.today + 14.days), :period => 'yearly', :skip_capture => true
+    s2 = new_subscription c, (Date.current + 14.days), :period => 'yearly', :skip_capture => true
 
-    Date.stub :today, (Date.today + 14.days), do
+    Date.stub :current, (Date.current + 14.days), do
       # Cancel subscription without WePay's capture IPN
       cancel_subscription(s2)
       c.reload; c.expire_date.must_equal(month_expire)
+    end
+  end
+
+
+  it "should revert a company to standard from premium for manual expiration dates" do
+    c = new_company
+    c.manual_expire_date = Date.current + 5.days
+
+    c.recalculate_premium
+    c.premium?.must_equal true
+
+    Date.stub :current, (Date.current + 10.days), do
+        c.recalculate_premium
+        c.premium?.must_equal false
     end
   end
 

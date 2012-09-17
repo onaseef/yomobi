@@ -36,6 +36,10 @@ p {
   -webkit-margin-after: 0em;
 }
 
+em {
+  font-size:100%;  
+}
+
 .leaf-content, .custom_page {
   h1, h2, h3 { margin: 4px 0px 4px 0px; }
   ul, ol {
