@@ -1,0 +1,1 @@
+define({root:{"button.addtoc.tooltip":"Table of contents"},de:!0});

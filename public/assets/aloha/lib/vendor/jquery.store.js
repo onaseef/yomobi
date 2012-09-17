@@ -1,0 +1,29 @@
+/*
+ * jQuery store - Plugin for persistent data storage using localStorage, userData (and window.name)
+ *
+ * Authors: Rodney Rehm
+ * Web: http://medialize.github.com/jQuery-store/
+ *
+ * Licensed under the MIT License:
+ *   http://www.opensource.org/licenses/mit-license.php
+ *
+ */
+/**********************************************************************************
+ * INITIALIZE EXAMPLES:
+ **********************************************************************************
+ * 	// automatically detect best suited storage driver and use default serializers
+ *	$.storage = new $.store();
+ *	// optionally initialize with specific driver and or serializers
+ *	$.storage = new $.store( [driver] [, serializers] );
+ *		driver		can be the key (e.g. "windowName") or the driver-object itself
+ *		serializers	can be a list of named serializers like $.store.serializers
+ **********************************************************************************
+ * USAGE EXAMPLES:
+ **********************************************************************************
+ *	$.storage.get( key );			// retrieves a value
+ *	$.storage.set( key, value );	// saves a value
+ *	$.storage.del( key );			// deletes a value
+ *	$.storage.flush();				// deletes aall values
+ **********************************************************************************
+ */
+define(["aloha/jquery","util/json2"],function(e,t,n){e.store=function(t,n){var r=window.JSON;that=this;if(typeof t=="string"){if(!e.store.drivers[t])throw new Error("Unknown driver "+t);this.driver=e.store.drivers[t]}else if(typeof t=="object"){var i=!e.isFunction(t.init)||!e.isFunction(t.get)||!e.isFunction(t.set)||!e.isFunction(t.del)||!e.isFunction(t.flush);if(i)throw new Error("The specified driver does not fulfill the API requirements");this.driver=t}else e.each(e.store.drivers,function(){return!e.isFunction(this.available)||!this.available()?!0:(that.driver=this,that.driver.init()===!1?(that.driver=null,!0):!1)});n||(n=e.store.serializers),this.serializers={},e.each(n,function(t,n){if(!e.isFunction(this.init))return!0;that.serializers[t]=this,that.serializers[t].init(that.encoders,that.decoders)})},e.extend(e.store.prototype,{get:function(e){var t=this.driver.get(e);return this.driver.encodes?t:this.unserialize(t)},set:function(e,t){this.driver.set(e,this.driver.encodes?t:this.serialize(t))},del:function(e){this.driver.del(e)},flush:function(){this.driver.flush()},driver:n,encoders:[],decoders:[],serialize:function(t){var n=this;return e.each(this.encoders,function(){var e=n.serializers[this+""];if(!e||!e.encode)return!0;try{t=e.encode(t)}catch(r){}}),t},unserialize:function(t){var n=this;return t?(e.each(this.decoders,function(){var e=n.serializers[this+""];if(!e||!e.decode)return!0;t=e.decode(t)}),t):t}}),e.store.drivers={localStorage:{ident:"$.store.drivers.localStorage",scope:"browser",available:function(){try{return!!window.localStorage}catch(e){return!1}},init:e.noop,get:function(e){return window.localStorage.getItem(e)},set:function(e,t){window.localStorage.setItem(e,t)},del:function(e){window.localStorage.removeItem(e)},flush:function(){window.localStorage.clear()}},userData:{ident:"$.store.drivers.userData",element:null,nodeName:"userdatadriver",scope:"browser",initialized:!1,available:function(){try{return!!document.documentElement&&!!document.documentElement.addBehavior}catch(e){return!1}},init:function(){if(this.initialized)return;try{this.element=document.createElement(this.nodeName),document.documentElement.insertBefore(this.element,document.getElementsByTagName("title")[0]),this.element.addBehavior("#default#userData"),this.initialized=!0}catch(e){return!1}},get:function(e){return this.element.load(this.nodeName),this.element.getAttribute(e)},set:function(e,t){this.element.setAttribute(e,t),this.element.save(this.nodeName)},del:function(e){this.element.removeAttribute(e),this.element.save(this.nodeName)},flush:function(){this.element.expires=(new Date).toUTCString(),this.element.save(this.nodeName)}},windowName:{ident:"$.store.drivers.windowName",scope:"window",cache:{},encodes:!0,available:function(){return!0},init:function(){this.load()},save:function(){window.name=e.store.serializers.json.encode(this.cache)},load:function(){try{this.cache=e.store.serializers.json.decode(window.name+""),typeof this.cache!="object"&&(this.cache={})}catch(t){this.cache={},window.name="{}"}},get:function(e){return this.cache[e]},set:function(e,t){this.cache[e]=t,this.save()},del:function(e){try{delete this.cache[e]}catch(t){this.cache[e]=n}this.save()},flush:function(){window.name="{}"}}},e.store.serializers={json:{ident:"$.store.serializers.json",init:function(e,t){e.push("json"),t.push("json")},encode:JSON.stringify,decode:JSON.parse},xml:{ident:"$.store.serializers.xml",init:function(e,t){e.unshift("xml"),t.push("xml")},isXML:function(e){var t=(e?e.ownerDocument||e:0).documentElement;return t?t.nodeName.toLowerCase()!=="html":!1},encode:function(e){if(!e||e._serialized||!this.isXML(e))return e;var t={_serialized:this.ident,value:e};try{return t.value=(new XMLSerializer).serializeToString(e),t}catch(n){try{return t.value=e.xml,t}catch(r){}}return e},decode:function(e){if(!e||!e._serialized||e._serialized!=this.ident)return e;var t="DOMParser"in window&&(new DOMParser).parseFromString;return!t&&window.ActiveXObject&&(t=function(e){var t=new ActiveXObject("Microsoft.XMLDOM");return t.async="false",t.loadXML(e),t}),t?(e.value=t.call("DOMParser"in window&&new DOMParser||window,e.value,"text/xml"),this.isXML(e.value)?e.value:n):n}}};if(e.browser.msie&&e.browser.version=="7.0"){delete e.store.drivers.windowName;var r={ident:"$.store.drivers.voidDriver",scope:"void",cache:{},encodes:!0,available:function(){return!0},init:function(){},save:function(){},get:function(e){},set:function(e,t){},del:function(e){},flush:function(){}};e.store.drivers.voidDriver=r}});

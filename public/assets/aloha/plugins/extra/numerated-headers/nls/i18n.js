@@ -1,0 +1,1 @@
+define({root:{"button.numeratedHeaders.tooltip":"Toggle header numeration."},de:!0,en:!0});

@@ -31,7 +31,7 @@ class RegistrationsController < Devise::RegistrationsController
 
       build_resource
       clean_up_passwords(resource)
-      render_with_scope :new
+      render :new
     end
   end
 

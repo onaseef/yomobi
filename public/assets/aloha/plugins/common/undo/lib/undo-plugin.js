@@ -1,0 +1,7 @@
+/*!
+* Aloha Editor
+* Author & Copyright (c) 2010 Gentics Software GmbH
+* aloha-sales@gentics.com
+* Licensed unter the terms of http://www.aloha-editor.com/license.html
+*/
+define(["aloha","aloha/jquery","aloha/plugin","undo/vendor/undo","undo/vendor/diff_match_patch_uncompressed"],function(e,t,n){function s(e){var t=r.patch_deepCopy(e);for(var n=0;n<t.length;n++)for(var i=0;i<t[n].diffs.length;i++)t[n].diffs[i][0]=-t[n].diffs[i][0];return t}var r=new diff_match_patch,i=!1;return n.create("undo",{init:function(){var n=new Undo.Stack,o=Undo.Command.extend({constructor:function(e,t){this.editable=e,this.patch=t},execute:function(){},undo:function(){this.phase(s(this.patch))},redo:function(){this.phase(this.patch)},phase:function(e){var t=this.editable.getContents(),n=r.patch_apply(e,t),i=n[0],s=n[1];s.length,this.reset(i)},reset:function(t){i=!0;var n=null;e.getActiveEditable()===this.editable&&(e.deactivateEditable(),n=this.editable),this.editable.obj.html(t),null!==n&&n.activate(),this.editable.smartContentChange({type:"blur"}),i=!1}});n.changed=function(){},t(document).keydown(function(t){if(!t.metaKey||t.keyCode!=90)return;t.preventDefault(),null!==e.getActiveEditable()&&e.getActiveEditable().smartContentChange({type:"blur"}),t.shiftKey?n.canRedo()&&n.redo():n.canUndo()&&n.undo()}),e.bind("aloha-smart-content-changed",function(e,t){if(i)return;var s=t.snapshotContent,u=t.editable.getContents(),a=r.patch_make(s,u);0!==a.length&&n.execute(new o(t.editable,a))})},toString:function(){return"undo"}})});

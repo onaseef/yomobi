@@ -9,6 +9,7 @@ class SiteManagerController < ApplicationController
                           :gen_signup_key, :delete]
   before_filter :ensure_user_is_admin_of_company,
                 :only => [:add_domain, :remove_domain]
+  before_filter :restrict_test_account
 
   def index
     @companies = current_user.all_companies
@@ -245,7 +246,7 @@ class SiteManagerController < ApplicationController
         :prefill_info => { email:user.email, name:"#{user.first_name} #{user.last_name}" },
       }
 
-      now = Date.today
+      now = Date.current
       base_date = [@site.next_charge_date, @site.hard_expire_date, now].compact.max
       base_date = now if base_date < now
       puts "BASE DATE: #{base_date}"

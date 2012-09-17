@@ -1,0 +1,213 @@
+$max-width: $columns * ($column-width + $gutter-width)
+
+@mixin container()
+  max-width: $max-width
+  margin-right: auto
+  margin-left: auto
+
+@mixin col($n, $padding: 0px, $border: 0px, $container-width: $max-width)
+  float: left
+  margin-right: (percentage($gutter-width / $container-width)) / 2
+  margin-left: (percentage($gutter-width / $container-width)) / 2
+  width: percentage(($n * ($column-width + $gutter-width) - $gutter-width - $padding * 2 - $border * 2) / $container-width)
+  border-width: $border
+  //padding: em($padding, $base-font-size) percentage($padding / $container-width)
+
+@mixin prefix($n, $container-width: $max-width)
+  padding-left: percentage((($column-width + $gutter-width) * $n)/ $container-width)
+
+@mixin suffix($n, $container-width: $max-width)
+  padding-right: percentage((($column-width + $gutter-width) * $n)/ $container-width)
+
+@mixin pre($n, $container-width: $max-width)
+  margin-left: percentage((($column-width + $gutter-width) * $n)/ $container-width)
+
+@mixin post($n, $container-width: $max-width)
+  margin-right: percentage((($column-width + $gutter-width) * $n)/ $container-width)
+
+@mixin reset()
+  float: none
+  width: auto
+  margin-right: auto
+  margin-left: auto
+  display: block
+
+@mixin grid-background()
+  $grid-background-force-fluid: true
+  +column-grid-background($columns, $column-width, $gutter-width)
+  +background-origin(content-box)
+  +background-clip(content-box)
+
+@mixin alpha()
+  margin-left: 0
+
+@mixin omega()
+  margin-right: 0
+
+//@function em($target, $context: $base-font-size)
+  //@if $target == 0
+    //@return 0
+  //@return $target / $context + 0em
+
+@mixin background-contain($image)
+  background-size: contain
+  -ms-filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="#{$image}", sizingMethod="scale")
+
+
+@function perc($width, $container-width: $max-width)
+  @return percentage($width / $container-width)
+
+//media queries mixins
+@mixin display($res)
+  @media screen and (max-width: $res)
+    @content
+
+@mixin res1024()
+  @media screen and (max-width: 1024px)
+    @content
+
+@mixin res800()
+  @media screen and (max-width: 800px)
+    @content
+
+@mixin res768()
+  @media screen and (max-width: 768px)
+    @content
+
+@mixin res600()
+  @media screen and (max-width: 600px)
+    @content
+
+@mixin res515()
+  @media screen and (max-width: 515px)
+    @content
+
+@mixin res480()
+  @media screen and (max-width: 480px)
+    @content
+
+@mixin res320()
+  @media screen and (max-width: 320px)
+    @content
+
+@mixin res295()
+  @media screen and (max-width: 295px)
+    @content
+
+@mixin res240()
+  @media screen and (max-width: 240px)
+    @content
+
+
+//visibility mixins
+@mixin visible-1024()
+  @media screen and (min-width: 1024px)
+    display: inherit
+  @media screen and (max-width: 1023px)
+    display: none
+
+@mixin hidden-1024()
+  @media screen and (min-width: 1024px)
+    display: none
+  @media screen and (max-width: 1023px)
+    display: inherit
+
+@mixin visible-800()
+  @media screen and (min-width: 801px)
+    display: none
+  @media screen and (max-width: 800px)
+    display: inherit
+
+@mixin hidden-800()
+  @media screen and (min-width: 801px)
+    display: inherit
+  @media screen and (max-width: 800px)
+    display: none
+
+@mixin visible-768()
+  @media screen and (min-width: 769px)
+    display: none
+  @media screen and (max-width: 768px)
+    display: inherit
+
+@mixin hidden-768()
+  @media screen and (min-width: 769px)
+    display: inherit
+  @media screen and (max-width: 768px)
+    display: none
+
+@mixin visible-600()
+  @media screen and (min-width: 601px)
+    display: none
+  @media screen and (max-width: 600px)
+    display: inherit
+
+@mixin hidden-600()
+  @media screen and (min-width: 601px)
+    display: inherit
+  @media screen and (max-width: 600px)
+    display: none
+
+@mixin visible-515()
+  @media screen and (min-width: 516px)
+    display: none
+  @media screen and (max-width: 515px)
+    display: inherit
+
+@mixin hidden-515()
+  @media screen and (min-width: 516px)
+    display: inherit
+  @media screen and (max-width: 515px)
+    display: none
+
+@mixin visible-480()
+  @media screen and (min-width: 481px)
+    display: none
+  @media screen and (max-width: 480px)
+    display: inherit
+
+@mixin hidden-480()
+  @media screen and (min-width: 481px)
+    display: inherit
+  @media screen and (max-width: 480px)
+    display: none
+
+@mixin visible-320()
+  @media screen and (min-width: 321px)
+    display: none
+  @media screen and (max-width: 320px)
+    display: inherit
+
+@mixin hidden-320()
+  @media screen and (min-width: 321px)
+    display: inherit
+  @media screen and (max-width: 320px)
+    display: none
+
+@mixin visible-295()
+  @media screen and (min-width: 296px)
+    display: none
+  @media screen and (max-width: 295px)
+    display: inherit
+
+@mixin hidden-295()
+  @media screen and (min-width: 296px)
+    display: inherit
+  @media screen and (max-width: 295px)
+    display: none
+
+@mixin visible-240()
+  @media screen and (min-width: 321px)
+    display: none
+  @media screen and (max-width: 320px)
+    display: inherit
+
+@mixin hidden-240()
+  @media screen and (min-width: 241px)
+    display: inherit
+  @media screen and (max-width: 240px)
+    display: none
+
+@mixin iphone-text-support()
+  html
+    -webkit-text-size-adjust: none

@@ -30,40 +30,21 @@ class WepayCheckoutRecordObserver < ActiveRecord::Observer
       return if company.nil?
 
       last_sub = company.last_subscription(payment)
-      last_payment = company.last_payment
-
-      # base_date is when the subscription will start
-      if last_sub
-        base_date = last_sub.next_charge_date
-      elsif last_payment
-        base_date = last_payment.expire_date
-      end
-      base_date ||= Date.today
-      base_date = [company.manual_expire_date, base_date].max if company.manual_expire_date
 
       payment.sub_state = 'active' if wcr.period
-
-      # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      # NOTE: Make sure the value for time_paid matches the value for
-      # checkout_params[:end_time] in site_manager_controller.rb
-      # Subscription is always 5 years long (60 months)
-      # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      time_paid = 12 * 5
 
       payment.currency = wcr.currency
       payment.amount_paid = wcr.amount.to_s('F')
       payment.company.update_attribute :premium, true
-      payment.expire_date = base_date + time_paid.months
-      # puts "EXPRIE #{payment.expire_date}"
+      payment.expire_date = Time.at(wcr.end_time).to_date
 
       # cancel previous subscription
-      # puts "PREVIOUS SUBSCRIPTION #{last_sub.id}" if last_sub.present?
       cancel_preapproval last_sub.wcr.preapproval_id if last_sub.present?
     end
 
     case wcr.state
     when /^(authorized|reserved)$/ then payment.is_valid = true
-    when /^(captured|settled)$/ then payment.last_payment_received_at = Date.today
+    when /^(captured|settled)$/ then payment.last_payment_received_at = Date.current
     when /^(failed|refunded|chargeback)$/ then
       payment.is_valid = false
       UserMailer.notify_bad_payment(payment, wcr.state).deliver
@@ -78,7 +59,7 @@ class WepayCheckoutRecordObserver < ActiveRecord::Observer
       end
     when /^(cancelled|revoked)$/ then
       # Manually cancelled. Update expire date
-      if payment.sub_state == 'active' && payment.start_date > Date.today
+      if payment.sub_state == 'active' && payment.start_date > Date.current
         # No payment has been made for this subscription. Just mark it as invalid
         payment.is_valid = false
         payment.sub_state = 'cancelled'

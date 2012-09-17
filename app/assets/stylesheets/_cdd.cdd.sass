@@ -1,0 +1,113 @@
+// Special reset
+img
+  display: block
+  line-height: 0
+
+// Mixins
+@mixin a($color: inherit)
+  a,
+  .a
+    color: $color
+
+@mixin logo($height, $width, $top: 0, $left: 0)
+  & > .logo
+    text-indent: -1000em
+    & > .content
+      & > a,
+      & > .a
+        background: url('/assets/logo.png') no-repeat $top $left
+        display: block
+        height: $height
+        width: $width
+
+//carousel mixins
+@mixin carousel-pagination($image, $width, $height, $margin, $botttom, $right)
+  bottom: $bottom
+  position: absolute
+  right: $right
+  ul
+    li
+      float: left
+      margin-right: $margin
+      text-indent: -1000em
+      .a
+        background: url('#{$image}') no-repeat top center
+        cursor: pointer
+        display: block
+        height: $height
+        width: $width
+      &.active,
+      &:hover
+        .a
+          background-position: 0 (-$height)
+
+@mixin carousel-nav($image, $width, $height, $top, $left, $right)
+  background: url('#{$image}')
+  cursor: pointer
+  display: block
+  height: $height
+  position: absolute
+  text-indent: -1000em
+  top: $top
+  width: $width
+  &.prev
+    left: $left
+    background-position: 0 (-$height)
+  &.next
+    right: $right
+
+//btn mixin
+@mixin btn-gradient($width, $height, $radius, $color1, $color2, $border-color, $text-color, $font-size, $padding-top)
+  +border-radius($radius)
+  +background-image(linear-gradient($color1, $color2))
+  border: 1px solid $border-color 
+  text-align: center
+  width: $width
+  a
+    display: block
+    color: $text-color
+    height: $height
+    font-size: $font-size
+    padding-top: $padding-top
+    text-decoration: none
+
+@mixin btn-color($width, $height, $radius, $color, $border-color, $text-color, $font-size, $padding-top)
+  +border-radius($radius)
+  background: $color
+  border: 1px solid $border-color 
+  text-align: center
+  width: $width
+  a
+    display: block
+    color: $text-color
+    height: $height
+    font-size: $font-size
+    padding-top: $padding-top
+    text-decoration: none
+
+@mixin btn-color-image($width, $height, $radius, $color, $border-color, $text-color, $font-size, $padding-top, $padding-left, $image, $left: 95%, $top: 50%)
+  +border-radius($radius)
+  border: 1px solid $border-color
+  background: url('#{$image}') no-repeat $left $top $color
+  padding-left: $padding-left
+  width: $width
+  a
+    color: $text-color
+    display: block
+    font-size: $font-size
+    height: $height
+    padding-top: $padding-top
+    text-decoration: none
+
+//social menu
+
+@mixin social-menu($width, $height, $image, $margin-left)
+  li
+    float: left
+    background: url('#{$image}') no-repeat
+    margin-left: $margin-left
+    text-indent: -1000em
+    a
+      display: block
+      height: $height
+      width: $width

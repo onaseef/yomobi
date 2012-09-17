@@ -1,5 +1,9 @@
 Yomobi::Application.routes.draw do
 
+  
+  mount Locomotive::Engine => '/locomotive', :as => 'locomotive' # you can change the value of the path, by default set to "/locomotive"
+      
+
   get "payments/index"
 
   constraints(MobileDomain) do
@@ -13,27 +17,12 @@ Yomobi::Application.routes.draw do
     match '*else' => redirect('/')
   end
 
-  get 'about' => 'home#about', :as => :about
-  get 'about_es' => 'home#about_es', :as => :about_es
-  get 'biz' => 'home#opportunity', :as => :opportunity
-  get 'business-opportunities' => 'home#opportunity', :as => :opportunity
+  #get 'biz' => 'home#opportunity', :as => :opportunity
+  #get 'business-opportunities' => 'home#opportunity', :as => :opportunity
   get 'help' => redirect('http://help.yomobi.com'), :as => :help
   get 'how-to-make-a-mobile-website' => 'home#easy', :as => :easy
-  get 'opportunities' => 'home#opportunities', :as => :opportunity
-  get 'opportunities_es' => 'home#opportunities_es', :as => :opportunity_es
-  get 'plans' => 'home#plans', :as => :plans
-  get 'plans_es' => 'home#plans_es', :as => :plans_es
-  get 'privacy' => 'home#privacy', :as => :privacy
-  get 'privacy_es' => 'home#privacy_es', :as => :privacy_es
-  get 'payment_terms' => 'home#payment_terms', :as => :payment_terms
-  get 'payment_terms_es' => 'home#payment_terms_es', :as => :payment_terms_es
-  get 'terms' => 'home#terms', :as => :terms
-  get 'terms_es' => 'home#terms_es', :as => :terms_es
   get 'vote' => redirect('http://www.facebook.com/yomobi?sk=app_208195102528120'), :as => :vote
   get 'webesity' => 'home#webesity', :as => :webesity
-  get 'why-mobile' => 'home#why_mobile', :as => :why_mobile
-  get 'why-mobile_es' => 'home#why_mobile_es', :as => :why_mobile_es
-
 
 
   get 'confirm' => 'home#confirm_account', :as => :confirm_account
@@ -48,6 +37,10 @@ Yomobi::Application.routes.draw do
   end
 
   match 'account-setup/:step_num' => 'signup#account_setup', :as => :account_setup
+
+  resource 'test_drive', only: [:new, :create] do
+    get 'destroy' => 'test_drives#destroy'
+  end
 
   devise_for :users, :controllers => {
     :registrations => 'registrations',
@@ -99,7 +92,7 @@ Yomobi::Application.routes.draw do
 
   get 'opt-out/:key' => 'widgets/informed#opt_out'
 
-  root :to => 'home#index'
+  #root :to => 'home#index'
 
   get '/javascripts/mobile-redirect.js' => 'mobile#mobile_redirect'
   get 'preview/:company' => 'mobile#index', :as => :mobile_preview, :defaults => { :preview => true }
@@ -115,7 +108,8 @@ Yomobi::Application.routes.draw do
   ##########################
   exceptions = ['/admin','/ad-test']
   constraints lambda {|req| exceptions.map{|route| !req.path.starts_with? route}.any?} do
-    get ':company' => 'mobile#index', :as => :mobile
+    #FIXME this route breaks locomotive routes
+    #get ':company' => 'mobile#index', :as => :mobile
     post ':company/leave_msg/submit' => 'widgets/leave_msg#submit'
     post ':company/call_back/submit' => 'widgets/call_back#mobile_submit'
     post ':company/tell_friend/submit' => 'widgets/tell_friend#mobile_submit'

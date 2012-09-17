@@ -1,0 +1,787 @@
+@import compass
+@import compass/css3
+@import compass/layout
+
+@import cdd.params
+@import cdd.cdd
+
+@import yomobi.params
+@import cdd.responsive.sass
+@import yomobi.layout
+@import yomobi.header
+@import yomobi.main-menu
+@import yomobi.carousel
+@import yomobi.footer
+
+@import yomobi.disqus
+
+body
+  background: $sand
+  color: $grey
+  font-size: 0.625em
+  font-family: $seconda
+  margin: 0 auto
+h1,
+h2
+  color: $blue
+
+h1
+  +adjust-font-size-to(36px)
+  +margin-leader(0.3)
+  +margin-trailer(0.2)
+  line-height: 1.1em //remove if you want true vertical rhythm
+
+h2
+  +adjust-font-size-to(28px)
+  +margin-leader(0.5)
+  +margin-trailer(0.2)
+  line-height: 1.4em //remove if you want true vertical rhythm
+
+h3
+  +adjust-font-size-to(24px)
+  line-height: 1.66em //remove if you want true vertical rhythm
+
+h4
+  +adjust-font-size-to(18px)
+  line-height: 2.2em //remove if you want true vertical rhythm
+
+p
+  +adjust-font-size-to(14px)
+  +margin-trailer(0.5)
+  line-height: 1.7em //remove if you want true vertical rhythm
+  a
+    color: $blue
+a,
+.a
+  color: $white
+
+.node
+  ul,
+  ol
+    +pretty-bullets("/assets/li-bg.png", 3px, 3px, 15px, 36px)
+    +adjust-font-size-to(14px)
+    li
+      margin-left: 14px
+      margin-bottom: 15px
+  .i10n
+    +hidden-320
+    float: left
+    margin: 0 20px  24px 0
+    width: 24%
+    img
+      max-width: 100%
+  &.custom-plan
+    +margin-leader(1)
+    border-top: 1px solid $grey
+
+.btn-img
+  +btn-color-image(180px, 25px, 5px, $orange, $orange, $white, 16px, 10px, 20px, "arrow.png")
+  border: none
+  a
+    display: block
+    font:
+      family: $sans-serif
+      weight: $fw-bold
+
+
+#content-top-wrap
+  & > .header
+    color: $blue
+    font-size: 46px
+    line-height: 1em
+    margin-top: 36px
+    text-align: center
+    a
+      color: $orange
+      font-size: 36px
+      text-transform: uppercase 
+
+.promo
+  +margin-trailer(1)
+  .content
+    +padding-trailer(1)
+    float: left
+    border-bottom: 1px solid $grey 
+  .row
+    +border-radius(5px)
+    background: $white
+    border: 3px solid #e3e0c8
+    height: 214px
+    float: left
+    position: relative
+    margin-right: 2%
+    width: 22.78%
+    &.first
+      margin-left: 0.3%     
+    &.last
+      margin-right: 0
+    & > .text
+      p
+        padding: 40px 50% 0 6%
+    & > .i10n
+      +hidden-600
+      right: 6%
+      top: 30px
+      position: absolute
+      width: 48%
+      img
+        max-width: 100%
+    & > .link
+      +btn-color(65%, 21px, 5px, $peach, #f9deb3, $grey, 15px, 10px)
+      +box-shadow($grey 2px 2px 10px)
+      position: absolute
+      bottom: 12px
+      left: 17%
+      &:hover
+        background: $orange
+        a
+          color: $white
+
+.front
+  .mobile-stats,
+  .get-started,
+  .clients
+    .header
+      @extend h1
+  .mobile-stats
+    p
+      display: block
+      width: 46%
+    .i10n
+      +hidden-320
+      float: right
+      margin-top: -20px
+      width: 46%
+    img
+      max-width: 100%
+
+
+.get-started,
+.mobile-stats
+  .link
+    @extend .btn-img
+.video
+  & > .content
+    float: right
+    width: 100%
+    iframe
+      max-width: 100%
+
+.clients
+  .name
+    +adjust-font-size-to(12px)
+    +margin-trailer(1)
+    font-weight: $fw-bold
+
+#content-middle-wrap
+  +margin-trailer(1)
+  & > .rightcol
+    & > .pane
+      +margin-trailer(2)
+      padding-left: 3.5%
+      .i10n
+        +margin-trailer(1)
+      img
+        max-width: 100%
+      .title
+        @extend h2
+      .link
+        @extend .btn-img
+
+.plans,
+.fees
+  +clearfix
+  +margin-leader(0.5)
+  +padding-leader(1.5)
+  +margin-trailer(0.5)
+  +padding-trailer(1)
+  border-top: 1px solid $grey
+  border-bottom: 1px solid $grey
+  .row
+    float: left
+    width: 45%
+    & > .link
+      border: none
+      font:
+        family: $sans-serif
+        weight: $fw-bold
+      margin: 0 auto
+    &.first
+      border-right: 1px solid $grey 
+      padding-right: 4.5%
+      margin-right: 3%
+
+.plans
+  .row
+    & > .link
+      +btn-color(60%, 40px, 10px, $green, $green, $white, 24px, 20px)
+      text-transform: uppercase
+   
+    & > .title
+      +margin-leader(0.5)
+      @extend h2
+      text-align: center
+    & > .text
+      padding: 0 10px
+      text-align: center
+
+.fees
+  & > .header
+    @extend h2
+    margin-top: 0
+  .row
+    & > .link
+      +btn-color(80%, 50px, 10px, $green, $green, $white, 24px, 18px)
+      line-height: 1.8em
+      span
+        font-size: 14px
+
+.compare-table
+  +padding-leader(1)
+  +padding-trailer(2)
+  +hidden-320
+  border-top: 1px solid $grey
+  border-bottom: 1px solid $grey
+  & > .header
+    +a
+    +adjust-font-size-to(36px)
+    +margin-trailer(0.3)
+    font-weight: $fw-bold
+    color: $orange
+    text-align: center
+  table
+    font:
+      size: 14px
+    margin-left: 3%
+    text-align: center
+    th
+      border-bottom: 1px solid #b3b3a9
+      border-right: 1px solid #b3b3a9
+      font-weight: $fw-bold
+      &:last-child
+        border-right: none
+    thead
+      th
+        padding: 10px 20px
+        &.feature
+          color: $blue
+          font-size: 24px
+          padding-left: 0
+        &.yomobi
+          color: $green
+    tbody
+      th
+        padding: 3px 20px
+        vertical-align: middle
+        img
+          margin: 0 auto    
+
+.testimonials,
+.blog
+  & > .header
+    @extend h1
+  .view
+    & > .row
+      +clearfix
+      background: $white
+      margin-bottom: 25px
+      padding: 15px 3.3% 15px 3.3%
+      width: 91%
+      .title
+        @extend h3
+      .i10n
+        +hidden-320
+        img
+          max-width: 100%
+      .link
+        +btn-color(100px, 23px, 5px, $orange, $orange, $white, 14px, 10px)
+        border: none
+        font-family: $sans-serif
+
+
+.testimonials
+  .view
+    & > .row
+      position: relative
+      .title
+        @extend h3
+      .i10n
+        +hidden-320
+        height: 138px
+        position: absolute
+        right: 2.3%
+        top: 20px
+        width: 25%
+        img
+          max-width: 100%
+      .title,
+      .text
+        width: 70%
+
+.blog
+  .view
+    & > .row
+      .i10n
+        float: left
+        width: 24%
+      .title,
+      .text,
+      .link
+        margin-left: 28%
+
+form
+  &.comments    
+    background: #fbfaf1
+    padding: 20px 18% 20px 5%
+    width: 77%
+    h3
+      +margin-trailer(0.5)
+    label
+      display: block
+      color: #66667b
+      float: left
+      font:
+        family: $sans-serif
+        size: 11px
+        weight: $fw-bold
+      margin: 20px 5px 0 0 
+      text-align: right
+      width: 70px
+    input[type="text"],
+    input[type="email"],
+    textarea
+      margin-top: 18px
+      width: 82%
+    textarea
+      height: 105px
+    input[type="submit"]
+      background: $orange
+      border: none
+      color: $white
+      height: 30px
+      font:
+        family: $sans-serif
+        size: 14px
+        weight: $fw-bold
+      margin: 20px 0 0 30px
+      text-shadow: none
+      width: 110px
+
+//media queries
++res800
+  #header-top
+    .btn-img
+      margin-left: 4%
+  .user-menu
+    ul
+      width: 102%
+  #header-wrap
+    & > .main-menu
+      & > .content
+        & > ul
+          & > li
+            &.first,
+            &.last
+              width: 16.7%
+  .promo
+    .row
+      width: 22.6%
+      & > .i10n
+        width: 44%
+      & > .text
+        p
+          padding: 26px 50% 0 6%
+
+  .secondary-menu
+    ul
+      width: 62%
+
+  #footer-wrap
+    .inner
+      & > .main-menu
+        & > .content
+          & > ul
+            width: 64%
+  .plans
+    .row
+      & > .link
+        width: 80%
+  .fees
+    .row
+      & > .link
+        width: 90%
+
+  .compare-table
+    table
+      margin-left: 3%
+      thead
+        th
+          padding: 10px 10px
+      tbody
+        th
+          padding: 3px 10px
+  .secondary-menu
+    ul
+      width: 70%
+
+  #footer-wrap
+    .inner
+      & > .main-menu
+        & > .content
+          & > ul
+            width: 72%
+  .yomobi-promo-carousel
+    & > .content
+      .row
+        & > .banner-text
+          font-size: 29px
+  form
+    &.comments
+      padding: 20px 5% 20px 5%
+      width: 88%    
+      input[type="text"],
+      input[type="email"],
+      textarea
+        width: 70%
+
++res768
+  #header-top
+    .btn-img
+      margin-left: 0
+  .user-menu
+    ul
+      li
+        padding: 0 3%
+  #header-wrap
+    & > .main-menu
+      & > .content
+        & > ul
+          & > li
+            &.first,
+            &.last
+              width: 16.6%
+
++res600
+  h1
+    +adjust-font-size-to(30px)
+  .user-menu
+    ul
+      li
+        +adjust-font-size-to(13px)
+        padding: 0 2%
+  #header-top
+    .btn-img
+      margin-left: 20%
+      margin-bottom: 20px
+  .social-menu
+    float: left
+    margin: 0 0 15px 38%
+  #header-wrap
+    height: 240px
+  .promo
+    .row
+      height: 180px
+      margin-right: 1.8%
+      width: 22.5%
+      & > .text
+        p
+          padding: 30px 5% 0 5%
+          text-align: center
+      & > .link
+        a
+          height: 17px
+          font-size: 12px
+  .secondary-menu
+    ul
+      width: 90%
+
+  #footer-wrap
+    .inner
+      & > .main-menu
+        & > .content
+          & > ul
+            width: 92%
+  .front
+    #content-bottom-wrap
+      .mobile-stats
+        & > .content
+          padding-left: 1%
+  .yomobi-promo-carousel
+    & > .content
+      .row
+        & > .banner-text
+          font-size: 22px
+  #content-top-wrap
+    & > .header
+      font-size: 40px
+  .compare-table
+    & > .header
+      +adjust-font-size-to(30px)
+    table
+      font-size: 12px
+      margin-left: 0
+      thead
+        th
+          padding: 10px 8px
+          &.feature
+            font-size: 20px
+      tbody
+        th
+          padding: 3px 8px
+  #content-middle-wrap
+    & > .rightcol
+      .btn-img
+        width: 160px
+
++res515
+  h1
+    text-align: center
+  p
+    +adjust-font-size-to(12px)
+  .node
+    ul,
+    ol
+      +pretty-bullets("/assets/li-bg.png", 3px, 3px, 15px, 20px)
+      +adjust-font-size-to(12px)
+
+  #header-top
+    & > .leftcol,
+    & > .rightcol
+      +reset
+  .front
+    #content-middle-wrap
+      & > .promo
+        margin-left: 6%
+        .content
+          border-bottom: none
+        .row
+          height: 160px
+          margin-right: 4%
+          margin-bottom: 20px
+          width: 42%
+      & > .get-started,
+      & > .video
+        +reset
+        margin: 0 2% 24px 2%
+    #content-bottom-wrap
+      & > .clients
+        +reset
+        border-right: none
+        padding-right: 0 
+        margin: 0 2% 24px 2%
+      & > .mobile-stats
+        +reset
+        margin: 0 2% 24px 2%
+    .mobile-stats
+      .i10n
+        margin-top: 0
+  #footer-wrap
+    & > .inner
+      padding-top: 15px
+      & > .copyright,
+      & > .main-menu
+        +reset
+      & > .copyright
+        text-align: center
+  .secondary-menu
+    ul
+      float: none
+      width: 100%
+      margin-left: 3%
+      li
+        padding: 0 1.8%
+    ul, x:-moz-any-link
+      margin-left: 1%
+      width: 98%
+  .logo
+    & > .content
+      a
+        margin: 0 auto
+  #header-top
+    .btn-img
+      margin-left: 3%
+      margin-bottom: 20px
+  .social-menu
+    float: right
+    margin: 0 3% 0 0
+  #header-wrap
+    height: 227px
+
+  #header-wrap
+    & > .main-menu
+      & > .content
+        & > ul
+          & > li
+            & > a,
+            & > .a
+              +adjust-font-size-to(14px)
+              height: 41px
+              padding-top: 18px
+  #content-middle-wrap
+    & > .leftcol,
+    & > .rightcol
+      +reset
+      margin: 0 2% 24px 2%
+    & > .leftcol
+      border-right: none
+      padding-right: 0
+    & > .rightcol
+      .btn-img
+        width: 180px
+      & > .pane
+        padding-left: 0
+        img
+          margin: 0 auto
+        &:first-child
+          .i10n
+            display: none
+  .plans,
+  .fees
+    .row
+      +reset
+      &.first
+        border-right: 0
+  .plans      
+    .row
+      & > .link
+        width: 70%
+  .fees      
+    .row
+      & > .link
+        width: 70%
+      &.first
+        margin-bottom: 24px
+        padding-right: 0
+        margin-right: 0
+
+  .compare-table
+    & > .header
+      +adjust-font-size-to(26px)
+    table
+      font-size: 14px
+      margin-left: 3%
+      thead
+        th
+          padding: 10px 10px
+          &.feature
+            font-size: 24px
+      tbody
+        th
+          padding: 3px 10px
+  .testimonials,
+  .blog
+    .view
+      & > .row
+        width: 93%
+
++res480
+  +iphone-text-support
+  .compare-table
+    table
+      margin-left: 3%
+  .secondary-menu
+    ul
+      li
+        padding: 0 1.7%
+  
++res320
+  h3
+    +adjust-font-size-to(18px)
+  #header-top
+    .btn-img
+      float: none
+      margin-left: 19%
+  .social-menu
+    float: left
+    margin: 0 0 24px 24%
+  #header-wrap
+    height: 290px
+    & > .main-menu
+      & > .content
+        & > ul
+          & > li
+            &:hover
+              ul
+                display: none
+            & > a,
+            & > .a
+              +adjust-font-size-to(12px)
+  #content-top-wrap
+    & > .header
+      font-size: 28px
+      line-height: 1.4em
+      a
+        font-size: 26px
+  .front
+    #content-middle-wrap
+      & > .promo
+        .row
+          height: 160px
+  #footer-wrap
+    & > .inner
+      & > .main-menu
+        display: none
+  .front 
+    .mobile-stats 
+      p
+        width: 100%
+  .testimonials
+    .view
+      & > .row
+        .title,
+        .text
+          width: 100%
+  .blog
+    .view
+      & > .row
+        .title,
+        .text,
+        .link
+          margin-left: 0
+  form
+    &.comments    
+      label
+        font:
+          size: 10px
+        width: 55px
+
++res295
+  #header-top
+    .btn-img
+      margin-left: 16%
+  #footer-wrap
+    .user-menu
+      ul
+        width: 96%
+
++res240
+  #header-wrap
+    height: 230px
+  #header-top
+    .btn-img
+      margin-left: 6.5%
+  .social-menu
+    margin: 0 0 24px 16%
+  #footer-wrap
+    & > .inner
+      .user-menu
+        font-size: 10px
+        padding: 0 1%
+        width: 100%
+        ul
+          li
+            font-size: 10px
+            padding: 0 1%
+  .front 
+    #content-middle-wrap 
+      & > .promo 
+        .row
+          float: none
+          height: 140px
+          width: 87%
+  form
+    &.comments    
+      label
+        font:
+          size: 8px
+        width: 50px

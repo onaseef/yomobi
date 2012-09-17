@@ -234,6 +234,10 @@ es-ES:
       general: "Hubo un problema con tu solicitud:"
       recaptcha: "Hubo un error con el código re-captcha de abajo. Favor de re-ingresar el código y hacer click en submit/enviar."
 
+  test_drive:
+    success: "Translate me!"
+    cant_build_test_drive: "Translate me!"
+
   recaptcha:
     type_words: "Escribe las dos palabras:  "
     new_words: "(Cambiar de Palabras)"
@@ -416,6 +420,7 @@ es-ES:
     site_manager: "Administrador de Sitio"
     site_builder: "Constructor de Sitio Web"
     account_settings: "Administrador de la Cuenta"
+    sign_up_now: "Translate me!"
 
 
   account_settings:

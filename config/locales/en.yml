@@ -234,6 +234,10 @@ en:
       general: "There was problem with your request:"
       recaptcha: "There was an error with the recaptcha code below. Please re-enter the code and click submit."
 
+  test_drive:
+    success: "Success!"
+    cant_build_test_drive: "Sorry, we can't build your test site now."
+
   recaptcha:
     type_words: "Type the two words: "
     new_words: "(Get New Words)"
@@ -416,6 +420,7 @@ en:
     site_manager: "Site Manager"
     site_builder: "Website Builder"
     account_settings: "Account Manager"
+    sign_up_now: "Sign Up Now"
 
 
   account_settings:

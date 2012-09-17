@@ -1,0 +1,1 @@
+define({"button.addlink.tooltip":"Вставить ссылку","button.removelink.tooltip":"Убрать ссылку","newlink.defaulttext":"Новая ссылка","floatingmenu.tab.link":"Ссылка"});

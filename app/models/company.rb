@@ -15,7 +15,7 @@ class Company < ActiveRecord::Base
 
   has_many :followers
   has_many :wphotos
-  has_one :company_settings
+  has_one :company_settings, dependent: :destroy
 
   has_attached_file :logo,
     :styles => {
@@ -52,6 +52,7 @@ class Company < ActiveRecord::Base
   attr_accessor :source_db_name
 
   before_create :create_couch, :unless => Proc.new {|c| c.db_pass == 'n0n-_-exist@nt??' }
+  before_destroy :delete_couch
 
   before_post_process :check_file_size
   validates_attachment_size :logo, :less_than => 3.megabytes, :unless => Proc.new {|c| c.logo.nil? }
@@ -73,6 +74,11 @@ class Company < ActiveRecord::Base
       db.bulk_save default_docs.compact, false
     end
     result
+  end
+
+  def delete_couch
+    db = CouchRest.database(ApplicationController::couch_url self.db_name, :@admin)
+    db.delete!
   end
 
   def get_widget_doc(wsubtype,wname=nil)
@@ -161,7 +167,7 @@ class Company < ActiveRecord::Base
   def hard_expire_date
     payment = self.last_payment(true)
     expire_date = payment && (payment.wcr.preapproval_id ? payment.next_charge_date : payment.expire_date)
-    expire_date = Date.today if payment && payment.wcr.start_time > Time.now.to_i
+    expire_date = Date.current if payment && payment.wcr.start_time > Time.now.to_i
     [expire_date, self.manual_expire_date].compact.max
   end
 
@@ -170,7 +176,7 @@ class Company < ActiveRecord::Base
     if expire_date.nil?
       self.update_attribute :premium, false
     else
-      self.update_attribute :premium, expire_date > DateTime.now
+      self.update_attribute :premium, expire_date > Date.current
     end
   end
 
@@ -204,6 +210,7 @@ class Company < ActiveRecord::Base
       admins: self.admins,
       domains: self.domains,
       isPremium: self.premium?,
+      testUser: self.user.test_user?,
       expireDate: (self.expire_date.strftime I18n.t 'date_formats.site_grade_dates' if self.expire_date),
       nextChargeDate: (self.next_charge_date.strftime I18n.t 'date_formats.site_grade_dates' if self.next_charge_date),
       subscriptionEndDate: (self.subscription_end_date.strftime I18n.t 'date_formats.site_grade_dates' if self.subscription_end_date),

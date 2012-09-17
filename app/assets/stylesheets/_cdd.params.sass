@@ -1,0 +1,15 @@
+// Font weights
+$fw-ultralight: 100
+$fw-light:      200
+$fw-book:       300
+$fw-normal:     400
+$fw-medium:     500
+$fw-demibold:   600
+$fw-bold:       700
+$fw-ultrabold:  900
+
+@mixin font-family($title, $f, $weight: $fw-normal, $style: normal)
+  +font-face($title, font-files("#{$f}/#{$f}.woff", woff, "#{$f}/#{$f}.ttf", truetype, "#{$f}/#{$f}.svg", svg), "#{$f}/#{$f}.eot", $weight, $style)
+
+// Font families
+$sans-serif: "Helvetica", "Arial", "Verdana", sans-serif

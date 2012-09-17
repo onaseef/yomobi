@@ -1,20 +1,20 @@
 Yomobi::Application.configure do
 
   # Compress JavaScript and CSS
-  config.assets.compress = false
+  config.assets.compress = true
 
   # Don't fallback to assets pipeline
-  config.assets.compile = false
+  config.assets.compile = true
 
   # Generate digests for assets URLs
   config.assets.digest = false
   # Settings specified here will take precedence over those in config/application.rb
 
-  config.app_domains = ['yomobi.com']
+  config.app_domains = ['webesity.com', 'yomobi.dev']
   config.re_app_domains = config.app_domains.map {|d| Regexp.escape d}.join '|'
-  config.heroku_app_name = 'yomobi'
+  config.heroku_app_name = 'yomobi-staging'
 
-  config.opt_out_url_host = 'http://www.yomobi.com'
+  config.opt_out_url_host = 'webesity.com'
 
   # The production environment is meant for finished, "live" apps.
   # Code is not reloaded between requests

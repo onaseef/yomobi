@@ -1,0 +1,1 @@
+define({"button.createulist.tooltip":"Unsortierte Liste einfügen","button.createolist.tooltip":"Sortierte Liste einfügen","button.indentlist.tooltip":"Liste niedriger schieben","button.outdentlist.tooltip":"Liste höher schieben","floatingmenu.tab.list":"Liste"});
