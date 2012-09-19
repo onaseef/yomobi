@@ -1,7 +1,13 @@
 #featuredContent 
-  background: none repeat scroll 0 0 #F5F2D7
-  max-height: 300px
-
+  background: url(/assets/orbit/spinner.gif) no-repeat center center #F5F2D7
+  height: 340px
+  & > div
+    display: none
+  &.orbit
+    background: none repeat scroll 0 0 #F5F2D7
+    max-height: 300px
+    & > div
+      display: block
 
 #featuredContent .orbit-slide 
   background: none repeat scroll 0 0 #F5F2D7

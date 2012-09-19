@@ -12,7 +12,7 @@ footer-bg.png: footer-bg.png
 header-bg.png: header-bg.png
 li-bg.png: li-bg.png
 logo.png: logo.png
-orbit/bullets.jpg: orbit/bullets.jpg
+orbit/bullets.png: orbit/bullets.png
 orbit/left-arrow-small.png: orbit/left-arrow-small.png
 orbit/left-arrow.png: orbit/left-arrow.png
 orbit/loading.gif: orbit/loading.gif
@@ -21,6 +21,7 @@ orbit/pause-black.png: orbit/pause-black.png
 orbit/right-arrow-small.png: orbit/right-arrow-small.png
 orbit/right-arrow.png: orbit/right-arrow.png
 orbit/rotator-black.png: orbit/rotator-black.png
+orbit/spinner.gif: orbit/spinner.gif
 orbit/timer-black.png: orbit/timer-black.png
 social-menu-bg.png: social-menu-bg.png
 tmp/ad.png: tmp/ad.png
