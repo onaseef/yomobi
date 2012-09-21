@@ -106,10 +106,8 @@ Yomobi::Application.routes.draw do
   ##########################
   # Widget-specific routes #
   ##########################
-  exceptions = ['/admin','/ad-test']
-  constraints lambda {|req| exceptions.map{|route| !req.path.starts_with? route}.any?} do
-    #FIXME this route breaks locomotive routes
-    #get ':company' => 'mobile#index', :as => :mobile
+  constraints lambda {|req| OLD_SITES_URLS.map{|route| req.path.starts_with? route}.any?} do
+    get ':company' => 'mobile#index', :as => :mobile
     post ':company/leave_msg/submit' => 'widgets/leave_msg#submit'
     post ':company/call_back/submit' => 'widgets/call_back#mobile_submit'
     post ':company/tell_friend/submit' => 'widgets/tell_friend#mobile_submit'
