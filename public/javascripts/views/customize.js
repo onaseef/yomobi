@@ -114,6 +114,7 @@
         .find('[name=body_bg_repeat]').val(extraData.body_bg_repeat).end()
         .find('[name=banner_size]').val(extraData.banner_size).end()
         .find('[name=icon_line_height]').val(extraData.icon_line_height).end()
+        .find('#radio_'+extraData.icon_layout).attr('checked',true).end()
       ;
       this.delegateEvents();
 
@@ -254,12 +255,11 @@
 
     saveChanges: function () {
       if (!g.isPremium) return;
-
       var submitBtn = this.$('input[type=submit]').prop('disabled',true)
         , loader = this.$('.loader').show()
         , checkmark = this.$('.checkmark').hide()
       ;
-
+      
       var payload = this.$('.subpanels').serialize();
       $.post('/builder/customize', payload, function (resp) {
         g.settings = resp;
