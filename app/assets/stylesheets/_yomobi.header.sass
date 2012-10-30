@@ -1,7 +1,15 @@
 #header-wrap
-  background: url('/assets/header-bg.png') $blue repeat-x center bottom
   height: 180px
-  
+  //background: url('/assets/header-bg.png') $blue repeat-x center bottom
+  background: $blue; /* Old browsers */
+  background: -moz-linear-gradient(top,  $blue 0%, $blue 82%, #3d9fbc 90%, #338fab 95%, #257992 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$blue), color-stop(82%,$blue), color-stop(90%,#3d9fbc), color-stop(95%,#338fab), color-stop(100%,#257992)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  $blue 0%,$blue 82%,#3d9fbc 90%,#338fab 95%,#257992 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  $blue 0%,$blue 82%,#3d9fbc 90%,#338fab 95%,#257992 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  $blue 0%,$blue 82%,#3d9fbc 90%,#338fab 95%,#257992 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  $blue 0%,$blue 82%,#3d9fbc 90%,#338fab 95%,#257992 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$blue', endColorstr='#257992',GradientType=0 ); /* IE6-9 */  
+
 #header-top
   +clearfix
   a

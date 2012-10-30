@@ -73,7 +73,7 @@ a,
     border-top: 1px solid $grey
 
 .btn-img
-  +btn-color-image(180px, 25px, 5px, $orange, $orange, $white, 16px, 10px, 20px, "arrow.png")
+  +btn-color-image(180px, 5px, $orange, $orange, $white, 16px, 10px, 40px, 10px, 0px, "arrow.png")
   border: none
   a
     display: block
@@ -104,7 +104,7 @@ a,
     +border-radius(5px)
     background: $white
     border: 3px solid #e3e0c8
-    height: 214px
+    min-height: 214px
     float: left
     position: relative
     margin-right: 2%
@@ -115,21 +115,21 @@ a,
       margin-right: 0
     & > .text
       p
-        padding: 40px 50% 0 6%
+        padding: 20px 45% 10px 12%
     & > .i10n
       +hidden-600
-      right: 6%
-      top: 30px
+      right: 12%
+      top: 20px
       position: absolute
-      width: 48%
+      width: 30%
       img
         max-width: 100%
     & > .link
-      +btn-color(65%, 21px, 5px, $peach, #f9deb3, $grey, 15px, 10px)
+      +btn-color(74%, 5px, $peach, #f9deb3, $grey, 15px, 10px)
       +box-shadow($grey 2px 2px 10px)
       position: absolute
       bottom: 12px
-      left: 17%
+      left: 12%
       &:hover
         background: $orange
         a
