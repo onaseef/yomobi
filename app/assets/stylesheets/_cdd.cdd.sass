@@ -71,7 +71,7 @@ img
     padding-top: $padding-top
     text-decoration: none
 
-@mixin btn-color($width, $height, $radius, $color, $border-color, $text-color, $font-size, $padding-top)
+@mixin btn-color($width, $height, $radius, $color, $border-color, $text-color, $font-size, $padding)
   +border-radius($radius)
   background: $color
   border: 1px solid $border-color 
@@ -80,23 +80,24 @@ img
   a
     display: block
     color: $text-color
-    height: $height
+    //height: $height
     font-size: $font-size
-    padding-top: $padding-top
+    padding: $padding
     text-decoration: none
 
-@mixin btn-color-image($width, $height, $radius, $color, $border-color, $text-color, $font-size, $padding-top, $padding-left, $image, $left: 95%, $top: 50%)
+@mixin btn-color-image($width, $height, $radius, $color, $border-color, $text-color, $font-size, $padding, $padding-left, $image, $left: 95%, $top: 50%)
   +border-radius($radius)
   border: 1px solid $border-color
   background: url('#{$image}') no-repeat $left $top $color
-  padding-left: $padding-left
+  //padding-left: $padding-left
   width: $width
   a
     color: $text-color
     display: block
     font-size: $font-size
-    height: $height
-    padding-top: $padding-top
+    //height: $height
+    padding: $padding
+    margin-right: 25px;
     text-decoration: none
 
 //social menu
