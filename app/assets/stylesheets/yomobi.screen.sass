@@ -53,16 +53,6 @@ a,
 .a
   color: $white
 
-.rightcol
-  ul,
-  ol
-    +pretty-bullets("/assets/li-bg.png", 3px, 3px, 15px, 36px)
-    +adjust-font-size-to(14px)
-    li
-      margin-left: 4px
-      margin-bottom: 4px
-
-
 .node
   ul,
   ol
@@ -196,6 +186,15 @@ a,
         @extend h2
       .link
         @extend .btn-img
+
+  .rightcol
+    ul,
+    ol
+      +pretty-bullets("/assets/li-bg.png", 3px, 3px, 15px, 36px)
+      +adjust-font-size-to(14px)
+      li
+        margin-left: 4px
+        margin-bottom: 4px
 
 .plans,
 .fees
