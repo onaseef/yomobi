@@ -53,6 +53,23 @@ a,
 .a
   color: $white
 
+.large_stat
+  line-height: 1em
+  margin-bottom: 0px
+  +adjust-font-size-to(64px)
+
+.medium_stat
+  line-height: 1.5em
+  margin-bottom: 0px
+  font-weight: $fw-bold
+  +adjust-font-size-to(16px)
+
+.good
+  color: $good
+
+.bad
+  color: $bad
+
 .node
   ul,
   ol
@@ -64,7 +81,7 @@ a,
   .i10n
     +hidden-320
     float: left
-    margin: 0 20px  24px 0
+    margin: 0 20px 24px 0
     width: 24%
     img
       max-width: 100%
@@ -344,7 +361,7 @@ a,
   label
     color: #666
     font-size: 16px
-    font-weight: bold
+    font-weight: $fw-bold
     text-transform: uppercase
   input[type="text"]
     width: 430px
@@ -362,7 +379,7 @@ a,
     color: white
     border: 0px
     letter-spacing: .1em
-    font-weight: bold
+    font-weight: $fw-bold
     font-size: 15px
     text-align: center
     text-transform: uppercase
