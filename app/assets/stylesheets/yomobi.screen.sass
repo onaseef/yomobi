@@ -19,6 +19,7 @@ body
   font-size: 0.625em
   font-family: $seconda
   margin: 0 auto
+
 h1,
 h2
   color: $blue
@@ -43,20 +44,33 @@ h4
   +adjust-font-size-to(18px)
   line-height: 2.2em //remove if you want true vertical rhythm
 
+h5
+  +adjust-font-size-to(16px)
+  line-height: 2.2em //remove if you want true vertical rhythm
+
 p
   +adjust-font-size-to(14px)
   +margin-trailer(0.5)
   line-height: 1.7em //remove if you want true vertical rhythm
   a
     color: $blue
+
 a,
 .a
   color: $white
+  .large-link
+    font-size: 2em
+    font-weight: $fw-bold
+    line-height: 1.5em
+    margin: 1em 60px 0.4em 0px
+    color: $blue
+  .no-underline
+    text-decoration: none
 
 .large_stat
   line-height: 1em
   margin-bottom: 0px
-  +adjust-font-size-to(48px)
+  +adjust-font-size-to(32px)
 
 .medium_stat
   line-height: 1.5em
@@ -88,6 +102,10 @@ a,
   &.custom-plan
     +margin-leader(1)
     border-top: 1px solid $grey
+
+  .content
+    padding-top: 20px
+
 
 .btn-img
   +btn-color-image(180px, 25px, 5px, $orange, $orange, $white, 16px, 10px, 20px, "arrow.png")
@@ -279,7 +297,7 @@ a,
   table
     font:
       size: 14px
-    margin-left: 3%
+    margin: auto
     text-align: center
     a
       color: inherit
