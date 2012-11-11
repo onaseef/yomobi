@@ -45,7 +45,9 @@ h4
   line-height: 2.2em //remove if you want true vertical rhythm
 
 h5
+  font-weight: $fw-bold
   +adjust-font-size-to(16px)
+  +margin-leader(0.5)
   line-height: 2.2em //remove if you want true vertical rhythm
 
 p
@@ -105,9 +107,34 @@ a,
     +margin-leader(1)
     border-top: 1px solid $grey
 
-  .content
-    padding-top: 20px
-
+  .sms
+    height: 250px
+    background: url(https://s3.amazonaws.com/yomobi-marketing/images/sms-hand-hold-phone.png) no-repeat 0 0
+  
+  .sms-stats
+    margin: 35px 20px
+    font-weight: $fw-bold
+    float: left
+    width: 200px
+    color: $white
+    font-size: 28px
+    line-height: 32px
+    text-shadow: #AF5C2D 1px 1px 1px
+  
+  .sms-text
+    position: relative
+    top 55px
+    left: 89px
+    background: url(https://s3.amazonaws.com/yomobi-marketing/images/sms-bubble.png) no-repeat 0 0
+    float: left
+    width: 125px
+    height: 130px
+    padding: 20px 24px
+    color: $charcoal
+    font-weight: $fw-bold
+    font-size: 18px
+    line-height: 24px
+    text-shadow: $white 0px 1px 2px
 
 .btn-img
   +btn-color-image(180px, 25px, 5px, $orange, $orange, $white, 16px, 10px, 20px, "arrow.png")
