@@ -230,29 +230,25 @@ ul.language-bar {
     border-collapse: collapse;
     border-spacing: 0;
     margin-right:10px;
-    margin-top: 10px;
   }
   td {
     padding-bottom:5px;
   }
 
   label {
-    font-size: 1.6em;
-    font-weight: bold;
     float:right;
     white-space: nowrap;
     text-align:right;
     vertical-align:middle;
     padding: 0px 4px 0px 0px; }
   input[type=text], input[type=password] {
-    width: 220px !important;
+    width: 180px !important;
     border: 1px solid #BDC7D8;
     margin-bottom:0px;
-    padding:6px;
+    padding:2px;
   }
   select {
-    width: 264px !important;
-    height: 30px;
+    width: 186px !important;
   }
 
   input[type=submit] {
@@ -302,9 +298,6 @@ ul.language-bar {
 #actual-signin-box.sign-in-form {
   width: 330px;
   margin: 0 auto;
-  a {
-    color: inherit;
-  }
   table {
     td { padding-bottom: 2px; }
     margin: 0px auto;
@@ -313,23 +306,14 @@ ul.language-bar {
       margin-left: 0px;
     }
   }
-  .label {
-    font-size: 1.6em;
-    font-weight: bold;
-    float:right;
-    white-space: nowrap;
-    text-align:right;
-    vertical-align:middle;
-    padding: 0px 4px 0px 0px; }
   .remember-me, .forgot-password {
     margin-bottom:6px; }
   .sign-up-offer {
-    font-size: 1.2em;
     white-space:nowrap;
     vertical-align:middle;
     padding-top:14px;
     a {
-      margin-left:8px;
+      margin-left:4px;
     }
   }
 }
@@ -352,8 +336,7 @@ ul.language-bar {
       padding: 11px 10px 0 15px; }
     .title {
       font-size: 13px;
-      font-weight: bold; 
-      margin-bottom: 6px; }
+      font-weight: bold; }
     label {
       font-size: 9px; }
     .part {
@@ -413,7 +396,6 @@ ul.language-bar {
     }
   }
   a.skip-link {
-    font-size: 1.2em;
     padding: 4px 10px 0 0; }
   td.logo-preview {
     width: 125px;

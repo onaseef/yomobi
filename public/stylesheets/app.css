@@ -310,16 +310,15 @@ p.success {
   border: 1px solid #b3b3b3;
   padding: 10px 2px 10px 10px;
   margin: 10px 0px 10px 0px;
-  width: 250px !important; }
+  width: 220px !important; }
   #recaptcha_container #recaptcha_label {
     white-space: nowrap; }
   #recaptcha_container a {
-    color: inherit;
     position: relative;
-    top: 3px;
+    top: 1px;
     font-size: 10px; }
   #recaptcha_container #recaptcha_response_field {
-    width: 220px !important; }
+    width: 207px !important; }
 
 #footer {
   width: 1010px;
@@ -375,7 +374,6 @@ label.help {
   padding-bottom: 4px; }
 
 .help-bubble {
-  display: inline-block;
   cursor: pointer;
   margin: 0px 4px; }
 
