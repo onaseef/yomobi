@@ -236,7 +236,7 @@ ul.language-bar {
     padding-bottom:5px;
   }
 
-  label {
+  label, .label {
     font-size: 1.6em;
     font-weight: bold;
     float:right;
@@ -244,8 +244,9 @@ ul.language-bar {
     text-align:right;
     vertical-align:middle;
     padding: 0px 4px 0px 0px; }
+
   input[type=text], input[type=password] {
-    width: 220px !important;
+    width: 250px !important;
     border: 1px solid #BDC7D8;
     margin-bottom:0px;
     padding:6px;
@@ -301,7 +302,7 @@ ul.language-bar {
 
 #actual-signin-box.sign-in-form {
   width: 330px;
-  margin: 0 auto;
+  margin: 20px auto;
   a {
     color: inherit;
   }
@@ -321,6 +322,7 @@ ul.language-bar {
     text-align:right;
     vertical-align:middle;
     padding: 0px 4px 0px 0px; }
+    
   .remember-me, .forgot-password {
     margin-bottom:6px; }
   .sign-up-offer {

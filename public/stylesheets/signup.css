@@ -215,7 +215,7 @@ ul.language-bar {
   margin-top: 10px; }
 #signup-box td, #actual-signin-box td {
   padding-bottom: 5px; }
-#signup-box label, #actual-signin-box label {
+#signup-box label, #actual-signin-box label, #signup-box .label, #actual-signin-box .label {
   font-weight: bold;
   font-size: 1.6em;
   float: right;
@@ -224,7 +224,7 @@ ul.language-bar {
   vertical-align: middle;
   padding: 0px 4px 0px 0px; }
 #signup-box input[type=text], #signup-box input[type=password], #actual-signin-box input[type=text], #actual-signin-box input[type=password] {
-  width: 220px !important;
+  width: 250px !important;
   border: 1px solid #BDC7D8;
   margin-bottom: 0px;
   padding: 6px; }
@@ -273,7 +273,7 @@ ul.language-bar {
 
 #actual-signin-box.sign-in-form {
   width: 330px;
-  margin: 0 auto; }
+  margin: 20px auto; }
   #actual-signin-box.sign-in-form a {
     color: inherit;
   }
