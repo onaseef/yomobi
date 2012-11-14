@@ -25,6 +25,7 @@
         +background-image(linear-gradient(#5c9354, #96cb81))
         float: left
         width: 100%
+        max-height: 69px
         ul
           +border-bottom-radius(5px)
           background: #ddf3d4
@@ -56,14 +57,8 @@
             .a
               background: #b2daa1
         & > li
-          height: 69px
+          display: table
           width: 16.6%
-          display: -webkit-box
-          display: -moz-box
-          display: box
-          -webkit-box-align: center
-          -moz-box-align: center
-          box-align: center
           &:hover
             +background-image(linear-gradient(#5a8a52, #4f7748, #4f7748, #5a8a52))
             +box-shadow(#575e31 3px 3px 10px inset)
@@ -76,10 +71,10 @@
           & > a,
           & > .a
             +adjust-font-size-to(15px)
-            //height: 41px
-            //padding-top: 27px
-            padding: 0px 10px
-            margin: auto
+            height: 69px
+            padding: 0px 10px 
+            display: table-cell
+            vertical-align: middle
             text-decoration: none
           &.first
             width: 16.8%
