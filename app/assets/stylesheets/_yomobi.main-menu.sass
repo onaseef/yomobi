@@ -56,7 +56,14 @@
             .a
               background: #b2daa1
         & > li
+          height: 69px
           width: 16.6%
+          display: -webkit-box
+          display: -moz-box
+          display: box
+          -webkit-box-align: center
+          -moz-box-align: center
+          box-align: center
           &:hover
             +background-image(linear-gradient(#5a8a52, #4f7748, #4f7748, #5a8a52))
             +box-shadow(#575e31 3px 3px 10px inset)
@@ -69,8 +76,10 @@
           & > a,
           & > .a
             +adjust-font-size-to(15px)
-            height: 41px
-            padding-top: 27px
+            //height: 41px
+            //padding-top: 27px
+            padding: 0px 10px
+            margin: auto
             text-decoration: none
           &.first
             width: 16.8%
