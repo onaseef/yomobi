@@ -171,7 +171,7 @@ a,
     height: 214px
     float: left
     position: relative
-    margin-right: 2%
+    margin-right: 1.8%
     width: 22.78%
     &.first
       margin-left: 0.3%     
@@ -189,11 +189,11 @@ a,
       img
         max-width: 100%
     & > .link
-      +btn-color(65%, 21px, 5px, $peach, #f9deb3, $grey, 15px, 10px)
+      +btn-color(75%, 21px, 5px, $peach, #f9deb3, $grey, 15px, 10px)
       +box-shadow($grey 2px 2px 10px)
       position: absolute
       bottom: 12px
-      left: 17%
+      left: 13%
       &:hover
         background: $orange
         a
@@ -528,10 +528,12 @@ form
 +res800
   #header-top
     .btn-img
-      margin-left: 4%
+      margin-left: 20%
   .user-menu
     ul
-      width: 102%
+      li
+        font-size: 1.3em
+        padding: 0 2%
   #header-wrap
     & > .main-menu
       & > .content
@@ -544,22 +546,15 @@ form
     .row
       width: 22.6%
       & > .i10n
-        width: 44%
+        width: 33%
       & > .text
         p
-          padding: 26px 50% 0 6%
-
-  .secondary-menu
-    ul
-      width: 62%
-
-  #footer-wrap
-    .inner
-      & > .main-menu
-        & > .content
-          & > ul
-            width: 64%
-  .plans
+          padding: 26px 40% 0 6%
+          word-spacing: -2px
+      .link>a
+        font-size: 13px
+        word-spacing: -2px
+    .plans
     .row
       & > .link
         width: 80%
@@ -577,16 +572,16 @@ form
       tbody
         th
           padding: 3px 10px
-  .secondary-menu
-    ul
-      width: 70%
+  //.secondary-menu
+  //  ul
+  //    //width: 70%
 
-  #footer-wrap
-    .inner
-      & > .main-menu
-        & > .content
-          & > ul
-            width: 72%
+  //#footer-wrap
+  //  .inner
+  //    & > .main-menu
+  //      & > .content
+  //        & > ul
+  //          width: 72%
   .yomobi-promo-carousel
     & > .content
       .row
@@ -602,13 +597,25 @@ form
         width: 70%
 
 +res768
+  .promo
+    .row
+      margin-right: 1.7%
+      & > .text
+        p
+          word-spacing: 0
+          font-size: 13px
   #header-top
     .btn-img
+      margin-left: 4%
+    .social-menu
       margin-left: 0
+      ul
+        li
+          margin-left: 5px
   .user-menu
     ul
       li
-        padding: 0 3%
+        padding: 0 2%
   #header-wrap
     & > .main-menu
       & > .content
@@ -628,17 +635,16 @@ form
         padding: 0 2%
   #header-top
     .btn-img
-      margin-left: 20%
-      margin-bottom: 20px
-  .social-menu
-    float: left
-    margin: 0 0 15px 38%
+      position: absolute
+      right: 1%
+    .social-menu
+      margin-top: 45px
   #header-wrap
     //height: 240px
   .promo
     .row
       height: 180px
-      margin-right: 1.8%
+      margin-right: 1.6%
       width: 22.5%
       & > .text
         p
@@ -648,16 +654,16 @@ form
         a
           height: 17px
           font-size: 12px
-  .secondary-menu
-    ul
-      width: 90%
+  //.secondary-menu
+  //  ul
+  //    width: 90%
 
-  #footer-wrap
-    .inner
-      & > .main-menu
-        & > .content
-          & > ul
-            width: 92%
+  //#footer-wrap
+  //  .inner
+  //    & > .main-menu
+  //      & > .content
+  //        & > ul
+  //          width: 92%
   .front
     #content-bottom-wrap
       .mobile-stats
@@ -738,29 +744,38 @@ form
       & > .copyright,
       & > .main-menu
         +reset
+        .content
+          ul
+            text-align: center
       & > .copyright
         text-align: center
-  .secondary-menu
-    ul
-      float: none
-      width: 100%
-      margin-left: 3%
-      li
-        padding: 0 1.8%
-    ul, x:-moz-any-link
-      margin-left: 1%
-      width: 98%
+    .inner
+      .secondary-menu
+        float: none
+        width: auto
+        ul
+          text-align: center
+          li
+            padding: 0 1%
+        ul, x:-moz-any-link
+          margin-left: 1%
+          width: 98%
   .logo
     & > .content
       a
         margin: 0 auto
   #header-top
     .btn-img
-      margin-left: 3%
+      margin-left: 1%
       margin-bottom: 20px
-  .social-menu
-    float: right
-    margin: 0 3% 0 0
+      position: relative
+      right: auto
+    .social-menu
+      float: right
+      margin: 0 1% 0 0
+      ul
+        li
+          margin-left: 2px
   #header-wrap
     //height: 227px
 
@@ -839,7 +854,7 @@ form
   .secondary-menu
     ul
       li
-        padding: 0 1.7%
+        padding: 0 1%
   
 +res320
   h3
@@ -848,9 +863,9 @@ form
     .btn-img
       float: none
       margin-left: 19%
-  .social-menu
-    float: left
-    margin: 0 0 24px 24%
+    .social-menu
+      float: left
+      margin: 0 0 24px 24%
   #header-wrap
     //height: 290px
     & > .main-menu
@@ -873,7 +888,7 @@ form
     #content-middle-wrap
       & > .promo
         .row
-          height: 160px
+          height: 170px
   #footer-wrap
     & > .inner
       & > .main-menu
@@ -917,8 +932,8 @@ form
   #header-top
     .btn-img
       margin-left: 6.5%
-  .social-menu
-    margin: 0 0 24px 16%
+    .social-menu
+      margin: 0 0 24px 16%
   #footer-wrap
     & > .inner
       .user-menu

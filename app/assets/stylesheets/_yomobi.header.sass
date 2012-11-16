@@ -9,7 +9,7 @@
     text-decoration: none
   .btn-img
     float: left
-    margin-left: 20%
+    margin-left: 23%
   & > .leftcol
     +logo(50px, 223px)
   .rightcol
@@ -28,17 +28,26 @@
   +hidden-515
   +clearfix
   ul
-    float: right
-    width: 84%
+    width: 100%
+    text-align: right
+    letter-spacing: -.31em
+    word-spacing: -.43em
     li
       +adjust-font-size-to(15px)
       border-right: 1px solid $white
-      float: left
+      display: inline-block
       font-family: $sans-serif
       padding: 0 3%
       text-align: center
+      white-space: normal
+      letter-spacing: normal
+      word-spacing: normal
       &.last
         border-right: none
+        padding-right: 0
+      &.first
+        border-left: none
+        padding-left: 0
       a,
       .a
         display: block
@@ -49,7 +58,7 @@
 .social-menu
   +social-menu(40px, 40px, "social-menu-bg.png", 10px)
   float: right
-  margin: -3px 0 0 10px
+  margin: -3px 0 0 2%
   li
     &.twitter
       background-position: 0 -40px
