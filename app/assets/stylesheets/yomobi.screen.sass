@@ -431,6 +431,11 @@ a,
       margin-bottom: 25px
       padding: 15px 3.3% 15px 3.3%
       width: 91%
+      -webkit-border-radius: 16px
+      -moz-border-radius: 16px
+      -ms-border-radius: 16px
+      -o-border-radius: 16px
+      border-radius: 16px
       .title
         @extend h3
       .i10n
@@ -447,6 +452,7 @@ a,
   .view
     & > .row
       position: relative
+      min-height: 220px
       .title
         @extend h3
       .i10n
@@ -456,11 +462,15 @@ a,
         right: 2.3%
         top: 20px
         width: 25%
+        overflow: hidden
         img
           max-width: 100%
       .title,
       .text
-        width: 70%
+        width: 65%
+      .text
+        min-height: 138px
+        text-align: justify
 
 .blog
   .view
