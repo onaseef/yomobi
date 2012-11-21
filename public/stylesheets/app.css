@@ -182,11 +182,11 @@ p.success {
     height: 30px;
     border: 1px solid #566986;
     border-bottom: none;
-    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #5A8A52), color-stop(33.33333%, #4F7748), color-stop(66.66667%, #4F7748), color-stop(100%, #5A8A52));
-    background-image: -webkit-linear-gradient(#5A8A52,#4F7748,#4F7748,#5A8A52);
-    background-image: -moz-linear-gradient(#5A8A52,#4F7748,#4F7748,#5A8A52);
-    background-image: -o-linear-gradient(#5A8A52,#4F7748,#4F7748,#5A8A52);
-    background-image: linear-gradient(#5A8A52,#4F7748,#4F7748,#5A8A52);    
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #5C9354), color-stop(100%, #96CB81));
+    background-image: -webkit-linear-gradient(#5C9354,#96CB81);
+    background-image: -moz-linear-gradient(#5C9354,#96CB81);
+    background-image: -o-linear-gradient(#5C9354,#96CB81);
+    background-image: linear-gradient(#5C9354,#96CB81);    
     text-align: right; }
     #header.signed-in #nav a, #header.signed-in #nav a:visited {
       margin: 0px -1px;
