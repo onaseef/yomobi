@@ -22,6 +22,11 @@ div.wysiwyg ul.toolbar {
     padding-left: 0;
     margin: 54px 0 10px 0;
     font-size: 100%; }
+  #sidebar a,
+  #sidebar a:visited {
+    color: #3B5998;
+    text-decoration: none;    
+  }  
   #sidebar .spacer {
     border-top: 1px solid #dddddd;
     margin: 5px 0; }
