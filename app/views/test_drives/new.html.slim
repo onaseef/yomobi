@@ -1,7 +1,12 @@
 div.test-drive
-  h2 =t('test_drive.take_a_test_drive')
-  =button_to =t('test_drive.begin_test_drive'), test_drive_path
-  div.row-1
+  h2 =t('test_drive.title')
+  p= button_to t('test_drive.begin_btn'), test_drive_path
+  div.row.1
+  	h3 =t('test_drive.header')
   	p 
-  	  img src="https://s3.amazonaws.com/yomobi-marketing/images/test-drive-2.png"
-  	  This is the dawning of the age of aquarius. Also, air sirens went off inside and outside the Israeli Defense Ministry in Tel Aviv. The building was evacuated briefly, and employees were allowed back in when the sirens stopped. An explosion was heard far off in the distance. Israeli Prime Minister Benjamin Netanyahu was in the building at the time of the evacuation, ministry officials said. Israel has targeted more than 300 "terror sites" in Gaza, "severely damaging the capabilities of Palestinian terrorist organizations," the IDF said. The military said it targeted scores of "medium and long range rocket launch and infrastructure sites across the Gaza Strip." The Navy has taken aim at targets along Gaza's shoreline, the IDF said.
+  	  img.test-drive src="https://s3.amazonaws.com/yomobi-marketing/images/test-drive-2.png" 
+  	  | ==t('test_drive.explanation')
+
+  div.row.2
+    p
+  	  img src="https://s3.amazonaws.com/yomobi-marketing/images/test-drive-signup.png" 
