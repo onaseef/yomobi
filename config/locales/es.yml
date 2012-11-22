@@ -57,7 +57,7 @@ es:
     feature6: "Contenido fácil de personalizar"
     feature7: "Notificación de Suscriptores"
 
-  test_drive:
+  testdrive:
     begin_btn: "Start Test Drive"
     title: "Take a Test Drive"
     header: "Try out all the features of YoMobi before you sign up."
