@@ -7,6 +7,7 @@ html lang="en-US"
 
     = render 'shared/meta'
 
+    = stylesheet_link_tag '/stylesheets/signup'
     = stylesheet_link_tag '/stylesheets/builder-app'
     = stylesheet_link_tag '/stylesheets/flick/jquery-ui-1.8.11.custom'
     = stylesheet_link_tag '/stylesheets/jquery.wysiwyg'
@@ -30,6 +31,7 @@ html lang="en-US"
       #page-container
         #sidebar
           = yield :sidebar
+          '&nbsp;'
         #content
           = yield
         .clearfix
@@ -39,7 +41,7 @@ html lang="en-US"
 
     = render 'layouts/js-base'
     = javascript_include_tag '/javascripts/support/dbx'
-    = render :partial => 'shared/data-loader' if @company
+    = render :partial => 'shared/data-loader' if @company && @user && !@company.new_record?
     = javascript_include_tag '/javascripts/preview-mobile'
 
 

@@ -1,4 +1,6 @@
 class SignupController < ApplicationController
+  layout "builder"
+
   require 'couch'
   require 'couch_docs'
   
