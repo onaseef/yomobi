@@ -84,6 +84,9 @@ es-ES:
     opportunities: "Oportunidades"
     privacy: "Privacidad"
     terms: "Términos"
+    language:
+       en: "English"
+       es: "Español"
 
   legal:
     rights_reserved: "Todos los Derechos Reservados YoMobi © 2012"

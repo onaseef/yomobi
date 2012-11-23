@@ -89,7 +89,9 @@ en:
     opportunities: Opportunities
     privacy: "Privacy"
     terms: "Terms"
-
+    language:
+     en: "English"
+     es: "Español"
 
   javascript_builder:
 
@@ -217,7 +219,7 @@ en:
     email: "Email:"
     password: "Password:"
     remember_user: "Keep me logged in"
-    sign_in: "Sign In"
+    sign_in: "Member Sign In"
     or: "or"
     sign_up: "Sign Up for Yomobi"
     unlock_not_received: "Didn't receive unlock instructions?"
