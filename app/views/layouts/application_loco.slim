@@ -1,0 +1,97 @@
+doctype
+html lang="en-US"
+  head
+    meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+    link[href="/assets/reset.css" media="screen, projection" rel="stylesheet" type="text/css"]
+    link[href="/assets/yomobi.screen.css" media="screen, projection" rel="stylesheet" type="text/css"]
+    link[href="/assets/yomobi.print.css" media="print" rel="stylesheet" type="text/css"]
+    script[src="/assets/application.js"]
+    meta[name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"]
+    = render 'shared/meta'
+    = csrf_meta_tag
+  body
+    = topline_notice
+    #body-wrap
+      #header-wrap
+        #header-top
+          .leftcol
+            .logo
+              .content
+                a[href="/"]
+                  | logo
+          .rightcol
+            .user-menu
+              .content
+                ul
+                  li.first
+                    a[href="/users/sign_up"]= t 'sign_up.sign_up'
+                  li
+                    a[href="/about-us"]= t 'links.about'
+                  li
+                    a[href="#"]= t 'links.help'
+                  li
+                    a[href="?locale=en"]= t 'links.language.en'
+                  li.last
+                    a[href="?locale=es"]= t 'links.language.es'
+            .btn-img
+              a[href="/users/sign_in"]= t 'sign_in.sign_in'
+            .social-menu
+              .content
+                ul.menu
+                  li.first.facebook
+                    a[href="https://facebook.com/yomobi"]
+                      | Facebook
+                  li.twitter
+                    a[href="https://twitter.com/youmobilized"]
+                      | Twitter
+                  li.last.youtube
+                    a[href="#"]
+                      | Youtube
+        = render 'shared/main_menu'
+      #content-wrap
+        #content-middle-wrap
+          = yield
+      #pseudo-footer
+    #footer-wrap
+      .inner
+        .copyright
+          .content
+            p Copyright #{Date.today.year} YoMobi
+        = render 'shared/main_menu'
+        .secondary-menu
+          div[clas="content"]
+            ul
+              li.first
+                a[href="/users/sign_in"]= t 'sign_in.sign_in'
+              li
+                a[href="/users/sign_up"]= t 'sign_up.sign_up'
+              li
+                a[href="/about-us"]= t 'links.about'
+              li
+                a[href="#"]= t 'links.help'
+              li
+                a[href="#"] Spanish
+              li
+                a[href="/privacy"]= t 'links.privacy'
+              li
+                a[href="/terms"]= t 'links.terms'
+              li.last
+                a[href="/contact"]= t 'links.feedback'
+        .user-menu
+          .content
+            ul
+              li.first
+                a[href="/users/sign_in"]= t 'sign_in.sign_in'
+              li
+                a[href="/users/sign_up"]= t 'sign_up.sign_up'
+              li
+                a[href="/about-us"]= t 'links.about'
+              li
+                a[href="#"]= t 'links.help'
+              li.last
+                a[href="#"] Language
+    = render 'layouts/js-base'
+    = yield :js
+    = javascript_include_tag '/javascripts/notice'
+    -if Rails.env.production?
+      = javascript_include_tag '/javascripts/google-analytics'

@@ -1,4 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
+  layout 'application_loco'
 
   def new
     if params[:sk].present?

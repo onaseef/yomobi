@@ -1,4 +1,6 @@
 class SessionsController < Devise::SessionsController
+  layout 'application_loco'
+
   def new
     prevent_caching
     @hide_header_signin_form = true
