@@ -31,11 +31,19 @@
   +margin-leader(1)
   & > .leftcol
     +col(8)
-    border-right: 1px solid $grey
+    //border-right: 1px solid $grey
     margin-right: 0
     padding-right: 0.88%
   & > .rightcol
-    +col(4)
+    +col(4, 10)
+    +border-radius(32px)
+    background: $rightcol-bgcolor
+    background-image: linear-gradient(left , $rightcol-bgcolor 10%, $rightcol-stopcolor 50%, $rightcol-bgcolor 90%)
+    background-image: -o-linear-gradient(left , $rightcol-bgcolor 10%, $rightcol-stopcolor 50%, $rightcol-bgcolor 90%)
+    background-image: -moz-linear-gradient(left , $rightcol-bgcolor 10%, $rightcol-stopcolor 50%, $rightcol-bgcolor 90%)
+    background-image: -webkit-linear-gradient(left , $rightcol-bgcolor 10%, $rightcol-stopcolor 50%, $rightcol-bgcolor 90%)
+    background-image: -ms-linear-gradient(left , $rightcol-bgcolor 10%, $rightcol-stopcolor 50%, $rightcol-bgcolor 90%);
+    background-image: -webkit-gradient(linear, left top, right top, color-stop(0.1, $rightcol-bgcolor), color-stop(0.5, $rightcol-stopcolor), color-stop(0.9, $rightcol-bgcolor))
 
 #content-top-wrap
   & > .carousel,
