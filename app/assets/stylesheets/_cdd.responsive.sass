@@ -11,7 +11,7 @@ $max-width: $columns * ($column-width + $gutter-width)
   margin-left: (percentage($gutter-width / $container-width)) / 2
   width: percentage(($n * ($column-width + $gutter-width) - $gutter-width - $padding * 2 - $border * 2) / $container-width)
   border-width: $border
-  padding: em($padding, $base-font-size) percentage($padding / $container-width)
+  padding: percentage($padding / $container-width)
 
 @mixin prefix($n, $container-width: $max-width)
   padding-left: percentage((($column-width + $gutter-width) * $n)/ $container-width)
