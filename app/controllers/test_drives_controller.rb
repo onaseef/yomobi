@@ -1,4 +1,6 @@
 class TestDrivesController < ApplicationController
+  layout 'application_loco'
+
   def new
   end
 
