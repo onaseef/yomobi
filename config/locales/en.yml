@@ -57,8 +57,6 @@ en:
     feature6: "Easily customizable content"
     feature7: "Subscriber notification"
 
-
-
   status:
     loading: "Loading..."
     processing: "Processing..."
@@ -78,6 +76,9 @@ en:
     feedback: "Feedback"
     help: "Help"
     home: "Home"
+    blog: "Blog"
+    compare: "Compare"
+    contact: "Contact"
     mobile_matters: "Mobile Matters"
     plans: Plans
     opportunities: Opportunities

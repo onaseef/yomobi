@@ -68,23 +68,25 @@ es:
     error:
       incorrect_password: "Contraseña Incorrecta"
 
+  legal:
+    rights_reserved: "Todos los Derechos Reservados YoMobi © 2012"
+
   links:
     about: "Quienes Somos"
     feedback: "Contacto"
     help: "Ayuda"
     home: "Inicio"
+    blog: "Blog"
+    compare: "Comparar"
+    contact: "Contactar"
     mobile_matters: "La Movilidad Importa"
-    plans: Planes
-    opportunities: Oportunidades
+    plans: "Planes"
+    opportunities: "Oportunidades"
     privacy: "Privacidad"
     terms: "Términos"
     language:
       en: "English"
       es: "Español"
-
-  legal:
-    rights_reserved: "Todos los Derechos Reservados YoMobi © 2012"
-
 
   javascript_builder:
 

@@ -47,21 +47,16 @@ html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0"
             .user-menu
               .content
                 ul
-                  li.first
-                    a[href="/users/sign_in"]= t 'sign_in.sign_in'
-                  li
+                   li.first
                     a[href="/users/sign_up"]= t 'sign_up.sign_up'
                   li
                     a[href="/about-us"]= t 'links.about'
                   li
-                    a[href="#"]= t 'links.help'
+                    a[href="http://help.yomobi.com"]= t 'links.help'
+                  li
+                    a[href="?locale=en"]= t 'links.language.en'
                   li.last
-                    a[href="#"] Language
-                  /
-                    li
-                      a[href="?locale=en"]= t 'links.language.en'
-                    li.last
-                      a[href="?locale=es"]= t 'links.language.es'
+                    a[href="?locale=es"]= t 'links.language.es'
             .btn-img
               a[href="/users/sign_in"]= t 'sign_in.sign_in'
             .social-menu
@@ -73,9 +68,9 @@ html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0"
                   li.twitter
                     a[href="https://twitter.com/youmobilized"]
                       | Twitter
-                  li.last.youtube
-                    a[href="#"]
-                      | Youtube
+/                  li.last.youtube
+/                    a[href="#"]
+/                      | Youtube
         = render 'shared/main_menu'
       #content-wrap
         #content-middle-wrap
@@ -97,9 +92,9 @@ html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0"
               li
                 a[href="/about-us"]= t 'links.about'
               li
-                a[href="#"]= t 'links.help'
+                a[href="http://help.yomobi.com"]= t 'links.help'
               li
-                a[href="#"] Spanish
+                a[href="?locale=es"] = t 'links.language.es'
               li
                 a[href="/privacy"]= t 'links.privacy'
               li
@@ -116,9 +111,11 @@ html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0"
               li
                 a[href="/about-us"]= t 'links.about'
               li
-                a[href="#"]= t 'links.help'
+                a[href="http://help.yomobi.com"]= t 'links.help'
+              li
+                a[href="?locale=en"]= t 'links.language.en'
               li.last
-                a[href="#"] Language
+                a[href="?locale=es"]= t 'links.language.es'
     = render 'layouts/js-base'
     = yield :js
     = javascript_include_tag '/javascripts/notice'
