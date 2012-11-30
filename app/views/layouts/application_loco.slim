@@ -1,7 +1,12 @@
 |<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+= "\n"
 html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
   head profile="http://www.w3.org/1999/xhtml/vocab"
+    = "\n"
     |
+      <!--[if IE 9]>
+      <link href="/assets/yomobi.ie9.css" media="screen, projection" rel="stylesheet" type="text/css" />
+      <![endif]-->
       <!--[if IE 8]>
       <link href="/assets/yomobi.ie8.css" media="screen, projection" rel="stylesheet" type="text/css" />
       <![endif]-->
@@ -18,12 +23,6 @@ html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0"
     script[src="/assets/application.js"]
     meta[name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"]
     = stylesheet_link_tag '/stylesheets/signup-app'
-
-    == '<!--[if IE 9]><link href="/assets/yomobi.ie9.css" media="screen, projection" rel="stylesheet" type="text/css" /><![endif]-->'
-    == '<!--[if IE 8]><link href="/assets/yomobi.ie8.css" media="screen, projection" rel="stylesheet" type="text/css" /><![endif]-->'
-    == '<!--[if IE 7]><link href=\"/assets/yomobi.ie7.css" media="screen, projection" rel="stylesheet" type="text/css" /><![endif]-->'
-    == '<!--[if lt IE 9]><script src="/assets/ie9.js"></script><![endif]-->'
-
     = render 'shared/meta'
     = csrf_meta_tag
     javascript:
