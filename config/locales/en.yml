@@ -239,7 +239,7 @@ en:
       general: "There was problem with your request:"
       recaptcha: "There was an error with the recaptcha code below. Please re-enter the code and click submit."
 
-  test_drive:
+  testdrive:
     success: "Success!"
     cant_build_test_drive: "Sorry, we can't build your test site now."
     begin_btn: "Start Test Drive"

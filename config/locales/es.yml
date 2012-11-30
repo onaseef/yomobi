@@ -239,7 +239,7 @@ es:
       general: "Hubo un problema con tu solicitud:"
       recaptcha: "Hubo un error con el código re-captcha de abajo. Favor de re-ingresar el código y hacer click en submit/enviar."
 
-  test_drive:
+  testdrive:
     success: "Translate me!"
     cant_build_test_drive: "Translate me!"
     begin_btn: "Start Test Drive"
