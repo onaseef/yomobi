@@ -228,7 +228,7 @@ es-ES:
     last_name: "Apellido:"
     email: "Email:"
     password: "Contraseña:"
-    password_confirm: "Repetir/ confirmar contraseña:"
+    password_confirm: "Repetir contraseña:"
     site_type: "Tipo de Sitio:"
     signup_key: "Clave de Registro:"
     sign_up: "Registro"
