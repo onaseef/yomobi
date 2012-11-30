@@ -9,9 +9,9 @@ class TestDrivesController < ApplicationController
 
     if @user.create_test_drive
       sign_in @user
-      redirect_to builder_main_path, notice: t('test_drive.success')
+      redirect_to builder_main_path, notice: t('testdrive.success')
     else
-      flash.now[:alert] = t('test_drive.cant_build_test_drive')
+      flash.now[:alert] = t('testdrive.cant_build_test_drive')
       render :new
     end
   end

@@ -287,6 +287,7 @@ a,
       text-decoration: none
       cursor: pointer
       background-color: $orange
+      padding: 5px 10px
       color: white
       border: 0px
       letter-spacing: .1em
@@ -300,7 +301,16 @@ a,
         background-color: $dark-orange
     .row, 
     .row-1
+      display: table-row
       margin-top: 15px
+    .sign
+      margin: 0px 12px 12px 0px
+      float: left
+      width: 256px
+    p
+      text-align: justify
+      width: 70%
+      +adjust-font-size-to(15px)
         
   .mobile-matters
     ol
