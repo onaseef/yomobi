@@ -245,7 +245,7 @@ es:
     begin_btn: "Start Test Drive"
     title: "Take a Test Drive"
     header: "Try out all the features of YoMobi before you sign up."
-    explanation: "The test drive lets you try all of the functionality of the YoMobi platform before you sign up. When you click on the \"Start Test Drive\" button, we create a temporary account that you can use as a sandbox to see how the mobile site builder works.<br/><br/>Once you've had a chance to try it out, you can sign up to create your own mobile site by clicking on the Sign Up link in the menu bar."
+    explanation: "The test drive lets you try all of the functionality of the YoMobi platform before you sign up. When you click on the \"Start Test Drive\" button, we create a temporary account that you can use as a sandbox to see how the mobile site builder works.<br/><br/>Once you've had a chance to try it out, you can sign up to create your own mobile site by clicking on the Sign Up Now link in the menu bar."
     signup_link: "Sign Up Link"
     
   recaptcha:
