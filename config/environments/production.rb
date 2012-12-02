@@ -10,11 +10,11 @@ Yomobi::Application.configure do
   config.assets.digest = false
   # Settings specified here will take precedence over those in config/application.rb
 
-  config.app_domains = ['webesity.com', 'yomobi.dev']
+  config.app_domains = ['weberti.com', 'yomobi.dev']
   config.re_app_domains = config.app_domains.map {|d| Regexp.escape d}.join '|'
   config.heroku_app_name = 'yomobi-staging'
 
-  config.opt_out_url_host = 'webesity.com'
+  config.opt_out_url_host = 'weberti.com'
 
   # The production environment is meant for finished, "live" apps.
   # Code is not reloaded between requests
