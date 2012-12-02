@@ -1,0 +1,1 @@
+tinyMCE.addI18n("pl.advhr_dlg",{size:"Wysokość",noshade:"Bez cienia",width:"Szerokość",normal:"Normalny",widthunits:"Jednostki"});

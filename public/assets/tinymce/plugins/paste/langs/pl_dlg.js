@@ -1,0 +1,1 @@
+tinyMCE.addI18n("pl.paste_dlg",{word_title:"Użyj CTRL+V na swojej klawiaturze żeby wkleić tekst do okna.",text_linebreaks:"Zachowaj końce linii.",text_title:"Użyj CTRL+V na swojej klawiaturze żeby wkleić tekst do okna."});

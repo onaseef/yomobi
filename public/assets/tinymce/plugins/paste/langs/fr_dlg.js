@@ -1,0 +1,1 @@
+tinyMCE.addI18n("fr.paste_dlg",{word_title:"Utilisez CTRL+V sur votre clavier pour coller le texte dans la fenêtre.",text_linebreaks:"Conserver les retours à la ligne",text_title:"Utilisez CTRL+V sur votre clavier pour coller le texte dans la fenêtre."});

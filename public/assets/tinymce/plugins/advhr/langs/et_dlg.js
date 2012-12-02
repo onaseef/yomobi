@@ -1,0 +1,1 @@
+tinyMCE.addI18n("et.advhr_dlg",{size:"Kõrgus",noshade:"Ilma varjuta",width:"Laius",normal:"Normaalne",widthunits:"Ühikud"});

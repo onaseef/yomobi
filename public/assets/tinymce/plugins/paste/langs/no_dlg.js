@@ -1,0 +1,1 @@
+tinyMCE.addI18n("no.paste_dlg",{word_title:"Bruk CTRL+V på tastaturet for å lime inn teksten i dette vinduet.",text_linebreaks:"Behold tekstbryting",text_title:"Bruk CTRL+V på tastaturet for å lime inn teksten i dette vinduet."});
