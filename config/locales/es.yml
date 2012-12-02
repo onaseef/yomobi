@@ -215,6 +215,7 @@ es:
     password: "Contraseña:"
     remember_user: "Mantener sesión abierta"
     sign_in: "Entrar"
+    member_sign_in: "Entrar"
     or: "o"
     sign_up: "Registrarse en Yomobi"
     unlock_not_received: "¿No recibiste las instrucciones para desbloquear?"

@@ -215,6 +215,7 @@ en:
     password: "Password:"
     remember_user: "Keep me logged in"
     sign_in: "Sign In"
+    member_sign_in: "Member Sign In"
     or: "or"
     sign_up: "Sign Up for Yomobi"
     unlock_not_received: "Didn't receive unlock instructions?"
