@@ -137,7 +137,9 @@ hr {
   #topline-notice .notice-icon {
     position: relative;
     top: 4px;
-    left: -6px; }
+    left: -6px;
+    display: inline;
+  }
   #topline-notice .x-icon {
     width: 16px;
     height: 16px;
