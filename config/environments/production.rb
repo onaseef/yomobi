@@ -12,7 +12,7 @@ Yomobi::Application.configure do
 
   config.app_domains = ['weberti.com', 'yomobi.dev']
   config.re_app_domains = config.app_domains.map {|d| Regexp.escape d}.join '|'
-  config.heroku_app_name = 'yomobi-staging'
+  config.heroku_app_name = 'yomobi-prod'
 
   config.opt_out_url_host = 'weberti.com'
 
