@@ -254,6 +254,7 @@ a,
         +margin-trailer(1)
       img
         max-width: 100%
+        border: 1px solid $grey
       .title
         @extend h2
       .link
@@ -270,12 +271,15 @@ a,
     .mobile-matters
       text-align: center
       h2
-        margin-top: 0.6em
+        margin: 0
       h3
         line-height: 1.5em
       img
         width: 80%
         margin: auto
+    .blog-categories
+      title
+        margin-top: 0
   
   .test-drive
     margin: 0px 1%
@@ -283,6 +287,7 @@ a,
       text-decoration: none
       cursor: pointer
       background-color: $orange
+      padding: 8px 10px
       color: white
       border: 0px
       letter-spacing: .1em
@@ -296,7 +301,19 @@ a,
         background-color: $dark-orange
     .row, 
     .row-1
-      margin-top: 15px
+      display: block
+      margin-top: 40px
+      width: 600px
+    .sign
+      margin: 0px 12px 0px 0px
+      float: left
+      width: 256px
+    .signup-link
+      width: 600px
+    p
+      text-align: justify
+      font-size: 15px
+      line-height: 24px
         
   .mobile-matters
     ol
@@ -316,7 +333,16 @@ a,
         border: 4px solid #DEDEB4
         padding: 10px
         margin-top: 15px
-
+  .terms
+    ol
+      list-style: inherit
+      list-style-type: decimal
+      font-size: 14px
+      margin: 1em 2em
+    li
+      padding: 4px 0px
+      line-height: 1.5em
+  
 .plans,
 .fees
   +clearfix

@@ -68,23 +68,25 @@ es:
     error:
       incorrect_password: "Contraseña Incorrecta"
 
+  legal:
+    rights_reserved: "Todos los Derechos Reservados YoMobi © 2012"
+
   links:
     about: "Quienes Somos"
     feedback: "Contacto"
     help: "Ayuda"
     home: "Inicio"
+    blog: "Blog"
+    compare: "Comparar"
+    contact: "Contactar"
     mobile_matters: "La Movilidad Importa"
-    plans: Planes
-    opportunities: Oportunidades
+    plans: "Planes"
+    opportunities: "Oportunidades"
     privacy: "Privacidad"
     terms: "Términos"
     language:
       en: "English"
       es: "Español"
-
-  legal:
-    rights_reserved: "Todos los Derechos Reservados YoMobi © 2012"
-
 
   javascript_builder:
 
@@ -213,6 +215,7 @@ es:
     password: "Contraseña:"
     remember_user: "Mantener sesión abierta"
     sign_in: "Entrar"
+    member_sign_in: "Entrar"
     or: "o"
     sign_up: "Registrarse en Yomobi"
     unlock_not_received: "¿No recibiste las instrucciones para desbloquear?"
@@ -226,7 +229,7 @@ es:
     last_name: "Apellido:"
     email: "Email:"
     password: "Contraseña:"
-    password_confirm: "Repetir/ confirmar contraseña:"
+    password_confirm: "Repetir contraseña:"
     site_type: "Tipo de Sitio:"
     signup_key: "Clave de Registro:"
     sign_up: "Registro"
@@ -243,8 +246,9 @@ es:
     begin_btn: "Start Test Drive"
     title: "Take a Test Drive"
     header: "Try out all the features of YoMobi before you sign up."
-    explanation: "The test drive lets you try all of the functionality of the YoMobi platform before you sign up. When you click on the \"Start Test Drive\" button, we create a temporary account that you can use as a sandbox to see how the mobile site builder works. Once you've had a chance to try it out, you can sign up to create your own mobile site by clicking on the Sign Up link in the menu bar."
-
+    explanation: "The test drive lets you try all of the functionality of the YoMobi platform before you sign up. When you click on the \"Start Test Drive\" button, we create a temporary account that you can use as a sandbox to see how the mobile site builder works.<br/><br/>Once you've had a chance to try it out, you can sign up to create your own mobile site by clicking on the Sign Up Now link in the menu bar."
+    signup_link: "Sign Up Link"
+    
   recaptcha:
     type_words: "Escribe las dos palabras:  "
     new_words: "(Cambiar de Palabras)"

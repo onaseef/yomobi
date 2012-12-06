@@ -57,8 +57,6 @@ en:
     feature6: "Easily customizable content"
     feature7: "Subscriber notification"
 
-
-
   status:
     loading: "Loading..."
     processing: "Processing..."
@@ -74,10 +72,13 @@ en:
     rights_reserved: "All Right Reserved YoMobi © 2012"
 
   links:
-    about: "About"
+    about: "About Us"
     feedback: "Feedback"
     help: "Help"
     home: "Home"
+    blog: "Blog"
+    compare: "Compare"
+    contact: "Contact"
     mobile_matters: "Mobile Matters"
     plans: Plans
     opportunities: Opportunities
@@ -213,7 +214,8 @@ en:
     email: "Email:"
     password: "Password:"
     remember_user: "Keep me logged in"
-    sign_in: "Member Sign In"
+    sign_in: "Sign In"
+    member_sign_in: "Member Sign In"
     or: "or"
     sign_up: "Sign Up for Yomobi"
     unlock_not_received: "Didn't receive unlock instructions?"
@@ -244,7 +246,8 @@ en:
     begin_btn: "Start Test Drive"
     title: "Take a Test Drive"
     header: "Try out all the features of YoMobi before you sign up."
-    explanation: "The test drive lets you try all of the functionality of the YoMobi platform before you sign up. When you click on the \"Start Test Drive\" button, we create a temporary account that you can use as a sandbox to see how the mobile site builder works. Once you've had a chance to try it out, you can sign up to create your own mobile site by clicking on the Sign Up link in the menu bar."
+    explanation: "Taking a test drive lets you try all of the functionality of the YoMobi platform before you sign up. When you click on the \"Start Test Drive\" button, we create a temporary account that you can use as a sandbox to see how the mobile site builder works.<br/><br/>Once you've had a chance to try it out, you can sign up to create your own mobile site by clicking on the Sign Up Now link in the menu bar."
+    signup_link: "Sign Up Link"
 
   recaptcha:
     type_words: "Type the two words: "

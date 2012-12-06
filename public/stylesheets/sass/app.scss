@@ -222,6 +222,7 @@ p.success {
       height: 23px;
       padding: 7px 10px 0;
       color: white;
+      letter-spacing: 1px;
       font-weight: bold;
       text-decoration: none; }
     a:hover {
@@ -360,7 +361,7 @@ p.success {
   a {
     color: inherit;
     position:relative;
-    top:3px;
+    top:0px;
     font-size:10px;
   }
   #recaptcha_response_field { 
