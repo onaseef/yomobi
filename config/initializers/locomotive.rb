@@ -23,7 +23,7 @@ Locomotive.configure do |config|
   # }
 
   # default locale (for now, only en, de, fr, pt-BR, it and nb are supported)
-  config.default_locale = :en
+  # config.default_locale = :en
 
   # available locales suggested to "localize" a site. You will have to pick up at least one among that list.
   config.site_locales = %w{en de fr pt-BR it nl nb es ru tr}
