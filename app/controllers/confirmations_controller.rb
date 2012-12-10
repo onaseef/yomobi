@@ -1,8 +1,9 @@
 class ConfirmationsController < Devise::ConfirmationsController
 
+  layout 'application_loco'
+
   def show
     user = User.find params[:uid]
-
     if user.confirmed? && current_user && current_user[:id] == user[:id]
       flash[:notice] = 'You have already confirmed your account.'
       return redirect_to builder_main_path if user.company

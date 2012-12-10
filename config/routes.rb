@@ -42,13 +42,16 @@ Yomobi::Application.routes.draw do
     get 'destroy' => 'test_drives#destroy'
   end
 
-  devise_for :users, :controllers => {
-    :registrations => 'registrations',
-    :sessions => 'sessions'
-  }
   devise_scope :user do
     get 'confirmation/new' => 'confirmations#show'
   end
+
+  devise_for :users, :controllers => {
+    :registrations => 'registrations',
+    :sessions => 'sessions',
+    :confirmations => 'confirmations',
+    :passwords => 'passwords'
+  }
 
 
   get "site-manager(/:selected_idx)" => 'site_manager#index', :as => :site_manager

@@ -1,0 +1,23 @@
+div.center-box
+  h2 = t'resend_confirmation.title'
+
+  = form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f|
+    = devise_error_messages!
+    #actual-signin-box.sign-in-form
+      table
+        tbody
+          tr
+            td
+              f.label =t'sign_in.email'
+            td
+              = f.text_field :email, :size => 30
+          tr
+            td
+            td
+              input.pretty-button.lfloat type="submit" value=t'resend_confirmation.resend_confirmation'
+          tr
+            td
+            td
+              = render "devise/shared/links"
+      div.clear
+

@@ -215,7 +215,7 @@ ul.language-bar {
   margin-top: 10px; }
 #signup-box td, #actual-signin-box td {
   padding-bottom: 5px; }
-#signup-box label, #actual-signin-box label, #signup-box .label, #actual-signin-box .label {
+#signup-box label, #actual-signin-box label, #signup-box .label, #actual-signin-box .label, #new-pass-form .label {
   font-weight: bold;
   font-size: 1.2em;
   float: right;
