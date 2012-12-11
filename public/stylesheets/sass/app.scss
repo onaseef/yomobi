@@ -209,6 +209,7 @@ p.success {
     height: 30px;
     border: 1px solid $secondary-color-border;
     border-bottom: none;
+    background: #5C9354;
     background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #5A8A52), color-stop(33.33333%, #4F7748), color-stop(66.66667%, #4F7748), color-stop(100%, #5A8A52));
     background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #5C9354), color-stop(100%, #96CB81));
     background-image: -webkit-linear-gradient(#5C9354,#96CB81);
