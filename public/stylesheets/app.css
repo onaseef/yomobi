@@ -117,6 +117,15 @@ p {
 .follower-section form {
   padding-top: 12px; }
 
+a, a:visited {
+  color: #3b599a;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 a img {
   border: none; }
 
@@ -229,6 +238,7 @@ p.success {
   border: 1px solid #cccccc;
   -webkit-border-radius: 4px; }
   .center-box h2 {
+    font-size: 1.5em;
     border-bottom: 1px solid #cccccc;
     padding-bottom: 4px;
     margin: 5px 0 5px 0; }
