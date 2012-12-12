@@ -117,15 +117,6 @@ p {
 .follower-section form {
   padding-top: 12px; }
 
-a, a:visited {
-  color: #3b599a;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
 a img {
   border: none; }
 
