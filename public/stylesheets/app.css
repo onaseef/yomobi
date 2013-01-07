@@ -232,7 +232,16 @@ p.success {
     border-bottom: 1px solid #cccccc;
     padding-bottom: 4px;
     margin: 5px 0 5px 0; }
+  .center-box  ul {
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px; }
   .center-box h3 {
+    font-size: 14px;
     margin: 5px 0 5px 0; }
   .center-box .content {
     padding: 10px 20px; }

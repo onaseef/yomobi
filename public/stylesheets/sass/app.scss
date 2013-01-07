@@ -257,11 +257,20 @@ p.success {
   width: 500px;
   margin: 20px auto;
   padding: 10px 20px;
+  ul { 
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px; }
   h2 {
     border-bottom: 1px solid #cccccc;
     padding-bottom: 4px;
     margin: 5px 0 5px 0; }
   h3 {
+    font-size: 14px;
     margin: 5px 0 5px 0; }
   .content {
     padding: 10px 20px; }
