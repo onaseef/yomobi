@@ -33,6 +33,10 @@
   padding: 10px 2px 9px 2px;
   margin: 0px 0px 8px 0px; }
 
+.hspacer {
+  margin: 0 5px;
+}
+
 select {
   font-size: 12px; }
 
