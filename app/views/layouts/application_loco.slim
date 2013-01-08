@@ -53,11 +53,11 @@ html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0"
                   li
                     a[href="/about-us"]= t 'links.about'
                   li
-                    a[href="http://help.yomobi.com"]= t 'links.help'
+                    a[href="/blog"]= t 'links.blog'
                   li
-                    a[href="?locale=en"]= t 'links.language.en'
+                    a[href="/contact"]= t 'links.contact'
                   li.last
-                    a[href="?locale=es"]= t 'links.language.es'
+                    a[href="http://help.yomobi.com"]= t 'links.help'
             .btn-img
               a[href="/users/sign_in"]= t 'sign_in.member_sign_in'
             .social-menu
@@ -92,28 +92,9 @@ html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0"
               li
                 a[href="http://help.yomobi.com"]= t 'links.help'
               li
-                a[href="?locale=es"] = t 'links.language.es'
-              li
                 a[href="/privacy"]= t 'links.privacy'
-              li
+              li.last
                 a[href="/terms"]= t 'links.terms'
-              li.last
-                a[href="/contact"]= t 'links.feedback'
-        .user-menu
-          .content
-            ul
-              li.first
-                a[href="/users/sign_in"]= t 'sign_in.sign_in'
-              li
-                a[href="/users/sign_up"]= t 'sign_up.sign_up'
-              li
-                a[href="/about-us"]= t 'links.about'
-              li
-                a[href="http://help.yomobi.com"]= t 'links.help'
-              li
-                a[href="?locale=en"]= t 'links.language.en'
-              li.last
-                a[href="?locale=es"]= t 'links.language.es'
     = render 'layouts/js-base'
     = yield :js
     = javascript_include_tag '/javascripts/notice'
