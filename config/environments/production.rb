@@ -8,9 +8,10 @@ Yomobi::Application.configure do
 
   # Generate digests for assets URLs
   config.assets.digest = false
+
   # Settings specified here will take precedence over those in config/application.rb
 
-  config.app_domains = ['weberti.com', 'yomobi.dev']
+  config.app_domains = ['mobicito.com', 'weberti.com', 'yomobi.dev']
   config.re_app_domains = config.app_domains.map {|d| Regexp.escape d}.join '|'
   config.heroku_app_name = 'yomobi-prod'
 
