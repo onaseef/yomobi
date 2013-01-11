@@ -14,7 +14,7 @@ RESERVED_SITE_URLS = %w{
 }
 
 OLD_SITES_URLS = %w{
-  /test_drive_local /some_company
+  /test_drive_local /some_company /skydivetemple
 }
 # used in informed_controller.rb
 TXT_MSG_MAX_LENGTH = 280
