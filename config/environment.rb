@@ -14,8 +14,21 @@ RESERVED_SITE_URLS = %w{
 }
 
 OLD_SITES_URLS = %w{
-  /test_drive_local /some_company /skydivetemple
+  /yomobi 
+  /austinfilmschool 
+  /bis
+  /chapmanairheat 
+  /daybyday 
+  /doggedeli 
+  /gemininails 
+  /jeffmass 
+  /kebab 
+  /respectme 
+  /shandeez 
+  /skydivetemple
+  /twinphotographers
 }
+
 # used in informed_controller.rb
 TXT_MSG_MAX_LENGTH = 280
 SHORT_URL_RESERVED_COUNT = 23
