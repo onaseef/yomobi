@@ -15,18 +15,31 @@ RESERVED_SITE_URLS = %w{
 
 OLD_SITES_URLS = %w{
   /yomobi 
+  /all-star-shop
+  /amg
   /austinfilmschool 
   /bis
   /chapmanairheat 
   /daybyday 
   /doggedeli 
   /gemininails 
-  /jeffmass 
-  /kebab 
+  /grimajewellery
+  /jeffmass
+  /jsottawa
+  /kebab
+  /kennysburgers
+  /marksouting
+  /masterrousseaustaekwondo
+  /mobilya
+  /mygedlive
+  /panolaschools
+  /pilatesofjackson
   /respectme 
   /shandeez 
   /skydivetemple
   /twinphotographers
+  /usstove
+  /yellowe
 }
 
 # used in informed_controller.rb
