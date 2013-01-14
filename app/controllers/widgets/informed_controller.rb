@@ -33,7 +33,7 @@ class Widgets::InformedController < ApplicationController
       email_follower = Follower.new
     end
 
-    save_errors = text_follower.errors.merge email_follower.errors
+    save_errors = text_follower.errors.to_hash.merge email_follower.errors.to_hash
     save_success ? success(nil) : error(save_errors)
   end
 
