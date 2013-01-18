@@ -4,6 +4,7 @@ gem 'rails', '3.2.11'
 gem 'pg'
 gem 'couchrest', :git => 'git://github.com/couchrest/couchrest.git'
 
+gem "cocaine", "0.3.2"
 gem 'paperclip', :git => 'https://github.com/thoughtbot/paperclip', :tag => "v2.3.14"
 gem 'aws-s3', :require => 'aws/s3'
 gem "aws-ses", "~> 0.4.4", :require => 'aws/ses'
