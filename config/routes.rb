@@ -99,7 +99,11 @@ Yomobi::Application.routes.draw do
 
   get '/javascripts/mobile-redirect.js' => 'mobile#mobile_redirect'
   get 'preview/:company' => 'mobile#index', :as => :mobile_preview, :defaults => { :preview => true }
-
+  post 'preview/:company/leave_msg/submit' => 'widgets/leave_msg#submit', :defaults => { :preview => true }
+  post 'preview/:company/call_back/submit' => 'widgets/call_back#mobile_submit', :defaults => { :preview => true }
+  post 'preview/:company/tell_friend/submit' => 'widgets/tell_friend#mobile_submit', :defaults => { :preview => true }
+  post 'preview/:company/informed/submit' => 'widgets/informed#mobile_submit', :defaults => { :preview => true }
+  post 'preview/:company/booking/submit' => 'widgets/booking#mobile_submit', :defaults => { :preview => true }
 
   ######################
   # Mobile-side routes #

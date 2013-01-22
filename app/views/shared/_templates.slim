@@ -88,7 +88,7 @@
       p =t'leave_a_message.instructions'
       | <% } %>
 
-      = form_tag "/#{@company.db_name}/leave_msg/submit", :method => 'post' do
+      = form_tag "#{'/preview' if @is_preview_mode}/#{@company.db_name}/leave_msg/submit", :method => 'post' do
         label =t'mobile.form.name'
         br
         input type="text" name="name"
@@ -117,7 +117,7 @@
       p =t'call_back.instructions'
       | <% } %>
 
-      = form_tag "/#{@company.db_name}/call_back/submit", :method => 'post' do
+      = form_tag "#{'/preview' if @is_preview_mode}/#{@company.db_name}/call_back/submit", :method => 'post' do
         label =t'mobile.form.name'
         br
         input type="text" name="name"
@@ -141,7 +141,7 @@
     .input-wrap
       p = escape_quotes t('tell_a_friend.instructions', :company_name => @company.name)
   
-      = form_tag "/#{@company.db_name}/tell_friend/submit", :method => 'post' do
+      = form_tag "#{'/preview' if @is_preview_mode}/#{@company.db_name}/tell_friend/submit", :method => 'post' do
         label =t'tell_a_friend.friend_email'
         br
         input type="text" name="email_to"
@@ -164,7 +164,7 @@
       p =t'booking_request.instructions'
       | <% } %>
 
-      = form_tag "/#{@company.db_name}/booking/submit", :method => 'post' do
+      = form_tag "#{'/preview' if @is_preview_mode}/#{@company.db_name}/booking/submit", :method => 'post' do
         label =t'mobile.form.name'
         br
         input name="name" type="text"
@@ -209,7 +209,7 @@
       p = t('keep_me_informed.instructions', :company_name => @company.name)
       | <% } %>
 
-      = form_tag "/#{@company.db_name}/informed/submit", :method => 'post' do
+      = form_tag "#{'/preview' if @is_preview_mode}/#{@company.db_name}/informed/submit", :method => 'post' do
         | <% if (_maybe.optForEmails) { %>
         label =t'mobile.form.email'
         br
