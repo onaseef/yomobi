@@ -42,7 +42,7 @@ class RegistrationsController < Devise::RegistrationsController
 
     # give user admin rights to site associated with key
     Key.create :user_id => user.id, :company_id => signup_key.company_id
-    signup_key.expire!(self)
+    signup_key.expire!(user.id)
     cookies.delete :signup_key
   end
 
