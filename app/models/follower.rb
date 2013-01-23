@@ -78,7 +78,7 @@ class Follower < ActiveRecord::Base
   def new_opt_out_pair
     key = Digest::SHA1.hexdigest("#{email}#{phone}#{company[:id]}yomobi-salt")
 
-    url = "#{Rails.application.config.opt_out_url_host}/opt-out/#{key}"
+    url = "http://#{Rails.application.config.opt_out_url_host}/opt-out/#{key}"
     api_key = ENV['GOOGLE_API_KEY']
     short_url = Shortly::Clients::Googl.shorten(url, :apiKey => api_key).shortUrl
     puts "SHORT URL: #{short_url}"

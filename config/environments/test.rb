@@ -12,7 +12,7 @@ Yomobi::Application.configure do
   config.re_app_domains = config.app_domains.map {|d| Regexp.escape d}.join '|'
   config.heroku_app_name = 'yomobi-test'
 
-  config.opt_out_url_host = ENV['DEVISE_URL_HOST'] || 'http://deelmob.com'
+  config.opt_out_url_host = ENV['DEVISE_URL_HOST'] || 'deelmob.com'
 
   # In the development environment your application's code is reloaded on
   # every request.  This slows down response time but is perfect for development

@@ -10,7 +10,7 @@ Yomobi::Application.configure do
   config.re_app_domains = config.app_domains.map {|d| Regexp.escape d}.join '|'
   config.heroku_app_name = 'yomobi-test'
 
-  config.opt_out_url_host = ENV['DEVISE_URL_HOST'] || 'http://local.host:3000'
+  config.opt_out_url_host = ENV['DEVISE_URL_HOST'] || 'local.host:3000'
 
   # In the development environment your application's code is reloaded on
   # every request.  This slows down response time but is perfect for development
@@ -63,7 +63,7 @@ Yomobi::Application.configure do
   config.action_mailer.default_url_options = {
     :host => ENV['ACTION_MAILER_HOST'] || 'local.host:3000'
   }
-  
+
 
   Slim::Engine.set_default_options :pretty => true
 end
