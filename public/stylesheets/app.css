@@ -233,6 +233,7 @@ p.success {
   border: 1px solid #cccccc;
   -webkit-border-radius: 4px; }
   .center-box h2 {
+    font-size: 2em;
     border-bottom: 1px solid #cccccc;
     padding-bottom: 4px;
     margin: 5px 0 5px 0; }
