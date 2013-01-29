@@ -19,7 +19,8 @@ OLD_SITES_URLS = %w{
   /amg
   /austinfilmschool 
   /bis
-  /chapmanairheat 
+  /chapmanairheat
+  /daba-designs 
   /daybyday 
   /doggedeli 
   /gemininails 
