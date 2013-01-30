@@ -34,7 +34,7 @@ end
 gem 'jquery-rails'
 
 gem 'kaminari'
-gem 'locomotive_cms', '~> 2.0.0.rc11', :require => 'locomotive/engine'
+gem 'locomotive_cms', '~> 2.0.0.rc12', :require => 'locomotive/engine'
 
 gem 'typus'
 gem 'wepay-rails', :git => 'https://github.com/mindeavor/wepay-rails'
