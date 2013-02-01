@@ -11,11 +11,11 @@ Yomobi::Application.configure do
 
   # Settings specified here will take precedence over those in config/application.rb
 
-  config.app_domains = ['mobicito.com', 'weberti.com', 'yomobi.dev']
+  config.app_domains = ['yomobi.com', 'mobicito.com', 'weberti.com', 'yomobi.dev']
   config.re_app_domains = config.app_domains.map {|d| Regexp.escape d}.join '|'
   config.heroku_app_name = 'yomobi-prod'
 
-  config.opt_out_url_host = 'mobicito.com'
+  config.opt_out_url_host = 'yomobi.com'
 
   # The production environment is meant for finished, "live" apps.
   # Code is not reloaded between requests
