@@ -27,7 +27,7 @@ class MobileController < ApplicationController
   end
 
   def mobile_redirect
-    @exceptions = cookies.keys.map {|name| name[/^noredirect::(.*)/,1]}.compact
+    @exceptions = cookies.map {|name, value| name[/^noredirect::(.*)/,1]}.compact
     render 'mobile/mobile_redirect.js', :layout => false
   end
 end
