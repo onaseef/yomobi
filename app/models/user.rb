@@ -15,11 +15,14 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :company_type_id,
-                  :first_name, :last_name, :default_company_id, :active_company_id
+                  :first_name, :last_name, :default_company_id, :active_company_id, :signup_key
 
-  validates_presence_of :first_name, :last_name, :company_type_id 
+  attr_accessor :signup_key
+  validates_presence_of :first_name, :last_name, :company_type_id
+
 
   before_validation :clean_email, :only => [:email]
+  before_validation :set_company_type_id, :if => :signup_key_defined?
   before_save :clean_email
 
   def self.find_for_authentication(conditions)
@@ -114,8 +117,16 @@ class User < ActiveRecord::Base
   end
 
   private
+  def signup_key_defined?
+    !self.signup_key.nil?
+  end
 
   def clean_email
     self.email = self.email.downcase.strip if self.email
+  end
+
+  def set_company_type_id
+    signup_key = SignupKey.find_by_key self.signup_key
+    self.company_type_id = Company.find(signup_key.company_id).company_type_id
   end
 end
