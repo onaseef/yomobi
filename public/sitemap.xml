@@ -12,27 +12,52 @@
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>http://www.yomobi.com/users/password/new</loc>
+  <loc>http://www.yomobi.com/users/sign_up</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://www.yomobi.com/?locale=en</loc>
+  <loc>http://www.yomobi.com/about-us</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://www.yomobi.com/?locale=es</loc>
+  <loc>http://www.yomobi.com/blog</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://www.yomobi.com/why-mobile</loc>
+  <loc>http://www.yomobi.com/contact</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://www.yomobi.com/about</loc>
+  <loc>http://www.yomobi.com/users/sign_in</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.yomobi.com/plans</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.yomobi.com/mobile-comparison</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.yomobi.com/mobile-matters</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.yomobi.com/test_drive/new</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.yomobi.com/clients</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
@@ -42,107 +67,52 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://help.yomobi.com</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
   <loc>http://www.yomobi.com/terms</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://www.yomobi.com/users/sign_up</loc>
+  <loc>http://www.yomobi.com/blog/posts/what-users-want-most-from-mobile-sites-today</loc>
   <changefreq>weekly</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://www.yomobi.com/users/sign_in</loc>
+  <loc>http://www.yomobi.com/blog/posts/mobile-site-best-practices</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.yomobi.com/blog/posts/five-reasons-why-your-nonprofit-should-prioritize-the-mobile-web-in-2013</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.yomobi.com/blog/posts/3-reasons-why-sms-marketing-may-be-better-than-email</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.yomobi.com/blog/categories/news</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.yomobi.com/blog/categories/best-practices</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.yomobi.com/blog/categories/all-entries</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.yomobi.com/users/password/new</loc>
   <changefreq>weekly</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>http://www.yomobi.com/users/confirmation/new</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://www.yomobi.com/users/password/new?locale=en</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://www.yomobi.com/users/password/new?locale=es</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://www.yomobi.com/about?locale=es</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://www.yomobi.com/privacy?locale=es</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://www.yomobi.com/terms?locale=es</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://www.yomobi.com/why-mobile?locale=en</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://www.yomobi.com/why-mobile?locale=es</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://www.yomobi.com/about?locale=en</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://www.yomobi.com/privacy?locale=en</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://www.yomobi.com/terms?locale=en</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://www.yomobi.com/users/sign_up?locale=en</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>http://www.yomobi.com/users/sign_up?locale=es</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>http://www.yomobi.com/users/sign_in?locale=en</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>http://www.yomobi.com/users/sign_in?locale=es</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>http://www.yomobi.com/users/confirmation/new?locale=en</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>http://www.yomobi.com/users/confirmation/new?locale=es</loc>
   <changefreq>weekly</changefreq>
   <priority>0.51</priority>
 </url>
