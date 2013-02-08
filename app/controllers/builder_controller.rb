@@ -36,8 +36,8 @@ class BuilderController < ApplicationController
     # scrub off rails related data
     wdata = params.clone
     wdata[:_id] = wdata[:id]; wdata.delete(:id)
+    wdata = sanitize_illegal_chars wdata
     wdata.delete :action; wdata.delete :controller
-
     return error 'Bad data' unless handle_special_widget_cases(wdata)
 
     # couchrest adds _id and _rev to the hash on success
@@ -206,6 +206,20 @@ class BuilderController < ApplicationController
     else
       true
     end
+  end
+
+  def sanitize_illegal_chars data
+    stripped_hash = ActiveSupport::HashWithIndifferentAccess.new
+    data.each_pair do |k,v|
+      if v.is_a?(String)
+        stripped_hash[k] = ActiveSupport::Inflector.transliterate(v, '')
+      elsif v.is_a?(ActiveSupport::HashWithIndifferentAccess)
+        stripped_hash[k] = sanitize_illegal_chars v
+      else
+        stripped_hash[k] = v
+      end
+    end
+    stripped_hash
   end
 
 end
