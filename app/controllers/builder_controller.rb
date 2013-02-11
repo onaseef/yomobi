@@ -212,7 +212,7 @@ class BuilderController < ApplicationController
     stripped_hash = ActiveSupport::HashWithIndifferentAccess.new
     data.each_pair do |k,v|
       if v.is_a?(String)
-        stripped_hash[k] = ActiveSupport::Inflector.transliterate(v, '')
+        stripped_hash[k] = clear_unicode_newlines v
       elsif v.is_a?(ActiveSupport::HashWithIndifferentAccess)
         stripped_hash[k] = sanitize_illegal_chars v
       else
@@ -220,6 +220,9 @@ class BuilderController < ApplicationController
       end
     end
     stripped_hash
+  end
+  def clear_unicode_newlines data
+    data.gsub(/[\u000d\u0009\u000c\u0085\u2028\u2029\n]/,"<br/>")
   end
 
 end
