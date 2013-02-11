@@ -23,14 +23,14 @@
   .inner-content .payment-history-wrapper {
     max-height: 400px;
     overflow: auto;
-    border: 1px solid #C1DAD7; }
+    border: 1px solid #c1dad7; }
   .inner-content .payment-history {
     border-collapse: collapse;
     width: 100%; }
     .inner-content .payment-history .header {
       background-color: #D9C780;
-      border-top: 1px solid #C1DAD7;
-      border-bottom: 1px solid #C1DAD7;
+      border-top: 1px solid #c1dad7;
+      border-bottom: 1px solid #c1dad7;
       letter-spacing: 2px;
       text-transform: uppercase;
       text-align: left;
@@ -40,7 +40,7 @@
       width: 85px; }
     .inner-content .payment-history td {
       padding: 3px 16px 3px 6px;
-      border-right: 1px solid #C1DAD7; }
+      border-right: 1px solid #c1dad7; }
     .inner-content .payment-history .payment-id {
       border-right: none; }
     .inner-content .payment-history .even {

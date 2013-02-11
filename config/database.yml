@@ -3,6 +3,8 @@ development:
   encoding: unicode
   host: localhost
   database: yomobi_development
+  username: postgres
+  password: sa3abtha
   pool: 5
 
 # Warning: The database defined as "test" will be erased and
