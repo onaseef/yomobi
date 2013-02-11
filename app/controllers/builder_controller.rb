@@ -209,17 +209,7 @@ class BuilderController < ApplicationController
   end
 
   def sanitize_illegal_chars data
-    stripped_hash = ActiveSupport::HashWithIndifferentAccess.new
-    data.each_pair do |k,v|
-      if v.is_a?(String)
-        stripped_hash[k] = ActiveSupport::Inflector.transliterate(v, '')
-      elsif v.is_a?(ActiveSupport::HashWithIndifferentAccess)
-        stripped_hash[k] = sanitize_illegal_chars v
-      else
-        stripped_hash[k] = v
-      end
-    end
-    stripped_hash
+  # Add code here to remove illegal characters from page text before it is saved to the database  
   end
 
 end
