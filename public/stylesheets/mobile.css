@@ -238,6 +238,31 @@ em {
     font-size: 12px;
     word-wrap: break-word; }
 
+.display_style_line .home-icon {
+  float: none;
+  width: auto;
+  height: auto; }
+  .display_style_line .home-icon .inner:after {
+     content: " "; /* Older browser do not support empty content */
+     visibility: hidden;
+     display: block;
+     height: 0;
+     clear: both;
+  }
+  .display_style_line .home-icon .icon {
+    margin: 0px;
+    background-repeat: no-repeat;
+    float: left;
+  }
+  .display_style_line .home-icon .title {
+    float: left;
+    width: auto;
+    height: auto;
+    text-align: left;
+    margin-left: 10px;
+    line-height: 57px;
+  }
+
 .mobile-footer {
   font-size: 14px;
   width: 100%;

@@ -144,6 +144,10 @@ div.wysiwyg ul.toolbar {
   left: 43px;
   background: url(/images/ui/invalid-for-showing.png) no-repeat; }
 
+.display_style_line .home-icon.invalid .invalid-icon {
+  top: auto;
+}
+
 .home-icon.invalid.deactivated .invalid-icon {
   background-image: url(/images/ui/deactivated.png); }
 
