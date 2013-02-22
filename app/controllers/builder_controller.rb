@@ -119,22 +119,9 @@ class BuilderController < ApplicationController
 
   def customize
     settings = current_user.company.settings
-    settings.header_color = params[:header_color]
-    settings.header_text_color = params[:header_text_color]
-    settings.header_font_family = params[:header_font_family]
-
-    settings.banner_size = params[:banner_size]
-
-    settings.tab_bar_color = params[:tab_bar_color]
-    settings.tab_bar_text_color = params[:tab_bar_text_color]
-    settings.tab_bar_font_family = params[:tab_bar_font_family]
-
-    settings.icon_text_color = params[:icon_text_color]
-    settings.icon_font_family = params[:icon_font_family]
-
-    settings.body_bg_repeat = params[:body_bg_repeat]
-    settings.body_bg_color = params[:body_bg_color]
+    settings.attributes_from_params = params
     settings.save
+    
     success(settings)
   end
 

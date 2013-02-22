@@ -13,6 +13,8 @@ class CompanySettings < ActiveRecord::Base
             :allow_nil => true,
             :length => { :maximum => MAX_COMPANY_SLOGAN_LENGTH }
 
+  validates :display_style, :presence => true, :inclusion => { :in => %w(icon line) }
+
   before_validation :format_color
  
   # See: http://www.imagemagick.org/Usage/resize/
@@ -44,7 +46,28 @@ class CompanySettings < ActiveRecord::Base
       icon_text_color: self.icon_text_color,
       body_bg_repeat: self.body_bg_repeat,
       body_bg_color: self.body_bg_color,
+      display_style: self.display_style,
     }
+  end
+
+  def attributes_from_params=(params)
+    self.header_color = params[:header_color]
+    self.header_text_color = params[:header_text_color]
+    self.header_font_family = params[:header_font_family]
+
+    self.banner_size = params[:banner_size]
+
+    self.tab_bar_color = params[:tab_bar_color]
+    self.tab_bar_text_color = params[:tab_bar_text_color]
+    self.tab_bar_font_family = params[:tab_bar_font_family]
+
+    self.icon_text_color = params[:icon_text_color]
+    self.icon_font_family = params[:icon_font_family]
+
+    self.body_bg_repeat = params[:body_bg_repeat]
+    self.body_bg_color = params[:body_bg_color]
+    
+    self.display_style = params[:display_style]
   end
 
   private

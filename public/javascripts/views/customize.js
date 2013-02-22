@@ -112,6 +112,7 @@
         .find('[name=tab_bar_font_family]').val(extraData.tab_bar_font_family).end()
         .find('[name=body_bg_repeat]').val(extraData.body_bg_repeat).end()
         .find('[name=banner_size]').val(extraData.banner_size).end()
+        .find('[name=display_style][value='+extraData.display_style+']').attr('checked', true).end()
       ;
       this.delegateEvents();
 

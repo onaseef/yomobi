@@ -353,6 +353,18 @@ script.customize(type="text/template")
                 div style="background-color:{{ header_text_color }}"
               input type="hidden" name="header_text_color" value="{{ header_text_color }}"
         br
+        table.wphoto-wrap
+          tbody
+            tr
+              td
+                = t 'builder.customize.style'
+                input#display_style_icon type='radio' name='display_style' value='icon'
+                label for='display_style_icon' = t 'builder.customize.icon'
+                | &nbsp;|&nbsp;
+                input#display_style_line type='radio' name='display_style' value='line'
+                label for='display_style_line' = t 'builder.customize.line'
+              td
+        br
         table.banner.wphoto-wrap
           tbody
             tr
