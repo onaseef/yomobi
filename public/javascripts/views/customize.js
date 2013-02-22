@@ -79,7 +79,8 @@
       'click .accept-btn':                'saveChanges',
       'click .cancel-btn':                'discardChanges',
       'click .remove-banner-link':        'removeBanner',
-      'click .remove-body_bg-link':       'removeBodyBg'
+      'click .remove-body_bg-link':       'removeBodyBg',
+      'change [name=display_style]':      'updateDisplayStyle',
     },
 
     initialize: function () {
@@ -227,6 +228,13 @@
       var size = this.$('[name=banner_size]').val() || 'auto';
       $('#top-bar .company-info .banner-wrap img').width(size);
       resizeEmulator();
+    },
+
+    updateDisplayStyle: function () {
+      var $homePage       = $('#canvas #home.page');
+      var newDisplayClass = $('#display_style_icon').is(':checked') ? 'display_style_icon' : 'display_style_line';
+      
+      $homePage.removeClass('display_style_icon display_style_line').addClass(newDisplayClass);
     },
 
     saveChanges: function () {

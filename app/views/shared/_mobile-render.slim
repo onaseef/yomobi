@@ -16,7 +16,7 @@
     .ad-bar
       = render 'mobile/yomobi-upgrade-ad'
 #canvas
-  #home.page
+  #home.page class="display_style_#{@company.company_settings.display_style}"
     #home-widgets.content.dbx-group
     - unless @is_preview_mode || @company.premium?
       .ad-bar.bottom
