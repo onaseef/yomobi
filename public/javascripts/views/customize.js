@@ -231,6 +231,8 @@
     },
 
     updateDisplayStyle: function () {
+      hasChanges = true;
+      
       var $homePage       = $('#canvas #home.page');
       var newDisplayClass = $('#display_style_icon').is(':checked') ? 'display_style_icon' : 'display_style_line';
       
