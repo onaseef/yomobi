@@ -64,6 +64,10 @@ module Yomobi
       :secret_access_key => ENV['S3_SECRET']
     config.action_mailer.delivery_method = :ses
 
+    config.generators do |g|
+      g.orm :active_record
+    end
+
     config.test_drive_db_name = ENV['TEST_DRIVE_DB_NAME'] || 'test-drive'
   end
 end
