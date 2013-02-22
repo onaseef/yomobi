@@ -265,6 +265,12 @@
         .val( getSetting('body_bg_repeat') );
       this.$('[name=banner_size]')
         .val( getSetting('banner_size') );
+      this.$('[name=display_style]')
+        .attr('checked', false)
+        .end()
+        .find('[value=' + getSetting('display_style') + ']')
+        .attr('checked', true);
+      this.updateDisplayStyle();
       this.updateFonts(!g.isPremium);
       this.updateRepeat();
       this.updateBannerSize();
