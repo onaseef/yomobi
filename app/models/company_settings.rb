@@ -14,6 +14,11 @@ class CompanySettings < ActiveRecord::Base
             :length => { :maximum => MAX_COMPANY_SLOGAN_LENGTH }
 
   validates :display_style, :presence => true, :inclusion => { :in => %w(icon line) }
+  def in_line_mode?
+    display_style == 'line'
+  end
+  validates :line_mode_icon_height, :presence => true, :numericality => true
+  validates :line_mode_font_size, :presence => true, :numericality => true
 
   before_validation :format_color
  
@@ -32,6 +37,23 @@ class CompanySettings < ActiveRecord::Base
       :secret_access_key => ENV['S3_SECRET']
     }
 
+  def self.line_mode_icon_heights
+    [100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 0].freeze
+  end
+
+  def self.line_mode_font_sizes
+    [18, 17, 16, 15, 14, 13, 12, 11, 10].freeze
+  end
+
+  def line_mode_line_height
+    height = 57 * line_mode_icon_height / 100
+    height > line_mode_font_size ? height : line_mode_font_size
+  end
+
+  def invalid_icon_height
+    57 * line_mode_icon_height / 200
+  end
+
   def as_json(options=nil)
     {
       slogan: self.slogan,
@@ -47,6 +69,8 @@ class CompanySettings < ActiveRecord::Base
       body_bg_repeat: self.body_bg_repeat,
       body_bg_color: self.body_bg_color,
       display_style: self.display_style,
+      line_mode_icon_height: self.line_mode_icon_height,
+      line_mode_font_size: self.line_mode_font_size,
     }
   end
 
@@ -68,6 +92,8 @@ class CompanySettings < ActiveRecord::Base
     self.body_bg_color = params[:body_bg_color]
     
     self.display_style = params[:display_style]
+    self.line_mode_icon_height = params[:line_mode_icon_height]
+    self.line_mode_font_size = params[:line_mode_font_size]
   end
 
   private

@@ -229,6 +229,7 @@ em {
     .home-icon .icon:hover {
       cursor: pointer; }
   .home-icon .title {
+    cursor: pointer;
     width: 70px;
     margin-left: -2px;
     line-height: 1.2em;
@@ -252,6 +253,7 @@ em {
   .display_style_line .home-icon .icon {
     margin: 0px;
     background-repeat: no-repeat;
+    background-size: contain !important;
     float: left;
   }
   .display_style_line .home-icon .title {
@@ -261,6 +263,7 @@ em {
     text-align: left;
     margin-left: 10px;
     line-height: 57px;
+    font-size: 18px;
   }
 
 .mobile-footer {

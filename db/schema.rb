@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120907121646) do
+ActiveRecord::Schema.define(:version => 20130223173828) do
 
   create_table "carriers", :force => true do |t|
     t.string   "name"
@@ -53,8 +53,8 @@ ActiveRecord::Schema.define(:version => 20120907121646) do
   create_table "company_settings", :force => true do |t|
     t.integer  "company_id"
     t.string   "header_color"
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.string   "header_text_color"
     t.string   "slogan"
     t.string   "tab_bar_color"
@@ -69,7 +69,10 @@ ActiveRecord::Schema.define(:version => 20120907121646) do
     t.string   "body_bg_color"
     t.string   "header_font_family"
     t.string   "tab_bar_font_family"
-    t.string   "banner_size",          :default => "auto"
+    t.string   "banner_size",           :default => "auto"
+    t.string   "display_style",         :default => "icon", :null => false
+    t.integer  "line_mode_icon_height", :default => 100,    :null => false
+    t.integer  "line_mode_font_size",   :default => 18,     :null => false
   end
 
   create_table "company_types", :force => true do |t|

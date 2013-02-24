@@ -70,17 +70,19 @@
     template: util.getTemplate('customize'),
 
     events: {
-      'change [name=area_select]':        'viewArea',
-      'change input[type=file]':          'enableUploadButton',
-      'click input[type=file]':           'enableUploadButton',
-      'change select':                    'updateFonts',
-      'change [name=body_bg_repeat]':     'updateRepeat',
-      'change [name=banner_size]':        'updateBannerSize',
-      'click .accept-btn':                'saveChanges',
-      'click .cancel-btn':                'discardChanges',
-      'click .remove-banner-link':        'removeBanner',
-      'click .remove-body_bg-link':       'removeBodyBg',
-      'change [name=display_style]':      'updateDisplayStyle',
+      'change [name=area_select]':            'viewArea',
+      'change input[type=file]':              'enableUploadButton',
+      'click input[type=file]':               'enableUploadButton',
+      'change select':                        'updateFonts',
+      'change [name=body_bg_repeat]':         'updateRepeat',
+      'change [name=banner_size]':            'updateBannerSize',
+      'click .accept-btn':                    'saveChanges',
+      'click .cancel-btn':                    'discardChanges',
+      'click .remove-banner-link':            'removeBanner',
+      'click .remove-body_bg-link':           'removeBodyBg',
+      'change [name=display_style]':          'updateDisplayStyle',
+      'change [name=line_mode_icon_height]':  'updateLineModeIconHeight',
+      'change [name=line_mode_font_size]':    'updateLineModeFontSize',
     },
 
     initialize: function () {
@@ -113,7 +115,9 @@
         .find('[name=tab_bar_font_family]').val(extraData.tab_bar_font_family).end()
         .find('[name=body_bg_repeat]').val(extraData.body_bg_repeat).end()
         .find('[name=banner_size]').val(extraData.banner_size).end()
-        .find('[name=display_style][value='+extraData.display_style+']').attr('checked', true).end()
+        .find('[name=display_style][value=' + extraData.display_style + ']').attr('checked', true).end()
+        .find('[name=line_mode_icon_height] option[value=' + extraData.line_mode_icon_height + ']').attr('selected', 'selected').end()
+        .find('[name=line_mode_font_size] option[value=' + extraData.line_mode_font_size + ']').attr('selected', 'selected').end()
       ;
       this.delegateEvents();
 
@@ -135,6 +139,8 @@
         initDialogUploader('banner', this.$('.banner'), this.onUpload);
         this.hasInitBodyBgUploader = false;
       }
+
+      this.updateDisplayStyleOptions();
     },
 
     viewArea: function (e) {
@@ -232,11 +238,65 @@
 
     updateDisplayStyle: function () {
       hasChanges = true;
-      
-      var $homePage       = $('#canvas #home.page');
-      var newDisplayClass = $('#display_style_icon').is(':checked') ? 'display_style_icon' : 'display_style_line';
-      
-      $homePage.removeClass('display_style_icon display_style_line').addClass(newDisplayClass);
+
+      $('#canvas #home.page').removeClass('display_style_icon display_style_line').addClass(this.currentDisplayMode());
+
+      this.updateDisplayStyleOptions();
+      this.updateFontSize();
+      this.updateLineModeIconHeight();
+    },
+
+    updateLineModeIconHeight: function () {
+      hasChanges = true;
+
+      var baseHeight = 57,
+          newHeightPercentage = parseInt($('[name=line_mode_icon_height]').val());
+      var newHeight = newHeightPercentage * baseHeight / 100;
+
+      if (this.currentDisplayMode() == 'display_style_icon') {
+        newHeight = 57;
+        $('#home-widgets .home-icon .title').
+          css('line-height', '13px');
+      } else {
+        var newLineHeight = newHeight > this.currentFontSize() ? newHeight : this.currentFontSize();
+        $('#home-widgets .home-icon .title').
+          css('line-height', newLineHeight+'px');
+      }
+
+      $('#home-widgets .home-icon .icon').
+        css('height', newHeight+'px').
+        css('width', newHeight+'px');
+
+      $('#home-widgets .home-icon.invalid .invalid-icon').
+        css('top', 0).
+        css('width', (newHeight / 2) + 'px').
+        css('height', (newHeight / 2) + 'px').
+        css('left', (newHeight / 2) + 'px');
+    },
+
+    currentDisplayMode: function () {
+      return $('#display_style_icon').is(':checked') ? 'display_style_icon' : 'display_style_line';
+    },
+
+    currentFontSize: function () {
+      if (this.currentDisplayMode() == 'display_style_line') {
+        return parseInt($('[name=line_mode_font_size]').val());
+      } else {
+        return 12;
+      }
+    },
+
+    updateLineModeFontSize: function () {
+      hasChanges = true;
+      this.updateFontSize();
+    },
+
+    updateFontSize: function () {
+      $('#home-widgets .home-icon .title').css('font-size', this.currentFontSize()+'px');
+    },
+
+    updateDisplayStyleOptions: function () {
+      $('.display_style .height_options').toggle($('#display_style_line').is(':checked'));
     },
 
     saveChanges: function () {

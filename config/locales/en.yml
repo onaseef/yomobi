@@ -533,7 +533,8 @@ en:
       style: 'Style:'
       icon: 'Icon'
       line: 'Line'
-      height: 'Height'
+      icon_height: 'Icon Height:'
+      font_size: 'Font Size:'
 
       banner_size: "Banner Size"
       text_color: "Text Color"
