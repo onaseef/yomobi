@@ -45,6 +45,11 @@ class CompanySettings < ActiveRecord::Base
     [18, 17, 16, 15, 14, 13, 12, 11, 10].freeze
   end
 
+  def line_mode_line_height
+    height = 57 * line_mode_icon_height / 100
+    height > line_mode_font_size ? height : line_mode_font_size
+  end
+
   def invalid_icon_height
     57 * line_mode_icon_height / 200
   end

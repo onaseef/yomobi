@@ -253,6 +253,16 @@
           newHeightPercentage = parseInt($('[name=line_mode_icon_height]').val());
       var newHeight = newHeightPercentage * baseHeight / 100;
 
+      if (this.currentDisplayMode() == 'display_style_icon') {
+        newHeight = 57;
+        $('#home-widgets .home-icon .title').
+          css('line-height', '13px');
+      } else {
+        var newLineHeight = newHeight > this.currentFontSize() ? newHeight : this.currentFontSize();
+        $('#home-widgets .home-icon .title').
+          css('line-height', newLineHeight+'px');
+      }
+
       $('#home-widgets .home-icon .icon').
         css('height', newHeight+'px').
         css('width', newHeight+'px');
