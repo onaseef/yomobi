@@ -338,6 +338,12 @@
         .end()
         .find('[value=' + getSetting('display_style') + ']')
         .attr('checked', true);
+      this.$('[name=line_mode_icon_height]')
+        .val( getSetting('line_mode_icon_height') );
+      this.$('[name=line_mode_font_size]')
+        .val( getSetting('line_mode_font_size') );
+      this.updateLineModeIconHeight();
+      this.updateLineModeFontSize();
       this.updateDisplayStyle();
       this.updateFonts(!g.isPremium);
       this.updateRepeat();
