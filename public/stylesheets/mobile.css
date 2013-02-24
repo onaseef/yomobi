@@ -243,6 +243,12 @@ em {
   float: none;
   width: auto;
   height: auto; }
+  .display_style_line .home-icon .inner { display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  box-align: center; }
   .display_style_line .home-icon .inner:after {
      content: " "; /* Older browser do not support empty content */
      visibility: hidden;
@@ -262,7 +268,6 @@ em {
     height: auto;
     text-align: left;
     margin-left: 10px;
-    line-height: 57px;
     font-size: 18px;
   }
 
