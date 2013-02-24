@@ -96,6 +96,15 @@
       e.preventDefault();
       if (!this.widget._bdata.canRename) return;
 
+      var $editWidgetInput = $('.widget-name-edit input');
+      var currentDisplayMode = $('#home').hasClass('display_style_line') ? 'display_style_line' : 'display_style_icon';
+      
+      if (currentDisplayMode == 'display_style_icon') {
+        $editWidgetInput.attr('maxlength', 22);
+      } else {
+        $editWidgetInput.removeAttr('maxlength')
+      }
+
       var self = this;
       this.el
         .find('.widget-name').hide().end()

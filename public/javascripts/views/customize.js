@@ -296,7 +296,7 @@
     },
 
     updateDisplayStyleOptions: function () {
-      $('.display_style .height_options').toggle($('#display_style_line').is(':checked'));
+      $('.display_style .height_options').toggle(this.currentDisplayMode() == 'display_style_line');
     },
 
     saveChanges: function () {
