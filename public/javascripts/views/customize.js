@@ -267,11 +267,19 @@
         css('height', newHeight+'px').
         css('width', newHeight+'px');
 
+      if (this.currentDisplayMode() == 'display_style_icon') {
       $('#home-widgets .home-icon.invalid .invalid-icon').
-        css('top', 0).
-        css('width', (newHeight / 2) + 'px').
-        css('height', (newHeight / 2) + 'px').
-        css('left', (newHeight / 2) + 'px');
+          css('top', '-94px').
+          css('width', '32px').
+          css('height', '32px').
+          css('left', '43px');
+      } else {
+        $('#home-widgets .home-icon.invalid .invalid-icon').
+          css('top', 0).
+          css('width', (newHeight / 2) + 'px').
+          css('height', (newHeight / 2) + 'px').
+          css('left', (newHeight / 2) + 'px');
+      }
     },
 
     currentDisplayMode: function () {
