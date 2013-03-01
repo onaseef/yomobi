@@ -1,0 +1,21 @@
+var exceptions = <%=raw @exceptions.to_json %>;
+var agent = navigator.userAgent.toLowerCase();
+var isMobile = /<%= mobile_devices %>/i.test( agent );
+var isTablet = /<%= tablet_devices %>/i.test( agent );
+var shouldRedirect = true;
+
+if (window.location.href.match(/noredirect\=1/)) {
+	util.createNoRedirectCookie(document.domain, 10);
+	shouldRedirect = false;
+}
+
+for (var i=exceptions.length-1; i >=0; i--) {
+  if (exceptions[i].toLowerCase() === document.domain.toLowerCase()) {
+    shouldRedirect = false;
+    break;
+  }
+}
+
+if (window._RSITE && isMobile && !isTablet && shouldRedirect) {
+  window.location = window._RSITE;
+}

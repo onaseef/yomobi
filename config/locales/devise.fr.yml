@@ -1,0 +1,41 @@
+fr:
+  errors:
+    messages:
+      not_found: "non trouvé"
+      already_confirmed: "est déjà confirmé"
+      not_locked: "n'était pas fermé"
+      invalid: "est invalide."
+      blank: "ne peut rester vide."
+
+  devise:
+    failure:
+      unauthenticated: 'Vous devez vous connecter ou vous inscrire pour continuer.'
+      unconfirmed: 'Vous devez confirmer votre compte pour continuer.'
+      locked: 'Votre compte est bloqué.'
+      invalid: 'Email ou mot de passe invalide.'
+      invalid_token: 'Marque d authentication invalide.'
+      timeout: 'Votre session a expiré, merci de vous reconnecter pour continuer.'
+      inactive: 'Votre compte n est pas encore activé.'
+    sessions:
+      signed_in: 'Vous êtes connecté.'
+      signed_out: 'Vous êtes déconnecté.'
+    passwords:
+      send_instructions: 'Vous allez recevoir un email avec des instructions pour changer votre mot de passe dans quelques minutes.'
+      updated: 'Votre mot de passe a été changé avec succès. Vous êtes connecté.'
+    confirmations:
+      send_instructions: 'Vous allez recevoir un email avec des instructions pour confirmer votre compte dans quelques minutes.'
+      confirmed: 'Votre compte a été confirmé avec succès. Vous êtes connecté.'
+    registrations:
+      signed_up: 'Vous vous êtes connecté avec succès. Une confirmation a été envoyée à votre adresse mail.'
+      updated: 'Vous avez mis à jour votre compte avec succès.'
+      destroyed: 'Au revoir ! Votre compte a été annulé avec succès. Nous espérons vous revoir bientôt.'
+    unlocks:
+      send_instructions: 'Vous allez recevoir un email d instructions pour débloquer votre compte dans quelques minutes.'
+      unlocked: 'Votre compte a été débloqué avec succès. Vous êtes connecté.'
+    mailer:
+      confirmation_instructions:
+        subject: 'Instructions pour confirmer'
+      reset_password_instructions:
+        subject: 'Instructions pour changer de mot de passe'
+      unlock_instructions:
+        subject: 'Instructions de déblocage'
