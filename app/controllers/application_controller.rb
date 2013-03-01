@@ -75,7 +75,7 @@ class ApplicationController < ActionController::Base
     lang = http_accept_language.preferred_language_from I18n.available_locales
     lang ||= http_accept_language.compatible_language_from I18n.available_locales
 
-    if params[:locale].present? && params[:locale].match(/^(es|en)/)
+    if params[:locale].present? && params[:locale].match(/^(es|en|fr)/)
       cookies[:locale] = params[:locale]
     end
 
