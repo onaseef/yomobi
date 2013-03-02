@@ -239,6 +239,9 @@
     updateDisplayStyle: function () {
       hasChanges = true;
 
+      // bugfix with drag'n'drop low height line items
+      g.homeDbx.orientation = this.currentDisplayMode() == 'display_style_line' ? "vertical" : "freeform";
+
       $('#canvas #home.page').removeClass('display_style_icon display_style_line').addClass(this.currentDisplayMode());
 
       this.updateDisplayStyleOptions();
@@ -304,6 +307,8 @@
     },
 
     updateDisplayStyleOptions: function () {
+        console.log("updateDisplayStyleOptions");
+        console.log(this.currentDisplayMode() == 'display_style_line');
       $('.display_style .height_options').toggle(this.currentDisplayMode() == 'display_style_line');
     },
 
