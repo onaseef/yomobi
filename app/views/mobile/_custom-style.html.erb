@@ -84,11 +84,16 @@
 
 .home-icon.invalid .invalid-icon {
   <% if @company.settings.in_line_mode? %>
-  top: 0;
+  <% left_dela_k = 0.7544 %>
+  <% left_fix = -2 %>
+  <% top_delta_k = 0.1 %>
+  top: <%= -(top_delta_k * @company.settings.invalid_icon_height).to_i %>px;
   width: <%= @company.settings.invalid_icon_height %>px;
   height: <%= @company.settings.invalid_icon_height %>px;
-  left: <%= @company.settings.invalid_icon_height %>px;
+  left: <%= (left_dela_k * @company.settings.line_mode_line_height).to_i + left_fix %>px;
   <% end %>
+
+parseInt(invalidIconLeftDelaK * newHeight) + magicLeftFix
 }
 
 #canvas #home.page {

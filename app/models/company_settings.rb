@@ -46,12 +46,14 @@ class CompanySettings < ActiveRecord::Base
   end
 
   def line_mode_line_height
-    height = 57 * line_mode_icon_height / 100
+    max_height = 57
+    height = max_height * line_mode_icon_height / 100
     height > line_mode_font_size ? height : line_mode_font_size
   end
 
   def invalid_icon_height
-    57 * line_mode_icon_height / 200
+    max_icon_height = 32
+    max_icon_height * line_mode_icon_height / 100
   end
 
   def as_json(options=nil)

@@ -253,7 +253,9 @@
       hasChanges = true;
 
       var baseHeight = 57,
-          newHeightPercentage = parseInt($('[name=line_mode_icon_height]').val());
+          newHeightPercentage = parseInt($('[name=line_mode_icon_height]').val()),
+          baseInvalidIconHeight = 32,
+          invalidIconLeftDelaK = 0.7544;
       var newHeight = newHeightPercentage * baseHeight / 100;
 
       if (this.currentDisplayMode() == 'display_style_icon') {
@@ -271,17 +273,22 @@
         css('width', newHeight+'px');
 
       if (this.currentDisplayMode() == 'display_style_icon') {
-      $('#home-widgets .home-icon.invalid .invalid-icon').
-          css('top', '-94px').
-          css('width', '32px').
-          css('height', '32px').
-          css('left', '43px');
-      } else {
+        var invalidIconTopDelta = -94;
         $('#home-widgets .home-icon.invalid .invalid-icon').
-          css('top', 0).
-          css('width', (newHeight / 2) + 'px').
-          css('height', (newHeight / 2) + 'px').
-          css('left', (newHeight / 2) + 'px');
+            css('top', invalidIconTopDelta + 'px').
+            css('width', baseInvalidIconHeight + 'px').
+            css('height', baseInvalidIconHeight + 'px').
+            css('left', parseInt(invalidIconLeftDelaK * newHeight)  + 'px');
+      }
+      else {
+        var newInvalidIconHeight = newHeightPercentage / 100 * baseInvalidIconHeight;
+        var invalidIconTopDeltaK = 0.1;
+        var leftFix = -2;
+        $('#home-widgets .home-icon.invalid .invalid-icon').
+          css('top', -parseInt(invalidIconTopDeltaK * newHeight) +'px').
+          css('width', newInvalidIconHeight + 'px').
+          css('height', newInvalidIconHeight + 'px').
+          css('left', parseInt(invalidIconLeftDelaK * newHeight) + leftFix + 'px');
       }
     },
 
@@ -307,8 +314,6 @@
     },
 
     updateDisplayStyleOptions: function () {
-        console.log("updateDisplayStyleOptions");
-        console.log(this.currentDisplayMode() == 'display_style_line');
       $('.display_style .height_options').toggle(this.currentDisplayMode() == 'display_style_line');
     },
 
