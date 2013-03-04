@@ -433,6 +433,30 @@ script.customize(type="text/template")
                 div style="background-color:{{ icon_text_color }}"
               input type="hidden" name="icon_text_color" value="{{ icon_text_color }}"
 
+        br
+
+        table.wphoto-wrap.display_style
+          tbody
+            tr
+              td
+                = t 'builder.customize.style'
+                input#display_style_icon type='radio' name='display_style' value='icon'
+                label for='display_style_icon' = t 'builder.customize.icon'
+                | &nbsp;|&nbsp;
+                input#display_style_line type='radio' name='display_style' value='line'
+                label for='display_style_line' = t 'builder.customize.line'
+                .height_options
+                  .field
+                    label for='line_mode_icon_height' = t 'builder.customize.icon_height'
+                    select name='line_mode_icon_height' id='line_mode_icon_height'
+                      - CompanySettings.line_mode_icon_heights.each do |i|
+                        option value=i = "#{i}%"
+                  .field
+                    label for='line_mode_font_size' = t 'builder.customize.font_size'
+                    select name='line_mode_font_size' id='line_mode_font_size'
+                      - CompanySettings.line_mode_font_sizes.each do |i|
+                        option value=i = i
+
         table.body_bg.wphoto-wrap
           tbody
             tr

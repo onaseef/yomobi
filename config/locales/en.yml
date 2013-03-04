@@ -530,6 +530,12 @@ en:
       header: "Header"
       header_font: "Font"
 
+      style: 'Style:'
+      icon: 'Icon'
+      line: 'Line'
+      icon_height: 'Icon Height:'
+      font_size: 'Font Size:'
+
       banner_size: "Banner Size"
       text_color: "Text Color"
       background_color: "Background Color"

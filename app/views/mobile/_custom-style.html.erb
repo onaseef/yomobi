@@ -60,6 +60,13 @@
   <% end %>
 }
 
+#canvas .home-icon .icon {
+  <% if @company.settings.in_line_mode? %>
+  width: <%= 57 * @company.settings.line_mode_icon_height / 100 %>px;
+  height: <%= 57 * @company.settings.line_mode_icon_height / 100 %>px;
+  <% end %>
+}
+
 #canvas .home-icon .title {
   <% if @company.settings.icon_font_family %>
   font-family: <%= @company.settings.icon_font_family %>;
@@ -68,6 +75,25 @@
   <% if @company.settings.icon_text_color %>
   color: <%= @company.settings.icon_text_color %>;
   <% end %>
+
+  <% if @company.settings.in_line_mode? %>
+  font-size: <%= @company.settings.line_mode_font_size %>px;
+  line-height: <%= @company.settings.line_mode_line_height %>px;
+  <% end %>
+}
+
+.home-icon.invalid .invalid-icon {
+  <% if @company.settings.in_line_mode? %>
+  <% left_dela_k = 0.7544 %>
+  <% left_fix = -2 %>
+  <% top_delta_k = 0.1 %>
+  top: <%= -(top_delta_k * @company.settings.invalid_icon_height).to_i %>px;
+  width: <%= @company.settings.invalid_icon_height %>px;
+  height: <%= @company.settings.invalid_icon_height %>px;
+  left: <%= (left_dela_k * @company.settings.line_mode_line_height).to_i + left_fix %>px;
+  <% end %>
+
+parseInt(invalidIconLeftDelaK * newHeight) + magicLeftFix
 }
 
 #canvas #home.page {

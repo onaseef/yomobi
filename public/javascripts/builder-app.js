@@ -323,6 +323,7 @@
     // NOTE: `name` is already in prettified form
     //
     validateWidgetName: function (name,wtype,isSingleton,options) {
+      var currentDisplayMode = $('#home').hasClass('display_style_line') ? 'display_style_line' : 'display_style_icon';
       var error = null
         , self = this
         , options = options || {}
@@ -333,7 +334,7 @@
         , isSameName = function (w) { var n=w.cname; return n == cname && n != exception; }
         , isValid = error || !mapp.widgets.find(isSameName) || (error = i18n.name_already_in_use)
         , isValid = error || name.length >= 2 || (error = i18n.name_too_short)
-        , isValid = error || name.length <= 22 || (error = i18n.name_too_long)
+        , isValid = error || (name.length <= 22 || currentDisplayMode == 'display_style_line') || (error = i18n.name_too_long)
         , singletonNames = error || (isSingleton && []) || bapp.sidebar.getSingletons()
         , isValid = error || !_.include(singletonNames,name) || (error = i18n.name_reserved)
       ;

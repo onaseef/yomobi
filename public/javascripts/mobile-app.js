@@ -373,7 +373,9 @@
     resize: function (height) {
       height = ( height || mapp.getActivePage().height() ) +
                 Math.max(g.topBarMaxHeight,g.topBarHeight) + 20;
-      $('#mobile-container').height(height);
+
+      // this line was comment out - bugfix of https://www.pivotaltracker.com/projects/627041#!/stories/44396369, point 3
+      // $('#mobile-container').height(height);
       return height;
     },
 

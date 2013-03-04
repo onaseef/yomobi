@@ -142,7 +142,8 @@ div.wysiwyg ul.toolbar {
   height: 32px;
   top: -94px;
   left: 43px;
-  background: url(/images/ui/invalid-for-showing.png) no-repeat; }
+  background: url(/images/ui/invalid-for-showing.png) no-repeat; 
+  background-size: contain; }
 
 .home-icon.invalid.deactivated .invalid-icon {
   background-image: url(/images/ui/deactivated.png); }
@@ -876,3 +877,6 @@ button[disabled] {
 button[name=pick_files] {
   cursor: pointer;
   padding: 1px 3px 1px 3px; }
+
+.display_style .height_options {
+  margin-top: 6px; }
