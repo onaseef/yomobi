@@ -22,11 +22,9 @@ div.wysiwyg ul.toolbar {
     padding-left: 0;
     margin: 54px 0 10px 0;
     font-size: 100%; }
-  #sidebar a,
-  #sidebar a:visited {
+  #sidebar a, #sidebar a:visited {
     color: #3B5998;
-    text-decoration: none;    
-  }  
+    text-decoration: none; }
   #sidebar .spacer {
     border-top: 1px solid #dddddd;
     margin: 5px 0; }
@@ -138,11 +136,11 @@ div.wysiwyg ul.toolbar {
 
 .home-icon.invalid .invalid-icon {
   position: relative;
-  width: 32px;
-  height: 32px;
+  width: 23px;
+  height: 23px;
   top: -94px;
   left: 43px;
-  background: url(/images/ui/invalid-for-showing.png) no-repeat; 
+  background: url(/images/ui/invalid-for-showing.png) no-repeat;
   background-size: contain; }
 
 .home-icon.invalid.deactivated .invalid-icon {
@@ -467,7 +465,7 @@ div.wysiwyg ul.toolbar {
 
 .wphoto-wrap {
   width: 100%;
-  border: 1px solid #BDC7D8;
+  border: 1px solid #bdc7d8;
   margin: 10px 0;
   padding: 5px; }
   .wphoto-wrap label {
@@ -498,9 +496,9 @@ div.wysiwyg ul.toolbar {
   -moz-transition: background-position 2s;
   -webkit-transition: background-position 2s;
   -o-transition: background-position 2s;
-  border: 1px solid #DFDFDF;
-  border-top: 1px solid #DDDDDD;
-  border-bottom: 1px solid #E2E2E2;
+  border: 1px solid #dfdfdf;
+  border-top: 1px solid #dddddd;
+  border-bottom: 1px solid #e2e2e2;
   font-size: 1em;
   overflow: hidden;
   white-space: nowrap;
@@ -514,7 +512,7 @@ div.wysiwyg ul.toolbar {
 
 #dialog-confirm .wphoto-wrap {
   padding: 0px 4px 0px 4px;
-  border: 3px solid #BDC7D8; }
+  border: 3px solid #bdc7d8; }
 
 #dialog-confirm.subcat p.error {
   margin: 0 0 0 48px;
@@ -730,11 +728,11 @@ div.wysiwyg ul.toolbar {
   max-height: 235px;
   margin: 0 2px 8px 0px;
   padding: 10px 0 10px 0;
-  border: 3px solid #ccc;
+  border: 3px solid #cccccc;
   overflow: auto; }
   #dialog-confirm.edit-icon .icons .wicon-opt {
     margin: 2px;
-    border: 2px solid #fff;
+    border: 2px solid white;
     cursor: pointer; }
   #dialog-confirm.edit-icon .icons .wicon-opt:hover {
     border: 2px solid #d8dfea; }

@@ -254,7 +254,7 @@
 
       var baseHeight = 57,
           newHeightPercentage = parseInt($('[name=line_mode_icon_height]').val()),
-          baseInvalidIconHeight = 32,
+          baseInvalidIconHeight = 23,
           invalidIconLeftDelaK = 0.7544;
       var newHeight = newHeightPercentage * baseHeight / 100;
 
