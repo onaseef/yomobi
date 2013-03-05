@@ -296,8 +296,8 @@ fr-FR:
     welcome_email:
       subject: "Bienvenu à YoMobi"
       thank_you: "Merci de vous être inscrit à YoMobi. Vous êtes sur le point d'élargir votre public et faciliter l'accès à votre site pour vos futurs visiteurs."
-      mobile_site_url: "Your mobile site URL is: "
-      mobile_redirect: 'Use your YoMobi mobile site to complement your existing desktop site. <a href="http://help.yomobi.com/Account/MobileRedirectScript">Click here for instructions</a> on how to seamlessly direct visitors to your new mobile site whenever they visit from a mobile device.'
+      mobile_site_url: "L'URL de votre site mobile est: "
+      mobile_redirect: 'Utilisez votre site mobile YoMobi pour agrémenter votre site PC. <a href="http://help.yomobi.com/Account/MobileRedirectScript">Cliquez ici pour les instructions</a> sur comment rediriger vos visiteurs vers votre site mobile quand ils utilisent leur portable.'
       share: "Cliquez ici pour partager vos actus avec vos amis."
       access_account: "Cliquez ici pour vous connecter à YoMobi."
       closing: "Merci,"
@@ -576,7 +576,7 @@ fr-FR:
       address2_label: "Adresse 2:"
       browse: "Rechercher..."
       calendar_link_label: "Coller le lien de votre calendrier ici:"
-      cancel: "Annuler les Changements"
+      cancel: "Annuler"
       change_icon: "Changer l'Icone"
       city_label_required: "Ville*:"
       click_to_edit_label: "Cliquer Ici pour Commencer l'Edition"
@@ -609,7 +609,7 @@ fr-FR:
       rss_icon: "Ajouter RSS"
       rss_label_required: "RSS*:"
       rss_max_entries: "Nombre max d'entrées:"
-      save: "Sauvegarder les modifications"
+      save: "Sauvegarder"
       select_at_least_one_label_required: "Merci de choisir au moins un des éléments suivants*:"
       select_picture: "Sélectionner une image..."
       sms_opt_in_label: "Autoriser les utilisateurs à recevoir les SMS."
