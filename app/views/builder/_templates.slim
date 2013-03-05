@@ -440,7 +440,8 @@ script.customize(type="text/template")
             tr
               td
                 = t 'builder.customize.style'
-                input#display_style_icon type='radio' name='display_style' value='icon'
+                - checked = @company.premium? ? "" : "checked"
+                input#display_style_icon type='radio' name='display_style' value='icon' *{checked => checked}
                 label for='display_style_icon' = t 'builder.customize.icon'
                 | &nbsp;|&nbsp;
                 input#display_style_line type='radio' name='display_style' value='line'
@@ -451,6 +452,8 @@ script.customize(type="text/template")
                     select name='line_mode_icon_height' id='line_mode_icon_height'
                       - CompanySettings.line_mode_icon_heights.each do |i|
                         option value=i = "#{i}%"
+
+
                   .field
                     label for='line_mode_font_size' = t 'builder.customize.font_size'
                     select name='line_mode_font_size' id='line_mode_font_size'
