@@ -38,11 +38,11 @@ class CompanySettings < ActiveRecord::Base
     }
 
   def self.line_mode_icon_heights
-    [100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 0].freeze
+    [100, 90, 80, 70, 60, 50, 0].freeze
   end
 
   def self.line_mode_font_sizes
-    [18, 17, 16, 15, 14, 13, 12, 11, 10].freeze
+    [20, 19, 18, 17, 16, 15, 14].freeze
   end
 
   def line_mode_line_height
@@ -52,7 +52,7 @@ class CompanySettings < ActiveRecord::Base
   end
 
   def invalid_icon_height
-    max_icon_height = 32
+    max_icon_height = 23
     max_icon_height * line_mode_icon_height / 100
   end
 
