@@ -17,31 +17,31 @@
   var updateColor = {
     header_color: function (color) {
       color || (color = getSetting('header_color'));
-      $('#top-bar .company-info').css({ background:color });
+      $('#top-bar .company-info').css({ background: color });
     },
     header_text_color: function (color) {
       color || (color = getSetting('header_text_color'));
-      $('#top-bar .company-info').css({ color:color });
+      $('#top-bar .company-info').css({ color: color });
     },
     tab_bar_color: function (color) {
       color || (color = getSetting('tab_bar_color'));
-      $('#top-bar .tab-bar').css({ background:color});
-      $('#canvas .mobile-footer').css({ background:color });
+      $('#top-bar .tab-bar').css({ background: color});
+      $('#canvas .mobile-footer').css({ background: color });
     },
     tab_bar_text_color: function (color) {
       color || (color = getSetting('tab_bar_text_color'));
-      $('#top-bar .tab-bar td, #top-bar .tab-bar td a').css({ color:color });
-      $('#canvas .mobile-footer').css({ color:color });
-      $('#top-bar .tab-bar').css({ borderColor:color });
-      $('#canvas .mobile-footer').css({ borderColor:color });
+      $('#top-bar .tab-bar td, #top-bar .tab-bar td a').css({ color: color });
+      $('#canvas .mobile-footer').css({ color: color });
+      $('#top-bar .tab-bar').css({ borderColor: color });
+      $('#canvas .mobile-footer').css({ borderColor: color });
     },
     icon_text_color: function (color) {
       color || (color = getSetting('icon_text_color'));
-      $('#canvas .home-icon .title').css({ color:color });
+      $('#canvas .home-icon .title').css({ color: color });
     },
     body_bg_color: function (color) {
       color || (color = getSetting('body_bg_color'));
-      $('#canvas #home.page').css({ backgroundColor:color });
+      $('#canvas #home.page').css({ backgroundColor: color });
     }
   };
 
@@ -51,7 +51,7 @@
     // This delay is needed because the flash object is present for a
     // split second, just enough time for a double click to catch it (bad)
     setTimeout(function () {
-      util.initUploader( $el.find('.' +type+ '.wphoto-wrap'), {
+      util.initUploader($el.find('.' + type + '.wphoto-wrap'), {
         uploadPath: g.customizeUploadPath,
         instanceId: 'customize_' + type,
         auto: true,
@@ -70,19 +70,19 @@
     template: util.getTemplate('customize'),
 
     events: {
-      'change [name=area_select]':            'viewArea',
-      'change input[type=file]':              'enableUploadButton',
-      'click input[type=file]':               'enableUploadButton',
-      'change select':                        'updateFonts',
-      'change [name=body_bg_repeat]':         'updateRepeat',
-      'change [name=banner_size]':            'updateBannerSize',
-      'click .accept-btn':                    'saveChanges',
-      'click .cancel-btn':                    'discardChanges',
-      'click .remove-banner-link':            'removeBanner',
-      'click .remove-body_bg-link':           'removeBodyBg',
-      'change [name=display_style]':          'updateDisplayStyle',
-      'change [name=line_mode_icon_height]':  'updateLineModeIconHeight',
-      'change [name=line_mode_font_size]':    'updateLineModeFontSize',
+      'change [name=area_select]': 'viewArea',
+      'change input[type=file]': 'enableUploadButton',
+      'click input[type=file]': 'enableUploadButton',
+      'change select': 'updateFonts',
+      'change [name=body_bg_repeat]': 'updateRepeat',
+      'change [name=banner_size]': 'updateBannerSize',
+      'click .accept-btn': 'saveChanges',
+      'click .cancel-btn': 'discardChanges',
+      'click .remove-banner-link': 'removeBanner',
+      'click .remove-body_bg-link': 'removeBodyBg',
+      'change [name=display_style]': 'updateDisplayStyle',
+      'change [name=line_mode_icon_height]': 'updateLineModeIconHeight',
+      'change [name=line_mode_font_size]': 'updateLineModeFontSize',
     },
 
     initialize: function () {
@@ -107,9 +107,11 @@
       }
       _.extend(extraData, settings);
 
-      this.el.html( this.template(extraData) )
-        .find('.help-bubble').simpletooltip(undefined,'help').end()
-        .find('input:file').keypress(function () { return false; }).end()
+      this.el.html(this.template(extraData))
+        .find('.help-bubble').simpletooltip(undefined, 'help').end()
+        .find('input:file').keypress(function () {
+          return false;
+        }).end()
         .find('[name=icon_font_family]').val(extraData.icon_font_family).end()
         .find('[name=header_font_family]').val(extraData.header_font_family).end()
         .find('[name=tab_bar_font_family]').val(extraData.tab_bar_font_family).end()
@@ -123,9 +125,9 @@
 
       var self = this;
       util.spawnColorPicker(this.el.find('.color-picker'), {
-        onChange: function (color,elem) {
+        onChange: function (color, elem) {
           var targetName = $(elem).data('target');
-          self.el.find('[name='+targetName+']').val(color);
+          self.el.find('[name=' + targetName + ']').val(color);
           updateColor[targetName](color);
           hasChanges || (hasChanges = true);
         }
@@ -149,7 +151,7 @@
       this.$('.subpanels .' + targetArea).show();
 
       if (targetArea === 'home_page' && this.hasInitBodyBgUploader === false
-      && g.isPremium) {
+        && g.isPremium) {
         initDialogUploader('body_bg', this.$('.home_page'), this.onUpload);
         this.hasInitBodyBgUploader = true;
       }
@@ -171,7 +173,7 @@
       else if (res.body_bg) {
         g.body_bg = res.body_bg;
         $('#canvas #home.page').css({
-          backgroundImage: 'url('+ g.body_bg +')',
+          backgroundImage: 'url(' + g.body_bg + ')',
           backgroundRepeat: 'repeat'
         });
         g.settings.body_bg_repeat = 'repeat';
@@ -191,7 +193,7 @@
       $('img.banner').attr('src', g.blankImg);
       $('.banner_size, .remove-banner-link').hide();
       resizeEmulator();
-      $.post(g.customizeUploadPath, { destroy:1, targetType:'banner' });
+      $.post(g.customizeUploadPath, { destroy: 1, targetType: 'banner' });
     },
 
     removeBodyBg: function (e) {
@@ -204,7 +206,7 @@
       });
       $('img.body_bg').attr('src', g.blankImg);
       $('.bg_repeat, .remove-body_bg-link').hide();
-      $.post(g.customizeUploadPath, { destroy:1, targetType:'body_bg' });
+      $.post(g.customizeUploadPath, { destroy: 1, targetType: 'body_bg' });
     },
 
     updateFonts: function (useDefault) {
@@ -212,21 +214,21 @@
 
       var font = this.$('[name=icon_font_family]').val();
       if (useDefault === true) font = util.defaultSettings.icon_font_family;
-      $('#canvas .home-icon .title').css({ fontFamily:font });
+      $('#canvas .home-icon .title').css({ fontFamily: font });
 
       var font = this.$('[name=header_font_family]').val();
       if (useDefault === true) font = util.defaultSettings.header_font_family;
-      $('#top-bar .company-info').css({ fontFamily:font });
+      $('#top-bar .company-info').css({ fontFamily: font });
 
       var font = this.$('[name=tab_bar_font_family]').val();
       if (useDefault === true) font = util.defaultSettings.tab_bar_font_family;
-      $('#top-bar .tab-bar').css({ fontFamily:font });
+      $('#top-bar .tab-bar').css({ fontFamily: font });
     },
 
     updateRepeat: function () {
       hasChanges || (hasChanges = true);
       var repeat = this.$('[name=body_bg_repeat]').val();
-      $('#canvas #home.page').css({ backgroundRepeat:repeat });
+      $('#canvas #home.page').css({ backgroundRepeat: repeat });
     },
 
     updateBannerSize: function () {
@@ -236,56 +238,62 @@
       resizeEmulator();
     },
 
-    updateDisplayStyle: function () {
+    updateDisplayStyle: function (mode) {
       hasChanges = true;
+
+      mode = (mode && ($.type(mode) != "object")) ? mode : this.currentDisplayMode();
+
 
       // bugfix with drag'n'drop low height line items
-      g.homeDbx.orientation = this.currentDisplayMode() == 'display_style_line' ? "vertical" : "freeform";
+      g.homeDbx.orientation = mode == 'display_style_line' ? "vertical" : "freeform";
 
-      $('#canvas #home.page').removeClass('display_style_icon display_style_line').addClass(this.currentDisplayMode());
+      $('#canvas #home.page').removeClass('display_style_icon display_style_line').addClass(mode);
 
-      this.updateDisplayStyleOptions();
-      this.updateFontSize();
-      this.updateLineModeIconHeight();
+      this.updateDisplayStyleOptions(mode);
+      this.updateFontSize(mode);
+      this.updateLineModeIconHeight(mode);
     },
 
-    updateLineModeIconHeight: function () {
+    updateLineModeIconHeight: function (mode) {
       hasChanges = true;
+      mode = (mode && ($.type(mode) != "object")) ? mode : this.currentDisplayMode();
+      console.log("updateLineModeIconHeight")
+      console.log(mode)
 
       var baseHeight = 57,
-          newHeightPercentage = parseInt($('[name=line_mode_icon_height]').val()),
-          baseInvalidIconHeight = 23,
-          invalidIconLeftDelaK = 0.7544;
+        newHeightPercentage = parseInt($('[name=line_mode_icon_height]').val()),
+        baseInvalidIconHeight = 23,
+        invalidIconLeftDelaK = 0.7544;
       var newHeight = newHeightPercentage * baseHeight / 100;
 
-      if (this.currentDisplayMode() == 'display_style_icon') {
+      if (mode == 'display_style_icon') {
         newHeight = 57;
         $('#home-widgets .home-icon .title').
           css('line-height', '13px');
       } else {
         var newLineHeight = newHeight > this.currentFontSize() ? newHeight : this.currentFontSize();
         $('#home-widgets .home-icon .title').
-          css('line-height', newLineHeight+'px');
+          css('line-height', newLineHeight + 'px');
       }
 
       $('#home-widgets .home-icon .icon').
-        css('height', newHeight+'px').
-        css('width', newHeight+'px');
+        css('height', newHeight + 'px').
+        css('width', newHeight + 'px');
 
-      if (this.currentDisplayMode() == 'display_style_icon') {
+      if (mode == 'display_style_icon') {
         var invalidIconTopDelta = -94;
         $('#home-widgets .home-icon.invalid .invalid-icon').
-            css('top', invalidIconTopDelta + 'px').
-            css('width', baseInvalidIconHeight + 'px').
-            css('height', baseInvalidIconHeight + 'px').
-            css('left', parseInt(invalidIconLeftDelaK * newHeight)  + 'px');
+          css('top', invalidIconTopDelta + 'px').
+          css('width', baseInvalidIconHeight + 'px').
+          css('height', baseInvalidIconHeight + 'px').
+          css('left', parseInt(invalidIconLeftDelaK * newHeight) + 'px');
       }
       else {
         var newInvalidIconHeight = newHeightPercentage / 100 * baseInvalidIconHeight;
         var invalidIconTopDeltaK = 0.1;
         var leftFix = -2;
         $('#home-widgets .home-icon.invalid .invalid-icon').
-          css('top', -parseInt(invalidIconTopDeltaK * newHeight) +'px').
+          css('top', -parseInt(invalidIconTopDeltaK * newHeight) + 'px').
           css('width', newInvalidIconHeight + 'px').
           css('height', newInvalidIconHeight + 'px').
           css('left', parseInt(invalidIconLeftDelaK * newHeight) + leftFix + 'px');
@@ -296,8 +304,8 @@
       return $('#display_style_icon').is(':checked') ? 'display_style_icon' : 'display_style_line';
     },
 
-    currentFontSize: function () {
-      if (this.currentDisplayMode() == 'display_style_line') {
+    currentFontSize: function (mode) {
+      if ((mode || this.currentDisplayMode()) == 'display_style_line') {
         return parseInt($('[name=line_mode_font_size]').val());
       } else {
         return 12;
@@ -309,28 +317,28 @@
       this.updateFontSize();
     },
 
-    updateFontSize: function () {
-      $('#home-widgets .home-icon .title').css('font-size', this.currentFontSize()+'px');
+    updateFontSize: function (mode) {
+      $('#home-widgets .home-icon .title').css('font-size', this.currentFontSize(mode) + 'px');
     },
 
-    updateDisplayStyleOptions: function () {
-      $('.display_style .height_options').toggle(this.currentDisplayMode() == 'display_style_line');
+    updateDisplayStyleOptions: function (mode) {
+      $('.display_style .height_options').toggle((mode || this.currentDisplayMode()) == 'display_style_line');
     },
 
     saveChanges: function () {
       if (!g.isPremium) return;
 
-      var submitBtn = this.$('input[type=submit]').prop('disabled',true)
+      var submitBtn = this.$('input[type=submit]').prop('disabled', true)
         , loader = this.$('.loader').show()
         , checkmark = this.$('.checkmark').hide()
-      ;
+        ;
 
       var payload = this.$('.subpanels').serialize();
       $.post('/builder/customize', payload, function (resp) {
         g.settings = resp;
         loader.hide();
         checkmark.show();
-        submitBtn.prop('disabled',false);
+        submitBtn.prop('disabled', false);
         hasChanges = false;
       });
     },
@@ -338,23 +346,23 @@
     discardChanges: function (opts) {
       for (var area in updateColor) updateColor[area]();
       this.$('[name=icon_font_family]')
-        .val( getSetting('icon_font_family') );
+        .val(getSetting('icon_font_family'));
       this.$('[name=body_bg_repeat]')
-        .val( getSetting('body_bg_repeat') );
+        .val(getSetting('body_bg_repeat'));
       this.$('[name=banner_size]')
-        .val( getSetting('banner_size') );
+        .val(getSetting('banner_size'));
       this.$('[name=display_style]')
         .attr('checked', false)
         .end()
         .find('[value=' + getSetting('display_style') + ']')
         .attr('checked', true);
       this.$('[name=line_mode_icon_height]')
-        .val( getSetting('line_mode_icon_height') );
+        .val(getSetting('line_mode_icon_height'));
       this.$('[name=line_mode_font_size]')
-        .val( getSetting('line_mode_font_size') );
-      this.updateLineModeIconHeight();
+        .val(getSetting('line_mode_font_size'));
       this.updateLineModeFontSize();
-      this.updateDisplayStyle();
+      var mode = g.isPremium ? this.currentDisplayMode() : "display_style_icon";
+      this.updateDisplayStyle(mode);
       this.updateFonts(!g.isPremium);
       this.updateRepeat();
       this.updateBannerSize();
@@ -362,11 +370,13 @@
         hasChanges = false;
       }
       else {
-        this.startEditing( this.$('[name=area_select]').val() );
+        this.startEditing(this.$('[name=area_select]').val());
       }
     },
 
-    hasChanges: function () { return hasChanges; },
+    hasChanges: function () {
+      return hasChanges;
+    },
 
     stopEditing: function () {
       this.el.html(bapp.idleTemplate());
