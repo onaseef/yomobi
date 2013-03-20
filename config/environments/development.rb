@@ -6,7 +6,7 @@ Yomobi::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  config.app_domains = ['deelmob.com', 'local.host', 'yomobi.dev']
+  config.app_domains = ['mobicito.com', 'local.host', 'yomobi.dev']
   config.re_app_domains = config.app_domains.map {|d| Regexp.escape d}.join '|'
   config.heroku_app_name = 'yomobi-test'
 

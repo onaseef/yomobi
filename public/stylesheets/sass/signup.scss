@@ -343,6 +343,16 @@ ul.language-bar {
   .pretty-button { clear:both; }
 }
 
+#change-pass {
+    input[type=password] {
+      width: 200px;
+    }
+
+    table {
+      margin: 15px 0 5px 0;
+    }
+}
+
 #step-arrows {
   background: #eceef4;
   width: 542px;

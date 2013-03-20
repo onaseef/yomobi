@@ -145,7 +145,7 @@ label {
 
 .signup-bar, .landing-bar {
   background-color: #EDEFF4;
-  border-bottom: 1px solid #D8DFEA;
+  border-bottom: 1px solid #d8dfea;
   padding: 5px 40px 5px 40px; }
   .signup-bar .content, .landing-bar .content {
     width: 970px;
@@ -211,13 +211,13 @@ ul.language-bar {
   border: 0;
   border-collapse: collapse;
   border-spacing: 0;
-  margin-right: 10px; 
+  margin-right: 10px;
   margin-top: 10px; }
 #signup-box td, #actual-signin-box td {
   padding-bottom: 5px; }
-#signup-box label, #actual-signin-box label, #signup-box .label, #actual-signin-box .label, #new-pass-form .label {
-  font-weight: bold;
+#signup-box label, #signup-box .label, #actual-signin-box label, #actual-signin-box .label {
   font-size: 1.2em;
+  font-weight: bold;
   float: right;
   white-space: nowrap;
   text-align: right;
@@ -225,12 +225,12 @@ ul.language-bar {
   padding: 0px 4px 0px 0px; }
 #signup-box input[type=text], #signup-box input[type=password], #actual-signin-box input[type=text], #actual-signin-box input[type=password] {
   width: 250px !important;
-  border: 1px solid #BDC7D8;
+  border: 1px solid #bdc7d8;
   margin-bottom: 0px;
   padding: 6px; }
 #signup-box select, #actual-signin-box select {
-  width: 264px !important; 
-  height: 30px;}
+  width: 264px !important;
+  height: 30px; }
 #signup-box input[type=submit], #actual-signin-box input[type=submit] {
   float: right;
   margin: 5px 10px 0px 40px; }
@@ -276,8 +276,7 @@ ul.language-bar {
   width: 330px;
   margin: 20px auto; }
   #actual-signin-box.sign-in-form a {
-    color: inherit;
-  }
+    color: inherit; }
   #actual-signin-box.sign-in-form table {
     margin: 0px auto; }
     #actual-signin-box.sign-in-form table td {
@@ -285,15 +284,14 @@ ul.language-bar {
     #actual-signin-box.sign-in-form table .pretty-button {
       float: left;
       margin-left: 0px; }
-  #actual-signin-box.sign-in-form.label {
+  #actual-signin-box.sign-in-form .label {
     font-size: 1.6em;
     font-weight: bold;
-    float:right;
+    float: right;
     white-space: nowrap;
-    text-align:right;
-    vertical-align:middle;
+    text-align: right;
+    vertical-align: middle;
     padding: 0px 4px 0px 0px; }
-
   #actual-signin-box.sign-in-form .remember-me, #actual-signin-box.sign-in-form .forgot-password {
     margin-bottom: 6px; }
   #actual-signin-box.sign-in-form .sign-up-offer {
@@ -310,6 +308,11 @@ ul.language-bar {
   #actual-signin-box.signup-error .pretty-button {
     clear: both; }
 
+#change-pass input[type=password] {
+  width: 200px; }
+#change-pass table {
+  margin: 15px 0 5px 0; }
+
 #step-arrows {
   background: #eceef4;
   width: 542px;
@@ -322,7 +325,7 @@ ul.language-bar {
       padding: 11px 10px 0 15px; }
     #step-arrows .arrow .title {
       font-size: 13px;
-      font-weight: bold; 
+      font-weight: bold;
       margin-bottom: 6px; }
     #step-arrows .arrow label {
       font-size: 9px; }
