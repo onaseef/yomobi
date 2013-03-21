@@ -6,7 +6,11 @@ html lang="en-US" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com
     link rel="canonical" href==@company.mobile_url
     = render 'mobile/meta'
 
-    title = "#{@company.name} | Mobile Website | YoMobi"
+    - if @company.premium? == false
+      title = "#{@company.name} | Mobile Website | YoMobi"
+    - else
+      title = "#{@company.name} | Mobile Website"
+
     = render 'shared/iphone-meta.html'
     = stylesheet_link_tag '/stylesheets/mobile'
     = render 'mobile/custom-style'
