@@ -115,6 +115,10 @@ class Company < ActiveRecord::Base
     "http://www.yomobi.com/#{db_name}"
   end
 
+  def qrcode_url
+    "http://chart.googleapis.com/chart?cht=qr&chs=164&164&chld=l|0&chl=" + mobile_url
+  end
+
   def url_and_name
     "[/#{db_name}] #{name}"
   end

@@ -298,6 +298,15 @@ script.edit-advanced-settings(type="text/template")
       a href="http://help.yomobi.com/Account/MobileRedirectScript#detailedinstructions" target="ymhelp"
         img.help-bubble src="/images/ui/help-bubble.png" title=t('builder.advanced_settings.redirect_code_help')
       textarea.read-only readonly="readonly" data-orig-val=desktop_redirect_code(@company) = desktop_redirect_code @company
+      .divider
+
+      table.qrcode
+        tr
+          td
+            a href=@company.qrcode_url target="_blank" download="mobile_site_qrcode" Mobile Site QR Code 
+          td
+            a href=@company.qrcode_url target="_blank" download="mobile_site_qrcode"
+              img.qrcode src=@company.qrcode_url
 
     .box
       label =t'builder.advanced_settings.keywords'

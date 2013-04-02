@@ -172,6 +172,7 @@ div.wysiwyg ul.toolbar {
 
 #builder-container {
   min-height: 450px;
+  padding-bottom: 10px;
   background: $light-bg-color;
   border-top: 1px solid #b3b3b3; }
 
@@ -191,6 +192,7 @@ div.wysiwyg ul.toolbar {
     height: 100%;
     border-right: 1px solid #b3b3b3;
     padding: 0 0 10px 10px; 
+    margin-bottom: -10px;
     & > .title-subtext {
       font-weight: bold;
       color: #6D3F3A;
@@ -460,6 +462,10 @@ div.wysiwyg ul.toolbar {
   .logo { margin: 3px 0px; }
   .site-name { padding-bottom: 10px; }
   .new-picture { width: 100%; }
+  .qrcode { 
+    img { width: 48px; }
+    td { padding-right: 10px; }
+  }
 }
 
 #builder .edit-area.customize {
