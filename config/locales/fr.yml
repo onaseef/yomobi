@@ -512,6 +512,7 @@ fr:
       title: "Paramètres Avancés"
       explanation: "<p>Editer les paramètres avancés.</p>"
       mobile_url: "URL du Site Mobile:"
+      mobile_qr_code: "Code QR du Site Mobile:"
       redirect_code: "Code de Redirection du Site PC:"
       redirect_code_help: "Pour rediriger automatiquement vos visiteurs vers votre site mobile depuis votre site PC sur un portable, copiez ce code et collez-le dans votre page d'accueil du site PC, juste avant la balise &lt;head&gt;. <b>Cliquez sur ? pour de l'aide.</b>"
       keywords: "Entrez les mots-clés qui décrivent votre site, séparés par une virgule:"

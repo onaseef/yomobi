@@ -512,6 +512,7 @@ es:
       title: "Opciones Avanzadas"
       explanation: "<p>Editar opciones avanzadas.</p>"
       mobile_url: "URL del Sitio Móvil:"
+      mobile_qr_code: "Código QR del Sitio Móvil:"
       redirect_code: "Código de Re-dirección desde Sitio Tradicional:"
       redirect_code_help: "Para redirigir visitantes hacia tu sitio móvil cuando accedan hacia tu sitio tradicional usando un teléfono celular, copia esta pieza de código para pegarlo en la página de inicio de tu sitioâ€™s tradicional, justo antes del símbolo de cierre de la etiqueta (tag)&lt;head&gt;. <b>Para más ayuda, Haz Click en ?.</b>"
       keywords: "Ingresa las palabras clave que describen a tu sitio web, separadas por comas:"

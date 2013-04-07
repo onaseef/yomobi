@@ -303,7 +303,7 @@ script.edit-advanced-settings(type="text/template")
       table.qrcode
         tr
           td
-            a href=@company.qrcode_url target="_blank" download="mobile_site_qrcode" Mobile Site QR Code 
+            a href=@company.qrcode_url target="_blank" download="mobile_site_qrcode" =t'builder.advanced_settings.mobile_qr_code' 
           td
             a href=@company.qrcode_url target="_blank" download="mobile_site_qrcode"
               img.qrcode src=@company.qrcode_url

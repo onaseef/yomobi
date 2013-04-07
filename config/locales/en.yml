@@ -512,6 +512,7 @@ en:
       title: "Advanced Settings"
       explanation: "<p>Edit advanced settings.</p>"
       mobile_url: "Mobile Site URL:"
+      mobile_qr_code: "Mobile Site QR Code:"
       redirect_code: "Desktop Redirect Code:"
       redirect_code_help: "To automatically redirect visitors to your mobile site when they visit your desktop site from a mobile phone, copy this code snippet and paste it into your desktop site’s home page, just before the closing &lt;head&gt; tag. <b>Click ? more help.</b>"
       keywords: "Enter keywords that describe your website, separated by commas:"

@@ -248,7 +248,6 @@ es-ES:
     header: "Try out all the features of YoMobi before you sign up."
     explanation: "The test drive lets you try all of the functionality of the YoMobi platform before you sign up. When you click on the \"Start Test Drive\" button, we create a temporary account that you can use as a sandbox to see how the mobile site builder works.<br/><br/>Once you've had a chance to try it out, you can sign up to create your own mobile site by clicking on the Sign Up Now link in the menu bar."
     signup_link: "Sign Up Link"
-    
 
   recaptcha:
     type_words: "Escribe las dos palabras:  "
@@ -513,6 +512,7 @@ es-ES:
       title: "Opciones Avanzadas"
       explanation: "<p>Editar opciones avanzadas.</p>"
       mobile_url: "URL del Sitio Móvil:"
+      mobile_qr_code: "Código QR del Sitio Móvil:"
       redirect_code: "Código de Re-dirección desde Sitio Tradicional:"
       redirect_code_help: "Para redirigir visitantes hacia tu sitio móvil cuando accedan hacia tu sitio tradicional usando un teléfono móvil, copia esta pieza de código para pegarlo en la página de inicio de tu sitioâ€™s tradicional, justo antes del símbolo de cierre de la etiqueta (tag)&lt;head&gt;. <b>Para más ayuda, Haz Click en ?.</b>"
       keywords: "Ingresa las palabras clave que describen a tu sitio web, separadas por comas:"
