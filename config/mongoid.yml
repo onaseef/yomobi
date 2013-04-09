@@ -1,5 +1,10 @@
 defaults: &defaults
   uri: <%= ENV['MONGOHQ_URL'] %>
+  host: <%= ENV['MONGOID_HOST'] %>
+  port: <%= ENV['MONGOID_PORT'] %>
+  username: <%= ENV['MONGOID_USERNAME'] %>
+  password: <%= ENV['MONGOID_PASSWORD'] %>
+  database: <%= ENV['MONGOID_DATABASE'] %>
 
 development:
   <<: *defaults
