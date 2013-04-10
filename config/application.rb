@@ -48,6 +48,23 @@ module Yomobi
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+    
+    ENV['GOOGLE_API_KEY']='AIzaSyCYju_txi2rDOYN1ScW_hVjZcivaKAQs-c'
+    ENV['ARITCAPTCHA_S3_BUCKET']='yomobi-test'
+    ENV['COUCH_ADMIN_PASS']='pw0Rd4yAdm1n'
+    ENV['COUCH_ADMIN_USER']='yadmin'
+    ENV['COUCH_HOST']='yomobi.iriscouch.com'
+    ENV['DATABASE_URL']='postgres://fmibrhnotfnjfv:5QLCzN0llNGOkjVsSCqDtPdYro@ec2-23-23-234-207.compute-1.amazonaws.com:5432/d5295p7o9s8eb1'
+    ENV['GEM_PATH']='vendor/bundle/ruby/1.9.1'
+    ENV['LOGO_S3_BUCKET']='yomobi-test'
+    ENV['MONGOHQ_URL']='mongodb://ymdev:m0ngo_D3v@linus.mongohq.com:10083/yomobi_staging_01'
+    ENV['SES_KEY']=ENV['S3_KEY']='AKIAJWX3FCZORSXSHARA'
+    ENV['SES_SECRET']=ENV['S3_SECRET']='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'
+    ENV['MONGOID_HOST']='linus.mongohq.com'
+    ENV['MONGOID_PORT'] ='10083'
+    ENV['MONGOID_USERNAME']='ymdev' 
+    ENV['MONGOID_PASSWORD']='m0ngo_D3v'
+    ENV['MONGOID_DATABASE'] ='yomobi_staging_01'
 
     # CouchDB authentication
     config.couch_host = ENV['COUCH_HOST']

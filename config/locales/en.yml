@@ -537,6 +537,8 @@ en:
       font: "Font"
 
       tab_bar_and_footer: "Mobile Tab Bar & Footer"
+      tab_bar_visible: "Hide Header"
+      footer_bar_visible: "Hide Footer"
       customizing_tab_bar_and_footer: "Customizing Tab Bar & Footer"
       icon_text_font: "Font"
       icon_text_color: "Text Color"

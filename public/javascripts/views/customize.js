@@ -79,7 +79,9 @@
       'click .accept-btn':                'saveChanges',
       'click .cancel-btn':                'discardChanges',
       'click .remove-banner-link':        'removeBanner',
-      'click .remove-body_bg-link':       'removeBodyBg'
+      'click .remove-body_bg-link':       'removeBodyBg',
+      'click [name=tab_bar_visible]':     'tabBar',
+      'click [name=footer_bar_visible]':  'footerBar'
     },
 
     initialize: function () {
@@ -271,6 +273,26 @@
       this.el.html(bapp.idleTemplate());
       destroyUploader('customize_banner');
       destroyUploader('customize_body_bg');
+    },
+
+    tabBar: function () {
+      var val = $('.tab_bar_visible').is(':checked')
+      if(val ==  true) {
+        $('.tab-bar').css('display', 'none');
+      }
+      else {
+       $('.tab-bar').css('display', 'block'); 
+      }
+    },
+
+    footerBar: function () {
+     var val = $('.footer_bar_visible').is(':checked')
+     if(val ==  true) {
+      $('.mobile-footer').css('display', 'none');
+     }
+     else {
+     $('.mobile-footer').css('display', 'block'); 
+     }
     },
 
     enableUploadButton: util.enableFileUploadButton

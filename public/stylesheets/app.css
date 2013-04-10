@@ -1,7 +1,7 @@
 @import url(dbx.css);
 .pretty-button {
   background: #4AA54A;
-  border: 1px solid #2E662E;
+  border: 1px solid #2e662e;
   border-radius: 4px;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -34,8 +34,7 @@
   margin: 0px 0px 8px 0px; }
 
 .hspacer {
-  margin: 0 5px;
-}
+  margin: 0 5px; }
 
 select {
   font-size: 12px; }
@@ -71,7 +70,7 @@ input[type=checkbox] {
   background: #fef1b5;
   padding: 8px 8px 8px;
   margin-bottom: 18px;
-  border: 1px solid #ccc; }
+  border: 1px solid #cccccc; }
 
 label {
   display: inline-block;
@@ -82,7 +81,7 @@ label {
 input[type=text],
 input[type=password],
 select, textarea {
-  border: 1px solid #BDC7D8;
+  border: 1px solid #bdc7d8;
   padding: 3px; }
 
 input[type=file] {
@@ -135,15 +134,13 @@ hr {
   overflow: hidden;
   background: #d8dfea;
   border-bottom: 1px solid #1d4088;
-  -webkit-box-shadow: #333 0 1px 15px;
-  -moz-box-shadow: 0 1px 15px #333;
+  -webkit-box-shadow: #333333 0 1px 15px;
+  -moz-box-shadow: 0 1px 15px #333333;
   text-align: center; }
   #topline-notice .notice-icon {
     position: relative;
     top: 4px;
-    left: -6px;
-    display: inline;
-  }
+    left: -6px; }
   #topline-notice .x-icon {
     width: 16px;
     height: 16px;
@@ -172,7 +169,7 @@ p.success {
 
 #header.signed-in {
   padding-top: 10px;
-  background: url("/assets/header-bg.png") #43A8C7 repeat-x center bottom;
+  background: url("/assets/header-bg.png") #43a8c7 repeat-x center bottom;
   color: white;
   height: 31px; }
   #header.signed-in .content {
@@ -189,11 +186,12 @@ p.success {
     border: 1px solid #566986;
     border-bottom: none;
     background: #5C9354;
-    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #5C9354), color-stop(100%, #96CB81));
-    background-image: -webkit-linear-gradient(#5C9354,#96CB81);
-    background-image: -moz-linear-gradient(#5C9354,#96CB81);
-    background-image: -o-linear-gradient(#5C9354,#96CB81);
-    background-image: linear-gradient(#5C9354,#96CB81);    
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #5a8a52), color-stop(33.33333%, #4f7748), color-stop(66.66667%, #4f7748), color-stop(100%, #5a8a52));
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #5c9354), color-stop(100%, #96cb81));
+    background-image: -webkit-linear-gradient(#5c9354, #96cb81);
+    background-image: -moz-linear-gradient(#5c9354, #96cb81);
+    background-image: -o-linear-gradient(#5c9354, #96cb81);
+    background-image: linear-gradient(#5c9354, #96cb81);
     text-align: right; }
     #header.signed-in #nav a, #header.signed-in #nav a:visited {
       margin: 0px -1px;
@@ -232,12 +230,7 @@ p.success {
   padding: 10px 20px;
   border: 1px solid #cccccc;
   -webkit-border-radius: 4px; }
-  .center-box h2 {
-    font-size: 2em;
-    border-bottom: 1px solid #cccccc;
-    padding-bottom: 4px;
-    margin: 5px 0 5px 0; }
-  .center-box  ul {
+  .center-box ul {
     display: block;
     list-style-type: disc;
     -webkit-margin-before: 1em;
@@ -245,6 +238,11 @@ p.success {
     -webkit-margin-start: 0px;
     -webkit-margin-end: 0px;
     -webkit-padding-start: 40px; }
+  .center-box h2 {
+    font-size: 2em;
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 4px;
+    margin: 5px 0 5px 0; }
   .center-box h3 {
     font-size: 14px;
     margin: 5px 0 5px 0; }
@@ -256,9 +254,9 @@ p.success {
     border-top: 1px solid #cccccc; }
 
 #error_explanation h2 {
-    color: inherit;
-    font-size: 14px;
-    border: none; }
+  color: inherit;
+  font-size: 14px;
+  border: none; }
 
 .main-btn {
   background: #5b74a8;
@@ -324,13 +322,13 @@ p.success {
 
 #simpleTooltip.help {
   background: #EDEFF4;
-  border: 1px solid #1D4088; }
+  border: 1px solid #1d4088; }
 
 #recaptcha_image img {
   width: 210px !important;
   height: 40px !important;
   background: white;
-  border: 1px solid #333;
+  border: 1px solid #333333;
   margin-bottom: 10px; }
 
 #recaptcha_container {
@@ -439,10 +437,9 @@ label.help {
   .company-header .company-name {
     font-size: 14px;
     font-weight: bold; }
-  .company-header a .company-url {
+  .company-header a.company-url {
     color: #3B5998;
-    text-decoration: none;
-  }
+    text-decoration: none; }
   .company-header .divider-dot {
     font-weight: bold;
     padding: 0px 10px; }

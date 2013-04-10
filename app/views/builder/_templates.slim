@@ -417,6 +417,22 @@ script.customize(type="text/template")
               .color-picker data-color="{{ tab_bar_text_color }}" data-target="tab_bar_text_color"
                 div style="background-color:{{ tab_bar_text_color }}"
               input type="hidden" name="tab_bar_text_color" value="{{ tab_bar_text_color }}"
+          tr
+            td
+              - if is_tab_bar_visible? 
+                input.tab_bar_visible type="checkbox" name="tab_bar_visible" checked="checked"
+                label = t 'builder.customize.tab_bar_visible' 
+              - else 
+                input.tab_bar_visible type="checkbox" name="tab_bar_visible" 
+                label = t 'builder.customize.tab_bar_visible' 
+          tr   
+            td
+              - if is_footer_bar_visible?
+                input.footer_bar_visible type="checkbox" name="footer_bar_visible" checked="checked"
+                label = t 'builder.customize.footer_bar_visible' 
+              - else
+                input.footer_bar_visible type="checkbox" name="footer_bar_visible" 
+                label = t 'builder.customize.footer_bar_visible' 
 
       .home_page
         h3  = t 'builder.customize.customizing_home_page'

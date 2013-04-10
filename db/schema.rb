@@ -11,13 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120907121646) do
+ActiveRecord::Schema.define(:version => 20130408091919) do
 
   create_table "carriers", :force => true do |t|
     t.string   "name"
     t.string   "text_email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "carriers", ["name"], :name => "index_carriers_on_name", :unique => true
@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(:version => 20120907121646) do
     t.string   "name"
     t.string   "db_name"
     t.string   "db_pass"
-    t.datetime "created_at",                                    :null => false
-    t.datetime "updated_at",                                    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
@@ -53,8 +53,8 @@ ActiveRecord::Schema.define(:version => 20120907121646) do
   create_table "company_settings", :force => true do |t|
     t.integer  "company_id"
     t.string   "header_color"
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "header_text_color"
     t.string   "slogan"
     t.string   "tab_bar_color"
@@ -69,13 +69,18 @@ ActiveRecord::Schema.define(:version => 20120907121646) do
     t.string   "body_bg_color"
     t.string   "header_font_family"
     t.string   "tab_bar_font_family"
-    t.string   "banner_size",          :default => "auto"
+    t.string   "banner_size",           :default => "auto"
+    t.string   "display_style",         :default => "icon", :null => false
+    t.integer  "line_mode_icon_height", :default => 100,    :null => false
+    t.integer  "line_mode_font_size",   :default => 18,     :null => false
+    t.boolean  "tab_bar_visible",       :default => true
+    t.boolean  "footer_bar_visible",    :default => true
   end
 
   create_table "company_types", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "company_types", ["name"], :name => "index_company_types_on_name", :unique => true
@@ -83,8 +88,8 @@ ActiveRecord::Schema.define(:version => 20120907121646) do
   create_table "domains", :force => true do |t|
     t.integer  "company_id"
     t.string   "host"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "domains", ["host"], :name => "index_domains_on_host", :unique => true
@@ -95,8 +100,8 @@ ActiveRecord::Schema.define(:version => 20120907121646) do
     t.string   "email"
     t.string   "phone"
     t.string   "opt_out_key"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "short_url"
     t.boolean  "active",      :default => true
   end
@@ -109,8 +114,8 @@ ActiveRecord::Schema.define(:version => 20120907121646) do
     t.integer  "user_id"
     t.integer  "company_id"
     t.boolean  "owner"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "payments", :force => true do |t|
@@ -121,8 +126,8 @@ ActiveRecord::Schema.define(:version => 20120907121646) do
     t.boolean  "is_valid",                 :default => true
     t.integer  "cents",                    :default => 0,    :null => false
     t.string   "currency"
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "sub_state"
     t.date     "last_payment_received_at"
   end
@@ -133,8 +138,8 @@ ActiveRecord::Schema.define(:version => 20120907121646) do
     t.integer  "company_id"
     t.string   "key"
     t.boolean  "expired",    :default => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "user_id"
   end
 
@@ -145,17 +150,17 @@ ActiveRecord::Schema.define(:version => 20120907121646) do
     t.integer  "type"
     t.string   "delete_hash"
     t.text     "custom"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                                 :default => "", :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
     t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
+    t.string   "remember_token"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
+    t.integer  "sign_in_count",                         :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -163,8 +168,8 @@ ActiveRecord::Schema.define(:version => 20120907121646) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "company_type_id"
     t.string   "first_name"
     t.string   "last_name"
@@ -172,6 +177,7 @@ ActiveRecord::Schema.define(:version => 20120907121646) do
     t.integer  "default_company_id"
     t.integer  "active_company_id"
     t.boolean  "is_test"
+    t.datetime "reset_password_sent_at"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
@@ -213,8 +219,8 @@ ActiveRecord::Schema.define(:version => 20120907121646) do
     t.integer  "start_time"
     t.integer  "end_time"
     t.integer  "frequency"
-    t.datetime "created_at",                           :null => false
-    t.datetime "updated_at",                           :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "wepay_checkout_records", ["checkout_id"], :name => "index_wepay_checkout_records_on_checkout_id"
@@ -227,8 +233,8 @@ ActiveRecord::Schema.define(:version => 20120907121646) do
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
     t.integer  "company_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

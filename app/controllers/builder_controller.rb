@@ -10,6 +10,8 @@ class BuilderController < ApplicationController
     @open_edit_settings = true if flash[:edit_settings] == true
     @is_preview_mode = true
     @is_builder = true
+    @is_tab_bar_visible = @company.company_settings.tab_bar_visible
+    @is_footer_bar_visible = @company.company_settings.footer_bar_visible
   end
 
   def inc_id_counter
@@ -134,6 +136,18 @@ class BuilderController < ApplicationController
 
     settings.body_bg_repeat = params[:body_bg_repeat]
     settings.body_bg_color = params[:body_bg_color]
+    if params[:tab_bar_visible]=="on"
+      settings.tab_bar_visible = false
+    else
+      settings.tab_bar_visible = true
+    end
+    if params[:footer_bar_visible].eql?("on")
+      logger.info "inside if"
+      settings.footer_bar_visible = false
+    else
+      logger.info "inside else"
+      settings.footer_bar_visible = true
+    end
     settings.save
     success(settings)
   end

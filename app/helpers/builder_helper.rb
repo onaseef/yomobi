@@ -45,4 +45,12 @@ module BuilderHelper
     result
   end
 
+  def is_tab_bar_visible?
+    return !current_user.company.company_settings.tab_bar_visible
+  end
+
+  def is_footer_bar_visible?
+    return !current_user.company.company_settings.footer_bar_visible
+  end
+
 end

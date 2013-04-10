@@ -1,5 +1,6 @@
 class CompanySettings < ActiveRecord::Base
   belongs_to :company
+  attr_accessible :tab_bar_visible, :footer_bar_visible
 
   validates :header_color, :header_text_color,
             :tab_bar_color, :tab_bar_text_color,
@@ -44,6 +45,8 @@ class CompanySettings < ActiveRecord::Base
       icon_text_color: self.icon_text_color,
       body_bg_repeat: self.body_bg_repeat,
       body_bg_color: self.body_bg_color,
+      tab_bar_visible: self.tab_bar_visible,
+      footer_bar_visible: self.footer_bar_visible 
     }
   end
 

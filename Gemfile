@@ -29,6 +29,7 @@ group :assets do
   gem 'coffee-rails'
   gem 'compass-rails',  '~> 1.0.2'
   gem 'uglifier'
+  gem 'therubyracer', :platforms => :ruby
 end
 
 gem 'jquery-rails'
