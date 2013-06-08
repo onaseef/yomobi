@@ -20,8 +20,8 @@ GIT
     aritcaptcha (2.0.5)
 
 GIT
-  remote: https://github.com/mindeavor/wepay-rails
-  revision: 059a73a5ed9af286c815fcb56c3130b788d9af56
+  remote: https://github.com/onaseef/wepay-rails
+  revision: 8e4e4396d5fe2eb94a519c8bd05f6452b505903b
   specs:
     wepay-rails (2.3.5)
       httparty
