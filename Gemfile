@@ -37,7 +37,7 @@ gem 'kaminari'
 gem 'locomotive_cms', '~> 2.0.0.rc12', :require => 'locomotive/engine'
 
 gem 'typus'
-gem 'wepay-rails', :git => 'https://github.com/mindeavor/wepay-rails'
+gem 'wepay-rails', :git => 'https://github.com/onaseef/wepay-rails'
 
 gem 'thin'
 
