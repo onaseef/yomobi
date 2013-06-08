@@ -53,7 +53,7 @@ MAX_COMPANY_NAME_LENGTH = 45
 MAX_COMPANY_SLOGAN_LENGTH = 90
 
 # used in site_manager_controller.rb
-MAX_SITE_COUNT = 30
+MAX_SITE_COUNT = 300
 MAX_DOMAIN_COUNT = 5
 
 # maximum RSS feed entry count / max RSS feed entry count

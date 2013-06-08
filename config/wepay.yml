@@ -12,7 +12,6 @@ development:
   fee_payer: payee
   charge_tax: false
   app_fee: 0
-  auto_capture: true
   require_shipping: false
   shipping_fee: 0
   charge_tax: false
@@ -32,7 +31,6 @@ test:
   fee_payer: payee
   charge_tax: false
   app_fee: 0
-  auto_capture: true
   require_shipping: false
   shipping_fee: 0
   charge_tax: false
@@ -52,7 +50,6 @@ production:
   fee_payer: payee
   charge_tax: false
   app_fee: 0
-  auto_capture: true
   require_shipping: false
   shipping_fee: 0
   charge_tax: false
