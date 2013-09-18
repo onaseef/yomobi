@@ -270,7 +270,14 @@ class CouchDocs
         :wtype => 'custom_page',
         :wsubtype => "custom-page",
       },
+      
+      {
+        :wtype => 'text-area',
+        :wsubtype => "text-area",
+        :singleton => true,
 
+      },
+      
       {
         :wtype => 'link',
         :wsubtype => "photo-bucket",
