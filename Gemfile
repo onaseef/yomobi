@@ -56,4 +56,3 @@ group :production do
 end
 
 gem 'heroku'
-gem 'therubyracer', :platforms => :ruby

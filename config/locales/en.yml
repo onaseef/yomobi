@@ -927,6 +927,9 @@ en:
 
       rss-feed:
         help: <p>Display a nicely formatted rss feed on your mobile site.</p>
+        
+      text-area:
+        help: <p>put your text.</p>
 
       services:
         help: <p>Give your mobile site visitors easy access to your catalog of services.</p><br><p>Use this widget to create a mobile optimized catalog of your services.</p>

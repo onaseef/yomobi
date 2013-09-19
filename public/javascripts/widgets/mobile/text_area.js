@@ -1,0 +1,8 @@
+//
+// MOBILE
+//
+(function ($) {
+
+  
+
+})(jQuery);

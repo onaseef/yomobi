@@ -7,3 +7,5 @@ log/*.log
 .idea
 .rvmrc
 .powrc
+Gemfile.rej
+.project

@@ -274,7 +274,6 @@ class CouchDocs
       {
         :wtype => 'text-area',
         :wsubtype => "text-area",
-        :singleton => true,
 
       },
       
