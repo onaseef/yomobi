@@ -272,7 +272,7 @@ class CouchDocs
       },
       
       {
-        :wtype => 'text-area',
+        :wtype => 'text_area',
         :wsubtype => "text-area",
 
       },
