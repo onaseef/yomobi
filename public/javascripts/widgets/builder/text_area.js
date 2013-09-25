@@ -1,0 +1,68 @@
+//
+// BUILDER
+//
+(function ($) {
+
+  window.widgetClasses.text_area = window.widgetClasses.text_area.extend({
+
+    getEditData: function () {
+      var showData = this.getShowData();
+
+      var extraData = {
+        wphotoPreviewPath: this.get('wphotoUrl') || g.noPhotoPath
+      };
+      return _.extend({},showData,extraData);
+    }
+  });
+
+  window.widgetEditors.text_area = window.EditWidgetView.extend({
+
+    events: {
+      'click .remove-wphoto-link':          'removeWPhoto'
+    },
+
+    init: function () {
+      this.bind('wysiwyg-change',this.setDirty);
+      this.bind('wysiwyg-paste',this.queueStripStyles);
+    },
+
+    onEditStart: function (resetChanges,isFirstEdit) {
+      this.originalContent = util.ensurePTag( this.widget.get('content') );
+      this.$('#jeditor').text(this.originalContent);
+      util.spawnJEditor();
+      if (resetChanges || isFirstEdit) this.changes = {};
+    },
+
+    grabWidgetValues: function () {
+      return {
+        content: util.stripMeta( util.ensurePTag( $('#jeditor').wysiwyg('getContent') )),
+        wphotoUrl: this.el.find('input[name=wphotoUrl]').val()
+      };
+    },
+
+    setDirty: function () {
+      var newContent = util.stripMeta( util.ensurePTag( $('#jeditor').wysiwyg('getContent') ));
+      if (!this.hasChanges() &&
+          this.originalContent !== newContent)
+      {
+        this.setChanged('content',true);
+      }
+    },
+
+    queueStripStyles: function () {
+      if (!this.updateTimeoutId) {
+        var self = this;
+        this.updateTimeoutId = setTimeout(function () {
+          self.stripStyles();
+          delete self.updateTimeoutId;
+        },350);
+      }
+    },
+
+    stripStyles: function () {
+      util.stripAllStyles( $('#jeditor').data('wysiwyg').editorDoc.body );
+    }
+
+  });
+  
+})(jQuery);
