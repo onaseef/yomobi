@@ -54,6 +54,11 @@
           ){
             mapp.homeView.render();
           }
+          
+          if(res.wtype == 'text_area') {
+          	mapp.homeView.render();
+          	console.log(res.wtype);
+          }
 
           self.startEditing(true);
           callback && callback();

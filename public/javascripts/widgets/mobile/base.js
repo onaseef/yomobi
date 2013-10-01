@@ -57,6 +57,7 @@
         wtype: wdata.wtype,
         wsubtype: wdata.wsubtype,
         name: this.get('name'),
+        content: this.get('content'),
         iconName: ensureBackComp( this.get('iconName') ) || wdata.wsubtype,
         singletonClass: wdata.singleton ? 'singleton' : ''
       };

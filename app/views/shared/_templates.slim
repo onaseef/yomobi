@@ -5,14 +5,19 @@
 
   script.home-icon(type="text/template")
     .inner
-      | <% if(!iconName.match('http://')) { %>
+      | <% if(iconName!='text-area') {  if(!iconName.match('http://')) { %>
       .icon.dbx-handle{ style="background-image: url(/images/widgets/{{ iconName }}.png)" }
       | <% }else{ %>
       .icon.dbx-handle{ style="background-image: url({{ iconName }});" }
       | <% } %>
       .title {{ name }}
       .invalid-icon
-
+	  <% } else { %>
+	  .text-area-widget
+		  .icon{ style="width: 100%;" }
+		  	.dbx-handle {{ content }}
+	  <% } %>
+	  
   script.mapp-header(type="text/template")
     | <% if (g.banner && g.isPremium) { %>
     .banner-wrap

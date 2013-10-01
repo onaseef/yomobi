@@ -121,6 +121,9 @@
       if (window.bapp) util.resizeOverlays();
 
       mapp.resize();
+      //$("#home-widgets" ).find(".text-area-widget" ).parent(".home-icon" ).css( "width", "100px" );
+      $('.text-area-widget').closest('.home-icon').css( "width", "95%" ).addClass('editing');
+      //$('.home-icon .inner .text-area-widget').parent().width('100%');
     }
   });
 
