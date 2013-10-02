@@ -67,14 +67,15 @@
       if (this.model.get('wtype') === 'phone' && g.isMobile && !g.isNonphone) {
         $(this.el).wrapInner('<a href="tel:' + this.model.get('phone') + '">');
       }
-
+	  //console.log(this.model.get('wtype'));console.log('---------------------->>>>');
       // even though this only relates to bapp, it only triggers when
       // bapp tells mapp to show invalid widgets
       if (mapp.homeView.showInvalidWidgets && !this.model.validForShowing()) {
-
-        var className = 'invalid' + (this.model.get('hide') ? ' deactivated' : '');
-        var tip = this.model.get('hide') ? g.i18n.builder_app.deactivated_widget : g.i18n.builder_app.invalid_widget;
-        $(this.el).addClass(className).simpletooltip(tip);
+		if(this.model.get('wtype')!='text_area'){
+	        var className = 'invalid' + (this.model.get('hide') ? ' deactivated' : '');
+	        var tip = this.model.get('hide') ? g.i18n.builder_app.deactivated_widget : g.i18n.builder_app.invalid_widget;
+	        $(this.el).addClass(className).simpletooltip(tip);
+       }
       }
       return this;
     },
@@ -122,7 +123,10 @@
 
       mapp.resize();
       //$("#home-widgets" ).find(".text-area-widget" ).parent(".home-icon" ).css( "width", "100px" );
-      $('.text-area-widget').closest('.home-icon').css( "width", "95%" ).addClass('editing');
+      $('.text-area-widget').closest('.home-icon').css("width", "95%").css("height", "auto").css("border", "dashed 2px #a4bec6").addClass('textare-container');
+      $('.text-area-widget .icon').css("height", "auto");
+       $('.text-area-widget').closest('.home-icon').css("-webkit-border-radius", "0");
+       //$('.text-area-widget').closest('.home-icon').removeClass('dbx-box-hover');
       //$('.home-icon .inner .text-area-widget').parent().width('100%');
     }
   });
