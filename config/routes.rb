@@ -98,6 +98,7 @@ Yomobi::Application.routes.draw do
   #root :to => 'home#index'
 
   get '/javascripts/mobile-redirect.js' => 'mobile#mobile_redirect'
+  get '/javascripts/always-redirect.js' => 'mobile#always_redirect'
   get 'preview/:company' => 'mobile#index', :as => :mobile_preview, :defaults => { :preview => true }
   post 'preview/:company/leave_msg/submit' => 'widgets/leave_msg#submit', :defaults => { :preview => true }
   post 'preview/:company/call_back/submit' => 'widgets/call_back#mobile_submit', :defaults => { :preview => true }
