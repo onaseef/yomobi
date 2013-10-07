@@ -380,7 +380,8 @@
     resize: function (height) {
       height = ( height || mapp.getActivePage().height() ) +
                 Math.max(g.topBarMaxHeight,g.topBarHeight) + 20;
-      $('#mobile-container').height(height);
+      //$('#mobile-container').height(height);
+      $('#mobile-container').height('auto');
       return height;
     },
 

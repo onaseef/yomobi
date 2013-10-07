@@ -572,6 +572,7 @@ en:
     widget_editor:
       add_item: "Add %{item}"
       add_rss: "Add RSS"
+      add_text_area: "TA"
       address1_label_required: "Address 1*:"
       address1_label: "Address 1:"
       address2_label: "Address 2:"
@@ -608,6 +609,7 @@ en:
       rename_icon: "Rename"
       rename: "Rename"
       rss_icon: "Add RSS Feed"
+      text_area_icon : "Add Text Area"
       rss_label_required: "RSS Feed*:"
       rss_max_entries: "Max number of entries:"
       save: "Save Changes"

@@ -640,6 +640,8 @@ div.wysiwyg ul.toolbar {
   background-image: url(/images/ui/icon-item-new.png); }
 #builder .edit-area.category .button.add-rss-feed, #builder .edit-area.page_tree .button.add-rss-feed {
   background-image: url(/images/ui/icon-rss-new.png); }
+#builder .edit-area.category .button.add-text-area, #builder .edit-area.page_tree .button.add-text-area {
+  background-image: url(/images/ui/icon-text-area-new.png); }
 #builder .edit-area.category .button.rename, #builder .edit-area.page_tree .button.rename {
   background-image: url(/images/ui/icon-rename.png);
   background-position: center; }
