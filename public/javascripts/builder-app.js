@@ -278,6 +278,7 @@
         if (editor.hasChanges()) {
           if (!confirm(unsavedChangesText)) {
             editor.onDiscardByNavigation();
+            mapp.homeView.render();
           }
           else {
             editor.widget.homeView.highlight(true);

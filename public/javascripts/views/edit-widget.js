@@ -57,7 +57,7 @@
           
           if(res.wtype == 'text_area') {
           	mapp.homeView.render();
-          	console.log(res.wtype);
+          	//console.log(res.wtype);
           }
 
           self.startEditing(true);
@@ -86,6 +86,9 @@
     },
 
     cancel: function () {
+     if(this.widget._bdata.wsubtype == 'text-area') {
+      	mapp.homeView.render();
+      }
       util.log('discard');
       if (!util.reserveWidget(this.widget)) return;
 
@@ -328,11 +331,13 @@
     },
 
     setChanged: function (dataName,isChanged) {
+    	//console.log('@@@@@@@@@@@@@@@@@@@@@@@-'+this.changes[dataName]);
       if (isChanged === true) this.changes[dataName] = true;
       else delete this.changes[dataName];
     },
 
     hasChanges: function () {
+    	//console.log('###########-');
       return _.keys(this.changes).length > 0;
     }
 
