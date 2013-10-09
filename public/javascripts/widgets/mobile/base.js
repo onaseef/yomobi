@@ -58,6 +58,7 @@
         wsubtype: wdata.wsubtype,
         name: this.get('name'),
         content: this.get('content'),
+        id: this.id,
         iconName: ensureBackComp( this.get('iconName') ) || wdata.wsubtype,
         singletonClass: wdata.singleton ? 'singleton' : ''
       };
@@ -184,7 +185,7 @@
       $(window).scrollTop(g.topBarHeight);
     })
     .error(function (e,textStatus,errorThrown) {
-      var msg = self.prettyErrorMsg($.parseJSON(e.responseText))
+      var msg = self.prettyErrorMsg($.parseJSON(e.responseText));
       self.el.find('.response').html('ERROR: '+msg).show('pulsate',{ times:3 });
       self.el.find('input[type=submit]').prop('disabled',false);
       mapp.resize();
