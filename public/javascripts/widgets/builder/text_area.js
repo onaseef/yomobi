@@ -30,8 +30,30 @@
       this.originalContent = util.ensurePTag( this.widget.get('content') );
       this.$('#jeditor').text(this.originalContent);
       util.spawnJEditor();
+      var self = this;
+      setTimeout(function () { self.setChanged('tex-area-content', false); }, 400);
       if (resetChanges || isFirstEdit) this.changes = {};
     },
+    
+    /*updateActiveLeaf: function () {
+      var level = this.widget.getCurrentLevel(true)
+        , leaf = level._data
+        , oldContent = util.ensurePTag(leaf.content)
+      ;
+
+      if (this.areStylesDirty) {
+        util.stripAllStyles( $('#jeditor').data('wysiwyg').editorDoc.body );
+        this.areStylesDirty = false;
+      }
+
+      leaf.content = util.stripMeta( util.ensurePTag( $('#jeditor').wysiwyg('getContent') ));
+      this.widget.pageView.refresh();
+      mapp.resize();
+
+      if (oldContent !== leaf.content) {
+        this.setChanged('tex-area-content',true);
+      }
+    },*/
 
     grabWidgetValues: function () {
       return {
@@ -42,9 +64,11 @@
 
     setDirty: function () {
       var newContent = util.stripMeta( util.ensurePTag( $('#jeditor').wysiwyg('getContent') ));
-      if (!this.hasChanges() &&
-          this.originalContent !== newContent)
+      if (this.originalContent !== newContent)
       {
+      	//console.log(this); 
+      	//this.originalContent = newContent;
+      	$("#"+this.id).html(newContent);
         this.setChanged('content',true);
       }
     },
