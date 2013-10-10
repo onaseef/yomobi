@@ -486,7 +486,7 @@
 
   g.homeDbx = new dbxGroup(
     'home-widgets',      // container ID [/-_a-zA-Z0-9/]
-    'freeform-insert',   // orientation ['vertical'|'horizontal'|'freeform'|'freeform-insert'|'confirm']
+    'vertical',   // orientation ['vertical'|'horizontal'|'freeform'|'freeform-insert'|'confirm']
     '7',                 // drag threshold ['n' pixels]
     'no',                // restrict drag movement to container/axis ['yes'|'no']
     '10',                // animate re-ordering [frames per transition, or '0' for no effect]
