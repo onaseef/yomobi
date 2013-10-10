@@ -4,7 +4,7 @@
 (function ($) {
 
   window.widgetClasses.text_area = Widget.extend({
-	requiredAttrs: ['content1'],
+	requiredAttrs: ['content'],
 	getShowData: function () {
       var extraData = {
         wphotoUrlLarge: util.largerWphoto( this.get('wphotoUrl') ),
@@ -14,6 +14,8 @@
     }
   });
 
-
+	window.widgetPages.text_area = WidgetPageView.extend({
+	   beforePageRender: util.widget.resizeOnImgLoad
+	});
 
 })(jQuery);

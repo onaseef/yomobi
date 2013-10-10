@@ -66,10 +66,10 @@
       var newContent = util.stripMeta( util.ensurePTag( $('#jeditor').wysiwyg('getContent') ));
       if (this.originalContent !== newContent)
       {
-      	//console.log(this); 
+      	mapp.homeView.render();
       	//this.originalContent = newContent;
-      	$("#"+this.id).html(newContent);
         this.setChanged('content',true);
+        $("#"+this.id).html(newContent);
       }
     },
 
