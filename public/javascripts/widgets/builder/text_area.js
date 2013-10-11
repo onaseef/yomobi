@@ -65,11 +65,18 @@
     setDirty: function () {
       var newContent = util.stripMeta( util.ensurePTag( $('#jeditor').wysiwyg('getContent') ));
       if (this.originalContent !== newContent)
-      {
-      	mapp.homeView.render();
+      { console.log(("#yoTxt"+this.id));
+      	//mapp.homeView.render();
+      	var idExist = ($("#emulator-wrapper").find("#yoTxt"+this.id).length > 0);
+      	console.log(idExist);
+      	if(idExist) {
+      		var txtId = 'yoTxt'+this.id;
+      	} else {
+      		var txtId = 'yoTxtundefined';
+      	}
       	//this.originalContent = newContent;
         this.setChanged('content',true);
-        $("#"+this.id).html(newContent);
+        $("#"+txtId).html(newContent);
       }
     },
 

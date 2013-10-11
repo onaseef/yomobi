@@ -26,6 +26,7 @@
 
     getPageContent: function () {
       util.resetCycle();
+      $('.textare-container').css("border", "0");
       this._template || ( this._template =
                           util.getTemplate(this.get('wtype') + '-page') );
       return this._template(this.getShowData());
@@ -53,12 +54,14 @@
 
     getIconData: function () {
       var wdata = this._bdata || util.getWidgetBData(this);
+      $('.textare-container').css("border", "dashed 2px #a4bec6");
+      console.log(this);
       return {
         wtype: wdata.wtype,
         wsubtype: wdata.wsubtype,
         name: this.get('name'),
         content: this.get('content'),
-        id: this.id,
+        id: 'yoTxt'+this.id,
         iconName: ensureBackComp( this.get('iconName') ) || wdata.wsubtype,
         singletonClass: wdata.singleton ? 'singleton' : ''
       };

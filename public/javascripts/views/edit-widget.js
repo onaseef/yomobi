@@ -277,6 +277,8 @@
 
     startEditing: function (resetChanges,isFirstEdit) {
       util.log('Editing widget:',this.widget.get('name'),this.widget.isNew());
+      $('.textare-container').css("border", "dashed 2px #a4bec6");
+      //console.log(this.options._bdata.wtype);
       var widget = this.widget
         , helpText = util.getWidgetBData(widget).help
         , editAreaData = _.extend(widget.getEditAreaData(),{ helpText: helpText })
