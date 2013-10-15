@@ -234,6 +234,7 @@
       'click .remove-wphoto-link':          'removeWPhoto',
 
       'click .add-rss-feed.button':         'addRssFeed',
+      'click .add-text-area.button':         'addTextArea',
       'sortstop':                           'updateOrder'
     },
 
@@ -456,6 +457,19 @@
       this.itemDialog.enterMode('add').prompt(undefined);
     },
 
+	addTextArea: function(e) {
+      if (!util.isUIFree()) return;
+      this.itemDialog = this.itemDialog || new this.AddItemDialog({ model:this.widget });
+      this.itemDialog.model = this.widget;
+      this.itemDialog.options = {
+        onClose: this.refreshViews,
+        hideUploader: this.itemDialog.type === 'text-area',
+        defaultItem: { name:'', type:'text-area' }
+      };
+
+      this.itemDialog.enterMode('add').prompt();
+	},
+	
     editItem: function (item_id) {
       if (!util.isUIFree()) return;
       util.log('Editing item');
@@ -771,17 +785,20 @@
   util.widgetEditor.AddItemDialog = Backbone.View.extend({
 
     initialize: function () {
+      
       this.template = util.getTemplate(this.model.get('wsubtype')+'-item-dialog-content');
       this.addedItems = [];
       _.bindAll(this, 'saveItem', 'isItemValid');
     },
 
     enterMode: function (mode) {
+    	
       this.mode = mode;
       return this;
     },
 
     render: function (flash,level,item) {
+    	
       flash || (flash = {});
       item || (item = {});
       var itemTypeName = item.type || this.model.get('itemTypeName');
