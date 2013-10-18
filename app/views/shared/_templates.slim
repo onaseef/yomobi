@@ -318,7 +318,8 @@
       tbody
         | <% for (var i=0; i<stuff.length;i++) {
               if (stuff[i].type === "cat" || stuff[i].type === "page" ||
-                  stuff[i].type === "title" || stuff[i].type === "rss-feed") {
+                  stuff[i].type === "title" || stuff[i].type === "rss-feed" ||
+                  stuff[i].type === "text-area") {
                 print( catTemplate({ cat:stuff[i], cycle:util.cycle('c0','c1') }) );
               } else {
                 print( itemWrapTemplate({

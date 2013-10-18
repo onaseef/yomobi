@@ -146,3 +146,10 @@ script.rss-feed-item-dialog-content(type="text/template")
   br
   input.item-input type="text" value="{{ _maybe.url }}" name="url"
   br
+
+script.text-area-item-dialog-content(type="text/template")
+  p =t'dialog.add_item.text-area-info'
+  label =t'dialog.add_item.text_area_title_required'
+  br
+  input.item-input type="text" value="{{ _maybe.name }}" name="name"
+  br

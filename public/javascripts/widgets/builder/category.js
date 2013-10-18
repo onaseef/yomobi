@@ -234,7 +234,7 @@
       'click .remove-wphoto-link':          'removeWPhoto',
 
       'click .add-rss-feed.button':         'addRssFeed',
-      'click .add-text-area.button':         'addTextArea',
+      'click .add-text-area.button':        'addTextArea',
       'sortstop':                           'updateOrder'
     },
 
@@ -459,7 +459,12 @@
 
 	addTextArea: function(e) {
       if (!util.isUIFree()) return;
-      this.itemDialog = this.itemDialog || new this.AddItemDialog({ model:this.widget });
+
+      // Node the important lack of `this` before `AddItemDialog`
+      this.itemDialog = this.textAreaDialog || 
+                        new util.widgetEditor.AddItemDialog({ model:this.widget });
+      this.textAreaDialog || (this.textAreaDialog = this.itemDialog);
+      
       this.itemDialog.model = this.widget;
       this.itemDialog.options = {
         onClose: this.refreshViews,
@@ -811,9 +816,15 @@
         addedItems: this.addedItems,
         mode: this.mode
       });
-      var template = (item.type === 'rss-feed') ?
-                      util.getTemplate('rss-feed-item-dialog-content') :
-                      this.template;
+      
+      var template;
+      if (item.type === 'rss-feed') 
+        template = util.getTemplate('rss-feed-item-dialog-content')
+      else if (item.type === 'text-area')
+        template = util.getTemplate('text-area-item-dialog-content')
+      else
+        template = this.template;
+
       templateData.innerContent = template(templateData);
       var dialogHtml = itemDialogTemplate(templateData);
 

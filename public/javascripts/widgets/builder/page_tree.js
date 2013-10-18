@@ -77,6 +77,11 @@
                           new util.widgetEditor.AddItemDialog({ model:this.widget });
         this.rssDialog = this.itemDialog;
       }
+      else if (this.widget.getNodeById(item_id)._data.type === 'text-area') {
+        this.itemDialog = this.textAreaDialog ||
+                          new util.widgetEditor.AddItemDialog({ model:this.widget });
+        this.textAreaDialog = this.itemDialog;
+      }
       else {
         this.itemDialog = this.pageDialog || new AddItemDialog({ model:this.widget });
         this.pageDialog = this.itemDialog;
@@ -217,6 +222,8 @@
       util.log('TYPE NAAAME',node);
       if (node._data.type === 'rss-feed')
         return 'RSS Feed';
+      else if (node._data.type === 'text-area')
+        return 'Text Area';
       else
         return this.model.get('itemTypeName');
     }
