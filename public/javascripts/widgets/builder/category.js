@@ -264,7 +264,7 @@
       if (mapp.pageLevel === 0) {
         this.$('[name=hideWidget]').prop('checked', this.widget.get('hide'));
       }
-      else if (mapp.pageLevel > 0 && this.widget.getCurrentNode()._data.type !== 'page') {
+      else if (mapp.pageLevel > 0 && this.widget.getCurrentNode()._data.type !== 'page' && this.widget.getCurrentNode()._data.type !== 'text-area') {
         util.initUploader( $(this.el).find('.wphoto-wrap'), {
           onDone: callback,
           emptyQueue: true,
@@ -350,8 +350,7 @@
       // transition into subcat by emulating a click
       var node = this.getFirstSelectedNode();
       if (!node) return alert(i18n.edit_nothing);
-
-      if (_.include(this.treeTypes, node._data.type)) {
+      if (_.include(this.treeTypes, node._data.type) || (node._data.type==='text-area')) {
         this.widget.pageView.$('tr[data-id='+ node._data._id +']').click();
       }
       else {
@@ -814,14 +813,16 @@
         _items: level._items,
         itemTypeName: this.model.get('itemTypeName'),
         addedItems: this.addedItems,
-        mode: this.mode
+        mode: this.mode,
+        hideUploader: item.type === 'text-area'
       });
       
+
       var template;
       if (item.type === 'rss-feed') 
-        template = util.getTemplate('rss-feed-item-dialog-content')
+        template = util.getTemplate('rss-feed-item-dialog-content');
       else if (item.type === 'text-area')
-        template = util.getTemplate('text-area-item-dialog-content')
+        template = util.getTemplate('text-area-item-dialog-content');
       else
         template = this.template;
 
