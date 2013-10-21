@@ -166,6 +166,11 @@
     },
 
     onItemClick: function (e) { this.onCategoryClick(e); },
+    
+    onTextAreaClick: function (e) { 
+    	console.log("Text-Area Clicked !!!");
+    	this.onCategoryClick(e); 
+    },
 
     onItemNavClick: function (e) {
       var direction = (e.target.name === 'next') ? 1 : -1

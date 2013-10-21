@@ -207,7 +207,8 @@
     events: {
       'click .category.cat-title':       'onCategoryClick',
       'click .category.page-title':      'onCategoryClick',
-      'click .category.rss-feed-title':  'onItemClick'
+      'click .category.rss-feed-title':  'onItemClick',
+      'click .category.text-area-title':  'onTextAreaClick'
     }
   });
 
