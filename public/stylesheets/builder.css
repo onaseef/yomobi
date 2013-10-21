@@ -680,6 +680,11 @@ div.wysiwyg ul.toolbar {
 #builder .edit-area.category .nodes .icon.rss-feed, #builder .edit-area.page_tree .nodes .icon.rss-feed {
   background-image: url(/images/ui/icon-rss.png);
   background-position: 3px 6px; }
+  
+ #builder .edit-area.category .nodes .icon.text-area, #builder .edit-area.page_tree .nodes .icon.text-area {
+  background-image: url(/images/ui/icon-text-area.png);
+  background-position: 3px 6px; }
+  
 #builder .edit-area.category .icon-wrap, #builder .edit-area.page_tree .icon-wrap {
   padding: 0 5px 0 0; }
   #builder .edit-area.category .icon-wrap img, #builder .edit-area.page_tree .icon-wrap img {

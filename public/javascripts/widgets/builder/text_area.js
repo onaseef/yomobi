@@ -9,7 +9,7 @@
       var showData = this.getShowData();
 
       var extraData = {
-        wphotoPreviewPath: this.get('wphotoUrl') || g.noPhotoPath
+        //wphotoPreviewPath: this.get('wphotoUrl') || g.noPhotoPath
       };
       return _.extend({},showData,extraData);
     }
@@ -17,9 +17,11 @@
 
   window.widgetEditors.text_area = window.EditWidgetView.extend({
 
+    /*
     events: {
-      'click .remove-wphoto-link':          'removeWPhoto'
-    },
+          'click .remove-wphoto-link':          'removeWPhoto'
+        },*/
+//     
 
     init: function () {
       this.bind('wysiwyg-change',this.setDirty);

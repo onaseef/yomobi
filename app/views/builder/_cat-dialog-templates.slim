@@ -6,6 +6,7 @@ script.item-dialog(type="text/template")
   #dialog-confirm class="addItem"
     input.item-input type="hidden" name="type" value="<% print(_maybe.type || 'item'); %>"
     | {{ innerContent }}
+    | <% if (!hideUploader) { %>
     table.wphoto-wrap
       tbody
         tr
@@ -25,7 +26,8 @@ script.item-dialog(type="text/template")
             a.remove-wphoto-link href="#" =t'dialog.add_picture.remove_picture'
           td
         | <% } %>
-    input.item-input type="hidden" value="{{ _maybe.wphotoUrl }}" name="wphotoUrl"
+		input.item-input type="hidden" value="{{ _maybe.wphotoUrl }}" name="wphotoUrl"
+    | <% } %>
     | <% if (mode == 'add') { %>
     input.lfloat type="button" value=t'dialog.add' name="add" style="margin:10px 15px 0 2px"
     | <% } %>
@@ -153,3 +155,4 @@ script.text-area-item-dialog-content(type="text/template")
   br
   input.item-input type="text" value="{{ _maybe.name }}" name="name"
   br
+  
