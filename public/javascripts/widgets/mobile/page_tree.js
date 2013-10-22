@@ -60,7 +60,7 @@
 
     hasLeafOnTop: function () {
       var top = _.last(this.catStack);
-      return top._data.type === 'page';
+      return (top._data.type === 'page' || top._data.type === 'text-area');
     },
 
     getRssState: function () {

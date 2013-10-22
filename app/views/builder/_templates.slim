@@ -741,6 +741,15 @@ script.category-edit-area.menu-edit-area.services-edit-area.products-edit-area.p
     input type="checkbox" name="hideWidget"
     label for="hide" =t'builder.widget_editor.deactivate_label'
     img.help-bubble src="/images/ui/help-bubble.png" title=t('widgets.helpText.category.hide')
+    | <% } else if (currentNodeType === 'text-area') { %>
+    .controls
+      .button.back.page title=t'builder.widget_editor.go_back_icon' &#0139;
+      .button-separator.back.page
+      .crumb-wrap
+        erb:
+          <%==t('builder.widget_editor.editing_crumb', :breadcrumb => "{{ catCrumbs }}")%>
+    #jeditor-wrapper
+      textarea#jeditor
     | <% } else if (currentNodeType !== 'page') { %>
 
     .crumb-wrap
