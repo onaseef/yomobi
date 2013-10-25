@@ -550,6 +550,11 @@
     },
 
     onCategoryClick: function (e) {
+      if(e.srcElement.offsetParent.className === 'textare-container'){
+      	window.clikedItem = 'text-area';
+      } else {
+      	window.clikedItem = '';
+      }
       if (!mapp.canTransition()) return;
 
       var target = util.ensureClassAncestor(e.target, 'item');

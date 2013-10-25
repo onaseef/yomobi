@@ -350,27 +350,33 @@
       self.pageLevel += delta;
 
       setTimeout(function () {
-        m && bezen.domwrite.capture();
-        activePage.find('.ad-bar,.mobile-footer').appendTo(nextPage);
-
-        self.el.find('#canvas').css('left', deltaStr + g.width);
-        mapp.resize(nextPage.height());
-
-        m && activePage.css('visibility','visible');
-        // if (delta === -1) setTimeout(function () { self.scrollPop(); },m ? 500 : 0);
-        if (self.isDesktop) self.scrollElem.scrollTop(0);
-
-        util.release('pageTransition');
-
-        if (window.bapp) {
-          if (mapp.pageLevel == 0) {
-            delete mapp.currentWidget;
-            util.ensureActiveWidgetIsVisible();
-          }
-          else {
-            mapp.currentWidget.pageView.setContentElem(self.getActivePage().content);
-          }
-        }
+      	//if (window.clikedItem!='text-area') {
+	        m && bezen.domwrite.capture();
+	        activePage.find('.ad-bar,.mobile-footer').appendTo(nextPage);
+	        console.log(window.clikedItem+"=====KKR New");
+        
+        	if (window.clikedItem!='text-area') {
+        		self.el.find('#canvas').css('left', deltaStr + g.width);
+        	}
+	        mapp.resize(nextPage.height());
+	    
+			//window.clikedItem = '';
+	        m && activePage.css('visibility','visible');
+	        // if (delta === -1) setTimeout(function () { self.scrollPop(); },m ? 500 : 0);
+	        if (self.isDesktop) self.scrollElem.scrollTop(0);
+	
+	        util.release('pageTransition');
+		
+	        if (window.bapp) {
+	          if (mapp.pageLevel == 0) {
+	            delete mapp.currentWidget;
+	            util.ensureActiveWidgetIsVisible();
+	          }
+	          else {
+	            mapp.currentWidget.pageView.setContentElem(self.getActivePage().content);
+	          }
+	        }
+      	//}
       },m ? 200 : 0);
 
       return true;

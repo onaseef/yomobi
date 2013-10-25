@@ -283,10 +283,18 @@
       td.txt-col
         | {{ cat.name }}
       | <% } else { %>
+      | <% if (cat.type === 'text-area') { %>
+      td colspan="3" style="padding:0 !important;"
+      	div.textare-container style="width:99% !important;"
+        	| {{ cat.content }}
+      | <% } else { %>
       td colspan="2"
         | {{ cat.name }}
+      | <% } %> 
       | <% } %>
+      | <% if (cat.type != 'text-area') { %>
       td.nav-col &#0155;
+      | <% } %>
 
   script.category-page(type="text/template")
     | <% if (nodeType === 'item') { %>
