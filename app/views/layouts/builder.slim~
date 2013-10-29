@@ -1,0 +1,78 @@
+doctype html
+html lang="en-US"
+  head
+    meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+    link rel="shortcut icon" type="image/x-icon" href="/yomobi.ico"
+    link rel="canonical" href="http://www.yomobi.com"
+
+    = render 'shared/meta'
+
+    = stylesheet_link_tag '/stylesheets/signup'
+    = stylesheet_link_tag '/stylesheets/builder-app'
+    = stylesheet_link_tag '/stylesheets/flick/jquery-ui-1.8.11.custom'
+    = stylesheet_link_tag '/stylesheets/jquery.wysiwyg'
+    = stylesheet_link_tag '/stylesheets/colorpicker'
+    = render 'mobile/custom-style'
+    erb:
+      <!--[if IE 7]>
+      <%= stylesheet_link_tag '/stylesheets/ie' %>
+      <![endif]-->
+    = csrf_meta_tag
+  body
+    = topline_notice
+
+    #global-container
+      #header.signed-in
+        .content
+          a#logo
+            img src="/images/yomobi-logo-20.png"
+          = render :partial => 'shared/nav'
+          .clearfix
+      #page-container
+        #sidebar
+          = yield :sidebar
+          == '&nbsp;'
+        #content
+          = yield
+        .clearfix
+        = render 'shared/footer'
+
+    = render 'shared/templates'
+
+    = render 'layouts/js-base'
+    = javascript_include_tag '/javascripts/support/dbx'
+    = render :partial => 'shared/data-loader' if @company && @user && !@company.new_record?
+    = javascript_include_tag '/javascripts/preview-mobile'
+
+
+    = javascript_include_tag '/javascripts/widgets/mobile/base'
+    = javascript_include_tag '/javascripts/widgets/builder/base'
+
+    - Dir[widgets_dir('mobile/*.js')].sort.each do |widget|
+      - next if File.basename(widget) == 'base.js'
+      = javascript_include_tag "/javascripts/widgets/mobile/#{File.basename widget}"
+
+    = javascript_include_tag "/javascripts/support/colorpicker"
+
+    = javascript_include_tag '/javascripts/views/edit-widget'
+    = javascript_include_tag '/javascripts/views/edit-tab-bar'
+    = javascript_include_tag '/javascripts/views/edit-settings'
+    = javascript_include_tag '/javascripts/views/edit-advanced-settings'
+    = javascript_include_tag '/javascripts/views/customize'
+
+    - Dir[widgets_dir('builder/*.js')].sort.each do |widget|
+      - next if File.basename(widget) == 'base.js'
+      = javascript_include_tag "/javascripts/widgets/builder/#{File.basename widget}"
+
+    = yield :js
+
+    = javascript_include_tag '/javascripts/notice'
+
+    / ajax file uploading
+    = javascript_include_tag "/javascripts/support/swfobject.js"
+    = javascript_include_tag "/javascripts/plupload/plupload.full"
+
+    - if Rails.env.production?
+      = javascript_include_tag '/javascripts/google-analytics'
+
+    = stylesheet_link_tag '/stylesheets/change-wicon'

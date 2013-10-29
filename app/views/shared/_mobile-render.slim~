@@ -1,0 +1,35 @@
+#top-bar
+  .company-info
+    / The template for this is in _templates.slim
+  .tab-bar
+    table
+      tr
+        td.go-home
+          a href="#home" =t'mobile.tab_bar.home'
+        td.wtab
+        td.wtab
+        td.wtab
+  - unless @is_preview_mode || @company.premium?
+    .ad-bar
+      = render 'mobile/adsense' if Rails.env == 'production'
+  - if @company.premium? == false && @is_preview_mode == true
+    .ad-bar
+      = render 'mobile/yomobi-upgrade-ad'
+#canvas
+  #home.page
+    #home-widgets1.content.dbx-group
+    - unless @is_preview_mode || @company.premium?
+      .ad-bar.bottom{ style="clear:both;" }
+        div align="center"
+        = render 'mobile/adsense' if Rails.env == 'production'
+    - if @company.premium? == false && @is_preview_mode == true
+      .ad-bar.bottom{ style="clear:both;" }
+        = render 'mobile/yomobi-upgrade-ad'
+    .mobile-footer
+      = render 'mobile/social-share'
+      - unless @company.premium?
+        erb:
+          <div class="clearfix"></div>
+          <div style="border-top:1px solid #b3b3b3;margin:8px 0"></div>
+          <div class="powered-by"><a href="http://www.yomobi.com" target="_blank"><%=t('powered_by.slogan')%></a></div>
+

@@ -1,0 +1,57 @@
+- content_for :sidebar do
+  = render :partial => 'shared/sidebar', :locals => {:active => 'builder'}
+  .widgets
+
+- content_for :js do
+  = javascript_include_tag '/javascripts/views/sidebar'
+  = javascript_include_tag '/javascripts/mobile-app'
+  = javascript_include_tag '/javascripts/builder-app'
+
+  = javascript_include_tag '/javascripts/support/jquery.wysiwyg'
+  = javascript_include_tag '/javascripts/support/jquery.wysiwyg.link'
+  = javascript_include_tag '/javascripts/support/jquery.wysiwyg.image'
+  = javascript_include_tag '/javascripts/support/jquery.wysiwyg.i18n'
+  - if I18n.locale != :en
+    erb:
+      <script type="text/javascript">
+        $.wysiwyg.i18n.lang[g.i18n_locale] = <%=raw t("jwysiwyg").to_json %>;
+      </script>
+  - if @company.premium? == false && @is_preview_mode == true
+    erb:
+      <script type="text/javascript">
+        mapp.showAds();
+      </script>
+
+div.company-header
+  p
+    span.company-name = @company.name
+    span.divider-dot ·
+    a.company-url#preview-mobile-site target="preview-mobile-site" href=@company.mobile_url = @company.mobile_url
+#builder-container
+  #builder
+    .left.lfloat
+      .title =t'builder.mobile_emulator.title'
+      .title-subtext
+        a target="_blank" href="http://help.yomobi.com/Account/MobileRedirectScript"
+          img src="/images/redirect.png"
+        a target="ymhelp" href="http://help.yomobi.com/Account/MobileRedirectScript" =t'general.click_here_start'
+        =t'builder.mobile_emulator.mobile_redirect'
+      .divider style="border-color:#E0E1E2;margin:0 10px 10px 0"
+      #emulator-wrapper
+        .loader-overlay
+          .icon
+        .drophover-overlay
+          .icon
+          .text Add to Mobile Site
+        #emulator.portrait
+          #mobile-scroller
+            #mobile-container1
+              = render 'shared/mobile-render'
+    .right.lfloat
+      .title =t'builder.widget_editor.title'
+      .title-subtext
+        em =t'builder.widget_editor.instructions'
+      .divider style="border-color:#E0E1E2;margin:0 10px 10px 10px"
+      .widget-editor
+        = render 'builder/builder-help'
+    .clearfix

@@ -1,0 +1,344 @@
+#templates
+
+  - if @is_builder
+    = render :partial => 'builder/templates'
+
+  script.home-icon(type="text/template")
+    .inner
+      | <% if(iconName!='text-area') {  if(!iconName.match('http://')) { %>
+
+      | <% }else{ %>
+      .icon.dbx-handle{ style="background-image: url({{ iconName }});" }
+      | <% } %>
+      .title {{ name }}
+      .invalid-icon
+	  <% } else { %>
+	  .text-area-widget
+		  .icon{ style="width: 100%;" }
+		  	.dbx-handle{style="width: 100%;height: 100%"} 
+		  		.tex-area-content{id='{{ id }}'} {{ content }}
+	  <% } %>
+	  
+  script.mapp-header(type="text/template")
+    | <% if (g.banner && g.isPremium) { %>
+    .banner-wrap
+      img.banner src="<% print(g.banner); %>"
+    | <% } else { %>
+    table
+      | <% if (_maybe.slogan) { %>
+      tr
+        | <% if (_maybe.logo) { %>
+        td.logo.top
+          img.logo src="{{ _maybe.logo }}"
+        | <% } %>
+        td.name
+          div.name {{ name }}
+          div.slogan {{ slogan }}
+      | <% } else { %>
+      tr
+        | <% if (_maybe.logo) { %>
+        td.logo
+          img.logo src="{{ _maybe.logo }}"
+        | <% } %>
+        td.name {{ name }}
+      | <% } %>
+    | <% } %>
+
+  script.tab-bar(type="text/template")
+    table
+      tr
+        td.go-home
+          a href="#home" =t'mobile.tab_bar.home'
+        td.wtab data-wid="{{ wids[0] }}"
+          div {{ wnames[0] }}
+        td.wtab data-wid="{{ wids[1] }}"
+          div {{ wnames[1] }}
+        td.wtab data-wid="{{ wids[2] }}"
+          div {{ wnames[2] }}
+
+  script.widget-page(type="text/template")
+    .page
+      .back-bar
+        .back-btn &#0139;
+        .title
+        .clearfix
+      .content
+
+  / =============================
+  / = Category Add-Item Dialogs =
+  / =============================
+
+  = render :partial => 'shared/category-templates'
+
+  / =====================
+  / = Widget Show Pages =
+  / =====================
+  script.custom_page-page(type="text/template")
+    | {{ _maybe.content }}
+    .clearfix
+
+  script.phone-page(type="text/template")
+    h2 =t'mobile.form.phone_number'
+    h2
+      | <% if (g.isMobile) { %>
+      a href="tel:{{ _maybe.phone }}" {{ _maybe.phone }}
+      | <% } else { %>
+      | {{ _maybe.phone }}
+      | <% } %>
+
+  script.leave_msg-page(type="text/template")
+    .input-wrap
+      | <% if (_maybe.message) { %>
+      p {{ message }}
+      | <% } else { %>
+      p =t'leave_a_message.instructions'
+      | <% } %>
+
+      = form_tag "#{'/preview' if @is_preview_mode}/#{@company.db_name}/leave_msg/submit", :method => 'post' do
+        label =t'mobile.form.name'
+        br
+        input type="text" name="name"
+        br
+        label =t'mobile.form.email'
+        br
+        input type="text" name="email"
+        br
+        label =t'leave_a_message.subject'
+        br
+        input type="text" name="subject"
+        br
+        label =t'leave_a_message.message'
+        textarea name="feedback" rows=5
+        .aritcaptcha-container
+        p.response.error
+        input(type="submit" value=t'mobile.form.send')
+    .thanks-wrap style="display:none"
+      h3 = escape_quotes t('leave_a_message.confirmation', :company_name => @company.name)
+
+  script.call_back-page(type="text/template")
+    .input-wrap
+      | <% if (_maybe.message) { %>
+      p {{ message }}
+      | <% } else { %>
+      p =t'call_back.instructions'
+      | <% } %>
+
+      = form_tag "#{'/preview' if @is_preview_mode}/#{@company.db_name}/call_back/submit", :method => 'post' do
+        label =t'mobile.form.name'
+        br
+        input type="text" name="name"
+        br
+        label =t'mobile.form.phone_number'
+        br
+        input type="text" name="phone"
+        br
+        label =t'leave_a_message.message'
+        br
+        textarea name="message" rows=5 cols=30
+        br
+        .aritcaptcha-container
+        p.error.response
+        br
+        input(type="submit" value=t'mobile.form.send')
+    .thanks-wrap style="display:none"
+      h3 = escape_quotes t('call_back.confirmation', :company_name => @company.name)
+
+  script.tell_friend-page(type="text/template")
+    .input-wrap
+      p = escape_quotes t('tell_a_friend.instructions', :company_name => @company.name)
+  
+      = form_tag "#{'/preview' if @is_preview_mode}/#{@company.db_name}/tell_friend/submit", :method => 'post' do
+        label =t'tell_a_friend.friend_email'
+        br
+        input type="text" name="email_to"
+        br
+        label =t'mobile.form.your_name'
+        br
+        input type="text" name="name_from"
+        br
+        p.error.response
+        br
+        input type="submit" value=t'mobile.form.send'
+    .thanks-wrap style="display:none"
+      h3 = escape_quotes t('tell_a_friend.confirmation', :company_name => @company.name)
+
+  script.booking-page(type="text/template")
+    .input-wrap
+      | <% if (_maybe.message) { %>
+      p {{ message }}
+      | <% } else { %>
+      p =t'booking_request.instructions'
+      | <% } %>
+
+      = form_tag "#{'/preview' if @is_preview_mode}/#{@company.db_name}/booking/submit", :method => 'post' do
+        label =t'mobile.form.name'
+        br
+        input name="name" type="text"
+        br
+        label =t'mobile.form.phone_number'
+        br
+        input name="phone" type="text"
+        br
+        label =t'booking_request.number_of_people'
+        br
+        = select_tag 'party_size', options_for_select(1..50,2)
+        br
+        label =t'booking_request.time'
+        br
+        select name="time"
+          | <% for (var i=0; i < times.length; i++) {
+          |       if (i == 48) { %>
+          option selected="selected" value="{{ times[i] }}" {{ times[i] }}
+          | <%    } else { %>
+          option value="{{ times[i] }}" {{ times[i] }}
+          | <% } } %>
+        br
+        label =t'booking_request.date'
+        br
+        = select_tag 'date_m', options_for_select(1..12,Date.today.month)
+        | &nbsp;&frasl;&nbsp;
+        = select_tag 'date_d', options_for_select(1..31,Date.today.day)
+        | &nbsp;&frasl;&nbsp;
+        = select_tag 'date_y', options_for_select(Date.today.year..Date.today.year+5,Date.today.year)
+        br
+        .aritcaptcha-container
+        p.error.response
+        input(type="submit" value=t'mobile.form.send')
+    .thanks-wrap style="display:none"
+      h3 = escape_quotes t('booking_request.confirmation', :company_name => @company.name)
+
+  script.informed-page(type="text/template")
+    .input-wrap
+      | <% if (_maybe.message) { %>
+      p {{ message }}
+      | <% } else { %>
+      p = t('keep_me_informed.instructions', :company_name => @company.name)
+      | <% } %>
+
+      = form_tag "#{'/preview' if @is_preview_mode}/#{@company.db_name}/informed/submit", :method => 'post' do
+        | <% if (_maybe.optForEmails) { %>
+        label =t'mobile.form.email'
+        br
+        input type="text" name="email"
+        br
+        | <% } if (_maybe.optForTexts) { %>
+        label =t'keep_me_informed.mobile_number'
+        br
+        input type="text" name="phone"
+        br
+        label =t'keep_me_informed.mobile_carrier'
+        br
+        = select_tag 'carrier', options_for_select(carrier_names,'AT&T')
+        br
+        | <% } %>
+        .aritcaptcha-container
+        p.response.error
+        input(type="submit" value=t'mobile.form.send')
+    .thanks-wrap style="display:none"
+      h3 = escape_quotes t('keep_me_informed.confirmation', :company_name => @company.name)
+
+  script.hours-page(type="text/template")
+    - %w(mon tue wed thu fri sat sun).each do |day|
+      .day-name = long_day_name(day)
+      .day-hours {{ #{day}Hours }}
+      - if day != 'sun'
+        .clearfix
+        .divider
+    .clearfix
+
+  script.gmap-page(type="text/template")
+    p =t'mobile.form.address' 
+
+    .addr-line {{ _maybe.addr1 }}
+    .addr-line {{ _maybe.addr2 }}
+    .addr-line {{ _maybe.city }}<% if (_maybe.city && _maybe.state) { print(','); } %> {{ _maybe.state }} {{ _maybe.zip }}
+    .addr-line {{ _maybe.country }}
+
+    .maps style="margin-top: 8px"
+      a.map-link href="http://maps.google.com/maps?q={{ fullAddress }}"
+        img src="{{ mapUrl2 }}"
+    a.map-link href="http://maps.google.com/maps?q={{ fullAddress }}" =t'mobile.form.view_in_map'
+
+    .directions
+      .banner =t'mobile.form.get_directions'
+      form action="http://maps.google.com/maps" method="get"
+        label =t'mobile.form.starting_address'
+        br
+        input type="text" name="saddr"
+        input type="submit" value=t'mobile.form.map_it'
+        input type="hidden" name="daddr" value="{{ fullAddress }}"
+
+  script.coupon-page(type="text/template")
+    h2 {{ _maybe.couponName }}
+    | <% if (_maybe.expire) { %>
+    p Expires: {{ _maybe.expire }}
+    | <% } %>
+    pre.desc {{ _maybe.description }}
+
+  script.category-cat.page-item(type="text/template")
+    tr.category.item class="<% print(cat.type + '-title'); %>" data-id="{{ cat._id }}"
+      | <% if (cat.wphotoUrl) { %>
+      td.img-col
+        img src="{{ cat.wphotoUrl }}"
+      td.txt-col
+        | {{ cat.name }}
+      | <% } else { %>
+      td colspan="2"
+        | {{ cat.name }}
+      | <% } %>
+      td.nav-col &#0155;
+
+  script.category-page(type="text/template")
+    | <% if (nodeType === 'item') { %>
+    table.item-nav
+      tbody
+        tr
+          td
+            button name="prev" class="<% if (nodeIdx.idx === 0) { print('disabled'); } %>" &lt;&lt;
+          td
+            label.item-index {{ nodeIdx.humanIdx }}/{{ nodeIdx.total }}
+          td
+            button name="next" class="<% if (nodeIdx.idx === nodeIdx.total-1) { print('disabled'); } %>" &gt;&gt;
+    | <% } %>
+
+    | <% if (_maybe.wphotoUrlLarge) { %>
+    .wphoto-large.centered
+      img src="{{ wphotoUrlLarge }}"
+    .wphoto-large-separator
+    | <% } %>
+
+
+    | <% if (nodeType === 'loading') { %>
+    h2 =t'status.loading'
+    | <% } else if (nodeType === 'item') {
+    |     print( itemTemplate({ item:node }) );
+    | } else { %>
+
+    table.node-list
+      tbody
+        | <% for (var i=0; i<stuff.length;i++) {
+              if (stuff[i].type === "cat" || stuff[i].type === "page" ||
+                  stuff[i].type === "title" || stuff[i].type === "rss-feed" ||
+                  stuff[i].type === "text-area") {
+                print( catTemplate({ cat:stuff[i], cycle:util.cycle('c0','c1') }) );
+              } else {
+                print( itemWrapTemplate({
+                  item: stuff[i],
+                  itemTemplate: itemTemplate,
+                  cycle: util.cycle('c0','c1')
+                }) );
+              }
+          if (i !== stuff.length-1) {
+          %>
+        td colspan="3"
+          .separator
+        | <% } } %>
+    | <% } %>
+
+  script.page_tree-page(type="text/template")
+    h3.page_title {{ title }}
+    .leaf-content {{ content }}
+    .clearfix
+
+#wname-test
+#cat-crumbs-test

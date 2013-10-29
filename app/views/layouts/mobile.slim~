@@ -1,0 +1,78 @@
+doctype html
+html lang="en-US" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml"
+  head
+    meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+    link rel="shortcut icon" type="image/x-icon" href="/yomobi.ico"
+    link rel="canonical" href==@company.mobile_url
+    = render 'mobile/meta'
+
+    - if @company.premium? == false
+      title = "#{@company.name} | Mobile Website | YoMobi"
+    - else
+      title = "#{@company.name} | Mobile Website"
+
+    = render 'shared/iphone-meta.html'
+    = stylesheet_link_tag '/stylesheets/mobile'
+    = render 'mobile/custom-style'
+    erb:
+      <!--[if IE 7]>
+      <%= stylesheet_link_tag '/stylesheets/ie' %>
+      <![endif]-->
+    meta name="keywords" content=@company.keywords
+  body
+    #mobile-container
+      = yield
+
+    = render 'shared/templates'
+    = javascript_include_tag '/javascripts/support/json2.min'
+    = javascript_include_tag '/javascripts/support/jquery-1.6.4.min'
+    = javascript_include_tag '/javascripts/support/jquery-ui.js'
+    = javascript_include_tag '/javascripts/support/underscore'
+    = javascript_include_tag '/javascripts/support/backbone'
+    = javascript_include_tag '/javascripts/util'
+    = render :partial => 'shared/mobile-data-loader'
+
+    = javascript_include_tag '/javascripts/widgets/mobile/base'
+
+    - Dir[widgets_dir('mobile/*.js')].sort.each do |widget|
+      - next if File.basename(widget) == 'base.js'
+      = javascript_include_tag "/javascripts/widgets/mobile/#{File.basename widget}"
+
+    = javascript_include_tag '/javascripts/mobile-app'
+    - unless @is_preview_mode || @company.premium?
+      javascript:
+        showAds = true
+    - if @company.premium? == false && @is_preview_mode == true
+      javascript:
+        showAds = true
+    javascript:
+      $(function () {
+        window.mapp = new MobileAppView();
+        window.router = new MobileAppController();
+
+        mapp.fetchMetaDoc(function (metaDoc) {
+          mapp.metaDoc = metaDoc;
+          mapp.render();
+
+          mapp.widgets.fetch({
+            success: function () {
+              mapp.updateWtabs(true);
+              mapp.homeView.render();
+              Backbone.history.start();
+              if (window.showAds) mapp.showAds();
+            }
+          });
+        });
+      });
+
+      $(window).load(function () {
+        setTimeout(function () { $(window).scrollTop(0); },1000);
+      });
+
+    = javascript_include_tag '/javascripts/support/bezen.domwrite.js'
+    = javascript_include_tag "https://www.google.com/jsapi"
+    javascript:
+      google.load("feeds", "1");
+
+    - if Rails.env.production?
+      = javascript_include_tag '/javascripts/google-analytics'
