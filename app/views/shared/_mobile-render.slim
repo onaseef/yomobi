@@ -19,11 +19,11 @@
   #home.page
     #home-widgets.content.dbx-group
     - unless @is_preview_mode || @company.premium?
-      .ad-bar.bottom
+      .ad-bar.bottom{ style="clear:both;" }
         div align="center"
         = render 'mobile/adsense' if Rails.env == 'production'
     - if @company.premium? == false && @is_preview_mode == true
-      .ad-bar.bottom
+      .ad-bar.bottom{ style="clear:both;" }
         = render 'mobile/yomobi-upgrade-ad'
     .mobile-footer
       = render 'mobile/social-share'

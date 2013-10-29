@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120907121646) do
+ActiveRecord::Schema.define(:version => 20130403101646) do
 
   create_table "carriers", :force => true do |t|
     t.string   "name"
@@ -153,7 +153,6 @@ ActiveRecord::Schema.define(:version => 20120907121646) do
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",          :default => 0
     t.datetime "current_sign_in_at"
@@ -172,6 +171,7 @@ ActiveRecord::Schema.define(:version => 20120907121646) do
     t.integer  "default_company_id"
     t.integer  "active_company_id"
     t.boolean  "is_test"
+    t.datetime "reset_password_sent_at"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true

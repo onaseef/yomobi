@@ -203,14 +203,7 @@
       mapp.widgets.bind('remove',mapp.homeView.render);
 
       mapp.homeView.bind('render',this.rebindSortables);
-      mapp.homeView.bind('render',function () {
-
-        if (mapp.widgets.lastMod == 1) {
-          var height = $('#mobile-container').height();
-          $('#mobile-scroller').animate({ scrollTop:height },3000);
-          mapp.widgets.lastMod = 0;
-        }
-      });
+      
 
       // first fetch overall widget order
       var self = this;
@@ -414,7 +407,21 @@
     },
 
     rebindSortables: function () {
-      g.homeDbx.initBoxes();
+ //     g.homeDbx.initBoxes();
+	$(function() {
+
+		$( "#home-widgets" ).sortable({
+			update: function( event, ui ) { alert("DB operation");
+				      $.post('/order',mapp.metaDoc,function (newMetaDoc) {
+					newMetaDoc.worder || (newMetaDoc.worder = {});
+					mapp.metaDoc = newMetaDoc;
+					util.clearUIBlock('meta');
+					callback && callback();
+				      });
+			}
+		});
+		$( "#home-widgets" ).disableSelection();
+	});
     },
 
     syncMetaDoc: function (callback) {
@@ -477,7 +484,7 @@
   });
 
   // make stuff (dragg|dropp)able
-  g.rearrangeManager = new dbxManager(
+ /* g.rearrangeManager = new dbxManager(
     'main',        // session ID [/-_a-zA-Z0-9/]
     'yes',             // enable box-ID based dynamic groups ['yes'|'no']
     'yes',             // hide source box while dragging ['yes'|'no']
@@ -486,7 +493,7 @@
 
   g.homeDbx = new dbxGroup(
     'home-widgets',      // container ID [/-_a-zA-Z0-9/]
-    'vertical',   // orientation ['vertical'|'horizontal'|'freeform'|'freeform-insert'|'confirm']
+    'freeform',   // orientation ['vertical'|'horizontal'|'freeform'|'freeform-insert'|'confirm']
     '7',                 // drag threshold ['n' pixels]
     'no',                // restrict drag movement to container/axis ['yes'|'no']
     '10',                // animate re-ordering [frames per transition, or '0' for no effect]
@@ -506,9 +513,9 @@
     'hit the enter key to select this target',       // confirm dialog sentence for "selection okay"
     'sorry, this target cannot be selected'          // confirm dialog sentence for "selection not okay"
   );
-  _.bindAll(g.homeDbx,'initBoxes');
+  _.bindAll(g.homeDbx,'initBoxes');*/
 
-  $('#emulator').droppable({
+ /* $('#emulator').droppable({
     hoverClass: 'drophover',
 
     over: function () {
@@ -521,12 +528,12 @@
     drop: function (e,ui) {
       bapp.sidebar.addNewWidgetViaTargetedElem(ui.draggable);
     }
-  }).disableSelection();
+  }).disableSelection();*/
 
   window.bapp = new BuilderAppView();
 
   // more drag & drop logic
-  g.rearrangeManager.onbeforestatechange = function () {
+ /* g.rearrangeManager.onbeforestatechange = function () {
     return util.isUIFree();
   };
 
@@ -534,6 +541,6 @@
 
   g.rearrangeManager.onboxdrag = function () {
     return util.isUIFree();
-  };
+  };*/
 
 })(jQuery);

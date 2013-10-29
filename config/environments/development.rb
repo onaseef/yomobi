@@ -6,11 +6,11 @@ Yomobi::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  config.app_domains = ['mobicito.com', 'local.host', 'yomobi.dev']
+  config.app_domains = ['mobicito.com', 'localhost', 'yomobi.dev']
   config.re_app_domains = config.app_domains.map {|d| Regexp.escape d}.join '|'
   config.heroku_app_name = 'yomobi-test'
 
-  config.opt_out_url_host = ENV['DEVISE_URL_HOST'] || 'local.host:3000'
+  config.opt_out_url_host = ENV['DEVISE_URL_HOST'] || 'localhost:3000'
 
   # In the development environment your application's code is reloaded on
   # every request.  This slows down response time but is perfect for development
@@ -42,7 +42,7 @@ Yomobi::Application.configure do
   # use gmail for test emailing
   # config.action_mailer.delivery_method = :smtp
   # config.action_mailer.raise_delivery_errors = true
-  # config.action_mailer.default_url_options = { :host => "local.host:3000" }
+  # config.action_mailer.default_url_options = { :host => "localhost:3000" }
   # ActionMailer::Base.smtp_settings = {
   #   :address  => "smtp.gmail.com",
   #   :port  => 587,
@@ -61,7 +61,7 @@ Yomobi::Application.configure do
 
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_url_options = {
-    :host => ENV['ACTION_MAILER_HOST'] || 'local.host:3000'
+    :host => ENV['ACTION_MAILER_HOST'] || 'localhost:3000'
   }
 
 
