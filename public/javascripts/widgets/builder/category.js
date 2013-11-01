@@ -251,6 +251,9 @@
 
     onEditStart: function (resetChanges, firstEdit) {
       if (resetChanges) this.discardChanges();
+      
+       this.$('#jeditor').text(this.widget.getCurrentNode()._data.content);
+       util.spawnJEditor();
 
       if (firstEdit) {
         this.widget.resetCatStack();
