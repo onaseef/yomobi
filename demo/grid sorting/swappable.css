@@ -1,0 +1,16 @@
+body {padding-left:15%;padding-right:15%; padding-top:2%;font-family:Helvetica,arial,sans-serif; }
+div {margin-top:5px;}
+p {margin-left:10px;}
+h2 {text-align:center;}
+h1 {text-align:center;}
+
+a:link {color:blue;}
+a:hover {color:red;}
+a:visited {color:blue;}
+
+.su {color:blue;font-style:italic;}
+.leftpanel {min-width:300px; width:40%;float:left; margin:5px;}
+.rightpanel {min-width:300px; width:55%; float:left; margin-left:20px;}
+.comment {font-style:italic; color:#808080;}
+.code {background-color:#FFFFcc;padding:5px;font-size:100%;}
+code {color:#000048;}

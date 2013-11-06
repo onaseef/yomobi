@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
+<head> 
+	<meta charset="UTF-8" /> 
+	<title>Swappable</title> 
+	
+	<link type="text/css" href="jquery/jquery.ui.all.css" rel="stylesheet" /> 
+	<!--link type="text/css" href="jquery/jquery.ui.theme.css" rel="stylesheet" /--> 
+	<link type="text/css" href="jquery/demos.css" rel="stylesheet" /> 
+	<link type="text/css" href="swappable.css" rel="stylesheet" /> 
+	<script type="text/javascript" src="jquery/jquery-1.7.2.js"></script> 
+	<script type="text/javascript" src="jquery/jquery.ui.core.js"></script> 
+	<script type="text/javascript" src="jquery/jquery.ui.widget.js"></script> 
+	<script type="text/javascript" src="jquery/jquery.ui.mouse.js"></script> 
+	<script type="text/javascript" src="jquery/jquery.ui.sortable.js"></script> 
+	<script type="text/javascript" src="jquery.ui.swappable.js"></script> 
+
+	<style type="text/css">
+		.sortable { list-style-type: none; margin: 0; padding:0px;padding-bottom:77px; width: 380px; }
+		.sortable li { margin: 3px 3px 14px 0; padding: 1px; float: left; width: 88px; text-align: center; }
+		.ui-state-default{cursor:pointer;}
+
+
+		
+	</style> 
+	
+
+</head> 
+<body> 
+
+<div id="parent" style="width:380px;">
+
+<ul class="sortable ui-state-cancel">
+<li class="ui-state-default"><img src="img/time.png"></li>
+<li class="ui-state-default"><img src="img/travel-1.png"></li>
+<li class="ui-state-default"><img src="img/facebook.png"></li>
+<li class="ui-state-default"><img src="img/twitter.png"></li>
+</ul>
+
+<ul class="sortable ui-state-cancel">
+<li class="ui-state-default"><img src="img/weather-1.png"></li>
+<li class="ui-state-default"><img src="img/yomobi.png"></li>
+<li class="ui-state-default"><img src="img/travel-2.png"></li>
+<li class="ui-state-default"><img src="img/8-cosmetic-sales.png"></li>
+</ul> 
+ 	<div class="ui-state-default" style="width:380px;height:30px;padding-top: 10px; clear: both;margin-bottom: 15px;">Text area</div>
+</div>
+ 
+ 
+ <br clear="all"/>
+<hr/>
+
+ 
+ 	<script type="text/javascript"> 
+	$(function() {
+		$( "#parent" ).sortable({
+		cancel: ".ui-state-cancel",
+		update: function( event, ui ) { alert("DB operation");}
+		});
+		$( "#parent" ).disableSelection();
+		$(".sortable").swappable({
+			items: '.ui-state-cancel',
+			cursorAt: {top:-5}
+		});
+		$(".sortable").disableSelection();
+	});
+	</script> 
+ 
+</body> 
+</html> 

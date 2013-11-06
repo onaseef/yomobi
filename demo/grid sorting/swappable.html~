@@ -1,0 +1,99 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
+<head> 
+	<meta charset="UTF-8" /> 
+	<title>Swappable - jQuery Plugin</title> 
+	
+	<link type="text/css" href="jquery/jquery.ui.all.css" rel="stylesheet" /> 
+	<link type="text/css" href="jquery/jquery.ui.thems.css" rel="stylesheet" /> 
+	<link type="text/css" href="jquery/demos.css" rel="stylesheet" /> 
+	<script src="http://code.jquery.com/jquery-1.7.2.js"></script>
+	<script type="text/javascript" src="jquery/jquery.ui.core.js"></script> 
+	<script type="text/javascript" src="jquery/jquery.ui.widget.js"></script> 
+	<script type="text/javascript" src="jquery/jquery.ui.mouse.js"></script> 
+	<script type="text/javascript" src="jquery/jquery.ui.sortable.js"></script> 
+	<script type="text/javascript" src="jquery/jquery.ui.swappable.js"></script> 
+
+ 
+
+	<style type="text/css">
+		#swappable { list-style-type: none; margin: 0; padding: 0; }
+		#swappable li { margin: 3px 3px 3px 0; padding: 2px; float: left; width: 50px; height: 50px; font-size: 2em; text-align: center; }
+		.ui-state-highlight { height: 50px; width:50px; }
+		.demo {width:180px; height:180px; }
+		body {padding-left:15%;padding-right:15%; padding-top:2%;font-family:Helvetica,arial,sans-serif; }
+div {margin-top:5px;}
+p {margin-left:10px;}
+h2 {text-align:center;}
+h1 {text-align:center;}
+
+a:link {color:blue;}
+a:hover {color:red;}
+a:visited {color:blue;}
+
+.su {color:blue;font-style:italic;}
+.leftpanel {min-width:300px; width:40%;float:left; margin:5px;}
+.rightpanel {min-width:300px; width:55%; float:left; margin-left:20px;}
+.comment {font-style:italic; color:#808080;}
+.code {background-color:#FFFFcc;padding:5px;font-size:100%;}
+code {color:#000048;}
+	</style> 
+	
+
+</head> 
+<body> 
+<div style="font-size:150%;">
+<h1>Swappable - jQuery Plugin </h1>
+<div style="text-align:center;text-size:100%"> 
+&nbsp;&nbsp;|&nbsp;&nbsp;
+<a href="swappable_home.html">Home</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+<a href="swappable_list.html">List</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+<a href="swappable_grid.html">Grid</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+<a href="swappable_row.html">Row</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+<a href="http://code.google.com/p/jquery-swapable/downloads/list" target="_blank">
+Download</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+<a href="http://vadimkir.blogspot.com/2010/08/swappable-jquery-plugin.html" target="_blank">
+Blog</a>
+
+</div>
+<hr/>
+<h2>Grid</h2>
+</div>
+
+<div class="demo"> 
+
+<ul id="swappable"> 
+	<li id="item1" class="ui-state-default">1</li> 
+	<li id="item2" class="ui-state-default">2</li> 
+	<li id="item3" class="ui-state-default">3</li> 
+	<li id="item4" class="ui-state-default">4</li> 
+	<li id="item5" class="ui-state-default">5</li> 
+	<li id="item6" class="ui-state-default">6</li> 
+	<li id="item7" class="ui-state-default">7</li>
+	<li id="item8" class="ui-state-default">8</li>	
+	<li id="item9" class="ui-state-default">9</li>	
+</ul> 
+ 
+</div><!-- End demo --> 
+ 
+ 
+ <br clear="all"/>
+<hr/>
+
+<div style="text-align:center;color:#999999;font-size:125%;">
+&copy;2010 Vadim Kiryukhin</div>
+ 
+ 	<script type="text/javascript"> 
+	$(function() {
+		$("#swappable").swappable({
+			items: '.ui-state-default',
+			cursorAt: {top:-5}
+		});
+		$("#swappable").disableSelection();
+	});
+	</script> 
+ 
+</body> 
+</html> 

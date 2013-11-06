@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>jQuery UI Sortable - Display as grid</title>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<style>
+.sortable { list-style-type: none; margin: 0; padding: 0; width: 380px; }
+.sortable li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 88px; text-align: center; }
+.ui-state-default{cursor:pointer;}
+</style>
+<script>
+ $(function() {
+$( "#sortable1, #sortable2" ).sortable({
+connectWith: ".connectedSortable"
+}).disableSelection();
+});
+$(function() {
+
+$( ".sort_icons" ).sortable({
+update: function( event, ui ) { alert("DB operation");}
+});
+$( ".sort_icons" ).disableSelection();
+});
+</script>
+</head>
+<body>
+
+<ul id="sortable1" class="connectedSortable" style="clear:both;">
+	<li>
+	<ul class="sortable sort_icons" style="clear:both;">
+	<li class="ui-state-default"><img src="img/time.png"></li>
+	<li class="ui-state-default"><img src="img/travel-1.png"></li>
+	<li class="ui-state-default"><img src="img/facebook.png"></li>
+	<li class="ui-state-default"><img src="img/twitter.png"></li>
+	</ul>
+	</li>
+	<li>
+	<ul class="sortable sort_icons"  style="clear:both;">
+	<li class="ui-state-default"><img src="img/weather-1.png"></li>
+	<li class="ui-state-default"><img src="img/yomobi.png"></li>
+	<li class="ui-state-default"><img src="img/travel-2.png"></li>
+	<li class="ui-state-default"><img src="img/8-cosmetic-sales.png"></li>
+	</ul>
+	</li>
+	<li>
+	<ul class="sortable sort_icons"  style="clear:both;">
+	<li class="ui-state-default"><img src="img/9-deals-specials.png"></li>
+	<li class="ui-state-default"><img src="img/7-car-care-2.png"></li>
+	<li class="ui-state-default"><img src="img/7-car-care-1.png"></li>
+	</ul>
+	</li>
+</ul>
+<ul id="sortable2" class="connectedSortable sortable" >
+<li class="ui-state-default" style="width:350px;height:30px;padding-top: 10px;">Text area</li>
+</ul>
+</body>
+</html>
