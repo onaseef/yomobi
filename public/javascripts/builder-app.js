@@ -416,7 +416,7 @@
 					newMetaDoc.worder || (newMetaDoc.worder = {});
 					mapp.metaDoc = newMetaDoc;
 					util.clearUIBlock('meta');
-					callback && callback();
+				//	callback && callback();
 				      });
 			}
 		});
